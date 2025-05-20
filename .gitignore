@@ -1,5 +1,6 @@
 # Mendix local app build
 deployment/
+.mendix-cache/
 theme-cache/
 .DS_Store
 Thumbs.db
