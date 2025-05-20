@@ -1,0 +1,37 @@
+// === BASE LABEL STYLE ===
+// Used by all label variants to ensure consistent typography and padding
+.label-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-primary;
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-body-3;
+    padding: $spacing-4 $spacing-8;
+    border-radius: $radius-4;
+    white-space: nowrap;
+    color: $base-white;
+  }
+  
+  // === LABEL VARIANTS ===
+  // Each maps to a support token from the design system
+  .label-primary {
+    @extend .label-base;
+    background-color: $brand-3; // Teal
+  }
+  
+  .label-secondary {
+    @extend .label-base;
+    background-color: $brand-2; // Orange
+  }
+  
+  .label-success {
+    @extend .label-base;
+    background-color: $support-3; // Green
+  }
+  
+  .label-danger {
+    @extend .label-base;
+    background-color: $support-2; // Red
+  }
+  
