@@ -11,27 +11,44 @@
     border-radius: $radius-4;
     white-space: nowrap;
     color: $base-white;
-  }
-  
-  // === LABEL VARIANTS ===
-  // Each maps to a support token from the design system
-  .label-primary {
+}
+
+// === LABEL VARIANTS ===
+// Each maps to a support token from the design system
+.label-primary {
     @extend .label-base;
     background-color: $brand-3; // Teal
-  }
-  
-  .label-secondary {
+}
+
+.label-secondary {
     @extend .label-base;
     background-color: $brand-2; // Orange
-  }
-  
-  .label-success {
+}
+
+.label-success {
     @extend .label-base;
     background-color: $support-3; // Green
-  }
-  
-  .label-danger {
+}
+
+.label-danger {
     @extend .label-base;
     background-color: $support-2; // Red
-  }
-  
+}
+
+// === LABEL SIZES ===
+// Optional size classes to control visual size of labels when needed
+
+.label-sm {
+    font-size: $font-size-body-3;
+    padding: $spacing-4;
+}
+
+.label-md {
+    font-size: $font-size-body-2;
+    padding: $spacing-8;
+}
+
+.label-lg {
+    font-size: $font-size-body-1;
+    padding: $spacing-12;
+}

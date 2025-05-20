@@ -27960,7 +27960,6 @@ Do not render = "none"
 
 .label-secondary {
   background-color: #F37123;
-  color: #FFFFFF;
 }
 
 .label-success {
@@ -27969,6 +27968,21 @@ Do not render = "none"
 
 .label-danger {
   background-color: #B92025;
+}
+
+.label-sm {
+  font-size: 14px;
+  padding: 4px;
+}
+
+.label-md {
+  font-size: 16px;
+  padding: 8px;
+}
+
+.label-lg {
+  font-size: 18px;
+  padding: 12px;
 }
 
 body {
