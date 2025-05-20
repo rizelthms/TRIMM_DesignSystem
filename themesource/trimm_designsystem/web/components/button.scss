@@ -1,0 +1,111 @@
+// === BASE BUTTON STYLE ===
+// Used by all button variants to provide consistent structure
+.button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-primary;
+  font-weight: $font-weight-bold;
+  border-radius: $radius-full;
+  border: $border-1 solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  gap: $spacing-8;
+  line-height: 1.2;
+  text-decoration: none;
+  padding: $spacing-12 $spacing-24;
+}
+
+// === DEFAULT VARIANT ===
+// Transparent background, black border, black text
+.btn-default {
+  @extend .button-base;
+  background-color: transparent;
+  color: $base-white;
+  border: $border-1 solid $base-white;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $base-white;
+    color: $base-black;
+  }
+
+  svg,
+  i.mdi,
+  span>svg {
+    color: currentColor;
+  }
+}
+
+// === CTA VARIANT ===
+// Orange background, white text, no border
+.btn-cta {
+  @extend .button-base;
+  background-color: $brand-2;
+  color: $base-white;
+  border: none;
+
+  &:hover {
+    background-color: darken($brand-2, 10%);
+  }
+
+  svg,
+  i.mdi,
+  span>svg {
+    color: currentColor;
+  }
+}
+
+// === ICON-ONLY VARIANT ===
+// 48x48px button with only an icon. Used for "iconOnly" types in Figma.
+// Matches spacing/padding and radius tokens. Also ensures icon sizing.
+.btn-icon-only {
+  @extend .button-base;
+  width: 72px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0 $spacing-24;
+  border-radius: $radius-full;
+  justify-content: center;
+  line-height: 1;
+
+  // Allow icon font rendering + SVG styling
+  svg,
+  i.mdi,
+  span>svg {
+    width: 20px;
+    height: 20px;
+    color: currentColor;
+  }
+}
+
+// === SIZE MODIFIERS ===
+// Applies to text-based buttons only. Use in combination with variant classes.
+.btn-sm {
+  padding: $spacing-8 $spacing-16;
+  font-size: $font-size-body-3;
+}
+
+.btn-md {
+  padding: $spacing-12 $spacing-24;
+  font-size: $font-size-body-2;
+}
+
+.btn-lg {
+  padding: $spacing-16 $spacing-32;
+  font-size: $font-size-body-1;
+}
+
+// === ICON ALIGNMENT ===
+// Controls direction of icon when combined with label
+.btn-icon-right svg,
+.btn-icon-right i.mdi {
+  margin-left: $spacing-4;
+}
+
+.btn-icon-left svg,
+.btn-icon-left i.mdi {
+  margin-right: $spacing-4;
+}
