@@ -1,2 +1,15 @@
 @import '../../../theme/web/custom-variables';
+@import './tokens/colors.scss';
+@import './tokens/spacing.scss';
+@import './tokens/typography.scss';
+@import './tokens/radius.scss';
+@import './tokens/shadow.scss';
+@import './tokens/border.scss';
+@import './tokens/fonts.scss';
 
+// Base styles js for testing
+body {
+    font-family: $font-primary;
+    background-color: $base-white;
+    color: $base-black;
+}
