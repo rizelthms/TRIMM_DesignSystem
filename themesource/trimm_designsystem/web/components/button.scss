@@ -57,30 +57,6 @@
   }
 }
 
-// === ICON-ONLY VARIANT ===
-// 48x48px button with only an icon. Used for "iconOnly" types in Figma.
-// Matches spacing/padding and radius tokens. Also ensures icon sizing.
-.btn-icon-only {
-  @extend .button-base;
-  width: 72px;
-  height: 48px;
-  min-width: 48px;
-  min-height: 48px;
-  padding: 0 $spacing-24;
-  border-radius: $radius-full;
-  justify-content: center;
-  line-height: 1;
-
-  // Allow icon font rendering + SVG styling
-  svg,
-  i.mdi,
-  span>svg {
-    width: 20px;
-    height: 20px;
-    color: currentColor;
-  }
-}
-
 // === SIZE MODIFIERS ===
 // Applies to text-based buttons only. Use in combination with variant classes.
 .btn-sm {

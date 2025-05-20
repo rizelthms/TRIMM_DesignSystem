@@ -27853,7 +27853,7 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
-.button-base, .btn-icon-only, .btn-cta, .btn-default {
+.button-base, .btn-cta, .btn-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27895,24 +27895,6 @@ Do not render = "none"
 .btn-cta svg,
 .btn-cta i.mdi,
 .btn-cta span > svg {
-  color: currentColor;
-}
-
-.btn-icon-only {
-  width: 72px;
-  height: 48px;
-  min-width: 48px;
-  min-height: 48px;
-  padding: 0 24px;
-  border-radius: 999px;
-  justify-content: center;
-  line-height: 1;
-}
-.btn-icon-only svg,
-.btn-icon-only i.mdi,
-.btn-icon-only span > svg {
-  width: 20px;
-  height: 20px;
   color: currentColor;
 }
 
