@@ -26,3 +26,22 @@ Thumbs.db
 
 # Node modules (if you ever install tooling)
 node_modules/
+/*.launch
+/deployment/
+/packages/
+/releases/
+/.mendix-cache/
+/.classpath
+/.project
+/trimm_designsystem.mpr.bak
+/trimm_designsystem.mpr.lock
+/modeler-merge-marker
+/project-settings.user.json
+/javasource/*/proxies/
+/javasource/system/
+/**/node_modules/
+!/javascriptsource/**/node_modules/
+/nativemobile/builds/
+/vendorlib/temp/
+/.svn/
+/mprcontents/mprjournal*
