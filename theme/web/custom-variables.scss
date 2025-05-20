@@ -1,3 +1,4 @@
+@import "../../themesource/atlas_core/web/_variables.scss";
 //
 // ██████╗  █████╗ ███████╗██╗ ██████╗
 // ██╔══██╗██╔══██╗██╔════╝██║██╔════╝
@@ -17,11 +18,12 @@ $gray-primary: #e7e7e9;
 $gray-lighter: #f8f8f8;
 
 //== Step 1: Brand Colors
-$brand-default: $gray-primary;
-$brand-primary: #264ae5;
-$brand-success: #3cb33d;
-$brand-warning: #eca51c;
-$brand-danger: #e33f4e;
+$brand-default: #00172B; //brand-1 (Navy Blue)
+$brand-primary: #0E808A; //brand-3 (Teal)
+$brand-secondary: #F37123; //brand-2 (Orange)
+$brand-success: #176E4E; //support-3 (Green)
+$brand-warning: #FFC107; //support-4 (Yellow)
+$brand-danger: #B92025; //support-2 (Red)
 
 $brand-logo: false;
 $brand-logo-height: 32px;
@@ -38,12 +40,12 @@ $border-color-default: #ced0d3;
 $border-radius-default: 4px;
 
 // Topbar
-$topbar-bg: #020557;
+$topbar-bg: $brand-primary;
 $topbar-minimalheight: 48px;
 $topbar-border-color: $border-color-default;
 
 // Sidebar
-$sidebar-bg: #24276c;
+$sidebar-bg: $brand-primary;
 
 // Topbar mobile
 $m-header-height: 45px;
@@ -146,7 +148,7 @@ $navsidebar-font-size: $font-size-default;
 $navsidebar-sub-font-size: $font-size-small;
 $navsidebar-glyph-size: 20px; // For glyphicons that you can select in the Mendix Modeler
 
-$navsidebar-color: #fff;
+$navsidebar-color: $brand-primary;
 $navsidebar-color-hover: #fff;
 $navsidebar-color-active: #fff;
 
