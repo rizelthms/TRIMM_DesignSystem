@@ -27985,6 +27985,33 @@ Do not render = "none"
   padding: 12px;
 }
 
+.trimm-menu {
+  background-color: #0E808A;
+  font-family: "GothamSSm", sans-serif;
+}
+.trimm-menu .mx-navigationlist {
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trimm-menu .mx-navigationlist-item {
+  padding: 8px 16px;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+.trimm-menu .mx-navigationlist-item:hover {
+  background-color: #F37123;
+  color: #FFFFFF;
+}
+.trimm-menu .mx-navigationlist-item.active {
+  background-color: #F37123;
+  color: #FFFFFF;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
