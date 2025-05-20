@@ -1,0 +1,28 @@
+# Mendix local app build
+deployment/
+.mendix-cache/
+theme-cache/
+.DS_Store
+Thumbs.db
+
+# Mendix Team Server SVN files (not used)
+.svn/
+
+# Build artifacts
+*.mpk
+*.mda
+
+# IDE/editor files
+.vscode/
+.idea/
+*.iml
+
+# Log files
+*.log
+
+# System files
+*.swp
+*.tmp
+
+# Node modules (if you ever install tooling)
+node_modules/
