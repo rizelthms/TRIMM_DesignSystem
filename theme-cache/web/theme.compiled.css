@@ -27941,6 +27941,36 @@ Do not render = "none"
   margin-right: 4px;
 }
 
+.label-base, .label-danger, .label-success, .label-secondary, .label-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "GothamSSm", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  color: #FFFFFF;
+}
+
+.label-primary {
+  background-color: #0E808A;
+}
+
+.label-secondary {
+  background-color: #F37123;
+  color: #FFFFFF;
+}
+
+.label-success {
+  background-color: #176E4E;
+}
+
+.label-danger {
+  background-color: #B92025;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
