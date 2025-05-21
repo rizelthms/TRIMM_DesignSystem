@@ -1,0 +1,17 @@
+// === BASE TOOLTIP STYLE ===
+// Use on Mendix Tooltip widget
+.tooltip-base {
+    font-family: $font-primary;
+
+    .widget-tooltip-content {
+        background-color: $brand-2 !important; // Orange
+        color: $base-white !important;
+        padding: $spacing-8 $spacing-12;
+        border-radius: $radius-4;
+        font-size: $font-size-body-3;
+        font-weight: $font-weight-semibold;
+        box-shadow: $shadow-3 rgba(0, 0, 0, 0.15);
+        line-height: 1.4;
+        white-space: pre-line;
+    }
+}
