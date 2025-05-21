@@ -28047,6 +28047,81 @@ Do not render = "none"
   background-color: #0E808A !important;
 }
 
+.alert-base {
+  font-family: "GothamSSm", sans-serif;
+  border-radius: 4px;
+  padding: 16px;
+  background-color: #0E808A;
+  color: #FFFFFF;
+  transition: background-color 0.2s ease;
+}
+.alert-base .alert-title,
+.alert-base .alert-description {
+  color: #FFFFFF !important;
+}
+.alert-base .mx-button {
+  background-color: #F37123 !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  font-family: "GothamSSm", sans-serif;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  line-height: 1;
+  min-height: 29px;
+  min-width: 76px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-base .mx-button:hover {
+  background-color: #a74409;
+}
+.alert-base .mx-button svg,
+.alert-base .mx-button i.mdi,
+.alert-base .mx-button span > svg {
+  color: currentColor;
+  width: 20px;
+  height: 20px;
+}
+.alert-base:hover {
+  background-color: #13abb8;
+}
+
+.alert-success {
+  background-color: #176E4E !important;
+}
+.alert-success:hover {
+  background-color: #20986c !important;
+}
+
+.alert-danger {
+  background-color: #B92025 !important;
+}
+.alert-danger:hover {
+  background-color: #db3136 !important;
+}
+
+.alert-warning {
+  background-color: #FFC107 !important;
+  color: #231F20 !important;
+}
+.alert-warning .alert-title,
+.alert-warning .alert-description {
+  color: #231F20 !important;
+}
+.alert-warning:hover {
+  background-color: #ffce3a !important;
+}
+
+.alert-info {
+  background-color: #6E6F72 !important;
+}
+.alert-info:hover {
+  background-color: #87888c !important;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
