@@ -1,0 +1,93 @@
+// === BASE ALERT STYLE ===
+// Use on a container wrapping the alert. Works with Mendix building blocks.
+.alert-base {
+    font-family: $font-primary;
+    border-radius: $radius-4;
+    padding: $spacing-16;
+    background-color: $brand-3; // TRIMM Teal
+    color: $base-white;
+
+    transition: background-color 0.2s ease;
+
+    // Reset text styles inside
+    .alert-title,
+    .alert-description {
+        color: $base-white !important;
+    }
+
+    // Style internal buttons if present
+    .mx-button {
+        background-color: $brand-2 !important;
+        color: $base-white !important;
+        font-weight: $font-weight-semibold;
+        font-family: $font-primary;
+        font-size: $font-size-body-3; // smaller button text
+        padding: $spacing-8 $spacing-16;
+        border: none;
+        border-radius: $radius-4;
+        line-height: 1;
+        min-height: 29px;
+        min-width: 76px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: darken($brand-2, 20%);
+        }
+
+        svg,
+        i.mdi,
+        span>svg {
+            color: currentColor;
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    // Hover: lighter variant for base
+    &:hover {
+        background-color: lighten($brand-3, 10%);
+    }
+}
+
+// === VARIANTS ===
+// Apply alongside alert-base
+
+.alert-success {
+    background-color: $support-3 !important;
+
+    &:hover {
+        background-color: lighten($support-3, 10%) !important;
+    }
+}
+
+.alert-danger {
+    background-color: $support-2 !important;
+
+    &:hover {
+        background-color: lighten($support-2, 10%) !important;
+    }
+}
+
+.alert-warning {
+    background-color: $support-4 !important;
+    color: $base-black !important;
+
+    .alert-title,
+    .alert-description {
+        color: $base-black !important;
+    }
+
+    &:hover {
+        background-color: lighten($support-4, 10%) !important;
+    }
+}
+
+.alert-info {
+    background-color: $secondary-1 !important;
+
+    &:hover {
+        background-color: lighten($secondary-1, 10%) !important;
+    }
+}
