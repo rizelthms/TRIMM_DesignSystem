@@ -28137,6 +28137,16 @@ Do not render = "none"
   white-space: pre-line;
 }
 
+.widget-switch .widget-switch-btn-wrapper.checked {
+  background-color: #0E808A !important;
+  border-color: #0E808A !important;
+  box-shadow: inset 0 0 0 16px #0E808A !important;
+}
+
+.widget-switch .widget-switch-btn-wrapper .widget-switch-btn.right {
+  background-color: #FFFFFF !important;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
