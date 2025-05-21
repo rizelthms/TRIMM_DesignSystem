@@ -28076,7 +28076,7 @@ Do not render = "none"
   align-items: center;
 }
 .alert-base .mx-button:hover {
-  background-color: #a74409;
+  background-color: #461d04;
 }
 .alert-base .mx-button svg,
 .alert-base .mx-button i.mdi,
@@ -28086,21 +28086,21 @@ Do not render = "none"
   height: 20px;
 }
 .alert-base:hover {
-  background-color: #13abb8;
+  background-color: #17d6e7;
 }
 
 .alert-success {
   background-color: #176E4E !important;
 }
 .alert-success:hover {
-  background-color: #20986c !important;
+  background-color: #29c28a !important;
 }
 
 .alert-danger {
   background-color: #B92025 !important;
 }
 .alert-danger:hover {
-  background-color: #db3136 !important;
+  background-color: #e35c61 !important;
 }
 
 .alert-warning {
@@ -28112,14 +28112,29 @@ Do not render = "none"
   color: #231F20 !important;
 }
 .alert-warning:hover {
-  background-color: #ffce3a !important;
+  background-color: #ffdb6d !important;
 }
 
 .alert-info {
   background-color: #6E6F72 !important;
 }
 .alert-info:hover {
-  background-color: #87888c !important;
+  background-color: #a1a2a5 !important;
+}
+
+.tooltip-base {
+  font-family: "GothamSSm", sans-serif;
+}
+.tooltip-base .widget-tooltip-content {
+  background-color: #F37123 !important;
+  color: #FFFFFF !important;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(27, 28, 29, 0.1) rgba(0, 0, 0, 0.15);
+  line-height: 1.4;
+  white-space: pre-line;
 }
 
 body {
