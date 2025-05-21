@@ -27967,31 +27967,84 @@ Do not render = "none"
   padding: 12px;
 }
 
-.trimm-menu {
-  background-color: #0E808A;
+.menu-base {
   font-family: "GothamSSm", sans-serif;
 }
-.trimm-menu .mx-navigationlist {
-  padding: 8px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.menu-base ul,
+.menu-base .mx-menubar-list,
+.menu-base .mx-popupmenu-list {
+  background-color: #0E808A;
+  padding: 0;
+  list-style: none;
 }
-.trimm-menu .mx-navigationlist-item {
-  padding: 8px 16px;
-  color: #FFFFFF;
+.menu-base li,
+.menu-base .mx-menubar-item,
+.menu-base .mx-popupmenu-item,
+.menu-base .mx-navigationlist-item {
   font-weight: 600;
   font-size: 16px;
   border-radius: 4px;
-  transition: background-color 0.2s;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: none !important;
+  box-shadow: none !important;
 }
-.trimm-menu .mx-navigationlist-item:hover {
-  background-color: #F37123;
-  color: #FFFFFF;
+.menu-base li a,
+.menu-base .mx-menubar-item a,
+.menu-base .mx-popupmenu-item a,
+.menu-base .mx-navigationlist-item a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #FFFFFF !important;
+  border-radius: inherit;
+  background-color: transparent !important;
+  transition: background-color 0.2s ease;
 }
-.trimm-menu .mx-navigationlist-item.active {
-  background-color: #F37123;
-  color: #FFFFFF;
+.menu-base li a:hover, .menu-base li a.active, .menu-base li a.selected,
+.menu-base .mx-menubar-item a:hover,
+.menu-base .mx-menubar-item a.active,
+.menu-base .mx-menubar-item a.selected,
+.menu-base .mx-popupmenu-item a:hover,
+.menu-base .mx-popupmenu-item a.active,
+.menu-base .mx-popupmenu-item a.selected,
+.menu-base .mx-navigationlist-item a:hover,
+.menu-base .mx-navigationlist-item a.active,
+.menu-base .mx-navigationlist-item a.selected {
+  background-color: #F37123 !important;
+  color: #FFFFFF !important;
+}
+.menu-base li a svg,
+.menu-base li a i.mdi,
+.menu-base li a span > svg,
+.menu-base .mx-menubar-item a svg,
+.menu-base .mx-menubar-item a i.mdi,
+.menu-base .mx-menubar-item a span > svg,
+.menu-base .mx-popupmenu-item a svg,
+.menu-base .mx-popupmenu-item a i.mdi,
+.menu-base .mx-popupmenu-item a span > svg,
+.menu-base .mx-navigationlist-item a svg,
+.menu-base .mx-navigationlist-item a i.mdi,
+.menu-base .mx-navigationlist-item a span > svg {
+  color: currentColor;
+}
+.menu-base .mx-menubar > ul > li:hover > a,
+.menu-base .mx-menubar > ul > li.active > a,
+.menu-base .mx-menubar-list > li:hover > a,
+.menu-base .mx-menubar-list > li.active > a,
+.menu-base .mx-navigationlist-item:hover,
+.menu-base .mx-navigationlist-item.active {
+  background-color: #F37123 !important;
+  color: #FFFFFF !important;
+}
+
+.menu-base,
+.menu-base.mx-menubar {
+  background-color: #0E808A !important;
 }
 
 body {

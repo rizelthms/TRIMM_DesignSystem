@@ -1,34 +1,73 @@
 // === BASE MENU STYLE ===
-// Applies to sidebar or nav menus styled for TRIMM
-
-.trimm-menu {
-    background-color: $brand-3;
+.menu-base {
     font-family: $font-primary;
-  
-    .mx-navigationlist {
-      padding: $spacing-8 0;
-      display: flex;
-      flex-direction: column;
-      gap: $spacing-4;
+
+    ul,
+    .mx-menubar-list,
+    .mx-popupmenu-list {
+        background-color: $brand-3;
+        padding: 0;
+        list-style: none;
     }
-  
+
+    li,
+    .mx-menubar-item,
+    .mx-popupmenu-item,
     .mx-navigationlist-item {
-      padding: $spacing-8 $spacing-16;
-      color: $base-white;
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-body-2;
-      border-radius: $radius-4;
-      transition: background-color 0.2s;
-  
-      &:hover {
-        background-color: $brand-2;
-        color: $base-white;
-      }
-  
-      &.active {
-        background-color: $brand-2;
-        color: $base-white;
-      }
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-body-2;
+        border-radius: $radius-4;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+
+        // Remove Atlas default styling
+        border: none !important;
+        box-shadow: none !important;
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: $spacing-8;
+            padding: $spacing-8 $spacing-16;
+            text-decoration: none;
+            color: $base-white !important;
+            border-radius: inherit;
+            background-color: transparent !important;
+            transition: background-color 0.2s ease;
+
+            // Force hover + active state override
+            &:hover,
+            &.active,
+            &.selected {
+                background-color: $brand-2 !important;
+                color: $base-white !important;
+            }
+
+            // Force icon color
+            svg,
+            i.mdi,
+            span>svg {
+                color: currentColor;
+            }
+        }
     }
-  }
-  
+
+    // Extra override block to handle Atlas deep nesting
+    .mx-menubar>ul>li:hover>a,
+    .mx-menubar>ul>li.active>a,
+    .mx-menubar-list>li:hover>a,
+    .mx-menubar-list>li.active>a,
+    .mx-navigationlist-item:hover,
+    .mx-navigationlist-item.active {
+        background-color: $brand-2 !important;
+        color: $base-white !important;
+    }
+}
+
+// Kill background color on Menu Bar's outer container
+.menu-base,
+.menu-base.mx-menubar {
+    background-color: $brand-3 !important;
+}
