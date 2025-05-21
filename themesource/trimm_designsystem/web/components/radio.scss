@@ -1,0 +1,41 @@
+// === BASE RADIO STYLE ===
+// Applies to Radio Buttons via form widget structure
+
+.radio-base {
+    font-family: $font-primary;
+  
+    input[type="radio"] {
+      accent-color: $brand-3;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+  
+      &:disabled {
+        accent-color: $secondary-2;
+        cursor: default;
+      }
+  
+      &:hover:not(:disabled) {
+        border-color: darken($brand-3, 10%);
+      }
+  
+      &:invalid {
+        accent-color: $support-2;
+      }
+    }
+  
+    label {
+      margin-left: $spacing-8;
+      font-size: $font-size-body-2;
+      font-weight: $font-weight-normal;
+  
+      &.disabled {
+        color: $secondary-1;
+      }
+  
+      &.invalid {
+        color: $support-2;
+      }
+    }
+  }
+  
