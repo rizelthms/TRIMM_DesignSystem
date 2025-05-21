@@ -28147,6 +28147,37 @@ Do not render = "none"
   background-color: #FFFFFF !important;
 }
 
+.radio-base {
+  font-family: "GothamSSm", sans-serif;
+}
+.radio-base input[type=radio] {
+  accent-color: #0E808A;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.radio-base input[type=radio]:disabled {
+  accent-color: #EDD7C4;
+  cursor: default;
+}
+.radio-base input[type=radio]:hover:not(:disabled) {
+  border-color: #09555c;
+}
+.radio-base input[type=radio]:invalid {
+  accent-color: #B92025;
+}
+.radio-base label {
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: normal;
+}
+.radio-base label.disabled {
+  color: #6E6F72;
+}
+.radio-base label.invalid {
+  color: #B92025;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
