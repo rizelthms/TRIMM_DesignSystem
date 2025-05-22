@@ -3,9 +3,16 @@
 
 // Wrapper when toggle is ON
 .widget-switch .widget-switch-btn-wrapper.checked {
-  background-color: $brand-3 !important; // Teal 
+  background-color: $brand-3 !important; // Teal
   border-color: $brand-3 !important;
   box-shadow: inset 0 0 0 16px $brand-3 !important;
+}
+
+// Wrapper when toggle is OFF
+.widget-switch .widget-switch-btn-wrapper:not(.checked) {
+  background-color: $base-white !important;
+  border-color: rgba(110, 111, 114, 0.2) !important; // $secondary-1 at 20% opacity
+  box-shadow: inset 0 0 0 16px rgba(110, 111, 114, 0.2) !important;
 }
 
 // Thumb (circle toggle)
