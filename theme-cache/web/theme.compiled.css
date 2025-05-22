@@ -28206,7 +28206,7 @@ Do not render = "none"
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 4px 8px rgba(27, 28, 29, 0.1) rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(27, 28, 29, 0.1);
   line-height: 1.4;
   white-space: pre-line;
 }
