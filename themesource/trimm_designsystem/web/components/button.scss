@@ -12,7 +12,7 @@
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   gap: $spacing-8;
-  line-height: 1.2;
+  line-height: $line-height-body-1;
   text-decoration: none;
   padding: $spacing-12 $spacing-24;
 }
