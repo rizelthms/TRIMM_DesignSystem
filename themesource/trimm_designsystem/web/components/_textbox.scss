@@ -35,21 +35,37 @@
 }
 
 // === TEXT BOX SIZE MODIFIERS ===
+// When wrapper has textbox-[size], style both input and label together
 
-.textbox-sm input.form-control,
-.textbox-base.textbox-sm input.form-control {
-    font-size: $font-size-body-3 !important;
-    padding: $spacing-8 $spacing-12 !important;
+.textbox-lg {
+    input.form-control {
+        font-size: $font-size-body-1 !important;
+        padding: $spacing-16 $spacing-24 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-1 !important;
+    }
 }
 
-.textbox-md input.form-control,
-.textbox-base.textbox-md input.form-control {
-    font-size: $font-size-body-2 !important;
-    padding: $spacing-12 $spacing-16 !important;
+.textbox-md {
+    input.form-control {
+        font-size: $font-size-body-2 !important;
+        padding: $spacing-12 $spacing-16 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-2 !important;
+    }
 }
 
-.textbox-lg input.form-control,
-.textbox-base.textbox-lg input.form-control {
-    font-size: $font-size-body-1 !important;
-    padding: $spacing-16 $spacing-24 !important;
+.textbox-sm {
+    input.form-control {
+        font-size: $font-size-body-3 !important;
+        padding: $spacing-8 $spacing-12 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-3 !important;
+    }
 }
