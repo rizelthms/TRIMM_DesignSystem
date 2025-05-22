@@ -22,8 +22,9 @@
 .btn-default {
   @extend .button-base;
   background-color: transparent;
-  color: $base-white;
+  color: $base-black;
   border: $border-1 solid $base-white;
+  box-shadow: $shadow-8;
 
   &:hover,
   &:focus,

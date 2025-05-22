@@ -27946,8 +27946,9 @@ Do not render = "none"
 
 .btn-default {
   background-color: transparent;
-  color: #FFFFFF;
+  color: #231F20;
   border: 1px solid #FFFFFF;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active {
   background-color: #FFFFFF;
@@ -28255,6 +28256,54 @@ Do not render = "none"
 .textarea-sm textarea.mx-textarea-input {
   font-size: 14px !important;
   padding: 8px 12px !important;
+}
+
+.textbox-base input.form-control {
+  font-family: "GothamSSm", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: normal !important;
+  color: #231F20 !important;
+  background-color: rgba(14, 128, 138, 0.2) !important;
+  border: 1px solid #0E808A !important;
+  border-radius: 4px !important;
+  padding: 12px 16px !important;
+  line-height: 24px !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+.textbox-base input.form-control::placeholder {
+  color: #231F20 !important;
+  font-style: italic !important;
+}
+.textbox-base input.form-control:focus {
+  outline: none;
+  border-color: #F37123 !important;
+}
+.textbox-base input.form-control:disabled {
+  background-color: rgba(110, 111, 114, 0.2) !important;
+  color: #231F20 !important;
+  border-color: #231F20 !important;
+  cursor: not-allowed;
+}
+
+.textbox-sm input.form-control,
+.textbox-base.textbox-sm input.form-control {
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+}
+
+.textbox-md input.form-control,
+.textbox-base.textbox-md input.form-control {
+  font-size: 16px !important;
+  padding: 12px 16px !important;
+}
+
+.textbox-lg input.form-control,
+.textbox-base.textbox-lg input.form-control {
+  font-size: 18px !important;
+  padding: 16px 24px !important;
 }
 
 body {
