@@ -27853,6 +27853,81 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+.alert-base {
+  font-family: "GothamSSm", sans-serif;
+  border-radius: 4px;
+  padding: 16px;
+  background-color: #0E808A;
+  color: #FFFFFF;
+  transition: background-color 0.2s ease;
+}
+.alert-base .alert-title,
+.alert-base .alert-description {
+  color: #FFFFFF !important;
+}
+.alert-base .mx-button {
+  background-color: #F37123 !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  font-family: "GothamSSm", sans-serif;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  line-height: 1;
+  min-height: 29px;
+  min-width: 76px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-base .mx-button:hover {
+  background-color: #461d04;
+}
+.alert-base .mx-button svg,
+.alert-base .mx-button i.mdi,
+.alert-base .mx-button span > svg {
+  color: currentColor;
+  width: 20px;
+  height: 20px;
+}
+.alert-base:hover {
+  background-color: #17d6e7;
+}
+
+.alert-success {
+  background-color: #176E4E !important;
+}
+.alert-success:hover {
+  background-color: #29c28a !important;
+}
+
+.alert-danger {
+  background-color: #B92025 !important;
+}
+.alert-danger:hover {
+  background-color: #e35c61 !important;
+}
+
+.alert-warning {
+  background-color: #FFC107 !important;
+  color: #231F20 !important;
+}
+.alert-warning .alert-title,
+.alert-warning .alert-description {
+  color: #231F20 !important;
+}
+.alert-warning:hover {
+  background-color: #ffdb6d !important;
+}
+
+.alert-info {
+  background-color: #6E6F72 !important;
+}
+.alert-info:hover {
+  background-color: #a1a2a5 !important;
+}
+
 .button-base, .btn-cta, .btn-default {
   display: inline-flex;
   align-items: center;
@@ -28047,106 +28122,6 @@ Do not render = "none"
   background-color: #0E808A !important;
 }
 
-.alert-base {
-  font-family: "GothamSSm", sans-serif;
-  border-radius: 4px;
-  padding: 16px;
-  background-color: #0E808A;
-  color: #FFFFFF;
-  transition: background-color 0.2s ease;
-}
-.alert-base .alert-title,
-.alert-base .alert-description {
-  color: #FFFFFF !important;
-}
-.alert-base .mx-button {
-  background-color: #F37123 !important;
-  color: #FFFFFF !important;
-  font-weight: 600;
-  font-family: "GothamSSm", sans-serif;
-  font-size: 14px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  line-height: 1;
-  min-height: 29px;
-  min-width: 76px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
-.alert-base .mx-button:hover {
-  background-color: #461d04;
-}
-.alert-base .mx-button svg,
-.alert-base .mx-button i.mdi,
-.alert-base .mx-button span > svg {
-  color: currentColor;
-  width: 20px;
-  height: 20px;
-}
-.alert-base:hover {
-  background-color: #17d6e7;
-}
-
-.alert-success {
-  background-color: #176E4E !important;
-}
-.alert-success:hover {
-  background-color: #29c28a !important;
-}
-
-.alert-danger {
-  background-color: #B92025 !important;
-}
-.alert-danger:hover {
-  background-color: #e35c61 !important;
-}
-
-.alert-warning {
-  background-color: #FFC107 !important;
-  color: #231F20 !important;
-}
-.alert-warning .alert-title,
-.alert-warning .alert-description {
-  color: #231F20 !important;
-}
-.alert-warning:hover {
-  background-color: #ffdb6d !important;
-}
-
-.alert-info {
-  background-color: #6E6F72 !important;
-}
-.alert-info:hover {
-  background-color: #a1a2a5 !important;
-}
-
-.tooltip-base {
-  font-family: "GothamSSm", sans-serif;
-}
-.tooltip-base .widget-tooltip-content {
-  background-color: #F37123 !important;
-  color: #FFFFFF !important;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 4px 8px rgba(27, 28, 29, 0.1) rgba(0, 0, 0, 0.15);
-  line-height: 1.4;
-  white-space: pre-line;
-}
-
-.widget-switch .widget-switch-btn-wrapper.checked {
-  background-color: #0E808A !important;
-  border-color: #0E808A !important;
-  box-shadow: inset 0 0 0 16px #0E808A !important;
-}
-
-.widget-switch .widget-switch-btn-wrapper .widget-switch-btn.right {
-  background-color: #FFFFFF !important;
-}
-
 .radio-base {
   font-family: "GothamSSm", sans-serif;
 }
@@ -28176,6 +28151,77 @@ Do not render = "none"
 }
 .radio-base label.invalid {
   color: #B92025;
+}
+
+.widget-switch .widget-switch-btn-wrapper.checked {
+  background-color: #0E808A !important;
+  border-color: #0E808A !important;
+  box-shadow: inset 0 0 0 16px #0E808A !important;
+}
+
+.widget-switch .widget-switch-btn-wrapper .widget-switch-btn.right {
+  background-color: #FFFFFF !important;
+}
+
+.tooltip-base {
+  font-family: "GothamSSm", sans-serif;
+}
+.tooltip-base .widget-tooltip-content {
+  background-color: #F37123 !important;
+  color: #FFFFFF !important;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(27, 28, 29, 0.1) rgba(0, 0, 0, 0.15);
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.textarea-base {
+  font-family: "GothamSSm", sans-serif;
+}
+.textarea-base textarea.mx-textarea-input {
+  font-size: 16px;
+  font-weight: normal;
+  color: #231F20 !important;
+  background-color: rgba(14, 128, 138, 0.2) !important;
+  border: 1px solid #0E808A !important;
+  border-radius: 4px !important;
+  padding: 12px 16px !important;
+  line-height: 24px;
+  min-height: 120px;
+  resize: vertical;
+  transition: border-color 0.2s ease-in-out;
+}
+.textarea-base textarea.mx-textarea-input::placeholder {
+  color: #231F20;
+  font-style: italic;
+}
+.textarea-base textarea.mx-textarea-input:focus {
+  outline: none;
+  border-color: #F37123 !important;
+}
+.textarea-base textarea.mx-textarea-input:disabled {
+  background-color: rgba(110, 111, 114, 0.2) !important;
+  color: #231F20 !important;
+  border-color: #231F20 !important;
+  cursor: not-allowed;
+}
+
+.textarea-lg textarea.mx-textarea-input {
+  font-size: 18px !important;
+  padding: 16px 24px !important;
+}
+
+.textarea-md textarea.mx-textarea-input {
+  font-size: 16px !important;
+  padding: 12px 16px !important;
+}
+
+.textarea-sm textarea.mx-textarea-input {
+  font-size: 14px !important;
+  padding: 8px 12px !important;
 }
 
 body {
