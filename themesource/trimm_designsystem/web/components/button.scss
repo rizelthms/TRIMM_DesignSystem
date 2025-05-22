@@ -32,12 +32,30 @@
     color: $base-black;
   }
 
+  &:disabled,
+  &.btn-disabled {
+    background-color: $secondary-1;
+    color: $base-white;
+    border-color: $base-black;
+    cursor: not-allowed;
+    opacity: 0.6;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $secondary-1;
+      color: $base-white;
+      border-color: $base-black;
+    }
+  }
+
   svg,
   i.mdi,
   span>svg {
     color: currentColor;
   }
 }
+
 
 // === CTA VARIANT ===
 // Orange background, white text, no border
