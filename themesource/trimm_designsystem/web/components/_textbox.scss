@@ -1,0 +1,55 @@
+// === BASE TEXT BOX STYLE ===
+// Works with Mendix Text Box widget 
+
+.textbox-base input.form-control {
+    font-family: $font-primary !important;
+    font-size: $font-size-body-2 !important;
+    font-weight: $font-weight-normal !important;
+    color: $base-black !important;
+    background-color: rgba($brand-3, 0.2) !important;
+    border: $border-1 solid $brand-3 !important;
+    border-radius: $radius-4 !important;
+    padding: $spacing-12 $spacing-16 !important;
+    line-height: $line-height-body-2 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: $base-black !important;
+        font-style: italic !important;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $brand-2 !important;
+    }
+
+    &:disabled {
+        background-color: rgba($secondary-1, 0.2) !important;
+        color: $base-black !important;
+        border-color: $base-black !important;
+        cursor: not-allowed;
+    }
+}
+
+// === TEXT BOX SIZE MODIFIERS ===
+
+.textbox-sm input.form-control,
+.textbox-base.textbox-sm input.form-control {
+    font-size: $font-size-body-3 !important;
+    padding: $spacing-8 $spacing-12 !important;
+}
+
+.textbox-md input.form-control,
+.textbox-base.textbox-md input.form-control {
+    font-size: $font-size-body-2 !important;
+    padding: $spacing-12 $spacing-16 !important;
+}
+
+.textbox-lg input.form-control,
+.textbox-base.textbox-lg input.form-control {
+    font-size: $font-size-body-1 !important;
+    padding: $spacing-16 $spacing-24 !important;
+}
