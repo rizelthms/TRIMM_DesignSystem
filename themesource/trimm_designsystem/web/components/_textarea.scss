@@ -36,19 +36,37 @@
 }
 
 // === SIZE MODIFIERS ===
-// Apply one at a time depending on text size needed
+// When wrapper has textarea-[size], style both textarea and label together
 
-.textarea-lg textarea.mx-textarea-input {
-    font-size: $font-size-body-1 !important;
-    padding: $spacing-16 $spacing-24 !important;
+.textarea-lg {
+    textarea.mx-textarea-input {
+        font-size: $font-size-body-1 !important;
+        padding: $spacing-16 $spacing-24 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-1 !important;
+    }
 }
 
-.textarea-md textarea.mx-textarea-input {
-    font-size: $font-size-body-2 !important;
-    padding: $spacing-12 $spacing-16 !important;
+.textarea-md {
+    textarea.mx-textarea-input {
+        font-size: $font-size-body-2 !important;
+        padding: $spacing-12 $spacing-16 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-2 !important;
+    }
 }
 
-.textarea-sm textarea.mx-textarea-input {
-    font-size: $font-size-body-3 !important;
-    padding: $spacing-8 $spacing-12 !important;
+.textarea-sm {
+    textarea.mx-textarea-input {
+        font-size: $font-size-body-3 !important;
+        padding: $spacing-8 $spacing-12 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-3 !important;
+    }
 }

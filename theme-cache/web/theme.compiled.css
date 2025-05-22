@@ -28247,15 +28247,24 @@ Do not render = "none"
   font-size: 18px !important;
   padding: 16px 24px !important;
 }
+.textarea-lg .control-label {
+  font-size: 18px !important;
+}
 
 .textarea-md textarea.mx-textarea-input {
   font-size: 16px !important;
   padding: 12px 16px !important;
 }
+.textarea-md .control-label {
+  font-size: 16px !important;
+}
 
 .textarea-sm textarea.mx-textarea-input {
   font-size: 14px !important;
   padding: 8px 12px !important;
+}
+.textarea-sm .control-label {
+  font-size: 14px !important;
 }
 
 .textbox-base input.form-control {
@@ -28288,22 +28297,28 @@ Do not render = "none"
   cursor: not-allowed;
 }
 
-.textbox-sm input.form-control,
-.textbox-base.textbox-sm input.form-control {
-  font-size: 14px !important;
-  padding: 8px 12px !important;
+.textbox-lg input.form-control {
+  font-size: 18px !important;
+  padding: 16px 24px !important;
+}
+.textbox-lg .control-label {
+  font-size: 18px !important;
 }
 
-.textbox-md input.form-control,
-.textbox-base.textbox-md input.form-control {
+.textbox-md input.form-control {
   font-size: 16px !important;
   padding: 12px 16px !important;
 }
+.textbox-md .control-label {
+  font-size: 16px !important;
+}
 
-.textbox-lg input.form-control,
-.textbox-base.textbox-lg input.form-control {
-  font-size: 18px !important;
-  padding: 16px 24px !important;
+.textbox-sm input.form-control {
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+}
+.textbox-sm .control-label {
+  font-size: 14px !important;
 }
 
 body {
