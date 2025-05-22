@@ -27939,7 +27939,7 @@ Do not render = "none"
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   gap: 8px;
-  line-height: 1.2;
+  line-height: 28px;
   text-decoration: none;
   padding: 12px 24px;
 }
@@ -28010,7 +28010,7 @@ Do not render = "none"
   margin-right: 4px;
 }
 
-.label-base, .label-danger, .label-success, .label-secondary, .label-primary {
+.label-base, .label-warning, .label-danger, .label-success, .label-secondary, .label-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -28019,24 +28019,39 @@ Do not render = "none"
   font-size: 14px;
   padding: 4px 8px;
   border-radius: 4px;
+  border: 1px solid #6E6F72;
   white-space: nowrap;
-  color: #FFFFFF;
+  color: #231F20;
 }
 
-.label-primary {
+.label-default {
   background-color: #0E808A;
+  color: #FFFFFF;
+  border: none;
 }
 
 .label-secondary {
   background-color: #F37123;
+  color: #FFFFFF;
+  border: none;
 }
 
 .label-success {
   background-color: #176E4E;
+  color: #FFFFFF;
+  border: none;
 }
 
 .label-danger {
   background-color: #B92025;
+  color: #FFFFFF;
+  border: none;
+}
+
+.label-warning {
+  background-color: #FFC107;
+  color: #FFFFFF;
+  border: none;
 }
 
 .label-sm {
