@@ -1,0 +1,53 @@
+// === BASE TEXT AREA STYLE ===
+.textarea-base {
+    font-family: $font-primary;
+
+    // Target the actual input field inside
+    textarea.mx-textarea-input {
+        font-size: $font-size-body-2;
+        font-weight: $font-weight-normal;
+        color: $base-black !important;
+        background-color: rgba($brand-3, 0.2) !important;
+        border: $border-1 solid $brand-3 !important;
+        border-radius: $radius-4 !important;
+        padding: $spacing-12 $spacing-16 !important;
+        line-height: $line-height-body-2;
+        min-height: 120px;
+        resize: vertical;
+        transition: border-color 0.2s ease-in-out;
+
+        &::placeholder {
+            color: $base-black;
+            font-style: italic;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $brand-2 !important;
+        }
+
+        &:disabled {
+            background-color: rgba($secondary-1, 0.2) !important;
+            color: $base-black !important;
+            border-color: $base-black !important;
+            cursor: not-allowed;
+        }
+    }
+}
+
+// === SIZE MODIFIERS ===
+// Apply one at a time depending on text size needed
+.textarea-lg textarea.mx-textarea-input {
+    font-size: $font-size-body-1 !important;
+    padding: $spacing-16 $spacing-24 !important;
+}
+
+.textarea-md textarea.mx-textarea-input {
+    font-size: $font-size-body-2 !important;
+    padding: $spacing-12 $spacing-16 !important;
+}
+
+.textarea-sm textarea.mx-textarea-input {
+    font-size: $font-size-body-3 !important;
+    padding: $spacing-8 $spacing-12 !important;
+}
