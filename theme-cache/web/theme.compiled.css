@@ -28428,6 +28428,70 @@ Do not render = "none"
   font-size: 18px;
 }
 
+.accordion-base {
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  background-color: #FFFFFF;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.accordion-base.mx-groupbox-open {
+  background-color: #231F20;
+  box-shadow: none;
+}
+
+.widget-accordion-group-header {
+  padding: 0;
+}
+
+.widget-accordion-group-header-button {
+  padding: 16px 24px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+.widget-accordion-group-header-button:hover {
+  background-color: #f2f2f2;
+}
+
+.widget-accordion-group-header-button[aria-expanded=true] {
+  background-color: rgba(110, 111, 114, 0.3) !important;
+  border-radius: 0px;
+}
+
+.widget-accordion-group-header-button[aria-expanded=true] > h3 {
+  color: #FFFFFF;
+}
+
+.widget-accordion-group-header-title,
+.widget-accordion-group-header-button > h3 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #231F20;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.widget-accordion-group-content {
+  padding: 16px 24px;
+  font-family: "GothamSSm", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #FFFFFF;
+  background-color: rgba(110, 111, 114, 0.3);
+}
+
+.accordion-base[aria-disabled=true] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
