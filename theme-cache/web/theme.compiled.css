@@ -28321,6 +28321,65 @@ Do not render = "none"
   font-size: 14px !important;
 }
 
+.checkbox-base {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.checkbox-base input[type=checkbox] {
+  appearance: checkbox;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  accent-color: #0E808A;
+  cursor: pointer;
+}
+.checkbox-base input[type=checkbox]:disabled {
+  accent-color: rgba(14, 128, 138, 0.4);
+  cursor: not-allowed;
+}
+.checkbox-base .mx-checkbox-label {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #231F20;
+  user-select: none;
+  cursor: pointer;
+}
+.checkbox-base .mx-checkbox-label:disabled {
+  color: rgba(35, 31, 32, 0.4);
+  cursor: not-allowed;
+}
+
+.checkbox-sm input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+}
+.checkbox-sm .mx-checkbox-label,
+.checkbox-sm .control-label {
+  font-size: 14px;
+}
+
+.checkbox-md input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+.checkbox-md .mx-checkbox-label,
+.checkbox-md .control-label {
+  font-size: 16px;
+}
+
+.checkbox-lg input[type=checkbox] {
+  width: 24px;
+  height: 24px;
+}
+.checkbox-lg .mx-checkbox-label,
+.checkbox-lg .control-label {
+  font-size: 18px;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;
