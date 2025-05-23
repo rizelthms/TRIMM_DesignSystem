@@ -28492,6 +28492,55 @@ Do not render = "none"
   pointer-events: none;
 }
 
+.tab-base {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #231F20;
+}
+.tab-base .mx-tabcontainer-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 8px;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  background-color: #FFFFFF;
+}
+.tab-base .mx-tabcontainer-tabs > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tab-base .mx-tabcontainer-tabs > li a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-family: "GothamSSm", sans-serif;
+  font-weight: 600;
+  color: #231F20;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  background-color: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.tab-base .mx-tabcontainer-tabs > li a:hover {
+  background-color: rgba(14, 128, 138, 0.2);
+}
+.tab-base .mx-tabcontainer-tabs > li.active a {
+  color: #0E808A;
+  background-color: rgba(110, 111, 114, 0.3);
+}
+.tab-base .mx-tabcontainer-tabs > li.disabled a {
+  color: #6E6F72;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: rgba(110, 111, 114, 0.1);
+}
+.tab-base .mx-tabcontainer-content {
+  padding: 16px 24px;
+  background-color: rgba(110, 111, 114, 0.3);
+  border-radius: 0 0 4px 4px;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;

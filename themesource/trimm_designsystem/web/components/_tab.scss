@@ -1,0 +1,63 @@
+// === BASE TABS COMPONENT ===
+// Applies to Mendix Tab Container widget
+
+.tab-base {
+    font-family: $font-primary;
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-medium;
+    color: $base-black;
+
+    // === Tab List ===
+    .mx-tabcontainer-tabs {
+        display: flex;
+        gap: $spacing-4;
+        padding: 0 $spacing-8;
+        box-shadow: $shadow-2;
+        background-color: $base-white;
+    }
+
+    // === Tab Items ===
+    .mx-tabcontainer-tabs>li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        a {
+            display: inline-block;
+            padding: $spacing-8 $spacing-16;
+            font-family: $font-primary;
+            font-weight: $font-weight-semibold;
+            color: $base-black;
+            text-decoration: none;
+            border: none;
+            border-radius: $radius-4 $radius-4 0 0;
+            background-color: transparent;
+            transition: background-color 0.2s ease, color 0.2s ease;
+
+            &:hover {
+                background-color: rgba($brand-3, 0.2);
+            }
+        }
+
+        // === Active Tab ===
+        &.active a {
+            color: $brand-3;
+            background-color: rgba($secondary-1, 0.3);
+        }
+
+        // === Disabled Tab ===
+        &.disabled a {
+            color: $secondary-1;
+            cursor: not-allowed;
+            pointer-events: none;
+            background-color: rgba($secondary-1, 0.1);
+        }
+    }
+
+    // === Tab Panels ===
+    .mx-tabcontainer-content {
+        padding: $spacing-16 $spacing-24;
+        background-color: rgba($secondary-1, 0.3);
+        border-radius: 0 0 $radius-4 $radius-4;
+    }
+}
