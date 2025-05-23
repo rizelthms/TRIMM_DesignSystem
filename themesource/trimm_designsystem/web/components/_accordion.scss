@@ -1,0 +1,79 @@
+// === BASE ACCORDION WRAPPER ===
+
+.accordion-base {
+    border: none;
+    border-radius: $radius-4;
+    box-shadow: $shadow-2;
+    background-color: $base-white;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+
+    &.mx-groupbox-open {
+        background-color: $base-black;
+        box-shadow: $shadow-0;
+    }
+}
+
+// === HEADER WRAPPER ===
+
+.widget-accordion-group-header {
+    padding: 0;
+}
+
+// === HEADER BUTTON ===
+
+.widget-accordion-group-header-button {
+    padding: $spacing-16 $spacing-24;
+    background-color: $base-white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: $radius-4;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: darken($base-white, 5%);
+    }
+}
+
+// === OPEN STATE (via aria-expanded) ===
+
+.widget-accordion-group-header-button[aria-expanded="true"] {
+    background-color: rgba($secondary-1, 0.3) !important;
+    border-radius: $radius-0;
+}
+
+.widget-accordion-group-header-button[aria-expanded="true"]>h3 {
+    color: $base-white;
+}
+
+// === TITLE ===
+
+.widget-accordion-group-header-title,
+.widget-accordion-group-header-button>h3 {
+    font-family: $font-primary;
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    color: $base-black;
+    margin: 0;
+    transition: color 0.2s ease;
+}
+
+// === BODY CONTENT ===
+
+.widget-accordion-group-content {
+    padding: $spacing-16 $spacing-24;
+    font-family: $font-primary;
+    font-size: $font-size-body-3;
+    font-weight: $font-weight-normal;
+    color: $base-white;
+    background-color: rgba($secondary-1, 0.3);
+}
+
+// === DISABLED STATE ===
+
+.accordion-base[aria-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
