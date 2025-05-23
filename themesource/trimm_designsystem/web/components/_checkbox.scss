@@ -1,0 +1,78 @@
+// === BASE CHECKBOX STYLE ===
+// Use by wrapping Mendix Checkbox widget in a container with class `checkbox-base`
+
+.checkbox-base {
+  display: flex;
+  align-items: center;
+  gap: $spacing-8;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    appearance: checkbox; // Native rendering
+    width: 20px;
+    height: 20px;
+    border-radius: $radius-4;
+    background-color: $base-white;
+    accent-color: $brand-3; // Teal when checked
+    cursor: pointer;
+
+    &:disabled {
+      accent-color: rgba($brand-3, 0.4);
+      cursor: not-allowed;
+    }
+  }
+
+  // Label shown inline with checkbox
+  .mx-checkbox-label {
+    font-family: $font-primary;
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    color: $base-black;
+    user-select: none;
+    cursor: pointer;
+
+    &:disabled {
+      color: rgba($base-black, 0.4);
+      cursor: not-allowed;
+    }
+  }
+}
+
+// === CHECKBOX SIZE MODIFIERS ===
+// Use alongside .checkbox-base
+
+.checkbox-sm {
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  .mx-checkbox-label,
+  .control-label {
+    font-size: $font-size-body-3;
+  }
+}
+
+.checkbox-md {
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mx-checkbox-label,
+  .control-label {
+    font-size: $font-size-body-2;
+  }
+}
+
+.checkbox-lg {
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  .mx-checkbox-label,
+  .control-label {
+    font-size: $font-size-body-1;
+  }
+}
