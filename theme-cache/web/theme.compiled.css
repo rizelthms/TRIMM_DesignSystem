@@ -28329,17 +28329,48 @@ Do not render = "none"
 }
 .checkbox-base input[type=checkbox] {
   appearance: checkbox;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: 20px;
   height: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #6E6F72;
   border-radius: 4px;
   background-color: #FFFFFF;
-  accent-color: #0E808A;
+  position: relative;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.checkbox-base input[type=checkbox]::-ms-check, .checkbox-base input[type=checkbox]::-webkit-check, .checkbox-base input[type=checkbox]::-webkit-inner-spin-button, .checkbox-base input[type=checkbox]::-webkit-outer-spin-button {
+  display: none !important;
+}
+.checkbox-base input[type=checkbox]::after {
+  color: transparent;
+  font-weight: bold;
+  line-height: 1;
+  transition: color 0.2s ease-in-out;
+}
+.checkbox-base input[type=checkbox]:checked {
+  background-color: #0E808A;
+  border-color: #0E808A;
+}
+.checkbox-base input[type=checkbox]:checked::after {
+  color: #FFFFFF;
+}
+.checkbox-base input[type=checkbox]:active::after {
+  color: rgba(255, 255, 255, 0.6);
 }
 .checkbox-base input[type=checkbox]:disabled {
-  accent-color: rgba(14, 128, 138, 0.4);
+  background-color: rgba(14, 128, 138, 0.3);
+  border-color: rgba(14, 128, 138, 0.4);
   cursor: not-allowed;
 }
+.checkbox-base input[type=checkbox]:disabled::after {
+  color: rgba(255, 255, 255, 0.8);
+}
+.checkbox-base label,
 .checkbox-base .mx-checkbox-label {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
@@ -28348,6 +28379,7 @@ Do not render = "none"
   user-select: none;
   cursor: pointer;
 }
+.checkbox-base label:disabled,
 .checkbox-base .mx-checkbox-label:disabled {
   color: rgba(35, 31, 32, 0.4);
   cursor: not-allowed;
@@ -28357,8 +28389,13 @@ Do not render = "none"
   width: 16px;
   height: 16px;
 }
+.checkbox-sm input[type=checkbox]::after {
+  font-size: 12px;
+}
+.checkbox-sm label,
 .checkbox-sm .mx-checkbox-label,
 .checkbox-sm .control-label {
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -28366,8 +28403,14 @@ Do not render = "none"
   width: 20px;
   height: 20px;
 }
+.checkbox-md input[type=checkbox]::after {
+  font-weight: 500;
+  font-size: 14px;
+}
+.checkbox-md label,
 .checkbox-md .mx-checkbox-label,
 .checkbox-md .control-label {
+  font-weight: 500;
   font-size: 16px;
 }
 
@@ -28375,8 +28418,13 @@ Do not render = "none"
   width: 24px;
   height: 24px;
 }
+.checkbox-lg input[type=checkbox]::after {
+  font-size: 16px;
+}
+.checkbox-lg label,
 .checkbox-lg .mx-checkbox-label,
 .checkbox-lg .control-label {
+  font-weight: 500;
   font-size: 18px;
 }
 

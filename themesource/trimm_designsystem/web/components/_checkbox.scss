@@ -8,21 +8,65 @@
   cursor: pointer;
 
   input[type="checkbox"] {
-    appearance: checkbox; // Native rendering
+    appearance: checkbox;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     width: 20px;
     height: 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: $border-1 solid $secondary-1;
     border-radius: $radius-4;
     background-color: $base-white;
-    accent-color: $brand-3; // Teal when checked
+    position: relative;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    // Remove native browser overlays (for consistency across browsers)
+    &::-ms-check,
+    &::-webkit-check,
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      display: none !important;
+    }
+
+    &::after {
+      color: transparent;
+      font-weight: bold;
+      line-height: 1;
+      transition: color 0.2s ease-in-out;
+    }
+
+    &:checked {
+      background-color: $brand-3;
+      border-color: $brand-3;
+
+      &::after {
+        color: $base-white;
+      }
+    }
+
+    &:active {
+      &::after {
+        color: rgba($base-white, 0.6);
+      }
+    }
 
     &:disabled {
-      accent-color: rgba($brand-3, 0.4);
+      background-color: rgba($brand-3, 0.3);
+      border-color: rgba($brand-3, 0.4);
       cursor: not-allowed;
+
+      &::after {
+        color: rgba($base-white, 0.8);
+      }
     }
   }
 
   // Label shown inline with checkbox
+
+  label,
   .mx-checkbox-label {
     font-family: $font-primary;
     font-size: $font-size-body-2;
@@ -39,16 +83,22 @@
 }
 
 // === CHECKBOX SIZE MODIFIERS ===
-// Use alongside .checkbox-base
+// Apply one of these classes to the wrapper with .checkbox-base
 
 .checkbox-sm {
   input[type="checkbox"] {
     width: 16px;
     height: 16px;
+
+    &::after {
+      font-size: $font-size-body-4;
+    }
   }
 
+  label,
   .mx-checkbox-label,
   .control-label {
+    font-weight: $font-weight-medium;
     font-size: $font-size-body-3;
   }
 }
@@ -57,10 +107,17 @@
   input[type="checkbox"] {
     width: 20px;
     height: 20px;
+
+    &::after {
+      font-weight: $font-weight-medium;
+      font-size: 14px;
+    }
   }
 
+  label,
   .mx-checkbox-label,
   .control-label {
+    font-weight: $font-weight-medium;
     font-size: $font-size-body-2;
   }
 }
@@ -69,10 +126,16 @@
   input[type="checkbox"] {
     width: 24px;
     height: 24px;
+
+    &::after {
+      font-size: 16px;
+    }
   }
 
+  label,
   .mx-checkbox-label,
   .control-label {
+    font-weight: $font-weight-medium;
     font-size: $font-size-body-1;
   }
 }
