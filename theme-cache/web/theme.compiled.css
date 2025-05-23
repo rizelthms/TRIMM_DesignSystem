@@ -28456,7 +28456,7 @@ Do not render = "none"
   transition: background-color 0.2s ease;
 }
 .widget-accordion-group-header-button:hover {
-  background-color: #f2f2f2;
+  background-color: rgba(14, 128, 138, 0.2) !important;
 }
 
 .widget-accordion-group-header-button[aria-expanded=true] {
