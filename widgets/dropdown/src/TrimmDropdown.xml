@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="trimm.trimmdropdown.TrimmDropdown" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
+        supportedPlatform="Web"
+        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+     <name>Trimm Dropdown</name>
+    <description>A custom dropdown styled using the TRIMM design system</description>
+    <icon/>
+
+    <properties>
+        <property key="items" type="enumeration" defaultValue="option1">
+            <caption>Dropdown Items</caption>
+            <category>Data</category>
+            <description>List of items to display in the dropdown</description>
+            <enumerationValues>
+                <enumerationValue key="option1">Option 1</enumerationValue>
+                <enumerationValue key="option2">Option 2</enumerationValue>
+                <enumerationValue key="option3">Option 3</enumerationValue>
+            </enumerationValues>
+        </property>
+    </properties>
+</widget>
