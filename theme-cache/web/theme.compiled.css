@@ -28541,6 +28541,44 @@ Do not render = "none"
   border-radius: 0 0 4px 4px;
 }
 
+.trimm-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.trimm-dropdown-toggle {
+  background-color: #F37123;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+}
+
+.trimm-dropdown-menu {
+  margin-top: 8px;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1000;
+  width: 200px;
+}
+
+.trimm-dropdown-item {
+  padding: 8px 16px;
+  font-size: 16px;
+  color: #231F20;
+  cursor: pointer;
+}
+.trimm-dropdown-item:hover {
+  background-color: rgba(14, 128, 138, 0.1);
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;

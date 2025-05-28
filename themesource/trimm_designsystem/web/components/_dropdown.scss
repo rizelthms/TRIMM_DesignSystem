@@ -1,0 +1,38 @@
+.trimm-dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: $font-primary;
+}
+
+.trimm-dropdown-toggle {
+    background-color: $brand-2;
+    color: $base-white;
+    padding: $spacing-8 $spacing-16;
+    font-weight: $font-weight-semibold;
+    border: none;
+    border-radius: $radius-4;
+    cursor: pointer;
+    box-shadow: $shadow-2;
+}
+
+.trimm-dropdown-menu {
+    margin-top: $spacing-8;
+    background-color: $base-white;
+    border-radius: $radius-4;
+    box-shadow: $shadow-6;
+    padding: $spacing-8 0;
+    position: absolute;
+    z-index: 1000;
+    width: 200px;
+}
+
+.trimm-dropdown-item {
+    padding: $spacing-8 $spacing-16;
+    font-size: $font-size-body-2;
+    color: $base-black;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba($brand-3, 0.1); // TRIMM Teal hover
+    }
+}
