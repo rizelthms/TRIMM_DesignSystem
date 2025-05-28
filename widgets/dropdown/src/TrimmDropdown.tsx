@@ -1,13 +1,11 @@
 /** @jsx createElement */
-import { createElement, useState, useRef } from "react";
+import { createElement, useRef, useState } from "react";
 import { TrimmDropdownContainerProps } from "../typings/TrimmDropdownProps";
 import "./ui/TrimmDropdown.css";
 
-export function TrimmDropdown({ }: TrimmDropdownContainerProps) {
+export function TrimmDropdown({ dropdownItems }: TrimmDropdownContainerProps) {
     const [open, setOpen] = useState(false);
     const toggleRef = useRef<HTMLButtonElement>(null);
-
-    const dropdownOptions = ["Option 1", "Option 2", "Option 3"];
 
     return (
         <div className="trimm-dropdown">
@@ -22,10 +20,13 @@ export function TrimmDropdown({ }: TrimmDropdownContainerProps) {
 
             {open && (
                 <div className="trimm-dropdown-menu">
-                    {/* Map over the hardcoded options instead of the 'items' prop */}
-                    {dropdownOptions.map((item, idx) => (
-                        <div key={idx} className="trimm-dropdown-item">
-                            {item}
+                    {dropdownItems?.map((item, idx) => (
+                        <div
+                            key={idx}
+                            className="trimm-dropdown-item"
+                            onClick={() => item.action?.execute?.()}
+                        >
+                            {item.caption}
                         </div>
                     ))}
                 </div>

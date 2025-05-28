@@ -4,15 +4,24 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
+import { ActionValue } from "mendix";
 
-export type ItemsEnum = "option1" | "option2" | "option3";
+export interface DropdownItemsType {
+    caption: string;
+    action?: ActionValue;
+}
+
+export interface DropdownItemsPreviewType {
+    caption: string;
+    action: {} | null;
+}
 
 export interface TrimmDropdownContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    items: ItemsEnum;
+    dropdownItems: DropdownItemsType[];
 }
 
 export interface TrimmDropdownPreviewProps {
@@ -26,5 +35,5 @@ export interface TrimmDropdownPreviewProps {
     readOnly: boolean;
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
-    items: ItemsEnum;
+    dropdownItems: DropdownItemsPreviewType[];
 }
