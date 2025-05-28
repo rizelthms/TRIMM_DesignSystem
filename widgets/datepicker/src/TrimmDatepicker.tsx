@@ -18,7 +18,6 @@ export function TrimmDatepicker({ selectedDate, class: className, style }: Trimm
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [localSelectedDate, setLocalSelectedDate] = useState<Date | null>(null);
-
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
@@ -38,18 +37,44 @@ export function TrimmDatepicker({ selectedDate, class: className, style }: Trimm
         setShowCalendar(false);
     };
 
-    const renderHeader = () => (
-        <div className="trimm-datepicker-header">
-            <button onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}>◀</button>
-            <span>{format(currentMonth, "MMMM yyyy")}</span>
-            <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>▶</button>
+    const activeInputValue = selectedDate?.value ?? localSelectedDate ?? new Date();
+
+    return (
+        <div className={`trimm-datepicker ${className || ""}`} style={style}>
+            <div className="trimm-datepicker-input-wrapper" onClick={() => setShowCalendar(prev => !prev)}>
+                <span className="glyphicon glyphicon-calendar trimm-datepicker-icon" />
+                <input
+                    ref={inputRef}
+                    type="text"
+                    readOnly
+                    className="trimm-datepicker-input"
+                    value={format(activeInputValue, "MM/dd/yyyy")}
+                    placeholder="Select a date"
+                />
+            </div>
+            {showCalendar && (
+                <div className="trimm-datepicker-calendar">
+                    {renderHeader()}
+                    {renderDays()}
+                    {renderCells()}
+                </div>
+            )}
         </div>
     );
 
-    const renderDays = () => {
+    function renderHeader() {
+        return (
+            <div className="trimm-datepicker-header">
+                <button onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}>◀</button>
+                <span>{format(currentMonth, "MMMM yyyy")}</span>
+                <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>▶</button>
+            </div>
+        );
+    }
+
+    function renderDays() {
         const days = [];
         const startDate = startOfWeek(currentMonth);
-
         for (let i = 0; i < 7; i++) {
             days.push(
                 <div className="trimm-datepicker-day-label" key={i}>
@@ -58,9 +83,9 @@ export function TrimmDatepicker({ selectedDate, class: className, style }: Trimm
             );
         }
         return <div className="trimm-datepicker-days-row">{days}</div>;
-    };
+    }
 
-    const renderCells = () => {
+    function renderCells() {
         const monthStart = startOfMonth(currentMonth);
         const monthEnd = endOfMonth(monthStart);
         const startDate = startOfWeek(monthStart);
@@ -69,7 +94,6 @@ export function TrimmDatepicker({ selectedDate, class: className, style }: Trimm
         const rows = [];
         let days = [];
         let day = startDate;
-
         const activeValue = selectedDate?.value ?? localSelectedDate;
 
         while (day <= endDate) {
@@ -102,28 +126,5 @@ export function TrimmDatepicker({ selectedDate, class: className, style }: Trimm
         }
 
         return <div className="trimm-datepicker-body">{rows}</div>;
-    };
-
-    const activeInputValue = selectedDate?.value ?? localSelectedDate ?? new Date();
-
-    return (
-        <div className={`trimm-datepicker ${className || ""}`} style={style}>
-            <input
-                ref={inputRef}
-                type="text"
-                readOnly
-                className="trimm-datepicker-input"
-                value={format(activeInputValue, "MM/dd/yyyy")}
-                onClick={() => setShowCalendar(prev => !prev)}
-                placeholder="Select a date"
-            />
-            {showCalendar && (
-                <div className="trimm-datepicker-calendar">
-                    {renderHeader()}
-                    {renderDays()}
-                    {renderCells()}
-                </div>
-            )}
-        </div>
-    );
+    }
 }

@@ -1,17 +1,16 @@
 /** @jsx createElement */
 import { createElement, useState } from "react";
 import { TrimmDatepicker } from "./TrimmDatepicker";
-import { TrimmDatepickerContainerProps, TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
+import { TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
 import { ValueStatus, EditableValue } from "mendix";
 
 export function preview(props: TrimmDatepickerPreviewProps) {
     const [date, setDate] = useState(new Date());
 
-    const previewProps: TrimmDatepickerContainerProps = {
+    const previewProps = {
         name: "preview",
         class: props.class,
         style: props.styleObject,
-        sampleText: "Sample Text",
         selectedDate: {
             value: date,
             status: ValueStatus.Available,

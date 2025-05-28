@@ -88,3 +88,15 @@
     color: #bbb;
     cursor: not-allowed;
 }
+
+.trimm-datepicker-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.trimm-datepicker-icon {
+    font-size: 16px;
+    color: #333;
+}
