@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="trimm.trimmdatepicker.TrimmDatepicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Web"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+<widget id="trimm.trimmdatepicker.TrimmDatepicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
 
     <name>Trimm Datepicker</name>
     <description>Custom datepicker styled using the TRIMM design system</description>
@@ -23,13 +22,6 @@
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
-            </property>
-        </propertyGroup>
-
-        <propertyGroup caption="Events">
-            <property key="onDateChange" type="action" required="false">
-                <caption>On Date Change</caption>
-                <description>Triggered when the selected date changes</description>
             </property>
         </propertyGroup>
     </properties>

@@ -14,21 +14,26 @@ import {
     isSameDay
 } from "date-fns";
 
-export function TrimmDatepicker({ selectedDate, onDateChange, class: className, style }: TrimmDatepickerContainerProps) {
+export function TrimmDatepicker({ selectedDate, class: className, style }: TrimmDatepickerContainerProps) {
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
+    const [localSelectedDate, setLocalSelectedDate] = useState<Date | null>(null);
+
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
-        if (selectedDate?.value) {
-            setCurrentMonth(selectedDate.value);
+        const base = selectedDate?.value ?? null;
+        setLocalSelectedDate(base);
+        if (base) {
+            setCurrentMonth(base);
         }
     }, [selectedDate?.value]);
 
     const handleDateClick = (date: Date) => {
-        if (selectedDate && onDateChange?.canExecute) {
+        if (selectedDate) {
             selectedDate.setValue(date);
-            onDateChange.execute();
+        } else {
+            setLocalSelectedDate(date);
         }
         setShowCalendar(false);
     };
@@ -65,15 +70,20 @@ export function TrimmDatepicker({ selectedDate, onDateChange, class: className, 
         let days = [];
         let day = startDate;
 
+        const activeValue = selectedDate?.value ?? localSelectedDate;
+
         while (day <= endDate) {
             for (let i = 0; i < 7; i++) {
                 const cloneDay = day;
+                const isSelected = activeValue && isSameDay(day, activeValue);
+                const isToday = isSameDay(day, new Date());
+
                 days.push(
                     <div
                         className={`trimm-datepicker-cell
                             ${!isSameMonth(day, monthStart) ? "disabled" : ""}
-                            ${selectedDate?.value && isSameDay(day, selectedDate.value) ? "selected" : ""}
-                            ${isSameDay(day, new Date()) ? "today" : ""}
+                            ${isSelected ? "selected" : ""}
+                            ${isToday ? "today" : ""}
                         `}
                         key={day.toString()}
                         onClick={() => handleDateClick(cloneDay)}
@@ -94,6 +104,8 @@ export function TrimmDatepicker({ selectedDate, onDateChange, class: className, 
         return <div className="trimm-datepicker-body">{rows}</div>;
     };
 
+    const activeInputValue = selectedDate?.value ?? localSelectedDate ?? new Date();
+
     return (
         <div className={`trimm-datepicker ${className || ""}`} style={style}>
             <input
@@ -101,7 +113,7 @@ export function TrimmDatepicker({ selectedDate, onDateChange, class: className, 
                 type="text"
                 readOnly
                 className="trimm-datepicker-input"
-                value={selectedDate?.value ? format(selectedDate.value, "MM/dd/yyyy") : ""}
+                value={format(activeInputValue, "MM/dd/yyyy")}
                 onClick={() => setShowCalendar(prev => !prev)}
                 placeholder="Select a date"
             />

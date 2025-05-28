@@ -1,31 +1,35 @@
 /** @jsx createElement */
-import { createElement } from "react";
+import { createElement, useState } from "react";
 import { TrimmDatepicker } from "./TrimmDatepicker";
 import { TrimmDatepickerContainerProps, TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
 import { ValueStatus, EditableValue } from "mendix";
 
 export function preview(props: TrimmDatepickerPreviewProps) {
+    const [date, setDate] = useState(new Date());
+
     const previewProps: TrimmDatepickerContainerProps = {
         name: "preview",
         class: props.class,
         style: props.styleObject,
         sampleText: "Sample Text",
         selectedDate: {
-            value: new Date("2025-05-28"),
+            value: date,
             status: ValueStatus.Available,
             isList: false,
-            displayValue: "2025-05-28",
+            displayValue: date.toDateString(),
             validation: "",
             formatter: undefined,
-            setValue: () => {},
-            setTextValue: () => {},
-            setTextValueWithCallback: () => {},
-            setValueWithCallback: () => {},
-            setFormatter: () => {},
+            setValue: (newDate: Date) => setDate(newDate),
+            setTextValue: () => { },
+            setTextValueWithCallback: () => { },
+            setValueWithCallback: (newDate: Date, callback: () => void) => {
+                setDate(newDate);
+                callback();
+            },
+            setFormatter: () => { },
             readOnly: false,
-            setValidator: () => {}
-        } as unknown as EditableValue<Date>,
-        onDateChange: undefined // No-op in preview
+            setValidator: () => { }
+        } as unknown as EditableValue<Date>
     };
 
     return <TrimmDatepicker {...previewProps} />;
