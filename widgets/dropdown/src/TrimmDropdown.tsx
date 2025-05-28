@@ -2,32 +2,30 @@
 import { createElement, useRef, useState } from "react";
 import { TrimmDropdownContainerProps } from "../typings/TrimmDropdownProps";
 import "./ui/TrimmDropdown.css";
+import { DynamicValue, WebIcon } from "mendix";
 
-export function TrimmDropdown({ dropdownItems, icon }: TrimmDropdownContainerProps) {
+export function TrimmDropdown({ dropdownItems, icon, showCaretIcon }: TrimmDropdownContainerProps) {
     const [open, setOpen] = useState(false);
     const toggleRef = useRef<HTMLButtonElement>(null);
 
-    const renderIcon = () => {
-        if (!icon?.value) return null;
+    const renderIcon = (iconProp: DynamicValue<WebIcon> | undefined) => {
+        if (!iconProp?.value) return null;
 
-        const { type } = icon.value;
+        const { type } = iconProp.value;
 
-        if (type === "icon" && 'iconClass' in icon.value && icon.value.iconClass) {
-            // Atlas or custom font icon
-            return <span className={`trimm-dropdown-icon ${icon.value.iconClass}`} />;
+        if (type === "icon" && "iconClass" in iconProp.value && iconProp.value.iconClass) {
+            return <span className={`trimm-dropdown-icon ${iconProp.value.iconClass}`} />;
         }
 
-        if (type === "glyph" && 'iconClass' in icon.value && icon.value.iconClass) {
-            // Glyphicon (Bootstrap 3) - less common in modern Atlas 3
-            return <span className={`glyphicon ${icon.value.iconClass} trimm-dropdown-icon`} />;
+        if (type === "glyph" && "iconClass" in iconProp.value && iconProp.value.iconClass) {
+            return <span className={`glyphicon ${iconProp.value.iconClass} trimm-dropdown-icon`} />;
         }
 
-        if (type === "image" && 'iconUrl' in icon.value && icon.value.iconUrl) {
-            // Image icon
-            return <img src={icon.value.iconUrl} alt="dropdown icon" className="trimm-dropdown-icon" />;
+        if (type === "image" && "iconUrl" in iconProp.value && iconProp.value.iconUrl) {
+            return <img src={iconProp.value.iconUrl} alt="icon" className="trimm-dropdown-icon" />;
         }
 
-        return null; // Should not happen if type is one of the above
+        return null;
     };
 
     return (
@@ -38,9 +36,9 @@ export function TrimmDropdown({ dropdownItems, icon }: TrimmDropdownContainerPro
                 onClick={() => setOpen(prev => !prev)}
                 type="button"
             >
-                {renderIcon()}
+                {renderIcon(icon)}
                 <span className="trimm-dropdown-label">Options</span>
-                <span className="material-symbols-outlined">expand_more</span>
+                {showCaretIcon && <span className="glyphicon glyphicon-chevron-down trimm-dropdown-caret" />}
             </button>
 
             {open && (
