@@ -1,4 +1,4 @@
-## Datepicker
+## TrimmDatepicker
 [Custom datepicker styled using the TRIMM design system]
 
 ## Features

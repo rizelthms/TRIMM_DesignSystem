@@ -1,11 +1,11 @@
 /**
- * This file was generated from Datepicker.xml
+ * This file was generated from TrimmDatepicker.xml
  * WARNING: All changes made to this file will be overwritten
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
 
-export interface DatepickerContainerProps {
+export interface TrimmDatepickerContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
@@ -13,7 +13,7 @@ export interface DatepickerContainerProps {
     sampleText: string;
 }
 
-export interface DatepickerPreviewProps {
+export interface TrimmDatepickerPreviewProps {
     /**
      * @deprecated Deprecated since version 9.18.0. Please use class property instead.
      */

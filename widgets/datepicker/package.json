@@ -1,6 +1,6 @@
 {
-  "name": "datepicker",
-  "widgetName": "Datepicker",
+  "name": "trimmdatepicker",
+  "widgetName": "TrimmDatepicker",
   "version": "1.0.0",
   "description": "Custom datepicker styled using the TRIMM design system",
   "copyright": "© Mendix Technology BV 2022. All rights reserved.",

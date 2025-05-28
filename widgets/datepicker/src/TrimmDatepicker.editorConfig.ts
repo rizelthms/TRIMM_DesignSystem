@@ -1,4 +1,4 @@
-import { DatepickerPreviewProps } from "../typings/DatepickerProps";
+import { TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
 
 export type Platform = "web" | "desktop";
 
@@ -100,7 +100,7 @@ export type PreviewProps =
     | DatasourceProps;
 
 export function getProperties(
-    _values: DatepickerPreviewProps,
+    _values: TrimmDatepickerPreviewProps,
     defaultProperties: Properties /* , target: Platform*/
 ): Properties {
     // Do the values manipulation here to control the visibility of properties in Studio and Studio Pro conditionally.
@@ -112,7 +112,7 @@ export function getProperties(
     return defaultProperties;
 }
 
-// export function check(_values: DatepickerPreviewProps): Problem[] {
+// export function check(_values: TrimmDatepickerPreviewProps): Problem[] {
 //     const errors: Problem[] = [];
 //     // Add errors to the above array to throw errors in Studio and Studio Pro.
 //     /* Example
@@ -127,7 +127,7 @@ export function getProperties(
 //     return errors;
 // }
 
-// export function getPreview(values: DatepickerPreviewProps, isDarkMode: boolean, version: number[]): PreviewProps {
+// export function getPreview(values: TrimmDatepickerPreviewProps, isDarkMode: boolean, version: number[]): PreviewProps {
 //     // Customize your pluggable widget appearance for Studio Pro.
 //     return {
 //         type: "Container",
@@ -135,6 +135,6 @@ export function getProperties(
 //     }
 // }
 
-// export function getCustomCaption(values: DatepickerPreviewProps, platform: Platform): string {
-//     return "Datepicker";
+// export function getCustomCaption(values: TrimmDatepickerPreviewProps, platform: Platform): string {
+//     return "TrimmDatepicker";
 // }
