@@ -10,17 +10,24 @@ export function TrimmDropdown({ dropdownItems, icon }: TrimmDropdownContainerPro
     const renderIcon = () => {
         if (!icon?.value) return null;
 
-        if ("iconClass" in icon.value && icon.value.iconClass) {
-            // Glyphicon or Atlas (legacy)
-            return <i className={`trimm-dropdown-icon ${icon.value.iconClass}`} />;
+        const { type } = icon.value;
+
+        if (type === "icon" && 'iconClass' in icon.value && icon.value.iconClass) {
+            // Atlas or custom font icon
+            return <span className={`trimm-dropdown-icon ${icon.value.iconClass}`} />;
         }
 
-        if ("iconUrl" in icon.value && icon.value.iconUrl) {
+        if (type === "glyph" && 'iconClass' in icon.value && icon.value.iconClass) {
+            // Glyphicon (Bootstrap 3) - less common in modern Atlas 3
+            return <span className={`glyphicon ${icon.value.iconClass} trimm-dropdown-icon`} />;
+        }
+
+        if (type === "image" && 'iconUrl' in icon.value && icon.value.iconUrl) {
             // Image icon
             return <img src={icon.value.iconUrl} alt="dropdown icon" className="trimm-dropdown-icon" />;
         }
 
-        return null;
+        return null; // Should not happen if type is one of the above
     };
 
     return (
