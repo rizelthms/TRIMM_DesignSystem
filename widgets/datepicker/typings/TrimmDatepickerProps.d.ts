@@ -4,6 +4,7 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
+import { ActionValue, EditableValue } from "mendix";
 
 export interface TrimmDatepickerContainerProps {
     name: string;
@@ -11,6 +12,8 @@ export interface TrimmDatepickerContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     sampleText: string;
+    selectedDate?: EditableValue<Date>;
+    onDateChange?: ActionValue;
 }
 
 export interface TrimmDatepickerPreviewProps {
@@ -25,4 +28,6 @@ export interface TrimmDatepickerPreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     sampleText: string;
+    selectedDate: string;
+    onDateChange: {} | null;
 }
