@@ -5,7 +5,7 @@
 }
 
 .trimm-dropdown-toggle {
-    background-color: $brand-2;
+    background-color: $brand-3;
     color: $base-white;
     padding: $spacing-8 $spacing-16;
     font-weight: $font-weight-semibold;
@@ -22,7 +22,8 @@
     box-shadow: $shadow-6;
     padding: $spacing-8 0;
     position: absolute;
-    z-index: 1000;
+    z-index: 9999;
+    display: block;
     width: 200px;
 }
 
@@ -33,6 +34,17 @@
     cursor: pointer;
 
     &:hover {
-        background-color: rgba($brand-3, 0.1);
+        background-color: rgba($brand-2, 0.1);
     }
+}
+
+.trimm-dropdown-icon {
+    margin-right: 8px;
+    display: inline-flex;
+    align-items: center;
+    height: 1em;
+}
+
+.trimm-dropdown-label {
+    margin-right: 6px;
 }

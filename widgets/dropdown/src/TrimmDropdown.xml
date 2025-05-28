@@ -2,10 +2,13 @@
 <widget id="trimm.trimmdropdown.TrimmDropdown" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
     xmlns="http://www.mendix.com/widget/1.0/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+
     <name>Trimm Dropdown</name>
     <description>A custom dropdown styled using the TRIMM design system</description>
     <icon/>
+
     <properties>
+        <!-- Items -->
         <property key="dropdownItems" type="object" isList="true">
             <caption>Items</caption>
             <category>Behavior</category>
@@ -23,5 +26,13 @@
                 </property>
             </properties>
         </property>
+
+        <!-- Icon -->
+        <property key="icon" type="icon">
+            <caption>Icon</caption>
+            <category>Appearance</category>
+            <description>Optional icon to display in the dropdown button</description>
+        </property>
     </properties>
+
 </widget>

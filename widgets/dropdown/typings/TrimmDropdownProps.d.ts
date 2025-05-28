@@ -4,7 +4,7 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { ActionValue } from "mendix";
+import { ActionValue, DynamicValue, WebIcon } from "mendix";
 
 export interface DropdownItemsType {
     caption: string;
@@ -22,6 +22,7 @@ export interface TrimmDropdownContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     dropdownItems: DropdownItemsType[];
+    icon: DynamicValue<WebIcon>;
 }
 
 export interface TrimmDropdownPreviewProps {
@@ -36,4 +37,5 @@ export interface TrimmDropdownPreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     dropdownItems: DropdownItemsPreviewType[];
+    icon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
 }

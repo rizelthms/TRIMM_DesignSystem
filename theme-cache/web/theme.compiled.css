@@ -28548,7 +28548,7 @@ Do not render = "none"
 }
 
 .trimm-dropdown-toggle {
-  background-color: #F37123;
+  background-color: #0E808A;
   color: #FFFFFF;
   padding: 8px 16px;
   font-weight: 600;
@@ -28565,7 +28565,8 @@ Do not render = "none"
   box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
   padding: 8px 0;
   position: absolute;
-  z-index: 1000;
+  z-index: 9999;
+  display: block;
   width: 200px;
 }
 
@@ -28576,7 +28577,18 @@ Do not render = "none"
   cursor: pointer;
 }
 .trimm-dropdown-item:hover {
-  background-color: rgba(14, 128, 138, 0.1);
+  background-color: rgba(243, 113, 35, 0.1);
+}
+
+.trimm-dropdown-icon {
+  margin-right: 8px;
+  display: inline-flex;
+  align-items: center;
+  height: 1em;
+}
+
+.trimm-dropdown-label {
+  margin-right: 6px;
 }
 
 body {
