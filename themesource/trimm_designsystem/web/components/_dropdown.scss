@@ -39,12 +39,18 @@
 }
 
 .trimm-dropdown-icon {
-    margin-right: 8px;
+    margin-right: $spacing-8;
     display: inline-flex;
     align-items: center;
     height: 1em;
 }
 
 .trimm-dropdown-label {
-    margin-right: 6px;
+    margin-right: $spacing-4;
+}
+
+.trimm-dropdown-caret {
+    margin-left: $spacing-4;
+    font-size: $font-size-body-4;
+    vertical-align: middle;
 }
