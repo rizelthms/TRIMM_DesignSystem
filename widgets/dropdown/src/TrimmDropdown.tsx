@@ -4,13 +4,12 @@ import { TrimmDropdownContainerProps } from "../typings/TrimmDropdownProps";
 import "./ui/TrimmDropdown.css";
 import { DynamicValue, WebIcon } from "mendix";
 
-export function TrimmDropdown({ dropdownItems, icon, showCaretIcon }: TrimmDropdownContainerProps) {
+export function TrimmDropdown({ dropdownItems, icon, showCaretIcon, caption }: TrimmDropdownContainerProps) {
     const [open, setOpen] = useState(false);
     const toggleRef = useRef<HTMLButtonElement>(null);
 
     const renderIcon = (iconProp: DynamicValue<WebIcon> | undefined) => {
         if (!iconProp?.value) return null;
-
         const { type } = iconProp.value;
 
         if (type === "icon" && "iconClass" in iconProp.value && iconProp.value.iconClass) {
@@ -37,7 +36,7 @@ export function TrimmDropdown({ dropdownItems, icon, showCaretIcon }: TrimmDropd
                 type="button"
             >
                 {renderIcon(icon)}
-                <span className="trimm-dropdown-label">Options</span>
+                <span className="trimm-dropdown-label">{caption || "Options"}</span>
                 {showCaretIcon && <span className="glyphicon glyphicon-chevron-down trimm-dropdown-caret" />}
             </button>
 

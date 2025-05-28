@@ -23,6 +23,7 @@ export interface TrimmDropdownContainerProps {
     tabIndex?: number;
     dropdownItems: DropdownItemsType[];
     icon: DynamicValue<WebIcon>;
+    caption: string;
     showCaretIcon: boolean;
 }
 
@@ -39,5 +40,6 @@ export interface TrimmDropdownPreviewProps {
     translate: (text: string) => string;
     dropdownItems: DropdownItemsPreviewType[];
     icon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
+    caption: string;
     showCaretIcon: boolean;
 }

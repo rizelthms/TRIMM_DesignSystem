@@ -18,6 +18,7 @@ export function preview(props: TrimmDropdownPreviewProps) {
         name: "preview", // Provide a static name for the preview
         class: props.class, // Use the class from preview props
         style: props.styleObject, // Use the styleObject for web widgets
+        caption: props.caption,
         dropdownItems: props.dropdownItems.map(item => {
             const dropdownItem: DropdownItemsType = {
                 caption: item.caption,
