@@ -14,7 +14,8 @@ import {
     isSameDay
 } from "date-fns";
 
-export function TrimmDatepicker({ selectedDate, class: className, style }: TrimmDatepickerContainerProps) {
+export function TrimmDatepicker({ selectedDate, class: className, style, showIcon }: TrimmDatepickerContainerProps) {
+    console.log("showIcon prop:", showIcon);
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [localSelectedDate, setLocalSelectedDate] = useState<Date | null>(null);
@@ -42,7 +43,7 @@ export function TrimmDatepicker({ selectedDate, class: className, style }: Trimm
     return (
         <div className={`trimm-datepicker ${className || ""}`} style={style}>
             <div className="trimm-datepicker-input-wrapper" onClick={() => setShowCalendar(prev => !prev)}>
-                <span className="glyphicon glyphicon-calendar trimm-datepicker-icon" />
+                {showIcon && <span className="glyphicon glyphicon-calendar trimm-datepicker-icon" />}
                 <input
                     ref={inputRef}
                     type="text"

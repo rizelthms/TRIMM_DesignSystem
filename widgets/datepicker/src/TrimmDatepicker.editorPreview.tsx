@@ -28,7 +28,8 @@ export function preview(props: TrimmDatepickerPreviewProps) {
             setFormatter: () => { },
             readOnly: false,
             setValidator: () => { }
-        } as unknown as EditableValue<Date>
+        } as unknown as EditableValue<Date>,
+        showIcon: true
     };
 
     return <TrimmDatepicker {...previewProps} />;

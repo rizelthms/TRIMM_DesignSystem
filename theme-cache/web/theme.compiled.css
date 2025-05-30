@@ -28557,6 +28557,10 @@ Do not render = "none"
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
 }
+.trimm-dropdown-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
+}
 
 .trimm-dropdown-menu {
   margin-top: 8px;
@@ -28588,7 +28592,13 @@ Do not render = "none"
 }
 
 .trimm-dropdown-label {
-  margin-right: 6px;
+  margin-right: 4px;
+}
+
+.trimm-dropdown-caret {
+  margin-left: 4px;
+  font-size: 12px;
+  vertical-align: middle;
 }
 
 body {

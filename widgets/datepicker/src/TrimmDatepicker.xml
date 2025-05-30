@@ -17,5 +17,12 @@
                 </attributeTypes>
             </property>
         </propertyGroup>
+
+        <propertyGroup caption="Appearance">
+            <property key="showIcon" type="boolean" defaultValue="true">
+                <caption>Show calendar icon</caption>
+                <description>Choose whether to show the calendar icon in the input</description>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>
