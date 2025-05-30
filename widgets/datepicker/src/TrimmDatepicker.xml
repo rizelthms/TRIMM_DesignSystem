@@ -19,7 +19,7 @@
         </propertyGroup>
 
         <propertyGroup caption="Appearance">
-            <property key="showIcon" type="boolean" defaultValue="true">
+            <property key="showIcon" type="boolean" required="true" defaultValue="true">
                 <caption>Show calendar icon</caption>
                 <description>Choose whether to show the calendar icon in the input</description>
             </property>
