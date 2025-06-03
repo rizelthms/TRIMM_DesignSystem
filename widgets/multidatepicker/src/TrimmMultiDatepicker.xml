@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="trimm.trimmmultidatepicker.TrimmMultiDatepicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>TrimmMultiDatepicker</name>
+    <description>
+        Multi-date picker for selecting multiple dates (comma-separated string or helper entity).
+    </description>
+    <properties>
+        <propertyGroup caption="Data">
+            <property key="selectedDates" type="attribute" required="false">
+                <caption>Selected Dates</caption>
+                <description>The dates selected in the multi datepicker (comma separated string, or use a helper entity/list)</description>
+                <attributeTypes>
+                    <attributeType name="String" />
+                </attributeTypes>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Appearance">
+            <property key="showIcon" type="boolean" required="true" defaultValue="true">
+                <caption>Show calendar icon</caption>
+                <description>Show the calendar icon in the input</description>
+            </property>
+        </propertyGroup>
+    </properties>
+</widget>
