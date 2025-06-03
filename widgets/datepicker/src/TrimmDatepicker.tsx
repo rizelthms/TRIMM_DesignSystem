@@ -11,12 +11,13 @@ import {
     endOfWeek,
     addDays,
     isSameMonth,
-    isSameDay
+    isSameDay,
+    isAfter,
+    isBefore
 } from "date-fns";
 import { enUS } from "date-fns/locale/en-US";
-import { nl } from "date-fns/locale/nl"; // add more locales as needed
+import { nl } from "date-fns/locale/nl";
 
-// Utility to map string to locale object
 function getLocale(localeStr: string | undefined) {
     switch ((localeStr || "").toLowerCase()) {
         case "nl":
@@ -29,7 +30,15 @@ function getLocale(localeStr: string | undefined) {
     }
 }
 
-export function TrimmDatepicker({ selectedDate, class: className, style, showIcon, locale }: TrimmDatepickerContainerProps) {
+export function TrimmDatepicker({
+    selectedDate,
+    class: className,
+    style,
+    showIcon,
+    locale,
+    minDate,
+    maxDate
+}: TrimmDatepickerContainerProps) {
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [localSelectedDate, setLocalSelectedDate] = useState<Date | null>(null);
@@ -38,12 +47,20 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
     useEffect(() => {
         const base = selectedDate?.value ?? null;
         setLocalSelectedDate(base);
-        if (base) {
-            setCurrentMonth(base);
-        }
+        if (base) setCurrentMonth(base);
     }, [selectedDate?.value]);
 
+    // Helper to check if day is outside allowed range
+    function isOutOfRange(day: Date) {
+        const min = minDate?.value;
+        const max = maxDate?.value;
+        if (min && isBefore(day, min)) return true;
+        if (max && isAfter(day, max)) return true;
+        return false;
+    }
+
     const handleDateClick = (date: Date) => {
+        if (isOutOfRange(date)) return; // don't allow picking disabled date
         if (selectedDate) {
             selectedDate.setValue(date);
         } else {
@@ -117,6 +134,7 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
                 const cloneDay = day;
                 const isSelected = activeValue && isSameDay(day, activeValue);
                 const isToday = isSameDay(day, new Date());
+                const outOfRange = isOutOfRange(day);
 
                 days.push(
                     <div
@@ -124,9 +142,10 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
                             ${!isSameMonth(day, monthStart) ? "disabled" : ""}
                             ${isSelected ? "selected" : ""}
                             ${isToday ? "today" : ""}
+                            ${outOfRange ? "disabled" : ""}
                         `}
                         key={day.toString()}
-                        onClick={() => handleDateClick(cloneDay)}
+                        onClick={() => !outOfRange && handleDateClick(cloneDay)}
                     >
                         {format(day, "d", { locale: localeObj })}
                     </div>

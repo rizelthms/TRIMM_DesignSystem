@@ -16,6 +16,21 @@
                     <attributeType name="DateTime" />
                 </attributeTypes>
             </property>
+            <property key="minDate" type="attribute" required="false">
+                <caption>Minimum Date</caption>
+                <description>Minimum selectable date</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
+
+            <property key="maxDate" type="attribute" required="false">
+                <caption>Maximum Date</caption>
+                <description>Maximum selectable date</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
         </propertyGroup>
 
         <propertyGroup caption="Appearance">

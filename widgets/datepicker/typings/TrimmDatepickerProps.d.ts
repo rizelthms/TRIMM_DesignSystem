@@ -12,6 +12,8 @@ export interface TrimmDatepickerContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     selectedDate?: EditableValue<Date>;
+    minDate?: EditableValue<Date>;
+    maxDate?: EditableValue<Date>;
     showIcon: boolean;
     locale: string;
 }
@@ -28,6 +30,8 @@ export interface TrimmDatepickerPreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     selectedDate: string;
+    minDate: string;
+    maxDate: string;
     showIcon: boolean;
     locale: string;
 }
