@@ -15,12 +15,29 @@
                     <attributeType name="String" />
                 </attributeTypes>
             </property>
+            <property key="minDate" type="attribute" required="false">
+                <caption>Minimum Date</caption>
+                <description>Minimum selectable date</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
+            <property key="maxDate" type="attribute" required="false">
+                <caption>Maximum Date</caption>
+                <description>Maximum selectable date</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
         </propertyGroup>
-
         <propertyGroup caption="Appearance">
             <property key="showIcon" type="boolean" required="true" defaultValue="true">
                 <caption>Show calendar icon</caption>
                 <description>Show the calendar icon in the input</description>
+            </property>
+            <property key="locale" type="string" required="false" defaultValue="en-US">
+                <caption>Locale</caption>
+                <description>Locale code for date formatting and day/month names (e.g. en-US, nl-NL)</description>
             </property>
         </propertyGroup>
     </properties>
