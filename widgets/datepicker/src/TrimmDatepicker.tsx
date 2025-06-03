@@ -13,7 +13,8 @@ import {
     isSameMonth,
     isSameDay,
     isAfter,
-    isBefore
+    isBefore,
+    startOfDay
 } from "date-fns";
 import { enUS } from "date-fns/locale/en-US";
 import { nl } from "date-fns/locale/nl";
@@ -52,10 +53,11 @@ export function TrimmDatepicker({
 
     // Helper to check if day is outside allowed range
     function isOutOfRange(day: Date) {
-        const min = minDate?.value;
-        const max = maxDate?.value;
-        if (min && isBefore(day, min)) return true;
-        if (max && isAfter(day, max)) return true;
+        const checkDay = startOfDay(day);
+        const min = minDate?.value ? startOfDay(minDate.value) : undefined;
+        const max = maxDate?.value ? startOfDay(maxDate.value) : undefined;
+        if (min && isBefore(checkDay, min)) return true;
+        if (max && isAfter(checkDay, max)) return true;
         return false;
     }
 
