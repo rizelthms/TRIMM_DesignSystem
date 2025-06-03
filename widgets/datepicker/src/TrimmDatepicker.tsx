@@ -13,9 +13,23 @@ import {
     isSameMonth,
     isSameDay
 } from "date-fns";
+import { enUS } from "date-fns/locale/en-US";
+import { nl } from "date-fns/locale/nl"; // add more locales as needed
 
-export function TrimmDatepicker({ selectedDate, class: className, style, showIcon }: TrimmDatepickerContainerProps) {
-    console.log("showIcon prop:", showIcon);
+// Utility to map string to locale object
+function getLocale(localeStr: string | undefined) {
+    switch ((localeStr || "").toLowerCase()) {
+        case "nl":
+        case "nl-nl":
+            return nl;
+        case "en":
+        case "en-us":
+        default:
+            return enUS;
+    }
+}
+
+export function TrimmDatepicker({ selectedDate, class: className, style, showIcon, locale }: TrimmDatepickerContainerProps) {
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [localSelectedDate, setLocalSelectedDate] = useState<Date | null>(null);
@@ -39,6 +53,7 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
     };
 
     const activeInputValue = selectedDate?.value ?? localSelectedDate ?? new Date();
+    const localeObj = getLocale(locale);
 
     return (
         <div className={`trimm-datepicker ${className || ""}`} style={style}>
@@ -49,7 +64,7 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
                     type="text"
                     readOnly
                     className="trimm-datepicker-input"
-                    value={format(activeInputValue, "MM/dd/yyyy")}
+                    value={format(activeInputValue, "P", { locale: localeObj })}
                     placeholder="Select a date"
                 />
             </div>
@@ -67,7 +82,7 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
         return (
             <div className="trimm-datepicker-header">
                 <button onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}>◀</button>
-                <span>{format(currentMonth, "MMMM yyyy")}</span>
+                <span>{format(currentMonth, "LLLL yyyy", { locale: localeObj })}</span>
                 <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>▶</button>
             </div>
         );
@@ -75,11 +90,11 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
 
     function renderDays() {
         const days = [];
-        const startDate = startOfWeek(currentMonth);
+        const startDate = startOfWeek(currentMonth, { locale: localeObj });
         for (let i = 0; i < 7; i++) {
             days.push(
                 <div className="trimm-datepicker-day-label" key={i}>
-                    {format(addDays(startDate, i), "EEEEE")}
+                    {format(addDays(startDate, i), "EEEEE", { locale: localeObj })}
                 </div>
             );
         }
@@ -89,8 +104,8 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
     function renderCells() {
         const monthStart = startOfMonth(currentMonth);
         const monthEnd = endOfMonth(monthStart);
-        const startDate = startOfWeek(monthStart);
-        const endDate = endOfWeek(monthEnd);
+        const startDate = startOfWeek(monthStart, { locale: localeObj });
+        const endDate = endOfWeek(monthEnd, { locale: localeObj });
 
         const rows = [];
         let days = [];
@@ -113,7 +128,7 @@ export function TrimmDatepicker({ selectedDate, class: className, style, showIco
                         key={day.toString()}
                         onClick={() => handleDateClick(cloneDay)}
                     >
-                        {format(day, "d")}
+                        {format(day, "d", { locale: localeObj })}
                     </div>
                 );
                 day = addDays(day, 1);

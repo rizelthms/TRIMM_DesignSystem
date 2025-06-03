@@ -2,7 +2,7 @@
 import { createElement, useState } from "react";
 import { TrimmDatepicker } from "./TrimmDatepicker";
 import { TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
-import { ValueStatus, EditableValue } from "mendix";
+import { ValueStatus, EditableValue, DynamicValue, WebIcon } from "mendix";
 
 export function preview(props: TrimmDatepickerPreviewProps) {
     const [date, setDate] = useState(new Date());
@@ -29,7 +29,12 @@ export function preview(props: TrimmDatepickerPreviewProps) {
             readOnly: false,
             setValidator: () => { }
         } as unknown as EditableValue<Date>,
-        showIcon: true
+        showIcon: true,
+        locale: "en-US",
+        dropdownItems: [],
+        icon: { status: ValueStatus.Available, value: { type: "glyph", iconClass: "" } } as DynamicValue<WebIcon>,
+        caption: "",
+        showCaretIcon: false
     };
 
     return <TrimmDatepicker {...previewProps} />;

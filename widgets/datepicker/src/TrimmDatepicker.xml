@@ -4,8 +4,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
 
     <name>Trimm Datepicker</name>
-    <description>Custom datepicker styled using the TRIMM design system</description>
-    <icon />
+    <description>A custom datepicker styled using the TRIMM design system</description>
+    <icon/>
 
     <properties>
         <propertyGroup caption="Data">
@@ -21,8 +21,13 @@
         <propertyGroup caption="Appearance">
             <property key="showIcon" type="boolean" required="true" defaultValue="true">
                 <caption>Show calendar icon</caption>
-                <description>Choose whether to show the calendar icon in the input</description>
+                <description>Show the calendar icon in the input</description>
+            </property>
+            <property key="locale" type="string" required="false" defaultValue="en-US">
+                <caption>Locale</caption>
+                <description>Locale to use for date formatting</description>
             </property>
         </propertyGroup>
     </properties>
+
 </widget>

@@ -13,6 +13,7 @@ export interface TrimmDatepickerContainerProps {
     tabIndex?: number;
     selectedDate?: EditableValue<Date>;
     showIcon: boolean;
+    locale: string;
 }
 
 export interface TrimmDatepickerPreviewProps {
@@ -28,4 +29,5 @@ export interface TrimmDatepickerPreviewProps {
     translate: (text: string) => string;
     selectedDate: string;
     showIcon: boolean;
+    locale: string;
 }
