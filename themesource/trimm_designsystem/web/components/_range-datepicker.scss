@@ -75,3 +75,52 @@
         pointer-events: none;
     }
 }
+
+.trimm-datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-8;
+    font-size: $font-size-body-3;
+    font-weight: $font-weight-medium;
+    color: $base-black;
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: $font-size-body-3;
+        padding: $spacing-4;
+    }
+}
+
+.trimm-datepicker-header-label {
+    font-size: $font-size-body-3;
+    font-weight: $font-weight-bold;
+}
+
+.trimm-datepicker-days-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-size: $font-size-body-4;
+    text-align: center;
+    margin-bottom: $spacing-8;
+}
+
+.trimm-datepicker-day-label {
+    font-weight: $font-weight-medium;
+    color: $base-black;
+}
+
+.trimm-datepicker-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-8;
+    margin-bottom: $spacing-8;
+}
+
+.trimm-datepicker-body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+}
