@@ -15,15 +15,30 @@ import {
     isAfter,
     startOfDay
 } from "date-fns";
+import enUS from "date-fns/locale/en-US";
+import nl from "date-fns/locale/nl";
 import "./ui/TrimmRangeDatepicker.css";
 
+function getLocale(localeStr: string | undefined) {
+    switch ((localeStr || "").toLowerCase()) {
+        case "nl":
+        case "nl-nl":
+            return nl;
+        case "en":
+        case "en-us":
+        default:
+            return enUS;
+    }
+}
+
 export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) {
-    const { startDate, endDate, onChange, minDate, maxDate } = props;
+    const { startDate, endDate, onChange, minDate, maxDate, locale, showIcon } = props;
 
     const [localStart, setLocalStart] = useState<Date | null>(null);
     const [localEnd, setLocalEnd] = useState<Date | null>(null);
     const [step, setStep] = useState<"start" | "end">("start");
     const [currentMonth, setCurrentMonth] = useState(new Date());
+    const [showCalendar, setShowCalendar] = useState(false);
 
     useEffect(() => {
         if (startDate?.value) setLocalStart(startDate.value);
@@ -53,6 +68,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                     onChange.execute();
                 }
                 setStep("start");
+                setShowCalendar(false);
             } else {
                 setLocalStart(date);
                 setLocalEnd(null);
@@ -91,7 +107,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                         className={className}
                         onClick={() => !disabled && handleClickDate(cloneDay)}
                     >
-                        {format(cloneDay, "d")}
+                        {format(cloneDay, "d", { locale: getLocale(locale) })}
                     </div>
                 );
                 day = addDays(day, 1);
@@ -109,13 +125,13 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             <div className="trimm-datepicker-month">
                 <div className="trimm-datepicker-header">
                     <span className="trimm-datepicker-header-label">
-                        {format(monthDate, "MMMM yyyy")}
+                        {format(monthDate, "MMMM yyyy", { locale: getLocale(locale) })}
                     </span>
                 </div>
                 <div className="trimm-datepicker-days-row">
                     {Array.from({ length: 7 }).map((_, i) => (
                         <div key={i} className="trimm-datepicker-day-label">
-                            {format(addDays(startOfWeek(monthDate), i), "EEEEE")}
+                            {format(addDays(startOfWeek(monthDate), i), "EEEEE", { locale: getLocale(locale) })}
                         </div>
                     ))}
                 </div>
@@ -128,12 +144,14 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         <button
             type="button"
             className={`trimm-range-datepicker-field ${active ? "active" : ""}`}
+            onClick={() => setShowCalendar(prev => !prev)}
         >
-            <div className="trimm-range-datepicker-label-container">
-                <div className="trimm-range-datepicker-label-text">{label}</div>
-                <div className="trimm-range-datepicker-date">
-                    {value ? format(value, "EEE MMM d yyyy") : "—"}
-                </div>
+            <div className="trimm-range-datepicker-label-inline">
+                {showIcon && <span className="glyphicon glyphicon-calendar trimm-datepicker-icon" />}
+                <span className="trimm-range-datepicker-label-text">{label}:</span>
+                <span className="trimm-range-datepicker-date">
+                    {value ? format(value, "EEE MMM d yyyy", { locale: getLocale(locale) }) : "—"}
+                </span>
             </div>
         </button>
     );
@@ -145,25 +163,29 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                 {renderField("End", localEnd, step === "end")}
             </div>
 
-            <div className="trimm-datepicker-nav">
-                <button
-                    type="button"
-                    onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
-                >
-                    ◀
-                </button>
-                <button
-                    type="button"
-                    onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-                >
-                    ▶
-                </button>
-            </div>
+            {showCalendar && (
+                <div className="trimm-datepicker-popup">
+                    <div className="trimm-datepicker-nav">
+                        <button
+                            type="button"
+                            onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
+                        >
+                            ◀
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+                        >
+                            ▶
+                        </button>
+                    </div>
 
-            <div className="trimm-datepicker-months">
-                {renderMonth(currentMonth)}
-                {renderMonth(addMonths(currentMonth, 1))}
-            </div>
+                    <div className="trimm-datepicker-months">
+                        {renderMonth(currentMonth)}
+                        {renderMonth(addMonths(currentMonth, 1))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

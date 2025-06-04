@@ -4,49 +4,60 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Trimm Range Date Picker</name>
     <description>Select a date range (start to end) styled with the TRIMM design system</description>
-    <icon />
+    <icon/>
 
     <properties>
-        <property key="startDate" type="attribute" required="true">
-            <caption>Start Date</caption>
-            <category>Data</category>
-            <description>Date the user selects first</description>
-            <attributeTypes>
-                <attributeType name="DateTime" />
-            </attributeTypes>
-        </property>
+        <propertyGroup caption="Data">
+            <property key="startDate" type="attribute" required="true">
+                <caption>Start Date</caption>
+                <description>Date the user selects first</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
 
-        <property key="endDate" type="attribute" required="true">
-            <caption>End Date</caption>
-            <category>Data</category>
-            <description>Date the user selects second</description>
-            <attributeTypes>
-                <attributeType name="DateTime" />
-            </attributeTypes>
-        </property>
+            <property key="endDate" type="attribute" required="true">
+                <caption>End Date</caption>
+                <description>Date the user selects second</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
 
-        <property key="onChange" type="action">
-            <caption>On Range Change</caption>
-            <category>Events</category>
-            <description>Optional microflow/nanoflow triggered after date range selection</description>
-        </property>
+            <property key="minDate" type="attribute" required="false">
+                <caption>Minimum Date</caption>
+                <description>Optional minimum date user can select</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
 
-        <property key="minDate" type="attribute">
-            <caption>Minimum Date</caption>
-            <category>Constraints</category>
-            <description>Optional minimum date user can select</description>
-            <attributeTypes>
-                <attributeType name="DateTime" />
-            </attributeTypes>
-        </property>
+            <property key="maxDate" type="attribute" required="false">
+                <caption>Maximum Date</caption>
+                <description>Optional maximum date user can select</description>
+                <attributeTypes>
+                    <attributeType name="DateTime" />
+                </attributeTypes>
+            </property>
+        </propertyGroup>
 
-        <property key="maxDate" type="attribute">
-            <caption>Maximum Date</caption>
-            <category>Constraints</category>
-            <description>Optional maximum date user can select</description>
-            <attributeTypes>
-                <attributeType name="DateTime" />
-            </attributeTypes>
-        </property>
+        <propertyGroup caption="Events">
+            <property key="onChange" type="action">
+                <caption>On Range Change</caption>
+                <description>Optional microflow/nanoflow triggered after date range selection</description>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Appearance">
+            <property key="showIcon" type="boolean" required="true" defaultValue="true">
+                <caption>Show calendar icon</caption>
+                <description>Show the calendar icon in the input</description>
+            </property>
+
+            <property key="locale" type="string" required="false" defaultValue="en-US">
+                <caption>Locale</caption>
+                <description>Locale to use for date formatting</description>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>

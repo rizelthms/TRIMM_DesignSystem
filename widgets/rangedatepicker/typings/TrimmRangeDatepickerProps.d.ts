@@ -13,9 +13,11 @@ export interface TrimmRangeDatepickerContainerProps {
     tabIndex?: number;
     startDate: EditableValue<Date>;
     endDate: EditableValue<Date>;
+    minDate?: EditableValue<Date>;
+    maxDate?: EditableValue<Date>;
     onChange?: ActionValue;
-    minDate: EditableValue<Date>;
-    maxDate: EditableValue<Date>;
+    showIcon: boolean;
+    locale: string;
 }
 
 export interface TrimmRangeDatepickerPreviewProps {
@@ -31,7 +33,9 @@ export interface TrimmRangeDatepickerPreviewProps {
     translate: (text: string) => string;
     startDate: string;
     endDate: string;
-    onChange: {} | null;
     minDate: string;
     maxDate: string;
+    onChange: {} | null;
+    showIcon: boolean;
+    locale: string;
 }
