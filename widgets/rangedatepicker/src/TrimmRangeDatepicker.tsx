@@ -61,41 +61,8 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     };
 
-    const renderHeader = () => (
-        <div className="trimm-datepicker-header">
-            <button
-                type="button"
-                onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
-            >
-                ◀
-            </button>
-            <span className="trimm-datepicker-header-label">
-                {format(currentMonth, "MMMM yyyy")}
-            </span>
-            <button
-                type="button"
-                onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-            >
-                ▶
-            </button>
-        </div>
-    );
-
-    const renderDays = () => {
-        const start = startOfWeek(currentMonth);
-        return (
-            <div className="trimm-datepicker-days-row">
-                {Array.from({ length: 7 }).map((_, i) => (
-                    <div key={i} className="trimm-datepicker-day-label">
-                        {format(addDays(start, i), "EEEEE")}
-                    </div>
-                ))}
-            </div>
-        );
-    };
-
-    const renderCells = () => {
-        const monthStart = startOfMonth(currentMonth);
+    const renderMonth = (monthDate: Date) => {
+        const monthStart = startOfMonth(monthDate);
         const monthEnd = endOfMonth(monthStart);
         const startDateGrid = startOfWeek(monthStart);
         const endDateGrid = endOfWeek(monthEnd);
@@ -110,10 +77,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                     isSameDay(localStart ?? new Date("9999-01-01"), cloneDay) ||
                     isSameDay(localEnd ?? new Date("9999-01-01"), cloneDay);
                 const inRange =
-                    localStart &&
-                    localEnd &&
-                    cloneDay > localStart &&
-                    cloneDay < localEnd;
+                    localStart && localEnd && cloneDay > localStart && cloneDay < localEnd;
                 const disabled = !isSameMonth(cloneDay, monthStart) || !isSelectable(cloneDay);
 
                 let className = "trimm-range-datepicker-day";
@@ -132,6 +96,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                 );
                 day = addDays(day, 1);
             }
+
             rows.push(
                 <div className="trimm-datepicker-row" key={day.toString()}>
                     {days}
@@ -140,7 +105,23 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             days = [];
         }
 
-        return <div className="trimm-datepicker-body">{rows}</div>;
+        return (
+            <div className="trimm-datepicker-month">
+                <div className="trimm-datepicker-header">
+                    <span className="trimm-datepicker-header-label">
+                        {format(monthDate, "MMMM yyyy")}
+                    </span>
+                </div>
+                <div className="trimm-datepicker-days-row">
+                    {Array.from({ length: 7 }).map((_, i) => (
+                        <div key={i} className="trimm-datepicker-day-label">
+                            {format(addDays(startOfWeek(monthDate), i), "EEEEE")}
+                        </div>
+                    ))}
+                </div>
+                <div className="trimm-datepicker-body">{rows}</div>
+            </div>
+        );
     };
 
     const renderField = (label: string, value: Date | null, active: boolean) => (
@@ -151,7 +132,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             <div className="trimm-range-datepicker-label-container">
                 <div className="trimm-range-datepicker-label-text">{label}</div>
                 <div className="trimm-range-datepicker-date">
-                    {value ? format(value, "EEE MMM d yyyy") : " —"}
+                    {value ? format(value, "EEE MMM d yyyy") : "—"}
                 </div>
             </div>
         </button>
@@ -164,10 +145,24 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                 {renderField("End", localEnd, step === "end")}
             </div>
 
-            <div className="trimm-range-datepicker-calendar">
-                {renderHeader()}
-                {renderDays()}
-                {renderCells()}
+            <div className="trimm-datepicker-nav">
+                <button
+                    type="button"
+                    onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
+                >
+                    ◀
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+                >
+                    ▶
+                </button>
+            </div>
+
+            <div className="trimm-datepicker-months">
+                {renderMonth(currentMonth)}
+                {renderMonth(addMonths(currentMonth, 1))}
             </div>
         </div>
     );
