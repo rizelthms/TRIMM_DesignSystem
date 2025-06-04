@@ -1,6 +1,73 @@
-/*
-Place your custom CSS here
-*/
-.widget-hello-world {
+.trimm-range-datepicker {
+    font-family: inherit;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
+}
 
+.trimm-range-datepicker-toggle {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.trimm-range-datepicker-field {
+    flex: 1;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+.trimm-range-datepicker-field.active {
+    border-color: #00172B;
+    background-color: #eef4fb;
+}
+
+.trimm-range-datepicker-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.trimm-range-datepicker-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.trimm-range-datepicker-day {
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    font-size: 0.85rem;
+    user-select: none;
+}
+
+.trimm-range-datepicker-day:hover {
+    background-color: #e0e0e0;
+}
+
+.trimm-range-datepicker-day.selected {
+    background-color: #00172B;
+    color: white;
+}
+
+.trimm-range-datepicker-day.in-range {
+    background-color: #f37123;
+    color: white;
+}
+
+.trimm-range-datepicker-day.disabled {
+    background-color: #ddd;
+    color: #999;
+    pointer-events: none;
 }

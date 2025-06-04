@@ -4,13 +4,18 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
+import { ActionValue, EditableValue } from "mendix";
 
 export interface TrimmRangeDatepickerContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    sampleText: string;
+    startDate: EditableValue<Date>;
+    endDate: EditableValue<Date>;
+    onChange?: ActionValue;
+    minDate: EditableValue<Date>;
+    maxDate: EditableValue<Date>;
 }
 
 export interface TrimmRangeDatepickerPreviewProps {
@@ -24,5 +29,9 @@ export interface TrimmRangeDatepickerPreviewProps {
     readOnly: boolean;
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
-    sampleText: string;
+    startDate: string;
+    endDate: string;
+    onChange: {} | null;
+    minDate: string;
+    maxDate: string;
 }

@@ -1,17 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="trimm.trimmrangedatepicker.TrimmRangeDatepicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true"
-        supportedPlatform="Web"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>Trimm Range Datepicker</name>
-    <description>Custom RangeDatepicker styled using the TRIMM design system</description>
-    <icon/>
+<widget id="trimm.trimmrangedatepicker.TrimmRangeDatePicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
+    xmlns="http://www.mendix.com/widget/1.0/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
+    <name>Trimm Range Date Picker</name>
+    <description>Select a date range (start to end) styled with the TRIMM design system</description>
+    <icon />
+
     <properties>
-        <propertyGroup caption="General">
-            <property key="sampleText" type="string" required="false">
-                <caption>Default value</caption>
-                <description>Sample text input</description>
-            </property>
-        </propertyGroup>
+        <property key="startDate" type="attribute" required="true">
+            <caption>Start Date</caption>
+            <category>Data</category>
+            <description>Date the user selects first</description>
+            <attributeTypes>
+                <attributeType name="DateTime" />
+            </attributeTypes>
+        </property>
+
+        <property key="endDate" type="attribute" required="true">
+            <caption>End Date</caption>
+            <category>Data</category>
+            <description>Date the user selects second</description>
+            <attributeTypes>
+                <attributeType name="DateTime" />
+            </attributeTypes>
+        </property>
+
+        <property key="onChange" type="action">
+            <caption>On Range Change</caption>
+            <category>Events</category>
+            <description>Optional microflow/nanoflow triggered after date range selection</description>
+        </property>
+
+        <property key="minDate" type="attribute">
+            <caption>Minimum Date</caption>
+            <category>Constraints</category>
+            <description>Optional minimum date user can select</description>
+            <attributeTypes>
+                <attributeType name="DateTime" />
+            </attributeTypes>
+        </property>
+
+        <property key="maxDate" type="attribute">
+            <caption>Maximum Date</caption>
+            <category>Constraints</category>
+            <description>Optional maximum date user can select</description>
+            <attributeTypes>
+                <attributeType name="DateTime" />
+            </attributeTypes>
+        </property>
     </properties>
 </widget>

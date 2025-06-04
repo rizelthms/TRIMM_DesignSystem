@@ -2,7 +2,7 @@
   "name": "trimmrangedatepicker",
   "widgetName": "TrimmRangeDatepicker",
   "version": "1.0.0",
-  "description": "Custom RangeDatepicker styled using the TRIMM design system",
+  "description": "My widget description",
   "copyright": "© Mendix Technology BV 2022. All rights reserved.",
   "author": "Rizel",
   "engines": {
