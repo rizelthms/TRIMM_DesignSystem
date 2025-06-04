@@ -1,0 +1,77 @@
+.trimm-range-datepicker {
+    font-family: $font-primary;
+    width: 100%;
+    max-width: 400px;
+    border: $border-1 solid $secondary-1;
+    padding: $spacing-16;
+    border-radius: $radius-8;
+    background-color: $base-white;
+}
+
+.trimm-range-datepicker-toggle {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-16;
+    margin-bottom: $spacing-16;
+}
+
+
+.trimm-range-datepicker-field {
+    flex: 1;
+    padding: $spacing-8 $spacing-16;
+    border: $border-1 solid $base-black;
+    background-color: $base-white;
+    border-radius: $radius-4;
+    cursor: pointer;
+    text-align: left;
+    font-weight: $font-weight-regular;
+}
+
+.trimm-range-datepicker-field.active {
+    border-color: $brand-1;
+    background-color: $base-white;
+}
+
+.trimm-range-datepicker-label {
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-medium;
+    color: $base-black;
+}
+
+.trimm-range-datepicker-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: $spacing-8;
+}
+
+.trimm-range-datepicker-day {
+    padding: $spacing-8;
+    text-align: center;
+    border-radius: $radius-4;
+    background-color: $base-white;
+    cursor: pointer;
+    font-size: $font-size-body-4;
+    user-select: none;
+
+    &:hover {
+        background-color: $brand-3;
+        color: $base-white;
+    }
+
+    &.selected {
+        background-color: $brand-1;
+        color: $base-white;
+    }
+
+    &.in-range {
+        background-color: $brand-2;
+        color: $base-white;
+    }
+
+    &.disabled {
+        background-color: $secondary-1;
+        color: $base-white;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}

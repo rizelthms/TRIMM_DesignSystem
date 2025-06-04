@@ -28601,6 +28601,79 @@ Do not render = "none"
   vertical-align: middle;
 }
 
+.trimm-range-datepicker {
+  font-family: "GothamSSm", sans-serif;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #6E6F72;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+}
+
+.trimm-range-datepicker-toggle {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.trimm-range-datepicker-field {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #231F20;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 400;
+}
+
+.trimm-range-datepicker-field.active {
+  border-color: #00172B;
+  background-color: #FFFFFF;
+}
+
+.trimm-range-datepicker-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #231F20;
+}
+
+.trimm-range-datepicker-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.trimm-range-datepicker-day {
+  padding: 8px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  font-size: 12px;
+  user-select: none;
+}
+.trimm-range-datepicker-day:hover {
+  background-color: #0E808A;
+  color: #FFFFFF;
+}
+.trimm-range-datepicker-day.selected {
+  background-color: #00172B;
+  color: #FFFFFF;
+}
+.trimm-range-datepicker-day.in-range {
+  background-color: #F37123;
+  color: #FFFFFF;
+}
+.trimm-range-datepicker-day.disabled {
+  background-color: #6E6F72;
+  color: #FFFFFF;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: #FFFFFF;

@@ -82,9 +82,12 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             type="button"
             className={`trimm-range-datepicker-field ${active ? "active" : ""}`}
         >
-            <span className="trimm-range-datepicker-label">
-                {label}: {value ? value.toDateString() : "—"}
-            </span>
+            <div className="trimm-range-datepicker-label-container">
+                <div className="trimm-range-datepicker-label-text">{label}</div>
+                <div className="trimm-range-datepicker-date">
+                    {value ? value.toDateString() : " —"}
+                </div>
+            </div>
         </button>
     );
 
