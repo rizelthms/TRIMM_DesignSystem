@@ -2,10 +2,9 @@
     font-family: $font-primary;
     width: 100%;
     max-width: 800px;
-    border: $border-1 solid $secondary-1;
     padding: $spacing-16;
     border-radius: $radius-8;
-    background-color: $base-white;
+    background-color: transparent;
     margin: 0 auto;
 }
 
@@ -45,7 +44,7 @@
 
 .trimm-range-datepicker-date {
     font-size: $font-size-body-3;
-    font-weight: 600;
+    font-weight: $font-weight-bold;
     color: $base-black;
 }
 
@@ -135,4 +134,37 @@
         cursor: not-allowed;
         pointer-events: none;
     }
+}
+
+.trimm-range-datepicker-trigger {
+    display: flex;
+    align-items: center;
+    padding: $spacing-8 $spacing-16;
+    border: $border-1 solid $base-black;
+    background-color: $base-white;
+    border-radius: $radius-4;
+    cursor: pointer;
+    font-family: $font-primary;
+    font-size: $font-size-body-3;
+    width: 100%;
+    text-align: left;
+}
+
+.trimm-range-datepicker-icon {
+    margin-right: $spacing-8;
+    font-size: $font-size-body-4;
+}
+
+.trimm-range-datepicker-value {
+    color: $base-black;
+    font-weight: $font-weight-regular;
+}
+
+.trimm-range-datepicker-label-inline {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    font-size: $font-size-body-4;
+    color: $base-black;
+    font-weight: $font-weight-regular;
 }
