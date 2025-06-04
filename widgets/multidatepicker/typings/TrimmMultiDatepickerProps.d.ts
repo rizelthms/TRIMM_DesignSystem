@@ -4,16 +4,16 @@
  * @author Mendix Widgets Framework Team
  */
 import { CSSProperties } from "react";
-import { EditableValue } from "mendix";
+import { ActionValue, EditableValue } from "mendix";
 
 export interface TrimmMultiDatepickerContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    selectedDates?: EditableValue<string>;
-    minDate?: EditableValue<Date>;
-    maxDate?: EditableValue<Date>;
+    selectedDatesList: EditableValue<string>;
+    selectedDateToToggle: EditableValue<string>;
+    onToggleDate?: ActionValue;
     showIcon: boolean;
     locale: string;
 }
@@ -29,9 +29,9 @@ export interface TrimmMultiDatepickerPreviewProps {
     readOnly: boolean;
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
-    selectedDates: string;
-    minDate: string;
-    maxDate: string;
+    selectedDatesList: string;
+    selectedDateToToggle: string;
+    onToggleDate: {} | null;
     showIcon: boolean;
     locale: string;
 }

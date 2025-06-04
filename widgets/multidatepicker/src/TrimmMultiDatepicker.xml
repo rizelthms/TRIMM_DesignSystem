@@ -2,42 +2,39 @@
 <widget id="trimm.trimmmultidatepicker.TrimmMultiDatepicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
     xmlns="http://www.mendix.com/widget/1.0/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>TrimmMultiDatepicker</name>
+    <name>Trimm MultiDatepicker</name>
     <description>
-        Multi-date picker for selecting multiple dates (comma-separated string or helper entity).
+        Multi-date picker for selecting multiple dates, CSV storage, Mendix 11 compatible.
     </description>
     <properties>
         <propertyGroup caption="Data">
-            <property key="selectedDates" type="attribute" required="false">
-                <caption>Selected Dates</caption>
-                <description>The dates selected in the multi datepicker (comma separated string, or use a helper entity/list)</description>
+            <property key="selectedDatesList" type="attribute" required="true">
+                <caption>Selected Dates (CSV)</caption>
+                <description>Comma-separated string of selected dates (yyyy-MM-dd), e.g. 2025-06-04,2025-06-07.</description>
                 <attributeTypes>
                     <attributeType name="String" />
                 </attributeTypes>
             </property>
-            <property key="minDate" type="attribute" required="false">
-                <caption>Minimum Date</caption>
-                <description>Minimum selectable date</description>
+            <property key="selectedDateToToggle" type="attribute" required="true">
+                <caption>Date To Toggle</caption>
+                <description>Helper: last date clicked, used for toggling. String (yyyy-MM-dd).</description>
                 <attributeTypes>
-                    <attributeType name="DateTime" />
+                    <attributeType name="String" />
                 </attributeTypes>
             </property>
-            <property key="maxDate" type="attribute" required="false">
-                <caption>Maximum Date</caption>
-                <description>Maximum selectable date</description>
-                <attributeTypes>
-                    <attributeType name="DateTime" />
-                </attributeTypes>
+            <property key="onToggleDate" type="action" required="true">
+                <caption>On Date Toggle</caption>
+                <description>Action to run when user toggles a date. Must read `selectedDateToToggle` from entity.</description>
             </property>
         </propertyGroup>
         <propertyGroup caption="Appearance">
             <property key="showIcon" type="boolean" required="true" defaultValue="true">
                 <caption>Show calendar icon</caption>
-                <description>Show the calendar icon in the input</description>
+                <description>Show calendar icon in input field.</description>
             </property>
             <property key="locale" type="string" required="false" defaultValue="en-US">
                 <caption>Locale</caption>
-                <description>Locale code for date formatting and day/month names (e.g. en-US, nl-NL)</description>
+                <description>Locale code for date formatting and day/month names (e.g. en-US, nl-NL).</description>
             </property>
         </propertyGroup>
     </properties>

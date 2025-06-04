@@ -4,28 +4,20 @@ import { TrimmMultiDatepicker } from "./TrimmMultiDatepicker";
 import { TrimmMultiDatepickerPreviewProps } from "../typings/TrimmMultiDatepickerProps";
 import { ValueStatus, EditableValue } from "mendix";
 
-function daysFromNow(days: number) {
-    const d = new Date();
-    d.setDate(d.getDate() + days);
-    return d;
-}
-
-function usePreviewMultiDateEditableValue(initialDates: string[]): EditableValue<string> {
-    const [value, setValue] = useState(initialDates.join(","));
+// Helper for preview value
+function createEditableValue(init: string): EditableValue<string> {
+    const [val, setVal] = useState(init);
     return {
-        value,
+        value: val,
         status: ValueStatus.Available,
-        displayValue: value,
+        displayValue: val,
+        setValue: setVal,
         isList: false,
         validation: "",
-        formatter: undefined,
-        setValue: (newValue: string) => setValue(newValue),
+        formatter: {} as any,
         setTextValue: () => { },
         setTextValueWithCallback: () => { },
-        setValueWithCallback: (newValue: string, callback: () => void) => {
-            setValue(newValue);
-            callback();
-        },
+        setValueWithCallback: (v: string, cb: () => void) => { setVal(v); cb(); },
         setFormatter: () => { },
         readOnly: false,
         setValidator: () => { }
@@ -33,30 +25,19 @@ function usePreviewMultiDateEditableValue(initialDates: string[]): EditableValue
 }
 
 export function preview(props: TrimmMultiDatepickerPreviewProps) {
-    // Simulate two preselected dates for preview
-    const initialDates = ["06/10/2025", "06/12/2025"];
-    const selectedDates = usePreviewMultiDateEditableValue(initialDates);
-
+    // Start with empty value for preview
+    const selectedDatesList = createEditableValue("");
+    const selectedDateToToggle = createEditableValue("");
     return (
         <TrimmMultiDatepicker
-            name="TrimmMultiDatepicker"
-            selectedDates={selectedDates}
+            selectedDatesList={selectedDatesList}
+            selectedDateToToggle={selectedDateToToggle}
+            onToggleDate={{ canExecute: false, isExecuting: false, execute: () => { } }}
             class={props.class}
             style={props.styleObject}
             showIcon={true}
-            minDate={{
-                value: daysFromNow(-5),
-                status: ValueStatus.Available,
-                displayValue: "",
-                setValue: () => { },
-            } as unknown as EditableValue<Date>}
-            maxDate={{
-                value: daysFromNow(5),
-                status: ValueStatus.Available,
-                displayValue: "",
-                setValue: () => { },
-            } as unknown as EditableValue<Date>}
             locale="en-US"
+            name={""}
         />
     );
 }

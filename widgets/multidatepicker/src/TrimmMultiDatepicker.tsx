@@ -1,26 +1,14 @@
 /** @jsx createElement */
-import { createElement, useState, useRef, useEffect } from "react";
+import { createElement, useState, useRef } from "react";
 import { TrimmMultiDatepickerContainerProps } from "../typings/TrimmMultiDatepickerProps";
 import "./ui/TrimmMultiDatepicker.css";
 import {
-    addMonths,
-    format,
-    startOfMonth,
-    endOfMonth,
-    startOfWeek,
-    endOfWeek,
-    addDays,
-    isSameMonth,
-    isSameDay,
-    parse,
-    isBefore,
-    isAfter,
-    startOfDay,
+    addMonths, format, startOfMonth, endOfMonth,
+    startOfWeek, endOfWeek, addDays, isSameMonth, isSameDay, parse
 } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import nl from "date-fns/locale/nl";
 
-// Utility to map string to locale object
 function getLocale(localeStr: string | undefined) {
     switch ((localeStr || "").toLowerCase()) {
         case "nl":
@@ -33,80 +21,76 @@ function getLocale(localeStr: string | undefined) {
     }
 }
 
-// Check if date is out of range (inclusive)
-function isOutOfRange(day: Date, minDate?: Date, maxDate?: Date) {
-    const checkDay = startOfDay(day);
-    const min = minDate ? startOfDay(minDate) : undefined;
-    const max = maxDate ? startOfDay(maxDate) : undefined;
-    if (min && isBefore(checkDay, min)) return true;
-    if (max && isAfter(checkDay, max)) return true;
-    return false;
+function parseDatesFromString(dateString: string) {
+    if (!dateString || dateString.trim() === "") return [];
+    return dateString
+        .split(",")
+        .map(str => parse(str.trim(), "yyyy-MM-dd", new Date()))
+        .filter(d => d instanceof Date && !isNaN(d.getTime()));
 }
 
 export function TrimmMultiDatepicker({
-    selectedDates,
+    selectedDatesList,
+    selectedDateToToggle,
+    onToggleDate,
     class: className,
     style,
     showIcon,
-    minDate,
-    maxDate,
     locale
 }: TrimmMultiDatepickerContainerProps) {
+    console.log("TrimmMultiDatepicker loaded", {
+        selectedDatesList,
+        selectedDateToToggle,
+        onToggleDate
+    });
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const [localSelectedDates, setLocalSelectedDates] = useState<Date[]>([]);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    // Parse dates from prop string when changed
-    useEffect(() => {
-        if (selectedDates?.value) {
-            const dates = selectedDates.value
-                .split(',')
-                .map(dateStr => parse(dateStr.trim(), 'MM/dd/yyyy', new Date()))
-                .filter(d => !isNaN(d.getTime()));
-            setLocalSelectedDates(dates);
-        }
-    }, [selectedDates?.value]);
-
-    // Helper: min/max as Date or undefined
-    const min = minDate?.value instanceof Date ? minDate.value : undefined;
-    const max = maxDate?.value instanceof Date ? maxDate.value : undefined;
+    const currentSelectedDates = parseDatesFromString(selectedDatesList?.value ?? "");
     const localeObj = getLocale(locale);
 
-    // Toggle date in selection
+    const isDateSelected = (date: Date) =>
+        currentSelectedDates.some(selected => isSameDay(selected, date));
+
     const handleDateClick = (date: Date) => {
-        if (isOutOfRange(date, min, max)) return; // Don't allow picking disabled date
-        let updatedDates: Date[];
-        if (isDateSelected(date)) {
-            updatedDates = localSelectedDates.filter(d => !isSameDay(d, date));
+        console.log("[MultiDatepicker] Clicked date:", date, format(date, "yyyy-MM-dd"));
+        if (
+            selectedDateToToggle &&
+            typeof selectedDateToToggle.setValue === "function"
+        ) {
+            console.log("[MultiDatepicker] Setting selectedDateToToggle to", format(date, "yyyy-MM-dd"));
+            selectedDateToToggle.setValue(format(date, "yyyy-MM-dd"));
         } else {
-            updatedDates = [...localSelectedDates, date];
+            console.warn("[MultiDatepicker] selectedDateToToggle.setValue not available!", selectedDateToToggle);
         }
-        setLocalSelectedDates(updatedDates);
-        if (selectedDates && selectedDates.setValue) {
-            selectedDates.setValue(updatedDates.map(d => format(d, 'MM/dd/yyyy')).join(','));
+
+        if (onToggleDate && onToggleDate.canExecute && !onToggleDate.isExecuting) {
+            console.log("[MultiDatepicker] Executing onToggleDate action");
+            onToggleDate.execute();
+        } else {
+            console.warn("[MultiDatepicker] onToggleDate is not executable:", onToggleDate);
         }
     };
 
-    const isDateSelected = (date: Date) =>
-        localSelectedDates.some(selected => isSameDay(selected, date));
-
     const inputValue =
-        localSelectedDates.length === 0
+        currentSelectedDates.length === 0
             ? ""
-            : localSelectedDates.map(d => format(d, "MM/dd/yyyy")).join(", ");
+            : currentSelectedDates.map(d => format(d, "yyyy-MM-dd")).join(", ");
+
+    console.log("SelectedDatesList.value in render:", selectedDatesList?.value);
 
     return (
         <div className={`trimm-multidatepicker ${className || ""}`} style={style}>
             <div className="trimm-multidatepicker-input-wrapper" onClick={() => setShowCalendar(prev => !prev)}>
                 {showIcon && <span className="glyphicon glyphicon-calendar trimm-multidatepicker-icon" />}
                 <input
-                    ref={inputRef}
                     type="text"
                     readOnly
                     className="trimm-multidatepicker-input"
                     value={inputValue}
                     placeholder="Select dates"
+                    ref={inputRef}
                 />
             </div>
             {showCalendar && (
@@ -157,18 +141,30 @@ export function TrimmMultiDatepicker({
                 const cloneDay = day;
                 const isSelected = isDateSelected(day);
                 const isToday = isSameDay(day, new Date());
-                const outOfRange = isOutOfRange(day, min, max);
 
                 days.push(
                     <div
                         className={`trimm-multidatepicker-cell
                             ${!isSameMonth(day, monthStart) ? "disabled" : ""}
                             ${isSelected ? "selected" : ""}
-                            ${isToday ? "today" : ""}
-                            ${outOfRange ? "disabled" : ""}
-                        `}
+                            ${isToday ? "today" : ""}`}
                         key={day.toString()}
-                        onClick={() => !outOfRange && isSameMonth(day, monthStart) && handleDateClick(cloneDay)}
+                        onClick={() => {
+                            console.log(
+                                "[MultiDatepicker DEBUG] onClick fired for",
+                                cloneDay,
+                                "index",
+                                i,
+                                "row",
+                                rows.length
+                            );
+                            try {
+                                handleDateClick(cloneDay);
+                            } catch (e) {
+                                console.error("[MultiDatepicker DEBUG] handleDateClick threw error:", e);
+                            }
+                        }}
+                        style={{ cursor: "pointer", userSelect: "none" }}
                     >
                         {format(day, "d", { locale: localeObj })}
                     </div>
@@ -184,4 +180,6 @@ export function TrimmMultiDatepicker({
         }
         return <div className="trimm-multidatepicker-body">{rows}</div>;
     }
+
+
 }
