@@ -1,6 +1,20 @@
 /** @jsx createElement */
-import { createElement, useState } from "react";
+import { createElement, useEffect, useState } from "react";
 import { TrimmRangeDatepickerContainerProps } from "../typings/TrimmRangeDatepickerProps";
+import {
+    startOfMonth,
+    endOfMonth,
+    startOfWeek,
+    endOfWeek,
+    addDays,
+    addMonths,
+    format,
+    isSameDay,
+    isSameMonth,
+    isBefore,
+    isAfter,
+    startOfDay
+} from "date-fns";
 import "./ui/TrimmRangeDatepicker.css";
 
 export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) {
@@ -9,10 +23,17 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     const [localStart, setLocalStart] = useState<Date | null>(null);
     const [localEnd, setLocalEnd] = useState<Date | null>(null);
     const [step, setStep] = useState<"start" | "end">("start");
+    const [currentMonth, setCurrentMonth] = useState(new Date());
+
+    useEffect(() => {
+        if (startDate?.value) setLocalStart(startDate.value);
+        if (endDate?.value) setLocalEnd(endDate.value);
+    }, [startDate?.value, endDate?.value]);
 
     const isSelectable = (date: Date): boolean => {
-        if (minDate?.value && date < minDate.value) return false;
-        if (maxDate?.value && date > maxDate.value) return false;
+        const check = startOfDay(date);
+        if (minDate?.value && isBefore(check, startOfDay(minDate.value))) return false;
+        if (maxDate?.value && isAfter(check, startOfDay(maxDate.value))) return false;
         return true;
     };
 
@@ -26,18 +47,13 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         } else {
             if (localStart && date >= localStart) {
                 setLocalEnd(date);
-
-                // Save to Mendix
                 startDate.setValue(localStart);
                 endDate.setValue(date);
-
                 if (onChange?.canExecute && !onChange.isExecuting) {
                     onChange.execute();
                 }
-
                 setStep("start");
             } else {
-                // If end < start, treat it as new start
                 setLocalStart(date);
                 setLocalEnd(null);
                 setStep("end");
@@ -45,36 +61,86 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     };
 
-    const renderDay = (day: number) => {
-        const today = new Date();
-        const current = new Date(today.getFullYear(), today.getMonth(), day);
-
-        const selected =
-            localStart?.toDateString() === current.toDateString() ||
-            localEnd?.toDateString() === current.toDateString();
-
-        const inRange =
-            localStart &&
-            localEnd &&
-            current > localStart &&
-            current < localEnd;
-
-        const disabled = !isSelectable(current);
-
-        let className = "trimm-range-datepicker-day";
-        if (selected) className += " selected";
-        else if (inRange) className += " in-range";
-        if (disabled) className += " disabled";
-
-        return (
-            <div
-                key={day}
-                className={className}
-                onClick={() => !disabled && handleClickDate(current)}
+    const renderHeader = () => (
+        <div className="trimm-datepicker-header">
+            <button
+                type="button"
+                onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
             >
-                {day}
+                ◀
+            </button>
+            <span className="trimm-datepicker-header-label">
+                {format(currentMonth, "MMMM yyyy")}
+            </span>
+            <button
+                type="button"
+                onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+            >
+                ▶
+            </button>
+        </div>
+    );
+
+    const renderDays = () => {
+        const start = startOfWeek(currentMonth);
+        return (
+            <div className="trimm-datepicker-days-row">
+                {Array.from({ length: 7 }).map((_, i) => (
+                    <div key={i} className="trimm-datepicker-day-label">
+                        {format(addDays(start, i), "EEEEE")}
+                    </div>
+                ))}
             </div>
         );
+    };
+
+    const renderCells = () => {
+        const monthStart = startOfMonth(currentMonth);
+        const monthEnd = endOfMonth(monthStart);
+        const startDateGrid = startOfWeek(monthStart);
+        const endDateGrid = endOfWeek(monthEnd);
+        const rows = [];
+        let days = [];
+        let day = startDateGrid;
+
+        while (day <= endDateGrid) {
+            for (let i = 0; i < 7; i++) {
+                const cloneDay = day;
+                const selected =
+                    isSameDay(localStart ?? new Date("9999-01-01"), cloneDay) ||
+                    isSameDay(localEnd ?? new Date("9999-01-01"), cloneDay);
+                const inRange =
+                    localStart &&
+                    localEnd &&
+                    cloneDay > localStart &&
+                    cloneDay < localEnd;
+                const disabled = !isSameMonth(cloneDay, monthStart) || !isSelectable(cloneDay);
+
+                let className = "trimm-range-datepicker-day";
+                if (selected) className += " selected";
+                else if (inRange) className += " in-range";
+                if (disabled) className += " disabled";
+
+                days.push(
+                    <div
+                        key={cloneDay.toString()}
+                        className={className}
+                        onClick={() => !disabled && handleClickDate(cloneDay)}
+                    >
+                        {format(cloneDay, "d")}
+                    </div>
+                );
+                day = addDays(day, 1);
+            }
+            rows.push(
+                <div className="trimm-datepicker-row" key={day.toString()}>
+                    {days}
+                </div>
+            );
+            days = [];
+        }
+
+        return <div className="trimm-datepicker-body">{rows}</div>;
     };
 
     const renderField = (label: string, value: Date | null, active: boolean) => (
@@ -85,7 +151,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             <div className="trimm-range-datepicker-label-container">
                 <div className="trimm-range-datepicker-label-text">{label}</div>
                 <div className="trimm-range-datepicker-date">
-                    {value ? value.toDateString() : " —"}
+                    {value ? format(value, "EEE MMM d yyyy") : " —"}
                 </div>
             </div>
         </button>
@@ -99,7 +165,9 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             </div>
 
             <div className="trimm-range-datepicker-calendar">
-                {Array.from({ length: 30 }, (_, i) => renderDay(i + 1))}
+                {renderHeader()}
+                {renderDays()}
+                {renderCells()}
             </div>
         </div>
     );

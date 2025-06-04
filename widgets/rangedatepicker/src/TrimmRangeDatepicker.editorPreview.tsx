@@ -26,7 +26,7 @@ function mockDateValue(date: Date): EditableValue<Date> {
 export function preview(props: TrimmRangeDatepickerPreviewProps) {
     const today = new Date();
     const future = new Date();
-    future.setDate(today.getDate() + 5);
+    future.setDate(today.getDate() + 2);
 
     const previewProps = {
         name: "preview",
@@ -43,5 +43,9 @@ export function preview(props: TrimmRangeDatepickerPreviewProps) {
         } as ActionValue
     };
 
-    return <TrimmRangeDatePicker {...previewProps} />;
+    return (
+        <div style={{ padding: "1rem", maxWidth: "420px" }}>
+            <TrimmRangeDatePicker {...previewProps} />
+        </div>
+    );
 }
