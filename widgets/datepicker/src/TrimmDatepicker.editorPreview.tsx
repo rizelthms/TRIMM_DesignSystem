@@ -15,9 +15,10 @@ export function preview(props: TrimmDatepickerPreviewProps) {
     const [date, setDate] = useState(new Date());
 
     const previewProps = {
-        name: "preview",
-        class: props.class,
-        style: props.styleObject,
+        ...props,
+        name: "TrimmDatepicker",
+        onChange: undefined,
+        style: props.styleObject || {},
         selectedDate: {
             value: date,
             status: ValueStatus.Available,
@@ -36,20 +37,18 @@ export function preview(props: TrimmDatepickerPreviewProps) {
             readOnly: false,
             setValidator: () => { }
         } as unknown as EditableValue<Date>,
-        showIcon: true,
-        locale: "en-US",
         minDate: {
             value: daysFromNow(-5),
             status: ValueStatus.Available,
             displayValue: "",
-            setValue: () => { },
+            setValue: () => { }
         } as unknown as EditableValue<Date>,
         maxDate: {
             value: daysFromNow(5),
             status: ValueStatus.Available,
             displayValue: "",
-            setValue: () => { },
-        } as unknown as EditableValue<Date>,
+            setValue: () => { }
+        } as unknown as EditableValue<Date>
     };
 
     return <TrimmDatepicker {...previewProps} />;
