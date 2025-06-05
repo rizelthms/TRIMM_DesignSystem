@@ -23,13 +23,19 @@
                     <attributeType name="DateTime" />
                 </attributeTypes>
             </property>
-
             <property key="maxDate" type="attribute" required="false">
                 <caption>Maximum Date</caption>
                 <description>Maximum selectable date</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
+            </property>
+        </propertyGroup>
+
+        <propertyGroup caption="Events">
+            <property key="onChange" type="action">
+                <caption>On Change</caption>
+                <description>Optional microflow/nanoflow triggered after a date is selected</description>
             </property>
         </propertyGroup>
 
@@ -44,5 +50,4 @@
             </property>
         </propertyGroup>
     </properties>
-
 </widget>

@@ -38,7 +38,8 @@ export function TrimmDatepicker({
     showIcon,
     locale,
     minDate,
-    maxDate
+    maxDate,
+    onChange
 }: TrimmDatepickerContainerProps) {
     const [showCalendar, setShowCalendar] = useState(false);
     const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -51,7 +52,6 @@ export function TrimmDatepicker({
         if (base) setCurrentMonth(base);
     }, [selectedDate?.value]);
 
-    // Helper to check if day is outside allowed range
     function isOutOfRange(day: Date) {
         const checkDay = startOfDay(day);
         const min = minDate?.value ? startOfDay(minDate.value) : undefined;
@@ -62,12 +62,18 @@ export function TrimmDatepicker({
     }
 
     const handleDateClick = (date: Date) => {
-        if (isOutOfRange(date)) return; // don't allow picking disabled date
+        if (isOutOfRange(date)) return;
+
         if (selectedDate) {
             selectedDate.setValue(date);
         } else {
             setLocalSelectedDate(date);
         }
+
+        if (onChange?.canExecute && !onChange.isExecuting) {
+            onChange.execute();
+        }
+
         setShowCalendar(false);
     };
 
