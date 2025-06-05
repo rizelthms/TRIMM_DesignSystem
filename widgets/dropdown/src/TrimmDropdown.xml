@@ -28,7 +28,7 @@
         </property>
 
         <!-- Icon -->
-        <property key="icon" type="icon">
+        <property key="icon" type="icon" required="false">
             <caption>Icon</caption>
             <category>Appearance</category>
             <description>Optional icon to display in the dropdown button</description>
@@ -48,5 +48,4 @@
             <description>Show or hide the downward arrow caret icon.</description>
         </property>
     </properties>
-
 </widget>

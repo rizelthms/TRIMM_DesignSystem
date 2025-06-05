@@ -22,7 +22,7 @@ export interface TrimmDropdownContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     dropdownItems: DropdownItemsType[];
-    icon: DynamicValue<WebIcon>;
+    icon?: DynamicValue<WebIcon>;
     caption: string;
     showCaretIcon: boolean;
 }
