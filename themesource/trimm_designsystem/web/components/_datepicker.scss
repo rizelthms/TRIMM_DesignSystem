@@ -1,0 +1,103 @@
+.trimm-datepicker {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    font-family: $font-primary;
+}
+
+.trimm-datepicker-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    width: 100%;
+}
+
+.trimm-datepicker-icon {
+    font-size: $font-size-body-4;
+    color: $secondary-1;
+}
+
+.trimm-datepicker-input {
+    width: 100%;
+    padding: $spacing-8 $spacing-12;
+    font-size: $font-size-body-3;
+    border: $border-1 solid $secondary-1;
+    border-radius: $radius-4;
+    cursor: pointer;
+    background-color: $base-white;
+}
+
+.trimm-datepicker-calendar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: $spacing-4;
+    padding: $spacing-12;
+    background-color: $base-white;
+    border: $border-1 solid $secondary-1;
+    border-radius: $radius-4;
+    z-index: 1000;
+    width: 280px;
+    box-shadow: $shadow-6;
+}
+
+.trimm-datepicker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-8;
+
+    button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: $font-size-body-2;
+        padding: $spacing-4;
+    }
+}
+
+.trimm-datepicker-days-row,
+.trimm-datepicker-row {
+    display: flex;
+}
+
+.trimm-datepicker-day-label,
+.trimm-datepicker-cell {
+    flex: 1;
+    text-align: center;
+    padding: $spacing-4 0;
+    font-size: $font-size-body-4;
+}
+
+.trimm-datepicker-day-label {
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    color: $secondary-1;
+    border-bottom: $border-1 solid rgba($secondary-1, 0.1);
+}
+
+.trimm-datepicker-cell {
+    cursor: pointer;
+    border-radius: $radius-4;
+    transition: background 0.2s ease-in-out;
+
+    &:hover {
+        background-color: rgba($brand-2, 0.1);
+    }
+
+    &.selected {
+        background-color: $brand-1;
+        color: $base-white;
+        font-weight: $font-weight-bold;
+    }
+
+    &.today {
+        border: $border-1 solid $brand-1;
+    }
+
+    &.disabled {
+        color: $secondary-1;
+        cursor: not-allowed;
+    }
+}
