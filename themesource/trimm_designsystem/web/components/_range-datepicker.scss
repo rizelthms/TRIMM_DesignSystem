@@ -130,7 +130,7 @@
     &.disabled {
         background-color: transparent;
         color: $secondary-1;
-        cursor: not-allowed;
+        cursor: not-allowed !important;
         pointer-events: none;
     }
 }
