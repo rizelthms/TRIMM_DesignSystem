@@ -45,12 +45,46 @@ export function TrimmDatepicker({
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [localSelectedDate, setLocalSelectedDate] = useState<Date | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [dragging, setDragging] = useState(false);
+    const [dragStart, setDragStart] = useState<{ mouseX: number; mouseY: number; popupX: number; popupY: number } | null>(null);
+    const calendarRef = useRef<HTMLDivElement>(null);
+    const [calendarPosition, setCalendarPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
     useEffect(() => {
         const base = selectedDate?.value ?? null;
         setLocalSelectedDate(base);
         if (base) setCurrentMonth(base);
     }, [selectedDate?.value]);
+
+    useEffect(() => {
+        if (showCalendar && inputRef.current) {
+            const rect = inputRef.current.getBoundingClientRect();
+            setCalendarPosition({ x: rect.left + window.scrollX, y: rect.bottom + window.scrollY });
+        }
+    }, [showCalendar]);
+
+    useEffect(() => {
+        function onMouseMove(e: MouseEvent) {
+            if (dragging && dragStart) {
+                setCalendarPosition({
+                    x: dragStart.popupX + (e.clientX - dragStart.mouseX),
+                    y: dragStart.popupY + (e.clientY - dragStart.mouseY)
+                });
+            }
+        }
+        function onMouseUp() {
+            setDragging(false);
+            setDragStart(null);
+        }
+        if (dragging) {
+            window.addEventListener("mousemove", onMouseMove);
+            window.addEventListener("mouseup", onMouseUp);
+        }
+        return () => {
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("mouseup", onMouseUp);
+        };
+    }, [dragging, dragStart]);
 
     function isOutOfRange(day: Date) {
         const checkDay = startOfDay(day);
@@ -94,8 +128,32 @@ export function TrimmDatepicker({
                 />
             </div>
             {showCalendar && (
-                <div className="trimm-datepicker-calendar">
-                    {renderHeader()}
+                <div
+                    ref={calendarRef}
+                    className="trimm-datepicker-calendar"
+                    style={{
+                        position: "absolute",
+                        left: calendarPosition.x,
+                        top: calendarPosition.y,
+                        zIndex: 9999
+                    }}
+                >
+                    <div
+                        className="trimm-datepicker-header"
+                        style={{ cursor: "move", userSelect: "none" }}
+                        onMouseDown={e => {
+                            e.preventDefault();
+                            setDragging(true);
+                            setDragStart({
+                                mouseX: e.clientX,
+                                mouseY: e.clientY,
+                                popupX: calendarPosition.x,
+                                popupY: calendarPosition.y
+                            });
+                        }}
+                    >
+                        {renderHeader()}
+                    </div>
                     {renderDays()}
                     {renderCells()}
                 </div>

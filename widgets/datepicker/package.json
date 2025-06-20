@@ -30,7 +30,9 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
-    "date-fns": "^4.1.0"
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "react-draggable": "^4.4.5"
   },
   "resolutions": {
     "react": "^18.2.0",
