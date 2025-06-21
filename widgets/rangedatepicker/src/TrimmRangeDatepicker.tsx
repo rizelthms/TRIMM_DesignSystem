@@ -159,27 +159,31 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         return (
             <div className="trimm-datepicker-month">
                 <div className="trimm-datepicker-header">
-                    {isFirst && (
-                        <button
-                            type="button"
-                            className="trimm-datepicker-arrow"
-                            onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
-                        >
-                            ◀
-                        </button>
-                    )}
-                    <span className="trimm-datepicker-header-label">
+                    <div className="trimm-datepicker-arrow-col">
+                        {isFirst && (
+                            <button
+                                type="button"
+                                className="trimm-datepicker-arrow"
+                                onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
+                            >
+                                ◀
+                            </button>
+                        )}
+                    </div>
+                    <div className="trimm-datepicker-header-label">
                         {format(monthDate, "MMMM yyyy", { locale: getLocale(locale) })}
-                    </span>
-                    {isLast && (
-                        <button
-                            type="button"
-                            className="trimm-datepicker-arrow"
-                            onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-                        >
-                            ▶
-                        </button>
-                    )}
+                    </div>
+                    <div className="trimm-datepicker-arrow-col">
+                        {isLast && (
+                            <button
+                                type="button"
+                                className="trimm-datepicker-arrow"
+                                onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+                            >
+                                ▶
+                            </button>
+                        )}
+                    </div>
                 </div>
                 <div className="trimm-datepicker-days-row">
                     {Array.from({ length: 7 }).map((_, i) => (
@@ -226,6 +230,21 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                         top: popupPosition.y
                     }}
                 >
+                    {/* Drag handle at the top of the popup */}
+                    <div
+                        className="trimm-datepicker-popup-draghandle"
+                        style={{ cursor: "move", userSelect: "none", height: 20, width: "100%" }}
+                        onMouseDown={e => {
+                            e.preventDefault();
+                            setDragging(true);
+                            setDragStart({
+                                mouseX: e.clientX,
+                                mouseY: e.clientY,
+                                popupX: popupPosition.x,
+                                popupY: popupPosition.y
+                            });
+                        }}
+                    />
                     <div className="trimm-datepicker-months">
                         {renderMonth(currentMonth, true, false)}
                         {renderMonth(addMonths(currentMonth, 1), false, true)}
