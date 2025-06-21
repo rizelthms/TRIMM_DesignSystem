@@ -1,5 +1,5 @@
 /** @jsx createElement */
-import { createElement, useEffect, useState } from "react";
+import { createElement, useEffect, useState, useRef } from "react";
 import { TrimmRangeDatepickerContainerProps } from "../typings/TrimmRangeDatepickerProps";
 import {
     startOfMonth,
@@ -39,11 +39,46 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     const [step, setStep] = useState<"start" | "end">("start");
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
+    const [popupPosition, setPopupPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const [dragging, setDragging] = useState(false);
+    const [dragStart, setDragStart] = useState<{ mouseX: number; mouseY: number; popupX: number; popupY: number } | null>(null);
+    const popupRef = useRef<HTMLDivElement>(null);
+    const toggleRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (startDate?.value) setLocalStart(startDate.value);
         if (endDate?.value) setLocalEnd(endDate.value);
     }, [startDate?.value, endDate?.value]);
+
+    useEffect(() => {
+        if (showCalendar && toggleRef.current) {
+            const rect = toggleRef.current.getBoundingClientRect();
+            setPopupPosition({ x: rect.left + window.scrollX, y: rect.bottom + window.scrollY });
+        }
+    }, [showCalendar]);
+
+    useEffect(() => {
+        function onMouseMove(e: MouseEvent) {
+            if (dragging && dragStart) {
+                setPopupPosition({
+                    x: dragStart.popupX + (e.clientX - dragStart.mouseX),
+                    y: dragStart.popupY + (e.clientY - dragStart.mouseY)
+                });
+            }
+        }
+        function onMouseUp() {
+            setDragging(false);
+            setDragStart(null);
+        }
+        if (dragging) {
+            window.addEventListener("mousemove", onMouseMove);
+            window.addEventListener("mouseup", onMouseUp);
+        }
+        return () => {
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("mouseup", onMouseUp);
+        };
+    }, [dragging, dragStart]);
 
     const isSelectable = (date: Date): boolean => {
         const check = startOfDay(date);
@@ -158,14 +193,35 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
 
     return (
         <div className="trimm-range-datepicker">
-            <div className="trimm-range-datepicker-toggle">
+            <div className="trimm-range-datepicker-toggle" ref={toggleRef}>
                 {renderField("Start", localStart, step === "start")}
                 {renderField("End", localEnd, step === "end")}
             </div>
 
             {showCalendar && (
-                <div className="trimm-datepicker-popup">
-                    <div className="trimm-datepicker-nav">
+                <div
+                    ref={popupRef}
+                    className="trimm-datepicker-popup"
+                    style={{
+                        position: "absolute",
+                        left: popupPosition.x,
+                        top: popupPosition.y
+                    }}
+                >
+                    <div
+                        className="trimm-datepicker-nav"
+                        style={{ cursor: "move", userSelect: "none" }}
+                        onMouseDown={e => {
+                            e.preventDefault();
+                            setDragging(true);
+                            setDragStart({
+                                mouseX: e.clientX,
+                                mouseY: e.clientY,
+                                popupX: popupPosition.x,
+                                popupY: popupPosition.y
+                            });
+                        }}
+                    >
                         <button
                             type="button"
                             onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
