@@ -27928,7 +27928,7 @@ Do not render = "none"
   background-color: #a1a2a5 !important;
 }
 
-.button-base, .btn-cta, .btn-default {
+.button-base, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27984,6 +27984,61 @@ Do not render = "none"
 .btn-cta i.mdi,
 .btn-cta span > svg {
   color: currentColor;
+}
+
+.btn-inverse {
+  background-color: #231F20;
+  color: #FFFFFF;
+  border: 1px solid #231F20;
+}
+.btn-inverse:hover, .btn-inverse:focus, .btn-inverse:active {
+  background-color: #3e3739;
+  color: #231F20;
+}
+
+.btn-primary {
+  background-color: #00172B;
+  color: #FFFFFF;
+  border: 1px solid #00172B;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+  background-color: black;
+}
+
+.btn-info {
+  background-color: #0E808A;
+  color: #FFFFFF;
+  border: 1px solid #0E808A;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active {
+  background-color: #09555c;
+}
+
+.btn-success {
+  background-color: #176E4E;
+  color: #FFFFFF;
+  border: 1px solid #176E4E;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+  background-color: #0e4430;
+}
+
+.btn-warning {
+  background-color: #FFC107;
+  color: #231F20;
+  border: 1px solid #FFC107;
+}
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active {
+  background-color: #d39e00;
+}
+
+.btn-danger {
+  background-color: #B92025;
+  color: #FFFFFF;
+  border: 1px solid #B92025;
+}
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+  background-color: #8e181c;
 }
 
 .btn-sm {

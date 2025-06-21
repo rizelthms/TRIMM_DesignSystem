@@ -77,6 +77,91 @@
   }
 }
 
+// === INVERSE VARIANT ===
+.btn-inverse {
+  @extend .button-base;
+  background-color: $base-black;
+  color: $base-white;
+  border: $border-1 solid $base-black;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: lighten($base-black, 10%);
+    color: $base-black;
+  }
+}
+
+// === PRIMARY VARIANT ===
+.btn-primary {
+  @extend .button-base;
+  background-color: $brand-1;
+  color: $base-white;
+  border: $border-1 solid $brand-1;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($brand-1, 10%);
+  }
+}
+
+// === INFO VARIANT ===
+.btn-info {
+  @extend .button-base;
+  background-color: $brand-3;
+  color: $base-white;
+  border: $border-1 solid $brand-3;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($brand-3, 10%);
+  }
+}
+
+// === SUCCESS VARIANT ===
+.btn-success {
+  @extend .button-base;
+  background-color: $support-3;
+  color: $base-white;
+  border: $border-1 solid $support-3;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($support-3, 10%);
+  }
+}
+
+// === WARNING VARIANT ===
+.btn-warning {
+  @extend .button-base;
+  background-color: $support-4;
+  color: $base-black;
+  border: $border-1 solid $support-4;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($support-4, 10%);
+  }
+}
+
+// === DANGER VARIANT ===
+.btn-danger {
+  @extend .button-base;
+  background-color: $support-2;
+  color: $base-white;
+  border: $border-1 solid $support-2;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($support-2, 10%);
+  }
+}
+
 // === SIZE MODIFIERS ===
 // Applies to text-based buttons only. Use in combination with variant classes.
 .btn-sm {
