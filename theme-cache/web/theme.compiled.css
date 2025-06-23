@@ -28321,38 +28321,38 @@ Do not render = "none"
   font-size: 14px;
   padding: 4px 8px;
   border-radius: 4px;
-  border: 1px solid #6E6F72;
+  border: 1px solid var(--secondary-1);
   white-space: nowrap;
   color: var(--base-black);
 }
 
 .label-default {
-  background-color: #0E808A;
-  color: #FFFFFF;
+  background-color: var(--brand-3);
+  color: var(--base-white);
   border: none;
 }
 
 .label-secondary {
-  background-color: #F37123;
-  color: #FFFFFF;
+  background-color: var(--brand-2);
+  color: var(--base-white);
   border: none;
 }
 
 .label-success {
-  background-color: #176E4E;
-  color: #FFFFFF;
+  background-color: var(--support-3);
+  color: var(--base-white);
   border: none;
 }
 
 .label-danger {
-  background-color: #B92025;
-  color: #FFFFFF;
+  background-color: var(--support-2);
+  color: var(--base-white);
   border: none;
 }
 
 .label-warning {
-  background-color: #FFC107;
-  color: #FFFFFF;
+  background-color: var(--support-4);
+  color: var(--base-white);
   border: none;
 }
 

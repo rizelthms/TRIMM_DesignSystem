@@ -9,7 +9,7 @@
     font-size: $font-size-body-3;
     padding: $spacing-4 $spacing-8;
     border-radius: $radius-4;
-    border: $border-1 solid $secondary-1;
+    border: $border-1 solid var(--secondary-1);
     white-space: nowrap;
     color: var(--base-black);
 }
@@ -18,36 +18,36 @@
 // Each maps to a support token from the design system
 .label-default {
     @extend .label-base;
-    background-color: $brand-3; // Teal
-    color: $base-white;
+    background-color: var(--brand-3); // Teal
+    color: var(--base-white);
     border: none;
 }
 
 .label-secondary {
     @extend .label-base;
-    background-color: $brand-2; // Orange
-    color: $base-white;
+    background-color: var(--brand-2); // Orange
+    color: var(--base-white);
     border: none;
 }
 
 .label-success {
     @extend .label-base;
-    background-color: $support-3; // Green
-    color: $base-white;
+    background-color: var(--support-3); // Green
+    color: var(--base-white);
     border: none;
 }
 
 .label-danger {
     @extend .label-base;
-    background-color: $support-2; // Red
-    color: $base-white;
+    background-color: var(--support-2); // Red
+    color: var(--base-white);
     border: none;
 }
 
 .label-warning {
     @extend .label-base;
-    background-color: $support-4; //Yellow
-    color: $base-white;
+    background-color: var(--support-4); //Yellow
+    color: var(--base-white);
     border: none;
 }
 
