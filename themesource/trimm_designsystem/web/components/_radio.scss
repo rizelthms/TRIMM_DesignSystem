@@ -5,7 +5,7 @@
   font-family: $font-primary;
 
   input[type="radio"] {
-    accent-color: $brand-3;
+    accent-color: var(--brand-3);
     width: 16px;
     height: 16px;
     cursor: pointer;
@@ -14,7 +14,7 @@
     color: var(--brand-1);
 
     &:disabled {
-      accent-color: $secondary-2;
+      accent-color: var(--secondary-2);
       cursor: default;
     }
 
@@ -23,7 +23,7 @@
     }
 
     &:invalid {
-      accent-color: $support-2;
+      accent-color: var(--support-2);
     }
   }
 
@@ -33,11 +33,11 @@
     font-weight: $font-weight-normal;
 
     &.disabled {
-      color: $secondary-1;
+      color: var(--secondary-1);
     }
 
     &.invalid {
-      color: $support-2;
+      color: var(--support-2);
     }
   }
 }
