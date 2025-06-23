@@ -28107,7 +28107,7 @@ Do not render = "none"
   border-radius: 4px;
   border: 1px solid #6E6F72;
   white-space: nowrap;
-  color: var(--brand-1);
+  color: var(--base-black);
 }
 
 .label-default {
@@ -28306,7 +28306,7 @@ Do not render = "none"
 .textarea-base textarea.mx-textarea-input {
   font-size: 16px;
   font-weight: normal;
-  color: var(--brand-1) !important;
+  color: var(--base-black) !important;
   background-color: var(--base-white) !important;
   border: 1px solid #0E808A !important;
   border-radius: 4px !important;
@@ -28520,12 +28520,12 @@ Do not render = "none"
   border: none;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  background-color: #FFFFFF;
+  background-color: var(--base-white);
   overflow: hidden;
   transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 .accordion-base.mx-groupbox-open {
-  background-color: #231F20;
+  background-color: var(--base-black);
   box-shadow: none;
 }
 
@@ -28535,7 +28535,7 @@ Do not render = "none"
 
 .widget-accordion-group-header-button {
   padding: 16px 24px;
-  background-color: #FFFFFF;
+  background-color: var(--base-white);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -28553,7 +28553,7 @@ Do not render = "none"
 }
 
 .widget-accordion-group-header-button[aria-expanded=true] > h3 {
-  color: #FFFFFF;
+  color: var(--base-white);
 }
 
 .widget-accordion-group-header-title,
@@ -28561,7 +28561,7 @@ Do not render = "none"
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #231F20;
+  color: var(--base-black);
   margin: 0;
   transition: color 0.2s ease;
 }
@@ -28571,7 +28571,7 @@ Do not render = "none"
   font-family: "GothamSSm", sans-serif;
   font-size: 14px;
   font-weight: normal;
-  color: #FFFFFF;
+  color: var(--base-white);
   background-color: rgba(110, 111, 114, 0.3);
 }
 
@@ -28593,7 +28593,7 @@ Do not render = "none"
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: var(--brand-1);
+  color: var(--base-black);
 }
 .tab-base .mx-tabcontainer-tabs {
   display: flex;
