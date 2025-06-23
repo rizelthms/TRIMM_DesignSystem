@@ -28875,8 +28875,8 @@ Do not render = "none"
 }
 
 .trimm-dropdown-toggle {
-  background-color: #0E808A;
-  color: #FFFFFF;
+  background-color: var(--brand-3);
+  color: var(--base-white);
   padding: 8px 16px;
   font-weight: 600;
   border: none;
@@ -28887,11 +28887,13 @@ Do not render = "none"
 .trimm-dropdown-toggle:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
+  background-color: var(--brand-3-hover);
+  color: var(--base-white);
 }
 
 .trimm-dropdown-menu {
   margin-top: 8px;
-  background-color: #FFFFFF;
+  background-color: var(--base-white);
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
   padding: 8px 0;
@@ -28904,11 +28906,12 @@ Do not render = "none"
 .trimm-dropdown-item {
   padding: 8px 16px;
   font-size: 16px;
-  color: #231F20;
+  color: var(--base-black);
   cursor: pointer;
 }
 .trimm-dropdown-item:hover {
-  background-color: rgba(243, 113, 35, 0.1);
+  background-color: var(--brand-2-hover);
+  color: var(--base-black);
 }
 
 .trimm-dropdown-icon {
@@ -28944,14 +28947,14 @@ Do not render = "none"
 
 .trimm-datepicker-icon {
   font-size: 12px;
-  color: #6E6F72;
+  color: var(--secondary-1);
 }
 
 .trimm-datepicker-input {
   width: 100%;
   padding: 8px 12px;
   font-size: 14px;
-  border: 1px solid #6E6F72;
+  border: 1px solid var(--secondary-1);
   border-radius: 4px;
   cursor: pointer;
   background-color: var(--base-white);
@@ -28963,8 +28966,8 @@ Do not render = "none"
   left: 0;
   margin-top: 4px;
   padding: 12px;
-  background-color: #FFFFFF;
-  border: 1px solid #6E6F72;
+  background-color: var(--base-white);
+  border: 1px solid var(--secondary-1);
   border-radius: 4px;
   z-index: 1000;
   width: 280px;
@@ -29002,8 +29005,8 @@ Do not render = "none"
 .trimm-datepicker-day-label {
   font-weight: 500;
   text-transform: uppercase;
-  color: #6E6F72;
-  border-bottom: 1px solid rgba(110, 111, 114, 0.1);
+  color: var(--secondary-1);
+  border-bottom: 1px solid rgba(var(--secondary-1), 0.1);
 }
 
 .trimm-datepicker-cell {
@@ -29012,18 +29015,18 @@ Do not render = "none"
   transition: background 0.2s ease-in-out;
 }
 .trimm-datepicker-cell:hover {
-  background-color: rgba(243, 113, 35, 0.1);
+  background-color: var(--brand-2-hover);
 }
 .trimm-datepicker-cell.selected {
-  background-color: #00172B;
-  color: #FFFFFF;
+  background-color: var(--brand-1);
+  color: var(--base-white);
   font-weight: bold;
 }
 .trimm-datepicker-cell.today {
-  border: 1px solid #00172B;
+  border: 1px solid var(--brand-1);
 }
 .trimm-datepicker-cell.disabled {
-  color: #6E6F72;
+  color: var(--secondary-1-disabled);
   cursor: not-allowed;
 }
 
@@ -29047,7 +29050,7 @@ Do not render = "none"
 .trimm-range-datepicker-field {
   flex: 1;
   padding: 8px 16px;
-  border: 1px solid #231F20;
+  border: 1px solid var(--base-black);
   background-color: var(--base-white);
   border-radius: 4px;
   cursor: pointer;
@@ -29063,7 +29066,7 @@ Do not render = "none"
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #231F20;
+  color: var(--base-black);
   font-weight: 400;
 }
 
@@ -29087,7 +29090,7 @@ Do not render = "none"
   cursor: pointer;
   font-size: 14px;
   padding: 4px;
-  color: #231F20;
+  color: var(--base-black);
 }
 
 .trimm-datepicker-months {
@@ -29103,7 +29106,7 @@ Do not render = "none"
   text-align: center;
   font-weight: bold;
   font-size: 16px;
-  color: #231F20;
+  color: var(--base-black);
   margin-bottom: 8px;
 }
 
@@ -29117,7 +29120,7 @@ Do not render = "none"
 
 .trimm-datepicker-day-label {
   font-weight: 500;
-  color: #231F20;
+  color: var(--base-black);
 }
 
 .trimm-datepicker-row {
@@ -29138,22 +29141,22 @@ Do not render = "none"
   transition: background-color 0.2s ease;
 }
 .trimm-range-datepicker-day:hover {
-  background-color: #0E808A;
-  color: #FFFFFF;
+  background-color: var(--brand-3-hover);
+  color: var(--base-white);
 }
 .trimm-range-datepicker-day.selected {
   background-color: var(--brand-1);
-  color: #FFFFFF;
+  color: var(--base-white);
 }
 .trimm-range-datepicker-day.in-range {
-  background-color: rgba(243, 113, 35, 0.3);
-  color: #231F20;
+  background-color: var(--brand-2-hover);
+  color: var(--base-black);
   font-size: 12px;
   border-radius: 0;
 }
 .trimm-range-datepicker-day.disabled {
   background-color: transparent;
-  color: #6E6F72;
+  color: var(--secondary-1-disabled);
   cursor: not-allowed !important;
   pointer-events: none;
 }
