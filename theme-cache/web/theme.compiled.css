@@ -28485,20 +28485,51 @@ Do not render = "none"
   color: var(--support-2);
 }
 
+.widget-switch .widget-switch-btn-wrapper {
+  transition: all 0.2s ease-in-out;
+}
 .widget-switch .widget-switch-btn-wrapper.checked {
   background-color: var(--brand-3) !important;
   border-color: var(--brand-3) !important;
   box-shadow: inset 0 0 0 16px var(--brand-3) !important;
 }
-
+.widget-switch .widget-switch-btn-wrapper.checked:hover:not(.disabled) {
+  background-color: var(--brand-3-hover) !important;
+  border-color: var(--brand-3-hover) !important;
+  box-shadow: inset 0 0 0 16px var(--brand-3-hover) !important;
+}
+.widget-switch .widget-switch-btn-wrapper.checked.disabled {
+  background-color: var(--brand-3-disabled) !important;
+  border-color: var(--brand-3-disabled) !important;
+  box-shadow: inset 0 0 0 16px var(--brand-3-disabled) !important;
+}
 .widget-switch .widget-switch-btn-wrapper:not(.checked) {
   background-color: var(--base-white) !important;
-  border-color: rgba(110, 111, 114, 0.2) !important;
-  box-shadow: inset 0 0 0 16px rgba(110, 111, 114, 0.2) !important;
+  border-color: var(--secondary-1) !important;
+  box-shadow: inset 0 0 0 16px var(--secondary-1-disabled) !important;
 }
-
-.widget-switch .widget-switch-btn-wrapper .widget-switch-btn.right {
+.widget-switch .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled) {
+  border-color: var(--secondary-1-hover) !important;
+  box-shadow: inset 0 0 0 16px var(--secondary-1-hover) !important;
+}
+.widget-switch .widget-switch-btn-wrapper:not(.checked).disabled {
+  border-color: var(--secondary-1-disabled) !important;
+  box-shadow: inset 0 0 0 16px var(--secondary-1-disabled) !important;
+}
+.widget-switch .widget-switch-btn-wrapper .widget-switch-btn {
   background-color: var(--base-white) !important;
+  box-shadow: 0 2px 4px var(--secondary-1-disabled);
+}
+.widget-switch .widget-switch-btn-wrapper .widget-switch-btn.disabled {
+  background-color: var(--base-white-disabled) !important;
+}
+.widget-switch .widget-switch-text {
+  color: var(--base-black);
+  font-family: "GothamSSm", sans-serif;
+  font-size: 16px;
+}
+.widget-switch .widget-switch-text.disabled {
+  color: var(--secondary-1);
 }
 
 .tooltip-base {
