@@ -28377,7 +28377,7 @@ Do not render = "none"
 .menu-base ul,
 .menu-base .mx-menubar-list,
 .menu-base .mx-popupmenu-list {
-  background-color: #0E808A;
+  background-color: var(--brand-3);
   padding: 0;
   list-style: none;
 }
@@ -28419,7 +28419,7 @@ Do not render = "none"
 .menu-base .mx-navigationlist-item a:hover,
 .menu-base .mx-navigationlist-item a.active,
 .menu-base .mx-navigationlist-item a.selected {
-  background-color: #F37123 !important;
+  background-color: var(--brand-2) !important;
   color: var(--base-white) !important;
 }
 .menu-base li a svg,
@@ -28442,13 +28442,13 @@ Do not render = "none"
 .menu-base .mx-menubar-list > li.active > a,
 .menu-base .mx-navigationlist-item:hover,
 .menu-base .mx-navigationlist-item.active {
-  background-color: #F37123 !important;
+  background-color: var(--brand-2) !important;
   color: var(--base-white) !important;
 }
 
 .menu-base,
 .menu-base.mx-menubar {
-  background-color: #0E808A !important;
+  background-color: var(--brand-3) !important;
 }
 
 .radio-base {
