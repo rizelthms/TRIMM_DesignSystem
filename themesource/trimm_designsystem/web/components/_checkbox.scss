@@ -16,9 +16,9 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: $border-1 solid $secondary-1;
+    border: $border-1 solid var(--secondary-1);
     border-radius: $radius-4;
-    background-color: $base-white;
+    background: var(--base-white);
     position: relative;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -39,27 +39,27 @@
     }
 
     &:checked {
-      background-color: $brand-3;
-      border-color: $brand-3;
+      background-color: var(--brand-3);
+      border-color: var(--brand-3);
 
       &::after {
-        color: $base-white;
+        color: var(--base-white);
       }
     }
 
     &:active {
       &::after {
-        color: rgba($base-white, 0.6);
+        color: rgba(var(--base-white), 0.6);
       }
     }
 
     &:disabled {
-      background-color: rgba($brand-3, 0.3);
-      border-color: rgba($brand-3, 0.4);
+      background-color: rgba(var(--brand-3), 0.3);
+      border-color: rgba(var(--brand-3), 0.4);
       cursor: not-allowed;
 
       &::after {
-        color: rgba($base-white, 0.8);
+        color: rgba(var(--base-white), 0.8);
       }
     }
   }
@@ -71,12 +71,12 @@
     font-family: $font-primary;
     font-size: $font-size-body-2;
     font-weight: $font-weight-semibold;
-    color: $base-black;
+    color: var(--base-black);
     user-select: none;
     cursor: pointer;
 
     &:disabled {
-      color: rgba($base-black, 0.4);
+      color: rgba(var(--base-black), 0.4);
       cursor: not-allowed;
     }
   }

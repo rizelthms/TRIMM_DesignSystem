@@ -33,7 +33,7 @@
             gap: $spacing-8;
             padding: $spacing-8 $spacing-16;
             text-decoration: none;
-            color: $base-white !important;
+            color: var(--base-white) !important;
             border-radius: inherit;
             background-color: transparent !important;
             transition: background-color 0.2s ease;
@@ -43,7 +43,7 @@
             &.active,
             &.selected {
                 background-color: $brand-2 !important;
-                color: $base-white !important;
+                color: var(--base-white) !important;
             }
 
             // Force icon color
@@ -63,7 +63,7 @@
     .mx-navigationlist-item:hover,
     .mx-navigationlist-item.active {
         background-color: $brand-2 !important;
-        color: $base-white !important;
+        color: var(--base-white) !important;
     }
 }
 

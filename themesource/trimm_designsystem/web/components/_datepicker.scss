@@ -24,7 +24,7 @@
     border: $border-1 solid $secondary-1;
     border-radius: $radius-4;
     cursor: pointer;
-    background-color: $base-white;
+    background-color: var(--base-white);
 }
 
 .trimm-datepicker-calendar {

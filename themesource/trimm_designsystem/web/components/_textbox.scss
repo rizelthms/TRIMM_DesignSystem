@@ -5,8 +5,8 @@
     font-family: $font-primary !important;
     font-size: $font-size-body-2 !important;
     font-weight: $font-weight-normal !important;
-    color: $base-black !important;
-    background-color: rgba($brand-3, 0.2) !important;
+    color: var(--base-black) !important;
+    background-color: var(--base-white) !important;
     border: $border-1 solid $brand-3 !important;
     border-radius: $radius-4 !important;
     padding: $spacing-12 $spacing-16 !important;

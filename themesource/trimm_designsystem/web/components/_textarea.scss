@@ -6,8 +6,8 @@
     textarea.mx-textarea-input {
         font-size: $font-size-body-2;
         font-weight: $font-weight-normal;
-        color: $base-black !important;
-        background-color: rgba($brand-3, 0.2) !important;
+        color: var(--brand-1) !important;
+        background-color: var(--base-white) !important;
         border: $border-1 solid $brand-3 !important;
         border-radius: $radius-4 !important;
         padding: $spacing-12 $spacing-16 !important;

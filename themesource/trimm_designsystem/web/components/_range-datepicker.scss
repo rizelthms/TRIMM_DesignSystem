@@ -19,14 +19,14 @@
     flex: 1;
     padding: $spacing-8 $spacing-16;
     border: $border-1 solid $base-black;
-    background-color: $base-white;
+    background-color: var(--base-white);
     border-radius: $radius-4;
     cursor: pointer;
     text-align: left;
     font-weight: $font-weight-regular;
 
     &.active {
-        border-color: $brand-1;
+        border-color: var(--brand-1);
     }
 }
 
@@ -116,7 +116,7 @@
     }
 
     &.selected {
-        background-color: $brand-1;
+        background-color: var(--brand-1);
         color: $base-white;
     }
 

@@ -1,0 +1,31 @@
+// Light mode (default)
+:root {
+    --brand-1: #00172B;
+    --brand-2: #F37123;
+    --brand-3: #0E808A;
+    --base-black: #231F20;
+    --base-white: #FFFFFF;
+    --secondary-1: #6E6F72;
+    --secondary-2: #EDD7C4;
+    --support-1: #392B78;
+    --support-2: #B92025;
+    --support-3: #176E4E;
+    --support-4: #FFC107;
+    --brand-1-hover: #000e18;
+  }
+  
+  // Dark mode
+  [data-theme="dark"] {
+    --brand-1: #00060B;
+    --brand-1-hover: #000307;
+    --brand-2: #{darken(#F37123, 40%)};
+    --brand-3: #{darken(#0E808A, 40%)};
+    --base-black: #{darken(#231F20, 40%)};
+    --base-white: #{darken(#FFFFFF, 40%)};
+    --secondary-1: #{darken(#6E6F72, 40%)};
+    --secondary-2: #{darken(#EDD7C4, 40%)};
+    --support-1: #{darken(#392B78, 40%)};
+    --support-2: #{darken(#B92025, 40%)};
+    --support-3: #{darken(#176E4E, 40%)};
+    --support-4: #{darken(#FFC107, 40%)};
+  }

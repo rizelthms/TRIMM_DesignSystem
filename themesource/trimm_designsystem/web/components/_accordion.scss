@@ -77,3 +77,12 @@
     opacity: 0.5;
     pointer-events: none;
 }
+
+.widget-accordion-group-content {
+    padding: $spacing-16 $spacing-24;
+    font-family: $font-primary;
+    font-size: $font-size-body-3;
+    font-weight: $font-weight-normal;
+    color: var(--brand-1);
+    background-color: var(--secondary-2);
+}

@@ -27853,6 +27853,36 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+:root {
+  --brand-1: #00172B;
+  --brand-2: #F37123;
+  --brand-3: #0E808A;
+  --base-black: #231F20;
+  --base-white: #FFFFFF;
+  --secondary-1: #6E6F72;
+  --secondary-2: #EDD7C4;
+  --support-1: #392B78;
+  --support-2: #B92025;
+  --support-3: #176E4E;
+  --support-4: #FFC107;
+  --brand-1-hover: #000e18;
+}
+
+[data-theme=dark] {
+  --brand-1: #00060B;
+  --brand-1-hover: #000307;
+  --brand-2: #461d04;
+  --brand-3: black;
+  --base-black: black;
+  --base-white: #999999;
+  --secondary-1: #0a0a0a;
+  --secondary-2: #af6e36;
+  --support-1: black;
+  --support-2: #0b0202;
+  --support-3: black;
+  --support-4: #3a2c00;
+}
+
 .alert-base {
   font-family: "GothamSSm", sans-serif;
   border-radius: 4px;
@@ -27911,11 +27941,11 @@ Do not render = "none"
 
 .alert-warning {
   background-color: #FFC107 !important;
-  color: #231F20 !important;
+  color: var(--base-black) !important;
 }
 .alert-warning .alert-title,
 .alert-warning .alert-description {
-  color: #231F20 !important;
+  color: var(--base-black) !important;
 }
 .alert-warning:hover {
   background-color: #ffdb6d !important;
@@ -27997,12 +28027,12 @@ Do not render = "none"
 }
 
 .btn-primary {
-  background-color: #00172B;
-  color: #FFFFFF;
-  border: 1px solid #00172B;
+  background-color: var(--brand-1);
+  color: var(--base-white);
+  border: 1px solid var(--brand-1);
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background-color: black;
+  background-color: var(--brand-1-hover);
 }
 
 .btn-info {
@@ -28077,7 +28107,7 @@ Do not render = "none"
   border-radius: 4px;
   border: 1px solid #6E6F72;
   white-space: nowrap;
-  color: #231F20;
+  color: var(--brand-1);
 }
 
 .label-default {
@@ -28158,7 +28188,7 @@ Do not render = "none"
   gap: 8px;
   padding: 8px 16px;
   text-decoration: none;
-  color: #FFFFFF !important;
+  color: var(--base-white) !important;
   border-radius: inherit;
   background-color: transparent !important;
   transition: background-color 0.2s ease;
@@ -28174,7 +28204,7 @@ Do not render = "none"
 .menu-base .mx-navigationlist-item a.active,
 .menu-base .mx-navigationlist-item a.selected {
   background-color: #F37123 !important;
-  color: #FFFFFF !important;
+  color: var(--base-white) !important;
 }
 .menu-base li a svg,
 .menu-base li a i.mdi,
@@ -28197,7 +28227,7 @@ Do not render = "none"
 .menu-base .mx-navigationlist-item:hover,
 .menu-base .mx-navigationlist-item.active {
   background-color: #F37123 !important;
-  color: #FFFFFF !important;
+  color: var(--base-white) !important;
 }
 
 .menu-base,
@@ -28213,13 +28243,16 @@ Do not render = "none"
   width: 16px;
   height: 16px;
   cursor: pointer;
+  background: var(--base-white);
+  border-color: var(--brand-1);
+  color: var(--brand-1);
 }
 .radio-base input[type=radio]:disabled {
   accent-color: #EDD7C4;
   cursor: default;
 }
 .radio-base input[type=radio]:hover:not(:disabled) {
-  border-color: #09555c;
+  border-color: var(--brand-3-hover);
 }
 .radio-base input[type=radio]:invalid {
   accent-color: #B92025;
@@ -28237,27 +28270,27 @@ Do not render = "none"
 }
 
 .widget-switch .widget-switch-btn-wrapper.checked {
-  background-color: #0E808A !important;
-  border-color: #0E808A !important;
-  box-shadow: inset 0 0 0 16px #0E808A !important;
+  background-color: var(--brand-3) !important;
+  border-color: var(--brand-3) !important;
+  box-shadow: inset 0 0 0 16px var(--brand-3) !important;
 }
 
 .widget-switch .widget-switch-btn-wrapper:not(.checked) {
-  background-color: #FFFFFF !important;
+  background-color: var(--base-white) !important;
   border-color: rgba(110, 111, 114, 0.2) !important;
   box-shadow: inset 0 0 0 16px rgba(110, 111, 114, 0.2) !important;
 }
 
 .widget-switch .widget-switch-btn-wrapper .widget-switch-btn.right {
-  background-color: #FFFFFF !important;
+  background-color: var(--base-white) !important;
 }
 
 .tooltip-base {
   font-family: "GothamSSm", sans-serif;
 }
 .tooltip-base .widget-tooltip-content {
-  background-color: #F37123 !important;
-  color: #FFFFFF !important;
+  background: var(--brand-2) !important;
+  color: var(--base-white) !important;
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 14px;
@@ -28273,8 +28306,8 @@ Do not render = "none"
 .textarea-base textarea.mx-textarea-input {
   font-size: 16px;
   font-weight: normal;
-  color: #231F20 !important;
-  background-color: rgba(14, 128, 138, 0.2) !important;
+  color: var(--brand-1) !important;
+  background-color: var(--base-white) !important;
   border: 1px solid #0E808A !important;
   border-radius: 4px !important;
   padding: 12px 16px !important;
@@ -28326,8 +28359,8 @@ Do not render = "none"
   font-family: "GothamSSm", sans-serif !important;
   font-size: 16px !important;
   font-weight: normal !important;
-  color: #231F20 !important;
-  background-color: rgba(14, 128, 138, 0.2) !important;
+  color: var(--base-black) !important;
+  background-color: var(--base-white) !important;
   border: 1px solid #0E808A !important;
   border-radius: 4px !important;
   padding: 12px 16px !important;
@@ -28391,9 +28424,9 @@ Do not render = "none"
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #6E6F72;
+  border: 1px solid var(--secondary-1);
   border-radius: 4px;
-  background-color: #FFFFFF;
+  background: var(--base-white);
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -28408,35 +28441,35 @@ Do not render = "none"
   transition: color 0.2s ease-in-out;
 }
 .checkbox-base input[type=checkbox]:checked {
-  background-color: #0E808A;
-  border-color: #0E808A;
+  background-color: var(--brand-3);
+  border-color: var(--brand-3);
 }
 .checkbox-base input[type=checkbox]:checked::after {
-  color: #FFFFFF;
+  color: var(--base-white);
 }
 .checkbox-base input[type=checkbox]:active::after {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(var(--base-white), 0.6);
 }
 .checkbox-base input[type=checkbox]:disabled {
-  background-color: rgba(14, 128, 138, 0.3);
-  border-color: rgba(14, 128, 138, 0.4);
+  background-color: rgba(var(--brand-3), 0.3);
+  border-color: rgba(var(--brand-3), 0.4);
   cursor: not-allowed;
 }
 .checkbox-base input[type=checkbox]:disabled::after {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(var(--base-white), 0.8);
 }
 .checkbox-base label,
 .checkbox-base .mx-checkbox-label {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #231F20;
+  color: var(--base-black);
   user-select: none;
   cursor: pointer;
 }
 .checkbox-base label:disabled,
 .checkbox-base .mx-checkbox-label:disabled {
-  color: rgba(35, 31, 32, 0.4);
+  color: rgba(var(--base-black), 0.4);
   cursor: not-allowed;
 }
 
@@ -28547,18 +28580,27 @@ Do not render = "none"
   pointer-events: none;
 }
 
+.widget-accordion-group-content {
+  padding: 16px 24px;
+  font-family: "GothamSSm", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: var(--brand-1);
+  background-color: var(--secondary-2);
+}
+
 .tab-base {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #231F20;
+  color: var(--brand-1);
 }
 .tab-base .mx-tabcontainer-tabs {
   display: flex;
   gap: 4px;
   padding: 0 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  background-color: #FFFFFF;
+  background-color: var(--base-white);
 }
 .tab-base .mx-tabcontainer-tabs > li {
   list-style: none;
@@ -28682,7 +28724,7 @@ Do not render = "none"
   border: 1px solid #6E6F72;
   border-radius: 4px;
   cursor: pointer;
-  background-color: #FFFFFF;
+  background-color: var(--base-white);
 }
 
 .trimm-datepicker-calendar {
@@ -28776,14 +28818,14 @@ Do not render = "none"
   flex: 1;
   padding: 8px 16px;
   border: 1px solid #231F20;
-  background-color: #FFFFFF;
+  background-color: var(--base-white);
   border-radius: 4px;
   cursor: pointer;
   text-align: left;
   font-weight: 400;
 }
 .trimm-range-datepicker-field.active {
-  border-color: #00172B;
+  border-color: var(--brand-1);
 }
 
 .trimm-range-datepicker-label-inline {
@@ -28870,7 +28912,7 @@ Do not render = "none"
   color: #FFFFFF;
 }
 .trimm-range-datepicker-day.selected {
-  background-color: #00172B;
+  background-color: var(--brand-1);
   color: #FFFFFF;
 }
 .trimm-range-datepicker-day.in-range {

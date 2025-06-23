@@ -9,6 +9,9 @@
     width: 16px;
     height: 16px;
     cursor: pointer;
+    background: var(--base-white);
+    border-color: var(--brand-1);
+    color: var(--brand-1);
 
     &:disabled {
       accent-color: $secondary-2;
@@ -16,7 +19,7 @@
     }
 
     &:hover:not(:disabled) {
-      border-color: darken($brand-3, 10%);
+      border-color: var(--brand-3-hover);
     }
 
     &:invalid {

@@ -72,11 +72,11 @@
 
 .alert-warning {
     background-color: $support-4 !important;
-    color: $base-black !important;
+    color: var(--base-black) !important;
 
     .alert-title,
     .alert-description {
-        color: $base-black !important;
+        color: var(--base-black) !important;
     }
 
     &:hover {

@@ -95,14 +95,14 @@
 // === PRIMARY VARIANT ===
 .btn-primary {
   @extend .button-base;
-  background-color: $brand-1;
-  color: $base-white;
-  border: $border-1 solid $brand-1;
+  background-color: var(--brand-1);
+  color: var(--base-white);
+  border: $border-1 solid var(--brand-1);
 
   &:hover,
   &:focus,
   &:active {
-    background-color: darken($brand-1, 10%);
+    background-color: var(--brand-1-hover);
   }
 }
 
