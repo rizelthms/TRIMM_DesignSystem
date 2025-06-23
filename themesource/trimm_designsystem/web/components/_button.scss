@@ -22,31 +22,31 @@
 .btn-default {
   @extend .button-base;
   background-color: transparent;
-  color: $base-black;
-  border: $border-1 solid $base-white;
+  color: var(--base-black);
+  border: $border-1 solid var(--base-white);
   box-shadow: $shadow-8;
 
   &:hover,
   &:focus,
   &:active {
-    background-color: $base-white;
-    color: $base-black;
+    background-color: var(--base-white);
+    color: var(--base-black);
   }
 
   &:disabled,
   &.btn-disabled {
-    background-color: $secondary-1;
-    color: $base-white;
-    border-color: $base-black;
+    background-color: var(--secondary-1);
+    color: var(--base-white);
+    border-color: var(--base-black);
     cursor: not-allowed;
     opacity: 0.6;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $secondary-1;
-      color: $base-white;
-      border-color: $base-black;
+      background-color: var(--secondary-1);
+      color: var(--base-white);
+      border-color: var(--base-black);
     }
   }
 
@@ -62,12 +62,12 @@
 // Orange background, white text, no border
 .btn-cta {
   @extend .button-base;
-  background-color: $brand-2;
-  color: $base-white;
+  background-color: var(--brand-2);
+  color: var(--base-white);
   border: none;
 
   &:hover {
-    background-color: darken($brand-2, 10%);
+    background-color: var(--brand-2-hover);
   }
 
   svg,
@@ -80,15 +80,15 @@
 // === INVERSE VARIANT ===
 .btn-inverse {
   @extend .button-base;
-  background-color: $base-black;
-  color: $base-white;
-  border: $border-1 solid $base-black;
+  background-color: var(--base-black);
+  color: var(--base-white);
+  border: $border-1 solid var(--base-black);
 
   &:hover,
   &:focus,
   &:active {
-    background-color: lighten($base-black, 10%);
-    color: $base-black;
+    background-color: var(--base-black-hover);
+    color: var(--base-black);
   }
 }
 
@@ -109,56 +109,56 @@
 // === INFO VARIANT ===
 .btn-info {
   @extend .button-base;
-  background-color: $brand-3;
-  color: $base-white;
-  border: $border-1 solid $brand-3;
+  background-color: var(--brand-3);
+  color: var(--base-white);
+  border: $border-1 solid var(--brand-3);
 
   &:hover,
   &:focus,
   &:active {
-    background-color: darken($brand-3, 10%);
+    background-color: var(--brand-3-hover);
   }
 }
 
 // === SUCCESS VARIANT ===
 .btn-success {
   @extend .button-base;
-  background-color: $support-3;
-  color: $base-white;
-  border: $border-1 solid $support-3;
+  background-color: var(--support-3);
+  color: var(--base-white);
+  border: $border-1 solid var(--support-3);
 
   &:hover,
   &:focus,
   &:active {
-    background-color: darken($support-3, 10%);
+    background-color: var(--support-3-hover);
   }
 }
 
 // === WARNING VARIANT ===
 .btn-warning {
   @extend .button-base;
-  background-color: $support-4;
-  color: $base-black;
-  border: $border-1 solid $support-4;
+  background-color: var(--support-4);
+  color: var(--base-black);
+  border: $border-1 solid var(--support-4);
 
   &:hover,
   &:focus,
   &:active {
-    background-color: darken($support-4, 10%);
+    background-color: var(--support-4-hover);
   }
 }
 
 // === DANGER VARIANT ===
 .btn-danger {
   @extend .button-base;
-  background-color: $support-2;
-  color: $base-white;
-  border: $border-1 solid $support-2;
+  background-color: var(--support-2);
+  color: var(--base-white);
+  border: $border-1 solid var(--support-2);
 
   &:hover,
   &:focus,
   &:active {
-    background-color: darken($support-2, 10%);
+    background-color: var(--support-2-hover);
   }
 }
 

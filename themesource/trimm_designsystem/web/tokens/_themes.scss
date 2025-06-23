@@ -7,29 +7,31 @@
 :root {
     // Brand Colors
     --brand-1: #00172b;
-    --brand-1-hover: #{lighten(#00172b, 10%)};
+    --brand-1-hover: #{lighten(#00172b, 15%)};
     --brand-2: #f37123;
-    --brand-2-hover: #{lighten(#f37123, 20%)};
+    --brand-2-hover: #{lighten(#f37123, 15%)};
     --brand-3: #0e808a;
-    --brand-3-hover: #{lighten(#0e808a, 20%)};
+    --brand-3-hover: #{lighten(#0e808a, 15%)};
 
     // Base Colors
     --base-black: #231f20;
     --base-white: #ffffff;
+    --base-black-hover: #{lighten(#231f20, 15%)};
+    --base-white-hover: #{darken(#ffffff, 15%)};
 
     // Secondary Colors
     --secondary-1: #6e6f72;
-    --secondary-1-hover: #{lighten(#6e6f72, 20%)};
+    --secondary-1-hover: #{lighten(#6e6f72, 15%)};
     --secondary-2: #edd7c4;
 
     // Support Colors
     --support-1: #392b78;
     --support-2: #b92025;
-    --support-2-hover: #{lighten(#b92025, 20%)};
+    --support-2-hover: #{lighten(#b92025, 15%)};
     --support-3: #176e4e;
-    --support-3-hover: #{lighten(#176e4e, 20%)};
+    --support-3-hover: #{lighten(#176e4e, 15%)};
     --support-4: #ffc107; //( For Warnings: Not mentioned in the brandbook but added for styling purposes)
-    --support-4-hover: #{lighten(#ffc107, 20%)};
+    --support-4-hover: #{lighten(#ffc107, 15%)};
 }
 
 // Dark mode
@@ -45,6 +47,8 @@
     // Base Colors
     --base-black: #{darken(#231f20, 15%)};
     --base-white: #{darken(#ffffff, 15%)};
+    --base-black-hover: #{lighten(darken(#231f20, 15%), 10%)};
+    --base-white-hover: #{darken(darken(#ffffff, 15%), 10%)};
 
     // Secondary Colors
     --secondary-1: #{darken(#6e6f72, 15%)};
