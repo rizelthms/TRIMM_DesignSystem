@@ -12,12 +12,16 @@
     --brand-2-hover: #{lighten(#f37123, 15%)};
     --brand-3: #0e808a;
     --brand-3-hover: #{lighten(#0e808a, 15%)};
+    --brand-3-disabled: rgba(14, 128, 138, 0.3);
 
     // Base Colors
     --base-black: #231f20;
     --base-white: #ffffff;
     --base-black-hover: #{lighten(#231f20, 15%)};
     --base-white-hover: #{darken(#ffffff, 15%)};
+    --base-white-active: rgba(255, 255, 255, 0.6);
+    --base-white-disabled: rgba(255, 255, 255, 0.8);
+    --base-black-disabled: rgba(35, 31, 32, 0.4);
 
     // Secondary Colors
     --secondary-1: #6e6f72;
@@ -43,12 +47,16 @@
     --brand-2-hover: #{lighten(darken(#f37123, 15%), 10%)};
     --brand-3: #{darken(#0e808a, 15%)};
     --brand-3-hover: #{lighten(darken(#0e808a, 15%), 10%)};
+    --brand-3-disabled: rgba(11, 51, 55, 0.3);
 
     // Base Colors
     --base-black: #{darken(#231f20, 15%)};
     --base-white: #{darken(#ffffff, 15%)};
     --base-black-hover: #{lighten(darken(#231f20, 15%), 10%)};
     --base-white-hover: #{darken(darken(#ffffff, 15%), 10%)};
+    --base-white-active: rgba(219, 219, 219, 0.6);
+    --base-white-disabled: rgba(219, 219, 219, 0.8);
+    --base-black-disabled: rgba(28, 25, 26, 0.4);
 
     // Secondary Colors
     --secondary-1: #{darken(#6e6f72, 15%)};

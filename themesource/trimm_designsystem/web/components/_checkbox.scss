@@ -49,17 +49,17 @@
 
     &:active {
       &::after {
-        color: rgba(var(--base-white), 0.6);
+        color: var(--base-white-active);
       }
     }
 
     &:disabled {
-      background-color: rgba(var(--brand-3), 0.3);
-      border-color: rgba(var(--brand-3), 0.4);
+      background-color: var(--brand-3-disabled);
+      border-color: var(--brand-3-disabled);
       cursor: not-allowed;
 
       &::after {
-        color: rgba(var(--base-white), 0.8);
+        color: var(--base-white-disabled);
       }
     }
   }
@@ -76,7 +76,7 @@
     cursor: pointer;
 
     &:disabled {
-      color: rgba(var(--base-black), 0.4);
+      color: var(--base-black-disabled);
       cursor: not-allowed;
     }
   }

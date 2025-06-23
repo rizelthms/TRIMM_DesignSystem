@@ -27860,10 +27860,14 @@ Do not render = "none"
   --brand-2-hover: #f7a06c;
   --brand-3: #0e808a;
   --brand-3-hover: #15c0cf;
+  --brand-3-disabled: rgba(14, 128, 138, 0.3);
   --base-black: #231f20;
   --base-white: #ffffff;
   --base-black-hover: #4c4345;
   --base-white-hover: #d9d9d9;
+  --base-white-active: rgba(255, 255, 255, 0.6);
+  --base-white-disabled: rgba(255, 255, 255, 0.8);
+  --base-black-disabled: rgba(35, 31, 32, 0.4);
   --secondary-1: #6e6f72;
   --secondary-1-hover: #949598;
   --secondary-2: #edd7c4;
@@ -27883,10 +27887,14 @@ Do not render = "none"
   --brand-2-hover: #ef620d;
   --brand-3: #074045;
   --brand-3-hover: #0c6b73;
+  --brand-3-disabled: rgba(11, 51, 55, 0.3);
   --base-black: black;
   --base-white: #d9d9d9;
   --base-black-hover: #1b1819;
   --base-white-hover: #bfbfbf;
+  --base-white-active: rgba(219, 219, 219, 0.6);
+  --base-white-disabled: rgba(219, 219, 219, 0.8);
+  --base-black-disabled: rgba(28, 25, 26, 0.4);
   --secondary-1: #48494b;
   --secondary-1-hover: #616265;
   --secondary-2: #dbaf89;
@@ -28464,15 +28472,15 @@ Do not render = "none"
   color: var(--base-white);
 }
 .checkbox-base input[type=checkbox]:active::after {
-  color: rgba(var(--base-white), 0.6);
+  color: var(--base-white-active);
 }
 .checkbox-base input[type=checkbox]:disabled {
-  background-color: rgba(var(--brand-3), 0.3);
-  border-color: rgba(var(--brand-3), 0.4);
+  background-color: var(--brand-3-disabled);
+  border-color: var(--brand-3-disabled);
   cursor: not-allowed;
 }
 .checkbox-base input[type=checkbox]:disabled::after {
-  color: rgba(var(--base-white), 0.8);
+  color: var(--base-white-disabled);
 }
 .checkbox-base label,
 .checkbox-base .mx-checkbox-label {
@@ -28485,7 +28493,7 @@ Do not render = "none"
 }
 .checkbox-base label:disabled,
 .checkbox-base .mx-checkbox-label:disabled {
-  color: rgba(var(--base-black), 0.4);
+  color: var(--base-black-disabled);
   cursor: not-allowed;
 }
 
