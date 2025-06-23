@@ -28873,7 +28873,7 @@ Do not render = "none"
   padding: 8px 16px;
   font-family: "GothamSSm", sans-serif;
   font-weight: 600;
-  color: #231F20;
+  color: var(--base-black);
   text-decoration: none;
   border: none;
   border-radius: 4px 4px 0 0;
@@ -28881,21 +28881,22 @@ Do not render = "none"
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 .tab-base .mx-tabcontainer-tabs > li a:hover {
-  background-color: rgba(14, 128, 138, 0.2);
+  background-color: var(--brand-3-hover);
+  color: var(--brand-3);
 }
 .tab-base .mx-tabcontainer-tabs > li.active a {
-  color: #0E808A;
-  background-color: rgba(110, 111, 114, 0.3);
+  color: var(--brand-3);
+  background-color: var(--secondary-1);
 }
 .tab-base .mx-tabcontainer-tabs > li.disabled a {
-  color: #6E6F72;
+  color: var(--secondary-1);
   cursor: not-allowed;
   pointer-events: none;
-  background-color: rgba(110, 111, 114, 0.1);
+  background-color: var(--secondary-1-disabled);
 }
 .tab-base .mx-tabcontainer-content {
   padding: 16px 24px;
-  background-color: rgba(110, 111, 114, 0.3);
+  background-color: var(--secondary-1);
   border-radius: 0 0 4px 4px;
 }
 
