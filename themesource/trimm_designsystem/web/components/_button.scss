@@ -10,7 +10,9 @@
   border-radius: $radius-full;
   border: $border-1 solid transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
   gap: $spacing-8;
   line-height: $line-height-body-1;
   text-decoration: none;
@@ -27,36 +29,30 @@
   box-shadow: $shadow-8;
 
   &:hover,
-  &:focus,
-  &:active {
-    background-color: var(--base-white);
+  &:focus {
+    background-color: var(--base-white-hover);
     color: var(--base-black);
+  }
+
+  &:active {
+    background-color: var(--base-white-active);
+    color: var(--base-black-active);
   }
 
   &:disabled,
   &.btn-disabled {
-    background-color: var(--secondary-1);
-    color: var(--base-white);
-    border-color: var(--base-black);
+    background-color: var(--secondary-1-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--base-black-disabled);
     cursor: not-allowed;
-    opacity: 0.6;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: var(--secondary-1);
-      color: var(--base-white);
-      border-color: var(--base-black);
-    }
   }
 
   svg,
   i.mdi,
-  span>svg {
+  span > svg {
     color: currentColor;
   }
 }
-
 
 // === CTA VARIANT ===
 // Orange background, white text, no border
@@ -70,9 +66,20 @@
     background-color: var(--brand-2-hover);
   }
 
+  &:active {
+    background-color: var(--brand-2-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--brand-2-disabled);
+    color: var(--base-white-disabled);
+    cursor: not-allowed;
+  }
+
   svg,
   i.mdi,
-  span>svg {
+  span > svg {
     color: currentColor;
   }
 }
@@ -85,10 +92,22 @@
   border: $border-1 solid var(--base-black);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     background-color: var(--base-black-hover);
-    color: var(--base-black);
+    color: var(--base-white);
+  }
+
+  &:active {
+    background-color: var(--base-black-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--base-black-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--base-black-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -100,9 +119,21 @@
   border: $border-1 solid var(--brand-1);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     background-color: var(--brand-1-hover);
+  }
+
+  &:active {
+    background-color: var(--brand-1-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--brand-1-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--brand-1-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -114,9 +145,21 @@
   border: $border-1 solid var(--brand-3);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     background-color: var(--brand-3-hover);
+  }
+
+  &:active {
+    background-color: var(--brand-3-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--brand-3-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--brand-3-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -128,9 +171,21 @@
   border: $border-1 solid var(--support-3);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     background-color: var(--support-3-hover);
+  }
+
+  &:active {
+    background-color: var(--support-3-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--support-3-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--support-3-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -142,9 +197,21 @@
   border: $border-1 solid var(--support-4);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     background-color: var(--support-4-hover);
+  }
+
+  &:active {
+    background-color: var(--support-4-active);
+    color: var(--base-black-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--support-4-disabled);
+    color: var(--base-black-disabled);
+    border-color: var(--support-4-disabled);
+    cursor: not-allowed;
   }
 }
 
@@ -156,9 +223,21 @@
   border: $border-1 solid var(--support-2);
 
   &:hover,
-  &:focus,
-  &:active {
+  &:focus {
     background-color: var(--support-2-hover);
+  }
+
+  &:active {
+    background-color: var(--support-2-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--support-2-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--support-2-disabled);
+    cursor: not-allowed;
   }
 }
 

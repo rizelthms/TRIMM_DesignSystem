@@ -6,7 +6,9 @@
     box-shadow: $shadow-2;
     background-color: var(--base-white);
     overflow: hidden;
-    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    transition:
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 
     &.mx-groupbox-open {
         background-color: var(--base-black);
@@ -30,28 +32,37 @@
     align-items: center;
     justify-content: space-between;
     border-radius: $radius-4;
-    transition: background-color 0.2s ease;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 
     &:hover {
-        background-color: rgba(14, 128, 138, 0.2) !important; // brand-3: #0E808A
+        background-color: var(--brand-3-hover);
+        color: var(--base-white);
+    }
+
+    &:active {
+        background-color: var(--brand-3-active);
+        color: var(--base-white-active);
     }
 }
 
 // === OPEN STATE (via aria-expanded) ===
 
 .widget-accordion-group-header-button[aria-expanded="true"] {
-    background-color: rgba(110, 111, 114, 0.3) !important; // secondary-1: #6E6F72
+    background-color: var(--secondary-1);
+    color: var(--base-white);
     border-radius: $radius-0;
 }
 
-.widget-accordion-group-header-button[aria-expanded="true"]>h3 {
+.widget-accordion-group-header-button[aria-expanded="true"] > h3 {
     color: var(--base-white);
 }
 
 // === TITLE ===
 
 .widget-accordion-group-header-title,
-.widget-accordion-group-header-button>h3 {
+.widget-accordion-group-header-button > h3 {
     font-family: $font-primary;
     font-size: $font-size-body-2;
     font-weight: $font-weight-semibold;
@@ -68,21 +79,32 @@
     font-size: $font-size-body-3;
     font-weight: $font-weight-normal;
     color: var(--base-white);
-    background-color: rgba(110, 111, 114, 0.3); // secondary-1: #6E6F72
+    background-color: var(--secondary-1);
 }
 
 // === DISABLED STATE ===
 
 .accordion-base[aria-disabled="true"] {
-    opacity: 0.5;
+    background-color: var(--base-white-disabled);
     pointer-events: none;
-}
 
-.widget-accordion-group-content {
-    padding: $spacing-16 $spacing-24;
-    font-family: $font-primary;
-    font-size: $font-size-body-3;
-    font-weight: $font-weight-normal;
-    color: var(--brand-1);
-    background-color: var(--secondary-2);
+    .widget-accordion-group-header-button {
+        background-color: var(--base-white-disabled);
+        color: var(--base-black-disabled);
+        cursor: not-allowed;
+    }
+
+    .widget-accordion-group-header-title,
+    .widget-accordion-group-header-button > h3 {
+        color: var(--base-black-disabled);
+    }
+
+    .widget-accordion-group-content {
+        padding: $spacing-16 $spacing-24;
+        font-family: $font-primary;
+        font-size: $font-size-body-3;
+        font-weight: $font-weight-normal;
+        color: var(--base-white-disabled);
+        background-color: var(--secondary-1-disabled);
+    }
 }

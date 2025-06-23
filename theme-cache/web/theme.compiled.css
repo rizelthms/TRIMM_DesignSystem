@@ -27853,58 +27853,134 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Color Tokens
+ * 
+ * This file defines the color system for both light and dark modes.
+ * Colors are organized by their role (brand, base, secondary, support)
+ * and include state variations for interactive elements:
+ * 
+ * State Variations:
+ * - Default: Base color
+ * - Hover: 15% lighter in light mode, 10% lighter in dark mode
+ * - Active: 10% darker than base
+ * - Disabled: 60% transparent (40% for white)
+ */
 :root {
+  /**
+   * Brand Colors
+   * Primary colors that represent the TRIMM brand identity
+   */
   --brand-1: #00172b;
   --brand-1-hover: #004078;
+  --brand-1-active: black;
+  --brand-1-disabled: rgba(0, 23, 43, 0.4);
   --brand-2: #f37123;
   --brand-2-hover: #f7a06c;
+  --brand-2-active: #d7580c;
+  --brand-2-disabled: rgba(243, 113, 35, 0.4);
   --brand-3: #0e808a;
   --brand-3-hover: #15c0cf;
-  --brand-3-disabled: rgba(14, 128, 138, 0.3);
+  --brand-3-active: #09555c;
+  --brand-3-disabled: rgba(14, 128, 138, 0.4);
+  /**
+   * Base Colors
+   * Fundamental colors for text, backgrounds, and borders
+   */
   --base-black: #231f20;
-  --base-white: #ffffff;
   --base-black-hover: #4c4345;
-  --base-white-hover: #d9d9d9;
-  --base-white-active: rgba(255, 255, 255, 0.6);
-  --base-white-disabled: rgba(255, 255, 255, 0.8);
+  --base-black-active: #080707;
   --base-black-disabled: rgba(35, 31, 32, 0.4);
+  --base-white: #ffffff;
+  --base-white-hover: #d9d9d9;
+  --base-white-active: #cccccc;
+  --base-white-disabled: rgba(255, 255, 255, 0.6);
+  /**
+   * Secondary Colors
+   * Supporting colors for UI elements and backgrounds
+   */
   --secondary-1: #6e6f72;
   --secondary-1-hover: #949598;
+  --secondary-1-active: #555658;
+  --secondary-1-disabled: rgba(110, 111, 114, 0.4);
   --secondary-2: #edd7c4;
+  --secondary-2-hover: white;
+  --secondary-2-active: #e1bd9d;
+  --secondary-2-disabled: rgba(237, 215, 196, 0.4);
+  /**
+   * Support Colors
+   * Used for status, alerts, and system feedback
+   */
   --support-1: #392b78;
+  --support-1-hover: #543fb0;
+  --support-1-active: #271e52;
+  --support-1-disabled: rgba(57, 43, 120, 0.4);
   --support-2: #b92025;
   --support-2-hover: #df464b;
+  --support-2-active: #8e181c;
+  --support-2-disabled: rgba(185, 32, 37, 0.4);
   --support-3: #176e4e;
   --support-3-hover: #24ad7b;
+  --support-3-active: #0e4430;
+  --support-3-disabled: rgba(23, 110, 78, 0.4);
   --support-4: #ffc107;
   --support-4-hover: #ffd454;
+  --support-4-active: #d39e00;
+  --support-4-disabled: rgba(255, 193, 7, 0.4);
 }
 
+/**
+ * Dark Mode Theme
+ * Colors are adjusted for dark mode by:
+ * 1. Darkening the base color by 15%
+ * 2. Adjusting hover/active states relative to the darkened base
+ * 3. Maintaining consistent transparency for disabled states
+ */
 [data-theme=dark] {
   --brand-1: black;
   --brand-1-hover: #001b33;
+  --brand-1-active: black;
+  --brand-1-disabled: rgba(0, 0, 0, 0.4);
   --brand-2: #bf4e0a;
   --brand-2-hover: #ef620d;
+  --brand-2-active: #8f3a08;
+  --brand-2-disabled: rgba(191, 78, 10, 0.4);
   --brand-3: #074045;
   --brand-3-hover: #0c6b73;
-  --brand-3-disabled: rgba(11, 51, 55, 0.3);
+  --brand-3-active: #021516;
+  --brand-3-disabled: rgba(7, 64, 69, 0.4);
   --base-black: black;
-  --base-white: #d9d9d9;
   --base-black-hover: #1b1819;
+  --base-black-active: black;
+  --base-black-disabled: rgba(0, 0, 0, 0.4);
+  --base-white: #d9d9d9;
   --base-white-hover: #bfbfbf;
-  --base-white-active: rgba(219, 219, 219, 0.6);
-  --base-white-disabled: rgba(219, 219, 219, 0.8);
-  --base-black-disabled: rgba(28, 25, 26, 0.4);
+  --base-white-active: #a6a6a6;
+  --base-white-disabled: rgba(217, 217, 217, 0.6);
   --secondary-1: #48494b;
   --secondary-1-hover: #616265;
+  --secondary-1-active: #2f3031;
+  --secondary-1-disabled: rgba(72, 73, 75, 0.4);
   --secondary-2: #dbaf89;
+  --secondary-2-hover: #e7cab0;
+  --secondary-2-active: #cf9562;
+  --secondary-2-disabled: rgba(219, 175, 137, 0.4);
   --support-1: #1e1740;
+  --support-1-hover: #302465;
+  --support-1-active: #0c091a;
+  --support-1-disabled: rgba(30, 23, 64, 0.4);
   --support-2: #781518;
   --support-2-hover: #a31c21;
+  --support-2-active: #4c0d0f;
+  --support-2-disabled: rgba(120, 21, 24, 0.4);
   --support-3: #0a2f21;
   --support-3-hover: #13593f;
+  --support-3-active: #010503;
+  --support-3-disabled: rgba(10, 47, 33, 0.4);
   --support-4: #ba8b00;
   --support-4-hover: #edb100;
+  --support-4-active: #876500;
+  --support-4-disabled: rgba(186, 139, 0, 0.4);
 }
 
 .alert-base {
@@ -27938,6 +28014,14 @@ Do not render = "none"
 .alert-base .mx-button:hover {
   background-color: var(--brand-2-hover) !important;
 }
+.alert-base .mx-button:active {
+  background-color: var(--brand-2-active) !important;
+}
+.alert-base .mx-button:disabled {
+  background-color: var(--brand-2-disabled) !important;
+  color: var(--base-white-disabled) !important;
+  cursor: not-allowed;
+}
 .alert-base .mx-button svg,
 .alert-base .mx-button i.mdi,
 .alert-base .mx-button span > svg {
@@ -27948,6 +28032,19 @@ Do not render = "none"
 .alert-base:hover {
   background-color: var(--brand-3-hover);
 }
+.alert-base:active {
+  background-color: var(--brand-3-active);
+}
+.alert-base.disabled {
+  background-color: var(--brand-3-disabled);
+  color: var(--base-white-disabled);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.alert-base.disabled .alert-title,
+.alert-base.disabled .alert-description {
+  color: var(--base-white-disabled) !important;
+}
 
 .alert-success {
   background-color: var(--support-3) !important;
@@ -27955,12 +28052,24 @@ Do not render = "none"
 .alert-success:hover {
   background-color: var(--support-3-hover) !important;
 }
+.alert-success:active {
+  background-color: var(--support-3-active) !important;
+}
+.alert-success.disabled {
+  background-color: var(--support-3-disabled) !important;
+}
 
 .alert-danger {
   background-color: var(--support-2) !important;
 }
 .alert-danger:hover {
   background-color: var(--support-2-hover) !important;
+}
+.alert-danger:active {
+  background-color: var(--support-2-active) !important;
+}
+.alert-danger.disabled {
+  background-color: var(--support-2-disabled) !important;
 }
 
 .alert-warning {
@@ -27974,12 +28083,29 @@ Do not render = "none"
 .alert-warning:hover {
   background-color: var(--support-4-hover) !important;
 }
+.alert-warning:active {
+  background-color: var(--support-4-active) !important;
+}
+.alert-warning.disabled {
+  background-color: var(--support-4-disabled) !important;
+  color: var(--base-black-disabled) !important;
+}
+.alert-warning.disabled .alert-title,
+.alert-warning.disabled .alert-description {
+  color: var(--base-black-disabled) !important;
+}
 
 .alert-info {
   background-color: var(--secondary-1) !important;
 }
 .alert-info:hover {
   background-color: var(--secondary-1-hover) !important;
+}
+.alert-info:active {
+  background-color: var(--secondary-1-active) !important;
+}
+.alert-info.disabled {
+  background-color: var(--secondary-1-disabled) !important;
 }
 
 .button-base, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
@@ -28004,21 +28130,19 @@ Do not render = "none"
   border: 1px solid var(--base-white);
   box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
 }
-.btn-default:hover, .btn-default:focus, .btn-default:active {
-  background-color: var(--base-white);
+.btn-default:hover, .btn-default:focus {
+  background-color: var(--base-white-hover);
   color: var(--base-black);
 }
-.btn-default:disabled, .btn-default.btn-disabled {
-  background-color: var(--secondary-1);
-  color: var(--base-white);
-  border-color: var(--base-black);
-  cursor: not-allowed;
-  opacity: 0.6;
+.btn-default:active {
+  background-color: var(--base-white-active);
+  color: var(--base-black-active);
 }
-.btn-default:disabled:hover, .btn-default:disabled:focus, .btn-default:disabled:active, .btn-default.btn-disabled:hover, .btn-default.btn-disabled:focus, .btn-default.btn-disabled:active {
-  background-color: var(--secondary-1);
-  color: var(--base-white);
-  border-color: var(--base-black);
+.btn-default:disabled, .btn-default.btn-disabled {
+  background-color: var(--secondary-1-disabled);
+  color: var(--base-white-disabled);
+  border-color: var(--base-black-disabled);
+  cursor: not-allowed;
 }
 .btn-default svg,
 .btn-default i.mdi,
@@ -28034,6 +28158,14 @@ Do not render = "none"
 .btn-cta:hover {
   background-color: var(--brand-2-hover);
 }
+.btn-cta:active {
+  background-color: var(--brand-2-active);
+}
+.btn-cta:disabled, .btn-cta.btn-disabled {
+  background-color: var(--brand-2-disabled);
+  color: var(--base-white-disabled);
+  cursor: not-allowed;
+}
 .btn-cta svg,
 .btn-cta i.mdi,
 .btn-cta span > svg {
@@ -28045,9 +28177,19 @@ Do not render = "none"
   color: var(--base-white);
   border: 1px solid var(--base-black);
 }
-.btn-inverse:hover, .btn-inverse:focus, .btn-inverse:active {
+.btn-inverse:hover, .btn-inverse:focus {
   background-color: var(--base-black-hover);
-  color: var(--base-black);
+  color: var(--base-white);
+}
+.btn-inverse:active {
+  background-color: var(--base-black-active);
+  color: var(--base-white-active);
+}
+.btn-inverse:disabled, .btn-inverse.btn-disabled {
+  background-color: var(--base-black-disabled);
+  color: var(--base-white-disabled);
+  border-color: var(--base-black-disabled);
+  cursor: not-allowed;
 }
 
 .btn-primary {
@@ -28055,8 +28197,18 @@ Do not render = "none"
   color: var(--base-white);
   border: 1px solid var(--brand-1);
 }
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+.btn-primary:hover, .btn-primary:focus {
   background-color: var(--brand-1-hover);
+}
+.btn-primary:active {
+  background-color: var(--brand-1-active);
+  color: var(--base-white-active);
+}
+.btn-primary:disabled, .btn-primary.btn-disabled {
+  background-color: var(--brand-1-disabled);
+  color: var(--base-white-disabled);
+  border-color: var(--brand-1-disabled);
+  cursor: not-allowed;
 }
 
 .btn-info {
@@ -28064,8 +28216,18 @@ Do not render = "none"
   color: var(--base-white);
   border: 1px solid var(--brand-3);
 }
-.btn-info:hover, .btn-info:focus, .btn-info:active {
+.btn-info:hover, .btn-info:focus {
   background-color: var(--brand-3-hover);
+}
+.btn-info:active {
+  background-color: var(--brand-3-active);
+  color: var(--base-white-active);
+}
+.btn-info:disabled, .btn-info.btn-disabled {
+  background-color: var(--brand-3-disabled);
+  color: var(--base-white-disabled);
+  border-color: var(--brand-3-disabled);
+  cursor: not-allowed;
 }
 
 .btn-success {
@@ -28073,8 +28235,18 @@ Do not render = "none"
   color: var(--base-white);
   border: 1px solid var(--support-3);
 }
-.btn-success:hover, .btn-success:focus, .btn-success:active {
+.btn-success:hover, .btn-success:focus {
   background-color: var(--support-3-hover);
+}
+.btn-success:active {
+  background-color: var(--support-3-active);
+  color: var(--base-white-active);
+}
+.btn-success:disabled, .btn-success.btn-disabled {
+  background-color: var(--support-3-disabled);
+  color: var(--base-white-disabled);
+  border-color: var(--support-3-disabled);
+  cursor: not-allowed;
 }
 
 .btn-warning {
@@ -28082,8 +28254,18 @@ Do not render = "none"
   color: var(--base-black);
   border: 1px solid var(--support-4);
 }
-.btn-warning:hover, .btn-warning:focus, .btn-warning:active {
+.btn-warning:hover, .btn-warning:focus {
   background-color: var(--support-4-hover);
+}
+.btn-warning:active {
+  background-color: var(--support-4-active);
+  color: var(--base-black-active);
+}
+.btn-warning:disabled, .btn-warning.btn-disabled {
+  background-color: var(--support-4-disabled);
+  color: var(--base-black-disabled);
+  border-color: var(--support-4-disabled);
+  cursor: not-allowed;
 }
 
 .btn-danger {
@@ -28091,8 +28273,18 @@ Do not render = "none"
   color: var(--base-white);
   border: 1px solid var(--support-2);
 }
-.btn-danger:hover, .btn-danger:focus, .btn-danger:active {
+.btn-danger:hover, .btn-danger:focus {
   background-color: var(--support-2-hover);
+}
+.btn-danger:active {
+  background-color: var(--support-2-active);
+  color: var(--base-white-active);
+}
+.btn-danger:disabled, .btn-danger.btn-disabled {
+  background-color: var(--support-2-disabled);
+  color: var(--base-white-disabled);
+  border-color: var(--support-2-disabled);
+  cursor: not-allowed;
 }
 
 .btn-sm {
@@ -28565,14 +28757,20 @@ Do not render = "none"
   align-items: center;
   justify-content: space-between;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .widget-accordion-group-header-button:hover {
-  background-color: rgba(14, 128, 138, 0.2) !important;
+  background-color: var(--brand-3-hover);
+  color: var(--base-white);
+}
+.widget-accordion-group-header-button:active {
+  background-color: var(--brand-3-active);
+  color: var(--base-white-active);
 }
 
 .widget-accordion-group-header-button[aria-expanded=true] {
-  background-color: rgba(110, 111, 114, 0.3) !important;
+  background-color: var(--secondary-1);
+  color: var(--base-white);
   border-radius: 0px;
 }
 
@@ -28596,21 +28794,29 @@ Do not render = "none"
   font-size: 14px;
   font-weight: normal;
   color: var(--base-white);
-  background-color: rgba(110, 111, 114, 0.3);
+  background-color: var(--secondary-1);
 }
 
 .accordion-base[aria-disabled=true] {
-  opacity: 0.5;
+  background-color: var(--base-white-disabled);
   pointer-events: none;
 }
-
-.widget-accordion-group-content {
+.accordion-base[aria-disabled=true] .widget-accordion-group-header-button {
+  background-color: var(--base-white-disabled);
+  color: var(--base-black-disabled);
+  cursor: not-allowed;
+}
+.accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
+.accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3 {
+  color: var(--base-black-disabled);
+}
+.accordion-base[aria-disabled=true] .widget-accordion-group-content {
   padding: 16px 24px;
   font-family: "GothamSSm", sans-serif;
   font-size: 14px;
   font-weight: normal;
-  color: var(--brand-1);
-  background-color: var(--secondary-2);
+  color: var(--base-white-disabled);
+  background-color: var(--secondary-1-disabled);
 }
 
 .tab-base {
