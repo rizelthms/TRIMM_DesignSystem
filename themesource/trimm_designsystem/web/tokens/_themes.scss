@@ -1,0 +1,62 @@
+// Theme tokens for both light and dark mode.
+// All color variants (default, hover, etc.) are defined as CSS variables for consistency and runtime switching.
+// SCSS functions are used to derive hover states from base colors, resolved at build time.
+// This structure keeps all color logic centralized and clean.
+
+// Light mode (default)
+:root {
+    // Brand Colors
+    --brand-1: #00172b;
+    --brand-1-hover: #{lighten(#00172b, 10%)};
+    --brand-2: #f37123;
+    --brand-2-hover: #{lighten(#f37123, 20%)};
+    --brand-3: #0e808a;
+    --brand-3-hover: #{lighten(#0e808a, 20%)};
+
+    // Base Colors
+    --base-black: #231f20;
+    --base-white: #ffffff;
+
+    // Secondary Colors
+    --secondary-1: #6e6f72;
+    --secondary-1-hover: #{lighten(#6e6f72, 20%)};
+    --secondary-2: #edd7c4;
+
+    // Support Colors
+    --support-1: #392b78;
+    --support-2: #b92025;
+    --support-2-hover: #{lighten(#b92025, 20%)};
+    --support-3: #176e4e;
+    --support-3-hover: #{lighten(#176e4e, 20%)};
+    --support-4: #ffc107; //( For Warnings: Not mentioned in the brandbook but added for styling purposes)
+    --support-4-hover: #{lighten(#ffc107, 20%)};
+}
+
+// Dark mode
+[data-theme="dark"] {
+    // Brand Colors
+    --brand-1: #{darken(#00172b, 15%)};
+    --brand-1-hover: #{lighten(darken(#00172b, 15%), 10%)};
+    --brand-2: #{darken(#f37123, 15%)};
+    --brand-2-hover: #{lighten(darken(#f37123, 15%), 10%)};
+    --brand-3: #{darken(#0e808a, 15%)};
+    --brand-3-hover: #{lighten(darken(#0e808a, 15%), 10%)};
+
+    // Base Colors
+    --base-black: #{darken(#231f20, 15%)};
+    --base-white: #{darken(#ffffff, 15%)};
+
+    // Secondary Colors
+    --secondary-1: #{darken(#6e6f72, 15%)};
+    --secondary-1-hover: #{lighten(darken(#6e6f72, 15%), 10%)};
+    --secondary-2: #{darken(#edd7c4, 15%)};
+
+    // Support Colors
+    --support-1: #{darken(#392b78, 15%)};
+    --support-2: #{darken(#b92025, 15%)};
+    --support-2-hover: #{lighten(darken(#b92025, 15%), 10%)};
+    --support-3: #{darken(#176e4e, 15%)};
+    --support-3-hover: #{lighten(darken(#176e4e, 15%), 10%)};
+    --support-4: #{darken(#ffc107, 15%)};
+    --support-4-hover: #{lighten(darken(#ffc107, 15%), 10%)};
+}
