@@ -24,9 +24,12 @@
 
 // === HEADER BUTTON ===
 
-.widget-accordion-group-header-button {
+.widget-accordion-group-header-button,
+.widget-accordion-group-header-button-clickable,
+.widget-accordion-group-header-button-icon-right {
+    background-color: var(--base-white) !important;
+    color: var(--base-white) !important;
     padding: $spacing-16 $spacing-24;
-    background-color: var(--base-white);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -37,13 +40,13 @@
         color 0.2s ease;
 
     &:hover {
-        background-color: var(--brand-3-hover);
-        color: var(--base-white);
+        background-color: var(--brand-3-hover) !important;
+        color: var(--base-white) !important;
     }
 
     &:active {
-        background-color: var(--brand-3-active);
-        color: var(--base-white-active);
+        background-color: var(--brand-3-active) !important;
+        color: var(--base-white-active) !important;
     }
 }
 

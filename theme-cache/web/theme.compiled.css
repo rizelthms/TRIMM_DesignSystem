@@ -28780,9 +28780,12 @@ Do not render = "none"
   padding: 0;
 }
 
-.widget-accordion-group-header-button {
+.widget-accordion-group-header-button,
+.widget-accordion-group-header-button-clickable,
+.widget-accordion-group-header-button-icon-right {
+  background-color: var(--base-white) !important;
+  color: var(--base-white) !important;
   padding: 16px 24px;
-  background-color: var(--base-white);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -28790,13 +28793,17 @@ Do not render = "none"
   border-radius: 4px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.widget-accordion-group-header-button:hover {
-  background-color: var(--brand-3-hover);
-  color: var(--base-white);
+.widget-accordion-group-header-button:hover,
+.widget-accordion-group-header-button-clickable:hover,
+.widget-accordion-group-header-button-icon-right:hover {
+  background-color: var(--brand-3-hover) !important;
+  color: var(--base-white) !important;
 }
-.widget-accordion-group-header-button:active {
-  background-color: var(--brand-3-active);
-  color: var(--base-white-active);
+.widget-accordion-group-header-button:active,
+.widget-accordion-group-header-button-clickable:active,
+.widget-accordion-group-header-button-icon-right:active {
+  background-color: var(--brand-3-active) !important;
+  color: var(--base-white-active) !important;
 }
 
 .widget-accordion-group-header-button[aria-expanded=true] {
@@ -28885,7 +28892,7 @@ Do not render = "none"
   color: var(--brand-3);
 }
 .tab-base .mx-tabcontainer-tabs > li.active a {
-  color: var(--brand-3);
+  color: var(--base-white);
   background-color: var(--secondary-1);
 }
 .tab-base .mx-tabcontainer-tabs > li.disabled a {
