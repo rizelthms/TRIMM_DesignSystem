@@ -66,6 +66,9 @@
 .trimm-datepicker-months {
     display: flex;
     gap: $spacing-32;
+    border-radius: $radius-4;
+    border: 1px solid var(--base-black);
+    padding: $spacing-12;
 }
 
 .trimm-datepicker-month {

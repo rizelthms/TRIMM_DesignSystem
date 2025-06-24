@@ -29135,6 +29135,9 @@ Do not render = "none"
 .trimm-datepicker-months {
   display: flex;
   gap: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--base-black);
+  padding: 12px;
 }
 
 .trimm-datepicker-month {
