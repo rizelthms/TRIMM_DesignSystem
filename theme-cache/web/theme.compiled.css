@@ -29014,11 +29014,17 @@ Do not render = "none"
 }
 
 .trimm-datepicker-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
   font-weight: bold;
+  font-size: 16px;
+  color: var(--base-black);
   margin-bottom: 8px;
+}
+.trimm-datepicker-header button:first-child {
+  margin-right: 12px;
+}
+.trimm-datepicker-header button:last-child {
+  margin-left: 12px;
 }
 .trimm-datepicker-header button {
   background: none;

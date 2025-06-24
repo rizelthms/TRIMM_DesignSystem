@@ -42,12 +42,18 @@
 }
 
 .trimm-datepicker-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    text-align: center;
     font-weight: $font-weight-bold;
+    font-size: $font-size-body-2;
+    color: var(--base-black);
     margin-bottom: $spacing-8;
 
+    button:first-child {
+        margin-right: $spacing-12;
+    }
+    button:last-child {
+        margin-left: $spacing-12;
+    }
     button {
         background: none;
         border: none;
