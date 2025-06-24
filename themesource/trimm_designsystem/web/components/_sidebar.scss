@@ -1,0 +1,22 @@
+.region-sidebar,
+.mx-navigationtree mx-name-navigationTree3,
+.navbar-inner {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .sidebar-heading {
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
+  background-color: var(--brand-3);
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
+  background-color: var(--brand-3);
+  color: var(--base-white);
+}
