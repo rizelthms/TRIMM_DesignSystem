@@ -1,13 +1,13 @@
 // === BASE TEXT BOX STYLE ===
-// Works with Mendix Text Box widget 
+// Works with Mendix Text Box widget
 
 .textbox-base input.form-control {
     font-family: $font-primary !important;
     font-size: $font-size-body-2 !important;
     font-weight: $font-weight-normal !important;
-    color: $base-black !important;
-    background-color: rgba($brand-3, 0.2) !important;
-    border: $border-1 solid $brand-3 !important;
+    color: var(--base-black) !important;
+    background-color: var(--base-white) !important;
+    border: $border-1 solid var(--brand-3) !important;
     border-radius: $radius-4 !important;
     padding: $spacing-12 $spacing-16 !important;
     line-height: $line-height-body-2 !important;
@@ -17,19 +17,19 @@
     box-sizing: border-box;
 
     &::placeholder {
-        color: $base-black !important;
+        color: var(--base-black) !important;
         font-style: italic !important;
     }
 
     &:focus {
         outline: none;
-        border-color: $brand-2 !important;
+        border-color: var(--brand-2) !important;
     }
 
     &:disabled {
-        background-color: rgba($secondary-1, 0.2) !important;
-        color: $base-black !important;
-        border-color: $base-black !important;
+        background-color: var(--secondary-1-disabled) !important;
+        color: var(--base-black) !important;
+        border-color: var(--base-black) !important;
         cursor: not-allowed;
     }
 }

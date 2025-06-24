@@ -18,15 +18,15 @@
 .trimm-range-datepicker-field {
     flex: 1;
     padding: $spacing-8 $spacing-16;
-    border: $border-1 solid $base-black;
-    background-color: $base-white;
+    border: $border-1 solid var(--base-black);
+    background-color: var(--base-white);
     border-radius: $radius-4;
     cursor: pointer;
     text-align: left;
     font-weight: $font-weight-regular;
 
     &.active {
-        border-color: $brand-1;
+        border-color: var(--brand-1);
     }
 }
 
@@ -35,7 +35,7 @@
     align-items: center;
     gap: $spacing-8;
     font-size: $font-size-body-4;
-    color: $base-black;
+    color: var(--base-black);
     font-weight: $font-weight-regular;
 }
 
@@ -59,13 +59,16 @@
         cursor: pointer;
         font-size: $font-size-body-3;
         padding: $spacing-4;
-        color: $base-black;
+        color: var(--base-black);
     }
 }
 
 .trimm-datepicker-months {
     display: flex;
     gap: $spacing-32;
+    border-radius: $radius-4;
+    border: 1px solid var(--base-black);
+    padding: $spacing-12;
 }
 
 .trimm-datepicker-month {
@@ -76,7 +79,7 @@
     text-align: center;
     font-weight: $font-weight-bold;
     font-size: $font-size-body-2;
-    color: $base-black;
+    color: var(--base-black);
     margin-bottom: $spacing-8;
 }
 
@@ -90,7 +93,7 @@
 
 .trimm-datepicker-day-label {
     font-weight: $font-weight-medium;
-    color: $base-black;
+    color: var(--base-black);
 }
 
 .trimm-datepicker-row {
@@ -111,25 +114,25 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-        background-color: $brand-3;
-        color: $base-white;
+        background-color: var(--brand-3-hover);
+        color: var(--base-white);
     }
 
     &.selected {
-        background-color: $brand-1;
-        color: $base-white;
+        background-color: var(--brand-1);
+        color: var(--base-white);
     }
 
     &.in-range {
-        background-color: rgba($brand-2, 0.3);
-        color: $base-black;
+        background-color: var(--brand-2-hover);
+        color: var(--base-black);
         font-size: $font-size-body-4;
         border-radius: 0;
     }
 
     &.disabled {
         background-color: transparent;
-        color: $secondary-1;
+        color: var(--secondary-1-disabled);
         cursor: not-allowed !important;
         pointer-events: none;
     }

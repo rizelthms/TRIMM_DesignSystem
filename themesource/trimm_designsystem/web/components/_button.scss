@@ -10,7 +10,9 @@
   border-radius: $radius-full;
   border: $border-1 solid transparent;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
   gap: $spacing-8;
   line-height: $line-height-body-1;
   text-decoration: none;
@@ -22,57 +24,62 @@
 .btn-default {
   @extend .button-base;
   background-color: transparent;
-  color: $base-black;
-  border: $border-1 solid $base-white;
+  color: var(--base-black);
+  border: $border-1 solid var(--base-white);
   box-shadow: $shadow-8;
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--base-white-hover);
+    color: var(--base-black);
+  }
+
   &:active {
-    background-color: $base-white;
-    color: $base-black;
+    background-color: var(--base-white-active);
+    color: var(--base-black-active);
   }
 
   &:disabled,
   &.btn-disabled {
-    background-color: $secondary-1;
-    color: $base-white;
-    border-color: $base-black;
+    background-color: var(--secondary-1-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--base-black-disabled);
     cursor: not-allowed;
-    opacity: 0.6;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $secondary-1;
-      color: $base-white;
-      border-color: $base-black;
-    }
   }
 
   svg,
   i.mdi,
-  span>svg {
+  span > svg {
     color: currentColor;
   }
 }
-
 
 // === CTA VARIANT ===
 // Orange background, white text, no border
 .btn-cta {
   @extend .button-base;
-  background-color: $brand-2;
-  color: $base-white;
+  background-color: var(--brand-2);
+  color: var(--base-white);
   border: none;
 
   &:hover {
-    background-color: darken($brand-2, 10%);
+    background-color: var(--brand-2-hover);
+  }
+
+  &:active {
+    background-color: var(--brand-2-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--brand-2-disabled);
+    color: var(--base-white-disabled);
+    cursor: not-allowed;
   }
 
   svg,
   i.mdi,
-  span>svg {
+  span > svg {
     color: currentColor;
   }
 }
@@ -80,85 +87,157 @@
 // === INVERSE VARIANT ===
 .btn-inverse {
   @extend .button-base;
-  background-color: $base-black;
-  color: $base-white;
-  border: $border-1 solid $base-black;
+  background-color: var(--base-black);
+  color: var(--base-white);
+  border: $border-1 solid var(--base-black);
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--base-black-hover);
+    color: var(--base-white);
+  }
+
   &:active {
-    background-color: lighten($base-black, 10%);
-    color: $base-black;
+    background-color: var(--base-black-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--base-black-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--base-black-disabled);
+    cursor: not-allowed;
   }
 }
 
 // === PRIMARY VARIANT ===
 .btn-primary {
   @extend .button-base;
-  background-color: $brand-1;
-  color: $base-white;
-  border: $border-1 solid $brand-1;
+  background-color: var(--brand-1);
+  color: var(--base-white);
+  border: $border-1 solid var(--brand-1);
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--brand-1-hover);
+  }
+
   &:active {
-    background-color: darken($brand-1, 10%);
+    background-color: var(--brand-1-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--brand-1-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--brand-1-disabled);
+    cursor: not-allowed;
   }
 }
 
 // === INFO VARIANT ===
 .btn-info {
   @extend .button-base;
-  background-color: $brand-3;
-  color: $base-white;
-  border: $border-1 solid $brand-3;
+  background-color: var(--brand-3);
+  color: var(--base-white);
+  border: $border-1 solid var(--brand-3);
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--brand-3-hover);
+  }
+
   &:active {
-    background-color: darken($brand-3, 10%);
+    background-color: var(--brand-3-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--brand-3-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--brand-3-disabled);
+    cursor: not-allowed;
   }
 }
 
 // === SUCCESS VARIANT ===
 .btn-success {
   @extend .button-base;
-  background-color: $support-3;
-  color: $base-white;
-  border: $border-1 solid $support-3;
+  background-color: var(--support-3);
+  color: var(--base-white);
+  border: $border-1 solid var(--support-3);
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--support-3-hover);
+  }
+
   &:active {
-    background-color: darken($support-3, 10%);
+    background-color: var(--support-3-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--support-3-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--support-3-disabled);
+    cursor: not-allowed;
   }
 }
 
 // === WARNING VARIANT ===
 .btn-warning {
   @extend .button-base;
-  background-color: $support-4;
-  color: $base-black;
-  border: $border-1 solid $support-4;
+  background-color: var(--support-4);
+  color: var(--base-black);
+  border: $border-1 solid var(--support-4);
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--support-4-hover);
+  }
+
   &:active {
-    background-color: darken($support-4, 10%);
+    background-color: var(--support-4-active);
+    color: var(--base-black-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--support-4-disabled);
+    color: var(--base-black-disabled);
+    border-color: var(--support-4-disabled);
+    cursor: not-allowed;
   }
 }
 
 // === DANGER VARIANT ===
 .btn-danger {
   @extend .button-base;
-  background-color: $support-2;
-  color: $base-white;
-  border: $border-1 solid $support-2;
+  background-color: var(--support-2);
+  color: var(--base-white);
+  border: $border-1 solid var(--support-2);
 
   &:hover,
-  &:focus,
+  &:focus {
+    background-color: var(--support-2-hover);
+  }
+
   &:active {
-    background-color: darken($support-2, 10%);
+    background-color: var(--support-2-active);
+    color: var(--base-white-active);
+  }
+
+  &:disabled,
+  &.btn-disabled {
+    background-color: var(--support-2-disabled);
+    color: var(--base-white-disabled);
+    border-color: var(--support-2-disabled);
+    cursor: not-allowed;
   }
 }
 

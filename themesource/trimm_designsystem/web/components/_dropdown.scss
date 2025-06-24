@@ -5,8 +5,8 @@
 }
 
 .trimm-dropdown-toggle {
-    background-color: $brand-3;
-    color: $base-white;
+    background-color: var(--brand-3);
+    color: var(--base-white);
     padding: $spacing-8 $spacing-16;
     font-weight: $font-weight-semibold;
     border: none;
@@ -17,12 +17,14 @@
     &:hover {
         transform: scale(1.05);
         box-shadow: $shadow-12;
+        background-color: var(--brand-3-hover);
+        color: var(--base-white);
     }
 }
 
 .trimm-dropdown-menu {
     margin-top: $spacing-8;
-    background-color: $base-white;
+    background-color: var(--base-white);
     border-radius: $radius-4;
     box-shadow: $shadow-6;
     padding: $spacing-8 0;
@@ -35,11 +37,12 @@
 .trimm-dropdown-item {
     padding: $spacing-8 $spacing-16;
     font-size: $font-size-body-2;
-    color: $base-black;
+    color: var(--base-black);
     cursor: pointer;
 
     &:hover {
-        background-color: rgba($brand-2, 0.1);
+        background-color: var(--brand-2-hover);
+        color: var(--base-black);
     }
 }
 

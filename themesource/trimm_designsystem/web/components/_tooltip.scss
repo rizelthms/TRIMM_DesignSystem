@@ -4,8 +4,8 @@
     font-family: $font-primary;
 
     .widget-tooltip-content {
-        background-color: $brand-2 !important; // Orange
-        color: $base-white !important;
+        background: var(--brand-2) !important; // Orange
+        color: var(--base-white) !important;
         padding: $spacing-8 $spacing-12;
         border-radius: $radius-4;
         font-size: $font-size-body-3;

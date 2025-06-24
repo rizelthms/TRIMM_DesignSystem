@@ -1,0 +1,185 @@
+/**
+ * TRIMM Design System - Color Tokens
+ * 
+ * This file defines the color system for both light and dark modes.
+ * Colors are organized by their role (brand, base, secondary, support)
+ * and include state variations for interactive elements:
+ * 
+ * State Variations:
+ * - Default: Base color
+ * - Hover: 15% lighter in light mode, 10% lighter in dark mode
+ * - Active: 10% darker than base
+ * - Disabled: 60% transparent (40% for white)
+ */
+
+// Light Mode Theme
+:root {
+    /**
+     * Brand Colors
+     * Primary colors that represent the TRIMM brand identity
+     */
+
+    // Brand-1 (Navy Blue)
+    --brand-1: #00172b;
+    --brand-1-hover: #{lighten(#00172b, 15%)};
+    --brand-1-active: #{darken(#00172b, 10%)};
+    --brand-1-disabled: #{transparentize(#00172b, 0.6)};
+
+    // Brand-2 (Orange)
+    --brand-2: #f37123;
+    --brand-2-hover: #{lighten(#f37123, 15%)};
+    --brand-2-active: #{darken(#f37123, 10%)};
+    --brand-2-disabled: #{transparentize(#f37123, 0.6)};
+
+    // Brand-3 (Teal)
+    --brand-3: #0e808a;
+    --brand-3-hover: #{lighten(#0e808a, 15%)};
+    --brand-3-active: #{darken(#0e808a, 10%)};
+    --brand-3-disabled: #{transparentize(#0e808a, 0.6)};
+
+    /**
+     * Base Colors
+     * Fundamental colors for text, backgrounds, and borders
+     */
+
+    // Black
+    --base-black: #231f20;
+    --base-black-hover: #{lighten(#231f20, 15%)};
+    --base-black-active: #{darken(#231f20, 10%)};
+    --base-black-disabled: #{transparentize(#231f20, 0.6)};
+
+    // White
+    --base-white: #ffffff;
+    --base-white-hover: #{darken(#ffffff, 15%)};
+    --base-white-active: #{darken(#ffffff, 20%)};
+    --base-white-disabled: #{transparentize(#ffffff, 0.4)};
+
+    /**
+     * Secondary Colors
+     * Supporting colors for UI elements and backgrounds
+     */
+
+    // Secondary-1 (Dark Grey)
+    --secondary-1: #6e6f72;
+    --secondary-1-hover: #{lighten(#6e6f72, 15%)};
+    --secondary-1-active: #{darken(#6e6f72, 10%)};
+    --secondary-1-disabled: #{transparentize(#6e6f72, 0.6)};
+
+    // Secondary-2 (Beige)
+    --secondary-2: #edd7c4;
+    --secondary-2-hover: #{lighten(#edd7c4, 15%)};
+    --secondary-2-active: #{darken(#edd7c4, 10%)};
+    --secondary-2-disabled: #{transparentize(#edd7c4, 0.6)};
+
+    /**
+     * Support Colors
+     * Used for status, alerts, and system feedback
+     */
+
+    // Support-1 (Purple)
+    --support-1: #392b78;
+    --support-1-hover: #{lighten(#392b78, 15%)};
+    --support-1-active: #{darken(#392b78, 10%)};
+    --support-1-disabled: #{transparentize(#392b78, 0.6)};
+
+    // Support-2 (Red - Error/Danger)
+    --support-2: #b92025;
+    --support-2-hover: #{lighten(#b92025, 15%)};
+    --support-2-active: #{darken(#b92025, 10%)};
+    --support-2-disabled: #{transparentize(#b92025, 0.6)};
+
+    // Support-3 (Green - Success)
+    --support-3: #176e4e;
+    --support-3-hover: #{lighten(#176e4e, 15%)};
+    --support-3-active: #{darken(#176e4e, 10%)};
+    --support-3-disabled: #{transparentize(#176e4e, 0.6)};
+
+    // Support-4 (Yellow - Warning)
+    --support-4: #ffc107;
+    --support-4-hover: #{lighten(#ffc107, 15%)};
+    --support-4-active: #{darken(#ffc107, 10%)};
+    --support-4-disabled: #{transparentize(#ffc107, 0.6)};
+}
+
+/**
+ * Dark Mode Theme
+ * Colors are adjusted for dark mode by:
+ * 1. Darkening the base color by 15%
+ * 2. Adjusting hover/active states relative to the darkened base
+ * 3. Maintaining consistent transparency for disabled states
+ */
+[data-theme="dark"] {
+    // Brand Colors
+
+    // Brand-1 (Navy Blue)
+    --brand-1: #{darken(#00172b, 15%)};
+    --brand-1-hover: #{lighten(darken(#00172b, 15%), 10%)};
+    --brand-1-active: #{darken(darken(#00172b, 15%), 10%)};
+    --brand-1-disabled: #{transparentize(darken(#00172b, 15%), 0.6)};
+
+    // Brand-2 (Orange)
+    --brand-2: #{darken(#f37123, 15%)};
+    --brand-2-hover: #{lighten(darken(#f37123, 15%), 10%)};
+    --brand-2-active: #{darken(darken(#f37123, 15%), 10%)};
+    --brand-2-disabled: #{transparentize(darken(#f37123, 15%), 0.6)};
+
+    // Brand-3 (Teal)
+    --brand-3: #{darken(#0e808a, 15%)};
+    --brand-3-hover: #{lighten(darken(#0e808a, 15%), 10%)};
+    --brand-3-active: #{darken(darken(#0e808a, 15%), 10%)};
+    --brand-3-disabled: #{transparentize(darken(#0e808a, 15%), 0.6)};
+
+    // Base Colors
+
+    // Black
+    --base-black: #{darken(#231f20, 15%)};
+    --base-black-hover: #{lighten(darken(#231f20, 15%), 10%)};
+    --base-black-active: #{darken(darken(#231f20, 15%), 10%)};
+    --base-black-disabled: #{transparentize(darken(#231f20, 15%), 0.6)};
+
+    // White
+    --base-white: #{darken(#ffffff, 15%)};
+    --base-white-hover: #{darken(darken(#ffffff, 15%), 10%)};
+    --base-white-active: #{darken(darken(#ffffff, 15%), 20%)};
+    --base-white-disabled: #{transparentize(darken(#ffffff, 15%), 0.4)};
+
+    // Secondary Colors
+
+    // Secondary-1 (Dark Grey)
+    --secondary-1: #{darken(#6e6f72, 15%)};
+    --secondary-1-hover: #{lighten(darken(#6e6f72, 15%), 10%)};
+    --secondary-1-active: #{darken(darken(#6e6f72, 15%), 10%)};
+    --secondary-1-disabled: #{transparentize(darken(#6e6f72, 15%), 0.6)};
+
+    // Secondary-2 (Beige)
+    --secondary-2: #{darken(#edd7c4, 15%)};
+    --secondary-2-hover: #{lighten(darken(#edd7c4, 15%), 10%)};
+    --secondary-2-active: #{darken(darken(#edd7c4, 15%), 10%)};
+    --secondary-2-disabled: #{transparentize(darken(#edd7c4, 15%), 0.6)};
+
+    // Support Colors
+
+    // Support-1 (Purple)
+    --support-1: #{darken(#392b78, 15%)};
+    --support-1-hover: #{lighten(darken(#392b78, 15%), 10%)};
+    --support-1-active: #{darken(darken(#392b78, 15%), 10%)};
+    --support-1-disabled: #{transparentize(darken(#392b78, 15%), 0.6)};
+
+    // Support-2 (Red - Error/Danger)
+    --support-2: #{darken(#b92025, 15%)};
+    --support-2-hover: #{lighten(darken(#b92025, 15%), 10%)};
+    --support-2-active: #{darken(darken(#b92025, 15%), 10%)};
+    --support-2-disabled: #{transparentize(darken(#b92025, 15%), 0.6)};
+
+    // Support-3 (Green - Success)
+    --support-3: #{darken(#176e4e, 15%)};
+    --support-3-hover: #{lighten(darken(#176e4e, 15%), 10%)};
+    --support-3-active: #{darken(darken(#176e4e, 15%), 10%)};
+    --support-3-disabled: #{transparentize(darken(#176e4e, 15%), 0.6)};
+
+    // Support-4 (Yellow - Warning)
+    --support-4: #{darken(#ffc107, 15%)};
+    --support-4-hover: #{lighten(darken(#ffc107, 15%), 10%)};
+    --support-4-active: #{darken(darken(#ffc107, 15%), 10%)};
+    --support-4-disabled: #{transparentize(darken(#ffc107, 15%), 0.6)};
+}

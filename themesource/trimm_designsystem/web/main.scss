@@ -1,10 +1,10 @@
-@import '../../../theme/web/custom-variables';
+@import "../../../theme/web/custom-variables";
 @import "./tokens/index.scss";
 @import "./components/index.scss";
 
 // Base styles js for testing
 body {
     font-family: $font-primary;
-    background-color: $base-white;
-    color: $base-black;
+    background-color: var(--base-white);
+    color: var(--base-black);
 }

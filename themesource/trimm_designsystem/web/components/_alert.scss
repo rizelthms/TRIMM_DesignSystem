@@ -4,21 +4,21 @@
     font-family: $font-primary;
     border-radius: $radius-4;
     padding: $spacing-16;
-    background-color: $brand-3; // TRIMM Teal
-    color: $base-white;
+    background-color: var(--brand-3); // TRIMM Teal
+    color: var(--base-white);
 
     transition: background-color 0.2s ease;
 
     // Reset text styles inside
     .alert-title,
     .alert-description {
-        color: $base-white !important;
+        color: var(--base-white) !important;
     }
 
     // Style internal buttons if present
     .mx-button {
-        background-color: $brand-2 !important;
-        color: $base-white !important;
+        background-color: var(--brand-2) !important;
+        color: var(--base-white) !important;
         font-weight: $font-weight-semibold;
         font-family: $font-primary;
         font-size: $font-size-body-3; // smaller button text
@@ -33,12 +33,22 @@
         align-items: center;
 
         &:hover {
-            background-color: darken($brand-2, 40%);
+            background-color: var(--brand-2-hover) !important;
+        }
+
+        &:active {
+            background-color: var(--brand-2-active) !important;
+        }
+
+        &:disabled {
+            background-color: var(--brand-2-disabled) !important;
+            color: var(--base-white-disabled) !important;
+            cursor: not-allowed;
         }
 
         svg,
         i.mdi,
-        span>svg {
+        span > svg {
             color: currentColor;
             width: 20px;
             height: 20px;
@@ -47,7 +57,23 @@
 
     // Hover: lighter variant for base
     &:hover {
-        background-color: lighten($brand-3, 20%);
+        background-color: var(--brand-3-hover);
+    }
+
+    &:active {
+        background-color: var(--brand-3-active);
+    }
+
+    &.disabled {
+        background-color: var(--brand-3-disabled);
+        color: var(--base-white-disabled);
+        pointer-events: none;
+        cursor: not-allowed;
+
+        .alert-title,
+        .alert-description {
+            color: var(--base-white-disabled) !important;
+        }
     }
 }
 
@@ -55,39 +81,77 @@
 // Apply alongside alert-base
 
 .alert-success {
-    background-color: $support-3 !important;
+    background-color: var(--support-3) !important;
 
     &:hover {
-        background-color: lighten($support-3, 20%) !important;
+        background-color: var(--support-3-hover) !important;
+    }
+
+    &:active {
+        background-color: var(--support-3-active) !important;
+    }
+
+    &.disabled {
+        background-color: var(--support-3-disabled) !important;
     }
 }
 
 .alert-danger {
-    background-color: $support-2 !important;
+    background-color: var(--support-2) !important;
 
     &:hover {
-        background-color: lighten($support-2, 20%) !important;
+        background-color: var(--support-2-hover) !important;
+    }
+
+    &:active {
+        background-color: var(--support-2-active) !important;
+    }
+
+    &.disabled {
+        background-color: var(--support-2-disabled) !important;
     }
 }
 
 .alert-warning {
-    background-color: $support-4 !important;
-    color: $base-black !important;
+    background-color: var(--support-4) !important;
+    color: var(--base-black) !important;
 
     .alert-title,
     .alert-description {
-        color: $base-black !important;
+        color: var(--base-black) !important;
     }
 
     &:hover {
-        background-color: lighten($support-4, 20%) !important;
+        background-color: var(--support-4-hover) !important;
+    }
+
+    &:active {
+        background-color: var(--support-4-active) !important;
+    }
+
+    &.disabled {
+        background-color: var(--support-4-disabled) !important;
+        color: var(--base-black-disabled) !important;
+
+        .alert-title,
+        .alert-description {
+            color: var(--base-black-disabled) !important;
+        }
     }
 }
 
 .alert-info {
-    background-color: $secondary-1 !important;
+    background-color: var(--secondary-1) !important;
 
     &:hover {
-        background-color: lighten($secondary-1, 20%) !important;
+        background-color: var(--secondary-1-hover) !important;
+    }
+
+    &:active {
+        background-color: var(--secondary-1-active) !important;
+    }
+
+    &.disabled {
+        background-color: var(--secondary-1-disabled) !important;
     }
 }
