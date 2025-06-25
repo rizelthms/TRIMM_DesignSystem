@@ -17,7 +17,6 @@ import {
 } from "date-fns";
 import enUS from "date-fns/locale/en-US";
 import nl from "date-fns/locale/nl";
-import "./ui/TrimmRangeDatepicker.css";
 
 function getLocale(localeStr: string | undefined) {
     switch ((localeStr || "").toLowerCase()) {
