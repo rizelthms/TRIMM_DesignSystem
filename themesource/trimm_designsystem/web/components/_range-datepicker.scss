@@ -1,11 +1,24 @@
+// _range-datepicker.scss
+// Styles for the Trimm Range Datepicker widget.
+// Uses design system tokens for all colors, spacing, and typography.
+// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
+// This file is imported by the main design system theme and applies styles globally to .trimm-range-datepicker classes.
+
 .trimm-range-datepicker {
     font-family: $font-primary;
     width: 100%;
     max-width: 800px;
     padding: $spacing-16;
     border-radius: $radius-8;
-    background-color: transparent;
+    background-color: var(--base-white);
+    display: inline-block;
     margin: 0 auto;
+}
+
+.trimm-range-datepicker-label-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .trimm-range-datepicker-toggle {

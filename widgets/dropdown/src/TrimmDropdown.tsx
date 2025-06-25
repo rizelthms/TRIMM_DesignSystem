@@ -1,7 +1,6 @@
 /** @jsx createElement */
 import { createElement, useRef, useState } from "react";
 import { TrimmDropdownContainerProps } from "../typings/TrimmDropdownProps";
-import "./ui/TrimmDropdown.css";
 import { DynamicValue, WebIcon } from "mendix";
 
 export function TrimmDropdown({ dropdownItems, icon, showCaretIcon, caption }: TrimmDropdownContainerProps) {
