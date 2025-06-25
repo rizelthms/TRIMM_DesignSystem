@@ -1,3 +1,9 @@
+// _datepicker.scss
+// Styles for the Trimm Datepicker widget.
+// Uses design system tokens for all colors, spacing, and typography.
+// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
+// This file is imported by the main design system theme and applies styles globally to .trimm-datepicker classes.
+
 .trimm-datepicker {
     position: relative;
     display: inline-block;
