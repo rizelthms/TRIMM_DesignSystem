@@ -1,7 +1,6 @@
 /** @jsx createElement */
 import { createElement, useState, useRef, useEffect } from "react";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
-import "./ui/TrimmDatepicker.css";
 import {
     addMonths,
     format,

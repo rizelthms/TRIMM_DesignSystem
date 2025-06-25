@@ -4,8 +4,15 @@
     max-width: 800px;
     padding: $spacing-16;
     border-radius: $radius-8;
-    background-color: transparent;
+    background-color: var(--base-white);
+    display: inline-block;
     margin: 0 auto;
+}
+
+.trimm-range-datepicker-label-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .trimm-range-datepicker-toggle {
