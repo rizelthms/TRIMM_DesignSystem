@@ -18,6 +18,8 @@ function isValidColor(value: string): boolean {
 function getAllCSSCustomProperties(): Token[] {
     const vars: Record<string, string> = {};
     for (const sheet of Array.from(document.styleSheets)) {
+        if (sheet.href && sheet.href.includes('widgets.css')) continue;
+
         let rules: CSSRuleList | undefined;
         try {
             rules = sheet.cssRules;
@@ -33,17 +35,38 @@ function getAllCSSCustomProperties(): Token[] {
                 const style = (rule as CSSStyleRule).style;
                 for (let i = 0; i < style.length; i++) {
                     const name = style[i];
-                    if (name.startsWith("--")) {
+                    if (name.startsWith("--") && (
+                        /^--brand-[1-9](-hover|-active|-disabled)?$/.test(name) ||
+                        /^--base-(black|white)(-hover|-active|-disabled)?$/.test(name) ||
+                        /^--secondary-[1-9](-hover|-active|-disabled)?$/.test(name) ||
+                        /^--support-[1-9](-hover|-active|-disabled)?$/.test(name)
+                    )) {
                         const value = style.getPropertyValue(name).trim();
-                        vars[name] = value;
+                        if (isValidColor(value)) {
+                            vars[name] = value;
+                        }
                     }
                 }
             }
         }
     }
     return Object.entries(vars)
-        .filter(([_, value]) => isValidColor(value))
-        .map(([name, value]) => ({ name, value }));
+        .map(([name, value]) => ({ name, value }))
+        .sort((a, b) => {
+            const aBase = a.name.split('-').slice(0, -1).join('-');
+            const bBase = b.name.split('-').slice(0, -1).join('-');
+            if (aBase === bBase) {
+                const stateOrder = { '': 0, 'hover': 1, 'active': 2, 'disabled': 3 };
+                const aState = a.name.includes('-hover') ? 'hover' :
+                    a.name.includes('-active') ? 'active' :
+                        a.name.includes('-disabled') ? 'disabled' : '';
+                const bState = b.name.includes('-hover') ? 'hover' :
+                    b.name.includes('-active') ? 'active' :
+                        b.name.includes('-disabled') ? 'disabled' : '';
+                return stateOrder[aState] - stateOrder[bState];
+            }
+            return aBase.localeCompare(bBase);
+        });
 }
 
 function getOverrides(): Overrides {
