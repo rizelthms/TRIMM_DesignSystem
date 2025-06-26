@@ -69,16 +69,20 @@ function getAllCSSCustomProperties(): Token[] {
         });
 }
 
-function getOverrides(): Overrides {
+function getCurrentTheme(): "light" | "dark" {
+    return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+}
+
+function getOverrides(theme: "light" | "dark"): Overrides {
     try {
-        return JSON.parse(localStorage.getItem("tokenOverrides") || "{}") as Overrides;
+        return JSON.parse(localStorage.getItem(`tokenOverrides_${theme}`) || "{}") as Overrides;
     } catch {
         return {};
     }
 }
 
-function setOverrides(overrides: Overrides) {
-    localStorage.setItem("tokenOverrides", JSON.stringify(overrides));
+function setOverrides(theme: "light" | "dark", overrides: Overrides) {
+    localStorage.setItem(`tokenOverrides_${theme}`, JSON.stringify(overrides));
 }
 
 function applyOverrides(overrides: Overrides) {
@@ -87,40 +91,94 @@ function applyOverrides(overrides: Overrides) {
     });
 }
 
-function resetOverrides(tokens: Token[]) {
-    localStorage.removeItem("tokenOverrides");
+function resetOverrides(tokens: Token[], theme: "light" | "dark") {
+    localStorage.removeItem(`tokenOverrides_${theme}`);
     tokens.forEach((t: Token) => {
         document.documentElement.style.setProperty(t.name, t.value);
     });
 }
 
+function deriveDarkColor(lightColor: string): string {
+    // Simple darken by 20% for demonstration; for production, use a color lib
+    let c = lightColor.replace('#', '');
+    if (c.length === 3) c = c.split('').map(x => x + x).join('');
+    let num = parseInt(c, 16);
+    let r = Math.max(0, ((num >> 16) & 0xFF) - 40);
+    let g = Math.max(0, ((num >> 8) & 0xFF) - 40);
+    let b = Math.max(0, (num & 0xFF) - 40);
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+}
+
+function clearOverrides(overrides: Overrides) {
+    Object.keys(overrides).forEach(token => {
+        document.documentElement.style.removeProperty(token);
+    });
+}
+
 const TokenEditor: React.FC = () => {
     const [tokens, setTokens] = React.useState<Token[]>([]);
-    const overrides = getOverrides();
+    const [theme, setTheme] = React.useState<"light" | "dark">(getCurrentTheme());
+    const [overrides, setOverridesState] = React.useState<Overrides>(getOverrides(theme));
+    const prevThemeRef = React.useRef<"light" | "dark">(getCurrentTheme());
 
     React.useEffect(() => {
+        function handleThemeChange() {
+            const currentTheme = getCurrentTheme();
+            const prevTheme = prevThemeRef.current;
+            if (prevTheme !== currentTheme) {
+                // Clear previous theme's overrides
+                const prevOverrides = getOverrides(prevTheme);
+                clearOverrides(prevOverrides);
+            }
+            prevThemeRef.current = currentTheme;
+            setTheme(currentTheme);
+            const currentOverrides = getOverrides(currentTheme);
+            setOverridesState(currentOverrides);
+            applyOverrides(currentOverrides);
+        }
+
         function updateTokens() {
             const list = getAllCSSCustomProperties();
             setTokens(list);
-            applyOverrides(overrides);
+            handleThemeChange();
         }
+
         updateTokens();
         const observer = new MutationObserver(() => {
-            updateTokens();
+            handleThemeChange();
         });
-        observer.observe(document.documentElement, { attributes: true, childList: false, subtree: false });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
         return () => observer.disconnect();
     }, []);
 
     function handleChange(token: string, value: string) {
-        const newOverrides = { ...getOverrides(), [token]: value };
-        setOverrides(newOverrides);
-        applyOverrides(newOverrides);
+        // Always set the light override
+        const lightOverrides = { ...getOverrides("light"), [token]: value };
+        setOverrides("light", lightOverrides);
+        // Always auto-derive and set the dark override
+        const derived = deriveDarkColor(value);
+        const darkOverrides = { ...getOverrides("dark"), [token]: derived };
+        setOverrides("dark", darkOverrides);
+        // Apply the correct override for the current theme
+        if (getCurrentTheme() === "dark") {
+            setOverridesState(darkOverrides);
+            applyOverrides(darkOverrides);
+        } else {
+            setOverridesState(lightOverrides);
+            applyOverrides(lightOverrides);
+        }
     }
 
     function handleReset() {
-        resetOverrides(tokens);
+        resetOverrides(tokens, "light");
+        resetOverrides(tokens, "dark");
+        setOverridesState({});
         window.location.reload();
+    }
+
+    function getValidHex(value: string, fallback = "#000000") {
+        if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return value;
+        return fallback;
     }
 
     return (
@@ -136,7 +194,7 @@ const TokenEditor: React.FC = () => {
                         <label className="color-token-label">{t.name}</label>
                         <input
                             type="color"
-                            value={overrides[t.name] || t.value}
+                            value={getValidHex(overrides[t.name] || t.value)}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(t.name, e.target.value)}
                             className="color-token-color-input"
                         />
