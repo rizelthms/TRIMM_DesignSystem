@@ -29222,36 +29222,71 @@ Do not render = "none"
   font-size: 12px;
 }
 
-.region-topbar {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
+.trimm-color-token-editor {
+  padding: 16px;
+  background-color: var(--base-white);
+  border: 1px solid var(--secondary-1-disabled);
+  border-radius: 8px;
+  max-width: 340px;
+  font-family: "GothamSSm", sans-serif;
+}
+.trimm-color-token-editor h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: var(--base-black);
+  font-weight: 500;
 }
 
-.region-topbar .topbar-content {
-  color: var(--base-white) !important;
+.trimm-color-token-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
 }
 
-.region-sidebar,
-.mx-navigationtree mx-name-navigationTree3,
-.navbar-inner {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
+.trimm-color-token-label {
+  flex: 1;
+  font-size: 12px;
+  color: var(--base-black);
 }
 
-.region-sidebar .sidebar-heading {
-  color: var(--base-white) !important;
+.trimm-color-token-color-input {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--secondary-1);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+.trimm-color-token-color-input:hover {
+  border-color: var(--brand-1);
+}
+.trimm-color-token-color-input:focus {
+  outline: none;
+  border-color: var(--brand-1);
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
 }
 
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
-  background-color: var(--brand-3);
-  color: var(--base-white) !important;
+.trimm-color-token-reset-btn {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--secondary-1);
+  background-color: var(--base-white);
+  color: var(--base-black);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease-in-out;
 }
-
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus,
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
-  background-color: var(--brand-3);
-  color: var(--base-white);
+.trimm-color-token-reset-btn:hover {
+  background-color: var(--secondary-1-hover);
+  border-color: var(--secondary-1-hover);
+}
+.trimm-color-token-reset-btn:active {
+  background-color: var(--secondary-1-active);
+  border-color: var(--secondary-1-active);
 }
 
 body {

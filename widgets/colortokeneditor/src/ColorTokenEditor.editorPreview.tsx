@@ -18,5 +18,5 @@ export function preview(): ReactElement {
 }
 
 export function getPreviewCss(): string {
-    return require("./ui/ColorTokenEditor.css");
+    return ""; // Styles are now loaded through the design system
 }
