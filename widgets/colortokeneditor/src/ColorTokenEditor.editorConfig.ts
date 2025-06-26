@@ -1,4 +1,4 @@
-import { ColorTokenEditorPreviewProps } from "../typings/ColorTokenEditorProps";
+import { ColorTokenEditorPreviewProps } from "typings/ColorTokenEditorProps";
 
 export type Platform = "web" | "desktop";
 
@@ -112,7 +112,7 @@ export function getProperties(
     return defaultProperties;
 }
 
-// export function check(_values: ColorTokenEditorPreviewProps): Problem[] {
+// export function check(_values: TokenEditorPreviewProps): Problem[] {
 //     const errors: Problem[] = [];
 //     // Add errors to the above array to throw errors in Studio and Studio Pro.
 //     /* Example
@@ -127,7 +127,7 @@ export function getProperties(
 //     return errors;
 // }
 
-// export function getPreview(values: ColorTokenEditorPreviewProps, isDarkMode: boolean, version: number[]): PreviewProps {
+// export function getPreview(values: TokenEditorPreviewProps, isDarkMode: boolean, version: number[]): PreviewProps {
 //     // Customize your pluggable widget appearance for Studio Pro.
 //     return {
 //         type: "Container",
@@ -135,6 +135,6 @@ export function getProperties(
 //     }
 // }
 
-// export function getCustomCaption(values: ColorTokenEditorPreviewProps, platform: Platform): string {
+// export function getCustomCaption(values: TokenEditorPreviewProps, platform: Platform): string {
 //     return "ColorTokenEditor";
 // }
