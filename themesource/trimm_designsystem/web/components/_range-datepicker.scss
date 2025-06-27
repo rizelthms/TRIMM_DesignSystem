@@ -60,7 +60,7 @@
     font-weight: $font-weight-bold;
 }
 
-.trimm-datepicker-nav {
+.trimm-range-datepicker-nav {
     display: flex;
     justify-content: flex-end;
     gap: $spacing-8;
@@ -76,19 +76,18 @@
     }
 }
 
-.trimm-datepicker-months {
+.trimm-range-datepicker-months {
     display: flex;
     gap: $spacing-32;
     border-radius: $radius-4;
-    border: 1px solid var(--base-black);
     padding: $spacing-12;
 }
 
-.trimm-datepicker-month {
+.trimm-range-datepicker-month {
     flex: 1;
 }
 
-.trimm-datepicker-header {
+.trimm-range-datepicker-header {
     text-align: center;
     font-weight: $font-weight-bold;
     font-size: $font-size-body-2;
@@ -96,7 +95,7 @@
     margin-bottom: $spacing-8;
 }
 
-.trimm-datepicker-days-row {
+.trimm-range-datepicker-days-row {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     font-size: $font-size-body-4;
@@ -104,12 +103,12 @@
     margin-bottom: $spacing-8;
 }
 
-.trimm-datepicker-day-label {
+.trimm-range-datepicker-day-label {
     font-weight: $font-weight-medium;
     color: var(--base-black);
 }
 
-.trimm-datepicker-row {
+.trimm-range-datepicker-row {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: $spacing-4;
@@ -151,7 +150,60 @@
     }
 }
 
-.trimm-datepicker-icon {
+.trimm-range-datepicker-icon {
     margin-right: $spacing-8;
     font-size: $font-size-body-4;
+}
+
+.trimm-range-datepicker-arrow-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trimm-range-datepicker-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    padding: $spacing-4;
+    display: flex;
+    align-items: center;
+    color: var(--base-black);
+}
+
+.trimm-range-datepicker-header-label {
+    text-align: center;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-body-1;
+    color: var(--base-black);
+    flex: 1;
+    margin: 0 $spacing-4;
+}
+
+.trimm-range-datepicker-body {
+    // This is the container for the rows of days
+    display: block;
+}
+
+.trimm-range-datepicker-popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: $spacing-4;
+    padding: $spacing-8;
+    background-color: var(--base-white);
+    border: $border-1 solid var(--secondary-1);
+    border-radius: $radius-4;
+    z-index: 1000;
+    min-width: 560px;
+    box-shadow: $shadow-12;
+}
+
+.trimm-range-datepicker-popup-draghandle {
+    width: 100%;
+    height: 15px;
+    cursor: move;
+    user-select: none;
+    background: transparent;
 }

@@ -29014,24 +29014,28 @@ Do not render = "none"
 }
 
 .trimm-datepicker-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 16px;
   color: var(--base-black);
   margin-bottom: 8px;
+  gap: 8px;
 }
-.trimm-datepicker-header button:first-child {
-  margin-right: 12px;
-}
-.trimm-datepicker-header button:last-child {
-  margin-left: 12px;
-}
-.trimm-datepicker-header button {
+.trimm-datepicker-header .trimm-datepicker-nav {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 16px;
   padding: 4px;
+  display: flex;
+  align-items: center;
+}
+.trimm-datepicker-header .trimm-datepicker-title {
+  text-align: center;
+  min-width: 120px;
+  pointer-events: none;
 }
 
 .trimm-datepicker-days-row,
@@ -29074,6 +29078,78 @@ Do not render = "none"
 .trimm-datepicker-cell.disabled {
   color: var(--secondary-1-disabled);
   cursor: not-allowed;
+}
+
+.trimm-datepicker-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: var(--base-black);
+}
+
+.trimm-datepicker-header-label {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--base-black);
+  flex: 1;
+  margin: 0 4px;
+}
+
+.region-topbar,
+.region-topbar.mx-scrollcontainer-top {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.region-topbar .mx-navbar {
+  background-color: var(--brand-3) !important;
+}
+
+.region-topbar .mx-navbar .topbar-content {
+  color: var(--base-white) !important;
+}
+
+.layout-atlas .region-topbar,
+.layout-atlas .region-topbar .mx-navbar,
+.layout-atlas .region-topbar .mx-navigationtree,
+.layout-atlas .region-topbar .mx-menubar,
+.layout-atlas .region-topbar.mx-scrollcontainer-top,
+.layout-atlas .region-topbar .mx-navbar .topbar-content {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.layout-atlas-phone .region-topbar,
+.layout-atlas-tablet .region-topbar {
+  background-color: var(--brand-3) !important;
+}
+
+.region-sidebar,
+.mx-navigationtree mx-name-navigationTree3,
+.navbar-inner {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .sidebar-heading {
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
+  background-color: var(--brand-3);
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
+  background-color: var(--brand-3);
+  color: var(--base-white);
 }
 
 .trimm-range-datepicker {
@@ -29131,13 +29207,13 @@ Do not render = "none"
   font-weight: bold;
 }
 
-.trimm-datepicker-nav {
+.trimm-range-datepicker-nav {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
   margin-bottom: 16px;
 }
-.trimm-datepicker-nav button {
+.trimm-range-datepicker-nav button {
   border: none;
   background: none;
   cursor: pointer;
@@ -29146,19 +29222,18 @@ Do not render = "none"
   color: var(--base-black);
 }
 
-.trimm-datepicker-months {
+.trimm-range-datepicker-months {
   display: flex;
   gap: 32px;
   border-radius: 4px;
-  border: 1px solid var(--base-black);
   padding: 12px;
 }
 
-.trimm-datepicker-month {
+.trimm-range-datepicker-month {
   flex: 1;
 }
 
-.trimm-datepicker-header {
+.trimm-range-datepicker-header {
   text-align: center;
   font-weight: bold;
   font-size: 16px;
@@ -29166,7 +29241,7 @@ Do not render = "none"
   margin-bottom: 8px;
 }
 
-.trimm-datepicker-days-row {
+.trimm-range-datepicker-days-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   font-size: 12px;
@@ -29174,12 +29249,12 @@ Do not render = "none"
   margin-bottom: 8px;
 }
 
-.trimm-datepicker-day-label {
+.trimm-range-datepicker-day-label {
   font-weight: 500;
   color: var(--base-black);
 }
 
-.trimm-datepicker-row {
+.trimm-range-datepicker-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 4px;
@@ -29217,41 +29292,306 @@ Do not render = "none"
   pointer-events: none;
 }
 
-.trimm-datepicker-icon {
+.trimm-range-datepicker-icon {
   margin-right: 8px;
   font-size: 12px;
 }
 
-.region-topbar {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
+.trimm-range-datepicker-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.region-topbar .topbar-content {
-  color: var(--base-white) !important;
+.trimm-range-datepicker-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: var(--base-black);
 }
 
-.region-sidebar,
-.mx-navigationtree mx-name-navigationTree3,
-.navbar-inner {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
+.trimm-range-datepicker-header-label {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--base-black);
+  flex: 1;
+  margin: 0 4px;
 }
 
-.region-sidebar .sidebar-heading {
-  color: var(--base-white) !important;
+.trimm-range-datepicker-body {
+  display: block;
 }
 
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
-  background-color: var(--brand-3);
-  color: var(--base-white) !important;
+.trimm-range-datepicker-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  padding: 8px;
+  background-color: var(--base-white);
+  border: 1px solid var(--secondary-1);
+  border-radius: 4px;
+  z-index: 1000;
+  min-width: 560px;
+  box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
 }
 
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus,
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
-  background-color: var(--brand-3);
+.trimm-range-datepicker-popup-draghandle {
+  width: 100%;
+  height: 15px;
+  cursor: move;
+  user-select: none;
+  background: transparent;
+}
+
+.trimm-color-token-editor {
+  padding: 16px;
+  background-color: var(--base-white);
+  border: 1px solid var(--secondary-1-disabled);
+  border-radius: 8px;
+  max-width: 340px;
+  font-family: "GothamSSm", sans-serif;
+}
+.trimm-color-token-editor h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: var(--base-black);
+  font-weight: 500;
+}
+
+.trimm-color-token-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 12px;
+}
+
+.trimm-color-token-label {
+  flex: 1;
+  font-size: 12px;
+  color: var(--base-black);
+}
+
+.trimm-color-token-color-input {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--secondary-1);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+}
+.trimm-color-token-color-input:hover {
+  border-color: var(--brand-1);
+}
+.trimm-color-token-color-input:focus {
+  outline: none;
+  border-color: var(--brand-1);
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+}
+
+.trimm-color-token-reset-btn {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--secondary-1);
+  background-color: var(--base-white);
+  color: var(--base-black);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease-in-out;
+}
+.trimm-color-token-reset-btn:hover {
+  background-color: var(--secondary-1-hover);
+  border-color: var(--secondary-1-hover);
+}
+.trimm-color-token-reset-btn:active {
+  background-color: var(--secondary-1-active);
+  border-color: var(--secondary-1-active);
+}
+
+.trimm-color-token-fab {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1001;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--brand-2);
   color: var(--base-white);
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+.trimm-color-token-fab:hover, .trimm-color-token-fab:focus {
+  background: var(--brand-2-hover);
+}
+
+.trimm-color-token-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 340px;
+  background: var(--base-white);
+  box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
+  z-index: 1002;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow: visible;
+}
+.trimm-color-token-drawer.open {
+  transform: translateX(0);
+}
+.trimm-color-token-drawer.left {
+  left: 0;
+  right: auto;
+  transform: translateX(-100%);
+}
+.trimm-color-token-drawer.left.open {
+  transform: translateX(0);
+}
+.trimm-color-token-drawer.right {
+  right: 0;
+  left: auto;
+}
+
+.trimm-color-token-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.trimm-color-token-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.trimm-color-token-drawer-header h3 {
+  margin: 0;
+  font-size: 26px;
+  color: var(--base-black);
+  font-weight: 500;
+}
+
+.trimm-color-token-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.trimm-color-token-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary-1-disabled);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.trimm-color-token-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--secondary-1);
+  background: var(--base-white);
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+}
+
+.trimm-color-token-label {
+  flex: 1;
+  font-size: 12px;
+  color: var(--base-black);
+  margin-left: 4px;
+}
+
+.trimm-color-token-color-input {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--secondary-1);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.trimm-color-token-color-input:hover, .trimm-color-token-color-input:focus {
+  border-color: var(--brand-1);
+}
+
+.trimm-color-token-reset-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.trimm-color-token-fab-icon {
+  display: none;
+}
+
+.trimm-color-token-fab-icon-fallback {
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: var(--brand-3);
+}
+
+.trimm-color-token-drawer-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  z-index: 1003;
+  cursor: ew-resize;
+  background: rgba(14, 128, 138, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: background 0.2s, opacity 0.2s;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.04);
+}
+.trimm-color-token-drawer-resize-handle::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 40px;
+  border-radius: 2px;
+  background: var(--brand-3);
+  opacity: 0.6;
+}
+.trimm-color-token-drawer-resize-handle:hover {
+  background: rgba(14, 128, 138, 0.18);
+}
+.trimm-color-token-drawer-resize-handle:hover::before {
+  opacity: 1;
+}
+.trimm-color-token-drawer-resize-handle.right {
+  left: 0;
+  right: auto;
+}
+.trimm-color-token-drawer-resize-handle.left {
+  right: 0;
+  left: auto;
 }
 
 body {

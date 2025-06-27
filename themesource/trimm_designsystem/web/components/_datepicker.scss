@@ -48,24 +48,28 @@
 }
 
 .trimm-datepicker-header {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: $font-weight-bold;
     font-size: $font-size-body-2;
     color: var(--base-black);
     margin-bottom: $spacing-8;
+    gap: $spacing-8;
 
-    button:first-child {
-        margin-right: $spacing-12;
-    }
-    button:last-child {
-        margin-left: $spacing-12;
-    }
-    button {
+    .trimm-datepicker-nav {
         background: none;
         border: none;
         cursor: pointer;
         font-size: $font-size-body-2;
         padding: $spacing-4;
+        display: flex;
+        align-items: center;
+    }
+    .trimm-datepicker-title {
+        text-align: center;
+        min-width: 120px;
+        pointer-events: none;
     }
 }
 
@@ -113,4 +117,24 @@
         color: var(--secondary-1-disabled);
         cursor: not-allowed;
     }
+}
+
+.trimm-datepicker-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5rem;
+    padding: $spacing-4;
+    display: flex;
+    align-items: center;
+    color: var(--base-black);
+}
+
+.trimm-datepicker-header-label {
+    text-align: center;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-body-1;
+    color: var(--base-black);
+    flex: 1;
+    margin: 0 $spacing-4;
 }

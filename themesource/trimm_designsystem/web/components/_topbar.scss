@@ -1,8 +1,28 @@
-.region-topbar {
+.region-topbar,
+.region-topbar.mx-scrollcontainer-top {
   background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
 }
 
-.region-topbar .topbar-content {
+.region-topbar .mx-navbar {
+  background-color: var(--brand-3) !important;
+}
+
+.region-topbar .mx-navbar .topbar-content {
   color: var(--base-white) !important;
+}
+
+.layout-atlas .region-topbar,
+.layout-atlas .region-topbar .mx-navbar,
+.layout-atlas .region-topbar .mx-navigationtree,
+.layout-atlas .region-topbar .mx-menubar,
+.layout-atlas .region-topbar.mx-scrollcontainer-top,
+.layout-atlas .region-topbar .mx-navbar .topbar-content {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.layout-atlas-phone .region-topbar,
+.layout-atlas-tablet .region-topbar {
+  background-color: var(--brand-3) !important;
 }

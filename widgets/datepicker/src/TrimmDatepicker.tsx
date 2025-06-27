@@ -163,9 +163,13 @@ export function TrimmDatepicker({
     function renderHeader() {
         return (
             <div className="trimm-datepicker-header">
-                <button onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}>◀</button>
-                <span>{format(currentMonth, "LLLL yyyy", { locale: localeObj })}</span>
-                <button onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>▶</button>
+                <button className="trimm-datepicker-arrow" onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}>
+                    <span className="glyphicon glyphicon-triangle-left" aria-label="Previous month" />
+                </button>
+                <span className="trimm-datepicker-header-label">{format(currentMonth, "LLLL yyyy", { locale: localeObj })}</span>
+                <button className="trimm-datepicker-arrow" onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}>
+                    <span className="glyphicon glyphicon-triangle-right" aria-label="Next month" />
+                </button>
             </div>
         );
     }

@@ -1,0 +1,266 @@
+// _color-token-editor.scss
+// Styles for the Trimm Color Token Editor widget.
+// Uses design system tokens for all colors, spacing, and typography.
+// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
+// This file is imported by the main design system theme and applies styles globally to .trimm-color-token-editor classes.
+
+.trimm-color-token-editor {
+    padding: $spacing-16;
+    background-color: var(--base-white);
+    border: $border-1 solid var(--secondary-1-disabled);
+    border-radius: $radius-8;
+    max-width: 340px;
+    font-family: $font-primary;
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: $spacing-16;
+        font-size: $font-size-body-2;
+        color: var(--base-black);
+        font-weight: $font-weight-medium;
+    }
+}
+
+.trimm-color-token-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-12;
+    gap: $spacing-12;
+}
+
+.trimm-color-token-label {
+    flex: 1;
+    font-size: $font-size-body-4;
+    color: var(--base-black);
+}
+
+.trimm-color-token-color-input {
+    width: 40px;
+    height: 40px;
+    border: $border-1 solid var(--secondary-1);
+    border-radius: $radius-4;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+
+    &:hover {
+        border-color: var(--brand-1);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: var(--brand-1);
+        box-shadow: $shadow-6;
+    }
+}
+
+.trimm-color-token-reset-btn {
+    margin-top: $spacing-8;
+    padding: $spacing-8 $spacing-12;
+    border-radius: $radius-4;
+    border: $border-1 solid var(--secondary-1);
+    background-color: var(--base-white);
+    color: var(--base-black);
+    cursor: pointer;
+    font-size: $font-size-body-4;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        background-color: var(--secondary-1-hover);
+        border-color: var(--secondary-1-hover);
+    }
+
+    &:active {
+        background-color: var(--secondary-1-active);
+        border-color: var(--secondary-1-active);
+    }
+}
+
+// Floating action button (palette)
+.trimm-color-token-fab {
+    position: fixed;
+    top: $spacing-24;
+    right: $spacing-24;
+    z-index: 1001;
+    width: 48px;
+    height: 48px;
+    border-radius: $radius-16;
+    background: var(--brand-2);
+    color: var(--base-white);
+    box-shadow: $shadow-8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+    &:hover,
+    &:focus {
+        background: var(--brand-2-hover);
+    }
+}
+
+// Drawer/Sidebar
+.trimm-color-token-drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 340px;
+    background: var(--base-white);
+    box-shadow: $shadow-12;
+    z-index: 1002;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    &.open {
+        transform: translateX(0);
+    }
+    &.left {
+        left: 0;
+        right: auto;
+        transform: translateX(-100%);
+        &.open {
+            transform: translateX(0);
+        }
+    }
+    &.right {
+        right: 0;
+        left: auto;
+    }
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-24;
+    overflow: visible;
+}
+
+// Overlay
+.trimm-color-token-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+// Drawer header
+.trimm-color-token-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-24;
+    h3 {
+        margin: 0;
+        font-size: $font-size-h2;
+        color: var(--base-black);
+        font-weight: $font-weight-medium;
+    }
+}
+
+// Token grid
+.trimm-color-token-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-16;
+    margin-bottom: $spacing-24;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.trimm-color-token-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    background: var(--secondary-1-disabled);
+    border-radius: $radius-4;
+    padding: $spacing-8;
+}
+
+.trimm-color-token-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: $radius-4;
+    border: $border-1 solid var(--secondary-1);
+    background: var(--base-white);
+    box-shadow: $shadow-2;
+}
+
+.trimm-color-token-label {
+    flex: 1;
+    font-size: $font-size-body-4;
+    color: var(--base-black);
+    margin-left: $spacing-4;
+}
+
+.trimm-color-token-color-input {
+    width: 32px;
+    height: 32px;
+    border: $border-1 solid var(--secondary-1);
+    border-radius: $radius-4;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    &:hover,
+    &:focus {
+        border-color: var(--brand-1);
+    }
+}
+
+// Reset button (inherits .btn, .btn-info from Atlas + the _button.scss)
+.trimm-color-token-reset-btn {
+    width: 100%;
+    margin-top: $spacing-8;
+}
+
+.trimm-color-token-fab-icon {
+    display: none;
+}
+
+.trimm-color-token-fab-icon-fallback {
+    display: block;
+    width: 32px;
+    height: 32px;
+    color: var(--brand-3);
+}
+
+// Drawer resize handle
+.trimm-color-token-drawer-resize-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    z-index: 1003;
+    cursor: ew-resize;
+    background: rgba(14, 128, 138, 0.08); // subtle teal background
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition:
+        background 0.2s,
+        opacity 0.2s;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.04);
+    &::before {
+        content: "";
+        display: block;
+        width: 3px;
+        height: 40px;
+        border-radius: 2px;
+        background: var(--brand-3);
+        opacity: 0.6;
+    }
+    &:hover {
+        background: rgba(14, 128, 138, 0.18);
+        &::before {
+            opacity: 1;
+        }
+    }
+    &.right {
+        left: 0;
+        right: auto;
+    }
+    &.left {
+        right: 0;
+        left: auto;
+    }
+}
