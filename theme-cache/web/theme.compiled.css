@@ -29014,24 +29014,28 @@ Do not render = "none"
 }
 
 .trimm-datepicker-header {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 16px;
   color: var(--base-black);
   margin-bottom: 8px;
+  gap: 8px;
 }
-.trimm-datepicker-header button:first-child {
-  margin-right: 12px;
-}
-.trimm-datepicker-header button:last-child {
-  margin-left: 12px;
-}
-.trimm-datepicker-header button {
+.trimm-datepicker-header .trimm-datepicker-nav {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 16px;
   padding: 4px;
+  display: flex;
+  align-items: center;
+}
+.trimm-datepicker-header .trimm-datepicker-title {
+  text-align: center;
+  min-width: 120px;
+  pointer-events: none;
 }
 
 .trimm-datepicker-days-row,
@@ -29348,8 +29352,8 @@ Do not render = "none"
   z-index: 1001;
   width: 48px;
   height: 48px;
-  border-radius: 50%;
-  background: var(--brand-3);
+  border-radius: 16px;
+  background: var(--brand-2);
   color: var(--base-white);
   box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
   display: flex;
@@ -29360,7 +29364,7 @@ Do not render = "none"
   transition: background 0.2s;
 }
 .trimm-color-token-fab:hover, .trimm-color-token-fab:focus {
-  background: var(--brand-3-hover);
+  background: var(--brand-2-hover);
 }
 
 .trimm-color-token-drawer {
@@ -29408,21 +29412,13 @@ Do not render = "none"
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .trimm-color-token-drawer-header h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 26px;
   color: var(--base-black);
   font-weight: 500;
-}
-.trimm-color-token-drawer-header .trimm-color-token-close {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: var(--base-black);
-  cursor: pointer;
-  line-height: 1;
 }
 
 .trimm-color-token-grid {
