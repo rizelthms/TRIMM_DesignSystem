@@ -111,7 +111,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     };
 
-    const renderMonth = (monthDate: Date, isFirst: boolean, isLast: boolean) => {
+    const renderMonth = (monthDate: Date) => {
         const monthStart = startOfMonth(monthDate);
         const monthEnd = endOfMonth(monthStart);
         const startDateGrid = startOfWeek(monthStart);
@@ -148,7 +148,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             }
 
             rows.push(
-                <div className="trimm-datepicker-row" key={day.toString()}>
+                <div className="trimm-range-datepicker-row" key={day.toString()}>
                     {days}
                 </div>
             );
@@ -156,42 +156,15 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
 
         return (
-            <div className="trimm-datepicker-month">
-                <div className="trimm-datepicker-header">
-                    <div className="trimm-datepicker-arrow-col">
-                        {isFirst && (
-                            <button
-                                type="button"
-                                className="trimm-datepicker-arrow"
-                                onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
-                            >
-                                ◀
-                            </button>
-                        )}
-                    </div>
-                    <div className="trimm-datepicker-header-label">
-                        {format(monthDate, "MMMM yyyy", { locale: getLocale(locale) })}
-                    </div>
-                    <div className="trimm-datepicker-arrow-col">
-                        {isLast && (
-                            <button
-                                type="button"
-                                className="trimm-datepicker-arrow"
-                                onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
-                            >
-                                ▶
-                            </button>
-                        )}
-                    </div>
-                </div>
-                <div className="trimm-datepicker-days-row">
+            <div className="trimm-range-datepicker-month">
+                <div className="trimm-range-datepicker-days-row">
                     {Array.from({ length: 7 }).map((_, i) => (
-                        <div key={i} className="trimm-datepicker-day-label">
+                        <div key={i} className="trimm-range-datepicker-day-label">
                             {format(addDays(startOfWeek(monthDate), i), "EEEEE", { locale: getLocale(locale) })}
                         </div>
                     ))}
                 </div>
-                <div className="trimm-datepicker-body">{rows}</div>
+                <div className="trimm-range-datepicker-body">{rows}</div>
             </div>
         );
     };
@@ -222,7 +195,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
             {showCalendar && (
                 <div
                     ref={popupRef}
-                    className="trimm-datepicker-popup"
+                    className="trimm-range-datepicker-popup"
                     style={{
                         position: "absolute",
                         left: popupPosition.x,
@@ -231,7 +204,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                 >
                     {/* Drag handle at the top of the popup */}
                     <div
-                        className="trimm-datepicker-popup-draghandle"
+                        className="trimm-range-datepicker-popup-draghandle"
                         style={{ cursor: "move", userSelect: "none", height: 20, width: "100%" }}
                         onMouseDown={e => {
                             e.preventDefault();
@@ -244,9 +217,34 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                             });
                         }}
                     />
-                    <div className="trimm-datepicker-months">
-                        {renderMonth(currentMonth, true, false)}
-                        {renderMonth(addMonths(currentMonth, 1), false, true)}
+                    <div className="trimm-range-datepicker-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+                        <button
+                            type="button"
+                            className="trimm-range-datepicker-arrow"
+                            onClick={() => setCurrentMonth(addMonths(currentMonth, -1))}
+                        >
+                            <span className="glyphicon glyphicon-triangle-left" aria-label="Previous month" />
+                        </button>
+                        <div style={{ display: 'flex', flex: 1, justifyContent: 'center', gap: 64 }}>
+                            <span className="trimm-range-datepicker-header-label">
+                                {format(currentMonth, "MMMM yyyy", { locale: getLocale(locale) })}
+                            </span>
+                            <span className="trimm-range-datepicker-header-label">
+                                {format(addMonths(currentMonth, 1), "MMMM yyyy", { locale: getLocale(locale) })}
+                            </span>
+                        </div>
+                        <button
+                            type="button"
+                            className="trimm-range-datepicker-arrow"
+                            onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
+                        >
+                            <span className="glyphicon glyphicon-triangle-right" aria-label="Next month" />
+                        </button>
+                    </div>
+                    <div className="trimm-range-datepicker-months">
+                        {/* Render both months, but without their own headers */}
+                        {renderMonth(currentMonth)}
+                        {renderMonth(addMonths(currentMonth, 1))}
                     </div>
                 </div>
             )}
