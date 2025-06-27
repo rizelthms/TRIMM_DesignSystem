@@ -29341,6 +29341,148 @@ Do not render = "none"
   border-color: var(--secondary-1-active);
 }
 
+.trimm-color-token-fab {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1001;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--brand-3);
+  color: var(--base-white);
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+.trimm-color-token-fab:hover, .trimm-color-token-fab:focus {
+  background: var(--brand-3-hover);
+}
+
+.trimm-color-token-drawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 340px;
+  background: var(--base-white);
+  box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
+  z-index: 1002;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+.trimm-color-token-drawer.open {
+  transform: translateX(0);
+}
+.trimm-color-token-drawer.left {
+  left: 0;
+  right: auto;
+  transform: translateX(-100%);
+}
+.trimm-color-token-drawer.left.open {
+  transform: translateX(0);
+}
+.trimm-color-token-drawer.right {
+  right: 0;
+  left: auto;
+}
+
+.trimm-color-token-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.trimm-color-token-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.trimm-color-token-drawer-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--base-black);
+  font-weight: 500;
+}
+.trimm-color-token-drawer-header .trimm-color-token-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--base-black);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.trimm-color-token-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.trimm-color-token-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--secondary-1-disabled);
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.trimm-color-token-swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: 1px solid var(--secondary-1);
+  background: var(--base-white);
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+}
+
+.trimm-color-token-label {
+  flex: 1;
+  font-size: 12px;
+  color: var(--base-black);
+  margin-left: 4px;
+}
+
+.trimm-color-token-color-input {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--secondary-1);
+  border-radius: 4px;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.trimm-color-token-color-input:hover, .trimm-color-token-color-input:focus {
+  border-color: var(--brand-1);
+}
+
+.trimm-color-token-reset-btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.trimm-color-token-fab-icon {
+  font-size: 28px;
+  color: var(--brand-3, #00bcd4);
+  display: inline-block;
+  vertical-align: middle;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);
