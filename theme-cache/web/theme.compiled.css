@@ -29076,6 +29076,58 @@ Do not render = "none"
   cursor: not-allowed;
 }
 
+.region-topbar,
+.region-topbar.mx-scrollcontainer-top {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.region-topbar .mx-navbar {
+  background-color: var(--brand-3) !important;
+}
+
+.region-topbar .mx-navbar .topbar-content {
+  color: var(--base-white) !important;
+}
+
+.layout-atlas .region-topbar,
+.layout-atlas .region-topbar .mx-navbar,
+.layout-atlas .region-topbar .mx-navigationtree,
+.layout-atlas .region-topbar .mx-menubar,
+.layout-atlas .region-topbar.mx-scrollcontainer-top,
+.layout-atlas .region-topbar .mx-navbar .topbar-content {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.layout-atlas-phone .region-topbar,
+.layout-atlas-tablet .region-topbar {
+  background-color: var(--brand-3) !important;
+}
+
+.region-sidebar,
+.mx-navigationtree mx-name-navigationTree3,
+.navbar-inner {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .sidebar-heading {
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
+  background-color: var(--brand-3);
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
+  background-color: var(--brand-3);
+  color: var(--base-white);
+}
+
 .trimm-range-datepicker {
   font-family: "GothamSSm", sans-serif;
   width: 100%;
