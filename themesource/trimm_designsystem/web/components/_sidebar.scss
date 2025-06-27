@@ -14,9 +14,21 @@
   color: var(--base-white) !important;
 }
 
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus,
 .region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus {
+  background-color: var(--brand-3-hover);
+  color: var(--base-white) !important;
+}
+
 .region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
-  background-color: var(--brand-3);
-  color: var(--base-white);
+  background-color: var(--brand-3-active);
+  color: var(--base-white) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.disabled > a {
+  background-color: transparent;
+  color: var(--secondary-1-disabled) !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
 }
