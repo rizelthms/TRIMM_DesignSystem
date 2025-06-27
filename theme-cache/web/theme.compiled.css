@@ -29376,6 +29376,7 @@ Do not render = "none"
   display: flex;
   flex-direction: column;
   padding: 24px;
+  overflow: visible;
 }
 .trimm-color-token-drawer.open {
   transform: translateX(0);
@@ -29477,10 +29478,53 @@ Do not render = "none"
 }
 
 .trimm-color-token-fab-icon {
-  font-size: 28px;
-  color: var(--brand-3, #00bcd4);
-  display: inline-block;
-  vertical-align: middle;
+  display: none;
+}
+
+.trimm-color-token-fab-icon-fallback {
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: var(--brand-3);
+}
+
+.trimm-color-token-drawer-resize-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  z-index: 1003;
+  cursor: ew-resize;
+  background: rgba(14, 128, 138, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: background 0.2s, opacity 0.2s;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.04);
+}
+.trimm-color-token-drawer-resize-handle::before {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 40px;
+  border-radius: 2px;
+  background: var(--brand-3);
+  opacity: 0.6;
+}
+.trimm-color-token-drawer-resize-handle:hover {
+  background: rgba(14, 128, 138, 0.18);
+}
+.trimm-color-token-drawer-resize-handle:hover::before {
+  opacity: 1;
+}
+.trimm-color-token-drawer-resize-handle.right {
+  left: 0;
+  right: auto;
+}
+.trimm-color-token-drawer-resize-handle.left {
+  right: 0;
+  left: auto;
 }
 
 body {

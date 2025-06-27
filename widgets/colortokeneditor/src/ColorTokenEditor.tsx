@@ -116,6 +116,8 @@ function clearOverrides(overrides: Overrides) {
 }
 
 const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
+const DRAWER_WIDTH_KEY = "colorTokenEditorDrawerWidth";
+const DEFAULT_DRAWER_WIDTH = 340;
 
 const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
@@ -132,12 +134,25 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
     const dragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
 
+    // Resizable drawer state
+    const [drawerWidth, setDrawerWidth] = useState(() => {
+        const saved = localStorage.getItem(DRAWER_WIDTH_KEY);
+        return saved ? parseInt(saved, 10) : DEFAULT_DRAWER_WIDTH;
+    });
+    const resizing = useRef(false);
+    const startX = useRef(0);
+    const startWidth = useRef(drawerWidth);
+
     // Persist FAB position
     useEffect(() => {
         localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
     }, [fabPos]);
+    // Persist drawer width
+    useEffect(() => {
+        localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
+    }, [drawerWidth]);
 
-    // Drag handlers
+    // Drag handlers for FAB
     function onMouseDown(e: React.MouseEvent) {
         dragging.current = true;
         offset.current = {
@@ -159,7 +174,7 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("mouseup", onMouseUp);
     }
-    // Touch support
+    // Touch support for FAB
     function onTouchStart(e: React.TouchEvent) {
         dragging.current = true;
         const touch = e.touches[0];
@@ -184,12 +199,37 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
         document.removeEventListener("touchend", onTouchEnd);
     }
 
+    // Drawer resize handlers
+    function onResizeMouseDown(e: React.MouseEvent) {
+        resizing.current = true;
+        startX.current = e.clientX;
+        startWidth.current = drawerWidth;
+        document.addEventListener("mousemove", onResizeMouseMove);
+        document.addEventListener("mouseup", onResizeMouseUp);
+    }
+    function onResizeMouseMove(e: MouseEvent) {
+        if (!resizing.current) return;
+        let newWidth;
+        if (normalizedSide === "right") {
+            newWidth = Math.max(200, Math.min(600, startWidth.current + (startX.current - e.clientX)));
+        } else {
+            newWidth = Math.max(200, Math.min(600, startWidth.current + (e.clientX - startX.current)));
+        }
+        setDrawerWidth(newWidth);
+    }
+    function onResizeMouseUp() {
+        resizing.current = false;
+        document.removeEventListener("mousemove", onResizeMouseMove);
+        document.removeEventListener("mouseup", onResizeMouseUp);
+    }
     useEffect(() => {
         return () => {
             document.removeEventListener("mousemove", onMouseMove);
             document.removeEventListener("mouseup", onMouseUp);
             document.removeEventListener("touchmove", onTouchMove);
             document.removeEventListener("touchend", onTouchEnd);
+            document.removeEventListener("mousemove", onResizeMouseMove);
+            document.removeEventListener("mouseup", onResizeMouseUp);
         };
     }, []);
 
@@ -247,6 +287,18 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
         return fallback;
     }
 
+    // Palette icon: Modern TRIMM SVG only
+    const paletteIcon = (
+        <svg className="trimm-color-token-fab-icon-fallback" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="16" cy="16" r="15" fill="var(--brand-3, #0e808a)" stroke="var(--base-white, #fff)" strokeWidth="2" />
+            <circle cx="11" cy="14" r="2" fill="var(--base-white, #fff)" />
+            <circle cx="21" cy="14" r="2" fill="var(--base-white, #fff)" />
+            <circle cx="13" cy="21" r="2" fill="var(--base-white, #fff)" />
+            <circle cx="19" cy="21" r="2" fill="var(--base-white, #fff)" />
+            <circle cx="16" cy="10" r="1.2" fill="var(--brand-2, #f37123)" />
+        </svg>
+    );
+
     return (
         <div>
             {/* Draggable floating open button */}
@@ -266,12 +318,14 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
                 onMouseDown={onMouseDown}
                 onTouchStart={onTouchStart}
             >
-                <span className="atlas-icon atlas-icon-color-painting-palette trimm-color-token-fab-icon" />
+                {paletteIcon}
             </button>
             {/* Sidebar/Drawer */}
-            <div className={`trimm-color-token-drawer${open ? " open" : ""} ${normalizedSide}`}
+            <div
+                className={`trimm-color-token-drawer${open ? " open" : ""} ${normalizedSide}`}
                 role="dialog"
                 aria-modal="true"
+                style={{ width: drawerWidth }}
             >
                 <div className="trimm-color-token-drawer-header">
                     <h3>Color Token Editor</h3>
@@ -284,6 +338,14 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
                         ×
                     </button>
                 </div>
+                {/* Drawer resize handle */}
+                <div
+                    className={`trimm-color-token-drawer-resize-handle ${normalizedSide}`}
+                    onMouseDown={onResizeMouseDown}
+                    style={{ cursor: "ew-resize", pointerEvents: "auto" }}
+                    aria-label="Resize color token drawer"
+                    role="separator"
+                />
                 <div className="trimm-color-token-grid">
                     {tokens.length === 0 ? (
                         <div className="trimm-color-token-error">
