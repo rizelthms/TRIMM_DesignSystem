@@ -3,7 +3,7 @@ import { createElement, ReactElement } from "react";
 export function preview({ side = "right" }: { side?: string }): ReactElement {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
     return (
-        <div style={{ position: "relative", minHeight: 300 }}>
+        <div style={{ position: "relative", minHeight: 100 }}>
             <button
                 className="btn btn-info trimm-color-token-fab"
                 type="button"
@@ -15,7 +15,7 @@ export function preview({ side = "right" }: { side?: string }): ReactElement {
                     zIndex: 1001
                 }}
             >
-                <span className="atlas-icon atlas-icon-color-painting-palette trimm-color-token-fab-icon" />
+                <span className="glyphicon glyphicon-tint" />
             </button>
             <div className={`trimm-color-token-drawer ${normalizedSide}`}></div>
         </div>

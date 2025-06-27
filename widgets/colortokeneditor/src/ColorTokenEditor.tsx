@@ -211,9 +211,9 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
         if (!resizing.current) return;
         let newWidth;
         if (normalizedSide === "right") {
-            newWidth = Math.max(200, Math.min(600, startWidth.current + (startX.current - e.clientX)));
+            newWidth = Math.max(200, Math.min(900, startWidth.current + (startX.current - e.clientX)));
         } else {
-            newWidth = Math.max(200, Math.min(600, startWidth.current + (e.clientX - startX.current)));
+            newWidth = Math.max(200, Math.min(900, startWidth.current + (e.clientX - startX.current)));
         }
         setDrawerWidth(newWidth);
     }
@@ -287,16 +287,9 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
         return fallback;
     }
 
-    // Palette icon: Modern TRIMM SVG only
+    // Palette icon: Use Glyphicon 'tint' icon
     const paletteIcon = (
-        <svg className="trimm-color-token-fab-icon-fallback" width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false">
-            <circle cx="16" cy="16" r="15" fill="var(--brand-3, #0e808a)" stroke="var(--base-white, #fff)" strokeWidth="2" />
-            <circle cx="11" cy="14" r="2" fill="var(--base-white, #fff)" />
-            <circle cx="21" cy="14" r="2" fill="var(--base-white, #fff)" />
-            <circle cx="13" cy="21" r="2" fill="var(--base-white, #fff)" />
-            <circle cx="19" cy="21" r="2" fill="var(--base-white, #fff)" />
-            <circle cx="16" cy="10" r="1.2" fill="var(--brand-2, #f37123)" />
-        </svg>
+        <span className="glyphicon glyphicon-tint" aria-hidden="true" />
     );
 
     return (
@@ -330,12 +323,12 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
                 <div className="trimm-color-token-drawer-header">
                     <h3>Color Token Editor</h3>
                     <button
-                        className="btn btn-default trimm-color-token-close"
+                        className="btn btn-default"
                         onClick={() => setOpen(false)}
                         aria-label="Close color token editor"
                         type="button"
                     >
-                        ×
+                        <span className="glyphicon glyphicon-remove" aria-hidden="true" />
                     </button>
                 </div>
                 {/* Drawer resize handle */}
@@ -370,7 +363,7 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
                     )}
                 </div>
                 <button
-                    className="btn btn-info trimm-color-token-reset-btn"
+                    className="btn btn-info"
                     onClick={handleReset}
                     type="button"
                 >

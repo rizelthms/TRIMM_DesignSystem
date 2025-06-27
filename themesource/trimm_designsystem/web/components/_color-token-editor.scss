@@ -84,8 +84,8 @@
     z-index: 1001;
     width: 48px;
     height: 48px;
-    border-radius: 50%;
-    background: var(--brand-3);
+    border-radius: $radius-16;
+    background: var(--brand-2);
     color: var(--base-white);
     box-shadow: $shadow-8;
     display: flex;
@@ -96,7 +96,7 @@
     transition: background 0.2s;
     &:hover,
     &:focus {
-        background: var(--brand-3-hover);
+        background: var(--brand-2-hover);
     }
 }
 
@@ -148,20 +148,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: $spacing-16;
+    margin-bottom: $spacing-24;
     h3 {
         margin: 0;
-        font-size: $font-size-body-2;
+        font-size: $font-size-h2;
         color: var(--base-black);
         font-weight: $font-weight-medium;
-    }
-    .trimm-color-token-close {
-        background: none;
-        border: none;
-        font-size: 2rem;
-        color: var(--base-black);
-        cursor: pointer;
-        line-height: 1;
     }
 }
 
