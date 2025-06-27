@@ -28455,23 +28455,61 @@ Do not render = "none"
   font-family: "GothamSSm", sans-serif;
 }
 .radio-base input[type=radio] {
-  accent-color: var(--brand-3);
+  opacity: 0;
+  position: absolute;
   width: 16px;
   height: 16px;
+  margin: 0;
+}
+.radio-base input[type=radio] + label {
+  position: relative;
+  padding-left: 28px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--base-black);
+}
+.radio-base input[type=radio] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--brand-3);
   background: var(--base-white);
-  border-color: var(--brand-1);
-  color: var(--brand-1);
+  transition: border-color 0.2s, background 0.2s;
 }
-.radio-base input[type=radio]:disabled {
-  accent-color: var(--secondary-2);
-  cursor: default;
+.radio-base input[type=radio] + label::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--brand-3);
+  transition: transform 0.2s;
 }
-.radio-base input[type=radio]:hover:not(:disabled) {
-  border-color: var(--brand-3-hover);
+.radio-base input[type=radio]:checked + label::after {
+  transform: translateY(-50%) scale(1);
 }
-.radio-base input[type=radio]:invalid {
-  accent-color: var(--support-2);
+.radio-base input[type=radio]:checked + label::before {
+  border-color: var(--brand-3);
+}
+.radio-base input[type=radio]:disabled + label {
+  color: var(--secondary-1-disabled);
+  cursor: not-allowed;
+}
+.radio-base input[type=radio]:disabled + label::before {
+  border-color: var(--secondary-1-disabled);
+  background: var(--base-white-disabled);
+}
+.radio-base input[type=radio]:disabled:checked + label::after {
+  background: var(--secondary-1-disabled);
 }
 .radio-base label {
   margin-left: 8px;
