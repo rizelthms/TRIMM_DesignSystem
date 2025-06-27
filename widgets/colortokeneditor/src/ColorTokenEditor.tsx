@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { createElement, useState, useRef, useEffect } from "react";
 
 type Token = {
     name: string;
@@ -115,18 +115,89 @@ function clearOverrides(overrides: Overrides) {
     });
 }
 
-const TokenEditor: React.FC = () => {
+const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
+
+const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
+    const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
     const [tokens, setTokens] = React.useState<Token[]>([]);
     const [theme, setTheme] = React.useState<"light" | "dark">(getCurrentTheme());
     const [overrides, setOverridesState] = React.useState<Overrides>(getOverrides(theme));
-    const prevThemeRef = React.useRef<"light" | "dark">(getCurrentTheme());
+    const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
+    const [open, setOpen] = useState(false);
+    // Draggable FAB state
+    const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
+        const saved = localStorage.getItem(PALETTE_POS_KEY);
+        return saved ? JSON.parse(saved) : { x: 24, y: 24 };
+    });
+    const dragging = useRef(false);
+    const offset = useRef({ x: 0, y: 0 });
+
+    // Persist FAB position
+    useEffect(() => {
+        localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
+    }, [fabPos]);
+
+    // Drag handlers
+    function onMouseDown(e: React.MouseEvent) {
+        dragging.current = true;
+        offset.current = {
+            x: e.clientX - fabPos.x,
+            y: e.clientY - fabPos.y
+        };
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+    }
+    function onMouseMove(e: MouseEvent) {
+        if (!dragging.current) return;
+        setFabPos({
+            x: Math.max(0, e.clientX - offset.current.x),
+            y: Math.max(0, e.clientY - offset.current.y)
+        });
+    }
+    function onMouseUp() {
+        dragging.current = false;
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+    }
+    // Touch support
+    function onTouchStart(e: React.TouchEvent) {
+        dragging.current = true;
+        const touch = e.touches[0];
+        offset.current = {
+            x: touch.clientX - fabPos.x,
+            y: touch.clientY - fabPos.y
+        };
+        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchend", onTouchEnd);
+    }
+    function onTouchMove(e: TouchEvent) {
+        if (!dragging.current) return;
+        const touch = e.touches[0];
+        setFabPos({
+            x: Math.max(0, touch.clientX - offset.current.x),
+            y: Math.max(0, touch.clientY - offset.current.y)
+        });
+    }
+    function onTouchEnd() {
+        dragging.current = false;
+        document.removeEventListener("touchmove", onTouchMove);
+        document.removeEventListener("touchend", onTouchEnd);
+    }
+
+    useEffect(() => {
+        return () => {
+            document.removeEventListener("mousemove", onMouseMove);
+            document.removeEventListener("mouseup", onMouseUp);
+            document.removeEventListener("touchmove", onTouchMove);
+            document.removeEventListener("touchend", onTouchEnd);
+        };
+    }, []);
 
     React.useEffect(() => {
         function handleThemeChange() {
             const currentTheme = getCurrentTheme();
             const prevTheme = prevThemeRef.current;
             if (prevTheme !== currentTheme) {
-                // Clear previous theme's overrides
                 const prevOverrides = getOverrides(prevTheme);
                 clearOverrides(prevOverrides);
             }
@@ -136,13 +207,11 @@ const TokenEditor: React.FC = () => {
             setOverridesState(currentOverrides);
             applyOverrides(currentOverrides);
         }
-
         function updateTokens() {
             const list = getAllCSSCustomProperties();
             setTokens(list);
             handleThemeChange();
         }
-
         updateTokens();
         const observer = new MutationObserver(() => {
             handleThemeChange();
@@ -152,14 +221,11 @@ const TokenEditor: React.FC = () => {
     }, []);
 
     function handleChange(token: string, value: string) {
-        // Always set the light override
         const lightOverrides = { ...getOverrides("light"), [token]: value };
         setOverrides("light", lightOverrides);
-        // Always auto-derive and set the dark override
         const derived = deriveDarkColor(value);
         const darkOverrides = { ...getOverrides("dark"), [token]: derived };
         setOverrides("dark", darkOverrides);
-        // Apply the correct override for the current theme
         if (getCurrentTheme() === "dark") {
             setOverridesState(darkOverrides);
             applyOverrides(darkOverrides);
@@ -182,26 +248,75 @@ const TokenEditor: React.FC = () => {
     }
 
     return (
-        <div className="color-token-editor-widget">
-            <h3>Color Token Editor</h3>
-            {tokens.length === 0 ? (
-                <div style={{ color: "#b00", marginBottom: 12 }}>
-                    No valid tokens found. Check your theme build output.
+        <div>
+            {/* Draggable floating open button */}
+            <button
+                className="btn btn-info trimm-color-token-fab"
+                onClick={() => setOpen(true)}
+                aria-label="Open color token editor"
+                type="button"
+                style={{
+                    position: "fixed",
+                    left: fabPos.x,
+                    top: fabPos.y,
+                    zIndex: 1001,
+                    cursor: dragging.current ? "grabbing" : "grab",
+                    pointerEvents: "auto"
+                }}
+                onMouseDown={onMouseDown}
+                onTouchStart={onTouchStart}
+            >
+                <span className="atlas-icon atlas-icon-color-painting-palette trimm-color-token-fab-icon" />
+            </button>
+            {/* Sidebar/Drawer */}
+            <div className={`trimm-color-token-drawer${open ? " open" : ""} ${normalizedSide}`}
+                role="dialog"
+                aria-modal="true"
+            >
+                <div className="trimm-color-token-drawer-header">
+                    <h3>Color Token Editor</h3>
+                    <button
+                        className="btn btn-default trimm-color-token-close"
+                        onClick={() => setOpen(false)}
+                        aria-label="Close color token editor"
+                        type="button"
+                    >
+                        ×
+                    </button>
                 </div>
-            ) : (
-                tokens.map(t => (
-                    <div key={t.name} className="color-token-row">
-                        <label className="color-token-label">{t.name}</label>
-                        <input
-                            type="color"
-                            value={getValidHex(overrides[t.name] || t.value)}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(t.name, e.target.value)}
-                            className="color-token-color-input"
-                        />
-                    </div>
-                ))
-            )}
-            <button onClick={handleReset} className="color-token-reset-btn">Reset</button>
+                <div className="trimm-color-token-grid">
+                    {tokens.length === 0 ? (
+                        <div className="trimm-color-token-error">
+                            No valid tokens found. Check your theme build output.
+                        </div>
+                    ) : (
+                        tokens.map(t => (
+                            <div key={t.name} className="trimm-color-token-item">
+                                <span
+                                    className="trimm-color-token-swatch"
+                                    style={{ background: getValidHex(overrides[t.name] || t.value) }}
+                                />
+                                <span className="trimm-color-token-label">{t.name}</span>
+                                <input
+                                    type="color"
+                                    value={getValidHex(overrides[t.name] || t.value)}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(t.name, e.target.value)}
+                                    className="trimm-color-token-color-input"
+                                />
+                            </div>
+                        ))
+                    )}
+                </div>
+                <button
+                    className="btn btn-info trimm-color-token-reset-btn"
+                    onClick={handleReset}
+                    type="button"
+                >
+                    Reset
+                </button>
+            </div>
+            {/* Overlay for closing drawer */}
+            {open && <div className="trimm-color-token-overlay" onClick={() => setOpen(false)} />}
         </div>
     );
 };

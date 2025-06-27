@@ -11,6 +11,7 @@ export interface ColorTokenEditorContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     sampleText: string;
+    side: string;
 }
 
 export interface ColorTokenEditorPreviewProps {
@@ -25,4 +26,5 @@ export interface ColorTokenEditorPreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     sampleText: string;
+    side: string;
 }
