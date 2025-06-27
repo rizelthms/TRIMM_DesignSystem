@@ -29080,6 +29080,26 @@ Do not render = "none"
   cursor: not-allowed;
 }
 
+.trimm-datepicker-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2.5rem;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  color: var(--base-black);
+}
+
+.trimm-datepicker-header-label {
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--base-black);
+  flex: 1;
+  margin: 0 4px;
+}
+
 .region-topbar,
 .region-topbar.mx-scrollcontainer-top {
   background-color: var(--brand-3) !important;
