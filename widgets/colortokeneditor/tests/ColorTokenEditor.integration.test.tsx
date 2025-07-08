@@ -159,4 +159,19 @@ describe("ColorTokenEditor integration", () => {
             expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
         });
     });
+
+    it("handles localStorage errors gracefully", () => {
+        // Patch localStorage to throw
+        const originalSetItem = window.localStorage.setItem;
+        window.localStorage.setItem = () => { throw new Error("localStorage error"); };
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        // Try to change a color, should not throw
+        expect(() => {
+            fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
+        }).not.toThrow();
+        // Restore localStorage
+        window.localStorage.setItem = originalSetItem;
+    });
 }); 
