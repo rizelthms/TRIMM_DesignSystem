@@ -87,6 +87,32 @@ describe("ColorTokenEditor integration", () => {
         expect((colorInputsAfter[0] as HTMLInputElement).value).toBe("#abcdef");
     });
 
+    it("applies overrides per theme and updates UI on theme switch", () => {
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        // Set override in light theme
+        let colorInputs = document.querySelectorAll("input[type='color']");
+        fireEvent.change(colorInputs[0], { target: { value: "#111111" } });
+        // Switch to dark theme
+        document.documentElement.setAttribute("data-theme", "dark");
+        fireEvent(window, new Event("themechange"));
+        // Set override in dark theme
+        colorInputs = document.querySelectorAll("input[type='color']");
+        fireEvent.change(colorInputs[0], { target: { value: "#222222" } });
+        // Switch back to light theme
+        document.documentElement.setAttribute("data-theme", "light");
+        fireEvent(window, new Event("themechange"));
+        colorInputs = document.querySelectorAll("input[type='color']");
+        // Should show the light theme override
+        expect((colorInputs[0] as HTMLInputElement).value).toBe("#111111");
+        // Switch to dark theme again
+        document.documentElement.setAttribute("data-theme", "dark");
+        fireEvent(window, new Event("themechange"));
+        colorInputs = document.querySelectorAll("input[type='color']");
+        // Should show the dark theme override
+        expect((colorInputs[0] as HTMLInputElement).value).toBe("#222222");
+    });
+
     it("has correct accessibility attributes", () => {
         render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         const fab = screen.getByRole("button", { name: /open color token editor/i });
