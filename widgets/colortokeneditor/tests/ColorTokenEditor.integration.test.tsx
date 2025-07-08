@@ -98,4 +98,18 @@ describe("ColorTokenEditor integration", () => {
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         expect(screen.getByText(/no valid tokens found/i)).toBeInTheDocument();
     });
+
+    it("handles invalid token values gracefully", () => {
+        const invalidTokens = [
+            { name: "--bad-token", value: "not-a-color" }
+        ];
+        render(<ColorTokenEditor side="right" getTokens={() => invalidTokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        // Should still render the token label
+        expect(screen.getByText("--bad-token")).toBeInTheDocument();
+        // The color input should fallback to a valid color (e.g., #000000)
+        const colorInput = document.querySelector("input[type='color']") as HTMLInputElement;
+        expect(colorInput).toBeTruthy();
+        expect(colorInput.value).toMatch(/^#[0-9a-f]{6}$/i);
+    });
 }); 
