@@ -82,7 +82,9 @@ function getOverrides(theme: "light" | "dark"): Overrides {
 }
 
 function setOverrides(theme: "light" | "dark", overrides: Overrides) {
-    localStorage.setItem(`tokenOverrides_${theme}`, JSON.stringify(overrides));
+    try {
+        localStorage.setItem(`tokenOverrides_${theme}`, JSON.stringify(overrides));
+    } catch {}
 }
 
 function applyOverrides(overrides: Overrides) {
@@ -92,7 +94,9 @@ function applyOverrides(overrides: Overrides) {
 }
 
 function resetOverrides(tokens: Token[], theme: "light" | "dark") {
-    localStorage.removeItem(`tokenOverrides_${theme}`);
+    try {
+        localStorage.removeItem(`tokenOverrides_${theme}`);
+    } catch {}
     tokens.forEach((t: Token) => {
         document.documentElement.style.setProperty(t.name, t.value);
     });
@@ -134,16 +138,24 @@ const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
     const [open, setOpen] = useState(false);
     // Draggable FAB state
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
-        const saved = localStorage.getItem(PALETTE_POS_KEY);
-        return saved ? JSON.parse(saved) : { x: 24, y: 24 };
+        try {
+            const saved = localStorage.getItem(PALETTE_POS_KEY);
+            return saved ? JSON.parse(saved) : { x: 24, y: 24 };
+        } catch {
+            return { x: 24, y: 24 };
+        }
     });
     const dragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
 
     // Resizable drawer state
     const [drawerWidth, setDrawerWidth] = useState(() => {
-        const saved = localStorage.getItem(DRAWER_WIDTH_KEY);
-        return saved ? parseInt(saved, 10) : DEFAULT_DRAWER_WIDTH;
+        try {
+            const saved = localStorage.getItem(DRAWER_WIDTH_KEY);
+            return saved ? parseInt(saved, 10) : DEFAULT_DRAWER_WIDTH;
+        } catch {
+            return DEFAULT_DRAWER_WIDTH;
+        }
     });
     const resizing = useRef(false);
     const startX = useRef(0);
@@ -151,11 +163,15 @@ const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
 
     // Persist FAB position
     useEffect(() => {
-        localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
+        try {
+            localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
+        } catch {}
     }, [fabPos]);
     // Persist drawer width
     useEffect(() => {
-        localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
+        try {
+            localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
+        } catch {}
     }, [drawerWidth]);
 
     // Drag handlers for FAB
