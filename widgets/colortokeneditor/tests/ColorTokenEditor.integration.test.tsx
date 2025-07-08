@@ -1,22 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import TokenEditor from "../src/ColorTokenEditor";
-
-// Mock getAllCSSCustomProperties to return fake tokens for integration tests
-jest.mock("../src/ColorTokenEditor", () => {
-    const original = jest.requireActual("../src/ColorTokenEditor");
-    return {
-        __esModule: true,
-        ...original,
-        default: (props: any) => {
-            // Patch the global function for this test instance
-            (window as any).getAllCSSCustomProperties = () => [
-                { name: "--brand-1", value: "#ff0000" },
-                { name: "--brand-2", value: "#00ff00" }
-            ];
-            return original.default(props);
-        }
-    };
-});
+import ColorTokenEditor from "../src/ColorTokenEditor";
+import React from "react";
 
 // Mock localStorage for isolation
 const localStorageMock = (() => {
@@ -30,6 +14,11 @@ const localStorageMock = (() => {
 })();
 Object.defineProperty(window, "localStorage", { value: localStorageMock });
 
+const mockTokens = [
+    { name: "--brand-1", value: "#ff0000" },
+    { name: "--brand-2", value: "#00ff00" }
+];
+
 describe("ColorTokenEditor integration", () => {
     beforeEach(() => {
         window.localStorage.clear();
@@ -37,13 +26,13 @@ describe("ColorTokenEditor integration", () => {
     });
 
     it("renders the floating action button (FAB)", () => {
-        render(<TokenEditor side="right" />);
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         expect(fab).toBeInTheDocument();
     });
 
     it("opens and closes the drawer when FAB is clicked", async () => {
-        render(<TokenEditor side="right" />);
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         fireEvent.click(fab);
         expect(screen.getByRole("dialog")).toBeVisible();
@@ -56,7 +45,7 @@ describe("ColorTokenEditor integration", () => {
     });
 
     it("changes a color and updates localStorage", async () => {
-        render(<TokenEditor side="right" />);
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         // Find first color input
         const colorInput = await screen.findAllByRole("textbox", { hidden: true });
@@ -68,7 +57,7 @@ describe("ColorTokenEditor integration", () => {
     });
 
     it("resets all tokens when reset button is clicked", async () => {
-        render(<TokenEditor side="right" />);
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         // Change a color
         const colorInput = await screen.findAllByRole("textbox", { hidden: true });
@@ -81,19 +70,19 @@ describe("ColorTokenEditor integration", () => {
     });
 
     it("persists color overrides across renders", async () => {
-        const { unmount, rerender } = render(<TokenEditor side="right" />);
+        const { unmount, rerender } = render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         const colorInput = await screen.findAllByRole("textbox", { hidden: true });
         fireEvent.change(colorInput[0], { target: { value: "#abcdef" } });
         unmount();
-        rerender(<TokenEditor side="right" />);
+        rerender(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         // The color input should reflect the override
         expect(((await screen.findAllByRole("textbox", { hidden: true }))[0] as HTMLInputElement).value).toBe("#abcdef");
     });
 
     it("has correct accessibility attributes", () => {
-        render(<TokenEditor side="right" />);
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         expect(fab).toHaveAttribute("aria-label");
     });
