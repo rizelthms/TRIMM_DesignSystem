@@ -40,6 +40,21 @@ describe("deriveDarkColor", () => {
     });
 });
 
+describe("deriveDarkColor edge cases", () => {
+    it("returns a dark color for #000000 (should still be #000000 or similar)", () => {
+        expect(deriveDarkColor("#000000")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+    it("returns a dark color for #ffffff (should be much darker)", () => {
+        const result = deriveDarkColor("#ffffff");
+        expect(result).toMatch(/^#[0-9a-f]{6}$/i);
+        expect(result.toLowerCase()).not.toBe("#ffffff");
+    });
+    it("returns fallback for malformed hex (e.g. #12, #gggggg)", () => {
+        expect(deriveDarkColor("#12")).toMatch(/^#[0-9a-f]{6}$/i);
+        expect(deriveDarkColor("#gggggg")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+});
+
 describe("getValidHex", () => {
     it("returns the value if it is a valid 6-digit hex", () => {
         expect(getValidHex("#123456")).toBe("#123456");
