@@ -119,9 +119,15 @@ const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
 const DRAWER_WIDTH_KEY = "colorTokenEditorDrawerWidth";
 const DEFAULT_DRAWER_WIDTH = 340;
 
-const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
+export interface ColorTokenEditorProps {
+    side?: string;
+    getTokens?: () => Array<{ name: string; value: string }>;
+}
+
+const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
-    const [tokens, setTokens] = React.useState<Token[]>([]);
+    // Use injected getTokens or fallback to getAllCSSCustomProperties
+    const tokens = (getTokens ?? getAllCSSCustomProperties)();
     const [theme, setTheme] = React.useState<"light" | "dark">(getCurrentTheme());
     const [overrides, setOverridesState] = React.useState<Overrides>(getOverrides(theme));
     const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
@@ -248,8 +254,8 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
             applyOverrides(currentOverrides);
         }
         function updateTokens() {
-            const list = getAllCSSCustomProperties();
-            setTokens(list);
+            // const list = getAllCSSCustomProperties(); // This line is now handled by getTokens prop
+            // setTokens(list);
             handleThemeChange();
         }
         updateTokens();
@@ -376,4 +382,4 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
     );
 };
 
-export default TokenEditor;
+export default ColorTokenEditor;
