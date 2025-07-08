@@ -35,21 +35,24 @@ describe("ColorTokenEditor integration", () => {
         render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         fireEvent.click(fab);
-        expect(screen.getByRole("dialog")).toBeVisible();
+        const drawer = screen.getByRole("dialog");
+        expect(drawer).toBeVisible();
         // Close via overlay
-        const overlay = screen.getAllByText((_, el) => !!el && el.className.includes("trimm-color-token-overlay"))[0];
-        fireEvent.click(overlay);
+        const overlay = document.querySelector(".trimm-color-token-overlay");
+        expect(overlay).toBeTruthy();
+        fireEvent.click(overlay!);
         await waitFor(() => {
-            expect(screen.queryByRole("dialog")).not.toBeVisible();
+            expect(drawer).not.toBeVisible();
         });
     });
 
     it("changes a color and updates localStorage", async () => {
         render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
-        // Find first color input
-        const colorInput = await screen.findAllByRole("textbox", { hidden: true });
-        fireEvent.change(colorInput[0], { target: { value: "#123456" } });
+        // Find first color input by class
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        expect(colorInputs.length).toBeGreaterThan(0);
+        fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
         // Check localStorage was updated
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
         const overrides = JSON.parse(window.localStorage.getItem(`tokenOverrides_${theme}`) || "{}");
@@ -60,8 +63,8 @@ describe("ColorTokenEditor integration", () => {
         render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         // Change a color
-        const colorInput = await screen.findAllByRole("textbox", { hidden: true });
-        fireEvent.change(colorInput[0], { target: { value: "#654321" } });
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        fireEvent.change(colorInputs[0], { target: { value: "#654321" } });
         // Click reset
         fireEvent.click(screen.getByRole("button", { name: /reset/i }));
         // All overrides should be cleared
@@ -72,13 +75,14 @@ describe("ColorTokenEditor integration", () => {
     it("persists color overrides across renders", async () => {
         const { unmount, rerender } = render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
-        const colorInput = await screen.findAllByRole("textbox", { hidden: true });
-        fireEvent.change(colorInput[0], { target: { value: "#abcdef" } });
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        fireEvent.change(colorInputs[0], { target: { value: "#abcdef" } });
         unmount();
         rerender(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         // The color input should reflect the override
-        expect(((await screen.findAllByRole("textbox", { hidden: true }))[0] as HTMLInputElement).value).toBe("#abcdef");
+        const colorInputsAfter = document.querySelectorAll("input[type='color']");
+        expect((colorInputsAfter[0] as HTMLInputElement).value).toBe("#abcdef");
     });
 
     it("has correct accessibility attributes", () => {
