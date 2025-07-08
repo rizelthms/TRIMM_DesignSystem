@@ -53,4 +53,22 @@ describe("getValidHex", () => {
     it("returns custom fallback if provided", () => {
         expect(getValidHex("notacolor", "#fff111")).toBe("#fff111");
     });
+});
+
+describe("isValidColor edge cases", () => {
+    it("returns false for CSS variable strings", () => {
+        expect(isValidColor("var(--brand-1)")).toBe(false);
+        expect(isValidColor("#{brand-1}")).toBe(false);
+        expect(isValidColor("#{brand-1}")).toBe(false);
+    });
+    it("returns false for whitespace and numbers", () => {
+        expect(isValidColor("   ")).toBe(false);
+        expect(isValidColor("123456")).toBe(false);
+        expect(isValidColor("#12 3456")).toBe(false);
+    });
+    it("returns false for null, undefined, or non-string", () => {
+        expect(isValidColor(null as any)).toBe(false);
+        expect(isValidColor(undefined as any)).toBe(false);
+        expect(isValidColor(123 as any)).toBe(false);
+    });
 }); 
