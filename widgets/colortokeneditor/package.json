@@ -31,7 +31,9 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/big.js": "^6.0.2",
     "@types/jest": "^30.0.0",
+    "@types/rewire": "^2.5.30",
     "jest": "^30.0.4",
+    "rewire": "^8.0.0",
     "ts-jest": "^29.4.0"
   },
   "dependencies": {
