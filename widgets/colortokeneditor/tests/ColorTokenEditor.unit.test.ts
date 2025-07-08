@@ -1,6 +1,7 @@
 import { describe, it, expect } from "@jest/globals";
 import { isValidColor } from "../src/ColorTokenEditor";
 import { deriveDarkColor } from "../src/ColorTokenEditor";
+import { getValidHex } from "../src/ColorTokenEditor";
 
 describe("isValidColor", () => {
     it("returns true for valid 6-digit hex", () => {
@@ -36,5 +37,20 @@ describe("deriveDarkColor", () => {
     });
     it("returns fallback for invalid hex", () => {
         expect(deriveDarkColor("notacolor")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+});
+
+describe("getValidHex", () => {
+    it("returns the value if it is a valid 6-digit hex", () => {
+        expect(getValidHex("#123456")).toBe("#123456");
+    });
+    it("returns the value if it is a valid 3-digit hex", () => {
+        expect(getValidHex("#abc")).toBe("#abc");
+    });
+    it("returns fallback for invalid hex", () => {
+        expect(getValidHex("notacolor")).toBe("#000000");
+    });
+    it("returns custom fallback if provided", () => {
+        expect(getValidHex("notacolor", "#fff111")).toBe("#fff111");
     });
 }); 
