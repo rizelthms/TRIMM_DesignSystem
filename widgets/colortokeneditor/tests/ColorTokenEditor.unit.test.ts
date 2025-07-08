@@ -70,6 +70,17 @@ describe("getValidHex", () => {
     });
 });
 
+describe("getValidHex edge cases", () => {
+    it("returns uppercase and mixed case hex as-is", () => {
+        expect(getValidHex("#ABCDEF")).toBe("#ABCDEF");
+        expect(getValidHex("#aBc123")).toBe("#aBc123");
+    });
+    it("returns fallback for invalid but hex-like strings", () => {
+        expect(getValidHex("#12345g")).toBe("#000000");
+        expect(getValidHex("#12-3456")).toBe("#000000");
+    });
+});
+
 describe("isValidColor edge cases", () => {
     it("returns false for CSS variable strings", () => {
         expect(isValidColor("var(--brand-1)")).toBe(false);
