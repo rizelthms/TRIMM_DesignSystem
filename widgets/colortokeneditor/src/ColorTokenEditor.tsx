@@ -7,12 +7,14 @@ type Token = {
 
 type Overrides = Record<string, string>;
 
-function isValidColor(value: string): boolean {
-    if (!value || value === undefined) return false;
-    if (value.includes("#{")) return false;
-    if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return true;
-    if (value.startsWith("rgb")) return true;
-    return false;
+export function isValidColor(value: string | undefined): boolean {
+    if (!value || typeof value !== "string") return false;
+    if (value.startsWith("#{") && value.endsWith("}")) return false; // Mendix template string
+    return (
+        /^#[0-9a-f]{6}$/i.test(value) ||
+        /^#[0-9a-f]{3}$/i.test(value) ||
+        /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i.test(value)
+    );
 }
 
 function getAllCSSCustomProperties(): Token[] {
@@ -102,7 +104,7 @@ function resetOverrides(tokens: Token[], theme: "light" | "dark") {
     });
 }
 
-function deriveDarkColor(lightColor: string): string {
+export function deriveDarkColor(lightColor: string): string {
     // Simple darken by 20% for demonstration; for production, use a color lib
     let c = lightColor.replace('#', '');
     if (c.length === 3) c = c.split('').map(x => x + x).join('');
@@ -122,6 +124,11 @@ function clearOverrides(overrides: Overrides) {
 const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
 const DRAWER_WIDTH_KEY = "colorTokenEditorDrawerWidth";
 const DEFAULT_DRAWER_WIDTH = 340;
+
+export function getValidHex(value: string, fallback = "#000000"): string {
+    if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return value;
+    return fallback;
+}
 
 export interface ColorTokenEditorProps {
     side?: string;
@@ -302,11 +309,6 @@ const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
         resetOverrides(tokens, "dark");
         setOverridesState({});
         window.location.reload();
-    }
-
-    function getValidHex(value: string, fallback = "#000000") {
-        if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return value;
-        return fallback;
     }
 
     // Palette icon: Use Glyphicon 'tint' icon
