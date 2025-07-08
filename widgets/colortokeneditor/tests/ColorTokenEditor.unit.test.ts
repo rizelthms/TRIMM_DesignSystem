@@ -97,4 +97,12 @@ describe("isValidColor edge cases", () => {
         expect(isValidColor(undefined as any)).toBe(false);
         expect(isValidColor(123 as any)).toBe(false);
     });
+});
+
+describe("bulk validation", () => {
+    it("validates an array of token values", () => {
+        const values = ["#123456", "#abc", "rgb(1,2,3)", "notacolor", "", undefined];
+        const results = values.map(v => isValidColor(v));
+        expect(results).toEqual([true, true, true, false, false, false]);
+    });
 }); 
