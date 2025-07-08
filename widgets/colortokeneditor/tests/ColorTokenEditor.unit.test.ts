@@ -1,5 +1,6 @@
 import { describe, it, expect } from "@jest/globals";
 import { isValidColor } from "../src/ColorTokenEditor";
+import { deriveDarkColor } from "../src/ColorTokenEditor";
 
 describe("isValidColor", () => {
     it("returns true for valid 6-digit hex", () => {
@@ -22,5 +23,18 @@ describe("isValidColor", () => {
     });
     it("returns false for Mendix template strings", () => {
         expect(isValidColor("#{somevar}")).toBe(false);
+    });
+});
+
+describe("deriveDarkColor", () => {
+    it("darkens a standard 6-digit hex color", () => {
+        expect(deriveDarkColor("#123456")).toMatch(/^#[0-9a-f]{6}$/i);
+        expect(deriveDarkColor("#ffffff")).not.toBe("#ffffff");
+    });
+    it("darkens a 3-digit hex color", () => {
+        expect(deriveDarkColor("#abc")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+    it("returns fallback for invalid hex", () => {
+        expect(deriveDarkColor("notacolor")).toMatch(/^#[0-9a-f]{6}$/i);
     });
 }); 
