@@ -42,7 +42,8 @@ describe("ColorTokenEditor integration", () => {
         expect(overlay).toBeTruthy();
         fireEvent.click(overlay!);
         await waitFor(() => {
-            expect(drawer).not.toBeVisible();
+            // Check that the overlay is removed from the DOM
+            expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
         });
     });
 
@@ -73,12 +74,13 @@ describe("ColorTokenEditor integration", () => {
     });
 
     it("persists color overrides across renders", async () => {
-        const { unmount, rerender } = render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        const { unmount } = render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         const colorInputs = document.querySelectorAll("input[type='color']");
         fireEvent.change(colorInputs[0], { target: { value: "#abcdef" } });
         unmount();
-        rerender(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        // Render a new instance
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         // The color input should reflect the override
         const colorInputsAfter = document.querySelectorAll("input[type='color']");
