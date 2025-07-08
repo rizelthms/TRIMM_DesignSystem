@@ -267,4 +267,50 @@ describe("ColorTokenEditor integration", () => {
         // No errors should be thrown and UI should remain interactive
         expect(document.querySelectorAll("input[type='color']").length).toBe(200);
     });
+
+    it("renders tokens with special character names", () => {
+        const tokens = [
+            { name: "--token!@#", value: "#123456" },
+            { name: "--token space", value: "#abcdef" },
+            { name: "", value: "#000000" }
+        ];
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        expect(screen.getByText("--token!@#")).toBeInTheDocument();
+        expect(screen.getByText("--token space")).toBeInTheDocument();
+        // For empty name, check for a label with no text
+        const labels = document.querySelectorAll('.trimm-color-token-label');
+        expect(Array.from(labels).some(label => label.textContent === "")).toBe(true);
+    });
+
+    it("handles duplicate token names gracefully", () => {
+        const tokens = [
+            { name: "--dup", value: "#123456" },
+            { name: "--dup", value: "#abcdef" }
+        ];
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        // Both should be rendered, but may have a warning or unique key
+        expect(screen.getAllByText("--dup").length).toBe(2);
+    });
+
+    it("renders tokens with invalid or empty values", () => {
+        const tokens = [
+            { name: "--empty", value: "" },
+            { name: "--null", value: null },
+            { name: "--undefined", value: undefined },
+            { name: "--bad", value: "notacolor" }
+        ];
+        render(<ColorTokenEditor side="right" getTokens={() => tokens as any} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        expect(screen.getByText("--empty")).toBeInTheDocument();
+        expect(screen.getByText("--null")).toBeInTheDocument();
+        expect(screen.getByText("--undefined")).toBeInTheDocument();
+        expect(screen.getByText("--bad")).toBeInTheDocument();
+        // All should fallback to a valid color input value
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        colorInputs.forEach(input => {
+            expect((input as HTMLInputElement).value).toMatch(/^#[0-9a-f]{6}$/i);
+        });
+    });
 }); 
