@@ -174,4 +174,32 @@ describe("ColorTokenEditor integration", () => {
         // Restore localStorage
         window.localStorage.setItem = originalSetItem;
     });
+
+    it("allows multiple ColorTokenEditor instances to operate independently", () => {
+        render(<>
+            <ColorTokenEditor side="right" getTokens={() => [
+                { name: "--brand-1", value: "#ff0000" }
+            ]} />
+            <ColorTokenEditor side="left" getTokens={() => [
+                { name: "--brand-2", value: "#00ff00" }
+            ]} />
+        </>);
+        const fabs = screen.getAllByRole("button", { name: /open color token editor/i });
+        // Open both drawers
+        fireEvent.click(fabs[0]);
+        fireEvent.click(fabs[1]);
+        const dialogs = screen.getAllByRole("dialog");
+        expect(dialogs.length).toBe(2);
+        // Change color in first widget
+        let colorInputs = dialogs[0].querySelectorAll("input[type='color']");
+        fireEvent.change(colorInputs[0], { target: { value: "#111111" } });
+        // Change color in second widget
+        colorInputs = dialogs[1].querySelectorAll("input[type='color']");
+        fireEvent.change(colorInputs[0], { target: { value: "#222222" } });
+        // Check that each override is set independently
+        const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        const overrides = JSON.parse(window.localStorage.getItem(`tokenOverrides_${theme}`) || "{}");
+        expect(Object.values(overrides)).toContain("#111111");
+        expect(Object.values(overrides)).toContain("#222222");
+    });
 }); 
