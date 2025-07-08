@@ -138,4 +138,25 @@ describe("ColorTokenEditor integration", () => {
         expect(colorInput).toBeTruthy();
         expect(colorInput.value).toMatch(/^#[0-9a-f]{6}$/i);
     });
+
+    it("supports keyboard accessibility for opening, closing, and tabbing through controls", async () => {
+        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        const fab = screen.getByRole("button", { name: /open color token editor/i });
+        fab.focus();
+        fireEvent.keyDown(fab, { key: "Enter", code: "Enter" });
+        expect(screen.getByRole("dialog")).toBeVisible();
+        // Tab to first color input
+        fireEvent.keyDown(document.activeElement!, { key: "Tab", code: "Tab" });
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        expect(colorInputs[0]).toBeTruthy();
+        // Tab to reset button
+        fireEvent.keyDown(document.activeElement!, { key: "Tab", code: "Tab" });
+        const resetButton = screen.getByRole("button", { name: /reset/i });
+        expect(resetButton).toBeTruthy();
+        // Close with Escape
+        fireEvent.keyDown(document.activeElement!, { key: "Escape", code: "Escape" });
+        await waitFor(() => {
+            expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
+        });
+    });
 }); 
