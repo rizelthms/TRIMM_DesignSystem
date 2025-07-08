@@ -92,4 +92,10 @@ describe("ColorTokenEditor integration", () => {
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         expect(fab).toHaveAttribute("aria-label");
     });
+
+    it("shows a message when no tokens are found", () => {
+        render(<ColorTokenEditor side="right" getTokens={() => []} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        expect(screen.getByText(/no valid tokens found/i)).toBeInTheDocument();
+    });
 }); 
