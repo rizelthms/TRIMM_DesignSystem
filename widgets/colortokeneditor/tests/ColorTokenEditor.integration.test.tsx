@@ -231,4 +231,14 @@ describe("ColorTokenEditor integration", () => {
         expect(overrides["--brand-1-instance1"]).toBeDefined();
         expect(overrides["--brand-1-instance2"]).toBeDefined();
     });
+
+    it("renders and handles a large number of tokens", () => {
+        const tokens = Array.from({ length: 200 }, (_, i) => ({
+            name: `--color-${i}`,
+            value: `#${(i % 10).toString().repeat(6)}`
+        }));
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        expect(document.querySelectorAll("input[type='color']").length).toBe(200);
+    });
 }); 
