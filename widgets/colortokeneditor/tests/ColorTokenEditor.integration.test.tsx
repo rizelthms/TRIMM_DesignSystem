@@ -313,4 +313,59 @@ describe("ColorTokenEditor integration", () => {
             expect((input as HTMLInputElement).value).toMatch(/^#[0-9a-f]{6}$/i);
         });
     });
+
+    it("has correct tab order and focus management", () => {
+        const tokens = [
+            { name: "--brand-1", value: "#ff0000" },
+            { name: "--brand-2", value: "#00ff00" }
+        ];
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        // Tab through: color input 1, color input 2, reset button, close button
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        const resetBtn = screen.getByRole("button", { name: /reset/i });
+        const closeBtn = screen.getByRole("button", { name: /close color token editor/i });
+        // Focus first color input
+        (colorInputs[0] as HTMLElement).focus();
+        expect(document.activeElement).toBe(colorInputs[0]);
+        // Tab to second color input
+        fireEvent.keyDown(document.activeElement!, { key: "Tab", code: "Tab" });
+        (colorInputs[1] as HTMLElement).focus();
+        expect(document.activeElement).toBe(colorInputs[1]);
+        // Tab to reset button
+        fireEvent.keyDown(document.activeElement!, { key: "Tab", code: "Tab" });
+        resetBtn.focus();
+        expect(document.activeElement).toBe(resetBtn);
+        // Tab to close button
+        fireEvent.keyDown(document.activeElement!, { key: "Tab", code: "Tab" });
+        closeBtn.focus();
+        expect(document.activeElement).toBe(closeBtn);
+    });
+
+    it("has correct ARIA roles and labels", () => {
+        const tokens = [
+            { name: "--brand-1", value: "#ff0000" }
+        ];
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        expect(screen.getByRole("dialog")).toBeInTheDocument();
+        expect(screen.getByRole("button", { name: /close color token editor/i })).toBeInTheDocument();
+        expect(screen.getByRole("button", { name: /reset/i })).toBeInTheDocument();
+        expect(screen.getByLabelText("Open color token editor")).toBeInTheDocument();
+    });
+
+    it("does not crash if localStorage quota is exceeded", () => {
+        const tokens = [
+            { name: "--brand-1", value: "#ff0000" }
+        ];
+        // Simulate quota exceeded
+        jest.spyOn(window.localStorage, "setItem").mockImplementation(() => { throw new DOMException("QuotaExceededError", "QuotaExceededError"); });
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        const colorInput = document.querySelector("input[type='color']")!;
+        fireEvent.change(colorInput, { target: { value: "#123456" } });
+        // Should not throw or crash
+        expect(screen.getByText("--brand-1")).toBeInTheDocument();
+        (window.localStorage.setItem as jest.Mock).mockRestore();
+    });
 }); 
