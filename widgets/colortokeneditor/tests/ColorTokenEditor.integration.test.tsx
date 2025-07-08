@@ -241,4 +241,30 @@ describe("ColorTokenEditor integration", () => {
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         expect(document.querySelectorAll("input[type='color']").length).toBe(200);
     });
+
+    it("performs responsively and efficiently with a large number of tokens", () => {
+        const tokens = Array.from({ length: 200 }, (_, i) => ({
+            name: `--color-${i}`,
+            value: `#${(i % 10).toString().repeat(6)}`
+        }));
+        const start = performance.now();
+        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        const renderTime = performance.now() - start;
+        // Should render in under 500ms (adjust as needed for your environment)
+        expect(renderTime).toBeLessThan(500);
+        // Rapidly open/close drawer
+        const fab = screen.getByRole("button", { name: /open color token editor/i });
+        for (let i = 0; i < 5; i++) {
+            fireEvent.click(fab);
+            fireEvent.click(document.querySelector(".trimm-color-token-overlay")!);
+        }
+        // Rapidly change colors
+        fireEvent.click(fab);
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        for (let i = 0; i < 10; i++) {
+            fireEvent.change(colorInputs[i], { target: { value: `#${(i+1).toString().repeat(6)}` } });
+        }
+        // No errors should be thrown and UI should remain interactive
+        expect(document.querySelectorAll("input[type='color']").length).toBe(200);
+    });
 }); 
