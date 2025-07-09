@@ -111,4 +111,22 @@ describe("TrimmDatepicker Integration", () => {
         // Calendar should remain open (indicating the cell was disabled or didn't trigger selection)
         expect(screen.getByText(/\d{4}/)).toBeInTheDocument();
     });
+
+    it("multiple instances operate independently", () => {
+        render(
+            <div>
+                <TrimmDatepicker {...getProps({ name: "Datepicker1" })} />
+                <TrimmDatepicker {...getProps({ name: "Datepicker2" })} />
+            </div>
+        );
+        const inputs = screen.getAllByRole("textbox");
+        expect(inputs).toHaveLength(2);
+        // Open first datepicker
+        fireEvent.click(inputs[0]);
+        expect(screen.getByText(/\d{4}/)).toBeInTheDocument();
+        // Open second datepicker - should show another calendar
+        fireEvent.click(inputs[1]);
+        const calendars = screen.getAllByText(/\d{4}/);
+        expect(calendars).toHaveLength(2);
+    });
 }); 
