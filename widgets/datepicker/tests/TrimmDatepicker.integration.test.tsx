@@ -90,4 +90,12 @@ describe("TrimmDatepicker Integration", () => {
         const labelAfterPrev = screen.getByText(/\w+ \d{4}/).textContent;
         expect(labelAfterPrev).toBe(labelBefore);
     });
+
+    it("highlights today's date", () => {
+        render(<TrimmDatepicker {...getProps()} />);
+        fireEvent.click(screen.getByRole("textbox"));
+        const today = new Date().getDate().toString();
+        const todayCell = screen.getAllByText(today).find(cell => cell.className.includes("today"));
+        expect(todayCell).toBeInTheDocument();
+    });
 }); 
