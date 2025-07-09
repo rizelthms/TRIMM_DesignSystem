@@ -18,3 +18,6 @@ A reusable, themeable datepicker component for Mendix applications, styled via t
 
 ## Theming
 All styling is handled via the design system SCSS. To customize, override the relevant SCSS variables or CSS custom properties in your theme. 
+
+## Tests
+Integration tests for the Trimm Datepicker widget are located in the `tests` folder. These tests cover user interaction, date selection, min/max date enforcement, locale switching, and accessibility. Run them using your preferred test runner (e.g., Jest, React Testing Library, or Cypress, depending on your setup). 
