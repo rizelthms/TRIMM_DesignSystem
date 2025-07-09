@@ -69,4 +69,9 @@ describe("TrimmDatepicker Integration", () => {
         );
         expect(monthLabel).toBeInTheDocument();
     });
+
+    it("hides the calendar icon if showIcon is false", () => {
+        render(<TrimmDatepicker {...getProps({ showIcon: false })} />);
+        expect(screen.queryByText((_, el) => !!el && el.className.includes("trimm-datepicker-icon"))).not.toBeInTheDocument();
+    });
 }); 
