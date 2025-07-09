@@ -59,4 +59,14 @@ describe("TrimmDatepicker Integration", () => {
             }
         }
     });
+
+    it("switches locale to Dutch (nl-NL)", () => {
+        render(<TrimmDatepicker {...getProps({ locale: "nl-NL" })} />);
+        fireEvent.click(screen.getByRole("textbox"));
+        // Dutch month names: e.g., 'januari', 'februari', etc.
+        const monthLabel = screen.getByText((content) =>
+            /januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december/i.test(content || "")
+        );
+        expect(monthLabel).toBeInTheDocument();
+    });
 }); 
