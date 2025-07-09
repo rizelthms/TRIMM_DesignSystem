@@ -74,4 +74,20 @@ describe("TrimmDatepicker Integration", () => {
         render(<TrimmDatepicker {...getProps({ showIcon: false })} />);
         expect(screen.queryByText((_, el) => !!el && el.className.includes("trimm-datepicker-icon"))).not.toBeInTheDocument();
     });
+
+    it("navigates months using previous/next buttons", () => {
+        render(<TrimmDatepicker {...getProps()} />);
+        fireEvent.click(screen.getByRole("textbox"));
+        const labelBefore = screen.getByText(/\w+ \d{4}/).textContent;
+        // Click next month
+        const nextBtn = screen.getAllByRole("button").find(btn => btn.querySelector(".glyphicon-triangle-right"));
+        fireEvent.click(nextBtn!);
+        const labelAfterNext = screen.getByText(/\w+ \d{4}/).textContent;
+        expect(labelAfterNext).not.toBe(labelBefore);
+        // Click previous month
+        const prevBtn = screen.getAllByRole("button").find(btn => btn.querySelector(".glyphicon-triangle-left"));
+        fireEvent.click(prevBtn!);
+        const labelAfterPrev = screen.getByText(/\w+ \d{4}/).textContent;
+        expect(labelAfterPrev).toBe(labelBefore);
+    });
 }); 
