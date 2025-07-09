@@ -2,7 +2,7 @@
 import '@testing-library/jest-dom';
 import * as React from "react";
 import { createElement } from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent, act } from "@testing-library/react";
 import { TrimmDatepicker } from "../src/TrimmDatepicker";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
 
@@ -82,6 +82,49 @@ describe("TrimmDatepicker Unit", () => {
             <TrimmDatepicker {...getProps({ selectedDate: { value: selected }, minDate: undefined, maxDate: undefined })} />
         );
         expect(getByDisplayValue("01/20/2025")).toBeInTheDocument();
+    });
+
+    it("calls onChange when a date is selected and canExecute is true", () => {
+        const onChange = { canExecute: true, isExecuting: false, execute: jest.fn() };
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ onChange })} />
+        );
+        const input = container.querySelector('input');
+        act(() => {
+            input && fireEvent.click(input.parentElement); // open calendar
+        });
+        // Wait for calendar to render
+        const cell = container.querySelector('.trimm-datepicker-cell');
+        act(() => {
+            cell && fireEvent.click(cell);
+        });
+        expect(onChange.execute).toHaveBeenCalled();
+    });
+
+    it("does not call onChange if isExecuting is true", () => {
+        const onChange = { canExecute: true, isExecuting: true, execute: jest.fn() };
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ onChange })} />
+        );
+        const input = container.querySelector('input');
+        input && input.parentElement.click();
+        const cell = container.querySelector('.trimm-datepicker-cell');
+        cell && cell.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        expect(onChange.execute).not.toHaveBeenCalled();
+    });
+
+    it("renders the icon if showIcon is true", () => {
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ showIcon: true })} />
+        );
+        expect(container.querySelector('.trimm-datepicker-icon')).toBeInTheDocument();
+    });
+
+    it("does not render the icon if showIcon is false", () => {
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ showIcon: false })} />
+        );
+        expect(container.querySelector('.trimm-datepicker-icon')).not.toBeInTheDocument();
     });
 
     // More unit tests for logic and edge cases will be added incrementally.
