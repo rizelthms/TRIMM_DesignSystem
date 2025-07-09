@@ -129,4 +129,14 @@ describe("TrimmDatepicker Integration", () => {
         const calendars = screen.getAllByText(/\d{4}/);
         expect(calendars).toHaveLength(2);
     });
+
+    it("opens calendar with keyboard (tab and enter)", () => {
+        render(<TrimmDatepicker {...getProps()} />);
+        const input = screen.getByRole("textbox");
+        input.focus();
+        expect(document.activeElement).toBe(input);
+        fireEvent.keyDown(input, { key: "Enter", code: "Enter" });
+        // Calendar should open
+        expect(screen.getByText(/\d{4}/)).toBeInTheDocument();
+    });
 }); 
