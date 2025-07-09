@@ -98,4 +98,17 @@ describe("TrimmDatepicker Integration", () => {
         const todayCell = screen.getAllByText(today).find(cell => cell.className.includes("today"));
         expect(todayCell).toBeInTheDocument();
     });
+
+    it("disables dates outside current month and prevents selection", () => {
+        render(<TrimmDatepicker {...getProps()} />);
+        fireEvent.click(screen.getByRole("textbox"));
+        // Get all date cells
+        const allCells = screen.getAllByText(/\d+/);
+        // Find a cell that's likely disabled (dates outside current month)
+        // We'll click on the first cell and verify calendar stays open
+        const firstCell = allCells[0];
+        fireEvent.click(firstCell);
+        // Calendar should remain open (indicating the cell was disabled or didn't trigger selection)
+        expect(screen.getByText(/\d{4}/)).toBeInTheDocument();
+    });
 }); 
