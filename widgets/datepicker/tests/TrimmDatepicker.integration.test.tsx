@@ -132,11 +132,6 @@ describe("TrimmDatepicker Integration", () => {
         expect(calendars).toHaveLength(2);
     });
 
-    it.skip("opens calendar with keyboard (tab and enter)", () => {
-        // Skipped: The widget does not support opening the calendar with Enter key (only click).
-        // To enable this test, the component would need to handle keyDown events on the input.
-    });
-
     it("has no accessibility violations (axe)", async () => {
         const { container } = render(<TrimmDatepicker {...getProps()} />);
         const results = await axe(container);
