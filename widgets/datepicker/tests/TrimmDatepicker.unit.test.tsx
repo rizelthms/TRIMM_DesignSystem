@@ -39,6 +39,43 @@ describe("TrimmDatepicker Unit", () => {
         expect(getByDisplayValue("01/15/2025")).toBeInTheDocument();
     });
 
+    it("renders with a date in the 1900s", () => {
+        const date = new Date(1905, 6, 4); // July 4, 1905
+        const { getByDisplayValue } = render(
+            <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+        );
+        expect(getByDisplayValue("07/04/1905")).toBeInTheDocument();
+    });
+
+    it("renders with a date in the 2100s", () => {
+        const date = new Date(2101, 11, 25); // Dec 25, 2101
+        const { getByDisplayValue } = render(
+            <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+        );
+        expect(getByDisplayValue("12/25/2101")).toBeInTheDocument();
+    });
+
+    it("renders with a leap year date (Feb 29, 2024)", () => {
+        const date = new Date(2024, 1, 29); // Feb 29, 2024
+        const { getByDisplayValue } = render(
+            <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+        );
+        expect(getByDisplayValue("02/29/2024")).toBeInTheDocument();
+    });
+
+    it("renders with a UTC date (timezone edge)", () => {
+        const date = new Date(Date.UTC(2025, 0, 1)); // Jan 1, 2025 UTC
+        const { getByDisplayValue } = render(
+            <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+        );
+        // Accept either local or UTC formatted date
+        const possible = ["01/01/2025", date.toLocaleDateString("en-US")];
+        const found = possible.some(val => {
+            try { getByDisplayValue(val); return true; } catch { return false; }
+        });
+        expect(found).toBe(true);
+    });
+
     it("handles undefined minDate and maxDate without error", () => {
         expect(() => {
             render(<TrimmDatepicker {...getProps({ minDate: undefined, maxDate: undefined })} />);
