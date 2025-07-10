@@ -225,5 +225,43 @@ describe("TrimmDatepicker Unit", () => {
         expect(input).toHaveAttribute('placeholder', 'Select a date');
     });
 
+    it("applies custom class prop correctly", () => {
+        const customClass = "my-custom-datepicker";
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ class: customClass })} />
+        );
+        const datepickerDiv = container.querySelector('.trimm-datepicker');
+        expect(datepickerDiv).toHaveClass(customClass);
+        expect(datepickerDiv).toHaveClass('trimm-datepicker'); // Should still have base class
+    });
+
+    it("applies custom style prop correctly", () => {
+        const customStyle = { backgroundColor: 'red', fontSize: '16px' };
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ style: customStyle })} />
+        );
+        const datepickerDiv = container.querySelector('.trimm-datepicker');
+        expect(datepickerDiv).toHaveStyle('background-color: red');
+        expect(datepickerDiv).toHaveStyle('font-size: 16px');
+    });
+
+    it("handles empty class prop gracefully", () => {
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ class: "" })} />
+        );
+        const datepickerDiv = container.querySelector('.trimm-datepicker');
+        expect(datepickerDiv).toBeInTheDocument();
+        expect(datepickerDiv).toHaveClass('trimm-datepicker'); // Should have base class
+    });
+
+    it("handles undefined class and style props", () => {
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ class: undefined, style: undefined })} />
+        );
+        const datepickerDiv = container.querySelector('.trimm-datepicker');
+        expect(datepickerDiv).toBeInTheDocument();
+        expect(datepickerDiv).toHaveClass('trimm-datepicker'); // Should have base class
+    });
+
     // More unit tests for logic and edge cases will be added incrementally.
 }); 
