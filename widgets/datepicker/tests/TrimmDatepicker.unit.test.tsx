@@ -93,7 +93,6 @@ describe("TrimmDatepicker Unit", () => {
         act(() => {
             input && fireEvent.click(input.parentElement); // open calendar
         });
-        // Wait for calendar to render
         const cell = container.querySelector('.trimm-datepicker-cell');
         act(() => {
             cell && fireEvent.click(cell);
@@ -107,10 +106,46 @@ describe("TrimmDatepicker Unit", () => {
             <TrimmDatepicker {...getProps({ onChange })} />
         );
         const input = container.querySelector('input');
-        input && input.parentElement.click();
+        act(() => {
+            input && fireEvent.click(input.parentElement); // open calendar
+        });
         const cell = container.querySelector('.trimm-datepicker-cell');
-        cell && cell.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        act(() => {
+            cell && fireEvent.click(cell);
+        });
         expect(onChange.execute).not.toHaveBeenCalled();
+    });
+
+    it("does not call onChange when canExecute is false", () => {
+        const onChange = { canExecute: false, isExecuting: false, execute: jest.fn() };
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ onChange })} />
+        );
+        const input = container.querySelector('input');
+        act(() => {
+            input && fireEvent.click(input.parentElement); // open calendar
+        });
+        const cell = container.querySelector('.trimm-datepicker-cell');
+        act(() => {
+            cell && fireEvent.click(cell);
+        });
+        expect(onChange.execute).not.toHaveBeenCalled();
+    });
+
+    it("calls onChange when date is selected", () => {
+        const onChange = { canExecute: true, isExecuting: false, execute: jest.fn() };
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ onChange })} />
+        );
+        const input = container.querySelector('input');
+        act(() => {
+            input && fireEvent.click(input.parentElement); // open calendar
+        });
+        const cell = container.querySelector('.trimm-datepicker-cell');
+        act(() => {
+            cell && fireEvent.click(cell);
+        });
+        expect(onChange.execute).toHaveBeenCalled();
     });
 
     it("renders the icon if showIcon is true", () => {
