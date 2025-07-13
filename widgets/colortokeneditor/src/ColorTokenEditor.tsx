@@ -308,7 +308,10 @@ const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
         resetOverrides(tokens, "light");
         resetOverrides(tokens, "dark");
         setOverridesState({});
-        window.location.reload();
+        // Skip reload in test environment (jsdom sets hostname to 'localhost')
+        if (window.location.hostname !== "localhost" || window.location.port !== "") {
+            window.location.reload();
+        }
     }
 
     // Palette icon: Use Glyphicon 'tint' icon
