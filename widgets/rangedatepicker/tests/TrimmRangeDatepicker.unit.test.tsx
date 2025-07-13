@@ -186,7 +186,7 @@ describe("TrimmRangeDatepicker Unit", () => {
         const prevButton = container.querySelector('.glyphicon-triangle-left');
         expect(prevButton).toBeInTheDocument();
         
-        fireEvent.click(prevButton.parentElement);
+        fireEvent.click(prevButton!.parentElement!);
         
         // Calendar should still be open
         expect(container.querySelector('.trimm-range-datepicker-popup')).toBeInTheDocument();
@@ -202,7 +202,7 @@ describe("TrimmRangeDatepicker Unit", () => {
         const nextButton = container.querySelector('.glyphicon-triangle-right');
         expect(nextButton).toBeInTheDocument();
         
-        fireEvent.click(nextButton.parentElement);
+        fireEvent.click(nextButton!.parentElement!);
         
         // Calendar should still be open
         expect(container.querySelector('.trimm-range-datepicker-popup')).toBeInTheDocument();
@@ -219,7 +219,7 @@ describe("TrimmRangeDatepicker Unit", () => {
         expect(dragHandle).toBeInTheDocument();
         
         // Start dragging
-        fireEvent.mouseDown(dragHandle, { clientX: 100, clientY: 100 });
+        fireEvent.mouseDown(dragHandle!, { clientX: 100, clientY: 100 });
         
         // Move mouse
         fireEvent.mouseMove(window, { clientX: 150, clientY: 150 });
@@ -358,5 +358,246 @@ describe("TrimmRangeDatepicker Unit", () => {
         
         // Should not crash with invalid dates
         expect(container.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+    });
+
+    it("handles different locale formats", () => {
+        // Test English locale
+        const { container: containerEn } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "en" })));
+        expect(containerEn.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+        
+        // Test Dutch locale
+        const { container: containerNl } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "nl" })));
+        expect(containerNl.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+        
+        // Test Dutch with country code
+        const { container: containerNlNl } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "nl-NL" })));
+        expect(containerNlNl.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+        
+        // Test English with country code
+        const { container: containerEnUs } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "en-US" })));
+        expect(containerEnUs.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+        
+        // Test undefined locale (should default to en-US)
+        const { container: containerUndefined } = render(createElement(TrimmRangeDatePicker, getProps({ locale: undefined })));
+        expect(containerUndefined.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+    });
+
+    it("handles mouse move and mouse up events during dragging", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        const dragHandle = container.querySelector('.trimm-range-datepicker-popup-draghandle');
+        expect(dragHandle).toBeInTheDocument();
+        
+        // Start dragging
+        fireEvent.mouseDown(dragHandle!, { clientX: 100, clientY: 100 });
+        
+        // Move mouse multiple times
+        fireEvent.mouseMove(window, { clientX: 150, clientY: 150 });
+        fireEvent.mouseMove(window, { clientX: 200, clientY: 200 });
+        
+        // Release mouse
+        fireEvent.mouseUp(window);
+        
+        // Calendar should still be open
+        expect(container.querySelector('.trimm-range-datepicker-popup')).toBeInTheDocument();
+    });
+
+    it("handles date selection with disabled dates", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        // Try to click on disabled dates (should not trigger handleClickDate)
+        const disabledDates = container.querySelectorAll('.trimm-range-datepicker-day.disabled');
+        if (disabledDates.length > 0) {
+            fireEvent.click(disabledDates[0]);
+            // Should not show any selected date
+            expect(screen.getAllByText("—")).toHaveLength(2);
+        }
+    });
+
+    it("handles date selection in range mode", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar and select start date
+        fireEvent.click(startField);
+        const dateCells = container.querySelectorAll('.trimm-range-datepicker-day:not(.disabled)');
+        const firstDate = dateCells[0];
+        fireEvent.click(firstDate);
+        
+        // Select end date that creates a range
+        const rangeEndDate = dateCells[10]; // Pick a date that creates a range
+        fireEvent.click(rangeEndDate);
+        
+        // Should call onChange for the range
+        expect(mockAction.execute).toHaveBeenCalled();
+    });
+
+    it("handles month navigation multiple times", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        const prevButton = container.querySelector('.glyphicon-triangle-left');
+        const nextButton = container.querySelector('.glyphicon-triangle-right');
+        
+        // Navigate multiple months
+        fireEvent.click(prevButton!.parentElement!);
+        fireEvent.click(prevButton!.parentElement!);
+        fireEvent.click(nextButton!.parentElement!);
+        fireEvent.click(nextButton!.parentElement!);
+        
+        // Calendar should still be open
+        expect(container.querySelector('.trimm-range-datepicker-popup')).toBeInTheDocument();
+    });
+
+    it("handles popup positioning when calendar opens", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Mock getBoundingClientRect
+        const mockRect = {
+            left: 100,
+            bottom: 200,
+            top: 150,
+            right: 300,
+            width: 200,
+            height: 50
+        };
+        
+        const mockGetBoundingClientRect = jest.fn(() => mockRect);
+        Object.defineProperty(window, 'scrollX', { value: 0, writable: true });
+        Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
+        
+        // Mock the toggleRef element
+        const toggleElement = container.querySelector('.trimm-range-datepicker-toggle');
+        if (toggleElement) {
+            toggleElement.getBoundingClientRect = mockGetBoundingClientRect;
+        }
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        // Should have positioned popup
+        expect(container.querySelector('.trimm-range-datepicker-popup')).toBeInTheDocument();
+    });
+
+    it("handles onChange execution conditions", () => {
+        const onChangeWithConditions = {
+            execute: jest.fn(),
+            canExecute: true,
+            isExecuting: false
+        };
+        
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps({ onChange: onChangeWithConditions })));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar and select dates
+        fireEvent.click(startField);
+        const dateCells = container.querySelectorAll('.trimm-range-datepicker-day:not(.disabled)');
+        const firstDate = dateCells[0];
+        fireEvent.click(firstDate);
+        
+        const laterDate = dateCells[5];
+        fireEvent.click(laterDate);
+        
+        // Should call execute when conditions are met
+        expect(onChangeWithConditions.execute).toHaveBeenCalled();
+    });
+
+    it("handles date constraints with edge cases", () => {
+        const minDate = new Date(2025, 0, 1);
+        const maxDate = new Date(2025, 11, 31);
+        
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps({
+            minDate: mockEditableValue(minDate),
+            maxDate: mockEditableValue(maxDate)
+        })));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        // Should have disabled dates outside the range
+        const disabledDates = container.querySelectorAll('.trimm-range-datepicker-day.disabled');
+        expect(disabledDates.length).toBeGreaterThan(0);
+        
+        // Try to select a disabled date
+        if (disabledDates.length > 0) {
+            fireEvent.click(disabledDates[0]);
+            // Should not show any selected date
+            expect(screen.getAllByText("—")).toHaveLength(2);
+        }
+    });
+
+    it("handles rapid date selection", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        const dateCells = container.querySelectorAll('.trimm-range-datepicker-day:not(.disabled)');
+        
+        // Rapidly click different dates
+        for (let i = 0; i < Math.min(5, dateCells.length); i++) {
+            fireEvent.click(dateCells[i]);
+        }
+        
+        // Should not crash
+        expect(container.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+    });
+
+    it("handles component unmount during dragging", () => {
+        const { container, unmount } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar
+        fireEvent.click(startField);
+        
+        const dragHandle = container.querySelector('.trimm-range-datepicker-popup-draghandle');
+        
+        // Start dragging
+        fireEvent.mouseDown(dragHandle!, { clientX: 100, clientY: 100 });
+        
+        // Unmount while dragging
+        expect(() => unmount()).not.toThrow();
+    });
+
+    it("handles date selection with same start and end date", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps()));
+        const startField = screen.getByText("Start:");
+        
+        // Open calendar and select start date
+        fireEvent.click(startField);
+        const dateCells = container.querySelectorAll('.trimm-range-datepicker-day:not(.disabled)');
+        const firstDate = dateCells[0];
+        fireEvent.click(firstDate);
+        
+        // Select the same date for end
+        fireEvent.click(firstDate);
+        
+        // Should call onChange even for same date
+        expect(mockAction.execute).toHaveBeenCalled();
+    });
+
+    it("handles date selection with null values", () => {
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps({
+            startDate: mockEditableValue(null),
+            endDate: mockEditableValue(null)
+        })));
+        
+        // Should render without crashing
+        expect(container.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
+        expect(screen.getAllByText("—")).toHaveLength(2);
     });
 }); 
