@@ -179,14 +179,14 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                 {showIcon && <span className="glyphicon glyphicon-calendar trimm-datepicker-icon" />}
                 <span className="trimm-range-datepicker-label-text">{label}:</span>
                 <span className="trimm-range-datepicker-date">
-                    {value ? format(value, "EEE MMM d yyyy", { locale: getLocale(locale) }) : "—"}
+                    {value && !isNaN(value.getTime()) ? format(value, "EEE MMM d yyyy", { locale: getLocale(locale) }) : "—"}
                 </span>
             </div>
         </button>
     );
 
     return (
-        <div className="trimm-range-datepicker">
+        <div className={`trimm-range-datepicker${props.class ? ` ${props.class}` : ""}`} style={props.style}>
             <div className="trimm-range-datepicker-toggle" ref={toggleRef}>
                 {renderField("Start", localStart, step === "start")}
                 {renderField("End", localEnd, step === "end")}
