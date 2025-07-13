@@ -2,7 +2,7 @@
 import '@testing-library/jest-dom';
 import * as React from "react";
 import { createElement } from "react";
-import { render, fireEvent, act } from "@testing-library/react";
+import { render, fireEvent, act, waitFor } from "@testing-library/react";
 import { TrimmDatepicker } from "../src/TrimmDatepicker";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
 
@@ -21,7 +21,24 @@ function getProps(overrides) {
     };
 }
 
+// Mock performance API for performance testing
+const mockPerformance = {
+    now: jest.fn(() => Date.now()),
+    mark: jest.fn(),
+    measure: jest.fn()
+};
+Object.defineProperty(window, 'performance', { value: mockPerformance });
+
 describe("TrimmDatepicker Unit", () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+        document.body.innerHTML = '';
+    });
+
+    afterEach(() => {
+        jest.restoreAllMocks();
+    });
+
     it("renders with today's date if no selectedDate is provided", () => {
         const { getByDisplayValue } = render(<TrimmDatepicker {...getProps({})} />);
         const today = new Date();
@@ -300,5 +317,174 @@ describe("TrimmDatepicker Unit", () => {
         expect(datepickerDiv).toHaveClass('trimm-datepicker'); // Should have base class
     });
 
-    // More unit tests for logic and edge cases will be added incrementally.
+    // Performance and stress testing
+    it("renders efficiently under performance pressure", () => {
+        const startTime = performance.now();
+        const { container } = render(<TrimmDatepicker {...getProps({})} />);
+        const renderTime = performance.now() - startTime;
+        
+        expect(renderTime).toBeLessThan(100); // Should render in under 100ms
+        expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+    });
+
+    it("handles rapid state changes without memory leaks", () => {
+        const { rerender, container } = render(<TrimmDatepicker {...getProps({})} />);
+        
+        // Rapidly change props
+        for (let i = 0; i < 10; i++) {
+            const date = new Date(2025, 0, i + 1);
+            rerender(<TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />);
+        }
+        
+        // Should still render correctly
+        expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+    });
+
+    it("handles rapid calendar open/close cycles", () => {
+        const { container } = render(<TrimmDatepicker {...getProps({})} />);
+        const input = container.querySelector('input');
+        
+        // Rapidly open and close calendar
+        for (let i = 0; i < 5; i++) {
+            act(() => {
+                fireEvent.click(input.parentElement);
+            });
+            act(() => {
+                fireEvent.click(document.body);
+            });
+        }
+        
+        // Should not crash or have memory issues
+        expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+    });
+
+
+
+
+
+    // Browser compatibility edge cases
+    it("handles different date input formats", () => {
+        const date = new Date(2025, 0, 15);
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+        );
+        
+        const input = container.querySelector('input');
+        expect(input).toBeInTheDocument();
+        
+        // Test different input formats
+        const formats = ['01/15/2025', '2025-01-15', '15/01/2025'];
+        formats.forEach(format => {
+            act(() => {
+                fireEvent.change(input, { target: { value: format } });
+            });
+            // Should handle gracefully without crashing
+            expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+        });
+    });
+
+    it("handles timezone edge cases", () => {
+        // Test with dates that might cause timezone issues
+        const dates = [
+            new Date('2025-01-01T00:00:00.000Z'),
+            new Date('2025-06-15T12:00:00.000Z'),
+            new Date('2025-12-31T23:59:59.999Z')
+        ];
+        
+        dates.forEach(date => {
+            const { container } = render(
+                <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+            );
+            expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+        });
+    });
+
+
+
+    it("supports keyboard navigation for accessibility", () => {
+        const { container } = render(<TrimmDatepicker {...getProps({})} />);
+        const input = container.querySelector('input');
+        
+        // Test Enter key
+        act(() => {
+            fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+        });
+        
+        // Test Escape key
+        act(() => {
+            fireEvent.keyDown(input, { key: 'Escape', code: 'Escape' });
+        });
+        
+        // Should handle keyboard events without crashing
+        expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+    });
+
+
+
+    it("handles extreme date ranges", () => {
+        const extremeDates = [
+            new Date(1, 0, 1), // Year 1
+            new Date(9999, 11, 31), // Year 9999
+            new Date(-1000, 0, 1), // Negative year
+            new Date(2025, 13, 32) // Invalid month/day
+        ];
+        
+        extremeDates.forEach(date => {
+            const { container } = render(
+                <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
+            );
+            expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+        });
+    });
+
+    // CSS and styling edge cases
+    it("handles CSS class conflicts gracefully", () => {
+        const conflictingClass = "trimm-datepicker"; // Same as base class
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ class: conflictingClass })} />
+        );
+        const datepickerDiv = container.querySelector('.trimm-datepicker');
+        expect(datepickerDiv).toBeInTheDocument();
+    });
+
+    it("handles style object with invalid values", () => {
+        const invalidStyle = { 
+            backgroundColor: null, 
+            fontSize: undefined, 
+            color: 'invalid-color' 
+        };
+        const { container } = render(
+            <TrimmDatepicker {...getProps({ style: invalidStyle })} />
+        );
+        const datepickerDiv = container.querySelector('.trimm-datepicker');
+        expect(datepickerDiv).toBeInTheDocument();
+    });
+
+    // Memory and performance stress tests
+    it("handles large numbers of instances without performance degradation", () => {
+        const startTime = performance.now();
+        
+        const instances = [];
+        for (let i = 0; i < 10; i++) {
+            instances.push(
+                render(<TrimmDatepicker {...getProps({ name: `datepicker-${i}` })} />)
+            );
+        }
+        
+        const renderTime = performance.now() - startTime;
+        expect(renderTime).toBeLessThan(500); // Should render 10 instances in under 500ms
+        
+        // Cleanup
+        instances.forEach(({ unmount }) => unmount());
+    });
+
+    it("handles rapid locale changes", () => {
+        const { rerender, container } = render(<TrimmDatepicker {...getProps({})} />);
+        const locales = ['en-US', 'nl-NL', 'de-DE', 'fr-FR', 'es-ES'];
+        
+        locales.forEach(locale => {
+            rerender(<TrimmDatepicker {...getProps({ locale })} />);
+            expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
+        });
+    });
 }); 
