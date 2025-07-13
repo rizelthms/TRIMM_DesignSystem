@@ -295,7 +295,7 @@ describe("TrimmDatepicker Unit", () => {
             <TrimmDatepicker {...getProps({ style: customStyle })} />
         );
         const datepickerDiv = container.querySelector('.trimm-datepicker');
-        expect(datepickerDiv).toHaveStyle('background-color: rgb(255, 0, 0)');
+        expect(datepickerDiv).toHaveStyle('background-color: red');
         expect(datepickerDiv).toHaveStyle('font-size: 16px');
     });
 
