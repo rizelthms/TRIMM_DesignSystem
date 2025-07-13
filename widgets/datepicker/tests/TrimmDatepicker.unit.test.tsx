@@ -295,7 +295,7 @@ describe("TrimmDatepicker Unit", () => {
             <TrimmDatepicker {...getProps({ style: customStyle })} />
         );
         const datepickerDiv = container.querySelector('.trimm-datepicker');
-        expect(datepickerDiv).toHaveStyle('background-color: red');
+        expect(datepickerDiv).toHaveStyle('background-color: rgb(255, 0, 0)');
         expect(datepickerDiv).toHaveStyle('font-size: 16px');
     });
 
@@ -486,5 +486,87 @@ describe("TrimmDatepicker Unit", () => {
             rerender(<TrimmDatepicker {...getProps({ locale })} />);
             expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
         });
+    });
+
+    // Tests for uncovered lines
+    it("handles date selection when selectedDate is undefined", () => {
+        const { container } = render(<TrimmDatepicker {...getProps({ selectedDate: undefined })} />);
+        const input = container.querySelector('input');
+        
+        // Open calendar
+        act(() => {
+            fireEvent.click(input.parentElement);
+        });
+        
+        // Click on a date (should set localSelectedDate)
+        const dateCell = container.querySelector('.trimm-datepicker-cell:not(.disabled)');
+        act(() => {
+            fireEvent.click(dateCell);
+        });
+        
+        // Calendar should close
+        expect(container.querySelector('.trimm-datepicker-calendar')).not.toBeInTheDocument();
+    });
+
+    it("sets localSelectedDate when selectedDate prop is not provided", () => {
+        const { container } = render(<TrimmDatepicker {...getProps({ selectedDate: undefined })} />);
+        const input = container.querySelector('input');
+        
+        // Open calendar
+        act(() => {
+            fireEvent.click(input.parentElement);
+        });
+        
+        // Find a valid date cell and click it
+        const validDateCells = container.querySelectorAll('.trimm-datepicker-cell:not(.disabled)');
+        const firstValidCell = validDateCells[0];
+        
+        act(() => {
+            fireEvent.click(firstValidCell);
+        });
+        
+        // Verify the calendar closes (indicating handleDateClick was called)
+        expect(container.querySelector('.trimm-datepicker-calendar')).not.toBeInTheDocument();
+        
+        // Verify the input shows a date (indicating localSelectedDate was set)
+        expect(input.value).not.toBe('');
+    });
+
+    it("supports calendar dragging functionality", () => {
+        const { container } = render(<TrimmDatepicker {...getProps({})} />);
+        const input = container.querySelector('input');
+        
+        // Open calendar
+        act(() => {
+            fireEvent.click(input.parentElement);
+        });
+        
+        const calendar = container.querySelector('.trimm-datepicker-calendar');
+        const header = calendar.querySelector('.trimm-datepicker-header');
+        
+        // Start dragging
+        act(() => {
+            fireEvent.mouseDown(header, { clientX: 100, clientY: 100 });
+        });
+        
+        // Move mouse
+        act(() => {
+            fireEvent.mouseMove(window, { clientX: 150, clientY: 150 });
+        });
+        
+        // Release mouse
+        act(() => {
+            fireEvent.mouseUp(window);
+        });
+        
+        // Calendar should still be open
+        expect(container.querySelector('.trimm-datepicker-calendar')).toBeInTheDocument();
+    });
+
+    it("handles mouse event cleanup on unmount", () => {
+        const { unmount } = render(<TrimmDatepicker {...getProps({})} />);
+        
+        // Should not throw when unmounting with active mouse events
+        expect(() => unmount()).not.toThrow();
     });
 }); 
