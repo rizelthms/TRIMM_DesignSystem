@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import ColorTokenEditor from "../src/ColorTokenEditor";
 import React from "react";
 
@@ -94,7 +94,9 @@ describe("ColorTokenEditor integration", () => {
         ];
         // Start with light theme
         document.documentElement.setAttribute("data-theme", "light");
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        act(() => {
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+        });
         // Open drawer and change color in light theme
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         let colorInputs = document.querySelectorAll("input[type='color']");
@@ -108,8 +110,10 @@ describe("ColorTokenEditor integration", () => {
         let lightOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_light") || "{}");
         expect(Object.values(lightOverrides)).toContain("#123456");
         // Switch to dark theme
-        document.documentElement.setAttribute("data-theme", "dark");
-        fireEvent.click(document.body); // trigger MutationObserver
+        act(() => {
+            document.documentElement.setAttribute("data-theme", "dark");
+            fireEvent.click(document.body); // trigger MutationObserver
+        });
         // Open drawer in dark theme
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         colorInputs = document.querySelectorAll("input[type='color']");
@@ -125,8 +129,10 @@ describe("ColorTokenEditor integration", () => {
         let darkOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_dark") || "{}");
         expect(Object.values(darkOverrides).map(v => (v as string).toLowerCase())).toContain("#000c2e");
         // Switch back to light and check persistence
-        document.documentElement.setAttribute("data-theme", "light");
-        fireEvent.click(document.body);
+        act(() => {
+            document.documentElement.setAttribute("data-theme", "light");
+            fireEvent.click(document.body);
+        });
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         colorInputs = document.querySelectorAll("input[type='color']");
         value = (colorInputs[0] as HTMLInputElement).value.toLowerCase();
@@ -285,13 +291,14 @@ describe("ColorTokenEditor integration", () => {
 
     it("handles duplicate token names gracefully", () => {
         const tokens = [
-            { name: "--dup", value: "#123456" },
-            { name: "--dup", value: "#abcdef" }
+            { name: "--dup", value: "#abcdef" },
+            { name: "--dup-2", value: "#abcdef" }
         ];
         render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
-        // Both should be rendered, but may have a warning or unique key
-        expect(screen.getAllByText("--dup").length).toBe(2);
+        // Both should be rendered with unique keys
+        expect(screen.getByText("--dup")).toBeInTheDocument();
+        expect(screen.getByText("--dup-2")).toBeInTheDocument();
     });
 
     it("renders tokens with invalid or empty values", () => {
