@@ -471,7 +471,10 @@ describe("TrimmRangeDatepicker Unit", () => {
             top: 150,
             right: 300,
             width: 200,
-            height: 50
+            height: 50,
+            x: 100,
+            y: 150,
+            toJSON: () => mockRect
         };
         
         const mockGetBoundingClientRect = jest.fn(() => mockRect);
