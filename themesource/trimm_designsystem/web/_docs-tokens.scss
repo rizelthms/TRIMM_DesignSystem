@@ -52,3 +52,62 @@
   color: var(--secondary-1);
   margin-bottom: $spacing-8;
 } 
+
+// Swatch color classes for Mendix Dynamic Classes binding
+// Usage: Add the class name (e.g., 'swatch-brand-1') to the SwatchClass attribute in Mendix
+// This list is auto-generated from all tokens in _themes.scss
+
+.swatch-brand-1 { background: var(--brand-1); }
+.swatch-brand-1-hover { background: var(--brand-1-hover); }
+.swatch-brand-1-active { background: var(--brand-1-active); }
+.swatch-brand-1-disabled { background: var(--brand-1-disabled); }
+
+.swatch-brand-2 { background: var(--brand-2); }
+.swatch-brand-2-hover { background: var(--brand-2-hover); }
+.swatch-brand-2-active { background: var(--brand-2-active); }
+.swatch-brand-2-disabled { background: var(--brand-2-disabled); }
+
+.swatch-brand-3 { background: var(--brand-3); }
+.swatch-brand-3-hover { background: var(--brand-3-hover); }
+.swatch-brand-3-active { background: var(--brand-3-active); }
+.swatch-brand-3-disabled { background: var(--brand-3-disabled); }
+
+.swatch-base-black { background: var(--base-black); }
+.swatch-base-black-hover { background: var(--base-black-hover); }
+.swatch-base-black-active { background: var(--base-black-active); }
+.swatch-base-black-disabled { background: var(--base-black-disabled); }
+
+.swatch-base-white { background: var(--base-white); }
+.swatch-base-white-hover { background: var(--base-white-hover); }
+.swatch-base-white-active { background: var(--base-white-active); }
+.swatch-base-white-disabled { background: var(--base-white-disabled); }
+
+.swatch-secondary-1 { background: var(--secondary-1); }
+.swatch-secondary-1-hover { background: var(--secondary-1-hover); }
+.swatch-secondary-1-active { background: var(--secondary-1-active); }
+.swatch-secondary-1-disabled { background: var(--secondary-1-disabled); }
+
+.swatch-secondary-2 { background: var(--secondary-2); }
+.swatch-secondary-2-hover { background: var(--secondary-2-hover); }
+.swatch-secondary-2-active { background: var(--secondary-2-active); }
+.swatch-secondary-2-disabled { background: var(--secondary-2-disabled); }
+
+.swatch-support-1 { background: var(--support-1); }
+.swatch-support-1-hover { background: var(--support-1-hover); }
+.swatch-support-1-active { background: var(--support-1-active); }
+.swatch-support-1-disabled { background: var(--support-1-disabled); }
+
+.swatch-support-2 { background: var(--support-2); }
+.swatch-support-2-hover { background: var(--support-2-hover); }
+.swatch-support-2-active { background: var(--support-2-active); }
+.swatch-support-2-disabled { background: var(--support-2-disabled); }
+
+.swatch-support-3 { background: var(--support-3); }
+.swatch-support-3-hover { background: var(--support-3-hover); }
+.swatch-support-3-active { background: var(--support-3-active); }
+.swatch-support-3-disabled { background: var(--support-3-disabled); }
+
+.swatch-support-4 { background: var(--support-4); }
+.swatch-support-4-hover { background: var(--support-4-hover); }
+.swatch-support-4-active { background: var(--support-4-active); }
+.swatch-support-4-disabled { background: var(--support-4-disabled); } 

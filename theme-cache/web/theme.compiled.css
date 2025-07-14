@@ -29644,6 +29644,234 @@ Do not render = "none"
   left: auto;
 }
 
+.ds-docs-token-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  padding: 16px;
+  margin: 12px;
+  width: 190px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background: var(--base-white);
+  border: 1px solid #f0f0f0;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.ds-docs-token-card:hover {
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+}
+
+.ds-docs-token-swatch {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.ds-docs-token-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+}
+
+.ds-docs-token-value {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-1);
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.ds-docs-token-desc {
+  font-size: 12px;
+  font-weight: 100;
+  color: var(--secondary-1);
+  margin-bottom: 8px;
+}
+
+.swatch-brand-1 {
+  background: var(--brand-1);
+}
+
+.swatch-brand-1-hover {
+  background: var(--brand-1-hover);
+}
+
+.swatch-brand-1-active {
+  background: var(--brand-1-active);
+}
+
+.swatch-brand-1-disabled {
+  background: var(--brand-1-disabled);
+}
+
+.swatch-brand-2 {
+  background: var(--brand-2);
+}
+
+.swatch-brand-2-hover {
+  background: var(--brand-2-hover);
+}
+
+.swatch-brand-2-active {
+  background: var(--brand-2-active);
+}
+
+.swatch-brand-2-disabled {
+  background: var(--brand-2-disabled);
+}
+
+.swatch-brand-3 {
+  background: var(--brand-3);
+}
+
+.swatch-brand-3-hover {
+  background: var(--brand-3-hover);
+}
+
+.swatch-brand-3-active {
+  background: var(--brand-3-active);
+}
+
+.swatch-brand-3-disabled {
+  background: var(--brand-3-disabled);
+}
+
+.swatch-base-black {
+  background: var(--base-black);
+}
+
+.swatch-base-black-hover {
+  background: var(--base-black-hover);
+}
+
+.swatch-base-black-active {
+  background: var(--base-black-active);
+}
+
+.swatch-base-black-disabled {
+  background: var(--base-black-disabled);
+}
+
+.swatch-base-white {
+  background: var(--base-white);
+}
+
+.swatch-base-white-hover {
+  background: var(--base-white-hover);
+}
+
+.swatch-base-white-active {
+  background: var(--base-white-active);
+}
+
+.swatch-base-white-disabled {
+  background: var(--base-white-disabled);
+}
+
+.swatch-secondary-1 {
+  background: var(--secondary-1);
+}
+
+.swatch-secondary-1-hover {
+  background: var(--secondary-1-hover);
+}
+
+.swatch-secondary-1-active {
+  background: var(--secondary-1-active);
+}
+
+.swatch-secondary-1-disabled {
+  background: var(--secondary-1-disabled);
+}
+
+.swatch-secondary-2 {
+  background: var(--secondary-2);
+}
+
+.swatch-secondary-2-hover {
+  background: var(--secondary-2-hover);
+}
+
+.swatch-secondary-2-active {
+  background: var(--secondary-2-active);
+}
+
+.swatch-secondary-2-disabled {
+  background: var(--secondary-2-disabled);
+}
+
+.swatch-support-1 {
+  background: var(--support-1);
+}
+
+.swatch-support-1-hover {
+  background: var(--support-1-hover);
+}
+
+.swatch-support-1-active {
+  background: var(--support-1-active);
+}
+
+.swatch-support-1-disabled {
+  background: var(--support-1-disabled);
+}
+
+.swatch-support-2 {
+  background: var(--support-2);
+}
+
+.swatch-support-2-hover {
+  background: var(--support-2-hover);
+}
+
+.swatch-support-2-active {
+  background: var(--support-2-active);
+}
+
+.swatch-support-2-disabled {
+  background: var(--support-2-disabled);
+}
+
+.swatch-support-3 {
+  background: var(--support-3);
+}
+
+.swatch-support-3-hover {
+  background: var(--support-3-hover);
+}
+
+.swatch-support-3-active {
+  background: var(--support-3-active);
+}
+
+.swatch-support-3-disabled {
+  background: var(--support-3-disabled);
+}
+
+.swatch-support-4 {
+  background: var(--support-4);
+}
+
+.swatch-support-4-hover {
+  background: var(--support-4-hover);
+}
+
+.swatch-support-4-active {
+  background: var(--support-4-active);
+}
+
+.swatch-support-4-disabled {
+  background: var(--support-4-disabled);
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);
