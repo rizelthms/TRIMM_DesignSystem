@@ -1,0 +1,209 @@
+// Documentation styles for color tokens (color swatches, cards, etc.)
+// BEM naming: docs-colorToken-card, docs-colorToken-swatch, docs-colorToken-copy, etc.
+
+.docs-colorToken-card {
+  border-radius: $radius-8;
+  box-shadow: $shadow-2;
+  padding: $spacing-16;
+  margin: $spacing-12;
+  width: 190px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background: var(--base-white);
+  border: $border-1 solid #f0f0f0;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.docs-colorToken-card:hover {
+  box-shadow: $shadow-6;
+}
+
+.docs-colorToken-swatch {
+  width: 100%;
+  height: 48px;
+  border-radius: $radius-8;
+  margin-top: $spacing-8;
+  margin-bottom: $spacing-12;
+  border: $border-1 solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.docs-colorToken-name {
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-body-3;
+  margin-bottom: $spacing-4;
+  color: var(--base-black);
+  word-break: break-all;
+}
+
+.docs-colorToken-value {
+  font-family: $font-primary;
+  font-size: $font-size-body-4;
+  color: var(--secondary-1);
+  margin-bottom: $spacing-8;
+  word-break: break-all;
+}
+
+.docs-colorToken-desc {
+  font-size: $font-size-body-4;
+  font-weight: $font-weight-light;
+  color: var(--secondary-1);
+  margin-bottom: $spacing-8;
+}
+
+// Swatch color classes for Mendix Dynamic Classes binding
+// Usage: Add the class name (e.g., 'docs-colorToken-swatch-brand-1') to the SwatchClass attribute in Mendix
+// This list is auto-generated from all tokens in _themes.scss
+
+.docs-colorToken-swatch-brand-1 {
+  background: var(--brand-1);
+}
+.docs-colorToken-swatch-brand-1-hover {
+  background: var(--brand-1-hover);
+}
+.docs-colorToken-swatch-brand-1-active {
+  background: var(--brand-1-active);
+}
+.docs-colorToken-swatch-brand-1-disabled {
+  background: var(--brand-1-disabled);
+}
+
+.docs-colorToken-swatch-brand-2 {
+  background: var(--brand-2);
+}
+.docs-colorToken-swatch-brand-2-hover {
+  background: var(--brand-2-hover);
+}
+.docs-colorToken-swatch-brand-2-active {
+  background: var(--brand-2-active);
+}
+.docs-colorToken-swatch-brand-2-disabled {
+  background: var(--brand-2-disabled);
+}
+
+.docs-colorToken-swatch-brand-3 {
+  background: var(--brand-3);
+}
+.docs-colorToken-swatch-brand-3-hover {
+  background: var(--brand-3-hover);
+}
+.docs-colorToken-swatch-brand-3-active {
+  background: var(--brand-3-active);
+}
+.docs-colorToken-swatch-brand-3-disabled {
+  background: var(--brand-3-disabled);
+}
+
+.docs-colorToken-swatch-base-black {
+  background: var(--base-black);
+}
+.docs-colorToken-swatch-base-black-hover {
+  background: var(--base-black-hover);
+}
+.docs-colorToken-swatch-base-black-active {
+  background: var(--base-black-active);
+}
+.docs-colorToken-swatch-base-black-disabled {
+  background: var(--base-black-disabled);
+}
+
+.docs-colorToken-swatch-base-white {
+  background: var(--base-white);
+}
+.docs-colorToken-swatch-base-white-hover {
+  background: var(--base-white-hover);
+}
+.docs-colorToken-swatch-base-white-active {
+  background: var(--base-white-active);
+}
+.docs-colorToken-swatch-base-white-disabled {
+  background: var(--base-white-disabled);
+}
+
+.docs-colorToken-swatch-secondary-1 {
+  background: var(--secondary-1);
+}
+.docs-colorToken-swatch-secondary-1-hover {
+  background: var(--secondary-1-hover);
+}
+.docs-colorToken-swatch-secondary-1-active {
+  background: var(--secondary-1-active);
+}
+.docs-colorToken-swatch-secondary-1-disabled {
+  background: var(--secondary-1-disabled);
+}
+
+.docs-colorToken-swatch-secondary-2 {
+  background: var(--secondary-2);
+}
+.docs-colorToken-swatch-secondary-2-hover {
+  background: var(--secondary-2-hover);
+}
+.docs-colorToken-swatch-secondary-2-active {
+  background: var(--secondary-2-active);
+}
+.docs-colorToken-swatch-secondary-2-disabled {
+  background: var(--secondary-2-disabled);
+}
+
+.docs-colorToken-swatch-support-1 {
+  background: var(--support-1);
+}
+.docs-colorToken-swatch-support-1-hover {
+  background: var(--support-1-hover);
+}
+.docs-colorToken-swatch-support-1-active {
+  background: var(--support-1-active);
+}
+.docs-colorToken-swatch-support-1-disabled {
+  background: var(--support-1-disabled);
+}
+
+.docs-colorToken-swatch-support-2 {
+  background: var(--support-2);
+}
+.docs-colorToken-swatch-support-2-hover {
+  background: var(--support-2-hover);
+}
+.docs-colorToken-swatch-support-2-active {
+  background: var(--support-2-active);
+}
+.docs-colorToken-swatch-support-2-disabled {
+  background: var(--support-2-disabled);
+}
+
+.docs-colorToken-swatch-support-3 {
+  background: var(--support-3);
+}
+.docs-colorToken-swatch-support-3-hover {
+  background: var(--support-3-hover);
+}
+.docs-colorToken-swatch-support-3-active {
+  background: var(--support-3-active);
+}
+.docs-colorToken-swatch-support-3-disabled {
+  background: var(--support-3-disabled);
+}
+
+.docs-colorToken-swatch-support-4 {
+  background: var(--support-4);
+}
+.docs-colorToken-swatch-support-4-hover {
+  background: var(--support-4-hover);
+}
+.docs-colorToken-swatch-support-4-active {
+  background: var(--support-4-active);
+}
+.docs-colorToken-swatch-support-4-disabled {
+  background: var(--support-4-disabled);
+}
+
+.docs-colorToken-center-card,
+mx-templategrid-content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
