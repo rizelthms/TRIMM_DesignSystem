@@ -27853,6 +27853,62 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+h1 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 31px;
+  font-weight: bold;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h4 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h5 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h6 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+p {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--base-black);
+  margin-bottom: 16px;
+}
+
 /**
  * TRIMM Design System - Color Tokens
  * 

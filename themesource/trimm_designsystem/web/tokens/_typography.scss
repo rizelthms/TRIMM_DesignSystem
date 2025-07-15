@@ -35,3 +35,57 @@ $line-height-body-1: 28px !default;
 $line-height-body-2: 24px !default;
 $line-height-body-3: 20px !default;
 $line-height-body-4: 18px !default;
+
+// === AUTOMATIC TYPOGRAPHY STYLES FOR MENDIX RENDER MODES ===
+// These styles are applied automatically based on the HTML tag rendered by Mendix Text widget's Render mode.
+// No need to add a class—just select the Render mode (Heading 1, Paragraph, etc.) in Mendix.
+
+h1 {
+  font-family: $font-primary;
+  font-size: $font-size-h1;
+  font-weight: $font-weight-bold;
+  color: var(--brand-1);
+  margin-bottom: $spacing-24;
+}
+h2 {
+  font-family: $font-primary;
+  font-size: $font-size-h2;
+  font-weight: $font-weight-semibold;
+  color: var(--brand-1);
+  margin-bottom: $spacing-24;
+}
+h3 {
+  font-family: $font-primary;
+  font-size: $font-size-h3;
+  font-weight: $font-weight-semibold;
+  color: var(--brand-1);
+  margin-bottom: $spacing-24;
+}
+h4 {
+  font-family: $font-primary;
+  font-size: $font-size-h4;
+  font-weight: $font-weight-medium;
+  color: var(--brand-1);
+  margin-bottom: $spacing-24;
+}
+h5 {
+  font-family: $font-primary;
+  font-size: $font-size-h5;
+  font-weight: $font-weight-medium;
+  color: var(--brand-1);
+  margin-bottom: $spacing-24;
+}
+h6 {
+  font-family: $font-primary;
+  font-size: $font-size-h6;
+  font-weight: $font-weight-regular;
+  color: var(--brand-1);
+  margin-bottom: $spacing-24;
+}
+p {
+  font-family: $font-primary;
+  font-size: $font-size-body-1;
+  line-height: $line-height-body-1;
+  color: var(--base-black);
+  margin-bottom: $spacing-16;
+}
