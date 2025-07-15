@@ -1,0 +1,86 @@
+// Documentation styles for radius tokens (radius swatches, cards, etc.)
+// BEM naming: docs-radiusToken-card, docs-radiusToken-swatch, etc.
+
+.docs-radiusToken-card {
+    border-radius: $radius-8;
+    box-shadow: $shadow-2;
+    padding: $spacing-16;
+    margin: $spacing-12;
+    width: 190px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    background: var(--base-white);
+    border: $border-1 solid #f0f0f0;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.docs-radiusToken-card:hover {
+    box-shadow: $shadow-6;
+}
+
+.docs-radiusToken-container {
+    width: 100%;
+    height: 48px;
+    margin-top: $spacing-8;
+    margin-bottom: $spacing-12;
+    background: var(--brand-2);
+    // The border-radius will be set dynamically via the Mendix Style property (e.g., {RadiusStyle})
+    box-sizing: border-box;
+    box-shadow: $shadow-2;
+}
+
+.docs-radiusToken-name {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-body-3;
+    margin-bottom: $spacing-4;
+    color: var(--base-black);
+    word-break: break-all;
+}
+
+.docs-radiusToken-value {
+    font-family: $font-primary;
+    font-size: $font-size-body-4;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+    word-break: break-all;
+}
+
+.docs-radiusToken-desc {
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-light;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+}
+
+.docs-radiusToken-center-card,
+mx-templategrid-content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+// Radius utility classes for documentation/demo purposes
+// Usage: Add the class name (e.g., 'radius-style-4') to the RadiusStyleClass attribute in Mendix
+
+.radius-style-0 {
+    border-radius: $radius-0;
+}
+
+.radius-style-4 {
+    border-radius: $radius-4;
+}
+
+.radius-style-8 {
+    border-radius: $radius-8;
+}
+
+.radius-style-16 {
+    border-radius: $radius-16;
+}
+
+.radius-style-full {
+    border-radius: $radius-full;
+}
