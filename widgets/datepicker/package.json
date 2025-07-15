@@ -22,11 +22,23 @@
     "lint": "pluggable-widgets-tools lint",
     "lint:fix": "pluggable-widgets-tools lint:fix",
     "prerelease": "npm run lint",
-    "release": "pluggable-widgets-tools release:web"
+    "release": "pluggable-widgets-tools release:web",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@mendix/pluggable-widgets-tools": "^10.15.0",
-    "@types/big.js": "^6.0.2"
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/big.js": "^6.0.2",
+    "@types/jest": "^30.0.0",
+    "@types/jest-axe": "^3.5.9",
+    "jest": "^30.0.4",
+    "jest-axe": "^10.0.0",
+    "ts-jest": "^29.4.0"
   },
   "dependencies": {
     "classnames": "^2.2.6",

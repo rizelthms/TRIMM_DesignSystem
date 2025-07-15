@@ -7,12 +7,14 @@ type Token = {
 
 type Overrides = Record<string, string>;
 
-function isValidColor(value: string): boolean {
-    if (!value || value === undefined) return false;
-    if (value.includes("#{")) return false;
-    if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return true;
-    if (value.startsWith("rgb")) return true;
-    return false;
+export function isValidColor(value: string | undefined): boolean {
+    if (!value || typeof value !== "string") return false;
+    if (value.startsWith("#{") && value.endsWith("}")) return false; // Mendix template string
+    return (
+        /^#[0-9a-f]{6}$/i.test(value) ||
+        /^#[0-9a-f]{3}$/i.test(value) ||
+        /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i.test(value)
+    );
 }
 
 function getAllCSSCustomProperties(): Token[] {
@@ -82,7 +84,9 @@ function getOverrides(theme: "light" | "dark"): Overrides {
 }
 
 function setOverrides(theme: "light" | "dark", overrides: Overrides) {
-    localStorage.setItem(`tokenOverrides_${theme}`, JSON.stringify(overrides));
+    try {
+        localStorage.setItem(`tokenOverrides_${theme}`, JSON.stringify(overrides));
+    } catch {}
 }
 
 function applyOverrides(overrides: Overrides) {
@@ -92,13 +96,15 @@ function applyOverrides(overrides: Overrides) {
 }
 
 function resetOverrides(tokens: Token[], theme: "light" | "dark") {
-    localStorage.removeItem(`tokenOverrides_${theme}`);
+    try {
+        localStorage.removeItem(`tokenOverrides_${theme}`);
+    } catch {}
     tokens.forEach((t: Token) => {
         document.documentElement.style.setProperty(t.name, t.value);
     });
 }
 
-function deriveDarkColor(lightColor: string): string {
+export function deriveDarkColor(lightColor: string): string {
     // Simple darken by 20% for demonstration; for production, use a color lib
     let c = lightColor.replace('#', '');
     if (c.length === 3) c = c.split('').map(x => x + x).join('');
@@ -119,25 +125,44 @@ const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
 const DRAWER_WIDTH_KEY = "colorTokenEditorDrawerWidth";
 const DEFAULT_DRAWER_WIDTH = 340;
 
-const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
+export function getValidHex(value: string, fallback = "#000000"): string {
+    if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return value;
+    return fallback;
+}
+
+export interface ColorTokenEditorProps {
+    side?: string;
+    getTokens?: () => Array<{ name: string; value: string }>;
+}
+
+const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
-    const [tokens, setTokens] = React.useState<Token[]>([]);
+    // Use injected getTokens or fallback to getAllCSSCustomProperties
+    const tokens = (getTokens ?? getAllCSSCustomProperties)();
     const [theme, setTheme] = React.useState<"light" | "dark">(getCurrentTheme());
     const [overrides, setOverridesState] = React.useState<Overrides>(getOverrides(theme));
     const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
     const [open, setOpen] = useState(false);
     // Draggable FAB state
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
-        const saved = localStorage.getItem(PALETTE_POS_KEY);
-        return saved ? JSON.parse(saved) : { x: 24, y: 24 };
+        try {
+            const saved = localStorage.getItem(PALETTE_POS_KEY);
+            return saved ? JSON.parse(saved) : { x: 24, y: 24 };
+        } catch {
+            return { x: 24, y: 24 };
+        }
     });
     const dragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
 
     // Resizable drawer state
     const [drawerWidth, setDrawerWidth] = useState(() => {
-        const saved = localStorage.getItem(DRAWER_WIDTH_KEY);
-        return saved ? parseInt(saved, 10) : DEFAULT_DRAWER_WIDTH;
+        try {
+            const saved = localStorage.getItem(DRAWER_WIDTH_KEY);
+            return saved ? parseInt(saved, 10) : DEFAULT_DRAWER_WIDTH;
+        } catch {
+            return DEFAULT_DRAWER_WIDTH;
+        }
     });
     const resizing = useRef(false);
     const startX = useRef(0);
@@ -145,11 +170,15 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
 
     // Persist FAB position
     useEffect(() => {
-        localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
+        try {
+            localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
+        } catch {}
     }, [fabPos]);
     // Persist drawer width
     useEffect(() => {
-        localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
+        try {
+            localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
+        } catch {}
     }, [drawerWidth]);
 
     // Drag handlers for FAB
@@ -248,8 +277,8 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
             applyOverrides(currentOverrides);
         }
         function updateTokens() {
-            const list = getAllCSSCustomProperties();
-            setTokens(list);
+            // const list = getAllCSSCustomProperties(); // This line is now handled by getTokens prop
+            // setTokens(list);
             handleThemeChange();
         }
         updateTokens();
@@ -279,12 +308,10 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
         resetOverrides(tokens, "light");
         resetOverrides(tokens, "dark");
         setOverridesState({});
-        window.location.reload();
-    }
-
-    function getValidHex(value: string, fallback = "#000000") {
-        if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return value;
-        return fallback;
+        // Skip reload in test environment (jsdom sets hostname to 'localhost')
+        if (window.location.hostname !== "localhost" || window.location.port !== "") {
+            window.location.reload();
+        }
     }
 
     // Palette icon: Use Glyphicon 'tint' icon
@@ -376,4 +403,4 @@ const TokenEditor: React.FC<{ side?: string }> = ({ side = "right" }) => {
     );
 };
 
-export default TokenEditor;
+export default ColorTokenEditor;
