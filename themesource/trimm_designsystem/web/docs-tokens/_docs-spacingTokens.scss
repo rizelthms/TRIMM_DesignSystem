@@ -1,0 +1,108 @@
+// Documentation styles for spacing tokens (spacing swatches, cards, etc.)
+// BEM naming: docs-spacingToken-card, docs-spacingToken-swatch, etc.
+
+.docs-spacingToken-card {
+    border-radius: $radius-8;
+    box-shadow: $shadow-2;
+    padding: $spacing-16;
+    margin: $spacing-12;
+    width: 190px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    background: var(--base-white);
+    border: $border-1 solid #f0f0f0;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.docs-spacingToken-card:hover {
+    box-shadow: $shadow-6;
+}
+
+.docs-spacingToken-container {
+    width: 100%;
+    height: 24px;
+    border-radius: $radius-4;
+    margin-top: $spacing-8;
+    margin-bottom: $spacing-12;
+    background: var(--secondary-2);
+    // The width or margin will be set dynamically via the Mendix Style property (e.g., {SpacingStyle})
+    box-sizing: border-box;
+    border: $border-1 solid var(--base-black);
+    display: block;
+}
+
+.docs-spacingToken-name {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-body-3;
+    margin-bottom: $spacing-4;
+    color: var(--base-black);
+    word-break: break-all;
+}
+
+.docs-spacingToken-value {
+    font-family: $font-primary;
+    font-size: $font-size-body-4;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+    word-break: break-all;
+}
+
+.docs-spacingToken-desc {
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-light;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+}
+
+.docs-spacingToken-center-card,
+mx-templategrid-content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+// Spacing utility classes for documentation/demo purposes
+// Usage: Add the class name (e.g., 'spacing-style-8') to the SpacingStyleClass attribute in Mendix
+
+.spacing-style-0 {
+    width: $spacing-0;
+}
+
+.spacing-style-4 {
+    width: $spacing-4;
+}
+
+.spacing-style-8 {
+    width: $spacing-8;
+}
+
+.spacing-style-12 {
+    width: $spacing-12;
+}
+
+.spacing-style-16 {
+    width: $spacing-16;
+}
+
+.spacing-style-24 {
+    width: $spacing-24;
+}
+
+.spacing-style-32 {
+    width: $spacing-32;
+}
+
+.spacing-style-40 {
+    width: $spacing-40;
+}
+
+.spacing-style-64 {
+    width: $spacing-64;
+}
+
+.spacing-style-auto {
+    width: $spacing-auto;
+} 
