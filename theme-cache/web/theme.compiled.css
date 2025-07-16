@@ -29823,7 +29823,7 @@ mx-templategrid-content-wrapper {
   box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
 }
 
-.docs-borderToken-swatch {
+.docs-borderToken-container {
   width: 100%;
   height: 48px;
   border-radius: 8px;
@@ -29865,23 +29865,23 @@ mx-templategrid-content-wrapper {
 }
 
 .border-style-0 {
-  border: 0 solid var(--base-black);
+  border: 0 solid var(--brand-2);
 }
 
 .border-style-1 {
-  border: 1px solid var(--base-black);
+  border: 1px solid var(--brand-2);
 }
 
 .border-style-2 {
-  border: 2px solid var(--base-black);
+  border: 2px solid var(--brand-2);
 }
 
 .border-style-4 {
-  border: 4px solid var(--base-black);
+  border: 4px solid var(--brand-2);
 }
 
 .border-style-8 {
-  border: 8px solid var(--base-black);
+  border: 8px solid var(--brand-2);
 }
 
 .docs-radiusToken-card {
@@ -29989,9 +29989,8 @@ mx-templategrid-content-wrapper {
   border-radius: 8px;
   margin-top: 8px;
   margin-bottom: 12px;
-  background: var(--base-white);
+  background: var(--brand-2);
   box-sizing: border-box;
-  border: 1px solid var(--base-black);
 }
 
 .docs-shadowToken-name {
@@ -30074,10 +30073,11 @@ mx-templategrid-content-wrapper {
   border-radius: 4px;
   margin-top: 8px;
   margin-bottom: 12px;
-  background: var(--secondary-2);
+  background: var(--brand-2);
   box-sizing: border-box;
-  border: 1px solid var(--base-black);
   display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .docs-spacingToken-name {

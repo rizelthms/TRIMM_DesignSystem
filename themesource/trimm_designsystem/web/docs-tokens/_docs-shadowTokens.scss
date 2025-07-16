@@ -26,10 +26,9 @@
     border-radius: $radius-8;
     margin-top: $spacing-8;
     margin-bottom: $spacing-12;
-    background: var(--base-white);
+    background: var(--brand-2);
     // The box-shadow will be set dynamically via the Mendix Style property (e.g., {ShadowStyle})
     box-sizing: border-box;
-    border: $border-1 solid var(--base-black);
 }
 
 .docs-shadowToken-name {

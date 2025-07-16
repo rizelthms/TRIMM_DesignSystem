@@ -20,7 +20,7 @@
     box-shadow: $shadow-6;
 }
 
-.docs-borderToken-swatch {
+.docs-borderToken-container {
     width: 100%;
     height: 48px;
     border-radius: $radius-8;
@@ -67,21 +67,21 @@ mx-templategrid-content-wrapper {
 // Usage: Add the class name (e.g., 'border-style-1') to the BorderStyleClass attribute in Mendix
 
 .border-style-0 {
-    border: $border-0 solid var(--base-black);
+    border: $border-0 solid var(--brand-2);
 }
 
 .border-style-1 {
-    border: $border-1 solid var(--base-black);
+    border: $border-1 solid var(--brand-2);
 }
 
 .border-style-2 {
-    border: $border-2 solid var(--base-black);
+    border: $border-2 solid var(--brand-2);
 }
 
 .border-style-4 {
-    border: $border-4 solid var(--base-black);
+    border: $border-4 solid var(--brand-2);
 }
 
 .border-style-8 {
-    border: $border-8 solid var(--base-black);
+    border: $border-8 solid var(--brand-2);
 }
