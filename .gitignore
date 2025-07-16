@@ -45,6 +45,5 @@ node_modules/
 /vendorlib/temp/
 /.svn/
 /mprcontents/mprjournal*
-TRIMM_DesignSystem.mpr
 .mendix-cache/base_data/
 .cursor/
