@@ -30151,6 +30151,225 @@ mx-templategrid-content-wrapper {
   width: auto;
 }
 
+.docs-typographyToken-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  padding: 16px;
+  margin: 12px;
+  width: 260px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background: var(--base-white);
+  border: 1px solid #f0f0f0;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.docs-typographyToken-card:hover {
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+}
+
+.docs-typographyToken-container {
+  width: 100%;
+  min-height: 56px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  background: var(--base-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.docs-typographyToken-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+}
+
+.docs-typographyToken-value {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-1);
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.docs-typographyToken-desc {
+  font-size: 12px;
+  font-weight: 100;
+  color: var(--secondary-1);
+  margin-bottom: 8px;
+}
+
+.docs-typographyToken-center-card,
+mx-templategrid-content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+.font-size-h1-swatch {
+  font-size: 31px;
+  line-height: 150px;
+  font-weight: bold;
+  font-family: "GothamSSm", sans-serif;
+  color: var(--base-black);
+}
+
+.font-size-h2-swatch {
+  font-size: 26px;
+  line-height: 130px;
+  font-weight: 600;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-h3-swatch {
+  font-size: 24px;
+  line-height: 130px;
+  font-weight: 600;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-h4-swatch {
+  font-size: 18px;
+  line-height: 120px;
+  font-weight: 500;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-h5-swatch {
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 500;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-h6-swatch {
+  font-size: 12px;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-body-1-swatch {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-body-2-swatch {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-body-3-swatch {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-size-body-4-swatch {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-weight-light-swatch {
+  font-weight: 100;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-weight-regular-swatch {
+  font-weight: 400;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-weight-medium-swatch {
+  font-weight: 500;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-weight-semibold-swatch {
+  font-weight: 600;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.font-weight-bold-swatch {
+  font-weight: bold;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-h1-swatch {
+  font-size: 18px;
+  line-height: 150px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-h2-swatch {
+  font-size: 18px;
+  line-height: 130px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-h3-swatch {
+  font-size: 18px;
+  line-height: 130px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-h4-swatch {
+  font-size: 18px;
+  line-height: 120px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-h5-swatch {
+  font-size: 18px;
+  line-height: 32px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-h6-swatch {
+  font-size: 18px;
+  line-height: 28px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-body-1-swatch {
+  font-size: 18px;
+  line-height: 28px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-body-2-swatch {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-body-3-swatch {
+  font-size: 18px;
+  line-height: 20px;
+  font-family: "GothamSSm", sans-serif;
+}
+
+.line-height-body-4-swatch {
+  font-size: 18px;
+  line-height: 18px;
+  font-family: "GothamSSm", sans-serif;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);
