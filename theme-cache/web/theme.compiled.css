@@ -30176,6 +30176,8 @@ mx-templategrid-content-wrapper {
   border-radius: 8px;
   margin-top: 8px;
   margin-bottom: 12px;
+  margin-left: 16px;
+  margin-right: 16px;
   background: var(--base-white);
   display: flex;
   align-items: center;
@@ -30212,6 +30214,23 @@ mx-templategrid-content-wrapper {
   margin-right: auto;
   display: block;
   text-align: center;
+}
+
+.docs-typographyToken-section-grid {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+  margin-top: 32px;
+  margin-bottom: 40px;
+  padding: 32px 24px;
+  border: 1px solid var(--secondary-1);
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.docs-typographyToken-section-grid:hover {
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+  border-color: var(--brand-2);
 }
 
 .font-size-h1-swatch {
@@ -30311,61 +30330,71 @@ mx-templategrid-content-wrapper {
 }
 
 .line-height-h1-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 150px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-h2-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 130px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-h3-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 130px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-h4-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 120px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-h5-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 32px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-h6-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 28px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-body-1-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 28px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-body-2-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 24px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-body-3-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 20px;
   font-family: "GothamSSm", sans-serif;
 }
 
 .line-height-body-4-swatch {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 18px;
   font-family: "GothamSSm", sans-serif;
 }
