@@ -28039,7 +28039,7 @@ p {
   --support-4-disabled: rgba(186, 139, 0, 0.4);
 }
 
-.alert-base {
+.alert-base, .alert-info, .alert-warning, .alert-danger, .alert-success {
   font-family: "GothamSSm", sans-serif;
   border-radius: 4px;
   padding: 16px;
@@ -28047,11 +28047,15 @@ p {
   color: var(--base-white);
   transition: background-color 0.2s ease;
 }
-.alert-base .alert-title,
-.alert-base .alert-description {
+.alert-base .alert-title, .alert-info .alert-title, .alert-warning .alert-title, .alert-danger .alert-title, .alert-success .alert-title,
+.alert-base .alert-description,
+.alert-info .alert-description,
+.alert-warning .alert-description,
+.alert-danger .alert-description,
+.alert-success .alert-description {
   color: var(--base-white) !important;
 }
-.alert-base .mx-button {
+.alert-base .mx-button, .alert-info .mx-button, .alert-warning .mx-button, .alert-danger .mx-button, .alert-success .mx-button {
   background-color: var(--brand-2) !important;
   color: var(--base-white) !important;
   font-weight: 600;
@@ -28067,43 +28071,56 @@ p {
   justify-content: center;
   align-items: center;
 }
-.alert-base .mx-button:hover {
+.alert-base .mx-button:hover, .alert-info .mx-button:hover, .alert-warning .mx-button:hover, .alert-danger .mx-button:hover, .alert-success .mx-button:hover {
   background-color: var(--brand-2-hover) !important;
 }
-.alert-base .mx-button:active {
+.alert-base .mx-button:active, .alert-info .mx-button:active, .alert-warning .mx-button:active, .alert-danger .mx-button:active, .alert-success .mx-button:active {
   background-color: var(--brand-2-active) !important;
 }
-.alert-base .mx-button:disabled {
+.alert-base .mx-button:disabled, .alert-info .mx-button:disabled, .alert-warning .mx-button:disabled, .alert-danger .mx-button:disabled, .alert-success .mx-button:disabled {
   background-color: var(--brand-2-disabled) !important;
   color: var(--base-white-disabled) !important;
   cursor: not-allowed;
 }
-.alert-base .mx-button svg,
+.alert-base .mx-button svg, .alert-info .mx-button svg, .alert-warning .mx-button svg, .alert-danger .mx-button svg, .alert-success .mx-button svg,
 .alert-base .mx-button i.mdi,
+.alert-info .mx-button i.mdi,
+.alert-warning .mx-button i.mdi,
+.alert-danger .mx-button i.mdi,
+.alert-success .mx-button i.mdi,
 .alert-base .mx-button span > svg {
   color: currentColor;
   width: 20px;
   height: 20px;
 }
-.alert-base:hover {
+.alert-base:hover, .alert-info:hover, .alert-warning:hover, .alert-danger:hover, .alert-success:hover {
   background-color: var(--brand-3-hover);
 }
-.alert-base:active {
+.alert-base:active, .alert-info:active, .alert-warning:active, .alert-danger:active, .alert-success:active {
   background-color: var(--brand-3-active);
 }
-.alert-base.disabled {
+.alert-base.disabled, .disabled.alert-info, .disabled.alert-warning, .disabled.alert-danger, .disabled.alert-success {
   background-color: var(--brand-3-disabled);
   color: var(--base-white-disabled);
   pointer-events: none;
   cursor: not-allowed;
 }
-.alert-base.disabled .alert-title,
-.alert-base.disabled .alert-description {
+.alert-base.disabled .alert-title, .disabled.alert-info .alert-title, .disabled.alert-warning .alert-title, .disabled.alert-danger .alert-title, .disabled.alert-success .alert-title,
+.alert-base.disabled .alert-description,
+.disabled.alert-info .alert-description,
+.disabled.alert-warning .alert-description,
+.disabled.alert-danger .alert-description,
+.disabled.alert-success .alert-description {
   color: var(--base-white-disabled) !important;
 }
 
 .alert-success {
   background-color: var(--support-3) !important;
+  color: var(--base-white) !important;
+}
+.alert-success .alert-title,
+.alert-success .alert-description {
+  color: var(--base-white) !important;
 }
 .alert-success:hover {
   background-color: var(--support-3-hover) !important;
@@ -28113,10 +28130,20 @@ p {
 }
 .alert-success.disabled {
   background-color: var(--support-3-disabled) !important;
+  color: var(--base-white-disabled) !important;
+}
+.alert-success.disabled .alert-title,
+.alert-success.disabled .alert-description {
+  color: var(--base-white-disabled) !important;
 }
 
 .alert-danger {
   background-color: var(--support-2) !important;
+  color: var(--base-white) !important;
+}
+.alert-danger .alert-title,
+.alert-danger .alert-description {
+  color: var(--base-white) !important;
 }
 .alert-danger:hover {
   background-color: var(--support-2-hover) !important;
@@ -28126,6 +28153,11 @@ p {
 }
 .alert-danger.disabled {
   background-color: var(--support-2-disabled) !important;
+  color: var(--base-white-disabled) !important;
+}
+.alert-danger.disabled .alert-title,
+.alert-danger.disabled .alert-description {
+  color: var(--base-white-disabled) !important;
 }
 
 .alert-warning {
@@ -28153,6 +28185,11 @@ p {
 
 .alert-info {
   background-color: var(--secondary-1) !important;
+  color: var(--base-white) !important;
+}
+.alert-info .alert-title,
+.alert-info .alert-description {
+  color: var(--base-white) !important;
 }
 .alert-info:hover {
   background-color: var(--secondary-1-hover) !important;
@@ -28162,6 +28199,11 @@ p {
 }
 .alert-info.disabled {
   background-color: var(--secondary-1-disabled) !important;
+  color: var(--base-white-disabled) !important;
+}
+.alert-info.disabled .alert-title,
+.alert-info.disabled .alert-description {
+  color: var(--base-white-disabled) !important;
 }
 
 .button-base, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
@@ -30476,6 +30518,50 @@ mx-templategrid-content-wrapper {
 }
 
 .docs-accordionClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.docs-alertClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-alertClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-alertClass-optionName {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-alertClass-desc {
   font-size: 14px;
   font-weight: 400;
   color: var(--secondary-1);
