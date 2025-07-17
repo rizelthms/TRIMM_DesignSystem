@@ -28410,7 +28410,7 @@ p {
   margin-right: 4px;
 }
 
-.label-base, .label-warning, .label-danger, .label-success, .label-secondary, .label-default {
+.label-base, .label-lg, .label-md, .label-sm, .label-warning, .label-danger, .label-success, .label-secondary, .label-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
