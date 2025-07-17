@@ -1,7 +1,8 @@
 @import "../../../theme/web/custom-variables";
 @import "./tokens/index.scss";
 @import "./components/index.scss";
-@import "../web/docs-tokens/index.scss";
+@import "../web/docs-styleTokens/";
+@import "../web/docs-componentTokens/";
 
 // Base styles js for testing
 body {
