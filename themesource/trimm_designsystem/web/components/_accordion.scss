@@ -3,7 +3,7 @@
 .accordion-base {
     border: none;
     border-radius: $radius-4;
-    box-shadow: $shadow-2;
+    box-shadow: $shadow-6;
     background-color: var(--base-white);
     overflow: hidden;
     transition:
@@ -14,100 +14,104 @@
         background-color: var(--base-black);
         box-shadow: $shadow-0;
     }
-}
 
-// === HEADER WRAPPER ===
-
-.widget-accordion-group-header {
-    padding: 0;
-}
-
-// === HEADER BUTTON ===
-
-.widget-accordion-group-header-button,
-.widget-accordion-group-header-button-clickable,
-.widget-accordion-group-header-button-icon-right {
-    background-color: var(--base-white) !important;
-    color: var(--base-white) !important;
-    padding: $spacing-16 $spacing-24;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: $radius-4;
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
-
-    &:hover {
-        background-color: var(--brand-3-hover) !important;
-        color: var(--base-white) !important;
+    // === HEADER WRAPPER ===
+    .widget-accordion-group-header {
+        padding: 0;
     }
 
-    &:active {
-        background-color: var(--brand-3-active) !important;
-        color: var(--base-white-active) !important;
-    }
-}
+    // === HEADER BUTTON ===
+    .widget-accordion-group-header-button,
+    .widget-accordion-group-header-button-clickable,
+    .widget-accordion-group-header-button-icon-right {
+        background-color: var(--base-white) !important;
+        color: var(--brand-1) !important;
+        padding: $spacing-16 $spacing-24;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: $radius-4;
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
 
-// === OPEN STATE (via aria-expanded) ===
+        &:hover {
+            background-color: var(--brand-1-hover) !important;
+            color: var(--base-white) !important;
 
-.widget-accordion-group-header-button[aria-expanded="true"] {
-    background-color: var(--secondary-1);
-    color: var(--base-white);
-    border-radius: $radius-0;
-}
+            .widget-accordion-group-header-title,
+            h3 {
+                color: var(--base-white) !important;
+            }
+        }
 
-.widget-accordion-group-header-button[aria-expanded="true"] > h3 {
-    color: var(--base-white);
-}
+        &:active {
+            background-color: var(--brand-1-hover) !important;
+            color: var(--base-white) !important;
 
-// === TITLE ===
+            .widget-accordion-group-header-title,
+            h3 {
+                color: var(--base-white) !important;
+            }
+        }
 
-.widget-accordion-group-header-title,
-.widget-accordion-group-header-button > h3 {
-    font-family: $font-primary;
-    font-size: $font-size-body-2;
-    font-weight: $font-weight-semibold;
-    color: var(--base-black);
-    margin: 0;
-    transition: color 0.2s ease;
-}
+        &[aria-expanded="true"] {
+            background-color: var(--brand-1);
+            color: var(--base-white);
+            border-radius: $radius-0;
 
-// === BODY CONTENT ===
-
-.widget-accordion-group-content {
-    padding: $spacing-16 $spacing-24;
-    font-family: $font-primary;
-    font-size: $font-size-body-3;
-    font-weight: $font-weight-normal;
-    color: var(--base-white);
-    background-color: var(--secondary-1);
-}
-
-// === DISABLED STATE ===
-
-.accordion-base[aria-disabled="true"] {
-    background-color: var(--base-white-disabled);
-    pointer-events: none;
-
-    .widget-accordion-group-header-button {
-        background-color: var(--base-white-disabled);
-        color: var(--base-black-disabled);
-        cursor: not-allowed;
+            > h3,
+            .widget-accordion-group-header-title {
+                color: var(--base-white);
+            }
+        }
     }
 
+    // === TITLE ===
     .widget-accordion-group-header-title,
     .widget-accordion-group-header-button > h3 {
-        color: var(--base-black-disabled);
+        font-family: $font-primary;
+        font-size: $font-size-body-2;
+        font-weight: $font-weight-semibold;
+        color: var(--base-black);
+        margin: 0;
+        transition: color 0.2s ease;
     }
 
+    // === BODY CONTENT ===
     .widget-accordion-group-content {
         padding: $spacing-16 $spacing-24;
         font-family: $font-primary;
         font-size: $font-size-body-3;
         font-weight: $font-weight-normal;
-        color: var(--base-white-disabled);
-        background-color: var(--secondary-1-disabled);
+        color: var(--base-black);
+        background-color: var(--base-white);
+    }
+
+    // === DISABLED STATE ===
+    &[aria-disabled="true"] {
+        background-color: var(--base-white-disabled);
+        pointer-events: none;
+
+        .widget-accordion-group-header-button {
+            background-color: var(--base-white-disabled);
+            color: var(--base-black-disabled);
+            cursor: not-allowed;
+        }
+
+        .widget-accordion-group-header-title,
+        .widget-accordion-group-header-button > h3 {
+            color: var(--base-black-disabled);
+        }
+
+        .widget-accordion-group-content {
+            padding: $spacing-16 $spacing-24;
+            font-family: $font-primary;
+            font-size: $font-size-body-3;
+            font-weight: $font-weight-normal;
+            color: var(--base-white-disabled);
+            background-color: var(--secondary-1-disabled);
+        }
     }
 }
