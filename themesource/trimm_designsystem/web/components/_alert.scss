@@ -6,7 +6,6 @@
     padding: $spacing-16;
     background-color: var(--brand-3); // TRIMM Teal
     color: var(--base-white);
-
     transition: background-color 0.2s ease;
 
     // Reset text styles inside
@@ -81,7 +80,14 @@
 // Apply alongside alert-base
 
 .alert-success {
+    @extend .alert-base;
     background-color: var(--support-3) !important;
+    color: var(--base-white) !important;
+
+    .alert-title,
+    .alert-description {
+        color: var(--base-white) !important;
+    }
 
     &:hover {
         background-color: var(--support-3-hover) !important;
@@ -93,11 +99,23 @@
 
     &.disabled {
         background-color: var(--support-3-disabled) !important;
+        color: var(--base-white-disabled) !important;
+        .alert-title,
+        .alert-description {
+            color: var(--base-white-disabled) !important;
+        }
     }
 }
 
 .alert-danger {
+    @extend .alert-base;
     background-color: var(--support-2) !important;
+    color: var(--base-white) !important;
+
+    .alert-title,
+    .alert-description {
+        color: var(--base-white) !important;
+    }
 
     &:hover {
         background-color: var(--support-2-hover) !important;
@@ -109,10 +127,16 @@
 
     &.disabled {
         background-color: var(--support-2-disabled) !important;
+        color: var(--base-white-disabled) !important;
+        .alert-title,
+        .alert-description {
+            color: var(--base-white-disabled) !important;
+        }
     }
 }
 
 .alert-warning {
+    @extend .alert-base;
     background-color: var(--support-4) !important;
     color: var(--base-black) !important;
 
@@ -132,7 +156,6 @@
     &.disabled {
         background-color: var(--support-4-disabled) !important;
         color: var(--base-black-disabled) !important;
-
         .alert-title,
         .alert-description {
             color: var(--base-black-disabled) !important;
@@ -141,7 +164,14 @@
 }
 
 .alert-info {
+    @extend .alert-base;
     background-color: var(--secondary-1) !important;
+    color: var(--base-white) !important;
+
+    .alert-title,
+    .alert-description {
+        color: var(--base-white) !important;
+    }
 
     &:hover {
         background-color: var(--secondary-1-hover) !important;
@@ -153,5 +183,10 @@
 
     &.disabled {
         background-color: var(--secondary-1-disabled) !important;
+        color: var(--base-white-disabled) !important;
+        .alert-title,
+        .alert-description {
+            color: var(--base-white-disabled) !important;
+        }
     }
 }
