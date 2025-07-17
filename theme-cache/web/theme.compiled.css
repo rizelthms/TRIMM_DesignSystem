@@ -28206,7 +28206,7 @@ p {
   color: var(--base-white-disabled) !important;
 }
 
-.button-base, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
+.button-base, .btn-lg, .btn-md, .btn-sm, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;

@@ -244,16 +244,19 @@
 // === SIZE MODIFIERS ===
 // Applies to text-based buttons only. Use in combination with variant classes.
 .btn-sm {
+  @extend .button-base;
   padding: $spacing-8 $spacing-16;
   font-size: $font-size-body-3;
 }
 
 .btn-md {
+  @extend .button-base;
   padding: $spacing-12 $spacing-24;
   font-size: $font-size-body-2;
 }
 
 .btn-lg {
+  @extend .button-base;
   padding: $spacing-16 $spacing-32;
   font-size: $font-size-body-1;
 }
