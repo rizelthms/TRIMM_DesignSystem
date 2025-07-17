@@ -3,9 +3,9 @@
 .menu-base {
     font-family: $font-primary;
 
-    ul,
-    .mx-menubar-list,
-    .mx-popupmenu-list {
+    > ul,
+    > .mx-menubar-list,
+    > .mx-popupmenu-list {
         background-color: var(--brand-3);
         padding: 0;
         list-style: none;
@@ -42,7 +42,7 @@
             &:hover,
             &.active,
             &.selected {
-                background-color: var(--brand-2) !important;
+                background-color: var(--brand-1-hover) !important;
                 color: var(--base-white) !important;
             }
 
@@ -62,7 +62,7 @@
     .mx-menubar-list > li.active > a,
     .mx-navigationlist-item:hover,
     .mx-navigationlist-item.active {
-        background-color: var(--brand-2) !important;
+        background-color: var(--brand-1-hover) !important;
         color: var(--base-white) !important;
     }
 }
@@ -71,4 +71,55 @@
 .menu-base,
 .menu-base.mx-menubar {
     background-color: var(--brand-3) !important;
+}
+
+// Ensure dropdown menus inside .menu-base are always visible and readable
+.menu-base .dropdown-menu,
+.menu-base .mx-navbar-submenu {
+    background: var(--base-white) !important;
+    color: var(--base-black) !important;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.12),
+        0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
+    border-radius: $radius-8 !important;
+    border: $border-1 solid #e5e7eb !important;
+    min-width: 180px !important;
+    padding: $spacing-8 0 !important;
+    z-index: 1000 !important;
+    margin-top: $spacing-8 !important;
+    font-size: $font-size-body-2 !important;
+    font-family: $font-primary !important;
+}
+
+.menu-base .dropdown-menu a,
+.menu-base .mx-navbar-submenu a {
+    color: var(--base-black) !important;
+    font-size: $font-size-body-3 !important;
+    padding: $spacing-12 $spacing-16 !important;
+    font-weight: $font-weight-medium !important;
+    background: none !important;
+    text-decoration: none !important;
+    display: block !important;
+    border-radius: $radius-4 !important;
+    transition:
+        background 0.18s,
+        color 0.18s;
+}
+
+.menu-base .dropdown-menu a:hover,
+.menu-base .mx-navbar-submenu a:hover,
+.menu-base .dropdown-menu a:focus,
+.menu-base .mx-navbar-submenu a:focus {
+    background: var(--brand-2-hover) !important;
+    color: var(--base-white) !important;
+}
+
+.menu-base .dropdown-menu a.active,
+.menu-base .mx-navbar-submenu a.active {
+    background: var(--brand-2-active) !important;
+    color: var(--base-white) !important;
+}
+
+.menu-base li.mx-navbar-item.dropdown.open {
+    overflow: visible !important;
 }

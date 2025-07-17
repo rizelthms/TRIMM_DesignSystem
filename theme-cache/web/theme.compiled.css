@@ -28472,9 +28472,9 @@ p {
 .menu-base {
   font-family: "GothamSSm", sans-serif;
 }
-.menu-base ul,
-.menu-base .mx-menubar-list,
-.menu-base .mx-popupmenu-list {
+.menu-base > ul,
+.menu-base > .mx-menubar-list,
+.menu-base > .mx-popupmenu-list {
   background-color: var(--brand-3);
   padding: 0;
   list-style: none;
@@ -28517,7 +28517,7 @@ p {
 .menu-base .mx-navigationlist-item a:hover,
 .menu-base .mx-navigationlist-item a.active,
 .menu-base .mx-navigationlist-item a.selected {
-  background-color: var(--brand-2) !important;
+  background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
 .menu-base li a svg,
@@ -28540,13 +28540,59 @@ p {
 .menu-base .mx-menubar-list > li.active > a,
 .menu-base .mx-navigationlist-item:hover,
 .menu-base .mx-navigationlist-item.active {
-  background-color: var(--brand-2) !important;
+  background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
 
 .menu-base,
 .menu-base.mx-menubar {
   background-color: var(--brand-3) !important;
+}
+
+.menu-base .dropdown-menu,
+.menu-base .mx-navbar-submenu {
+  background: var(--base-white) !important;
+  color: var(--base-black) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 8px !important;
+  border: 1px solid #e5e7eb !important;
+  min-width: 180px !important;
+  padding: 8px 0 !important;
+  z-index: 1000 !important;
+  margin-top: 8px !important;
+  font-size: 16px !important;
+  font-family: "GothamSSm", sans-serif !important;
+}
+
+.menu-base .dropdown-menu a,
+.menu-base .mx-navbar-submenu a {
+  color: var(--base-black) !important;
+  font-size: 14px !important;
+  padding: 12px 16px !important;
+  font-weight: 500 !important;
+  background: none !important;
+  text-decoration: none !important;
+  display: block !important;
+  border-radius: 4px !important;
+  transition: background 0.18s, color 0.18s;
+}
+
+.menu-base .dropdown-menu a:hover,
+.menu-base .mx-navbar-submenu a:hover,
+.menu-base .dropdown-menu a:focus,
+.menu-base .mx-navbar-submenu a:focus {
+  background: var(--brand-2-hover) !important;
+  color: var(--base-white) !important;
+}
+
+.menu-base .dropdown-menu a.active,
+.menu-base .mx-navbar-submenu a.active {
+  background: var(--brand-2-active) !important;
+  color: var(--base-white) !important;
+}
+
+.menu-base li.mx-navbar-item.dropdown.open {
+  overflow: visible !important;
 }
 
 .radio-base {
@@ -30567,6 +30613,80 @@ mx-templategrid-content-wrapper {
   color: var(--secondary-1);
   margin-bottom: 12px;
   text-align: center;
+}
+
+.docs-labelClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-labelClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-labelClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.docs-menuClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+.docs-menuClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-menuClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.docs-menuClass-card > .menu-base {
+  display: block;
+  width: 100%;
 }
 
 body {
