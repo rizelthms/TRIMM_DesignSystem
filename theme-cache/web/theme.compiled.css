@@ -28556,9 +28556,7 @@ p {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
   border-radius: 8px !important;
   border: 1px solid #e5e7eb !important;
-  min-width: 180px !important;
   padding: 8px 0 !important;
-  z-index: 1000 !important;
   margin-top: 8px !important;
   font-size: 16px !important;
   font-family: "GothamSSm", sans-serif !important;
@@ -28714,10 +28712,10 @@ p {
   color: var(--secondary-1);
 }
 
-.tooltip-base {
+.tooltip-base, .tooltip-lg, .tooltip-md, .tooltip-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.tooltip-base .widget-tooltip-content {
+.tooltip-base .widget-tooltip-content, .tooltip-lg .widget-tooltip-content, .tooltip-md .widget-tooltip-content, .tooltip-sm .widget-tooltip-content {
   background: var(--brand-2) !important;
   color: var(--base-white) !important;
   padding: 8px 12px;
@@ -28727,6 +28725,21 @@ p {
   box-shadow: 0 4px 8px rgba(27, 28, 29, 0.1);
   line-height: 1.4;
   white-space: pre-line;
+}
+
+.tooltip-sm .widget-tooltip-content {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.tooltip-md .widget-tooltip-content {
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+.tooltip-lg .widget-tooltip-content {
+  font-size: 16px;
+  padding: 12px 24px;
 }
 
 .textarea-base {
@@ -30650,7 +30663,7 @@ mx-templategrid-content-wrapper {
 }
 
 .docs-menuClass-card {
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -30661,8 +30674,8 @@ mx-templategrid-content-wrapper {
   margin-right: 12px;
   border: 1px solid #e5e7eb;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
   width: 100%;
+  margin-bottom: 300px;
   box-sizing: border-box;
   overflow: visible !important;
 }
@@ -30684,9 +30697,38 @@ mx-templategrid-content-wrapper {
   text-align: center;
 }
 
-.docs-menuClass-card > .menu-base {
-  display: block;
+.docs-tooltipClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
   width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-tooltipClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-tooltipClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 body {

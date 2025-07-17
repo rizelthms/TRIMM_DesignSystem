@@ -53,7 +53,49 @@
           ]
         }
       ],
-      "suppressedRecommendations": [],
+      "suppressedRecommendations": [
+        {
+          "code": "MXP003",
+          "locationObjects": [
+            {
+              "uuid": "ce1aca59-8508-42b0-a07c-addca8fb2d19",
+              "fullPath": "TRIMM_DesignSystem.DS_DesignToken.SortOrder"
+            },
+            {
+              "uuid": "57eb79cf-5528-4cc0-8bbb-45a0c0efaef3",
+              "fullPath": "57eb79cf-5528-4cc0-8bbb-45a0c0efaef3 (GridSortBar) < b849d01e-5f30-41a8-b739-6ad123704681 (GridXPathSource) < templateGrid3 (TemplateGrid) < 259c7267-333b-40ba-a6cd-20443d846f1b (LayoutGridColumn) < 42f7961e-56c7-44fb-88b0-2348ef9456bc (LayoutGridRow) < layoutGrid4 (LayoutGrid) < 8ad23349-c31d-4703-a9aa-7c2d1d3c7f23 (LayoutCallArgument) < cccd8e26-3ff0-4ecb-9850-b04bfcc5fb26 (LayoutCall) < TRIMM_DesignSystem.DS_Typography"
+            },
+            {
+              "uuid": "523a45cc-c4da-4b8b-b862-91f7c2972ea1",
+              "fullPath": "523a45cc-c4da-4b8b-b862-91f7c2972ea1 (GridSortBar) < 436a3709-91ba-41e8-8bf1-7e5492888051 (GridXPathSource) < templateGrid2 (TemplateGrid) < aa9d8428-ed3d-4b9c-b2e5-9d3c60ee9860 (LayoutGridColumn) < b2fe95da-6d56-4f9f-b0ce-078f04822b2f (LayoutGridRow) < layoutGrid3 (LayoutGrid) < 8ad23349-c31d-4703-a9aa-7c2d1d3c7f23 (LayoutCallArgument) < cccd8e26-3ff0-4ecb-9850-b04bfcc5fb26 (LayoutCall) < TRIMM_DesignSystem.DS_Typography"
+            },
+            {
+              "uuid": "9f391314-0ca7-4e76-835e-68c9646fb89a",
+              "fullPath": "9f391314-0ca7-4e76-835e-68c9646fb89a (GridSortBar) < 0f5c67bb-efb5-4669-834b-ca82b6ecad0f (GridXPathSource) < templateGrid1 (TemplateGrid) < b4f36e3f-1cc5-4871-91db-fe9d14de0bc9 (LayoutGridColumn) < e791382e-74ea-43d2-bbc6-de834e35af8d (LayoutGridRow) < layoutGrid2 (LayoutGrid) < 8ad23349-c31d-4703-a9aa-7c2d1d3c7f23 (LayoutCallArgument) < cccd8e26-3ff0-4ecb-9850-b04bfcc5fb26 (LayoutCall) < TRIMM_DesignSystem.DS_Typography"
+            },
+            {
+              "uuid": "20cde3a5-a6c7-4b2a-b49c-37b208c3f4a0",
+              "fullPath": "20cde3a5-a6c7-4b2a-b49c-37b208c3f4a0 (GridSortBar) < 7c4a21c0-dc35-4b46-bd41-712dd02b68b8 (GridXPathSource) < templateGrid1 (TemplateGrid) < 4cf5548b-8ddd-4d07-a7eb-126728939b62 (LayoutGridColumn) < c793400a-8bcd-4e1c-a64c-0925436f8b52 (LayoutGridRow) < layoutGrid2 (LayoutGrid) < b93825ed-450e-410c-a7ed-26c11626d0c9 (LayoutCallArgument) < d7944d69-edae-4485-90e7-b5dbc0a34a7e (LayoutCall) < TRIMM_DesignSystem.DS_Spacing"
+            },
+            {
+              "uuid": "ed2cae4b-adc9-44ba-8cf4-bad1dd780d7d",
+              "fullPath": "ed2cae4b-adc9-44ba-8cf4-bad1dd780d7d (GridSortBar) < e51d65f4-7a73-4b75-9d4e-feca05df2442 (GridXPathSource) < templateGrid1 (TemplateGrid) < 617eb380-d083-4e7d-b191-6c3b0b9055fb (LayoutGridColumn) < 3a3c6da0-4e07-41df-a03a-d6e98755b18c (LayoutGridRow) < layoutGrid1 (LayoutGrid) < 56e1bdfb-c40c-4435-b418-122906973103 (LayoutCallArgument) < e58ce0c7-8d03-485e-a526-f1ffdd0864fe (LayoutCall) < TRIMM_DesignSystem.DS_Radius"
+            },
+            {
+              "uuid": "c3c6b8ff-854b-41b2-899c-cc2f71bd11b2",
+              "fullPath": "c3c6b8ff-854b-41b2-899c-cc2f71bd11b2 (GridSortBar) < 8292ed87-8725-42ce-adcc-f2ffe35a518f (GridXPathSource) < templateGrid1 (TemplateGrid) < 310bfa89-615b-4426-9cb0-ec304cbf9e1a (LayoutGridColumn) < c91ebcd9-1785-497c-9f2b-2cd90e36f971 (LayoutGridRow) < layoutGrid2 (LayoutGrid) < e346e104-1948-40d2-8a95-a8bc7f90862d (LayoutCallArgument) < 68d549f6-2b97-445d-97cb-38cae6aa1df3 (LayoutCall) < TRIMM_DesignSystem.DS_Shadows"
+            },
+            {
+              "uuid": "ee329d4f-249c-4be7-af65-38bdd89fc714",
+              "fullPath": "ee329d4f-249c-4be7-af65-38bdd89fc714 (GridSortBar) < d105fe91-f7cc-4c73-ae70-b9415f2ff375 (GridXPathSource) < templateGrid1 (TemplateGrid) < 71db980f-b373-4919-b73f-8eec625e6ce8 (LayoutGridColumn) < 54f3c28b-699b-46bf-8283-b34edc0c2287 (LayoutGridRow) < layoutGrid1 (LayoutGrid) < c560d0a7-e28e-43ec-8188-45c8cb767a87 (LayoutCallArgument) < 6d169150-a667-4017-bfbf-313975b8e38d (LayoutCall) < TRIMM_DesignSystem.DS_ColorSystem"
+            },
+            {
+              "uuid": "fe1063fd-e495-410c-9e49-a34458a5b3fe",
+              "fullPath": "fe1063fd-e495-410c-9e49-a34458a5b3fe (GridSortBar) < fa7614e1-564f-4aca-9d90-da06a4b44fa5 (GridXPathSource) < templateGrid1 (TemplateGrid) < 2f5f6959-4569-4a8c-ad0f-8c92e1e8022e (LayoutGridColumn) < 86fad361-3c78-4d54-a2df-d12765c444a6 (LayoutGridRow) < layoutGrid1 (LayoutGrid) < 7a84c6b7-7d2e-4916-bf46-e78d9a8d3802 (LayoutCallArgument) < 5060dec4-8fb8-4730-bdf2-2bd47b85fcdb (LayoutCall) < TRIMM_DesignSystem.DS_Border"
+            }
+          ]
+        }
+      ],
       "hasShownRecommendationsNotificationForThisApp": true,
       "type": "Mendix.Modeler.MxAssist.PerformanceBot.Serialization.Configuration.PerformanceBotConfiguration, Mendix.Modeler.MxAssist.PerformanceBot.Serialization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=null"
     }
