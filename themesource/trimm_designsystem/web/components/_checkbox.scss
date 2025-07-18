@@ -24,6 +24,29 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      border-radius: $radius-4;
+      border: 2px solid transparent;
+      background: transparent;
+      transition:
+        border-color 0.2s,
+        background-color 0.2s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &:focus::before {
+      border-color: var(--brand-2);
+      background-color: rgba(var(--brand-2-rgb, 255, 102, 0), 0.08);
+    }
+
     // Remove native browser overlays (for consistency across browsers)
     &::-ms-check,
     &::-webkit-check,
@@ -40,12 +63,17 @@
     }
 
     &:checked {
-      background-color: var(--brand-3);
-      border-color: var(--brand-3);
+      background-color: var(--brand-2);
+      border-color: var(--brand-2);
 
       &::after {
         color: var(--base-white);
       }
+    }
+
+    &:checked:hover {
+      background-color: var(--brand-2-hover);
+      border-color: var(--brand-2-hover);
     }
 
     &:active {
@@ -55,8 +83,8 @@
     }
 
     &:disabled {
-      background-color: var(--brand-3-disabled);
-      border-color: var(--brand-3-disabled);
+      background-color: var(--brand-2-disabled);
+      border-color: var(--brand-2-disabled);
       cursor: not-allowed;
 
       &::after {
@@ -99,7 +127,7 @@
   label,
   .mx-checkbox-label,
   .control-label {
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-regular;
     font-size: $font-size-body-3;
   }
 }
@@ -138,7 +166,7 @@
   label,
   .mx-checkbox-label,
   .control-label {
-    font-weight: $font-weight-medium;
+    font-weight: $font-weight-semibold;
     font-size: $font-size-body-1;
   }
 }
