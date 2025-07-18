@@ -14,7 +14,6 @@
         padding: 0 $spacing-8;
         box-shadow: $shadow-2;
         background-color: var(--base-white);
-        border-bottom: 2px solid var(--secondary-1-disabled);
     }
 
     // === Tab Items ===
@@ -25,7 +24,7 @@
 
         a {
             display: inline-block;
-            padding: $spacing-8 $spacing-24;
+            padding: $spacing-8 $spacing-16;
             font-family: $font-primary;
             font-weight: $font-weight-semibold;
             color: var(--base-black);
@@ -39,15 +38,14 @@
 
             &:hover {
                 background-color: var(--brand-3-hover);
-                color: var(--base-white);
+                color: var(--brand-3);
             }
         }
 
         // === Active Tab ===
         &.active a {
             color: var(--base-white);
-            background-color: var(--brand-3);
-            box-shadow: $shadow-2;
+            background-color: var(--secondary-1);
         }
 
         // === Disabled Tab ===
@@ -61,11 +59,8 @@
 
     // === Tab Panels ===
     .mx-tabcontainer-content {
-        padding: $spacing-24 $spacing-32;
-        background-color: var(--base-white);
+        padding: $spacing-16 $spacing-24;
+        background-color: var(--secondary-1);
         border-radius: 0 0 $radius-4 $radius-4;
-        box-shadow: $shadow-12;
-        border: 1px solid var(--secondary-1-disabled);
-        border-top: none;
     }
 }
