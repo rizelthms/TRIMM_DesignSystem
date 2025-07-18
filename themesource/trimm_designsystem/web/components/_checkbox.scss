@@ -1,5 +1,6 @@
 // === BASE CHECKBOX STYLE ===
 // Use by wrapping Mendix Checkbox widget in a container with class `checkbox-base`
+// Demo/documentation-specific overrides are in _docs-checkboxClassTokens.scss
 
 .checkbox-base {
   display: flex;
@@ -65,7 +66,6 @@
   }
 
   // Label shown inline with checkbox
-
   label,
   .mx-checkbox-label {
     font-family: $font-primary;
@@ -86,6 +86,7 @@
 // Apply one of these classes to the wrapper with .checkbox-base
 
 .checkbox-sm {
+  @extend .checkbox-base;
   input[type="checkbox"] {
     width: 16px;
     height: 16px;
@@ -104,6 +105,7 @@
 }
 
 .checkbox-md {
+  @extend .checkbox-base;
   input[type="checkbox"] {
     width: 20px;
     height: 20px;
@@ -123,6 +125,7 @@
 }
 
 .checkbox-lg {
+  @extend .checkbox-base;
   input[type="checkbox"] {
     width: 24px;
     height: 24px;
