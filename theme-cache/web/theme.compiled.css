@@ -28911,7 +28911,8 @@ p {
   font-weight: 600;
 }
 
-.textbox-base input.form-control {
+.textbox-base, .textbox-lg, .textbox-md, .textbox-sm,
+input.form-control {
   font-family: "GothamSSm", sans-serif !important;
   font-size: 16px !important;
   font-weight: normal !important;
@@ -28926,35 +28927,37 @@ p {
   width: 100%;
   box-sizing: border-box;
 }
-.textbox-base input.form-control::placeholder {
+.textbox-base::placeholder, .textbox-lg::placeholder, .textbox-md::placeholder, .textbox-sm::placeholder,
+input.form-control::placeholder {
   color: var(--base-black) !important;
   font-style: italic !important;
 }
-.textbox-base input.form-control:focus {
+.textbox-base:focus, .textbox-lg:focus, .textbox-md:focus, .textbox-sm:focus,
+input.form-control:focus {
   outline: none;
   border-color: var(--brand-2) !important;
 }
-.textbox-base input.form-control:disabled {
+.textbox-base:disabled, .textbox-lg:disabled, .textbox-md:disabled, .textbox-sm:disabled,
+input.form-control:disabled {
   background-color: var(--secondary-1-disabled) !important;
   color: var(--base-black) !important;
   border-color: var(--base-black) !important;
   cursor: not-allowed;
 }
 
-.textbox-lg input.form-control {
-  font-size: 18px !important;
-  padding: 16px 24px !important;
-}
-.textbox-lg .control-label {
-  font-size: 18px !important;
+.textbox-base.form-group,
+.textbox-sm.form-group,
+.textbox-md.form-group,
+.textbox-lg.form-group {
+  border: none !important;
+  box-shadow: none !important;
 }
 
-.textbox-md input.form-control {
-  font-size: 16px !important;
-  padding: 12px 16px !important;
-}
-.textbox-md .control-label {
-  font-size: 16px !important;
+.textbox-base.form-group .control-label,
+.textbox-sm.form-group .control-label,
+.textbox-md.form-group .control-label,
+.textbox-lg.form-group .control-label {
+  text-align: right !important;
 }
 
 .textbox-sm input.form-control {
@@ -28963,6 +28966,25 @@ p {
 }
 .textbox-sm .control-label {
   font-size: 14px !important;
+  font-weight: 400;
+}
+
+.textbox-md input.form-control {
+  font-size: 16px !important;
+  padding: 12px 16px !important;
+}
+.textbox-md .control-label {
+  font-size: 16px !important;
+  font-weight: 500;
+}
+
+.textbox-lg input.form-control {
+  font-size: 18px !important;
+  padding: 16px 24px !important;
+}
+.textbox-lg .control-label {
+  font-size: 18px !important;
+  font-weight: 600;
 }
 
 .checkbox-base, .checkbox-lg, .checkbox-md, .checkbox-sm {

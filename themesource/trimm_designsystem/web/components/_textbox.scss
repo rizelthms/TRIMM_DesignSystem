@@ -1,7 +1,8 @@
 // === BASE TEXT BOX STYLE ===
 // Works with Mendix Text Box widget
 
-.textbox-base input.form-control {
+.textbox-base,
+input.form-control {
     font-family: $font-primary !important;
     font-size: $font-size-body-2 !important;
     font-weight: $font-weight-normal !important;
@@ -34,32 +35,29 @@
     }
 }
 
+// === REMOVE OUTER BORDER FOR TEXTBOX FORM GROUPS ONLY ===
+// Ensures only textbox demo/usage containers lose their border, not other form groups
+.textbox-base.form-group,
+.textbox-sm.form-group,
+.textbox-md.form-group,
+.textbox-lg.form-group {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+// === CONTROL LABEL ALIGNMENT FOR TEXTBOX FORM GROUPS ONLY ===
+// Override label alignment for textbox form groups
+.textbox-base.form-group .control-label,
+.textbox-sm.form-group .control-label,
+.textbox-md.form-group .control-label,
+.textbox-lg.form-group .control-label {
+    text-align: right !important;
+}
+
 // === TEXT BOX SIZE MODIFIERS ===
 // When wrapper has textbox-[size], style both input and label together
-
-.textbox-lg {
-    input.form-control {
-        font-size: $font-size-body-1 !important;
-        padding: $spacing-16 $spacing-24 !important;
-    }
-
-    .control-label {
-        font-size: $font-size-body-1 !important;
-    }
-}
-
-.textbox-md {
-    input.form-control {
-        font-size: $font-size-body-2 !important;
-        padding: $spacing-12 $spacing-16 !important;
-    }
-
-    .control-label {
-        font-size: $font-size-body-2 !important;
-    }
-}
-
 .textbox-sm {
+    @extend .textbox-base;
     input.form-control {
         font-size: $font-size-body-3 !important;
         padding: $spacing-8 $spacing-12 !important;
@@ -67,5 +65,32 @@
 
     .control-label {
         font-size: $font-size-body-3 !important;
+        font-weight: $font-weight-regular;
+    }
+}
+
+.textbox-md {
+    @extend .textbox-base;
+    input.form-control {
+        font-size: $font-size-body-2 !important;
+        padding: $spacing-12 $spacing-16 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-2 !important;
+        font-weight: $font-weight-medium;
+    }
+}
+
+.textbox-lg {
+    @extend .textbox-base;
+    input.form-control {
+        font-size: $font-size-body-1 !important;
+        padding: $spacing-16 $spacing-24 !important;
+    }
+
+    .control-label {
+        font-size: $font-size-body-1 !important;
+        font-weight: $font-weight-semibold;
     }
 }
