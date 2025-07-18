@@ -29220,6 +29220,7 @@ p {
   padding: 0 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
   background-color: var(--base-white);
+  border-bottom: 2px solid var(--secondary-1-disabled);
 }
 .tab-base .mx-tabcontainer-tabs > li {
   list-style: none;
@@ -29228,7 +29229,7 @@ p {
 }
 .tab-base .mx-tabcontainer-tabs > li a {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 24px;
   font-family: "GothamSSm", sans-serif;
   font-weight: 600;
   color: var(--base-black);
@@ -29240,11 +29241,12 @@ p {
 }
 .tab-base .mx-tabcontainer-tabs > li a:hover {
   background-color: var(--brand-3-hover);
-  color: var(--brand-3);
+  color: var(--base-white);
 }
 .tab-base .mx-tabcontainer-tabs > li.active a {
   color: var(--base-white);
-  background-color: var(--secondary-1);
+  background-color: var(--brand-3);
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
 }
 .tab-base .mx-tabcontainer-tabs > li.disabled a {
   color: var(--secondary-1);
@@ -29253,9 +29255,12 @@ p {
   background-color: var(--secondary-1-disabled);
 }
 .tab-base .mx-tabcontainer-content {
-  padding: 16px 24px;
-  background-color: var(--secondary-1);
+  padding: 24px 32px;
+  background-color: var(--base-white);
   border-radius: 0 0 4px 4px;
+  box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
+  border: 1px solid var(--secondary-1-disabled);
+  border-top: none;
 }
 
 .trimm-dropdown {
