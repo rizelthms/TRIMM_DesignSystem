@@ -88,3 +88,57 @@
     }
   }
 }
+
+// === SIZE MODIFIERS ===
+// Use in combination with .radio-base
+
+.radio-sm {
+  @extend .radio-base;
+  input[type="radio"] + label {
+    font-size: $font-size-body-3;
+    padding-left: 22px;
+  }
+  input[type="radio"] + label::before {
+    width: 14px;
+    height: 14px;
+  }
+  input[type="radio"] + label::after {
+    width: 8px;
+    height: 8px;
+    left: 3px;
+  }
+}
+
+.radio-md {
+  @extend .radio-base;
+  input[type="radio"] + label {
+    font-size: $font-size-body-2;
+    padding-left: 28px;
+  }
+  input[type="radio"] + label::before {
+    width: 18px;
+    height: 18px;
+  }
+  input[type="radio"] + label::after {
+    width: 10px;
+    height: 10px;
+    left: 4px;
+  }
+}
+
+.radio-lg {
+  @extend .radio-base;
+  input[type="radio"] + label {
+    font-size: $font-size-body-1;
+    padding-left: 36px;
+  }
+  input[type="radio"] + label::before {
+    width: 24px;
+    height: 24px;
+  }
+  input[type="radio"] + label::after {
+    width: 14px;
+    height: 14px;
+    left: 5px;
+  }
+}

@@ -28593,17 +28593,17 @@ p {
   overflow: visible !important;
 }
 
-.radio-base {
+.radio-base, .radio-lg, .radio-md, .radio-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.radio-base input[type=radio] {
+.radio-base input[type=radio], .radio-lg input[type=radio], .radio-md input[type=radio], .radio-sm input[type=radio] {
   opacity: 0;
   position: absolute;
   width: 16px;
   height: 16px;
   margin: 0;
 }
-.radio-base input[type=radio] + label {
+.radio-base input[type=radio] + label, .radio-lg input[type=radio] + label, .radio-md input[type=radio] + label, .radio-sm input[type=radio] + label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -28611,7 +28611,7 @@ p {
   font-weight: normal;
   color: var(--base-black);
 }
-.radio-base input[type=radio] + label::before {
+.radio-base input[type=radio] + label::before, .radio-lg input[type=radio] + label::before, .radio-md input[type=radio] + label::before, .radio-sm input[type=radio] + label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -28624,7 +28624,7 @@ p {
   background: var(--base-white);
   transition: border-color 0.2s, background 0.2s;
 }
-.radio-base input[type=radio] + label::after {
+.radio-base input[type=radio] + label::after, .radio-lg input[type=radio] + label::after, .radio-md input[type=radio] + label::after, .radio-sm input[type=radio] + label::after {
   content: "";
   position: absolute;
   left: 4px;
@@ -28636,33 +28636,75 @@ p {
   background: var(--brand-3);
   transition: transform 0.2s;
 }
-.radio-base input[type=radio]:checked + label::after {
+.radio-base input[type=radio]:checked + label::after, .radio-lg input[type=radio]:checked + label::after, .radio-md input[type=radio]:checked + label::after, .radio-sm input[type=radio]:checked + label::after {
   transform: translateY(-50%) scale(1);
 }
-.radio-base input[type=radio]:checked + label::before {
+.radio-base input[type=radio]:checked + label::before, .radio-lg input[type=radio]:checked + label::before, .radio-md input[type=radio]:checked + label::before, .radio-sm input[type=radio]:checked + label::before {
   border-color: var(--brand-3);
 }
-.radio-base input[type=radio]:disabled + label {
+.radio-base input[type=radio]:disabled + label, .radio-lg input[type=radio]:disabled + label, .radio-md input[type=radio]:disabled + label, .radio-sm input[type=radio]:disabled + label {
   color: var(--secondary-1-disabled);
   cursor: not-allowed;
 }
-.radio-base input[type=radio]:disabled + label::before {
+.radio-base input[type=radio]:disabled + label::before, .radio-lg input[type=radio]:disabled + label::before, .radio-md input[type=radio]:disabled + label::before, .radio-sm input[type=radio]:disabled + label::before {
   border-color: var(--secondary-1-disabled);
   background: var(--base-white-disabled);
 }
-.radio-base input[type=radio]:disabled:checked + label::after {
+.radio-base input[type=radio]:disabled:checked + label::after, .radio-lg input[type=radio]:disabled:checked + label::after, .radio-md input[type=radio]:disabled:checked + label::after, .radio-sm input[type=radio]:disabled:checked + label::after {
   background: var(--secondary-1-disabled);
 }
-.radio-base label {
+.radio-base label, .radio-lg label, .radio-md label, .radio-sm label {
   margin-left: 8px;
   font-size: 16px;
   font-weight: normal;
 }
-.radio-base label.disabled {
+.radio-base label.disabled, .radio-lg label.disabled, .radio-md label.disabled, .radio-sm label.disabled {
   color: var(--secondary-1);
 }
-.radio-base label.invalid {
+.radio-base label.invalid, .radio-lg label.invalid, .radio-md label.invalid, .radio-sm label.invalid {
   color: var(--support-2);
+}
+
+.radio-sm input[type=radio] + label {
+  font-size: 14px;
+  padding-left: 22px;
+}
+.radio-sm input[type=radio] + label::before {
+  width: 14px;
+  height: 14px;
+}
+.radio-sm input[type=radio] + label::after {
+  width: 8px;
+  height: 8px;
+  left: 3px;
+}
+
+.radio-md input[type=radio] + label {
+  font-size: 16px;
+  padding-left: 28px;
+}
+.radio-md input[type=radio] + label::before {
+  width: 18px;
+  height: 18px;
+}
+.radio-md input[type=radio] + label::after {
+  width: 10px;
+  height: 10px;
+  left: 4px;
+}
+
+.radio-lg input[type=radio] + label {
+  font-size: 18px;
+  padding-left: 36px;
+}
+.radio-lg input[type=radio] + label::before {
+  width: 24px;
+  height: 24px;
+}
+.radio-lg input[type=radio] + label::after {
+  width: 14px;
+  height: 14px;
+  left: 5px;
 }
 
 .widget-switch .widget-switch-btn-wrapper {
