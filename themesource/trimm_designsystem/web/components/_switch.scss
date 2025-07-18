@@ -1,58 +1,76 @@
 // === BASE SWITCH STYLE ===
 // Works with native Mendix Switch widget (toggle)
 
-.widget-switch {
+.switch-base {
   .widget-switch-btn-wrapper {
+    --track-height: 28px;
+    --track-width: 48px;
+    --thumb-size: 22px;
+
+    position: relative;
+    height: var(--track-height);
+    width: var(--track-width);
+    background-color: var(--base-white);
+    border: 1px solid var(--secondary-1);
+    border-radius: var(--track-height);
+    box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled);
     transition: all 0.2s ease-in-out;
 
-    // ON state
     &.checked {
       background-color: var(--brand-3) !important;
       border-color: var(--brand-3) !important;
-      box-shadow: inset 0 0 0 16px var(--brand-3) !important;
+      box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3) !important;
 
       &:hover:not(.disabled) {
         background-color: var(--brand-3-hover) !important;
         border-color: var(--brand-3-hover) !important;
-        box-shadow: inset 0 0 0 16px var(--brand-3-hover) !important;
+        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-hover) !important;
       }
 
       &.disabled {
         background-color: var(--brand-3-disabled) !important;
         border-color: var(--brand-3-disabled) !important;
-        box-shadow: inset 0 0 0 16px var(--brand-3-disabled) !important;
+        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-disabled) !important;
       }
     }
 
-    // OFF state
     &:not(.checked) {
-      background-color: var(--base-white) !important;
+      background-color: var(--secondary-1-hover) !important;
       border-color: var(--secondary-1) !important;
-      box-shadow: inset 0 0 0 16px var(--secondary-1-disabled) !important;
 
       &:hover:not(.disabled) {
         border-color: var(--secondary-1-hover) !important;
-        box-shadow: inset 0 0 0 16px var(--secondary-1-hover) !important;
+        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-hover) !important;
       }
 
       &.disabled {
         border-color: var(--secondary-1-disabled) !important;
-        box-shadow: inset 0 0 0 16px var(--secondary-1-disabled) !important;
+        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled) !important;
       }
     }
 
-    // Toggle button (thumb)
     .widget-switch-btn {
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      width: var(--thumb-size);
+      height: var(--thumb-size);
       background-color: var(--base-white) !important;
+      border-radius: 50%;
+      transform: translateY(-50%);
       box-shadow: 0 2px 4px var(--secondary-1-disabled);
+      transition: left 0.2s ease-in-out;
 
       &.disabled {
         background-color: var(--base-white-disabled) !important;
       }
     }
+
+    &.checked .widget-switch-btn {
+      left: calc(100% - var(--thumb-size) - 2px);
+    }
   }
 
-  // Label styling
   .widget-switch-text {
     color: var(--base-black);
     font-family: $font-primary;
@@ -61,5 +79,48 @@
     &.disabled {
       color: var(--secondary-1);
     }
+  }
+}
+
+// Size modifiers
+.switch-sm {
+  @extend .switch-base;
+
+  .widget-switch-btn-wrapper {
+    --track-height: 20px;
+    --track-width: 36px;
+    --thumb-size: 16px;
+  }
+
+  .widget-switch-text {
+    font-size: $font-size-body-3;
+  }
+}
+
+.switch-md {
+  @extend .switch-base;
+
+  .widget-switch-btn-wrapper {
+    --track-height: 28px;
+    --track-width: 48px;
+    --thumb-size: 22px;
+  }
+
+  .widget-switch-text {
+    font-size: $font-size-body-2;
+  }
+}
+
+.switch-lg {
+  @extend .switch-base;
+
+  .widget-switch-btn-wrapper {
+    --track-height: 36px;
+    --track-width: 64px;
+    --thumb-size: 30px;
+  }
+
+  .widget-switch-text {
+    font-size: $font-size-body-1;
   }
 }
