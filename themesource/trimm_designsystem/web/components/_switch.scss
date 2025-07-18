@@ -71,7 +71,7 @@
     }
   }
 
-  .widget-switch-text {
+  .control-label {
     color: var(--base-black);
     font-family: $font-primary;
     font-size: $font-size-body-2;
@@ -91,9 +91,9 @@
     --track-width: 36px;
     --thumb-size: 16px;
   }
-
-  .widget-switch-text {
+  .control-label {
     font-size: $font-size-body-3;
+    font-weight: $font-weight-regular;
   }
 }
 
@@ -105,9 +105,9 @@
     --track-width: 48px;
     --thumb-size: 22px;
   }
-
-  .widget-switch-text {
+  .control-label {
     font-size: $font-size-body-2;
+    font-weight: $font-weight-medium;
   }
 }
 
@@ -119,8 +119,8 @@
     --track-width: 64px;
     --thumb-size: 30px;
   }
-
-  .widget-switch-text {
+  .control-label {
     font-size: $font-size-body-1;
+    font-weight: $font-weight-semibold;
   }
 }
