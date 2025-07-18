@@ -30246,7 +30246,7 @@ mx-templategrid-content-wrapper {
   border-radius: 8px;
   margin-top: 8px;
   margin-bottom: 12px;
-  background: var(--brand-2);
+  background: var(--secondary-2);
   box-sizing: border-box;
 }
 
