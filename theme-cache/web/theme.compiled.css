@@ -28620,7 +28620,7 @@ p {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  border: 1px solid var(--brand-3);
+  border: 1px solid var(--brand-2);
   background: var(--base-white);
   transition: border-color 0.2s, background 0.2s;
 }
@@ -28633,14 +28633,15 @@ p {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--brand-3);
+  background: var(--brand-2);
   transition: transform 0.2s;
 }
 .radio-base input[type=radio]:checked + label::after, .radio-lg input[type=radio]:checked + label::after, .radio-md input[type=radio]:checked + label::after, .radio-sm input[type=radio]:checked + label::after {
   transform: translateY(-50%) scale(1);
+  background: var(--brand-2);
 }
 .radio-base input[type=radio]:checked + label::before, .radio-lg input[type=radio]:checked + label::before, .radio-md input[type=radio]:checked + label::before, .radio-sm input[type=radio]:checked + label::before {
-  border-color: var(--brand-3);
+  border-color: var(--brand-2);
 }
 .radio-base input[type=radio]:disabled + label, .radio-lg input[type=radio]:disabled + label, .radio-md input[type=radio]:disabled + label, .radio-sm input[type=radio]:disabled + label {
   color: var(--secondary-1-disabled);
@@ -28668,6 +28669,7 @@ p {
 .radio-sm input[type=radio] + label {
   font-size: 14px;
   padding-left: 22px;
+  font-weight: 400;
 }
 .radio-sm input[type=radio] + label::before {
   width: 14px;
@@ -28678,10 +28680,16 @@ p {
   height: 8px;
   left: 3px;
 }
+.radio-sm .control-label,
+.radio-sm .mx-radio label {
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .radio-md input[type=radio] + label {
   font-size: 16px;
   padding-left: 28px;
+  font-weight: 500;
 }
 .radio-md input[type=radio] + label::before {
   width: 18px;
@@ -28692,10 +28700,16 @@ p {
   height: 10px;
   left: 4px;
 }
+.radio-md .control-label,
+.radio-md .mx-radio label {
+  font-size: 16px;
+  font-weight: 500;
+}
 
 .radio-lg input[type=radio] + label {
   font-size: 18px;
   padding-left: 36px;
+  font-weight: 600;
 }
 .radio-lg input[type=radio] + label::before {
   width: 24px;
@@ -28705,6 +28719,11 @@ p {
   width: 14px;
   height: 14px;
   left: 5px;
+}
+.radio-lg .control-label,
+.radio-lg .mx-radio label {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .widget-switch .widget-switch-btn-wrapper {
