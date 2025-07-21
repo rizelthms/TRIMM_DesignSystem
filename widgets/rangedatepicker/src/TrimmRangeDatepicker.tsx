@@ -38,7 +38,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     const [step, setStep] = useState<"start" | "end">("start");
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [showCalendar, setShowCalendar] = useState(false);
-    const [popupPosition, setPopupPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+    const [popupOffset, setPopupOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const [dragging, setDragging] = useState(false);
     const [dragStart, setDragStart] = useState<{ mouseX: number; mouseY: number; popupX: number; popupY: number } | null>(null);
     const popupRef = useRef<HTMLDivElement>(null);
@@ -50,16 +50,16 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     }, [startDate?.value, endDate?.value]);
 
     useEffect(() => {
-        if (showCalendar && toggleRef.current) {
-            const rect = toggleRef.current.getBoundingClientRect();
-            setPopupPosition({ x: rect.left + window.scrollX, y: rect.bottom + window.scrollY });
+        if (showCalendar) {
+            // Always reset to default anchored position below the toggle (relative to parent)
+            setPopupOffset({ x: 0, y: 0 });
         }
     }, [showCalendar]);
 
     useEffect(() => {
         function onMouseMove(e: MouseEvent) {
             if (dragging && dragStart) {
-                setPopupPosition({
+                setPopupOffset({
                     x: dragStart.popupX + (e.clientX - dragStart.mouseX),
                     y: dragStart.popupY + (e.clientY - dragStart.mouseY)
                 });
@@ -186,7 +186,10 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     );
 
     return (
-        <div className={`trimm-range-datepicker${props.class ? ` ${props.class}` : ""}`} style={props.style}>
+        <div
+            className={`trimm-range-datepicker${props.class ? ` ${props.class}` : ""}`}
+            style={{ ...props.style, position: "relative" }}
+        >
             <div className="trimm-range-datepicker-toggle" ref={toggleRef}>
                 {renderField("Start", localStart, step === "start")}
                 {renderField("End", localEnd, step === "end")}
@@ -198,8 +201,8 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                     className="trimm-range-datepicker-popup"
                     style={{
                         position: "absolute",
-                        left: popupPosition.x,
-                        top: popupPosition.y
+                        left: popupOffset.x,
+                        top: `calc(100% + ${popupOffset.y}px)`
                     }}
                 >
                     {/* Drag handle at the top of the popup */}
@@ -212,8 +215,8 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                             setDragStart({
                                 mouseX: e.clientX,
                                 mouseY: e.clientY,
-                                popupX: popupPosition.x,
-                                popupY: popupPosition.y
+                                popupX: popupOffset.x,
+                                popupY: popupOffset.y
                             });
                         }}
                     />
