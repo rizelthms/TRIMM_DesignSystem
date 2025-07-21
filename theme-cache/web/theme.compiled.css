@@ -31068,6 +31068,40 @@ mx-templategrid-content-wrapper {
   text-align: center;
 }
 
+.docs-textboxClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-textboxClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-textboxClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);
