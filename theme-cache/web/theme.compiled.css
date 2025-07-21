@@ -31157,6 +31157,61 @@ mx-templategrid-content-wrapper {
   vertical-align: middle;
 }
 
+.docs-datepickerCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  min-height: unset;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-datepickerCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-datepickerCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-datepickerCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-datepickerCustom-card table,
+.docs-datepickerCustom-card table th,
+.docs-datepickerCustom-card table td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);

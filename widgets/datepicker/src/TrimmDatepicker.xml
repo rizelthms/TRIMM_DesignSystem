@@ -33,7 +33,7 @@
         </propertyGroup>
 
         <propertyGroup caption="Events">
-            <property key="onChange" type="action">
+            <property key="onChange" type="action" required="true">
                 <caption>On Change</caption>
                 <description>Optional microflow/nanoflow triggered after a date is selected</description>
             </property>
