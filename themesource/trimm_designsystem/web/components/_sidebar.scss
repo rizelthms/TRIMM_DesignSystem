@@ -1,34 +1,76 @@
 .region-sidebar,
-.mx-navigationtree mx-name-navigationTree3,
+.mx-navigationtree.mx-name-navigationTree3,
 .navbar-inner {
   background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
 }
 
+// Sidebar headings
 .region-sidebar .sidebar-heading {
   color: var(--base-white) !important;
 }
 
+// Main sidebar links (top-level)
 .region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
-  background-color: var(--brand-3);
+  background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
+  font-size: $font-size-body-3;
+  font-weight: $font-weight-regular;
+  transition: background 0.2s, color 0.2s;
 }
 
+// Sub-items (nested)
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a {
+  background-color: var(--brand-3-hover) !important;
+  color: var(--base-white) !important;
+  font-size: $font-size-body-4;
+  font-weight: $font-weight-light;
+  transition: background 0.2s, color 0.2s;
+}
+
+// Hover/focus for main items
 .region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
 .region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus {
-  background-color: var(--brand-3-hover);
+  background-color: var(--brand-3-hover) !important;
   color: var(--base-white) !important;
 }
 
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a {
-  background-color: var(--brand-3-active);
+// Hover/focus for sub-items
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a:hover,
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a:focus {
+  background-color: var(--brand-3-active) !important;
   color: var(--base-white) !important;
 }
 
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.disabled > a {
-  background-color: transparent;
+// Active/selected for main items
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a,
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.selected > a {
+  background-color: var(--brand-3-active) !important;
+  color: var(--base-white) !important;
+}
+
+// Active/selected for sub-items
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li.active > a,
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li.selected > a {
+  background-color: var(--brand-3) !important;
+  color: var(--base-white) !important;
+}
+
+// Disabled for all
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li.disabled > a,
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li.disabled > a {
+  background-color: transparent !important;
   color: var(--secondary-1-disabled) !important;
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.7;
+}
+
+.region-sidebar > div,
+.region-sidebar > * {
+  background-color: var(--brand-3) !important;
+}
+
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul {
+  background-color: var(--brand-3) !important;
 }
