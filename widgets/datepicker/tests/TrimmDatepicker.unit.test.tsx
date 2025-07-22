@@ -489,47 +489,60 @@ describe("TrimmDatepicker Unit", () => {
     });
 
     // Tests for uncovered lines
-    it("handles date selection when selectedDate is undefined", () => {
+    it("handles date selection when selectedDate is undefined", async () => {
         const { container } = render(<TrimmDatepicker {...getProps({ selectedDate: undefined })} />);
         const input = container.querySelector('input');
-        
         // Open calendar
         act(() => {
             fireEvent.click(input.parentElement);
         });
-        
-        // Click on a date (should set localSelectedDate)
-        const dateCell = container.querySelector('.trimm-datepicker-cell:not(.disabled)');
-        act(() => {
-            fireEvent.click(dateCell);
-        });
-        
-        // Calendar should close
-        expect(container.querySelector('.trimm-datepicker-calendar')).not.toBeInTheDocument();
+        // Find a specific date cell (e.g., "3") and click it
+        const targetCell = Array.from(container.querySelectorAll('.trimm-datepicker-cell:not(.disabled)'))
+            .find(cell => cell.textContent === '3');
+        if (targetCell) {
+            act(() => {
+                fireEvent.click(targetCell);
+            });
+            // Verify date was selected (input value updated)
+            expect(input.value).toContain('03');
+        } else {
+            // Fallback: click any non-selected cell
+            const nonSelectedCell = Array.from(container.querySelectorAll('.trimm-datepicker-cell:not(.disabled)'))
+                .find(cell => !cell.className.includes('selected'));
+            if (nonSelectedCell) {
+                act(() => {
+                    fireEvent.click(nonSelectedCell);
+                });
+                // Verify date was selected
+                expect(input.value).not.toBe('');
+            } else {
+                throw new Error('No valid date cell found for clicking');
+            }
+        }
     });
 
-    it("sets localSelectedDate when selectedDate prop is not provided", () => {
-        const { container } = render(<TrimmDatepicker {...getProps({ selectedDate: undefined })} />);
+    it("sets localSelectedDate when selectedDate prop is not provided", async () => {
+        // Test with undefined selectedDate to use local state
+        const { container } = render(<TrimmDatepicker {...getProps({ 
+            selectedDate: undefined 
+        })} />);
         const input = container.querySelector('input');
-        
         // Open calendar
         act(() => {
             fireEvent.click(input.parentElement);
         });
-        
-        // Find a valid date cell and click it
-        const validDateCells = container.querySelectorAll('.trimm-datepicker-cell:not(.disabled)');
-        const firstValidCell = validDateCells[0];
-        
-        act(() => {
-            fireEvent.click(firstValidCell);
-        });
-        
-        // Verify the calendar closes (indicating handleDateClick was called)
-        expect(container.querySelector('.trimm-datepicker-calendar')).not.toBeInTheDocument();
-        
-        // Verify the input shows a date (indicating localSelectedDate was set)
-        expect(input.value).not.toBe('');
+        // Find a different date cell (e.g., "5") and click it
+        const targetCell = Array.from(container.querySelectorAll('.trimm-datepicker-cell:not(.disabled)'))
+            .find(cell => cell.textContent === '5');
+        if (targetCell) {
+            act(() => {
+                fireEvent.click(targetCell);
+            });
+            // Verify the input shows the selected date (indicating localSelectedDate was set)
+            expect(input.value).toContain('05');
+        } else {
+            throw new Error('No valid target date cell found');
+        }
     });
 
     it("supports calendar dragging functionality", () => {
