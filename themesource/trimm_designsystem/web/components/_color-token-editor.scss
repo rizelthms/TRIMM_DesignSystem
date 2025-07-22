@@ -171,8 +171,9 @@
     display: flex;
     align-items: center;
     gap: $spacing-8;
-    background: var(--secondary-1-disabled);
     border-radius: $radius-4;
+    border: $border-1 solid var(--secondary-1-disabled);
+    box-shadow: $shadow-8;
     padding: $spacing-8;
 }
 
