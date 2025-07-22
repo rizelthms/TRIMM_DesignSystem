@@ -29893,8 +29893,9 @@ input.form-control:disabled {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--secondary-1-disabled);
   border-radius: 4px;
+  border: 1px solid var(--secondary-1-disabled);
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
   padding: 8px;
 }
 
@@ -31208,6 +31209,78 @@ mx-templategrid-content-wrapper {
 .docs-datepickerCustom-card table td {
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.docs-colorTokenEditorCustom-sectionContainer {
+  padding: 24px 0px;
+  margin-bottom: 32px;
+}
+
+.docs-colorTokenEditorCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  position: relative;
+  padding-top: 72px;
+}
+.docs-colorTokenEditorCustom-card .trimm-color-token-fab {
+  position: absolute !important;
+  left: 50% !important;
+  top: 16px !important;
+  transform: translateX(-50%) !important;
+  z-index: 10 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.docs-colorTokenEditorCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-colorTokenEditorCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-colorTokenEditorCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-colorTokenEditorCustom-card table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.docs-colorTokenEditorCustom-card table th,
+.docs-colorTokenEditorCustom-card table td {
   text-align: center;
   vertical-align: middle;
 }
