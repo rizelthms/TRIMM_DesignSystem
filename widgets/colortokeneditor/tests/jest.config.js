@@ -7,11 +7,14 @@ module.exports = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    testMatch: ['**/*.test.(ts|tsx)'],
+    testMatch: ['**/*.test.ts', '**/*.test.tsx'],
+    transformIgnorePatterns: [
+        '/node_modules/'
+    ],
     moduleNameMapper: {
         '\\.(css|scss)$': 'identity-obj-proxy',
     },
-    collectCoverage: true,
+    collectCoverage: false,
     collectCoverageFrom: [
         '../src/**/*.{ts,tsx}',
         '!../src/**/*.d.ts',
