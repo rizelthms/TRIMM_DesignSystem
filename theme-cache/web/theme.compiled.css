@@ -30772,6 +30772,43 @@ mx-templategrid-content-wrapper {
   font-family: "GothamSSm", sans-serif;
 }
 
+.docs-theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.docs-theme-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.docs-theme-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
 .docs-buttonClass-card {
   display: flex;
   flex-direction: column;
@@ -31303,20 +31340,15 @@ mx-templategrid-content-wrapper {
   vertical-align: middle;
 }
 
-.docs-colorTokenEditorCustom-sectionContainer {
-  padding: 24px 0px;
-  margin-bottom: 32px;
-}
-
 .docs-colorTokenEditorCustom-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 24px 24px;
+  padding: 8px 8px;
   background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 24px;
+  border-radius: 4px;
+  margin-bottom: 8px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #e5e7eb;
@@ -31325,7 +31357,6 @@ mx-templategrid-content-wrapper {
   max-width: 1200px;
   box-sizing: border-box;
   position: relative;
-  padding-top: 72px;
 }
 .docs-colorTokenEditorCustom-card .trimm-color-token-fab {
   position: absolute !important;
@@ -31333,7 +31364,7 @@ mx-templategrid-content-wrapper {
   top: 16px !important;
   transform: translateX(-50%) !important;
   z-index: 10 !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12) rgba(0, 0, 0, 0.1);
 }
 
 .docs-colorTokenEditorCustom-sectionTitle {
