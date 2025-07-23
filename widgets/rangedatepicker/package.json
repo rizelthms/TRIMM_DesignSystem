@@ -2,9 +2,9 @@
   "name": "trimmrangedatepicker",
   "widgetName": "TrimmRangeDatepicker",
   "version": "1.0.0",
-  "description": "My widget description",
-  "copyright": "© Mendix Technology BV 2022. All rights reserved.",
-  "author": "Rizel",
+  "description": "A comprehensive date range picker for Mendix, allowing users to select start and end dates. Fully styled with the TRIMM Design System for consistent theming and seamless integration.",
+  "copyright": "© TRIMM 2024. All rights reserved.",
+  "author": "TRIMM Design System Team",
   "engines": {
     "node": ">=16"
   },
@@ -25,11 +25,10 @@
     "release": "pluggable-widgets-tools release:web"
   },
   "devDependencies": {
-    "@mendix/pluggable-widgets-tools": "^10.15.0",
-    "@types/big.js": "^6.0.2"
+    "@mendix/pluggable-widgets-tools": "^10.15.0"
   },
   "dependencies": {
-    "classnames": "^2.2.6"
+    "date-fns": "^4.1.0"
   },
   "resolutions": {
     "react": "^18.2.0",

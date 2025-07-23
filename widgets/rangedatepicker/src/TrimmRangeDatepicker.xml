@@ -2,15 +2,15 @@
 <widget id="trimm.trimmrangedatepicker.TrimmRangeDatePicker" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
     xmlns="http://www.mendix.com/widget/1.0/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>Trimm Range Date Picker</name>
-    <description>Select a date range (start to end) styled with the TRIMM design system</description>
+    <name>TRIMM Range Date Picker</name>
+    <description>A comprehensive date range picker for Mendix, allowing users to select start and end dates. Fully styled with the TRIMM Design System for consistent theming and seamless integration.</description>
     <icon/>
 
     <properties>
         <propertyGroup caption="Data">
             <property key="startDate" type="attribute" required="true">
                 <caption>Start Date</caption>
-                <description>Date the user selects first</description>
+                <description>The date attribute to bind the range start date value to</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
@@ -18,7 +18,7 @@
 
             <property key="endDate" type="attribute" required="true">
                 <caption>End Date</caption>
-                <description>Date the user selects second</description>
+                <description>The date attribute to bind the range end date value to</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
@@ -26,7 +26,7 @@
 
             <property key="minDate" type="attribute" required="false">
                 <caption>Minimum Date</caption>
-                <description>Optional minimum date user can select</description>
+                <description>Optional minimum selectable date constraint for the range</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
@@ -34,7 +34,7 @@
 
             <property key="maxDate" type="attribute" required="false">
                 <caption>Maximum Date</caption>
-                <description>Optional maximum date user can select</description>
+                <description>Optional maximum selectable date constraint for the range</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
@@ -42,21 +42,27 @@
         </propertyGroup>
 
         <propertyGroup caption="Events">
-            <property key="onChange" type="action" required="true">
+            <property key="onChange" type="action" required="false">
                 <caption>On Range Change</caption>
-                <description>Optional microflow/nanoflow triggered after date range selection</description>
+                <description>Optional action triggered when a complete date range is selected</description>
             </property>
         </propertyGroup>
 
         <propertyGroup caption="Appearance">
-            <property key="showIcon" type="boolean" required="true" defaultValue="true">
-                <caption>Show calendar icon</caption>
-                <description>Show the calendar icon in the input</description>
+            <property key="showIcon" type="boolean" required="false" defaultValue="true">
+                <caption>Show Calendar Icon</caption>
+                <description>Display the calendar icon in the input fields</description>
             </property>
 
-            <property key="locale" type="string" required="false" defaultValue="en-US">
+            <property key="locale" type="enumeration" required="false" defaultValue="en-US">
                 <caption>Locale</caption>
-                <description>Locale to use for date formatting</description>
+                <description>Language and region for date formatting and display</description>
+                <enumerationValues>
+                    <enumerationValue key="en-US">English (US)</enumerationValue>
+                    <enumerationValue key="en">English</enumerationValue>
+                    <enumerationValue key="nl-NL">Dutch (Netherlands)</enumerationValue>
+                    <enumerationValue key="nl">Dutch</enumerationValue>
+                </enumerationValues>
             </property>
         </propertyGroup>
     </properties>
