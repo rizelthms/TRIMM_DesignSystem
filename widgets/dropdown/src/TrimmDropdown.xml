@@ -1,51 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<widget id="trimm.trimmdropdown.TrimmDropdown" pluginWidget="true" needsEntityContext="true" offlineCapable="true" supportedPlatform="Web"
+<widget id="trimm.trimmdropdown.TrimmDropdown" pluginWidget="true" needsEntityContext="false" offlineCapable="true" supportedPlatform="Web"
     xmlns="http://www.mendix.com/widget/1.0/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
 
-    <name>Trimm Dropdown</name>
-    <description>A custom dropdown styled using the TRIMM design system</description>
+    <name>TRIMM Dropdown</name>
+    <description>A customizable dropdown/select component for Mendix, styled with the TRIMM Design System. Features flexible option selection, icon support, and seamless integration with Mendix actions.</description>
     <icon/>
 
     <properties>
-        <!-- Items -->
-        <property key="dropdownItems" type="object" isList="true">
-            <caption>Items</caption>
-            <category>Behavior</category>
-            <description>List of items to display in the dropdown</description>
-            <properties>
-                <property key="caption" type="string">
-                    <caption>Label</caption>
-                    <category>Behavior</category>
-                    <description>The text to display for this item</description>
-                </property>
-                <property key="action" type="action">
-                    <caption>Action</caption>
-                    <category>Behavior</category>
-                    <description>The action to execute when this item is clicked</description>
-                </property>
-            </properties>
-        </property>
+        <propertyGroup caption="Data">
+            <property key="dropdownItems" type="object" isList="true">
+                <caption>Dropdown Items</caption>
+                <description>List of selectable items to display in the dropdown menu</description>
+                <properties>
+                    <property key="caption" type="string">
+                        <caption>Item Label</caption>
+                        <description>The text displayed for this dropdown item</description>
+                    </property>
+                    <property key="action" type="action" required="false">
+                        <caption>Item Action</caption>
+                        <description>Optional action executed when this item is selected</description>
+                    </property>
+                </properties>
+            </property>
+        </propertyGroup>
 
-        <!-- Icon -->
-        <property key="icon" type="icon" required="false">
-            <caption>Icon</caption>
-            <category>Appearance</category>
-            <description>Optional icon to display in the dropdown button</description>
-        </property>
+        <propertyGroup caption="Appearance">
+            <property key="caption" type="string" required="false" defaultValue="Options">
+                <caption>Button Caption</caption>
+                <description>The text displayed on the dropdown toggle button</description>
+            </property>
+            
+            <property key="icon" type="icon" required="false">
+                <caption>Button Icon</caption>
+                <description>Optional icon displayed in the dropdown toggle button</description>
+            </property>
 
-        <!-- Caption -->
-        <property key="caption" type="string" required="false" defaultValue="Options">
-            <caption>Button Caption</caption>
-            <category>Appearance</category>
-            <description>The text shown inside the dropdown toggle button</description>
-        </property>
-
-        <!-- Show Caret Icon -->
-        <property key="showCaretIcon" type="boolean" required="true" defaultValue="true">
-            <caption>Show Caret Icon</caption>
-            <category>Appearance</category>
-            <description>Show or hide the downward arrow caret icon.</description>
-        </property>
+            <property key="showCaretIcon" type="boolean" required="false" defaultValue="true">
+                <caption>Show Caret Icon</caption>
+                <description>Display the downward arrow indicator on the dropdown button</description>
+            </property>
+        </propertyGroup>
     </properties>
 </widget>
