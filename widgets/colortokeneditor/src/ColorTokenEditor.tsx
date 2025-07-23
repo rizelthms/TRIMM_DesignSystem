@@ -404,4 +404,4 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     );
 };
 
-export default ColorTokenEditor;
+export { ColorTokenEditor };

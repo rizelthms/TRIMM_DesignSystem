@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
-import ColorTokenEditor from "../src/ColorTokenEditor";
+import { ColorTokenEditor } from "../src/ColorTokenEditor";
 import React from "react";
 
 // Mock localStorage for isolation

@@ -5,12 +5,14 @@
  */
 import { CSSProperties } from "react";
 
+export type SideEnum = "left" | "right";
+
 export interface ColorTokenEditorContainerProps {
     name: string;
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    side: "left" | "right";
+    side?: SideEnum;
 }
 
 export interface ColorTokenEditorPreviewProps {
@@ -24,5 +26,5 @@ export interface ColorTokenEditorPreviewProps {
     readOnly: boolean;
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
-    side: "left" | "right";
+    side: SideEnum;
 }

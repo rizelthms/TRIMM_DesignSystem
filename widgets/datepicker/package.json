@@ -2,9 +2,9 @@
   "name": "trimmdatepicker",
   "widgetName": "TrimmDatepicker",
   "version": "1.0.0",
-  "description": "Custom datepicker styled using the TRIMM design system",
-  "copyright": "© Mendix Technology BV 2022. All rights reserved.",
-  "author": "Rizel",
+  "description": "A custom datepicker component styled using the TRIMM Design System, featuring localization, date constraints, and seamless integration with Mendix data attributes.",
+  "copyright": "© TRIMM 2024. All rights reserved.",
+  "author": "TRIMM Design System Team",
   "engines": {
     "node": ">=16"
   },
@@ -28,23 +28,15 @@
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.27.1",
-    "@babel/preset-typescript": "^7.27.1",
     "@mendix/pluggable-widgets-tools": "^10.15.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "@types/big.js": "^6.0.2",
     "@types/jest": "^30.0.0",
-    "@types/jest-axe": "^3.5.9",
     "jest": "^30.0.4",
-    "jest-axe": "^10.0.0",
     "ts-jest": "^29.4.0"
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
-    "react-draggable": "^4.4.5"
+    "date-fns": "^4.1.0"
   },
   "resolutions": {
     "react": "^18.2.0",

@@ -3,29 +3,29 @@
     xmlns="http://www.mendix.com/widget/1.0/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
 
-    <name>Trimm Datepicker</name>
-    <description>A custom datepicker styled using the TRIMM design system</description>
+    <name>TRIMM Datepicker</name>
+    <description>A custom datepicker component styled using the TRIMM Design System, featuring localization, date constraints, and seamless integration with Mendix data attributes.</description>
     <icon/>
 
     <properties>
         <propertyGroup caption="Data">
             <property key="selectedDate" type="attribute" required="false">
                 <caption>Selected Date</caption>
-                <description>The date selected in the datepicker</description>
+                <description>The date attribute to bind the selected date value to</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
             </property>
             <property key="minDate" type="attribute" required="false">
                 <caption>Minimum Date</caption>
-                <description>Minimum selectable date</description>
+                <description>Optional minimum selectable date constraint</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
             </property>
             <property key="maxDate" type="attribute" required="false">
                 <caption>Maximum Date</caption>
-                <description>Maximum selectable date</description>
+                <description>Optional maximum selectable date constraint</description>
                 <attributeTypes>
                     <attributeType name="DateTime" />
                 </attributeTypes>
@@ -33,20 +33,26 @@
         </propertyGroup>
 
         <propertyGroup caption="Events">
-            <property key="onChange" type="action" required="true">
-                <caption>On Change</caption>
-                <description>Optional microflow/nanoflow triggered after a date is selected</description>
+            <property key="onChange" type="action" required="false">
+                <caption>On Date Change</caption>
+                <description>Optional action triggered when a date is selected</description>
             </property>
         </propertyGroup>
 
         <propertyGroup caption="Appearance">
-            <property key="showIcon" type="boolean" required="true" defaultValue="true">
-                <caption>Show calendar icon</caption>
-                <description>Show the calendar icon in the input</description>
+            <property key="showIcon" type="boolean" required="false" defaultValue="true">
+                <caption>Show Calendar Icon</caption>
+                <description>Display the calendar icon in the input field</description>
             </property>
-            <property key="locale" type="string" required="false" defaultValue="en-US">
+            <property key="locale" type="enumeration" required="false" defaultValue="en-US">
                 <caption>Locale</caption>
-                <description>Locale to use for date formatting</description>
+                <description>Language and region for date formatting and display</description>
+                <enumerationValues>
+                    <enumerationValue key="en-US">English (US)</enumerationValue>
+                    <enumerationValue key="en">English</enumerationValue>
+                    <enumerationValue key="nl-NL">Dutch (Netherlands)</enumerationValue>
+                    <enumerationValue key="nl">Dutch</enumerationValue>
+                </enumerationValues>
             </property>
         </propertyGroup>
     </properties>
