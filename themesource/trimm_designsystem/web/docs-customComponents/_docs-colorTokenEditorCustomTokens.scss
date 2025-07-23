@@ -1,17 +1,12 @@
-.docs-colorTokenEditorCustom-sectionContainer {
-    padding: $spacing-24 $spacing-0;
-    margin-bottom: $spacing-32;
-}
-
 .docs-colorTokenEditorCustom-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: $spacing-24 $spacing-24;
+    padding: $spacing-8 $spacing-8;
     background: var(--base-white);
-    border-radius: $radius-8;
-    margin-bottom: $spacing-24;
+    border-radius: $radius-4;
+    margin-bottom: $spacing-8;
     margin-left: auto;
     margin-right: auto;
     border: $border-1 solid #e5e7eb;
@@ -20,7 +15,6 @@
     max-width: 1200px;
     box-sizing: border-box;
     position: relative;
-    padding-top: 72px;
 
     .trimm-color-token-fab {
         position: absolute !important;
@@ -28,7 +22,7 @@
         top: 16px !important;
         transform: translateX(-50%) !important;
         z-index: 10 !important;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        box-shadow: $shadow-6 rgba(0, 0, 0, 0.1);
     }
 }
 
