@@ -2,9 +2,9 @@
   "name": "colortokeneditor",
   "widgetName": "ColorTokenEditor",
   "version": "1.0.0",
-  "description": "A pluggable Mendix widget for viewing editing, and resetting theme color tokens(CSS custom properties) at runtime, enabling dynamic theming and rapid UI customization",
-  "copyright": "© Mendix Technology BV 2022. All rights reserved.",
-  "author": "Rizel",
+  "description": "A pluggable Mendix widget for viewing, editing, and resetting theme color tokens (CSS custom properties) at runtime, enabling dynamic theming and rapid UI customization within the TRIMM Design System.",
+  "copyright": "© TRIMM 2024. All rights reserved.",
+  "author": "TRIMM Design System Team",
   "engines": {
     "node": ">=16"
   },
@@ -28,16 +28,9 @@
     "@mendix/pluggable-widgets-tools": "^10.15.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/big.js": "^6.0.2",
     "@types/jest": "^30.0.0",
-    "@types/rewire": "^2.5.30",
     "jest": "^30.0.4",
-    "rewire": "^8.0.0",
     "ts-jest": "^29.4.0"
-  },
-  "dependencies": {
-    "classnames": "^2.2.6"
   },
   "resolutions": {
     "react": "^18.2.0",

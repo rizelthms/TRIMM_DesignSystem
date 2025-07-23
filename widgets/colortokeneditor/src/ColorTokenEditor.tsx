@@ -86,7 +86,7 @@ function getOverrides(theme: "light" | "dark"): Overrides {
 function setOverrides(theme: "light" | "dark", overrides: Overrides) {
     try {
         localStorage.setItem(`tokenOverrides_${theme}`, JSON.stringify(overrides));
-    } catch {}
+    } catch { }
 }
 
 function applyOverrides(overrides: Overrides) {
@@ -98,7 +98,7 @@ function applyOverrides(overrides: Overrides) {
 function resetOverrides(tokens: Token[], theme: "light" | "dark") {
     try {
         localStorage.removeItem(`tokenOverrides_${theme}`);
-    } catch {}
+    } catch { }
     tokens.forEach((t: Token) => {
         document.documentElement.style.setProperty(t.name, t.value);
     });
@@ -130,12 +130,13 @@ export function getValidHex(value: string, fallback = "#000000"): string {
     return fallback;
 }
 
-export interface ColorTokenEditorProps {
-    side?: string;
+import { ColorTokenEditorContainerProps } from "../typings/ColorTokenEditorProps";
+
+export interface ColorTokenEditorProps extends Partial<ColorTokenEditorContainerProps> {
     getTokens?: () => Array<{ name: string; value: string }>;
 }
 
-const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
+const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) => {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
     // Use injected getTokens or fallback to getAllCSSCustomProperties
     const tokens = (getTokens ?? getAllCSSCustomProperties)();
@@ -172,13 +173,13 @@ const ColorTokenEditor = ({ side, getTokens }: ColorTokenEditorProps) => {
     useEffect(() => {
         try {
             localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
-        } catch {}
+        } catch { }
     }, [fabPos]);
     // Persist drawer width
     useEffect(() => {
         try {
             localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
-        } catch {}
+        } catch { }
     }, [drawerWidth]);
 
     // Drag handlers for FAB
