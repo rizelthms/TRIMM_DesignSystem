@@ -1,0 +1,87 @@
+@import "../../../atlas_core/web/_variables.scss";
+.hover-trigger {
+  .show-on-hover {
+    visibility: hidden; // Initially hide the hover content
+  }
+
+  &:hover .show-on-hover {
+    display: inline;
+    visibility: visible; // Show hover content, when hovering over the hover trigger
+  }
+}
+
+.text-break-word {
+  word-break: break-word;
+}
+
+.spacing-inner-top-smaller {
+  padding-top: $spacing-smaller;
+}
+
+.text-clamp--2-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+}
+
+.line-height--1 {
+  line-height: 1;
+}
+
+.spacing-inner-left-20 {
+  padding-left: 20px;
+}
+
+.spacing-outer-bottom-6 {
+  margin-bottom: 6px;
+}
+
+.spacing-outer-bottom-medium {
+  margin-bottom: $spacing-medium;
+}
+
+.spacing-outer-top-smaller {
+  margin-top: $spacing-smaller;
+}
+
+.flexbox-space-between {
+  display: flex !important;
+  justify-content: space-between;
+}
+
+.container-disabled {
+  height: fit-content;
+  border: 1px solid $border-color-default;
+  border-radius: $btn-border-radius;
+  padding: $spacing-small;
+  width: auto;
+  background-color: $gray-lighter;
+  display: flex;
+  align-items: center;
+  flex-flow: row;
+  justify-content: flex-start;
+}
+
+.alert-danger-text {
+  margin-bottom: $spacing-large;
+
+  .alert-circle-filled {
+    width: 14px;
+    margin-right: $spacing-smaller;
+  }
+
+  .alert-text {
+    color: $brand-danger;
+  }
+}
+
+.border-right{
+  border-right: 2px;
+}
+
+.width-full {
+  width: 100%;
+}

@@ -1,0 +1,134 @@
+@import "../../../../theme/web/custom-variables.scss";
+
+.datetime-inputs-wrapper {
+    display: flex;
+    justify-content: flex-start;
+
+    .time-input {
+        display: unset;
+        max-width: 100px;
+        margin-left: -1px;
+        margin-bottom: 0;
+    }
+
+    .date-input {
+        display: unset;
+        max-width: 150px;
+        margin-left: $spacing-medium;
+        margin-bottom: 0;
+    }
+
+    .mx-compound-control .btn {
+        margin-left: -44px;
+        border: 1px solid transparent;
+        background: transparent;
+    }
+
+    .has-error .alert {
+        margin-top: 0.5px;
+    }
+}
+
+.input-container {
+    border-bottom: 1px solid $light-border-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+//token consumption monitor
+.combobox-selection {
+    display: flex;
+    flex-grow: 1;
+    .mx-image {
+        height: $font-size-large;
+        margin-right: $spacing-small;
+        margin-left: auto;
+        float: right;
+    }
+    .widget-combobox {
+        min-height: 20px;
+    }
+}
+
+.combobox-selection-height-small {
+    .widget-combobox-input-container {
+        align-items: center;
+        justify-content: center;
+        height: 32px !important;
+    }
+}
+
+.combo-model-selection {
+    min-width: 360px;
+    z-index: 50;
+    .model-selection{
+        display: flex;
+        align-items: center;
+        height: max-content;
+    }
+    .mx-image {
+        height: $font-size-large;
+        margin-right: $spacing-small;
+    }
+    
+}
+
+.widget-combobox .widget-combobox-input-container {
+    flex-grow: 0;
+    transition: box-shadow .15s ease 0s;
+}
+
+.combobox-border-danger{
+  .widget-combobox{
+    border: 1px solid $brand-danger;
+  }
+  margin-bottom: $spacing-smaller !important;
+}
+
+.texbox-loading-wrapper {
+    position: relative;
+
+    .generating-loading-wrapper {
+        display: flex;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        .loading-dot {
+            border-radius: 100%;
+            background-color: $brand-primary;
+            width: $font-size-default / 3;
+            height: $font-size-default / 3;
+
+            &:nth-child(1) {
+                animation: preloader 0.9s ease-in-out alternate infinite;
+            }
+
+            &:nth-child(2) {
+                margin: 0 14px;
+                animation: preloader 0.9s ease-in-out alternate 0.2s infinite;
+            }
+
+            &:nth-child(3) {
+                animation: preloader 0.9s ease-in-out alternate 0.4s infinite;
+            }
+        }
+
+        @keyframes preloader {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+}
