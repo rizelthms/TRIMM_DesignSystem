@@ -7,9 +7,15 @@ module.exports = {
     transform: {
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-    testMatch: ['**/*.test.(ts|tsx)'],
+    testMatch: ['**/*.test.ts', '**/*.test.tsx'],
+    transformIgnorePatterns: [
+        '/node_modules/'
+    ],
     moduleNameMapper: {
         '\\.(css|scss)$': 'identity-obj-proxy',
+        '^react$': '<rootDir>/node_modules/react',
+        '^react-dom$': '<rootDir>/node_modules/react-dom',
+        '^@testing-library/react$': '<rootDir>/node_modules/@testing-library/react'
     },
     collectCoverage: false,
     collectCoverageFrom: [
@@ -19,7 +25,7 @@ module.exports = {
         '!../src/**/index.tsx',
     ],
     moduleDirectories: [
-        "../../../node_modules",
-        "node_modules"
+        "node_modules",
+        "../../../node_modules"
     ]
 }; 
