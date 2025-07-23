@@ -29008,6 +29008,7 @@ input.form-control:disabled {
   position: relative;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  outline: none;
 }
 .checkbox-base input[type=checkbox]::before, .checkbox-lg input[type=checkbox]::before, .checkbox-md input[type=checkbox]::before, .checkbox-sm input[type=checkbox]::before {
   content: "";
@@ -29023,10 +29024,11 @@ input.form-control:disabled {
   transition: border-color 0.2s, background-color 0.2s;
   pointer-events: none;
   z-index: 1;
+  opacity: 0;
 }
 .checkbox-base input[type=checkbox]:focus::before, .checkbox-lg input[type=checkbox]:focus::before, .checkbox-md input[type=checkbox]:focus::before, .checkbox-sm input[type=checkbox]:focus::before {
-  border-color: var(--brand-2);
-  background-color: rgba(var(--brand-2-rgb, 255, 102, 0), 0.08);
+  opacity: none;
+  background-color: var(--brand-2-hover);
 }
 .checkbox-base input[type=checkbox]::-ms-check, .checkbox-lg input[type=checkbox]::-ms-check, .checkbox-md input[type=checkbox]::-ms-check, .checkbox-sm input[type=checkbox]::-ms-check, .checkbox-base input[type=checkbox]::-webkit-check, .checkbox-lg input[type=checkbox]::-webkit-check, .checkbox-md input[type=checkbox]::-webkit-check, .checkbox-sm input[type=checkbox]::-webkit-check, .checkbox-base input[type=checkbox]::-webkit-inner-spin-button, .checkbox-lg input[type=checkbox]::-webkit-inner-spin-button, .checkbox-md input[type=checkbox]::-webkit-inner-spin-button, .checkbox-sm input[type=checkbox]::-webkit-inner-spin-button, .checkbox-base input[type=checkbox]::-webkit-outer-spin-button, .checkbox-lg input[type=checkbox]::-webkit-outer-spin-button, .checkbox-md input[type=checkbox]::-webkit-outer-spin-button, .checkbox-sm input[type=checkbox]::-webkit-outer-spin-button {
   display: none !important;

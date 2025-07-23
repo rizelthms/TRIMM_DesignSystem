@@ -49,19 +49,17 @@
         </propertyGroup>
 
         <propertyGroup caption="Appearance">
-            <property key="showIcon" type="boolean" required="false" defaultValue="true">
+            <property key="showIcon" type="boolean" required="true" defaultValue="true">
                 <caption>Show Calendar Icon</caption>
                 <description>Display the calendar icon in the input fields</description>
             </property>
 
-            <property key="locale" type="enumeration" required="false" defaultValue="en-US">
+            <property key="locale" type="enumeration" required="true" defaultValue="en_US">
                 <caption>Locale</caption>
                 <description>Language and region for date formatting and display</description>
                 <enumerationValues>
-                    <enumerationValue key="en-US">English (US)</enumerationValue>
-                    <enumerationValue key="en">English</enumerationValue>
-                    <enumerationValue key="nl-NL">Dutch (Netherlands)</enumerationValue>
-                    <enumerationValue key="nl">Dutch</enumerationValue>
+                    <enumerationValue key="en_US">English (US)</enumerationValue>
+                    <enumerationValue key="nl_NL">Dutch (Netherlands)</enumerationValue>
                 </enumerationValues>
             </property>
         </propertyGroup>

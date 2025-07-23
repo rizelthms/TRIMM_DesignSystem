@@ -7,7 +7,7 @@
     <icon/>
     <properties>
         <propertyGroup caption="Configuration">
-            <property key="side" type="enumeration" required="false" defaultValue="right">
+            <property key="side" type="enumeration" required="true" defaultValue="right">
                 <caption>Drawer Position</caption>
                 <description>Choose which side of the screen the color editor drawer appears on</description>
                 <enumerationValues>

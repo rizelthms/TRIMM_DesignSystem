@@ -9,37 +9,39 @@
 
     <properties>
         <propertyGroup caption="Data">
-            <property key="dropdownItems" type="object" isList="true">
+        <property key="dropdownItems" type="object" isList="true">
                 <caption>Dropdown Items</caption>
                 <description>List of selectable items to display in the dropdown menu</description>
-                <properties>
-                    <property key="caption" type="string">
+            <properties>
+                <property key="caption" type="string">
                         <caption>Item Label</caption>
+                        <category>General</category>
                         <description>The text displayed for this dropdown item</description>
-                    </property>
+                </property>
                     <property key="action" type="action" required="false">
                         <caption>Item Action</caption>
+                        <category>Events</category>
                         <description>Optional action executed when this item is selected</description>
-                    </property>
-                </properties>
-            </property>
+                </property>
+            </properties>
+        </property>
         </propertyGroup>
 
         <propertyGroup caption="Appearance">
-            <property key="caption" type="string" required="false" defaultValue="Options">
-                <caption>Button Caption</caption>
+        <property key="caption" type="string" required="false" defaultValue="Options">
+            <caption>Button Caption</caption>
                 <description>The text displayed on the dropdown toggle button</description>
-            </property>
-            
+        </property>
+
             <property key="icon" type="icon" required="false">
                 <caption>Button Icon</caption>
                 <description>Optional icon displayed in the dropdown toggle button</description>
             </property>
 
-            <property key="showCaretIcon" type="boolean" required="false" defaultValue="true">
-                <caption>Show Caret Icon</caption>
+        <property key="showCaretIcon" type="boolean" required="true" defaultValue="true">
+            <caption>Show Caret Icon</caption>
                 <description>Display the downward arrow indicator on the dropdown button</description>
-            </property>
+        </property>
         </propertyGroup>
     </properties>
 </widget>
