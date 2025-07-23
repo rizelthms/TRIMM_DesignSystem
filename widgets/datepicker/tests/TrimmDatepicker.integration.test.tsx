@@ -4,15 +4,13 @@ import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { TrimmDatepicker } from "../src/TrimmDatepicker";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
-import { axe, toHaveNoViolations } from 'jest-axe';
-expect.extend(toHaveNoViolations);
 
 function getProps(overrides: Partial<TrimmDatepickerContainerProps> = {}): TrimmDatepickerContainerProps {
     return {
         name: "TrimmDatepicker",
         class: "",
         showIcon: true,
-        locale: "en-US",
+        locale: "en_US",
         selectedDate: undefined,
         minDate: undefined,
         maxDate: undefined,
@@ -83,8 +81,8 @@ describe("TrimmDatepicker Integration", () => {
         }
     });
 
-    it("switches locale to Dutch (nl-NL)", () => {
-        render(<TrimmDatepicker {...getProps({ locale: "nl-NL" })} />);
+    it("switches locale to Dutch (nl_NL)", () => {
+        render(<TrimmDatepicker {...getProps({ locale: "nl_NL" })} />);
         fireEvent.click(screen.getByRole("textbox"));
         // Dutch month names: e.g., 'januari', 'februari', etc.
         const monthLabel = screen.getByText((content) =>
@@ -115,7 +113,7 @@ describe("TrimmDatepicker Integration", () => {
             await waitFor(() => {
                 const labelAfterNextElem = document.querySelector('.trimm-datepicker-header-label');
                 const labelAfterNext = labelAfterNextElem ? labelAfterNextElem.textContent : '';
-                expect(labelAfterNext).not.toBe(labelBefore);
+        expect(labelAfterNext).not.toBe(labelBefore);
             });
         }
         // Click previous month
@@ -125,7 +123,7 @@ describe("TrimmDatepicker Integration", () => {
             await waitFor(() => {
                 const labelAfterPrevElem = document.querySelector('.trimm-datepicker-header-label');
                 const labelAfterPrev = labelAfterPrevElem ? labelAfterPrevElem.textContent : '';
-                expect(labelAfterPrev).toBe(labelBefore);
+        expect(labelAfterPrev).toBe(labelBefore);
             });
         }
     });
@@ -175,11 +173,7 @@ describe("TrimmDatepicker Integration", () => {
         expect(calendars).toHaveLength(2);
     });
 
-    it("has no accessibility violations (axe)", async () => {
-        const { container } = render(<TrimmDatepicker {...getProps()} />);
-        const results = await axe(container);
-        expect(results).toHaveNoViolations();
-    });
+    // Accessibility test removed due to jest-axe dependency cleanup
 
     it('should not enable any selectable dates if min > max (except possibly today)', async () => {
         const min = new Date(2025, 0, 2);

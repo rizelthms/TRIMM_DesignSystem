@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { TrimmRangeDatePicker } from "../src/TrimmRangeDatepicker";
 import { createElement } from "react";
+import { LocaleEnum } from "../typings/TrimmRangeDatepickerProps";
 
 // Mock Mendix types
 const mockEditableValue = (value: Date | null) => ({
@@ -36,7 +37,7 @@ const getProps = (overrides = {}) => ({
     maxDate: undefined,
     onChange: mockAction,
     showIcon: true,
-    locale: "en-US",
+    locale: "en_US" as LocaleEnum,
     ...overrides
 });
 
@@ -362,11 +363,11 @@ describe("TrimmRangeDatepicker Unit", () => {
 
     it("handles different locale formats", () => {
         // Test English locale
-        const { container: containerEn } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "en" })));
+                const { container: containerEn } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "en_US" as LocaleEnum })));
         expect(containerEn.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
-        
+
         // Test Dutch locale
-        const { container: containerNl } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "nl" })));
+        const { container: containerNl } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "nl_NL" as LocaleEnum })));
         expect(containerNl.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
         
         // Test Dutch with country code

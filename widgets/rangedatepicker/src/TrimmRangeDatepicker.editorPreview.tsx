@@ -57,7 +57,7 @@ export function preview(props: TrimmRangeDatepickerPreviewProps) {
                     setValue: () => { }
                 } as unknown as EditableValue<Date>}
                 showIcon={true}
-                locale={"en-US"}
+                locale={"en_US"}
                 onChange={undefined} />
         </div>
     );

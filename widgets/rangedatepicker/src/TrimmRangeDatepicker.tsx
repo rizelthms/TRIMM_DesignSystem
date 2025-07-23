@@ -19,12 +19,10 @@ import { enUS } from "date-fns/locale/en-US";
 import { nl } from "date-fns/locale/nl";
 
 function getLocale(localeStr: string | undefined) {
-    switch ((localeStr || "").toLowerCase()) {
-        case "nl":
-        case "nl-nl":
+    switch (localeStr) {
+        case "nl_NL":
             return nl;
-        case "en":
-        case "en-us":
+        case "en_US":
         default:
             return enUS;
     }

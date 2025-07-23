@@ -12,7 +12,7 @@ export interface ColorTokenEditorContainerProps {
     class: string;
     style?: CSSProperties;
     tabIndex?: number;
-    side?: SideEnum;
+    side: SideEnum;
 }
 
 export interface ColorTokenEditorPreviewProps {

@@ -24,7 +24,7 @@ export interface TrimmDropdownContainerProps {
     dropdownItems: DropdownItemsType[];
     caption: string;
     icon?: DynamicValue<WebIcon>;
-    showCaretIcon?: boolean;
+    showCaretIcon: boolean;
 }
 
 export interface TrimmDropdownPreviewProps {

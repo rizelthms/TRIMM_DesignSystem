@@ -12,7 +12,7 @@ function getProps(overrides) {
         name: "TrimmDatepicker",
         class: "",
         showIcon: true,
-        locale: "en-US",
+        locale: "en_US",
         selectedDate: undefined,
         minDate: undefined,
         maxDate: undefined,
@@ -219,7 +219,7 @@ describe("TrimmDatepicker Unit", () => {
     it("renders date in Dutch format when locale is nl-NL", () => {
         const date = new Date(2025, 0, 15); // Jan 15, 2025
         const { getByDisplayValue } = render(
-            <TrimmDatepicker {...getProps({ selectedDate: { value: date }, locale: "nl-NL" })} />
+            <TrimmDatepicker {...getProps({ selectedDate: { value: date }, locale: "nl_NL" })} />
         );
         // Dutch format is usually DD-MM-YYYY
         expect(getByDisplayValue("15-01-2025")).toBeInTheDocument();
@@ -480,7 +480,7 @@ describe("TrimmDatepicker Unit", () => {
 
     it("handles rapid locale changes", () => {
         const { rerender, container } = render(<TrimmDatepicker {...getProps({})} />);
-        const locales = ['en-US', 'nl-NL', 'de-DE', 'fr-FR', 'es-ES'];
+        const locales = ['en_US', 'nl_NL'];
         
         locales.forEach(locale => {
             rerender(<TrimmDatepicker {...getProps({ locale })} />);
