@@ -18,4 +18,8 @@ module.exports = {
         '!../src/**/index.ts',
         '!../src/**/index.tsx',
     ],
+    moduleDirectories: [
+        "../../../node_modules",
+        "node_modules"
+    ]
 }; 
