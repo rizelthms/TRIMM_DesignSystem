@@ -3,7 +3,7 @@ import { createElement, useRef, useState } from "react";
 import { TrimmDropdownContainerProps } from "../typings/TrimmDropdownProps";
 import { DynamicValue, WebIcon } from "mendix";
 
-export function TrimmDropdown({ dropdownItems, icon, showCaretIcon, caption }: TrimmDropdownContainerProps) {
+export function TrimmDropdown({ dropdownItems, icon, showCaretIcon, caption, class: className, style }: TrimmDropdownContainerProps) {
     const [open, setOpen] = useState(false);
     const toggleRef = useRef<HTMLButtonElement>(null);
 
@@ -27,7 +27,7 @@ export function TrimmDropdown({ dropdownItems, icon, showCaretIcon, caption }: T
     };
 
     return (
-        <div className="trimm-dropdown">
+        <div className={`trimm-dropdown${className ? ` ${className}` : ""}`} style={style}>
             <button
                 ref={toggleRef}
                 className="trimm-dropdown-toggle"
@@ -45,7 +45,11 @@ export function TrimmDropdown({ dropdownItems, icon, showCaretIcon, caption }: T
                         <div
                             key={idx}
                             className="trimm-dropdown-item"
-                            onClick={() => item.action?.execute?.()}
+                            onClick={() => {
+                                if (item.action?.canExecute && !item.action?.isExecuting) {
+                                    item.action.execute();
+                                }
+                            }}
                         >
                             {item.caption}
                         </div>
