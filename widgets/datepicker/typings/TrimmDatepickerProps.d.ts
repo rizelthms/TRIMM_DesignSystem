@@ -6,6 +6,8 @@
 import { CSSProperties } from "react";
 import { ActionValue, EditableValue } from "mendix";
 
+export type LocaleEnum = "en-US" | "en" | "nl-NL" | "nl";
+
 export interface TrimmDatepickerContainerProps {
     name: string;
     class: string;
@@ -15,8 +17,8 @@ export interface TrimmDatepickerContainerProps {
     minDate?: EditableValue<Date>;
     maxDate?: EditableValue<Date>;
     onChange?: ActionValue;
-    showIcon: boolean;
-    locale: string;
+    showIcon?: boolean;
+    locale?: LocaleEnum;
 }
 
 export interface TrimmDatepickerPreviewProps {
@@ -35,5 +37,5 @@ export interface TrimmDatepickerPreviewProps {
     maxDate: string;
     onChange: {} | null;
     showIcon: boolean;
-    locale: string;
+    locale: LocaleEnum;
 }

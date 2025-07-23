@@ -22,9 +22,9 @@ export interface TrimmDropdownContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     dropdownItems: DropdownItemsType[];
-    icon?: DynamicValue<WebIcon>;
     caption: string;
-    showCaretIcon: boolean;
+    icon?: DynamicValue<WebIcon>;
+    showCaretIcon?: boolean;
 }
 
 export interface TrimmDropdownPreviewProps {
@@ -39,7 +39,7 @@ export interface TrimmDropdownPreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     dropdownItems: DropdownItemsPreviewType[];
-    icon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     caption: string;
+    icon: { type: "glyph"; iconClass: string; } | { type: "image"; imageUrl: string; iconUrl: string; } | { type: "icon"; iconClass: string; } | undefined;
     showCaretIcon: boolean;
 }

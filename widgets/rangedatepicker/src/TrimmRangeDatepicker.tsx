@@ -15,8 +15,8 @@ import {
     isAfter,
     startOfDay
 } from "date-fns";
-import enUS from "date-fns/locale/en-US";
-import nl from "date-fns/locale/nl";
+import { enUS } from "date-fns/locale/en-US";
+import { nl } from "date-fns/locale/nl";
 
 function getLocale(localeStr: string | undefined) {
     switch ((localeStr || "").toLowerCase()) {
