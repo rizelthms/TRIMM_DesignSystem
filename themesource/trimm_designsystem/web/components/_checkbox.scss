@@ -23,6 +23,7 @@
     position: relative;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    outline: none;
 
     &::before {
       content: "";
@@ -40,11 +41,12 @@
         background-color 0.2s;
       pointer-events: none;
       z-index: 1;
+      opacity: 0;
     }
 
     &:focus::before {
-      border-color: var(--brand-2);
-      background-color: rgba(var(--brand-2-rgb, 255, 102, 0), 0.08);
+      opacity: none;
+      background-color: var(--brand-2-hover);
     }
 
     // Remove native browser overlays (for consistency across browsers)
