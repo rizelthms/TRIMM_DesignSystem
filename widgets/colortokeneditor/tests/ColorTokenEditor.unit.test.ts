@@ -1,6 +1,7 @@
 import { describe, it, expect } from "@jest/globals";
 import { isValidColor } from "../src/ColorTokenEditor";
 import { deriveDarkColor } from "../src/ColorTokenEditor";
+import { deriveLightColor } from "../src/ColorTokenEditor";
 import { getValidHex } from "../src/ColorTokenEditor";
 
 describe("isValidColor", () => {
@@ -52,6 +53,34 @@ describe("deriveDarkColor edge cases", () => {
     it("returns fallback for malformed hex (e.g. #12, #gggggg)", () => {
         expect(deriveDarkColor("#12")).toMatch(/^#[0-9a-f]{6}$/i);
         expect(deriveDarkColor("#gggggg")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+});
+
+describe("deriveLightColor", () => {
+    it("lightens a standard 6-digit hex color", () => {
+        expect(deriveLightColor("#123456")).toMatch(/^#[0-9a-f]{6}$/i);
+        expect(deriveLightColor("#000000")).not.toBe("#000000");
+    });
+    it("lightens a 3-digit hex color", () => {
+        expect(deriveLightColor("#abc")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+    it("returns fallback for invalid hex", () => {
+        expect(deriveLightColor("notacolor")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+});
+
+describe("deriveLightColor edge cases", () => {
+    it("returns a light color for #ffffff (should still be #ffffff or similar)", () => {
+        expect(deriveLightColor("#ffffff")).toMatch(/^#[0-9a-f]{6}$/i);
+    });
+    it("returns a light color for #000000 (should be much lighter)", () => {
+        const result = deriveLightColor("#000000");
+        expect(result).toMatch(/^#[0-9a-f]{6}$/i);
+        expect(result.toLowerCase()).not.toBe("#000000");
+    });
+    it("returns fallback for malformed hex (e.g. #12, #gggggg)", () => {
+        expect(deriveLightColor("#12")).toMatch(/^#[0-9a-f]{6}$/i);
+        expect(deriveLightColor("#gggggg")).toMatch(/^#[0-9a-f]{6}$/i);
     });
 });
 

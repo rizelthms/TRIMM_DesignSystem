@@ -9,7 +9,7 @@ type Overrides = Record<string, string>;
 
 export function isValidColor(value: string | undefined): boolean {
     if (!value || typeof value !== "string") return false;
-    if (value.startsWith("#{") && value.endsWith("}")) return false; // Mendix template string
+    if (value.startsWith("#{") && value.endsWith("}")) return false;
     return (
         /^#[0-9a-f]{6}$/i.test(value) ||
         /^#[0-9a-f]{3}$/i.test(value) ||
@@ -112,6 +112,17 @@ export function deriveDarkColor(lightColor: string): string {
     let r = Math.max(0, ((num >> 16) & 0xFF) - 40);
     let g = Math.max(0, ((num >> 8) & 0xFF) - 40);
     let b = Math.max(0, (num & 0xFF) - 40);
+    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+}
+
+export function deriveLightColor(darkColor: string): string {
+    // Simple lighten by 20% for demonstration; for production, use a color lib
+    let c = darkColor.replace('#', '');
+    if (c.length === 3) c = c.split('').map(x => x + x).join('');
+    let num = parseInt(c, 16);
+    let r = Math.min(255, ((num >> 16) & 0xFF) + 40);
+    let g = Math.min(255, ((num >> 8) & 0xFF) + 40);
+    let b = Math.min(255, (num & 0xFF) + 40);
     return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
 }
 
@@ -291,17 +302,26 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     }, []);
 
     function handleChange(token: string, value: string) {
-        const lightOverrides = { ...getOverrides("light"), [token]: value };
-        setOverrides("light", lightOverrides);
-        const derived = deriveDarkColor(value);
-        const darkOverrides = { ...getOverrides("dark"), [token]: derived };
-        setOverrides("dark", darkOverrides);
-        if (getCurrentTheme() === "dark") {
-            setOverridesState(darkOverrides);
-            applyOverrides(darkOverrides);
-        } else {
+        const currentTheme = getCurrentTheme();
+        
+        if (currentTheme === "light") {
+            // User is in light mode: set light color to their choice, derive dark color
+            const lightOverrides = { ...getOverrides("light"), [token]: value };
+            setOverrides("light", lightOverrides);
+            const derivedDark = deriveDarkColor(value);
+            const darkOverrides = { ...getOverrides("dark"), [token]: derivedDark };
+            setOverrides("dark", darkOverrides);
             setOverridesState(lightOverrides);
             applyOverrides(lightOverrides);
+        } else {
+            // User is in dark mode: set dark color to their choice, derive light color
+            const darkOverrides = { ...getOverrides("dark"), [token]: value };
+            setOverrides("dark", darkOverrides);
+            const derivedLight = deriveLightColor(value);
+            const lightOverrides = { ...getOverrides("light"), [token]: derivedLight };
+            setOverrides("light", lightOverrides);
+            setOverridesState(darkOverrides);
+            applyOverrides(darkOverrides);
         }
     }
 
