@@ -303,7 +303,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
     function handleChange(token: string, value: string) {
         const currentTheme = getCurrentTheme();
-        
+
         if (currentTheme === "light") {
             // User is in light mode: set light color to their choice, derive dark color
             const lightOverrides = { ...getOverrides("light"), [token]: value };
