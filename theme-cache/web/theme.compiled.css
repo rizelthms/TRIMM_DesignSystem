@@ -31108,21 +31108,10 @@ input.form-control:disabled {
   position: relative;
 }
 .chat-bubble-wrapper:not(.chat-bubble-wrapper--user) {
-  margin-left: 40px;
+  margin-left: 0;
 }
 .chat-bubble-wrapper:not(.chat-bubble-wrapper--user)::before {
-  content: "🤖";
-  position: absolute;
-  left: -40px;
-  top: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--brand-1);
-  border-radius: 999px;
-  font-size: 18px;
+  display: none;
 }
 .chat-bubble-wrapper .chat-message-card {
   background: var(--base-white);
@@ -31140,21 +31129,10 @@ input.form-control:disabled {
 }
 .chat-bubble-wrapper--user {
   align-items: flex-end;
-  margin-right: 40px;
+  margin-right: 0;
 }
 .chat-bubble-wrapper--user::after {
-  content: "👤";
-  position: absolute;
-  right: -40px;
-  top: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--brand-2);
-  border-radius: 999px;
-  font-size: 18px;
+  display: none;
 }
 .chat-bubble-wrapper--user .chat-message-card {
   background: var(--brand-2);
@@ -31214,16 +31192,16 @@ input.form-control:disabled {
 }
 .chat-input-wrapper .send-btn-container .send-btn {
   position: absolute;
-  right: 24px;
-  bottom: 50%;
-  transform: translateY(50%);
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   border-radius: 999px;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   padding: 0;
   background-color: var(--brand-2);
   border: none;
@@ -31232,17 +31210,17 @@ input.form-control:disabled {
 }
 .chat-input-wrapper .send-btn-container .send-btn:hover {
   background-color: var(--brand-2-hover);
-  transform: translateY(50%) scale(1.05);
+  transform: translateY(-50%) scale(1.05);
 }
 .chat-input-wrapper .send-btn-container .send-btn:active {
   background-color: var(--brand-2-active);
-  transform: translateY(50%) scale(0.95);
+  transform: translateY(-50%) scale(0.95);
 }
 .chat-input-wrapper .send-btn-container .send-btn .glyphicon {
   top: 0 !important;
   left: 1px !important;
   margin: 0 !important;
-  font-size: 18px !important;
+  font-size: 16px !important;
   color: var(--base-white) !important;
 }
 

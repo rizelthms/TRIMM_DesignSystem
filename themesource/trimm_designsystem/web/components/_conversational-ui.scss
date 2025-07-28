@@ -254,23 +254,12 @@
     justify-content: center;
     position: relative;
 
-    // Add avatar space for assistant messages
+        // Add avatar space for assistant messages
     &:not(.chat-bubble-wrapper--user) {
-        margin-left: $spacing-40;
-
+        margin-left: 0;
+        
         &::before {
-            content: "🤖";
-            position: absolute;
-            left: -$spacing-40;
-            top: 0;
-            width: $spacing-40;
-            height: $spacing-40;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--brand-1);
-            border-radius: $radius-full;
-            font-size: $font-size-body-1;
+            display: none;
         }
     }
 
@@ -292,21 +281,10 @@
     // User messages (right-aligned)
     &--user {
         align-items: flex-end;
-        margin-right: $spacing-40;
+        margin-right: 0;
 
         &::after {
-            content: "👤";
-            position: absolute;
-            right: -$spacing-40;
-            top: 0;
-            width: $spacing-40;
-            height: $spacing-40;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--brand-2);
-            border-radius: $radius-full;
-            font-size: $font-size-body-1;
+            display: none;
         }
 
         .chat-message-card {
@@ -378,16 +356,16 @@
 
         .send-btn {
             position: absolute;
-            right: $spacing-24;
-            bottom: 50%;
-            transform: translateY(50%);
+            right: $spacing-12;
+            top: 50%;
+            transform: translateY(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             border-radius: $radius-full;
-            width: $spacing-40;
-            height: $spacing-40;
+            width: $spacing-32;
+            height: $spacing-32;
             padding: 0;
             background-color: var(--brand-2);
             border: none;
@@ -396,19 +374,19 @@
 
             &:hover {
                 background-color: var(--brand-2-hover);
-                transform: translateY(50%) scale(1.05);
+                transform: translateY(-50%) scale(1.05);
             }
 
             &:active {
                 background-color: var(--brand-2-active);
-                transform: translateY(50%) scale(0.95);
+                transform: translateY(-50%) scale(0.95);
             }
 
             .glyphicon {
                 top: 0 !important;
                 left: 1px !important;
                 margin: 0 !important;
-                font-size: $font-size-body-1 !important;
+                font-size: $font-size-body-2 !important;
                 color: var(--base-white) !important;
             }
         }
