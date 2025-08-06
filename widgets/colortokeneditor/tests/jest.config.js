@@ -12,9 +12,7 @@ module.exports = {
         '/node_modules/'
     ],
     moduleNameMapper: {
-        '\\.(css|scss)$': 'identity-obj-proxy',
-        '^react$': '<rootDir>/node_modules/react',
-        '^react-dom$': '<rootDir>/node_modules/react-dom'
+        '\\.(css|scss)$': 'identity-obj-proxy'
     },
     collectCoverage: false,
     collectCoverageFrom: [
