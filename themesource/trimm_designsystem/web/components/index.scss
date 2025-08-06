@@ -1,19 +1,22 @@
-@import "./_alert.scss";
-@import "./_button.scss";
-@import "./_label.scss";
-@import "./_menu.scss";
-@import "./_radio.scss";
-@import "./_switch.scss";
-@import "./_tooltip.scss";
-@import "./_textarea.scss";
-@import "./_textbox.scss";
-@import "./_checkbox.scss";
-@import "./_accordion.scss";
-@import "./_tab.scss";
-@import "./_dropdown.scss";
-@import "./_datepicker.scss";
-@import "./_topbar.scss";
-@import "./sidebar.scss";
-@import "./_range-datepicker";
-@import "./_color-token-editor.scss";
-@import "./_conversational-ui.scss";
+// Restyled Atlas UI Components
+@import "./restyled/_accordion.scss";
+@import "./restyled/_alert.scss";
+@import "./restyled/_button.scss";
+@import "./restyled/_checkbox.scss";
+@import "./restyled/_label.scss";
+@import "./restyled/_menu.scss";
+@import "./restyled/_radio.scss";
+@import "./restyled/_sidebar.scss";
+@import "./restyled/_switch.scss";
+@import "./restyled/_tab.scss";
+@import "./restyled/_textarea.scss";
+@import "./restyled/_textbox.scss";
+@import "./restyled/_tooltip.scss";
+@import "./restyled/_topbar.scss";
+@import "./custom/_conversational-ui.scss";
+
+// Custom Components
+@import "./custom/_color-token-editor.scss";
+@import "./custom/_datepicker.scss";
+@import "./custom/_dropdown.scss";
+@import "./custom/_range-datepicker.scss";
