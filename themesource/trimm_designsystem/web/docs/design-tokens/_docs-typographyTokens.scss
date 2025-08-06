@@ -1,0 +1,238 @@
+// Documentation styles for typography tokens (typography swatches, cards, etc.)
+// BEM naming: docs-typographyToken-card, docs-typographyToken-swatch, etc.
+
+.docs-typographyToken-card {
+    border-radius: $radius-8;
+    box-shadow: $shadow-2;
+    padding: $spacing-16;
+    margin: $spacing-12;
+    width: 260px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    background: var(--base-white);
+    border: $border-1 solid #f0f0f0;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.docs-typographyToken-card:hover {
+    box-shadow: $shadow-6;
+}
+
+.docs-typographyToken-container {
+    width: 100%;
+    min-height: 56px;
+    border-radius: $radius-8;
+    margin-top: $spacing-8;
+    margin-bottom: $spacing-12;
+    margin-left: $spacing-16;
+    margin-right: $spacing-16;
+    background: var(--base-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.docs-typographyToken-name {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-body-3;
+    margin-bottom: $spacing-4;
+    color: var(--base-black);
+    word-break: break-all;
+}
+
+.docs-typographyToken-value {
+    font-family: $font-primary;
+    font-size: $font-size-body-4;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+    word-break: break-all;
+}
+
+.docs-typographyToken-desc {
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-light;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+}
+
+.docs-typographyToken-center-card,
+mx-templategrid-content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+.docs-typographyToken-section-grid {
+    background: #fff;
+    border-radius: $radius-16;
+    box-shadow: $shadow-6;
+    margin-top: $spacing-32;
+    margin-bottom: $spacing-40;
+    padding: $spacing-32 $spacing-24;
+    border: 1px solid var(--secondary-1);
+    transition: box-shadow 0.2s;
+    position: relative;
+  }
+  
+  // Optional: Add a hover effect for interactivity
+  .docs-typographyToken-section-grid:hover {
+    box-shadow: $shadow-6;
+    border-color: var(--brand-2);
+  }
+
+// Typography swatch utility classes for documentation/demo purposes
+// Usage: Add the class name (e.g., 'font-size-h1-swatch') to the SwatchClass attribute in Mendix
+
+.font-size-h1-swatch {
+    font-size: $font-size-h1;
+    line-height: $line-height-h1;
+    font-weight: $font-weight-bold;
+    font-family: $font-primary;
+    color: var(--base-black);
+}
+.font-size-h2-swatch {
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+    font-weight: $font-weight-semibold;
+    font-family: $font-primary;
+}
+.font-size-h3-swatch {
+    font-size: $font-size-h3;
+    line-height: $line-height-h3;
+    font-weight: $font-weight-semibold;
+    font-family: $font-primary;
+}
+.font-size-h4-swatch {
+    font-size: $font-size-h4;
+    line-height: $line-height-h4;
+    font-weight: $font-weight-medium;
+    font-family: $font-primary;
+}
+.font-size-h5-swatch {
+    font-size: $font-size-h5;
+    line-height: $line-height-h5;
+    font-weight: $font-weight-medium;
+    font-family: $font-primary;
+}
+.font-size-h6-swatch {
+    font-size: $font-size-h6;
+    line-height: $line-height-h6;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+}
+
+.font-size-body-1-swatch {
+    font-size: $font-size-body-1;
+    line-height: $line-height-body-1;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+}
+.font-size-body-2-swatch {
+    font-size: $font-size-body-2;
+    line-height: $line-height-body-2;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+}
+.font-size-body-3-swatch {
+    font-size: $font-size-body-3;
+    line-height: $line-height-body-3;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+}
+.font-size-body-4-swatch {
+    font-size: $font-size-body-4;
+    line-height: $line-height-body-4;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+}
+
+// Font weight swatch utility classes
+.font-weight-light-swatch {
+    font-weight: $font-weight-light;
+    font-family: $font-primary;
+}
+.font-weight-regular-swatch {
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+}
+.font-weight-medium-swatch {
+    font-weight: $font-weight-medium;
+    font-family: $font-primary;
+}
+.font-weight-semibold-swatch {
+    font-weight: $font-weight-semibold;
+    font-family: $font-primary;
+}
+.font-weight-bold-swatch {
+    font-weight: $font-weight-bold;
+    font-family: $font-primary;
+}
+
+// === Line height swatch utility classes for documentation/demo purposes ===
+// Usage: Add the class name (e.g., 'line-height-h1-swatch') to the SwatchClass attribute in Mendix
+// These use a fixed font size (18px) so the line height effect is visible
+
+.line-height-h1-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-h1;
+    font-family: $font-primary;
+}
+.line-height-h2-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-h2;
+    font-family: $font-primary;
+}
+.line-height-h3-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-h3;
+    font-family: $font-primary;
+}
+.line-height-h4-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-h4;
+    font-family: $font-primary;
+}
+.line-height-h5-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-h5;
+    font-family: $font-primary;
+}
+.line-height-h6-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-h6;
+    font-family: $font-primary;
+}
+.line-height-body-1-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-body-1;
+    font-family: $font-primary;
+}
+.line-height-body-2-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-body-2;
+    font-family: $font-primary;
+}
+.line-height-body-3-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-body-3;
+    font-family: $font-primary;
+}
+.line-height-body-4-swatch {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-body-4;
+    font-family: $font-primary;
+}

@@ -1,0 +1,65 @@
+.docs-colorTokenEditorCustom-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: $spacing-8 $spacing-8;
+    background: var(--base-white);
+    border-radius: $radius-4;
+    margin-bottom: $spacing-8;
+    margin-left: auto;
+    margin-right: auto;
+    border: $border-1 solid #e5e7eb;
+    box-shadow: $shadow-8;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+    position: relative;
+
+    .trimm-color-token-fab {
+        position: absolute !important;
+        left: 50% !important;
+        top: 16px !important;
+        transform: translateX(-50%) !important;
+        z-index: 10 !important;
+        box-shadow: $shadow-6 rgba(0, 0, 0, 0.1);
+    }
+}
+
+.docs-colorTokenEditorCustom-sectionTitle {
+    font-size: $font-size-h4;
+    font-weight: $font-weight-bold;
+    color: $font-primary;
+    text-align: left;
+    margin-bottom: $spacing-8;
+    margin-top: $spacing-24;
+}
+
+.docs-colorTokenEditorCustom-sectionText {
+    font-size: $font-size-body-2;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-body-1;
+    color: $font-primary;
+    text-align: left;
+    margin-bottom: $spacing-16;
+    margin-top: 0;
+}
+
+.docs-colorTokenEditorCustom-name {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-h4;
+    margin-bottom: $spacing-4;
+    color: var(--base-black);
+    word-break: break-all;
+    text-align: center;
+}
+
+.docs-colorTokenEditorCustom-card table {
+    margin-left: auto;
+    margin-right: auto;
+}
+.docs-colorTokenEditorCustom-card table th,
+.docs-colorTokenEditorCustom-card table td {
+    text-align: center;
+    vertical-align: middle;
+}

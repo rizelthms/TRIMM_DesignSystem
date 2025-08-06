@@ -1,0 +1,90 @@
+// Documentation styles for shadow tokens (shadow swatches, cards, etc.)
+// BEM naming: docs-shadowToken-card, docs-shadowToken-swatch, etc.
+
+.docs-shadowToken-card {
+    border-radius: $radius-8;
+    box-shadow: $shadow-2;
+    padding: $spacing-16;
+    margin: $spacing-12;
+    width: 190px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    background: var(--base-white);
+    border: $border-1 solid #f0f0f0;
+    transition: box-shadow 0.2s;
+    position: relative;
+}
+
+.docs-shadowToken-card:hover {
+    box-shadow: $shadow-6;
+}
+
+.docs-shadowToken-container {
+    width: 100%;
+    height: 48px;
+    border-radius: $radius-8;
+    margin-top: $spacing-8;
+    margin-bottom: $spacing-12;
+    background: var(--secondary-2);
+    // The box-shadow will be set dynamically via the Mendix Style property (e.g., {ShadowStyle})
+    box-sizing: border-box;
+}
+
+.docs-shadowToken-name {
+    font-weight: $font-weight-semibold;
+    font-size: $font-size-body-3;
+    margin-bottom: $spacing-4;
+    color: var(--base-black);
+    word-break: break-all;
+}
+
+.docs-shadowToken-value {
+    font-family: $font-primary;
+    font-size: $font-size-body-4;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+    word-break: break-all;
+}
+
+.docs-shadowToken-desc {
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-light;
+    color: var(--secondary-1);
+    margin-bottom: $spacing-8;
+}
+
+.docs-shadowToken-center-card,
+mx-templategrid-content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+}
+
+// Shadow utility classes for documentation/demo purposes
+// Usage: Add the class name (e.g., 'shadow-style-2') to the ShadowStyleClass attribute in Mendix
+
+.shadow-style-0 {
+    box-shadow: $shadow-0;
+}
+
+.shadow-style-2 {
+    box-shadow: $shadow-2;
+}
+
+.shadow-style-3 {
+    box-shadow: $shadow-3;
+}
+
+.shadow-style-6 {
+    box-shadow: $shadow-6;
+}
+
+.shadow-style-8 {
+    box-shadow: $shadow-8;
+}
+
+.shadow-style-12 {
+    box-shadow: $shadow-12;
+}
