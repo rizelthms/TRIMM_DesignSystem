@@ -62,8 +62,9 @@ mx-templategrid-content-wrapper {
     text-align: center;
 }
 
-// Shadow utility classes for documentation/demo purposes
-// Usage: Add the class name (e.g., 'shadow-style-2') to the ShadowStyleClass attribute in Mendix
+// Shadow utility classes for Mendix Dynamic Classes binding
+// Usage: Add the class name (e.g., 'shadow-style-2') to the ShadowStyleClass attribute in the Java action
+// These classes are used with the docs-shadowToken-container class for shadow display
 
 .shadow-style-0 {
     box-shadow: $shadow-0;

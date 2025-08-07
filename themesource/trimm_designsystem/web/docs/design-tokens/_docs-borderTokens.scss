@@ -62,9 +62,9 @@ mx-templategrid-content-wrapper {
     text-align: center;
 }
 
-// Border style utility classes for documentation/demo purposes
-// These use the border tokens from _border.scss for consistency
-// Usage: Add the class name (e.g., 'border-style-1') to the BorderStyleClass attribute in Mendix
+// Border style utility classes for Mendix Dynamic Classes binding
+// Usage: Add the class name (e.g., 'border-style-1') to the BorderStyle attribute in the Java action
+// These classes are used with the docs-borderToken-container class for border display
 
 .border-style-0 {
     border: $border-0 solid var(--brand-2);
