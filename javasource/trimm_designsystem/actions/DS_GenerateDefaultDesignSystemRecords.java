@@ -14,29 +14,80 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
-{
-	public DS_GenerateDefaultDesignSystemRecords(IContext context)
-	{
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
+	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
-	{
+	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
-		
+		IContext context = getContext();
+
+		// --- DS_DesignToken records (Colors only) ---
+		Object[][] tokens = new Object[][] {
+				// Brand Colors (from _themes.scss)
+				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
+						null, null, null, null, null, 1 },
+				{ "--brand-2", "#f37123", "Color", "Secondary brand color (Orange)", "swatch-brand-2", null, null, null,
+						null, null, null, null, 2 },
+				{ "--brand-3", "#0e808a", "Color", "Tertiary brand color (Teal)", "swatch-brand-3", null, null, null,
+						null, null, null, null, 3 },
+
+				// Base Colors
+				{ "--base-black", "#231f20", "Color", "Base black color", "swatch-base-black", null, null, null, null,
+						null, null, null, 4 },
+				{ "--base-white", "#ffffff", "Color", "Base white color", "swatch-base-white", null, null, null, null,
+						null, null, null, 5 },
+
+				// Secondary Colors
+				{ "--secondary-1", "#6e6f72", "Color", "Secondary color (Dark Grey)", "swatch-secondary-1", null, null,
+						null, null, null, null, null, 6 },
+				{ "--secondary-2", "#edd7c4", "Color", "Secondary color (Beige)", "swatch-secondary-2", null, null,
+						null, null, null, null, null, 7 },
+
+				// Support Colors
+				{ "--support-1", "#392b78", "Color", "Support color (Purple)", "swatch-support-1", null, null, null,
+						null, null, null, null, 8 },
+				{ "--support-2", "#b92025", "Color", "Support color (Red - Error/Danger)", "swatch-support-2", null,
+						null, null, null, null, null, null, 9 },
+				{ "--support-3", "#176e4e", "Color", "Support color (Green - Success)", "swatch-support-3", null, null,
+						null, null, null, null, null, 10 },
+				{ "--support-4", "#ffc107", "Color", "Support color (Yellow - Warning)", "swatch-support-4", null, null,
+						null, null, null, null, null, 11 }
+		};
+
+		for (Object[] t : tokens) {
+			IMendixObject token = Core.instantiate(context, "TRIMM_DesignSystem.DS_DesignToken");
+			token.setValue(context, "TokenName", t[0]);
+			token.setValue(context, "TokenValue", t[1]);
+			token.setValue(context, "Category", t[2]);
+			token.setValue(context, "Description", t[3]);
+			token.setValue(context, "ColorStyle", t[4]); // Color swatch classes
+			token.setValue(context, "ShadowStyle", t[5]);
+			token.setValue(context, "RadiusStyle", t[6]);
+			token.setValue(context, "BorderStyle", t[7]);
+			token.setValue(context, "BorderStyleClass", t[8]);
+			token.setValue(context, "SpacingStyle", t[9]);
+			token.setValue(context, "SpacingStyleClass", t[10]);
+			token.setValue(context, "TypographyStyle", t[11]);
+			token.setValue(context, "RadiusStyleClass", t[12]);
+			token.setValue(context, "ShadowStyleClass", t[13]);
+			token.setValue(context, "SortOrder", t[14]);
+			Core.commit(context, token);
+		}
+
 		return null;
 		// END USER CODE
 	}
 
 	/**
 	 * Returns a string representation of this action
+	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString()
-	{
+	public java.lang.String toString() {
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
