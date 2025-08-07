@@ -24,7 +24,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// BEGIN USER CODE
 		IContext context = getContext();
 
-		// --- DS_DesignToken records (Colors only) ---
+		// --- DS_DesignToken records (Colors and Borders) ---
 		Object[][] tokens = new Object[][] {
 				// Brand Colors (from _themes.scss)
 				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
@@ -54,7 +54,19 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "--support-3", "#176e4e", "Color", "Support color (Green - Success)", "swatch-support-3", null, null,
 						null, null, null, null, null, 10 },
 				{ "--support-4", "#ffc107", "Color", "Support color (Yellow - Warning)", "swatch-support-4", null, null,
-						null, null, null, null, null, 11 }
+						null, null, null, null, null, 11 },
+
+				// Border (from _border.scss)
+				{ "$border-0", "0", "Border", "No border", null, null, null, "0", "border-style-0", null, null, null,
+						12 },
+				{ "$border-1", "1px", "Border", "Thin border", null, null, null, "1px", "border-style-1", null, null,
+						null, 13 },
+				{ "$border-2", "2px", "Border", "Medium border", null, null, null, "2px", "border-style-2", null, null,
+						null, 14 },
+				{ "$border-4", "4px", "Border", "Thick border", null, null, null, "4px", "border-style-4", null, null,
+						null, 15 },
+				{ "$border-8", "8px", "Border", "Extra thick border", null, null, null, "8px", "border-style-8", null,
+						null, null, 16 }
 		};
 
 		for (Object[] t : tokens) {
