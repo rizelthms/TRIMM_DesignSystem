@@ -14,16 +14,13 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
-{
-	public DS_GenerateDefaultDesignSystemRecords(IContext context)
-	{
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
+	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
-	{
+	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -186,17 +183,89 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			Core.commit(context, token);
 		}
 
+		// --- DS_Component records (Restyled Components) ---
+		Object[][] components = new Object[][] {
+				// Accordion Component
+				{ "Accordion", "Accordion", "RestyledMendix", "Navigation", "Stable",
+						"Restyled Atlas accordion widget with TRIMM design tokens and brand colors", "1.0", true },
+
+				// Alert Component
+				{ "Alert", "Alert", "RestyledMendix", "Feedback", "Stable",
+						"Restyled Atlas alert widget with TRIMM color variants and typography", "1.0", true },
+
+				// Button Component
+				{ "Button", "Button", "RestyledMendix", "Interactive", "Stable",
+						"Restyled Atlas button widget with TRIMM variants, sizes, and brand styling", "1.0", true },
+
+				// Checkbox Component
+				{ "Checkbox", "Checkbox", "RestyledMendix", "Form", "Stable",
+						"Restyled Atlas checkbox widget with TRIMM design system styling", "1.0", true },
+
+				// Label Component
+				{ "Label", "Label", "RestyledMendix", "Display", "Stable",
+						"Restyled Atlas label widget with TRIMM color variants and sizing options", "1.0", true },
+
+				// Menu Component
+				{ "Menu", "Menu", "RestyledMendix", "Navigation", "Stable",
+						"Restyled Atlas menu widget with TRIMM brand colors and navigation styling", "1.0", true },
+
+				// Radio Component
+				{ "Radio", "Radio", "RestyledMendix", "Form", "Stable",
+						"Restyled Atlas radio button widget with TRIMM design tokens and styling", "1.0", true },
+
+				// Sidebar Component
+				{ "Sidebar", "Sidebar", "RestyledMendix", "Navigation", "Stable",
+						"Restyled Atlas sidebar navigation with TRIMM brand colors and layout", "1.0", true },
+
+				// Switch Component
+				{ "Switch", "Switch", "RestyledMendix", "Form", "Stable",
+						"Restyled Atlas switch/toggle widget with TRIMM design system styling", "1.0", true },
+
+				// Tab Component
+				{ "Tab", "Tab", "RestyledMendix", "Navigation", "Stable",
+						"Restyled Atlas tab container widget with TRIMM styling and interactions", "1.0", true },
+
+				// Textarea Component
+				{ "Textarea", "Textarea", "RestyledMendix", "Form", "Stable",
+						"Restyled Atlas textarea widget with TRIMM design tokens and form styling", "1.0", true },
+
+				// Textbox Component
+				{ "Textbox", "Textbox", "RestyledMendix", "Form", "Stable",
+						"Restyled Atlas textbox widget with TRIMM design tokens and form styling", "1.0", true },
+
+				// Tooltip Component
+				{ "Tooltip", "Tooltip", "RestyledMendix", "Display", "Stable",
+						"Restyled Atlas tooltip widget with TRIMM design and contextual styling", "1.0", true },
+
+				// Topbar Component
+				{ "Topbar", "Topbar", "RestyledMendix", "Navigation", "Stable",
+						"Restyled Atlas topbar navigation with TRIMM brand colors and layout", "1.0", true }
+		};
+
+		for (Object[] c : components) {
+			IMendixObject component = Core.instantiate(context, "TRIMM_DesignSystem.DS_Component");
+			component.setValue(context, "Name", c[0]);
+			component.setValue(context, "DisplayName", c[1]);
+			component.setValue(context, "ComponentType", c[2]);
+			component.setValue(context, "Category", c[3]);
+			component.setValue(context, "Status", c[4]);
+			component.setValue(context, "Description", c[5]);
+			component.setValue(context, "Version", c[6]);
+			component.setValue(context, "IsActive", c[7]);
+			Core.commit(context, component);
+		}
+
 		return null;
 		// END USER CODE
 	}
 
 	/**
 	 * Returns a string representation of this action
+	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString()
-	{
+	public java.lang.String toString() {
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
