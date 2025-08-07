@@ -28,71 +28,66 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		Object[][] tokens = new Object[][] {
 				// Brand Colors (from _themes.scss)
 				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
-						null, null, null, null, null, 1 },
+						null, null, null, 1 },
 				{ "--brand-2", "#f37123", "Color", "Secondary brand color (Orange)", "swatch-brand-2", null, null, null,
-						null, null, null, null, 2 },
+						null, null, 2 },
 				{ "--brand-3", "#0e808a", "Color", "Tertiary brand color (Teal)", "swatch-brand-3", null, null, null,
-						null, null, null, null, 3 },
+						null, null, 3 },
 
 				// Base Colors
 				{ "--base-black", "#231f20", "Color", "Base black color", "swatch-base-black", null, null, null, null,
-						null, null, null, 4 },
+						null, 4 },
 				{ "--base-white", "#ffffff", "Color", "Base white color", "swatch-base-white", null, null, null, null,
-						null, null, null, 5 },
+						null, 5 },
 
 				// Secondary Colors
 				{ "--secondary-1", "#6e6f72", "Color", "Secondary color (Dark Grey)", "swatch-secondary-1", null, null,
-						null, null, null, null, null, 6 },
+						null, null, null, 6 },
 				{ "--secondary-2", "#edd7c4", "Color", "Secondary color (Beige)", "swatch-secondary-2", null, null,
-						null, null, null, null, null, 7 },
+						null, null, null, 7 },
 
 				// Support Colors
 				{ "--support-1", "#392b78", "Color", "Support color (Purple)", "swatch-support-1", null, null, null,
-						null, null, null, null, 8 },
+						null, null, 8 },
 				{ "--support-2", "#b92025", "Color", "Support color (Red - Error/Danger)", "swatch-support-2", null,
-						null, null, null, null, null, null, 9 },
+						null, null, null, null, 9 },
 				{ "--support-3", "#176e4e", "Color", "Support color (Green - Success)", "swatch-support-3", null, null,
-						null, null, null, null, null, 10 },
+						null, null, null, 10 },
 				{ "--support-4", "#ffc107", "Color", "Support color (Yellow - Warning)", "swatch-support-4", null, null,
-						null, null, null, null, null, 11 },
+						null, null, null, 11 },
 
 				// Border (from _border.scss)
-				{ "$border-0", "0", "Border", "No border", null, null, null, "0", "border-style-0", null, null, null,
-						12 },
-				{ "$border-1", "1px", "Border", "Thin border", null, null, null, "1px", "border-style-1", null, null,
-						null, 13 },
-				{ "$border-2", "2px", "Border", "Medium border", null, null, null, "2px", "border-style-2", null, null,
-						null, 14 },
-				{ "$border-4", "4px", "Border", "Thick border", null, null, null, "4px", "border-style-4", null, null,
-						null, 15 },
-				{ "$border-8", "8px", "Border", "Extra thick border", null, null, null, "8px", "border-style-8", null,
-						null, null, 16 },
+				{ "$border-0", "0", "Border", "No border", null, null, null, "border-style-0", null, null, 12 },
+				{ "$border-1", "1px", "Border", "Thin border", null, null, null, "border-style-1", null, null, 13 },
+				{ "$border-2", "2px", "Border", "Medium border", null, null, null, "border-style-2", null, null, 14 },
+				{ "$border-4", "4px", "Border", "Thick border", null, null, null, "border-style-4", null, null, 15 },
+				{ "$border-8", "8px", "Border", "Extra thick border", null, null, null, "border-style-8", null, null,
+						16 },
 
 				// Radius (from _radius.scss)
-				{ "$radius-0", "0px", "Radius", "No border radius", null, null, "0px", null, null, null, null,
-						"radius-style-0", 17 },
-				{ "$radius-4", "4px", "Radius", "Small border radius", null, null, "4px", null, null, null, null,
-						"radius-style-4", 18 },
-				{ "$radius-8", "8px", "Radius", "Medium border radius", null, null, "8px", null, null, null, null,
-						"radius-style-8", 19 },
-				{ "$radius-16", "16px", "Radius", "Large border radius", null, null, "16px", null, null, null, null,
-						"radius-style-16", 20 },
-				{ "$radius-full", "999px", "Radius", "Full border radius (circular)", null, null, "999px", null, null,
-						null, null, "radius-style-full", 21 },
+				{ "$radius-0", "0px", "Radius", "No border radius", null, null, "radius-style-0", null, null, null,
+						17 },
+				{ "$radius-4", "4px", "Radius", "Small border radius", null, null, "radius-style-4", null, null, null,
+						18 },
+				{ "$radius-8", "8px", "Radius", "Medium border radius", null, null, "radius-style-8", null, null, null,
+						19 },
+				{ "$radius-16", "16px", "Radius", "Large border radius", null, null, "radius-style-16", null, null,
+						null, 20 },
+				{ "$radius-full", "999px", "Radius", "Full border radius (circular)", null, null, "radius-style-full",
+						null, null, null, 21 },
 
 				// Shadow (from _shadow.scss)
-				{ "$shadow-0", "none", "Shadow", "No shadow", null, "none", null, null, null, null, null,
-						"shadow-style-0", 22 },
-				{ "$shadow-2", "0 2px 4px rgba(27, 28, 29, 0.05)", "Shadow", "Light shadow", null,
-						"0 2px 4px rgba(27, 28, 29, 0.05)", null, null, null, null, null, "shadow-style-2", 23 },
-				{ "$shadow-3", "0 4px 8px rgba(27, 28, 29, 0.10)", "Shadow", "Small shadow", null,
-						"0 4px 8px rgba(27, 28, 29, 0.10)", null, null, null, null, null, "shadow-style-3", 24 },
-				{ "$shadow-6", "0 6px 12px rgba(27, 28, 29, 0.12)", "Shadow", "Medium shadow", null,
-						"0 6px 12px rgba(27, 28, 29, 0.12)", null, null, null, null, null, "shadow-style-6", 25 },
-				{ "$shadow-8", "0 8px 16px rgba(27, 28, 29, 0.15)", "Shadow", "Large shadow", null,
-						"0 8px 16px rgba(27, 28, 29, 0.15)", null, null, null, null, null, "shadow-style-8", 26 },
+				{ "$shadow-0", "none", "Shadow", "No shadow", null, "shadow-style-0", null, null, null, null, 22 },
+				{ "$shadow-2", "0 2px 4px rgba(27, 28, 29, 0.05)", "Shadow", "Light shadow", null, "shadow-style-2",
+						null, null, null, null, 23 },
+				{ "$shadow-3", "0 4px 8px rgba(27, 28, 29, 0.10)", "Shadow", "Small shadow", null, "shadow-style-3",
+						null, null, null, null, 24 },
+				{ "$shadow-6", "0 6px 12px rgba(27, 28, 29, 0.12)", "Shadow", "Medium shadow", null, "shadow-style-6",
+						null, null, null, null, 25 },
+				{ "$shadow-8", "0 8px 16px rgba(27, 28, 29, 0.15)", "Shadow", "Large shadow", null, "shadow-style-8",
+						null, null, null, null, 26 },
 				{ "$shadow-12", "0 12px 24px rgba(27, 28, 29, 0.20)", "Shadow", "Extra large shadow", null,
-						"0 12px 24px rgba(27, 28, 29, 0.20)", null, null, null, null, null, "shadow-style-12", 27 }
+						"shadow-style-12", null, null, null, null, 27 }
 		};
 
 		for (Object[] t : tokens) {
@@ -105,13 +100,9 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			token.setValue(context, "ShadowStyle", t[5]);
 			token.setValue(context, "RadiusStyle", t[6]);
 			token.setValue(context, "BorderStyle", t[7]);
-			token.setValue(context, "BorderStyleClass", t[8]);
-			token.setValue(context, "SpacingStyle", t[9]);
-			token.setValue(context, "SpacingStyleClass", t[10]);
-			token.setValue(context, "TypographyStyle", t[11]);
-			token.setValue(context, "RadiusStyleClass", t[12]);
-			token.setValue(context, "ShadowStyleClass", t[13]);
-			token.setValue(context, "SortOrder", t[14]);
+			token.setValue(context, "SpacingStyle", t[8]);
+			token.setValue(context, "TypographyStyle", t[9]);
+			token.setValue(context, "SortOrder", t[10]);
 			Core.commit(context, token);
 		}
 
