@@ -24,7 +24,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// BEGIN USER CODE
 		IContext context = getContext();
 
-		// --- DS_DesignToken records (Colors, Borders, and Radius) ---
+		// --- DS_DesignToken records (Colors, Borders, Radius, and Shadows) ---
 		Object[][] tokens = new Object[][] {
 				// Brand Colors (from _themes.scss)
 				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
@@ -78,7 +78,21 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "$radius-16", "16px", "Radius", "Large border radius", null, null, "16px", null, null, null, null,
 						"radius-style-16", 20 },
 				{ "$radius-full", "999px", "Radius", "Full border radius (circular)", null, null, "999px", null, null,
-						null, null, "radius-style-full", 21 }
+						null, null, "radius-style-full", 21 },
+
+				// Shadow (from _shadow.scss)
+				{ "$shadow-0", "none", "Shadow", "No shadow", null, "none", null, null, null, null, null,
+						"shadow-style-0", 22 },
+				{ "$shadow-2", "0 2px 4px rgba(27, 28, 29, 0.05)", "Shadow", "Light shadow", null,
+						"0 2px 4px rgba(27, 28, 29, 0.05)", null, null, null, null, null, "shadow-style-2", 23 },
+				{ "$shadow-3", "0 4px 8px rgba(27, 28, 29, 0.10)", "Shadow", "Small shadow", null,
+						"0 4px 8px rgba(27, 28, 29, 0.10)", null, null, null, null, null, "shadow-style-3", 24 },
+				{ "$shadow-6", "0 6px 12px rgba(27, 28, 29, 0.12)", "Shadow", "Medium shadow", null,
+						"0 6px 12px rgba(27, 28, 29, 0.12)", null, null, null, null, null, "shadow-style-6", 25 },
+				{ "$shadow-8", "0 8px 16px rgba(27, 28, 29, 0.15)", "Shadow", "Large shadow", null,
+						"0 8px 16px rgba(27, 28, 29, 0.15)", null, null, null, null, null, "shadow-style-8", 26 },
+				{ "$shadow-12", "0 12px 24px rgba(27, 28, 29, 0.20)", "Shadow", "Extra large shadow", null,
+						"0 12px 24px rgba(27, 28, 29, 0.20)", null, null, null, null, null, "shadow-style-12", 27 }
 		};
 
 		for (Object[] t : tokens) {
