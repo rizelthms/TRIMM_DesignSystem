@@ -24,7 +24,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// BEGIN USER CODE
 		IContext context = getContext();
 
-		// --- DS_DesignToken records (Colors and Borders) ---
+		// --- DS_DesignToken records (Colors, Borders, and Radius) ---
 		Object[][] tokens = new Object[][] {
 				// Brand Colors (from _themes.scss)
 				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
@@ -66,7 +66,19 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "$border-4", "4px", "Border", "Thick border", null, null, null, "4px", "border-style-4", null, null,
 						null, 15 },
 				{ "$border-8", "8px", "Border", "Extra thick border", null, null, null, "8px", "border-style-8", null,
-						null, null, 16 }
+						null, null, 16 },
+
+				// Radius (from _radius.scss)
+				{ "$radius-0", "0px", "Radius", "No border radius", null, null, "0px", null, null, null, null,
+						"radius-style-0", 17 },
+				{ "$radius-4", "4px", "Radius", "Small border radius", null, null, "4px", null, null, null, null,
+						"radius-style-4", 18 },
+				{ "$radius-8", "8px", "Radius", "Medium border radius", null, null, "8px", null, null, null, null,
+						"radius-style-8", 19 },
+				{ "$radius-16", "16px", "Radius", "Large border radius", null, null, "16px", null, null, null, null,
+						"radius-style-16", 20 },
+				{ "$radius-full", "999px", "Radius", "Full border radius (circular)", null, null, "999px", null, null,
+						null, null, "radius-style-full", 21 }
 		};
 
 		for (Object[] t : tokens) {
@@ -75,7 +87,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			token.setValue(context, "TokenValue", t[1]);
 			token.setValue(context, "Category", t[2]);
 			token.setValue(context, "Description", t[3]);
-			token.setValue(context, "ColorStyle", t[4]); // Color swatch classes
+			token.setValue(context, "ColorStyle", t[4]);
 			token.setValue(context, "ShadowStyle", t[5]);
 			token.setValue(context, "RadiusStyle", t[6]);
 			token.setValue(context, "BorderStyle", t[7]);
