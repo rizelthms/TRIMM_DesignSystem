@@ -14,13 +14,16 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
-	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
+{
+	public DS_GenerateDefaultDesignSystemRecords(IContext context)
+	{
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception {
+	public java.lang.Void executeAction() throws Exception
+	{
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -108,7 +111,63 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "$spacing-64", "64px", "Spacing", "Huge spacing", null, null, null, null, "spacing-style-64", null,
 						36 },
 				{ "$spacing-auto", "auto", "Spacing", "Auto spacing", null, null, null, null, "spacing-style-auto",
-						null, 37 }
+						null, 37 },
+
+				// Typography - Font Sizes (from _typography.scss)
+				{ "$font-size-h1", "32px", "Typography", "Heading 1 font size", null, null, null, null, null,
+						"font-size-h1-swatch", 38 },
+				{ "$font-size-h2", "28px", "Typography", "Heading 2 font size", null, null, null, null, null,
+						"font-size-h2-swatch", 39 },
+				{ "$font-size-h3", "24px", "Typography", "Heading 3 font size", null, null, null, null, null,
+						"font-size-h3-swatch", 40 },
+				{ "$font-size-h4", "20px", "Typography", "Heading 4 font size", null, null, null, null, null,
+						"font-size-h4-swatch", 41 },
+				{ "$font-size-h5", "18px", "Typography", "Heading 5 font size", null, null, null, null, null,
+						"font-size-h5-swatch", 42 },
+				{ "$font-size-h6", "16px", "Typography", "Heading 6 font size", null, null, null, null, null,
+						"font-size-h6-swatch", 43 },
+				{ "$font-size-body-1", "18px", "Typography", "Body 1 font size", null, null, null, null, null,
+						"font-size-body-1-swatch", 44 },
+				{ "$font-size-body-2", "16px", "Typography", "Body 2 font size", null, null, null, null, null,
+						"font-size-body-2-swatch", 45 },
+				{ "$font-size-body-3", "14px", "Typography", "Body 3 font size", null, null, null, null, null,
+						"font-size-body-3-swatch", 46 },
+				{ "$font-size-body-4", "12px", "Typography", "Body 4 font size", null, null, null, null, null,
+						"font-size-body-4-swatch", 47 },
+
+				// Typography - Font Weights
+				{ "$font-weight-light", "300", "Typography", "Light font weight", null, null, null, null, null,
+						"font-weight-light-swatch", 48 },
+				{ "$font-weight-regular", "400", "Typography", "Regular font weight", null, null, null, null, null,
+						"font-weight-regular-swatch", 49 },
+				{ "$font-weight-medium", "500", "Typography", "Medium font weight", null, null, null, null, null,
+						"font-weight-medium-swatch", 50 },
+				{ "$font-weight-semibold", "600", "Typography", "Semibold font weight", null, null, null, null, null,
+						"font-weight-semibold-swatch", 51 },
+				{ "$font-weight-bold", "700", "Typography", "Bold font weight", null, null, null, null, null,
+						"font-weight-bold-swatch", 52 },
+
+				// Typography - Line Heights
+				{ "$line-height-h1", "1.2", "Typography", "Heading 1 line height", null, null, null, null, null,
+						"line-height-h1-swatch", 53 },
+				{ "$line-height-h2", "1.25", "Typography", "Heading 2 line height", null, null, null, null, null,
+						"line-height-h2-swatch", 54 },
+				{ "$line-height-h3", "1.3", "Typography", "Heading 3 line height", null, null, null, null, null,
+						"line-height-h3-swatch", 55 },
+				{ "$line-height-h4", "1.35", "Typography", "Heading 4 line height", null, null, null, null, null,
+						"line-height-h4-swatch", 56 },
+				{ "$line-height-h5", "1.4", "Typography", "Heading 5 line height", null, null, null, null, null,
+						"line-height-h5-swatch", 57 },
+				{ "$line-height-h6", "1.45", "Typography", "Heading 6 line height", null, null, null, null, null,
+						"line-height-h6-swatch", 58 },
+				{ "$line-height-body-1", "1.5", "Typography", "Body 1 line height", null, null, null, null, null,
+						"line-height-body-1-swatch", 59 },
+				{ "$line-height-body-2", "1.5", "Typography", "Body 2 line height", null, null, null, null, null,
+						"line-height-body-2-swatch", 60 },
+				{ "$line-height-body-3", "1.4", "Typography", "Body 3 line height", null, null, null, null, null,
+						"line-height-body-3-swatch", 61 },
+				{ "$line-height-body-4", "1.3", "Typography", "Body 4 line height", null, null, null, null, null,
+						"line-height-body-4-swatch", 62 }
 		};
 
 		for (Object[] t : tokens) {
@@ -133,11 +192,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
-	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString() {
+	public java.lang.String toString()
+	{
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
