@@ -256,7 +256,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 				// Range Datepicker Component
 				{ "RangeDatepicker", "Range Datepicker", "Custom", "Form", "Stable",
-						"Custom range datepicker widget with TRIMM design system and date range selection", "1.0", true }
+						"Custom range datepicker widget with TRIMM design system and date range selection", "1.0",
+						true }
 		};
 
 		for (Object[] c : components) {
