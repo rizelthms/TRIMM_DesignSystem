@@ -239,7 +239,24 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 				// Topbar Component
 				{ "Topbar", "Topbar", "RestyledMendix", "Navigation", "Stable",
-						"Restyled Atlas topbar navigation with TRIMM brand colors and layout", "1.0", true }
+						"Restyled Atlas topbar navigation with TRIMM brand colors and layout", "1.0", true },
+
+				// Custom Components
+				// Color Token Editor Component
+				{ "ColorTokenEditor", "Color Token Editor", "Custom", "Development", "Stable",
+						"Custom color token editor widget with TRIMM design system integration", "1.0", true },
+
+				// Datepicker Component
+				{ "Datepicker", "Datepicker", "Custom", "Form", "Stable",
+						"Custom datepicker widget with TRIMM design tokens and calendar styling", "1.0", true },
+
+				// Dropdown Component
+				{ "Dropdown", "Dropdown", "Custom", "Interactive", "Stable",
+						"Custom dropdown widget with TRIMM brand colors and menu styling", "1.0", true },
+
+				// Range Datepicker Component
+				{ "RangeDatepicker", "Range Datepicker", "Custom", "Form", "Stable",
+						"Custom range datepicker widget with TRIMM design system and date range selection", "1.0", true }
 		};
 
 		for (Object[] c : components) {
