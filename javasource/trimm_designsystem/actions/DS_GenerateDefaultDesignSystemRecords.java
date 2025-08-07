@@ -87,7 +87,28 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "$shadow-8", "0 8px 16px rgba(27, 28, 29, 0.15)", "Shadow", "Large shadow", null, "shadow-style-8",
 						null, null, null, null, 26 },
 				{ "$shadow-12", "0 12px 24px rgba(27, 28, 29, 0.20)", "Shadow", "Extra large shadow", null,
-						"shadow-style-12", null, null, null, null, 27 }
+						"shadow-style-12", null, null, null, null, 27 },
+
+				// Spacing (from _spacing.scss)
+				{ "$spacing-0", "0px", "Spacing", "No spacing", null, null, null, null, "spacing-style-0", null, 28 },
+				{ "$spacing-4", "4px", "Spacing", "Extra small spacing", null, null, null, null, "spacing-style-4",
+						null, 29 },
+				{ "$spacing-8", "8px", "Spacing", "Small spacing", null, null, null, null, "spacing-style-8", null,
+						30 },
+				{ "$spacing-12", "12px", "Spacing", "Medium-small spacing", null, null, null, null, "spacing-style-12",
+						null, 31 },
+				{ "$spacing-16", "16px", "Spacing", "Medium spacing", null, null, null, null, "spacing-style-16", null,
+						32 },
+				{ "$spacing-24", "24px", "Spacing", "Large spacing", null, null, null, null, "spacing-style-24", null,
+						33 },
+				{ "$spacing-32", "32px", "Spacing", "Extra large spacing", null, null, null, null, "spacing-style-32",
+						null, 34 },
+				{ "$spacing-40", "40px", "Spacing", "Very large spacing", null, null, null, null, "spacing-style-40",
+						null, 35 },
+				{ "$spacing-64", "64px", "Spacing", "Huge spacing", null, null, null, null, "spacing-style-64", null,
+						36 },
+				{ "$spacing-auto", "auto", "Spacing", "Auto spacing", null, null, null, null, "spacing-style-auto",
+						null, 37 }
 		};
 
 		for (Object[] t : tokens) {
