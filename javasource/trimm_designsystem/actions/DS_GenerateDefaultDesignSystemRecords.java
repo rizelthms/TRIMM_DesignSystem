@@ -292,8 +292,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "btn-sm", "Small button size variant", 10, "Button" },
 				{ "btn-md", "Medium button size variant", 11, "Button" },
 				{ "btn-lg", "Large button size variant", 12, "Button" },
-				{ "btn-icon-right", "Button with icon on the right side", 13, "Button" },
-				{ "btn-icon-left", "Button with icon on the left side", 14, "Button" },
+				{ "btn-icon-right", "Button with icon on the right", 13, "Button" },
+				{ "btn-icon-left", "Button with icon on the left", 14, "Button" },
 
 				// Accordion Component Classes (associate to "Accordion")
 				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
@@ -329,7 +329,13 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
 
 				// Tab Component Classes (associate to "Tab")
-				{ "tab-base", "Base tab container styling with TRIMM design tokens", 38, "Tab" }
+				{ "tab-base", "Base tab container styling with TRIMM design tokens", 38, "Tab" },
+
+				// Textarea Component Classes (associate to "Textarea")
+				{ "textarea-base", "Base textarea styling with TRIMM design tokens", 39, "Textarea" },
+				{ "textarea-sm", "Small textarea size variant", 40, "Textarea" },
+				{ "textarea-md", "Medium textarea size variant", 41, "Textarea" },
+				{ "textarea-lg", "Large textarea size variant", 42, "Textarea" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -498,7 +504,28 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, tabComp);
-					Core.commit(context, classProxy.getMendixObject());
+					Core.commit(context, classList.get(0));
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Textarea classes to the Textarea component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> textareaCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Textarea']").execute(context);
+		if (!textareaCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject textareaCompObj = textareaCompList.get(0);
+			trimm_designsystem.proxies.DS_Component textareaComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, textareaCompObj);
+			String[] textareaClassNames = { "textarea-base", "textarea-sm", "textarea-md", "textarea-lg" };
+			for (String className : textareaClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, textareaComp);
+					Core.commit(context, classList.get(0));
 				}
 			}
 		}
