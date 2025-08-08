@@ -278,13 +278,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		}
 
 		// --- DS_ComponentClass records (Component Classes for all components) ---
-		// Only seed Button-related component classes now; others will be added
-		// incrementally in later commits.
 		Object[][] componentClasses = new Object[][] {
+				// Button Component Classes (associate to "Button")
 				{ "button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
 				{ "btn-default", "Default button variant with transparent background", 2, "Button" },
 				{ "btn-cta", "Call-to-action button with orange background", 3, "Button" },
-				{ "btn-inverse", "Inverse button variant with dark background", 4, "Button" },
+				{ "btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
 				{ "btn-primary", "Primary button variant with navy blue background", 5, "Button" },
 				{ "btn-info", "Info button variant with teal background", 6, "Button" },
 				{ "btn-success", "Success button variant with green background", 7, "Button" },
@@ -293,8 +292,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "btn-sm", "Small button size modifier", 10, "Button" },
 				{ "btn-md", "Medium button size modifier", 11, "Button" },
 				{ "btn-lg", "Large button size modifier", 12, "Button" },
-				{ "btn-icon-right", "Move icon to right of label", 13, "Button" },
-				{ "btn-icon-left", "Move icon to left of label", 14, "Button" }
+				{ "btn-icon-right", "Button with icon positioned on the right", 13, "Button" },
+				{ "btn-icon-left", "Button with icon positioned on the left", 14, "Button" },
+
+				// Accordion Component Classes (associate to "Accordion")
+				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -325,17 +327,38 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject buttonCompObj = buttonCompList.get(0);
 			trimm_designsystem.proxies.DS_Component buttonComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, buttonCompObj);
-			String[] buttonClassNames = new String[] { "button-base", "btn-default", "btn-cta", "btn-inverse",
-					"btn-primary", "btn-info", "btn-success", "btn-warning", "btn-danger", "btn-sm", "btn-md",
-					"btn-lg", "btn-icon-right", "btn-icon-left" };
-			for (String cls : buttonClassNames) {
+			String[] buttonClassNames = { "button-base", "btn-default", "btn-cta", "btn-inverse", "btn-primary",
+					"btn-info", "btn-success", "btn-warning", "btn-danger", "btn-sm", "btn-md", "btn-lg",
+					"btn-icon-right", "btn-icon-left" };
+			for (String className : buttonClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + cls + "']")
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
 						.execute(context);
 				if (!classList.isEmpty()) {
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, buttonComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Accordion classes to the Accordion component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> accordionCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Accordion']").execute(context);
+		if (!accordionCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject accordionCompObj = accordionCompList.get(0);
+			trimm_designsystem.proxies.DS_Component accordionComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, accordionCompObj);
+			String[] accordionClassNames = { "accordion-base" };
+			for (String className : accordionClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, accordionComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
