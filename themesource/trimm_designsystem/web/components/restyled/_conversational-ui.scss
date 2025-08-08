@@ -50,7 +50,7 @@
 .layout-chat-popup.mx-window {
     position: fixed !important;
     right: $spacing-32 !important;
-    bottom: calc($spacing-64 + $spacing-24) !important; // Above the popup button
+    bottom: calc($spacing-64 + $spacing-24) !important;
     left: unset !important;
     top: unset !important;
     width: 400px !important;
@@ -210,7 +210,7 @@
     display: flex;
     justify-content: flex-start;
     padding: $spacing-16;
-    margin-left: $spacing-40; // Account for avatar space
+    margin-left: $spacing-40;
 
     .loading-dot {
         border-radius: $radius-full;
@@ -254,23 +254,24 @@
     justify-content: center;
     position: relative;
 
-    // Add avatar space for assistant messages
     &:not(.chat-bubble-wrapper--user) {
-        margin-left: $spacing-40;
+        margin-left: $spacing-16;
 
         &::before {
-            content: "🤖";
+            content: "\e085";
+            font-family: "Glyphicons Halflings" !important;
             position: absolute;
-            left: -$spacing-40;
+            left: -$spacing-32;
             top: 0;
-            width: $spacing-40;
-            height: $spacing-40;
+            width: $spacing-32;
+            height: $spacing-32;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--brand-1);
             border-radius: $radius-full;
-            font-size: $font-size-body-1;
+            font-size: $font-size-body-2;
+            color: var(--base-white);
         }
     }
 
@@ -278,7 +279,7 @@
         background: var(--base-white);
         border: $border-1 solid var(--brand-3);
         border-radius: $radius-8 $radius-8 $radius-8 $spacing-4;
-        margin: 0 20% 0 0;
+        margin: 0 10% 0 0; // Reduced from 20%
         padding: $spacing-12 $spacing-16;
         font-family: $font-primary;
         font-size: $font-size-body-2;
@@ -289,31 +290,32 @@
         max-width: 100%;
     }
 
-    // User messages (right-aligned)
     &--user {
         align-items: flex-end;
-        margin-right: $spacing-40;
+        margin-right: $spacing-16;
 
         &::after {
-            content: "👤";
+            content: "\e008";
+            font-family: "Glyphicons Halflings" !important;
             position: absolute;
-            right: -$spacing-40;
+            right: -$spacing-32;
             top: 0;
-            width: $spacing-40;
-            height: $spacing-40;
+            width: $spacing-32;
+            height: $spacing-32;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--brand-2);
             border-radius: $radius-full;
-            font-size: $font-size-body-1;
+            font-size: $font-size-body-2;
+            color: var(--base-white);
         }
 
         .chat-message-card {
             background: var(--brand-2);
             color: var(--base-white);
             border-radius: $radius-8 $radius-8 $spacing-4 $radius-8;
-            margin: 0 0 0 20%;
+            margin: 0 0 0 10%;
             border-color: var(--brand-2);
         }
     }
@@ -438,6 +440,18 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
     font-family: $font-primary !important;
     margin-top: $spacing-4 !important;
     opacity: 0.8;
+}
+
+// === TEXT DETAIL OVERRIDE FOR CHAT ===
+// Override the default text-detail color for chat components to be white
+.chat-container,
+.chat-bubble-wrapper,
+.messages-container {
+    .text-detail,
+    .mx-text.text-detail,
+    span.mx-text.mx-name-text2.d-inline-block.spacing-inner-top-smaller.text-small.text-light.text-detail {
+        color: var(--base-white) !important;
+    }
 }
 
 // === CONVERSATION STARTERS ===

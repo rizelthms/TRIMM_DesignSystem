@@ -74,3 +74,9 @@
 .region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul {
   background-color: var(--brand-3) !important;
 }
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a .caret,
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a .caret {
+  border-top-color: var(--base-white) !important;
+  border-bottom-color: var(--base-white) !important;
+}

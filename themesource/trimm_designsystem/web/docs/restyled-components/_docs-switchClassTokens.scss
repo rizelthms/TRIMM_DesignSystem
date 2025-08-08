@@ -2,6 +2,15 @@
 // BEM naming: docs-switchClass-card, docs-switchClass-name, docs-switchClass-desc
 
 .docs-switchClass-card {
+  // Override Bootstrap grid constraints for switch labels
+  .col-sm-3,
+  .col-md-3,
+  .col-lg-3,
+  .col-xl-3 {
+    flex: none !important;
+    max-width: none !important;
+    width: auto !important;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;

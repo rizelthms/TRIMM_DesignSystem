@@ -62,8 +62,9 @@ mx-templategrid-content-wrapper {
     text-align: center;
 }
 
-// Radius utility classes for documentation/demo purposes
-// Usage: Add the class name (e.g., 'radius-style-4') to the RadiusStyleClass attribute in Mendix
+// Radius utility classes for Mendix Dynamic Classes binding
+// Usage: Add the class name (e.g., 'radius-style-4') to the RadiusStyleClass attribute in the Java action
+// These classes are used with the docs-radiusToken-container class for radius display
 
 .radius-style-0 {
     border-radius: $radius-0;

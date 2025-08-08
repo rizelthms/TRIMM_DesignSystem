@@ -62,8 +62,8 @@ mx-templategrid-content-wrapper {
 }
 
 // Swatch color classes for Mendix Dynamic Classes binding
-// Usage: Add the class name (e.g., 'docs-colorToken-swatch-brand-1') to the SwatchClass attribute in Mendix
-// This list is auto-generated from all tokens in _themes.scss
+// Usage: Add the class name (e.g., 'swatch-brand-1') to the ColorStyle attribute in the Java action
+// These classes are used with the docs-colorToken-container class for color display
 
 .swatch-brand-1 {
   background: var(--brand-1);
