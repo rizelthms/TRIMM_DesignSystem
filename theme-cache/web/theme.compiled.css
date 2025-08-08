@@ -32502,7 +32502,7 @@ mx-templategrid-content-wrapper {
   border: 1px solid #e5e7eb;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
   width: 100%;
-  margin-bottom: 300px;
+  margin-bottom: 1000px;
   box-sizing: border-box;
   overflow: visible !important;
 }
