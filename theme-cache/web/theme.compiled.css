@@ -30492,27 +30492,29 @@ input.form-control:disabled {
   position: relative;
 }
 .chat-bubble-wrapper:not(.chat-bubble-wrapper--user) {
-  margin-left: 40px;
+  margin-left: 16px;
 }
 .chat-bubble-wrapper:not(.chat-bubble-wrapper--user)::before {
-  content: "🤖";
+  content: "\e085";
+  font-family: "Glyphicons Halflings" !important;
   position: absolute;
-  left: -40px;
+  left: -32px;
   top: 0;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--brand-1);
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 16px;
+  color: var(--base-white);
 }
 .chat-bubble-wrapper .chat-message-card {
   background: var(--base-white);
   border: 1px solid var(--brand-3);
   border-radius: 8px 8px 8px 4px;
-  margin: 0 20% 0 0;
+  margin: 0 10% 0 0;
   padding: 12px 16px;
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
@@ -30524,27 +30526,29 @@ input.form-control:disabled {
 }
 .chat-bubble-wrapper--user {
   align-items: flex-end;
-  margin-right: 40px;
+  margin-right: 16px;
 }
 .chat-bubble-wrapper--user::after {
-  content: "👤";
+  content: "\e008";
+  font-family: "Glyphicons Halflings" !important;
   position: absolute;
-  right: -40px;
+  right: -32px;
   top: 0;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--brand-2);
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 16px;
+  color: var(--base-white);
 }
 .chat-bubble-wrapper--user .chat-message-card {
   background: var(--brand-2);
   color: var(--base-white);
   border-radius: 8px 8px 4px 8px;
-  margin: 0 0 0 20%;
+  margin: 0 0 0 10%;
   border-color: var(--brand-2);
 }
 
@@ -30651,6 +30655,18 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   font-family: "GothamSSm", sans-serif !important;
   margin-top: 4px !important;
   opacity: 0.8;
+}
+
+.chat-container .text-detail,
+.chat-container .mx-text.text-detail,
+.chat-container span.mx-text.mx-name-text2.d-inline-block.spacing-inner-top-smaller.text-small.text-light.text-detail,
+.chat-bubble-wrapper .text-detail,
+.chat-bubble-wrapper .mx-text.text-detail,
+.chat-bubble-wrapper span.mx-text.mx-name-text2.d-inline-block.spacing-inner-top-smaller.text-small.text-light.text-detail,
+.messages-container .text-detail,
+.messages-container .mx-text.text-detail,
+.messages-container span.mx-text.mx-name-text2.d-inline-block.spacing-inner-top-smaller.text-small.text-light.text-detail {
+  color: var(--base-white) !important;
 }
 
 .conversationstarter.card {
