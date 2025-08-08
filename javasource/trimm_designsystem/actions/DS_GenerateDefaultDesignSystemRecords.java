@@ -14,13 +14,16 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
-	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
+{
+	public DS_GenerateDefaultDesignSystemRecords(IContext context)
+	{
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception {
+	public java.lang.Void executeAction() throws Exception
+	{
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -296,7 +299,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "btn-icon-left", "Button with icon on the left", 14, "Button" },
 
 				// Accordion Component Classes (associate to "Accordion")
-				{ "accordion-base", "Base accordion styling with TRIMM design tokens", 15, "Accordion" },
+				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
 
 				// Alert Component Classes (associate to "Alert")
 				{ "alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
@@ -333,6 +336,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "textbox-sm", "Small textbox size variant", 39, "Textbox" },
 				{ "textbox-md", "Medium textbox size variant", 40, "Textbox" },
 				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" },
+
+				// Menu Component Classes (associate to "Menu")
+				{ "menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
+
+				// Tab Component Classes (associate to "TabContainer")
+				{ "tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
 
 				// Tooltip Component Classes (associate to "Tooltip")
 				{ "tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
@@ -512,6 +521,49 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
+		// Safety pass: explicitly link all Menu classes to the Menu component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> menuCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Menu']").execute(context);
+		if (!menuCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject menuCompObj = menuCompList.get(0);
+			trimm_designsystem.proxies.DS_Component menuComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, menuCompObj);
+			String[] menuClassNames = { "menu-base" };
+			for (String className : menuClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, menuComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all TabContainer classes to the TabContainer
+		// component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tabCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='TabContainer']").execute(context);
+		if (!tabCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject tabCompObj = tabCompList.get(0);
+			trimm_designsystem.proxies.DS_Component tabComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, tabCompObj);
+			String[] tabClassNames = { "tab-base" };
+			for (String className : tabClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, tabComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
 		// Safety pass: explicitly link all Tooltip classes to the Tooltip component
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tooltipCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tooltip']").execute(context);
@@ -529,27 +581,6 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, tooltipComp);
 					Core.commit(context, classProxy.getMendixObject());
-				}
-			}
-		}
-
-		// Safety pass: explicitly link all Tab classes to the Tab component
-		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tabCompList = com.mendix.core.Core
-				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tab']").execute(context);
-		if (!tabCompList.isEmpty()) {
-			com.mendix.systemwideinterfaces.core.IMendixObject tabCompObj = tabCompList.get(0);
-			trimm_designsystem.proxies.DS_Component tabComp = trimm_designsystem.proxies.DS_Component
-					.initialize(context, tabCompObj);
-			String[] tabClassNames = { "tab-base" };
-			for (String className : tabClassNames) {
-				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
-						.execute(context);
-				if (!classList.isEmpty()) {
-					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
-							.initialize(context, classList.get(0));
-					classProxy.setDS_ComponentClass_DS_Component(context, tabComp);
-					Core.commit(context, classList.get(0));
 				}
 			}
 		}
@@ -581,11 +612,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
-	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString() {
+	public java.lang.String toString()
+	{
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
