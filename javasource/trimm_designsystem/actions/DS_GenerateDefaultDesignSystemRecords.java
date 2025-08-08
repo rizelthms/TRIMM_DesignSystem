@@ -328,6 +328,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "radio-md", "Medium radio button size variant", 36, "Radio" },
 				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
 
+				// Switch Component Classes (associate to "Switch")
+				{ "switch-base", "Base switch styling with TRIMM design tokens", 38, "Switch" },
+				{ "switch-sm", "Small switch size variant", 39, "Switch" },
+				{ "switch-md", "Medium switch size variant", 40, "Switch" },
+				{ "switch-lg", "Large switch size variant", 41, "Switch" },
+
 				// Menu Component Classes (associate to "Menu")
 				{ "menu-base", "Base menu styling with TRIMM design tokens", 34, "Menu" }
 		};
@@ -477,6 +483,27 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, radioComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Switch classes to the Switch component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> switchCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Switch']").execute(context);
+		if (!switchCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject switchCompObj = switchCompList.get(0);
+			trimm_designsystem.proxies.DS_Component switchComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, switchCompObj);
+			String[] switchClassNames = { "switch-base", "switch-sm", "switch-md", "switch-lg" };
+			for (String className : switchClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, switchComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
