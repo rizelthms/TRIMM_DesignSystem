@@ -14,13 +14,16 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
-	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
+{
+	public DS_GenerateDefaultDesignSystemRecords(IContext context)
+	{
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception {
+	public java.lang.Void executeAction() throws Exception
+	{
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -289,14 +292,21 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "btn-success", "Success button variant with green background", 7, "Button" },
 				{ "btn-warning", "Warning button variant with yellow background", 8, "Button" },
 				{ "btn-danger", "Danger button variant with red background", 9, "Button" },
-				{ "btn-sm", "Small button size modifier", 10, "Button" },
-				{ "btn-md", "Medium button size modifier", 11, "Button" },
-				{ "btn-lg", "Large button size modifier", 12, "Button" },
-				{ "btn-icon-right", "Button with icon positioned on the right", 13, "Button" },
-				{ "btn-icon-left", "Button with icon positioned on the left", 14, "Button" },
+				{ "btn-sm", "Small button size variant", 10, "Button" },
+				{ "btn-md", "Medium button size variant", 11, "Button" },
+				{ "btn-lg", "Large button size variant", 12, "Button" },
+				{ "btn-icon-right", "Button with icon on the right side", 13, "Button" },
+				{ "btn-icon-left", "Button with icon on the left side", 14, "Button" },
 
 				// Accordion Component Classes (associate to "Accordion")
-				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" }
+				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
+
+				// Alert Component Classes (associate to "Alert")
+				{ "alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
+				{ "alert-success", "Success alert variant with green background", 17, "Alert" },
+				{ "alert-danger", "Danger alert variant with red background", 18, "Alert" },
+				{ "alert-warning", "Warning alert variant with yellow background", 19, "Alert" },
+				{ "alert-info", "Info alert variant with teal background", 20, "Alert" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -364,17 +374,38 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
+		// Safety pass: explicitly link all Alert classes to the Alert component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> alertCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Alert']").execute(context);
+		if (!alertCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject alertCompObj = alertCompList.get(0);
+			trimm_designsystem.proxies.DS_Component alertComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, alertCompObj);
+			String[] alertClassNames = { "alert-base", "alert-success", "alert-danger", "alert-warning", "alert-info" };
+			for (String className : alertClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, alertComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
 		return null;
 		// END USER CODE
 	}
 
 	/**
 	 * Returns a string representation of this action
-	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString() {
+	public java.lang.String toString()
+	{
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
