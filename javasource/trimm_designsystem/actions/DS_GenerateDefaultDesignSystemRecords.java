@@ -14,13 +14,16 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
-	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
+{
+	public DS_GenerateDefaultDesignSystemRecords(IContext context)
+	{
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception {
+	public java.lang.Void executeAction() throws Exception
+	{
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -320,7 +323,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "label-warning", "Warning label variant with yellow background", 30, "Label" },
 				{ "label-sm", "Small label size variant", 31, "Label" },
 				{ "label-md", "Medium label size variant", 32, "Label" },
-				{ "label-lg", "Large label size variant", 33, "Label" }
+				{ "label-lg", "Large label size variant", 33, "Label" },
+
+				// Menu Component Classes (associate to "Menu")
+				{ "menu-base", "Base menu styling with TRIMM design tokens", 34, "Menu" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -452,17 +458,38 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
+		// Safety pass: explicitly link all Menu classes to the Menu component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> menuCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Menu']").execute(context);
+		if (!menuCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject menuCompObj = menuCompList.get(0);
+			trimm_designsystem.proxies.DS_Component menuComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, menuCompObj);
+			String[] menuClassNames = { "menu-base" };
+			for (String className : menuClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, menuComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
 		return null;
 		// END USER CODE
 	}
 
 	/**
 	 * Returns a string representation of this action
-	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString() {
+	public java.lang.String toString()
+	{
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
