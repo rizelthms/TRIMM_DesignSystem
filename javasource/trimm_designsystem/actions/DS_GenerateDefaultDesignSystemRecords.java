@@ -14,16 +14,13 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
-{
-	public DS_GenerateDefaultDesignSystemRecords(IContext context)
-	{
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
+	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
-	{
+	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -337,6 +334,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "textbox-md", "Medium textbox size variant", 40, "Textbox" },
 				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" },
 
+				// Textarea Component Classes (associate to "TextArea")
+				{ "textarea-base", "Base textarea styling with TRIMM design tokens", 42, "TextArea" },
+				{ "textarea-sm", "Small textarea size variant", 43, "TextArea" },
+				{ "textarea-md", "Medium textarea size variant", 44, "TextArea" },
+				{ "textarea-lg", "Large textarea size variant", 45, "TextArea" },
+
 				// Menu Component Classes (associate to "Menu")
 				{ "menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
 
@@ -521,6 +524,27 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
+		// Safety pass: explicitly link all Textarea classes to the Textarea component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> textareaCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Textarea']").execute(context);
+		if (!textareaCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject textareaCompObj = textareaCompList.get(0);
+			trimm_designsystem.proxies.DS_Component textareaComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, textareaCompObj);
+			String[] textareaClassNames = { "textarea-base", "textarea-sm", "textarea-md", "textarea-lg" };
+			for (String className : textareaClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, textareaComp);
+					Core.commit(context, classList.get(0));
+				}
+			}
+		}
+
 		// Safety pass: explicitly link all Menu classes to the Menu component
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> menuCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Menu']").execute(context);
@@ -585,38 +609,17 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Textarea classes to the Textarea component
-		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> textareaCompList = com.mendix.core.Core
-				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Textarea']").execute(context);
-		if (!textareaCompList.isEmpty()) {
-			com.mendix.systemwideinterfaces.core.IMendixObject textareaCompObj = textareaCompList.get(0);
-			trimm_designsystem.proxies.DS_Component textareaComp = trimm_designsystem.proxies.DS_Component
-					.initialize(context, textareaCompObj);
-			String[] textareaClassNames = { "textarea-base", "textarea-sm", "textarea-md", "textarea-lg" };
-			for (String className : textareaClassNames) {
-				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
-						.execute(context);
-				if (!classList.isEmpty()) {
-					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
-							.initialize(context, classList.get(0));
-					classProxy.setDS_ComponentClass_DS_Component(context, textareaComp);
-					Core.commit(context, classList.get(0));
-				}
-			}
-		}
-
 		return null;
 		// END USER CODE
 	}
 
 	/**
 	 * Returns a string representation of this action
+	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString()
-	{
+	public java.lang.String toString() {
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
