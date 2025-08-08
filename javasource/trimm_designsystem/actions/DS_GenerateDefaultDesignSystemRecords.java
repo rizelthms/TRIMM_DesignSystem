@@ -328,14 +328,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "radio-md", "Medium radio button size variant", 36, "Radio" },
 				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
 
-				// Switch Component Classes (associate to "Switch")
-				{ "switch-base", "Base switch styling with TRIMM design tokens", 38, "Switch" },
-				{ "switch-sm", "Small switch size variant", 39, "Switch" },
-				{ "switch-md", "Medium switch size variant", 40, "Switch" },
-				{ "switch-lg", "Large switch size variant", 41, "Switch" },
-
-				// Menu Component Classes (associate to "Menu")
-				{ "menu-base", "Base menu styling with TRIMM design tokens", 34, "Menu" }
+				// Tab Component Classes (associate to "Tab")
+				{ "tab-base", "Base tab container styling with TRIMM design tokens", 38, "Tab" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -488,43 +482,22 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Switch classes to the Switch component
-		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> switchCompList = com.mendix.core.Core
-				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Switch']").execute(context);
-		if (!switchCompList.isEmpty()) {
-			com.mendix.systemwideinterfaces.core.IMendixObject switchCompObj = switchCompList.get(0);
-			trimm_designsystem.proxies.DS_Component switchComp = trimm_designsystem.proxies.DS_Component
-					.initialize(context, switchCompObj);
-			String[] switchClassNames = { "switch-base", "switch-sm", "switch-md", "switch-lg" };
-			for (String className : switchClassNames) {
+		// Safety pass: explicitly link all Tab classes to the Tab component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tabCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tab']").execute(context);
+		if (!tabCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject tabCompObj = tabCompList.get(0);
+			trimm_designsystem.proxies.DS_Component tabComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, tabCompObj);
+			String[] tabClassNames = { "tab-base" };
+			for (String className : tabClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
 						.execute(context);
 				if (!classList.isEmpty()) {
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
-					classProxy.setDS_ComponentClass_DS_Component(context, switchComp);
-					Core.commit(context, classProxy.getMendixObject());
-				}
-			}
-		}
-
-		// Safety pass: explicitly link all Menu classes to the Menu component
-		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> menuCompList = com.mendix.core.Core
-				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Menu']").execute(context);
-		if (!menuCompList.isEmpty()) {
-			com.mendix.systemwideinterfaces.core.IMendixObject menuCompObj = menuCompList.get(0);
-			trimm_designsystem.proxies.DS_Component menuComp = trimm_designsystem.proxies.DS_Component
-					.initialize(context, menuCompObj);
-			String[] menuClassNames = { "menu-base" };
-			for (String className : menuClassNames) {
-				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
-						.execute(context);
-				if (!classList.isEmpty()) {
-					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
-							.initialize(context, classList.get(0));
-					classProxy.setDS_ComponentClass_DS_Component(context, menuComp);
+					classProxy.setDS_ComponentClass_DS_Component(context, tabComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
