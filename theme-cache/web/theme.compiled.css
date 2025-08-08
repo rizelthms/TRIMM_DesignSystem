@@ -29220,6 +29220,7 @@ p {
 }
 .btn-primary:hover, .btn-primary:focus {
   background-color: var(--brand-1-hover);
+  color: var(--base-white);
 }
 .btn-primary:active {
   background-color: var(--brand-1-active);
