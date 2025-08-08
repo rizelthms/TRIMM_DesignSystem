@@ -260,6 +260,9 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 						true }
 		};
 
+		// Store component identifiers for association linking
+		java.util.Map<String, trimm_designsystem.proxies.DS_Component> componentByName = new java.util.HashMap<>();
+
 		for (Object[] c : components) {
 			IMendixObject component = Core.instantiate(context, "TRIMM_DesignSystem.DS_Component");
 			component.setValue(context, "Name", c[0]);
@@ -271,6 +274,71 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			component.setValue(context, "Version", c[6]);
 			component.setValue(context, "IsActive", c[7]);
 			Core.commit(context, component);
+			componentByName.put((String) c[0], trimm_designsystem.proxies.DS_Component.initialize(context, component));
+		}
+
+		// --- DS_ComponentClass records (Component Classes for all components) ---
+		// Only seed Button-related component classes now; others will be added
+		// incrementally in later commits.
+		Object[][] componentClasses = new Object[][] {
+				{ "button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
+				{ "btn-default", "Default button variant with transparent background", 2, "Button" },
+				{ "btn-cta", "Call-to-action button with orange background", 3, "Button" },
+				{ "btn-inverse", "Inverse button variant with dark background", 4, "Button" },
+				{ "btn-primary", "Primary button variant with navy blue background", 5, "Button" },
+				{ "btn-info", "Info button variant with teal background", 6, "Button" },
+				{ "btn-success", "Success button variant with green background", 7, "Button" },
+				{ "btn-warning", "Warning button variant with yellow background", 8, "Button" },
+				{ "btn-danger", "Danger button variant with red background", 9, "Button" },
+				{ "btn-sm", "Small button size modifier", 10, "Button" },
+				{ "btn-md", "Medium button size modifier", 11, "Button" },
+				{ "btn-lg", "Large button size modifier", 12, "Button" },
+				{ "btn-icon-right", "Move icon to right of label", 13, "Button" },
+				{ "btn-icon-left", "Move icon to left of label", 14, "Button" }
+		};
+
+		for (Object[] cc : componentClasses) {
+			IMendixObject componentClass = Core.instantiate(context, "TRIMM_DesignSystem.DS_ComponentClass");
+			componentClass.setValue(context, "ClassName", cc[0]);
+			componentClass.setValue(context, "Description", cc[1]);
+			componentClass.setValue(context, "SortOrder", cc[2]);
+			// Link to DS_Component when provided (e.g., all Button classes)
+			String linkToComponentName = (String) cc[3];
+			if (linkToComponentName != null) {
+				trimm_designsystem.proxies.DS_Component compProxy = componentByName.get(linkToComponentName);
+				if (compProxy != null) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, componentClass);
+					classProxy.setDS_ComponentClass_DS_Component(context, compProxy);
+					// Component not found; leave association empty
+				} else {
+					// Component not found; leave association empty
+				}
+			}
+			Core.commit(context, componentClass);
+		}
+
+		// Safety pass: explicitly link all Button classes to the Button component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> buttonCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Button']").execute(context);
+		if (!buttonCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject buttonCompObj = buttonCompList.get(0);
+			trimm_designsystem.proxies.DS_Component buttonComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, buttonCompObj);
+			String[] buttonClassNames = new String[] { "button-base", "btn-default", "btn-cta", "btn-inverse",
+					"btn-primary", "btn-info", "btn-success", "btn-warning", "btn-danger", "btn-sm", "btn-md",
+					"btn-lg", "btn-icon-right", "btn-icon-left" };
+			for (String cls : buttonClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + cls + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, buttonComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
 		}
 
 		return null;
