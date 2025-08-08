@@ -545,7 +545,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// Safety pass: explicitly link all TabContainer classes to the TabContainer
 		// component
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tabCompList = com.mendix.core.Core
-				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='TabContainer']").execute(context);
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tab']").execute(context);
 		if (!tabCompList.isEmpty()) {
 			com.mendix.systemwideinterfaces.core.IMendixObject tabCompObj = tabCompList.get(0);
 			trimm_designsystem.proxies.DS_Component tabComp = trimm_designsystem.proxies.DS_Component
