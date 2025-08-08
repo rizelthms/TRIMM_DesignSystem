@@ -14,16 +14,13 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
-{
-	public DS_GenerateDefaultDesignSystemRecords(IContext context)
-	{
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
+	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
-	{
+	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -325,6 +322,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "label-md", "Medium label size variant", 32, "Label" },
 				{ "label-lg", "Large label size variant", 33, "Label" },
 
+				// Radio Component Classes (associate to "Radio")
+				{ "radio-base", "Base radio button styling with TRIMM design tokens", 34, "Radio" },
+				{ "radio-sm", "Small radio button size variant", 35, "Radio" },
+				{ "radio-md", "Medium radio button size variant", 36, "Radio" },
+				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
+
 				// Menu Component Classes (associate to "Menu")
 				{ "menu-base", "Base menu styling with TRIMM design tokens", 34, "Menu" }
 		};
@@ -458,6 +461,27 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
+		// Safety pass: explicitly link all Radio classes to the Radio component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> radioCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Radio']").execute(context);
+		if (!radioCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject radioCompObj = radioCompList.get(0);
+			trimm_designsystem.proxies.DS_Component radioComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, radioCompObj);
+			String[] radioClassNames = { "radio-base", "radio-sm", "radio-md", "radio-lg" };
+			for (String className : radioClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, radioComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
 		// Safety pass: explicitly link all Menu classes to the Menu component
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> menuCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Menu']").execute(context);
@@ -485,11 +509,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
+	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString()
-	{
+	public java.lang.String toString() {
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
