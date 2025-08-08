@@ -32576,6 +32576,14 @@ mx-templategrid-content-wrapper {
   width: 100%;
   box-sizing: border-box;
 }
+.docs-switchClass-card .col-sm-3,
+.docs-switchClass-card .col-md-3,
+.docs-switchClass-card .col-lg-3,
+.docs-switchClass-card .col-xl-3 {
+  flex: none !important;
+  max-width: none !important;
+  width: auto !important;
+}
 
 .docs-switchClass-name {
   font-weight: bold;
