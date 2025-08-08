@@ -14,16 +14,13 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
-{
-	public DS_GenerateDefaultDesignSystemRecords(IContext context)
-	{
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
+	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
-	{
+	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
 		IContext context = getContext();
 
@@ -312,7 +309,18 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
 				{ "checkbox-sm", "Small checkbox size variant", 22, "Checkbox" },
 				{ "checkbox-md", "Medium checkbox size variant", 23, "Checkbox" },
-				{ "checkbox-lg", "Large checkbox size variant", 24, "Checkbox" }
+				{ "checkbox-lg", "Large checkbox size variant", 24, "Checkbox" },
+
+				// Label Component Classes (associate to "Label")
+				{ "label-base", "Base label styling with TRIMM design tokens", 25, "Label" },
+				{ "label-default", "Default label variant with teal background", 26, "Label" },
+				{ "label-secondary", "Secondary label variant with orange background", 27, "Label" },
+				{ "label-success", "Success label variant with green background", 28, "Label" },
+				{ "label-danger", "Danger label variant with red background", 29, "Label" },
+				{ "label-warning", "Warning label variant with yellow background", 30, "Label" },
+				{ "label-sm", "Small label size variant", 31, "Label" },
+				{ "label-md", "Medium label size variant", 32, "Label" },
+				{ "label-lg", "Large label size variant", 33, "Label" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -390,7 +398,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			String[] alertClassNames = { "alert-base", "alert-success", "alert-danger", "alert-warning", "alert-info" };
 			for (String className : alertClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']").execute(context);
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
 				if (!classList.isEmpty()) {
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
@@ -410,11 +419,34 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			String[] checkboxClassNames = { "checkbox-base", "checkbox-sm", "checkbox-md", "checkbox-lg" };
 			for (String className : checkboxClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']").execute(context);
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
 				if (!classList.isEmpty()) {
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, checkboxComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Label classes to the Label component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> labelCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Label']").execute(context);
+		if (!labelCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject labelCompObj = labelCompList.get(0);
+			trimm_designsystem.proxies.DS_Component labelComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, labelCompObj);
+			String[] labelClassNames = { "label-base", "label-default", "label-secondary", "label-success",
+					"label-danger", "label-warning", "label-sm", "label-md", "label-lg" };
+			for (String className : labelClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, labelComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
@@ -426,11 +458,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
+	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString()
-	{
+	public java.lang.String toString() {
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
