@@ -306,7 +306,13 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "alert-success", "Success alert variant with green background", 17, "Alert" },
 				{ "alert-danger", "Danger alert variant with red background", 18, "Alert" },
 				{ "alert-warning", "Warning alert variant with yellow background", 19, "Alert" },
-				{ "alert-info", "Info alert variant with teal background", 20, "Alert" }
+				{ "alert-info", "Info alert variant with teal background", 20, "Alert" },
+
+				// Checkbox Component Classes (associate to "Checkbox")
+				{ "checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
+				{ "checkbox-sm", "Small checkbox size variant", 22, "Checkbox" },
+				{ "checkbox-md", "Medium checkbox size variant", 23, "Checkbox" },
+				{ "checkbox-lg", "Large checkbox size variant", 24, "Checkbox" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -384,12 +390,31 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			String[] alertClassNames = { "alert-base", "alert-success", "alert-danger", "alert-warning", "alert-info" };
 			for (String className : alertClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
-						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
-						.execute(context);
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']").execute(context);
 				if (!classList.isEmpty()) {
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, alertComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Checkbox classes to the Checkbox component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> checkboxCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Checkbox']").execute(context);
+		if (!checkboxCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject checkboxCompObj = checkboxCompList.get(0);
+			trimm_designsystem.proxies.DS_Component checkboxComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, checkboxCompObj);
+			String[] checkboxClassNames = { "checkbox-base", "checkbox-sm", "checkbox-md", "checkbox-lg" };
+			for (String className : checkboxClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']").execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, checkboxComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
