@@ -296,7 +296,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "btn-icon-left", "Button with icon on the left", 14, "Button" },
 
 				// Accordion Component Classes (associate to "Accordion")
-				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
+				{ "accordion-base", "Base accordion styling with TRIMM design tokens", 15, "Accordion" },
 
 				// Alert Component Classes (associate to "Alert")
 				{ "alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
@@ -332,7 +332,13 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
 				{ "textbox-sm", "Small textbox size variant", 39, "Textbox" },
 				{ "textbox-md", "Medium textbox size variant", 40, "Textbox" },
-				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" }
+				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" },
+
+				// Tooltip Component Classes (associate to "Tooltip")
+				{ "tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
+				{ "tooltip-sm", "Small tooltip size variant", 43, "Tooltip" },
+				{ "tooltip-md", "Medium tooltip size variant", 44, "Tooltip" },
+				{ "tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -501,6 +507,27 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, textboxComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Tooltip classes to the Tooltip component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tooltipCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tooltip']").execute(context);
+		if (!tooltipCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject tooltipCompObj = tooltipCompList.get(0);
+			trimm_designsystem.proxies.DS_Component tooltipComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, tooltipCompObj);
+			String[] tooltipClassNames = { "tooltip-base", "tooltip-sm", "tooltip-md", "tooltip-lg" };
+			for (String className : tooltipClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, tooltipComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
