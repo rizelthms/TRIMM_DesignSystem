@@ -328,14 +328,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "radio-md", "Medium radio button size variant", 36, "Radio" },
 				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
 
-				// Tab Component Classes (associate to "Tab")
-				{ "tab-base", "Base tab container styling with TRIMM design tokens", 38, "Tab" },
-
-				// Textarea Component Classes (associate to "Textarea")
-				{ "textarea-base", "Base textarea styling with TRIMM design tokens", 39, "Textarea" },
-				{ "textarea-sm", "Small textarea size variant", 40, "Textarea" },
-				{ "textarea-md", "Medium textarea size variant", 41, "Textarea" },
-				{ "textarea-lg", "Large textarea size variant", 42, "Textarea" }
+				// Textbox Component Classes (associate to "Textbox")
+				{ "textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
+				{ "textbox-sm", "Small textbox size variant", 39, "Textbox" },
+				{ "textbox-md", "Medium textbox size variant", 40, "Textbox" },
+				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" }
 		};
 
 		for (Object[] cc : componentClasses) {
@@ -483,6 +480,27 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, classList.get(0));
 					classProxy.setDS_ComponentClass_DS_Component(context, radioComp);
+					Core.commit(context, classProxy.getMendixObject());
+				}
+			}
+		}
+
+		// Safety pass: explicitly link all Textbox classes to the Textbox component
+		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> textboxCompList = com.mendix.core.Core
+				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Textbox']").execute(context);
+		if (!textboxCompList.isEmpty()) {
+			com.mendix.systemwideinterfaces.core.IMendixObject textboxCompObj = textboxCompList.get(0);
+			trimm_designsystem.proxies.DS_Component textboxComp = trimm_designsystem.proxies.DS_Component
+					.initialize(context, textboxCompObj);
+			String[] textboxClassNames = { "textbox-base", "textbox-sm", "textbox-md", "textbox-lg" };
+			for (String className : textboxClassNames) {
+				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
+						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
+						.execute(context);
+				if (!classList.isEmpty()) {
+					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
+							.initialize(context, classList.get(0));
+					classProxy.setDS_ComponentClass_DS_Component(context, textboxComp);
 					Core.commit(context, classProxy.getMendixObject());
 				}
 			}
