@@ -29596,6 +29596,13 @@ p {
 .menu-base .mx-navigationlist-item a span > svg {
   color: currentColor;
 }
+.menu-base li a .caret,
+.menu-base .mx-menubar-item a .caret,
+.menu-base .mx-popupmenu-item a .caret,
+.menu-base .mx-navigationlist-item a .caret {
+  border-top-color: var(--base-white) !important;
+  border-bottom-color: var(--base-white) !important;
+}
 .menu-base .mx-menubar > ul > li:hover > a,
 .menu-base .mx-menubar > ul > li.active > a,
 .menu-base .mx-menubar-list > li:hover > a,
@@ -29855,6 +29862,12 @@ p {
 
 .region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul {
   background-color: var(--brand-3) !important;
+}
+
+.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a .caret,
+.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a .caret {
+  border-top-color: var(--base-white) !important;
+  border-bottom-color: var(--base-white) !important;
 }
 
 .switch-base .widget-switch-btn-wrapper, .switch-lg .widget-switch-btn-wrapper, .switch-md .widget-switch-btn-wrapper, .switch-sm .widget-switch-btn-wrapper {
@@ -30249,6 +30262,12 @@ input.form-control:disabled {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.7;
+}
+
+.region-topbar .mx-navbar ul.nav > li > a .caret,
+.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a .caret {
+  border-top-color: var(--base-white) !important;
+  border-bottom-color: var(--base-white) !important;
 }
 
 /* ==========================================================================

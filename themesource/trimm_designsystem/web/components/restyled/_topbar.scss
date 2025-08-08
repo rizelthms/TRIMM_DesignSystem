@@ -94,3 +94,9 @@
   pointer-events: none;
   opacity: 0.7;
 }
+
+.region-topbar .mx-navbar ul.nav > li > a .caret,
+.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a .caret {
+  border-top-color: var(--base-white) !important;
+  border-bottom-color: var(--base-white) !important;
+}

@@ -52,6 +52,10 @@
             span > svg {
                 color: currentColor;
             }
+            .caret {
+                border-top-color: var(--base-white) !important;
+                border-bottom-color: var(--base-white) !important;
+            }
         }
     }
 
