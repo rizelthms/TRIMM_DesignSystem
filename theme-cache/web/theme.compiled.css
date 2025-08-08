@@ -32227,6 +32227,7 @@ mx-templategrid-content-wrapper {
   align-items: center;
   justify-content: flex-start;
   padding: 8px 8px;
+  padding-top: 16px;
   background: var(--base-white);
   border-radius: 4px;
   margin-bottom: 8px;
@@ -32246,6 +32247,13 @@ mx-templategrid-content-wrapper {
   transform: translateX(-50%) !important;
   z-index: 10 !important;
   box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12) rgba(0, 0, 0, 0.1);
+}
+
+.docs-colorTokenEditorCustom-fabArea {
+  width: 100%;
+  min-height: 80px;
+  margin-bottom: 8px;
+  position: relative;
 }
 
 .docs-colorTokenEditorCustom-sectionTitle {

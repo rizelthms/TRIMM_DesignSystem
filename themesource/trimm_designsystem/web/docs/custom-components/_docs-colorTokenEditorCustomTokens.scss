@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: flex-start;
     padding: $spacing-8 $spacing-8;
+    padding-top: $spacing-16;
     background: var(--base-white);
     border-radius: $radius-4;
     margin-bottom: $spacing-8;
@@ -24,6 +25,13 @@
         z-index: 10 !important;
         box-shadow: $shadow-6 rgba(0, 0, 0, 0.1);
     }
+}
+
+.docs-colorTokenEditorCustom-fabArea {
+    width: 100%;
+    min-height: 80px;
+    margin-bottom: $spacing-8;
+    position: relative;
 }
 
 .docs-colorTokenEditorCustom-sectionTitle {
