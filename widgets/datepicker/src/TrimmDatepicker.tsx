@@ -85,6 +85,27 @@ export function TrimmDatepicker({
         }
     }, [showCalendar]);
 
+    // Click outside to close calendar
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (showCalendar && 
+                calendarRef.current && 
+                inputRef.current && 
+                !calendarRef.current.contains(event.target as Node) &&
+                !inputRef.current.parentElement?.contains(event.target as Node)) {
+                setShowCalendar(false);
+            }
+        }
+
+        if (showCalendar) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showCalendar]);
+
     function isOutOfRange(day: Date) {
         const checkDay = startOfDay(day);
         const min = minDate?.value ? startOfDay(minDate.value) : undefined;
