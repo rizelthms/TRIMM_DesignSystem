@@ -54,6 +54,27 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     }, [showCalendar]);
 
+    // Click outside to close calendar
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (showCalendar && 
+                popupRef.current && 
+                toggleRef.current && 
+                !popupRef.current.contains(event.target as Node) &&
+                !toggleRef.current.contains(event.target as Node)) {
+                setShowCalendar(false);
+            }
+        }
+
+        if (showCalendar) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showCalendar]);
+
     useEffect(() => {
         function onMouseMove(e: MouseEvent) {
             if (dragging && dragStart) {
