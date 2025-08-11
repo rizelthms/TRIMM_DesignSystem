@@ -12,7 +12,11 @@ module.exports = {
         '/node_modules/'
     ],
     moduleNameMapper: {
-        '\\.(css|scss)$': 'identity-obj-proxy'
+        '\\.(css|scss)$': 'identity-obj-proxy',
+        '^react$': '<rootDir>/../node_modules/react',
+        '^react/jsx-runtime$': '<rootDir>/../node_modules/react/jsx-runtime',
+        '^react-dom$': '<rootDir>/../node_modules/react-dom',
+        '^react-dom/test-utils$': '<rootDir>/react-dom-test-utils-shim.js'
     },
     collectCoverage: false,
     collectCoverageFrom: [
