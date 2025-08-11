@@ -41,8 +41,8 @@ describe("TrimmDatepicker Integration", () => {
             validation: '',
             readOnly: false
         };
-        render(<TrimmDatepicker {...getProps({ 
-            selectedDate: mockSelectedDate as any 
+        render(<TrimmDatepicker {...getProps({
+            selectedDate: mockSelectedDate as any
         })} />);
         fireEvent.click(screen.getByRole("textbox"));
         // Wait for calendar to open
@@ -120,7 +120,7 @@ describe("TrimmDatepicker Integration", () => {
             await waitFor(() => {
                 const labelAfterNextElem = document.querySelector('.trimm-datepicker-header-label');
                 const labelAfterNext = labelAfterNextElem ? labelAfterNextElem.textContent : '';
-        expect(labelAfterNext).not.toBe(labelBefore);
+                expect(labelAfterNext).not.toBe(labelBefore);
             });
         }
         // Click previous month
@@ -130,7 +130,7 @@ describe("TrimmDatepicker Integration", () => {
             await waitFor(() => {
                 const labelAfterPrevElem = document.querySelector('.trimm-datepicker-header-label');
                 const labelAfterPrev = labelAfterPrevElem ? labelAfterPrevElem.textContent : '';
-        expect(labelAfterPrev).toBe(labelBefore);
+                expect(labelAfterPrev).toBe(labelBefore);
             });
         }
     });
