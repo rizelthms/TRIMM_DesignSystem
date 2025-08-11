@@ -9,7 +9,9 @@ import "mx-global";
 import { Big } from "big.js";
 
 // BEGIN EXTRA CODE
-document.addEventListener("DOMContentLoaded", function() {
+// Initialize theme on page load by checking localStorage for saved preference
+// This ensures the correct theme is applied immediately when the page loads
+document.addEventListener("DOMContentLoaded", function () {
 	const theme = localStorage.getItem("theme");
 	if (theme === "dark") {
 		document.documentElement.setAttribute("data-theme", "dark");
@@ -18,16 +20,24 @@ document.addEventListener("DOMContentLoaded", function() {
 // END EXTRA CODE
 
 /**
- * @returns {Promise.<void>}
+ * Toggles between light and dark themes by updating the document's data-theme attribute
+ * and persisting the user's preference in localStorage for future visits
+ * 
+ * @returns {Promise.<void>} - Resolves when theme toggle completes
  */
 export async function ToggleTheme() {
 	// BEGIN USER CODE
+	// Get the current theme from the document's data-theme attribute
 	const html = document.documentElement;
 	const current = html.getAttribute("data-theme");
+
+	// Toggle between light and dark themes
 	if (current === "dark") {
-		html.removeAttribute("data-theme");
+		// Switch from dark to light theme
+		html.removeAttribute("data-theme"); // No attribute = light theme
 		localStorage.setItem("theme", "light");
 	} else {
+		// Switch from light to dark theme
 		html.setAttribute("data-theme", "dark");
 		localStorage.setItem("theme", "dark");
 	}

@@ -22,9 +22,30 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 	@java.lang.Override
 	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
+		// Purpose: Seed the TRIMM Design System data model with default tokens,
+		// components,
+		// and component classes so demo screens and documentation work immediately.
+		// This action is safe to run multiple times; it creates records with consistent
+		// values
+		// and links classes to components by name where applicable.
+
 		IContext context = getContext();
 
-		// --- DS_DesignToken records (Colors, Borders, Radius, and Shadows) ---
+		// ------------------------------
+		// 1) Design Tokens
+		// ------------------------------
+		// Schema per row:
+		// [0] TokenName (CSS var or SCSS var),
+		// [1] TokenValue (string representation),
+		// [2] Category (Color | Border | Radius | Shadow | Spacing | Typography),
+		// [3] Description (human-friendly),
+		// [4] ColorStyle (optional class for color swatches),
+		// [5] ShadowStyle (optional class),
+		// [6] RadiusStyle (optional class),
+		// [7] BorderStyle (optional class),
+		// [8] SpacingStyle (optional class),
+		// [9] TypographyStyle (optional class),
+		// [10] SortOrder (int)
 		Object[][] tokens = new Object[][] {
 				// Brand Colors (from _themes.scss)
 				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
@@ -129,8 +150,6 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 						"font-size-body-2-swatch", 45 },
 				{ "$font-size-body-3", "14px", "Typography", "Body 3 font size", null, null, null, null, null,
 						"font-size-body-3-swatch", 46 },
-				{ "$font-size-body-4", "12px", "Typography", "Body 4 font size", null, null, null, null, null,
-						"font-size-body-4-swatch", 47 },
 
 				// Typography - Font Weights
 				{ "$font-weight-light", "300", "Typography", "Light font weight", null, null, null, null, null,
@@ -167,6 +186,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 						"line-height-body-4-swatch", 62 }
 		};
 
+		// Persist tokens
 		for (Object[] t : tokens) {
 			IMendixObject token = Core.instantiate(context, "TRIMM_DesignSystem.DS_DesignToken");
 			token.setValue(context, "TokenName", t[0]);
@@ -183,7 +203,13 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			Core.commit(context, token);
 		}
 
-		// --- DS_Component records (Restyled Components) ---
+		// ------------------------------
+		// 2) Components (Restyled + Custom)
+		// ------------------------------
+		// Schema per row:
+		// [0] Name (identifier), [1] DisplayName, [2] ComponentType (RestyledMendix |
+		// Custom),
+		// [3] Category, [4] Status, [5] Description, [6] Version, [7] IsActive
 		Object[][] components = new Object[][] {
 				// Accordion Component
 				{ "Accordion", "Accordion", "RestyledMendix", "Navigation", "Stable",
@@ -260,7 +286,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 						true }
 		};
 
-		// Store component identifiers for association linking
+		// Index components by name to allow linking classes later
 		java.util.Map<String, trimm_designsystem.proxies.DS_Component> componentByName = new java.util.HashMap<>();
 
 		for (Object[] c : components) {
@@ -277,7 +303,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			componentByName.put((String) c[0], trimm_designsystem.proxies.DS_Component.initialize(context, component));
 		}
 
-		// --- DS_ComponentClass records (Component Classes for all components) ---
+		// ------------------------------
+		// 3) Component Classes
+		// ------------------------------
+		// Schema per row:
+		// [0] ClassName, [1] Description, [2] SortOrder, [3] ComponentName to associate
+		// (optional)
 		Object[][] componentClasses = new Object[][] {
 				// Button Component Classes (associate to "Button")
 				{ "button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
@@ -359,12 +390,12 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
 		};
 
+		// Create classes and link to components when the component name is known
 		for (Object[] cc : componentClasses) {
 			IMendixObject componentClass = Core.instantiate(context, "TRIMM_DesignSystem.DS_ComponentClass");
 			componentClass.setValue(context, "ClassName", cc[0]);
 			componentClass.setValue(context, "Description", cc[1]);
 			componentClass.setValue(context, "SortOrder", cc[2]);
-			// Link to DS_Component when provided (e.g., all Button classes)
 			String linkToComponentName = (String) cc[3];
 			if (linkToComponentName != null) {
 				trimm_designsystem.proxies.DS_Component compProxy = componentByName.get(linkToComponentName);
@@ -372,15 +403,21 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 					trimm_designsystem.proxies.DS_ComponentClass classProxy = trimm_designsystem.proxies.DS_ComponentClass
 							.initialize(context, componentClass);
 					classProxy.setDS_ComponentClass_DS_Component(context, compProxy);
-					// Component not found; leave association empty
-				} else {
-					// Component not found; leave association empty
+					// If the component is missing, we leave the association empty intentionally
 				}
 			}
 			Core.commit(context, componentClass);
 		}
 
-		// Safety pass: explicitly link all Button classes to the Button component
+		// ------------------------------
+		// 4) Safety linking passes
+		// ------------------------------
+		// For key components, perform a targeted association step to ensure classes are
+		// linked
+		// even if the initial association did not occur (e.g., due to ordering in the
+		// runtime).
+
+		// Buttons
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> buttonCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Button']").execute(context);
 		if (!buttonCompList.isEmpty()) {
@@ -403,7 +440,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Accordion classes to the Accordion component
+		// Accordions
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> accordionCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Accordion']").execute(context);
 		if (!accordionCompList.isEmpty()) {
@@ -424,7 +461,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Alert classes to the Alert component
+		// Alerts
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> alertCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Alert']").execute(context);
 		if (!alertCompList.isEmpty()) {
@@ -445,7 +482,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Checkbox classes to the Checkbox component
+		// Checkboxes
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> checkboxCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Checkbox']").execute(context);
 		if (!checkboxCompList.isEmpty()) {
@@ -466,7 +503,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Label classes to the Label component
+		// Labels
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> labelCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Label']").execute(context);
 		if (!labelCompList.isEmpty()) {
@@ -488,7 +525,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Radio classes to the Radio component
+		// Radios
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> radioCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Radio']").execute(context);
 		if (!radioCompList.isEmpty()) {
@@ -509,7 +546,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Textbox classes to the Textbox component
+		// Textboxes
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> textboxCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Textbox']").execute(context);
 		if (!textboxCompList.isEmpty()) {
@@ -530,7 +567,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Textarea classes to the Textarea component
+		// Textareas
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> textareaCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Textarea']").execute(context);
 		if (!textareaCompList.isEmpty()) {
@@ -551,7 +588,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Switch classes to the Switch component
+		// Switches
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> switchCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Switch']").execute(context);
 		if (!switchCompList.isEmpty()) {
@@ -572,7 +609,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Menu classes to the Menu component
+		// Menus
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> menuCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Menu']").execute(context);
 		if (!menuCompList.isEmpty()) {
@@ -593,8 +630,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all TabContainer classes to the TabContainer
-		// component
+		// Tabs
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tabCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tab']").execute(context);
 		if (!tabCompList.isEmpty()) {
@@ -615,7 +651,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
-		// Safety pass: explicitly link all Tooltip classes to the Tooltip component
+		// Tooltips
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> tooltipCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Tooltip']").execute(context);
 		if (!tooltipCompList.isEmpty()) {
