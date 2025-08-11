@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { act } from "react";
 import { TrimmRangeDatePicker } from "../src/TrimmRangeDatepicker";
 import { createElement } from "react";
 import { LocaleEnum } from "../typings/TrimmRangeDatepickerProps";
@@ -260,7 +261,7 @@ describe("TrimmRangeDatepicker Unit", () => {
         expect(container.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
     });
 
-        it("handles onChange when canExecute is false", () => {
+    it("handles onChange when canExecute is false", () => {
         const onChangeWithCanExecuteFalse = {
             ...mockAction,
             canExecute: false
@@ -288,7 +289,7 @@ describe("TrimmRangeDatepicker Unit", () => {
             isExecuting: true
         };
         
-                const { container } = render(createElement(TrimmRangeDatePicker, getProps({ onChange: onChangeWithIsExecutingTrue }))); 
+        const { container } = render(createElement(TrimmRangeDatePicker, getProps({ onChange: onChangeWithIsExecutingTrue }))); 
         const startField = screen.getByText("Start:");
         
         // Open calendar and select dates
@@ -363,7 +364,7 @@ describe("TrimmRangeDatepicker Unit", () => {
 
     it("handles different locale formats", () => {
         // Test English locale
-                const { container: containerEn } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "en_US" as LocaleEnum })));
+        const { container: containerEn } = render(createElement(TrimmRangeDatePicker, getProps({ locale: "en_US" as LocaleEnum })));
         expect(containerEn.querySelector('.trimm-range-datepicker')).toBeInTheDocument();
 
         // Test Dutch locale

@@ -18,6 +18,17 @@ import {
 import { enUS } from "date-fns/locale/en-US";
 import { nl } from "date-fns/locale/nl";
 
+/**
+ * TRIMM Datepicker Widget
+ * 
+ * A Mendix pluggable widget that provides an accessible calendar interface
+ * styled with the TRIMM Design System. Features locale-aware formatting,
+ * date constraints, and seamless integration with Mendix data attributes.
+ */
+
+/**
+ * Returns the appropriate date-fns locale object based on the locale string
+ */
 function getLocale(localeStr: string | undefined) {
     switch (localeStr) {
         case "nl_NL":
@@ -28,6 +39,10 @@ function getLocale(localeStr: string | undefined) {
     }
 }
 
+/**
+ * Main TRIMM Datepicker component
+ * Provides a calendar popup with month navigation, date selection, and drag functionality
+ */
 export function TrimmDatepicker({
     selectedDate,
     class: className,
@@ -47,12 +62,14 @@ export function TrimmDatepicker({
     const calendarRef = useRef<HTMLDivElement>(null);
     const [popupOffset, setPopupOffset] = useState<{ left: number; top: number }>({ left: 0, top: 0 });
 
+    // Sync local state with selectedDate prop
     useEffect(() => {
         const base = selectedDate?.value ?? null;
         setLocalSelectedDate(base);
         if (base) setCurrentMonth(base);
     }, [selectedDate?.value]);
 
+    // Calendar drag functionality
     useEffect(() => {
         function onMouseUp() {
             setDragging(false);
@@ -85,6 +102,30 @@ export function TrimmDatepicker({
         }
     }, [showCalendar]);
 
+    // Click outside to close calendar
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (showCalendar &&
+                calendarRef.current &&
+                inputRef.current &&
+                !calendarRef.current.contains(event.target as Node) &&
+                !inputRef.current.parentElement?.contains(event.target as Node)) {
+                setShowCalendar(false);
+            }
+        }
+
+        if (showCalendar) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showCalendar]);
+
+    /**
+     * Checks if a date is outside the allowed range (min/max date constraints)
+     */
     function isOutOfRange(day: Date) {
         const checkDay = startOfDay(day);
         const min = minDate?.value ? startOfDay(minDate.value) : undefined;
@@ -94,6 +135,10 @@ export function TrimmDatepicker({
         return false;
     }
 
+    /**
+     * Handles date selection from the calendar
+     * Updates the selected date and triggers onChange action if provided
+     */
     const handleDateClick = (date: Date) => {
         if (isOutOfRange(date)) return;
 
@@ -161,6 +206,9 @@ export function TrimmDatepicker({
         </div>
     );
 
+    /**
+     * Renders the calendar header with month navigation
+     */
     function renderHeader() {
         return (
             <div className="trimm-datepicker-header">
@@ -175,6 +223,9 @@ export function TrimmDatepicker({
         );
     }
 
+    /**
+     * Renders the day labels row (Mon, Tue, Wed, etc.)
+     */
     function renderDays() {
         const days = [];
         const startDate = startOfWeek(currentMonth, { locale: localeObj });
@@ -188,6 +239,10 @@ export function TrimmDatepicker({
         return <div className="trimm-datepicker-days-row">{days}</div>;
     }
 
+    /**
+     * Renders the calendar grid with date cells
+     * Handles date states: selected, today, disabled, and out-of-range
+     */
     function renderCells() {
         const monthStart = startOfMonth(currentMonth);
         const monthEnd = endOfMonth(monthStart);

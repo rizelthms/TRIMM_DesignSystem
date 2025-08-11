@@ -12,27 +12,37 @@ import { Big } from "big.js";
 // END EXTRA CODE
 
 /**
- * @param {string} textToCopy
- * @returns {Promise.<void>}
+ * Copies text to the system clipboard using the modern Clipboard API
+ * with fallback support for older browsers using document.execCommand
+ * 
+ * @param {string} textToCopy - The text string to copy to clipboard
+ * @returns {Promise.<void>} - Resolves when copy operation completes
  */
 export async function CopyToClipboard(textToCopy) {
 	// BEGIN USER CODE
-if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-    await navigator.clipboard.writeText(textToCopy);
-    return;
-} else {
-    // Fallback for older browsers
-    var textarea = document.createElement("textarea");
-    textarea.value = textToCopy;
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        document.execCommand('copy');
-    } catch (err) {
-        // Optionally handle error
-    }
-    document.body.removeChild(textarea);
-    return;
-}
+	// Try modern Clipboard API first (supported in most modern browsers)
+	if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+		await navigator.clipboard.writeText(textToCopy);
+		return;
+	} else {
+		// Fallback for older browsers using document.execCommand
+		// Create a temporary textarea element to hold the text
+		var textarea = document.createElement("textarea");
+		textarea.value = textToCopy;
+		// Add to DOM temporarily (required for execCommand to work)
+		document.body.appendChild(textarea);
+		// Select the text content
+		textarea.select();
+		try {
+			// Execute the copy command
+			document.execCommand('copy');
+		} catch (err) {
+			// Silently handle errors (e.g., user denied clipboard access)
+			// Optionally handle error logging here if needed
+		}
+		// Clean up: remove the temporary textarea from DOM
+		document.body.removeChild(textarea);
+		return;
+	}
 	// END USER CODE
 }

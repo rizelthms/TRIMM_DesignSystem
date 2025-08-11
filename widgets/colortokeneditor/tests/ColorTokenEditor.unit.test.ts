@@ -42,15 +42,15 @@ describe("deriveDarkColor", () => {
 });
 
 describe("deriveDarkColor edge cases", () => {
-    it("returns a dark color for #000000 (should still be #000000 or similar)", () => {
+    it("returns a dark color for #000000", () => {
         expect(deriveDarkColor("#000000")).toMatch(/^#[0-9a-f]{6}$/i);
     });
-    it("returns a dark color for #ffffff (should be much darker)", () => {
+    it("returns a dark color for #ffffff", () => {
         const result = deriveDarkColor("#ffffff");
         expect(result).toMatch(/^#[0-9a-f]{6}$/i);
         expect(result.toLowerCase()).not.toBe("#ffffff");
     });
-    it("returns fallback for malformed hex (e.g. #12, #gggggg)", () => {
+    it("returns fallback for malformed hex", () => {
         expect(deriveDarkColor("#12")).toMatch(/^#[0-9a-f]{6}$/i);
         expect(deriveDarkColor("#gggggg")).toMatch(/^#[0-9a-f]{6}$/i);
     });
@@ -70,15 +70,15 @@ describe("deriveLightColor", () => {
 });
 
 describe("deriveLightColor edge cases", () => {
-    it("returns a light color for #ffffff (should still be #ffffff or similar)", () => {
+    it("returns a light color for #ffffff", () => {
         expect(deriveLightColor("#ffffff")).toMatch(/^#[0-9a-f]{6}$/i);
     });
-    it("returns a light color for #000000 (should be much lighter)", () => {
+    it("returns a light color for #000000", () => {
         const result = deriveLightColor("#000000");
         expect(result).toMatch(/^#[0-9a-f]{6}$/i);
         expect(result.toLowerCase()).not.toBe("#000000");
     });
-    it("returns fallback for malformed hex (e.g. #12, #gggggg)", () => {
+    it("returns fallback for malformed hex", () => {
         expect(deriveLightColor("#12")).toMatch(/^#[0-9a-f]{6}$/i);
         expect(deriveLightColor("#gggggg")).toMatch(/^#[0-9a-f]{6}$/i);
     });
@@ -113,7 +113,6 @@ describe("getValidHex edge cases", () => {
 describe("isValidColor edge cases", () => {
     it("returns false for CSS variable strings", () => {
         expect(isValidColor("var(--brand-1)")).toBe(false);
-        expect(isValidColor("#{brand-1}")).toBe(false);
         expect(isValidColor("#{brand-1}")).toBe(false);
     });
     it("returns false for whitespace and numbers", () => {

@@ -18,6 +18,17 @@ import {
 import { enUS } from "date-fns/locale/en-US";
 import { nl } from "date-fns/locale/nl";
 
+/**
+ * TRIMM Range Datepicker Widget
+ * 
+ * A Mendix pluggable widget that provides a date range selection interface
+ * styled with the TRIMM Design System. Features dual-month calendar views, drag-and-drop
+ * functionality, and comprehensive date validation.
+ */
+
+/**
+ * Returns the appropriate date-fns locale object based on the locale string
+ */
 function getLocale(localeStr: string | undefined) {
     switch (localeStr) {
         case "nl_NL":
@@ -28,6 +39,10 @@ function getLocale(localeStr: string | undefined) {
     }
 }
 
+/**
+ * Main TRIMM Range Datepicker component
+ * Provides a dual-month calendar interface for selecting date ranges with drag functionality
+ */
 export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) {
     const { startDate, endDate, onChange, minDate, maxDate, locale, showIcon } = props;
 
@@ -42,11 +57,13 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     const popupRef = useRef<HTMLDivElement>(null);
     const toggleRef = useRef<HTMLDivElement>(null);
 
+    // Sync local state with startDate and endDate props
     useEffect(() => {
         if (startDate?.value) setLocalStart(startDate.value);
         if (endDate?.value) setLocalEnd(endDate.value);
     }, [startDate?.value, endDate?.value]);
 
+    // Reset popup position when opening calendar
     useEffect(() => {
         if (showCalendar) {
             // Always reset to default anchored position below the toggle (relative to parent)
@@ -54,6 +71,28 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     }, [showCalendar]);
 
+    // Click outside to close calendar
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (showCalendar &&
+                popupRef.current &&
+                toggleRef.current &&
+                !popupRef.current.contains(event.target as Node) &&
+                !toggleRef.current.contains(event.target as Node)) {
+                setShowCalendar(false);
+            }
+        }
+
+        if (showCalendar) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showCalendar]);
+
+    // Calendar drag functionality
     useEffect(() => {
         function onMouseMove(e: MouseEvent) {
             if (dragging && dragStart) {
@@ -77,6 +116,9 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         };
     }, [dragging, dragStart]);
 
+    /**
+     * Checks if a date is selectable based on min/max date constraints
+     */
     const isSelectable = (date: Date): boolean => {
         const check = startOfDay(date);
         if (minDate?.value && isBefore(check, startOfDay(minDate.value))) return false;
@@ -84,15 +126,22 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         return true;
     };
 
+    /**
+     * Handles date selection in the two-step range selection process
+     * Step 1: Select start date, Step 2: Select end date
+     */
     const handleClickDate = (date: Date) => {
         if (!isSelectable(date)) return;
 
         if (step === "start") {
+            // First step: select start date
             setLocalStart(date);
             setLocalEnd(null);
             setStep("end");
         } else {
+            // Second step: select end date
             if (localStart && date >= localStart) {
+                // Valid range: set both dates and complete selection
                 setLocalEnd(date);
                 startDate.setValue(localStart);
                 endDate.setValue(date);
@@ -102,6 +151,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
                 setStep("start");
                 setShowCalendar(false);
             } else {
+                // Invalid range: reset to start step with new start date
                 setLocalStart(date);
                 setLocalEnd(null);
                 setStep("end");
@@ -109,6 +159,10 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     };
 
+    /**
+     * Renders a single month calendar grid
+     * Handles date states: selected, in-range, disabled, and navigation
+     */
     const renderMonth = (monthDate: Date) => {
         const monthStart = startOfMonth(monthDate);
         const monthEnd = endOfMonth(monthStart);
@@ -167,6 +221,10 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         );
     };
 
+    /**
+     * Renders a date input field (Start or End)
+     * Shows the field label, optional icon, and selected date or placeholder
+     */
     const renderField = (label: string, value: Date | null, active: boolean) => (
         <button
             type="button"

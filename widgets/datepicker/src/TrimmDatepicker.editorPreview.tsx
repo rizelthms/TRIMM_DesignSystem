@@ -4,6 +4,11 @@ import { TrimmDatepicker } from "./TrimmDatepicker";
 import { TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
 import { ValueStatus, EditableValue } from "mendix";
 
+/**
+ * Preview component for Studio Pro
+ * Shows a simplified version of the TRIMM Datepicker with mock data
+ */
+
 // Helper for min/max dates
 function daysFromNow(days: number) {
     const d = new Date();

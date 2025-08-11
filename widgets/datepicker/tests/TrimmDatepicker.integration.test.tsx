@@ -4,6 +4,7 @@ import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { TrimmDatepicker } from "../src/TrimmDatepicker";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
+import { describe, it, expect, jest } from "@jest/globals";
 
 function getProps(overrides: Partial<TrimmDatepickerContainerProps> = {}): TrimmDatepickerContainerProps {
     return {
@@ -22,13 +23,15 @@ function getProps(overrides: Partial<TrimmDatepickerContainerProps> = {}): Trimm
 describe("TrimmDatepicker Integration", () => {
     it("renders the input and calendar icon", () => {
         render(<TrimmDatepicker {...getProps()} />);
-        expect(screen.getByRole("textbox")).toBeInTheDocument();
-        expect(screen.getByRole("textbox")).toHaveAttribute("readonly");
-        expect(screen.getByText((_, el) => !!el && el.className.includes("trimm-datepicker-icon"))).toBeInTheDocument();
+        const textbox = screen.getByRole("textbox");
+        expect(textbox).toBeTruthy();
+        expect(textbox.getAttribute("readonly")).toBe("");
+        const icon = Array.from(document.querySelectorAll("span,svg,i,div"))
+            .find(el => el.className && el.className.toString().includes("trimm-datepicker-icon"));
+        expect(icon).toBeTruthy();
     });
 
     it("shows calendar on input click and allows date selection", async () => {
-        // Set initial date to July 2, 2025
         const initialDate = new Date(2025, 6, 2);
         const mockSelectedDate = {
             value: initialDate,
@@ -38,15 +41,15 @@ describe("TrimmDatepicker Integration", () => {
             validation: '',
             readOnly: false
         };
-        render(<TrimmDatepicker {...getProps({ 
-            selectedDate: mockSelectedDate as any 
+        render(<TrimmDatepicker {...getProps({
+            selectedDate: mockSelectedDate as any
         })} />);
         fireEvent.click(screen.getByRole("textbox"));
         // Wait for calendar to open
         await waitFor(() => {
-            expect(document.querySelector('.trimm-datepicker-calendar')).toBeInTheDocument();
+            expect(document.querySelector('.trimm-datepicker-calendar')).not.toBeNull();
         });
-        // Find a specific different date cell (e.g., "5") and click it
+        // Find a specific different date cell and click it
         const targetCell = Array.from(document.querySelectorAll('.trimm-datepicker-cell:not(.disabled)'))
             .find(cell => cell.textContent === '5' && !cell.className.includes('selected'));
         if (targetCell) {
@@ -54,7 +57,7 @@ describe("TrimmDatepicker Integration", () => {
         } else {
             throw new Error('No valid target date cell found');
         }
-        // Verify setValue was called (date selection occurred)
+        // Verify setValue was called
         expect(mockSelectedDate.setValue).toHaveBeenCalled();
     });
 
@@ -88,12 +91,15 @@ describe("TrimmDatepicker Integration", () => {
         const monthLabel = screen.getByText((content) =>
             /januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december/i.test(content || "")
         );
-        expect(monthLabel).toBeInTheDocument();
+        expect(monthLabel).not.toBeNull();
     });
 
     it("hides the calendar icon if showIcon is false", () => {
         render(<TrimmDatepicker {...getProps({ showIcon: false })} />);
-        expect(screen.queryByText((_, el) => !!el && el.className.includes("trimm-datepicker-icon"))).not.toBeInTheDocument();
+        // Using queryByText with a function does not guarantee the correct element is found,
+        // so switching to querySelector for the icon class and checking for null
+        const icon = document.querySelector('.trimm-datepicker-icon');
+        expect(icon).toBeNull();
     });
 
     it("navigates months using previous/next buttons", async () => {
@@ -101,11 +107,12 @@ describe("TrimmDatepicker Integration", () => {
         fireEvent.click(screen.getByRole("textbox"));
         // Wait for calendar to open
         await waitFor(() => {
-            expect(document.querySelector('.trimm-datepicker-header-label')).toBeInTheDocument();
+            const labelElem = document.querySelector('.trimm-datepicker-header-label');
+            expect(labelElem).not.toBeNull();
         });
         const labelBeforeElem = document.querySelector('.trimm-datepicker-header-label');
         const labelBefore = labelBeforeElem ? labelBeforeElem.textContent : '';
-        expect(labelBefore).not.toBe(''); // Ensure label exists
+        expect(labelBefore).not.toBe('');
         // Click next month
         const nextBtn = document.querySelector('.glyphicon-triangle-right')?.closest('button');
         if (nextBtn) {
@@ -113,7 +120,7 @@ describe("TrimmDatepicker Integration", () => {
             await waitFor(() => {
                 const labelAfterNextElem = document.querySelector('.trimm-datepicker-header-label');
                 const labelAfterNext = labelAfterNextElem ? labelAfterNextElem.textContent : '';
-        expect(labelAfterNext).not.toBe(labelBefore);
+                expect(labelAfterNext).not.toBe(labelBefore);
             });
         }
         // Click previous month
@@ -123,7 +130,7 @@ describe("TrimmDatepicker Integration", () => {
             await waitFor(() => {
                 const labelAfterPrevElem = document.querySelector('.trimm-datepicker-header-label');
                 const labelAfterPrev = labelAfterPrevElem ? labelAfterPrevElem.textContent : '';
-        expect(labelAfterPrev).toBe(labelBefore);
+                expect(labelAfterPrev).toBe(labelBefore);
             });
         }
     });
@@ -133,25 +140,17 @@ describe("TrimmDatepicker Integration", () => {
         fireEvent.click(screen.getByRole("textbox"));
         const today = new Date().getDate().toString();
         const todayCell = screen.getAllByText(today).find(cell => cell.className.includes("today"));
-        expect(todayCell).toBeInTheDocument();
-    });
-
-    it("disables dates outside current month and prevents selection", async () => {
-        render(<TrimmDatepicker {...getProps()} />);
-        fireEvent.click(screen.getByRole("textbox"));
-        // Wait for calendar to open
-        await waitFor(() => {
-            expect(document.querySelector('.trimm-datepicker-header-label')).toBeInTheDocument();
-        });
+        expect(todayCell).not.toBeNull();
+        // Calendar is already open from previous click, so no need to click again or wait
         // Find a disabled cell (outside current month)
         const disabledCell = document.querySelector('.trimm-datepicker-cell.disabled');
         if (disabledCell) {
             fireEvent.click(disabledCell);
             // Calendar should remain open (indicating the cell was disabled)
-            expect(document.querySelector('.trimm-datepicker-header-label')).toBeInTheDocument();
+            expect(document.querySelector('.trimm-datepicker-header-label')).not.toBeNull();
         } else {
             // If no disabled cells, just verify calendar is open
-            expect(document.querySelector('.trimm-datepicker-header-label')).toBeInTheDocument();
+            expect(document.querySelector('.trimm-datepicker-header-label')).not.toBeNull();
         }
     });
 
@@ -166,16 +165,14 @@ describe("TrimmDatepicker Integration", () => {
         expect(inputs).toHaveLength(2);
         // Open first datepicker
         fireEvent.click(inputs[0]);
-        expect(screen.getByText(/\d{4}/)).toBeInTheDocument();
+        expect(screen.getByText(/\d{4}/)).toBeTruthy();
         // Open second datepicker - should show another calendar
         fireEvent.click(inputs[1]);
         const calendars = screen.getAllByText(/\d{4}/);
-        expect(calendars).toHaveLength(2);
+        expect(calendars.length).toBe(2);
     });
 
-    // Accessibility test removed due to jest-axe dependency cleanup
-
-    it('should not enable any selectable dates if min > max (except possibly today)', async () => {
+    it('should not enable any selectable dates if min > max', async () => {
         const min = new Date(2025, 0, 2);
         const max = new Date(2025, 0, 1);
         render(

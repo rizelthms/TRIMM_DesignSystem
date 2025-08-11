@@ -1,264 +1,78 @@
 # TRIMM Datepicker Widget
 
-## Overview
+The TRIMM Datepicker is a Mendix pluggable widget styled with the TRIMM Design System. It provides an accessible calendar with locale aware formatting, min and max constraints, and clean integration with Mendix data.
 
-The **TRIMM Datepicker** is a custom Mendix pluggable widget that provides an elegant, accessible date selection interface styled according to the TRIMM Design System. This widget offers a modern alternative to standard HTML date inputs with enhanced UX features, localization support, and seamless integration with Mendix data attributes.
+## Requirements and setup
 
-## Purpose & Design Philosophy
+1. Import the TRIMM Design System module into your app so the theme is available
+2. Add the TRIMM Datepicker widget to a page
+3. Bind Selected Date to a DateTime attribute when you want to persist the value
+4. Optional: set Minimum Date, Maximum Date, Locale and Show Calendar Icon
 
-This widget embodies the TRIMM Design System's core principles:
+Styling for this widget lives in the TRIMM theme module. Include that module so the classes render correctly.
 
-- **Consistency**: Uniform styling that integrates seamlessly with other TRIMM components
-- **Accessibility**: Full keyboard navigation and screen reader support
-- **Flexibility**: Configurable constraints and localization options
-- **User Experience**: Intuitive calendar interface with drag-and-drop positioning
-- **Developer-Friendly**: Easy integration with existing Mendix applications
+* Theme folder: `themesource/trimm_designsystem`
+* Component styles: `themesource/trimm_designsystem/web/components/custom/_datepicker.scss`
 
-## Key Features
+## What it does
 
-### 📅 **Advanced Calendar Interface**
-- **Interactive Calendar Grid**: Month/year navigation with visual date selection
-- **Date Constraints**: Min/max date validation with visual disabled states
-- **Current Date Highlighting**: Today's date is visually distinguished
-- **Multi-Month Navigation**: Smooth transitions between months and years
+* Calendar popup with month navigation and selectable days
+* Min and max validation that visually disables out of range days
+* Today highlighting and selected day styling
+* Draggable calendar header so you can reposition the popup
+* Locale aware formatting using `date-fns` locales for English US and Dutch NL
 
-### 🌍 **Localization Support**
-- **Multiple Locales**: English (US/UK) and Dutch (NL) with proper date formatting
-- **Locale-Aware Display**: Day names, month names, and date formats adapt to selected locale
-- **Cultural Date Formats**: Automatic formatting based on regional conventions
+## Properties
 
-### 🎨 **Enhanced User Experience**
-- **Draggable Calendar**: Popup calendar can be repositioned for optimal visibility
-- **Visual Feedback**: Hover states, selection highlighting, and smooth transitions
-- **Responsive Design**: Adapts to different screen sizes and orientations
-- **Click-Outside-to-Close**: Intuitive interaction patterns
+* Selected Date: Mendix DateTime attribute to bind the value
+* Minimum Date: optional constraint
+* Maximum Date: optional constraint
+* On Date Change: optional action called on selection when allowed
+* Show Calendar Icon: show or hide the icon in the input
+* Locale: `en_US` or `nl_NL`
 
-### 🔧 **Technical Features**
-- **Real-Time Validation**: Immediate feedback for date constraints
-- **State Management**: Maintains selection state and calendar position
-- **Performance Optimized**: Efficient rendering and event handling
-- **Memory Management**: Proper cleanup of event listeners and resources
+## How it works
 
-## Usage
+* The input displays the active date using `date-fns` format `P` for the chosen locale
+* Opening the calendar shows a grid for the current month with navigation arrows
+* Disabled state is applied to any day outside the current month or outside min or max
+* Selecting a valid day updates the Mendix attribute when provided, otherwise local state
+* After selection the calendar closes and the input reflects the new date
 
-### Basic Implementation
+## Styling and tokens
 
-1. **Add to Page**: Drag the TRIMM Datepicker widget onto your Mendix page
-2. **Bind Data**: Connect the `Selected Date` property to a DateTime attribute
-3. **Configure Options**: Set locale, constraints, and appearance options
-4. **Style Integration**: Widget automatically uses TRIMM Design System styling
+* Classes used: `trimm-datepicker`, `trimm-datepicker-input`, `trimm-datepicker-calendar`, `trimm-datepicker-day-label`, `trimm-datepicker-cell`, `trimm-datepicker-header-label`
+* Colors, spacing, borders and typography come from the TRIMM Design System tokens and SCSS variables in the theme
 
-### Configuration Options
+## Development and testing
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| **Selected Date** | DateTime Attribute | - | The date attribute to bind the selected value to |
-| **Minimum Date** | DateTime Attribute | - | Optional minimum selectable date constraint |
-| **Maximum Date** | DateTime Attribute | - | Optional maximum selectable date constraint |
-| **On Date Change** | Action | - | Optional action triggered when a date is selected |
-| **Show Calendar Icon** | Boolean | `true` | Display the calendar icon in the input field |
-| **Locale** | Enumeration | `en-US` | Language and region for date formatting |
-
-### Supported Locales
-
-- **English (US)**: `en-US` - MM/DD/YYYY format
-- **English**: `en` - DD/MM/YYYY format  
-- **Dutch (Netherlands)**: `nl-NL` - DD-MM-YYYY format
-- **Dutch**: `nl` - DD-MM-YYYY format
-
-### Advanced Usage Examples
-
-#### Date Range Validation
-```xml
-<!-- Set min/max dates for a booking system -->
-<widget>
-  <property name="selectedDate" value="$BookingDate"/>
-  <property name="minDate" value="$Today"/>
-  <property name="maxDate" value="$MaxBookingDate"/>
-</widget>
-```
-
-#### Localized Display
-```xml
-<!-- Dutch locale for Netherlands users -->
-<widget>
-  <property name="locale" value="nl-NL"/>
-  <property name="selectedDate" value="$GeboorteDatum"/>
-</widget>
-```
-
-## Integration with TRIMM Design System
-
-### CSS Architecture
-
-Widget styling is entirely handled through the TRIMM Design System SCSS:
-
-```scss
-// Located in: themesource/trimm_designsystem/web/components/_datepicker.scss
-
-.trimm-datepicker {
-  /* Main container styles */
-}
-
-.trimm-datepicker-input-wrapper {
-  /* Input field wrapper */
-}
-
-.trimm-datepicker-calendar {
-  /* Calendar popup styles */
-}
-
-.trimm-datepicker-cell {
-  /* Individual date cell styling */
-  
-  &.selected { /* Selected date */ }
-  &.today { /* Today's date */ }
-  &.disabled { /* Out of range dates */ }
-}
-```
-
-### Design Tokens Integration
-
-The widget uses TRIMM Design System tokens for consistent theming:
-
-- **Colors**: `--brand-1`, `--base-white`, `--base-black`
-- **Spacing**: `$spacing-8`, `$spacing-16`, `$spacing-24`
-- **Typography**: `$font-primary`, `$font-size-body-2`
-- **Borders**: `$radius-4`, `$border-1`
-- **Shadows**: `$shadow-6` for popup elevation
-
-### Theme Compatibility
-
-- **Light/Dark Themes**: Automatic adaptation using CSS custom properties
-- **Client Branding**: Colors update dynamically with ColorTokenEditor changes
-- **Responsive Breakpoints**: Adapts to mobile and desktop viewports
-
-## Technical Implementation
-
-### Architecture
-
-```
-┌─────────────────────────────────────┐
-│ TRIMM Datepicker Widget             │
-├─────────────────────────────────────┤
-│ • Date Selection Engine             │
-│ • Locale Management System         │
-│ • Constraint Validation Layer       │
-│ • Calendar Positioning System      │
-│ • Accessibility Framework          │
-│ • Event Management                  │
-└─────────────────────────────────────┘
-```
-
-### Core Dependencies
-
-- **date-fns**: Comprehensive date manipulation and formatting library
-- **React Hooks**: State management and lifecycle handling
-- **Mendix Platform**: Integration with Mendix data layer and actions
-
-### Date Processing Pipeline
-
-1. **Input Validation**: Ensures valid date objects and constraints
-2. **Locale Processing**: Applies region-specific formatting rules
-3. **Constraint Checking**: Validates against min/max date boundaries
-4. **Display Formatting**: Converts dates to locale-appropriate strings
-5. **State Synchronization**: Updates Mendix attributes and triggers actions
-
-### Accessibility Features
-
-- **ARIA Labels**: Proper labeling for screen readers
-- **Keyboard Navigation**: Arrow keys for date selection, Enter/Space for confirmation
-- **Focus Management**: Logical tab order and visual focus indicators
-- **High Contrast**: Compatible with accessibility themes
-- **Screen Reader Announcements**: Date selection and constraint feedback
-
-## Browser Compatibility
-
-- **Modern Browsers**: Chrome 88+, Firefox 85+, Safari 14+, Edge 88+
-- **Date Object Support**: Native JavaScript Date handling
-- **CSS Grid/Flexbox**: Required for calendar layout
-- **Event Listeners**: Mouse and keyboard event handling
-
-## Development & Testing
-
-### Running Tests
+### Run tests
 
 ```bash
 cd widgets/datepicker/tests
 npx jest
 ```
 
-### Building the Widget
+### Build
 
 ```bash
 cd widgets/datepicker
 npm run build
 ```
 
-### Development Mode
+### Local development
 
 ```bash
 cd widgets/datepicker
 npm run dev
 ```
 
-### Test Coverage
-
-The widget includes comprehensive test suites covering:
-
-- **Unit Tests**: Component logic, date calculations, locale handling
-- **Integration Tests**: User interactions, constraint validation, accessibility
-- **Edge Cases**: Invalid dates, boundary conditions, error scenarios
-
-## Performance Considerations
-
-### Optimization Strategies
-
-- **Lazy Calendar Rendering**: Calendar grid generated only when opened
-- **Event Debouncing**: Prevents excessive re-renders during interactions
-- **Memory Management**: Proper cleanup of event listeners and timers
-- **Efficient Re-renders**: Optimized React state updates
-
-### Best Practices
-
-1. **Constraint Setting**: Use reasonable min/max date ranges to avoid large calendar grids
-2. **Locale Selection**: Choose appropriate locale for your user base
-3. **Action Optimization**: Keep onChange actions lightweight for smooth UX
-4. **Responsive Design**: Test on various screen sizes and orientations
-
 ## Troubleshooting
 
-### Common Issues
-
-**Q: Calendar appears in wrong position**
-A: The calendar is draggable - click and drag the header to reposition it.
-
-**Q: Dates appear in wrong format**
-A: Check the `locale` property setting and ensure it matches your user's region.
-
-**Q: Some dates are not selectable**
-A: Verify your `minDate` and `maxDate` constraints are set correctly.
-
-**Q: Widget doesn't respond to date selection**
-A: Ensure the `selectedDate` property is bound to a valid DateTime attribute.
-
-### Debug Mode
-
-Enable debug logging in browser console:
-```javascript
-localStorage.setItem('trimm-datepicker-debug', 'true');
-```
-
-## Contributing
-
-When contributing to this widget:
-
-1. **Follow TRIMM Design System patterns**
-2. **Maintain accessibility standards (WCAG 2.1 AA)**
-3. **Add comprehensive tests for new features**
-4. **Update documentation for API changes**
-5. **Test across supported locales and browsers**
+* Styles missing: confirm the TRIMM Design System module is imported so `custom/_datepicker.scss` is compiled into the app theme
+* Wrong date format: check the Locale property value
+* Dates cannot be clicked: verify Minimum Date and Maximum Date
 
 ## License
 
-© TRIMM 2024. All rights reserved. Licensed under Apache-2.0. 
+© TRIMM 2024. Apache-2.0

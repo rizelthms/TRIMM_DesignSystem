@@ -5,6 +5,10 @@ import { TrimmRangeDatepickerPreviewProps } from "../typings/TrimmRangeDatepicke
 import { useState } from "react";
 import { ValueStatus, EditableValue } from "mendix";
 
+/**
+ * Preview component for Studio Pro
+ * Shows a simplified version of the TRIMM Range Datepicker with mock data
+ */
 export function preview(props: TrimmRangeDatepickerPreviewProps) {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date(Date.now() + 86400000)); // +1 day

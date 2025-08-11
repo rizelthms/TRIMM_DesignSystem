@@ -73,9 +73,9 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         fireEvent.click(toggle!);
-        
+
         expect(screen.getByText("Option 1")).toBeVisible();
         expect(screen.getByText("Option 2")).toBeVisible();
         expect(screen.getByText("Option 3")).toBeVisible();
@@ -85,11 +85,11 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         // Open dropdown
         fireEvent.click(toggle!);
         expect(screen.getByText("Option 1")).toBeVisible();
-        
+
         // Close dropdown
         fireEvent.click(toggle!);
         expect(container.querySelector('.trimm-dropdown-menu')).not.toBeInTheDocument();
@@ -99,13 +99,13 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         // Open dropdown
         fireEvent.click(toggle!);
-        
+
         // Click first option
         fireEvent.click(screen.getByText("Option 1"));
-        
+
         expect(mockAction.execute).toHaveBeenCalledTimes(1);
     });
 
@@ -113,14 +113,14 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         // Open dropdown
         fireEvent.click(toggle!);
         expect(screen.getByText("Option 1")).toBeVisible();
-        
+
         // Click item
         fireEvent.click(screen.getByText("Option 1"));
-        
+
         // Dropdown should close (component doesn't auto-close, so this test checks current behavior)
         expect(screen.getByText("Option 1")).toBeVisible();
     });
@@ -129,9 +129,9 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps({ dropdownItems: [] })));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         fireEvent.click(toggle!);
-        
+
         // Should not crash and dropdown should be empty
         expect(container.querySelector('.trimm-dropdown-menu')).toBeInTheDocument();
     });
@@ -140,9 +140,9 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps({ dropdownItems: undefined })));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         fireEvent.click(toggle!);
-        
+
         // Should not crash
         expect(container.querySelector('.trimm-dropdown')).toBeInTheDocument();
     });
@@ -152,17 +152,17 @@ describe("TrimmDropdown Unit", () => {
             { caption: "Option 1", action: undefined },
             { caption: "Option 2", action: null }
         ];
-        
+
         const { container } = render(createElement(TrimmDropdown, getProps({ dropdownItems: itemsWithoutActions })));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         fireEvent.click(toggle!);
-        
+
         // Should not crash when clicking items without actions
         fireEvent.click(screen.getByText("Option 1"));
         fireEvent.click(screen.getByText("Option 2"));
-        
+
         expect(container.querySelector('.trimm-dropdown')).toBeInTheDocument();
     });
 
@@ -170,7 +170,7 @@ describe("TrimmDropdown Unit", () => {
     it("renders icon type icon correctly", () => {
         const icon = mockDynamicValue({ type: "icon", iconClass: "custom-icon" });
         const { container } = render(createElement(TrimmDropdown, getProps({ icon })));
-        
+
         const iconElement = container.querySelector('.trimm-dropdown-icon.custom-icon');
         expect(iconElement).toBeInTheDocument();
     });
@@ -178,7 +178,7 @@ describe("TrimmDropdown Unit", () => {
     it("renders glyph type icon correctly", () => {
         const icon = mockDynamicValue({ type: "glyph", iconClass: "glyphicon-star" });
         const { container } = render(createElement(TrimmDropdown, getProps({ icon })));
-        
+
         const iconElement = container.querySelector('.glyphicon.glyphicon-star');
         expect(iconElement).toBeInTheDocument();
     });
@@ -186,7 +186,7 @@ describe("TrimmDropdown Unit", () => {
     it("renders image type icon correctly", () => {
         const icon = mockDynamicValue({ type: "image", iconUrl: "test-image.png" });
         const { container } = render(createElement(TrimmDropdown, getProps({ icon })));
-        
+
         const iconElement = container.querySelector('img[src="test-image.png"]');
         expect(iconElement).toBeInTheDocument();
         expect(iconElement).toHaveAttribute('alt', 'icon');
@@ -230,9 +230,9 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         fireEvent.click(toggle!);
-        
+
         const items = container.querySelectorAll('.trimm-dropdown-item');
         expect(items).toHaveLength(3);
         expect(items[0]).toHaveTextContent('Option 1');
@@ -246,13 +246,13 @@ describe("TrimmDropdown Unit", () => {
             { caption: "", action: mockAction },
             { caption: "   ", action: mockAction }
         ];
-        
+
         const { container } = render(createElement(TrimmDropdown, getProps({ dropdownItems: itemsWithEmptyCaptions })));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         fireEvent.click(toggle!);
-        
+
         // Should render without crashing
         expect(container.querySelector('.trimm-dropdown-menu')).toBeInTheDocument();
     });
@@ -261,13 +261,13 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         // Rapidly open and close
         for (let i = 0; i < 5; i++) {
             fireEvent.click(toggle!);
             fireEvent.click(toggle!);
         }
-        
+
         // Should not crash
         expect(container.querySelector('.trimm-dropdown')).toBeInTheDocument();
     });
@@ -276,17 +276,17 @@ describe("TrimmDropdown Unit", () => {
         const { container } = render(createElement(TrimmDropdown, getProps()));
         const toggle = container.querySelector('.trimm-dropdown-toggle');
         expect(toggle).not.toBeNull();
-        
+
         // Click first item
         fireEvent.click(toggle!);
         fireEvent.click(screen.getByText("Option 1"));
-        
+
         // Click second item (dropdown stays open)
         fireEvent.click(screen.getByText("Option 2"));
-        
+
         // Click third item (dropdown stays open)
         fireEvent.click(screen.getByText("Option 3"));
-        
+
         expect(mockAction.execute).toHaveBeenCalledTimes(3);
     });
 }); 
