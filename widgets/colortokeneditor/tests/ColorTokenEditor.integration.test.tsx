@@ -26,7 +26,7 @@ describe("ColorTokenEditor integration", () => {
 
     it("renders the floating action button (FAB)", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         expect(fab).toBeInTheDocument();
@@ -34,11 +34,11 @@ describe("ColorTokenEditor integration", () => {
 
     it("opens and closes the drawer when FAB is clicked", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         await act(async () => {
-        fireEvent.click(fab);
+            fireEvent.click(fab);
         });
         const drawer = screen.getByRole("dialog");
         expect(drawer).toBeVisible();
@@ -46,7 +46,7 @@ describe("ColorTokenEditor integration", () => {
         const overlay = document.querySelector(".trimm-color-token-overlay");
         expect(overlay).toBeTruthy();
         await act(async () => {
-        fireEvent.click(overlay!);
+            fireEvent.click(overlay!);
         });
         await waitFor(() => {
             expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
@@ -55,15 +55,15 @@ describe("ColorTokenEditor integration", () => {
 
     it("changes a color and updates localStorage", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         const colorInputs = document.querySelectorAll("input[type='color']");
         expect(colorInputs.length).toBeGreaterThan(0);
         await act(async () => {
-        fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
+            fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
         });
         // Check localStorage was updated
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
@@ -73,19 +73,19 @@ describe("ColorTokenEditor integration", () => {
 
     it("resets all tokens when reset button is clicked", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         // Change a color
         const colorInputs = document.querySelectorAll("input[type='color']");
         await act(async () => {
-        fireEvent.change(colorInputs[0], { target: { value: "#654321" } });
+            fireEvent.change(colorInputs[0], { target: { value: "#654321" } });
         });
         // Click reset
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /reset/i }));
+            fireEvent.click(screen.getByRole("button", { name: /reset/i }));
         });
         // All overrides should be cleared
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
@@ -98,19 +98,19 @@ describe("ColorTokenEditor integration", () => {
             ({ unmount } = render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />));
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         const colorInputs = document.querySelectorAll("input[type='color']");
         await act(async () => {
-        fireEvent.change(colorInputs[0], { target: { value: "#abcdef" } });
+            fireEvent.change(colorInputs[0], { target: { value: "#abcdef" } });
         });
         unmount!();
         // Render a new instance
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         // The color input should reflect the override
         const colorInputsAfter = document.querySelectorAll("input[type='color']");
@@ -129,11 +129,11 @@ describe("ColorTokenEditor integration", () => {
         });
         // Open drawer and change color in light theme
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         let colorInputs = document.querySelectorAll("input[type='color']");
         await act(async () => {
-        fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
+            fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
         });
         // Close drawer to flush state
         fireEvent.click(document.querySelector(".trimm-color-token-overlay")!);
@@ -150,7 +150,7 @@ describe("ColorTokenEditor integration", () => {
         });
         // Open drawer in dark theme
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         colorInputs = document.querySelectorAll("input[type='color']");
         // The widget may show either the user override or the derived dark color
@@ -170,7 +170,7 @@ describe("ColorTokenEditor integration", () => {
             fireEvent.click(document.body);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         colorInputs = document.querySelectorAll("input[type='color']");
         value = (colorInputs[0] as HTMLInputElement).value.toLowerCase();
@@ -179,7 +179,7 @@ describe("ColorTokenEditor integration", () => {
 
     it("has correct accessibility attributes", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         expect(fab).toHaveAttribute("aria-label");
@@ -187,10 +187,10 @@ describe("ColorTokenEditor integration", () => {
 
     it("shows a message when no tokens are found", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => []} />);
+            render(<ColorTokenEditor side="right" getTokens={() => []} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         expect(screen.getByText(/no valid tokens found/i)).toBeInTheDocument();
     });
@@ -200,10 +200,10 @@ describe("ColorTokenEditor integration", () => {
             { name: "--bad-token", value: "not-a-color" }
         ];
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => invalidTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => invalidTokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         // Should still render the token label
         expect(screen.getByText("--bad-token")).toBeInTheDocument();
@@ -215,7 +215,7 @@ describe("ColorTokenEditor integration", () => {
 
     it("supports keyboard accessibility for opening, closing, and tabbing through controls", async () => {
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         const fab = screen.getByRole("button", { name: /open color token editor/i });
         fab.focus();
@@ -251,29 +251,29 @@ describe("ColorTokenEditor integration", () => {
 
     it("allows multiple ColorTokenEditor instances to operate independently", async () => {
         await act(async () => {
-        render(<>
-            <ColorTokenEditor side="right" getTokens={() => [
-                { name: "--brand-1-instance1", value: "#ff0000" }
-            ]} />
-            <ColorTokenEditor side="left" getTokens={() => [
-                { name: "--brand-1-instance2", value: "#00ff00" }
-            ]} />
-        </>);
+            render(<>
+                <ColorTokenEditor side="right" getTokens={() => [
+                    { name: "--brand-1-instance1", value: "#ff0000" }
+                ]} />
+                <ColorTokenEditor side="left" getTokens={() => [
+                    { name: "--brand-1-instance2", value: "#00ff00" }
+                ]} />
+            </>);
         });
         const fabs = screen.getAllByRole("button", { name: /open color token editor/i });
         // Open both drawers
         await act(async () => {
-        fireEvent.click(fabs[0]);
+            fireEvent.click(fabs[0]);
         });
         await act(async () => {
-        fireEvent.click(fabs[1]);
+            fireEvent.click(fabs[1]);
         });
         const dialogs = screen.getAllByRole("dialog");
         expect(dialogs.length).toBe(2);
         // Change color in first widget
         let colorInputs1 = dialogs[0].querySelectorAll("input[type='color']");
         await act(async () => {
-        fireEvent.change(colorInputs1[0], { target: { value: "#111111" } });
+            fireEvent.change(colorInputs1[0], { target: { value: "#111111" } });
         });
         // Close first drawer to flush state
         fireEvent.click(document.querySelectorAll(".trimm-color-token-overlay")[0]);
@@ -283,7 +283,7 @@ describe("ColorTokenEditor integration", () => {
         // Change color in second widget
         let colorInputs2 = dialogs[1].querySelectorAll("input[type='color']");
         await act(async () => {
-        fireEvent.change(colorInputs2[0], { target: { value: "#222222" } });
+            fireEvent.change(colorInputs2[0], { target: { value: "#222222" } });
         });
         // Close second drawer to flush state
         fireEvent.click(document.querySelectorAll(".trimm-color-token-overlay")[0]);
@@ -304,10 +304,10 @@ describe("ColorTokenEditor integration", () => {
             value: `#${(i % 10).toString().repeat(6)}`
         }));
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         expect(document.querySelectorAll("input[type='color']").length).toBe(200);
     });
@@ -319,7 +319,7 @@ describe("ColorTokenEditor integration", () => {
         }));
         const start = performance.now();
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         const renderTime = performance.now() - start;
         // Should render in under 500ms
@@ -334,7 +334,7 @@ describe("ColorTokenEditor integration", () => {
         fireEvent.click(fab);
         const colorInputs = document.querySelectorAll("input[type='color']");
         for (let i = 0; i < 10; i++) {
-            fireEvent.change(colorInputs[i], { target: { value: `#${(i+1).toString().repeat(6)}` } });
+            fireEvent.change(colorInputs[i], { target: { value: `#${(i + 1).toString().repeat(6)}` } });
         }
         // No errors should be thrown and UI should remain interactive
         expect(document.querySelectorAll("input[type='color']").length).toBe(200);
@@ -347,10 +347,10 @@ describe("ColorTokenEditor integration", () => {
             { name: "", value: "#000000" }
         ];
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         expect(screen.getByText("--token!@#")).toBeInTheDocument();
         expect(screen.getByText("--token space")).toBeInTheDocument();
@@ -365,10 +365,10 @@ describe("ColorTokenEditor integration", () => {
             { name: "--dup-2", value: "#abcdef" }
         ];
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         // Both should be rendered with unique keys
         expect(screen.getByText("--dup")).toBeInTheDocument();
@@ -383,10 +383,10 @@ describe("ColorTokenEditor integration", () => {
             { name: "--bad", value: "notacolor" }
         ];
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens as any} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens as any} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         expect(screen.getByText("--empty")).toBeInTheDocument();
         expect(screen.getByText("--null")).toBeInTheDocument();
@@ -405,10 +405,10 @@ describe("ColorTokenEditor integration", () => {
             { name: "--brand-2", value: "#00ff00" }
         ];
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         // Tab through: color input 1, color input 2, reset button, close button
         const colorInputs = document.querySelectorAll("input[type='color']");
@@ -436,10 +436,10 @@ describe("ColorTokenEditor integration", () => {
             { name: "--brand-1", value: "#ff0000" }
         ];
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         expect(screen.getByRole("dialog")).toBeInTheDocument();
         expect(screen.getByRole("button", { name: /close color token editor/i })).toBeInTheDocument();
@@ -454,12 +454,12 @@ describe("ColorTokenEditor integration", () => {
         // Simulate quota exceeded
         jest.spyOn(window.localStorage, "setItem").mockImplementation(() => { throw new DOMException("QuotaExceededError", "QuotaExceededError"); });
         await act(async () => {
-        render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
+            render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         await act(async () => {
-        fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
-        const colorInput = document.querySelector("input[type='color']")!;
-        fireEvent.change(colorInput, { target: { value: "#123456" } });
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+            const colorInput = document.querySelector("input[type='color']")!;
+            fireEvent.change(colorInput, { target: { value: "#123456" } });
         });
         // Should not throw or crash
         expect(screen.getByText("--brand-1")).toBeInTheDocument();

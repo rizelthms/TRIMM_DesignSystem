@@ -47,7 +47,7 @@ function getAllCSSCustomProperties(): Token[] {
             continue;
         }
         if (!rules) continue;
-        
+
         for (const rule of Array.from(rules)) {
             if (
                 (rule as CSSStyleRule).selectorText === ":root" ||
@@ -72,7 +72,7 @@ function getAllCSSCustomProperties(): Token[] {
             }
         }
     }
-    
+
     // Sort tokens by base name and state (base, hover, active, disabled)
     return Object.entries(vars)
         .map(([name, value]) => ({ name, value }))
@@ -203,14 +203,14 @@ export interface ColorTokenEditorProps extends Partial<ColorTokenEditorContainer
  */
 const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) => {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
-    
+
     // Use injected getTokens or fallback to automatic discovery
     const tokens = (getTokens ?? getAllCSSCustomProperties)();
     const [theme, setTheme] = React.useState<"light" | "dark">(getCurrentTheme());
     const [overrides, setOverridesState] = React.useState<Overrides>(getOverrides(theme));
     const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
     const [open, setOpen] = useState(false);
-    
+
     // Draggable FAB state
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
         try {
@@ -242,7 +242,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
         } catch { }
     }, [fabPos]);
-    
+
     useEffect(() => {
         try {
             localStorage.setItem(DRAWER_WIDTH_KEY, String(drawerWidth));
@@ -259,7 +259,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mouseup", onMouseUp);
     }
-    
+
     function onMouseMove(e: MouseEvent) {
         if (!dragging.current) return;
         setFabPos({
@@ -267,13 +267,13 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             y: Math.max(0, e.clientY - offset.current.y)
         });
     }
-    
+
     function onMouseUp() {
         dragging.current = false;
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("mouseup", onMouseUp);
     }
-    
+
     // Touch support for FAB
     function onTouchStart(e: React.TouchEvent) {
         dragging.current = true;
@@ -285,7 +285,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         document.addEventListener("touchmove", onTouchMove);
         document.addEventListener("touchend", onTouchEnd);
     }
-    
+
     function onTouchMove(e: TouchEvent) {
         if (!dragging.current) return;
         const touch = e.touches[0];
@@ -294,7 +294,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             y: Math.max(0, touch.clientY - offset.current.y)
         });
     }
-    
+
     function onTouchEnd() {
         dragging.current = false;
         document.removeEventListener("touchmove", onTouchMove);
@@ -309,7 +309,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         document.addEventListener("mousemove", onResizeMouseMove);
         document.addEventListener("mouseup", onResizeMouseUp);
     }
-    
+
     function onResizeMouseMove(e: MouseEvent) {
         if (!resizing.current) return;
         let newWidth;
@@ -320,13 +320,13 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         }
         setDrawerWidth(newWidth);
     }
-    
+
     function onResizeMouseUp() {
         resizing.current = false;
         document.removeEventListener("mousemove", onResizeMouseMove);
         document.removeEventListener("mouseup", onResizeMouseUp);
     }
-    
+
     // Cleanup event listeners on unmount
     useEffect(() => {
         return () => {
@@ -354,13 +354,13 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             setOverridesState(currentOverrides);
             applyOverrides(currentOverrides);
         }
-        
+
         function updateTokens() {
             handleThemeChange();
         }
-        
+
         updateTokens();
-        
+
         // Watch for theme changes via data-theme attribute
         const observer = new MutationObserver(() => {
             handleThemeChange();
@@ -436,7 +436,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             >
                 {paletteIcon}
             </button>
-            
+
             {/* Resizable sidebar/drawer */}
             <div
                 className={`trimm-color-token-drawer${open ? " open" : ""} ${normalizedSide}`}
@@ -455,7 +455,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                         <span className="glyphicon glyphicon-remove" aria-hidden="true" />
                     </button>
                 </div>
-                
+
                 {/* Drawer resize handle */}
                 <div
                     className={`trimm-color-token-drawer-resize-handle ${normalizedSide}`}
@@ -464,7 +464,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     aria-label="Resize color token drawer"
                     role="separator"
                 />
-                
+
                 {/* Token grid */}
                 <div className="trimm-color-token-grid">
                     {tokens.length === 0 ? (
@@ -489,7 +489,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                         ))
                     )}
                 </div>
-                
+
                 <button
                     className="btn btn-info"
                     onClick={handleReset}
@@ -498,7 +498,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     Reset
                 </button>
             </div>
-            
+
             {/* Overlay for closing drawer */}
             {open && <div className="trimm-color-token-overlay" onClick={() => setOpen(false)} />}
         </div>

@@ -245,7 +245,7 @@ describe("TrimmDatepicker Unit", () => {
         // Mock console.error to suppress the error that gets logged
         const originalError = console.error;
         console.error = jest.fn();
-        
+
         // The component will throw an error when trying to format invalid dates
         // We can test that the component still throws, regardless of error type
         let component;
@@ -259,13 +259,13 @@ describe("TrimmDatepicker Unit", () => {
             expect(error).toBeInstanceOf(Error);
             return;
         }
-        
+
         // If the component doesn't throw, it should still render an input
         if (component) {
             const input = component.container.querySelector('input');
             expect(input).toBeInTheDocument();
         }
-        
+
         // Restore console.error
         console.error = originalError;
     });
@@ -322,20 +322,20 @@ describe("TrimmDatepicker Unit", () => {
         const startTime = performance.now();
         const { container } = render(<TrimmDatepicker {...getProps({})} />);
         const renderTime = performance.now() - startTime;
-        
+
         expect(renderTime).toBeLessThan(100); // Should render in under 100ms
         expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
     });
 
     it("handles rapid state changes without memory leaks", () => {
         const { rerender, container } = render(<TrimmDatepicker {...getProps({})} />);
-        
+
         // Rapidly change props
         for (let i = 0; i < 10; i++) {
             const date = new Date(2025, 0, i + 1);
             rerender(<TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />);
         }
-        
+
         // Should still render correctly
         expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
     });
@@ -343,7 +343,7 @@ describe("TrimmDatepicker Unit", () => {
     it("handles rapid calendar open/close cycles", () => {
         const { container } = render(<TrimmDatepicker {...getProps({})} />);
         const input = container.querySelector('input');
-        
+
         // Rapidly open and close calendar
         for (let i = 0; i < 5; i++) {
             act(() => {
@@ -353,7 +353,7 @@ describe("TrimmDatepicker Unit", () => {
                 fireEvent.click(document.body);
             });
         }
-        
+
         // Should not crash or have memory issues
         expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
     });
@@ -368,10 +368,10 @@ describe("TrimmDatepicker Unit", () => {
         const { container } = render(
             <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
         );
-        
+
         const input = container.querySelector('input');
         expect(input).toBeInTheDocument();
-        
+
         // Test different input formats
         const formats = ['01/15/2025', '2025-01-15', '15/01/2025'];
         formats.forEach(format => {
@@ -390,7 +390,7 @@ describe("TrimmDatepicker Unit", () => {
             new Date('2025-06-15T12:00:00.000Z'),
             new Date('2025-12-31T23:59:59.999Z')
         ];
-        
+
         dates.forEach(date => {
             const { container } = render(
                 <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
@@ -404,17 +404,17 @@ describe("TrimmDatepicker Unit", () => {
     it("supports keyboard navigation for accessibility", () => {
         const { container } = render(<TrimmDatepicker {...getProps({})} />);
         const input = container.querySelector('input');
-        
+
         // Test Enter key
         act(() => {
             fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
         });
-        
+
         // Test Escape key
         act(() => {
             fireEvent.keyDown(input, { key: 'Escape', code: 'Escape' });
         });
-        
+
         // Should handle keyboard events without crashing
         expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
     });
@@ -428,7 +428,7 @@ describe("TrimmDatepicker Unit", () => {
             new Date(-1000, 0, 1), // Negative year
             new Date(2025, 13, 32) // Invalid month/day
         ];
-        
+
         extremeDates.forEach(date => {
             const { container } = render(
                 <TrimmDatepicker {...getProps({ selectedDate: { value: date } })} />
@@ -448,10 +448,10 @@ describe("TrimmDatepicker Unit", () => {
     });
 
     it("handles style object with invalid values", () => {
-        const invalidStyle = { 
-            backgroundColor: null, 
-            fontSize: undefined, 
-            color: 'invalid-color' 
+        const invalidStyle = {
+            backgroundColor: null,
+            fontSize: undefined,
+            color: 'invalid-color'
         };
         const { container } = render(
             <TrimmDatepicker {...getProps({ style: invalidStyle })} />
@@ -463,17 +463,17 @@ describe("TrimmDatepicker Unit", () => {
     // Memory and performance stress tests
     it("handles large numbers of instances without performance degradation", () => {
         const startTime = performance.now();
-        
+
         const instances = [];
         for (let i = 0; i < 10; i++) {
             instances.push(
                 render(<TrimmDatepicker {...getProps({ name: `datepicker-${i}` })} />)
             );
         }
-        
+
         const renderTime = performance.now() - startTime;
         expect(renderTime).toBeLessThan(500); // Should render 10 instances in under 500ms
-        
+
         // Cleanup
         instances.forEach(({ unmount }) => unmount());
     });
@@ -481,7 +481,7 @@ describe("TrimmDatepicker Unit", () => {
     it("handles rapid locale changes", () => {
         const { rerender, container } = render(<TrimmDatepicker {...getProps({})} />);
         const locales = ['en_US', 'nl_NL'];
-        
+
         locales.forEach(locale => {
             rerender(<TrimmDatepicker {...getProps({ locale })} />);
             expect(container.querySelector('.trimm-datepicker')).toBeInTheDocument();
@@ -523,8 +523,8 @@ describe("TrimmDatepicker Unit", () => {
 
     it("sets localSelectedDate when selectedDate prop is not provided", async () => {
         // Test with undefined selectedDate to use local state
-        const { container } = render(<TrimmDatepicker {...getProps({ 
-            selectedDate: undefined 
+        const { container } = render(<TrimmDatepicker {...getProps({
+            selectedDate: undefined
         })} />);
         const input = container.querySelector('input');
         // Open calendar
@@ -548,37 +548,37 @@ describe("TrimmDatepicker Unit", () => {
     it("supports calendar dragging functionality", () => {
         const { container } = render(<TrimmDatepicker {...getProps({})} />);
         const input = container.querySelector('input');
-        
+
         // Open calendar
         act(() => {
             fireEvent.click(input.parentElement);
         });
-        
+
         const calendar = container.querySelector('.trimm-datepicker-calendar');
         const header = calendar.querySelector('.trimm-datepicker-header');
-        
+
         // Start dragging
         act(() => {
             fireEvent.mouseDown(header, { clientX: 100, clientY: 100 });
         });
-        
+
         // Move mouse
         act(() => {
             fireEvent.mouseMove(window, { clientX: 150, clientY: 150 });
         });
-        
+
         // Release mouse
         act(() => {
             fireEvent.mouseUp(window);
         });
-        
+
         // Calendar should still be open
         expect(container.querySelector('.trimm-datepicker-calendar')).toBeInTheDocument();
     });
 
     it("handles mouse event cleanup on unmount", () => {
         const { unmount } = render(<TrimmDatepicker {...getProps({})} />);
-        
+
         // Should not throw when unmounting with active mouse events
         expect(() => unmount()).not.toThrow();
     });

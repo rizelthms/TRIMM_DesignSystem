@@ -105,9 +105,9 @@ export function TrimmDatepicker({
     // Click outside to close calendar
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            if (showCalendar && 
-                calendarRef.current && 
-                inputRef.current && 
+            if (showCalendar &&
+                calendarRef.current &&
+                inputRef.current &&
                 !calendarRef.current.contains(event.target as Node) &&
                 !inputRef.current.parentElement?.contains(event.target as Node)) {
                 setShowCalendar(false);
