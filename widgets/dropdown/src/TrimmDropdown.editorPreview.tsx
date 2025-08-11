@@ -4,6 +4,10 @@ import { TrimmDropdown } from "./TrimmDropdown";
 import { TrimmDropdownPreviewProps, TrimmDropdownContainerProps, DropdownItemsType } from "../typings/TrimmDropdownProps";
 import { ActionValue, ValueStatus, DynamicValue, WebIcon } from "mendix";
 
+/**
+ * Preview component for Studio Pro
+ * Shows a simplified version of the TRIMM Dropdown with mock data
+ */
 export function preview(props: TrimmDropdownPreviewProps) {
     // Convert the preview icon prop into the expected DynamicValue<WebIcon> format
     const iconForWidget: DynamicValue<WebIcon> = {
