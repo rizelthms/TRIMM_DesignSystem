@@ -1,5 +1,9 @@
 import { createElement, ReactElement } from "react";
 
+/**
+ * Preview component for Studio Pro
+ * Shows a simplified version of the Color Token Editor with the FAB and drawer structure
+ */
 export function preview({ side = "right" }: { side?: string }): ReactElement {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
     return (

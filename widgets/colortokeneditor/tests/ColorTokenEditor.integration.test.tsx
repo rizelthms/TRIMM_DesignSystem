@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import { ColorTokenEditor } from "../src/ColorTokenEditor";
 
-// Mock localStorage for isolation
+// Mock localStorage for test isolation
 const localStorageMock = (() => {
     let store: Record<string, string> = {};
     return {
@@ -49,7 +49,6 @@ describe("ColorTokenEditor integration", () => {
         fireEvent.click(overlay!);
         });
         await waitFor(() => {
-            // Check that the overlay is removed from the DOM
             expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
         });
     });
@@ -61,7 +60,6 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
-        // Find first color input by class
         const colorInputs = document.querySelectorAll("input[type='color']");
         expect(colorInputs.length).toBeGreaterThan(0);
         await act(async () => {
@@ -119,7 +117,7 @@ describe("ColorTokenEditor integration", () => {
         expect((colorInputsAfter[0] as HTMLInputElement).value).toBe("#abcdef");
     });
 
-    it("applies overrides per theme and updates UI on theme switch (current widget logic)", async () => {
+    it("applies overrides per theme and updates UI on theme switch", async () => {
         const tokens = [
             { name: "--brand-1", value: "#ff0000" },
             { name: "--brand-2", value: "#00ff00" }
@@ -155,7 +153,7 @@ describe("ColorTokenEditor integration", () => {
         fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         colorInputs = document.querySelectorAll("input[type='color']");
-        // The widget may show either the user override or the derived dark color in the color input after switching to dark theme
+        // The widget may show either the user override or the derived dark color
         let value = (colorInputs[0] as HTMLInputElement).value.toLowerCase();
         expect(["#123456", "#000c2e"]).toContain(value);
         // Close drawer
@@ -209,7 +207,7 @@ describe("ColorTokenEditor integration", () => {
         });
         // Should still render the token label
         expect(screen.getByText("--bad-token")).toBeInTheDocument();
-        // The color input should fallback to a valid color (e.g., #000000)
+        // The color input should fallback to a valid color
         const colorInput = document.querySelector("input[type='color']") as HTMLInputElement;
         expect(colorInput).toBeTruthy();
         expect(colorInput.value).toMatch(/^#[0-9a-f]{6}$/i);
@@ -251,8 +249,7 @@ describe("ColorTokenEditor integration", () => {
         spy.mockRestore();
     });
 
-    it("allows multiple ColorTokenEditor instances to operate independently (current widget logic)", async () => {
-        // The widget does not persist independent overrides for multiple instances with the same theme
+    it("allows multiple ColorTokenEditor instances to operate independently", async () => {
         await act(async () => {
         render(<>
             <ColorTokenEditor side="right" getTokens={() => [
@@ -297,7 +294,6 @@ describe("ColorTokenEditor integration", () => {
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
         const overrides = JSON.parse(window.localStorage.getItem(`tokenOverrides_${theme}`) || "{}");
         // Only the last changed value for each token is present
-        // If both tokens are unique, both should be present
         expect(overrides["--brand-1-instance1"]).toBeDefined();
         expect(overrides["--brand-1-instance2"]).toBeDefined();
     });
@@ -326,7 +322,7 @@ describe("ColorTokenEditor integration", () => {
         render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
         const renderTime = performance.now() - start;
-        // Should render in under 500ms (adjust as needed for your environment)
+        // Should render in under 500ms
         expect(renderTime).toBeLessThan(500);
         // Rapidly open/close drawer
         const fab = screen.getByRole("button", { name: /open color token editor/i });
