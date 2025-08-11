@@ -1,152 +1,73 @@
 # Color Token Editor Widget
 
-## Overview
+The Color Token Editor is a Mendix pluggable widget in the TRIMM Design System. It lets you edit CSS custom properties at runtime so you can brand an app without code changes or restarts.
 
-The **Color Token Editor** is a specialized Mendix pluggable widget designed for the TRIMM Design System that enables runtime editing of CSS custom properties (design tokens). This widget provides a powerful interface for dynamic theming, allowing users to customize color schemes in real-time without requiring code changes or application restarts.
+## What it does
 
-## Purpose & Design Philosophy
+- Real-time editing of design tokens through color inputs
+- Separate overrides for light and dark themes stored in localStorage
+- Automatic dark or light derivation when you change a color in the opposite theme
+- Draggable floating action button to open the editor
+- Resizable drawer that lists the detected tokens
 
-This widget embodies the TRIMM Design System's core principle of **client configurability**. It allows:
+## Requirements
 
-- **Runtime Theme Customization**: Modify color tokens on-the-fly without rebuilding the application
-- **Client-Specific Branding**: Easily adapt the application's color scheme to match client brand guidelines
-- **Developer-Friendly**: Maintains compatibility with default Mendix widgets while providing enhanced theming capabilities
-- **Accessibility-First**: Supports both light and dark themes with automatic color derivation
+- Mendix 11
+- TRIMM Design System module included in your app. Styling for this widget lives in the TRIMM theme and must be present for the UI to look right
+  - The styles are part of the theme under `themesource/trimm_designsystem/`
+  - The docs styling that showcases tokens is defined in `themesource/trimm_designsystem/web/docs/custom-components/_docs-colorTokenEditorCustomTokens.scss`
 
-## Key Features
+## Install and set up in Mendix
 
-### 🎨 **Real-Time Color Editing**
-- Visual color picker interface for all design system tokens
-- Live preview of changes across the entire application
-- Automatic persistence using localStorage per theme
+1. Import the TRIMM Design System module into your Mendix project so the theme is available
+2. Add the Color Token Editor widget to any page
+3. Set the property Drawer Position to `left` or `right`
+4. Run the app. The widget will scan loaded stylesheets for valid TRIMM token names and render color inputs
 
-### 🌗 **Theme-Aware**
-- Detects and responds to light/dark theme switches
-- Automatically derives dark theme colors from light theme selections
-- Maintains separate overrides for each theme
+### Properties
 
-### 📱 **User Experience**
-- **Draggable FAB**: Floating action button can be repositioned anywhere on screen
-- **Resizable Drawer**: Side panel can be resized for optimal workspace usage
+- Drawer Position: `left` or `right`. Controls where the drawer opens
 
+## How it works
 
-### 🔧 **Technical Features**
-- **Token Filtering**: Automatically discovers and displays only valid color tokens from the design system
-- **Validation**: Ensures only valid color values are applied
-- **Error Handling**: Graceful fallbacks for localStorage limitations or parsing errors
-- **Performance Optimized**: Efficient DOM manipulation and event handling
+- Token discovery runs in the browser and scans loaded stylesheets for CSS variables matching TRIMM token patterns
+  - Brand: `--brand-1..9` plus optional `-hover`, `-active`, `-disabled`
+  - Base: `--base-black`, `--base-white` plus states
+  - Secondary: `--secondary-1..9` plus states
+  - Support: `--support-1..9` plus states
+- Only valid colors are shown. Values are validated before rendering
+- When you change a color
+  - If the current theme is light, the widget stores the chosen light color and derives a dark color for the dark theme
+  - If the current theme is dark, it stores the chosen dark color and derives a light color for the light theme
+- Overrides are persisted per theme in localStorage under `tokenOverrides_light` and `tokenOverrides_dark`. On load and on theme changes, overrides are applied to `document.documentElement`
+- UI behavior
+  - Floating action button with class `trimm-color-token-fab` opens the drawer
+  - Drawer `trimm-color-token-drawer` is resizable and lists tokens with swatch, name, and color input
+  - Clicking the overlay closes the drawer
 
-## Usage
+## Styling and theming
 
-### Basic Implementation
+- This widget relies on TRIMM Design System styling. Ensure your app includes the theme from `themesource/trimm_designsystem`
+- The documentation styling for the token examples is in `web/docs/custom-components/_docs-colorTokenEditorCustomTokens.scss` inside that module
+- The widget UI classes include `trimm-color-token-fab`, `trimm-color-token-drawer`, `trimm-color-token-grid`, and related elements
 
-1. **Add to Page**: Drag the Color Token Editor widget onto any Mendix page
-2. **Configure Position**: Set the `Drawer Position` property to "left" or "right" 
-3. **Publish & Run**: The widget automatically discovers available color tokens
+## Development and testing
 
-### Configuration Options
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `Drawer Position` | Enumeration | `right` | Controls which side of the screen the editor drawer appears on |
-
-### Advanced Usage
-
-For programmatic integration, the widget accepts an optional `getTokens` function:
-
-```typescript
-// Custom token provider
-const customTokens = () => [
-  { name: "--brand-primary", value: "#0066cc" },
-  { name: "--brand-secondary", value: "#ff6600" }
-];
-```
-
-## Integration with TRIMM Design System
-
-### CSS Custom Properties
-
-The widget automatically detects and edits these token categories:
-
-- **Brand Colors**: `--brand-1` through `--brand-9` (+ hover, active, disabled states)
-- **Base Colors**: `--base-black`, `--base-white` (+ states)
-- **Secondary Colors**: `--secondary-1` through `--secondary-9` (+ states)
-- **Support Colors**: `--support-1` through `--support-9` (+ states)
-
-### Styling
-
-Widget styling is handled entirely through the TRIMM Design System SCSS:
-
-```scss
-// Located in: themesource/trimm_designsystem/web/components/_color-token-editor.scss
-.trimm-color-token-fab { /* Floating action button styles */ }
-.trimm-color-token-drawer { /* Side drawer styles */ }
-.trimm-color-token-grid { /* Token grid layout */ }
-```
-
-### Theme Integration
-
-The widget integrates seamlessly with the design system's theming:
-
-- Automatically detects theme changes via `data-theme` attribute
-- Applies overrides using CSS custom property updates
-- Maintains theme consistency across all components
-
-## Technical Implementation
-
-### Architecture
-
-```
-┌─────────────────────────────────────┐
-│ Color Token Editor Widget           │
-├─────────────────────────────────────┤
-│ • Token Discovery Engine            │
-│ • Theme Detection System            │
-│ • Real-time Preview Engine          │
-│ • Persistence Layer (localStorage)  │
-│ • Accessibility Framework          │
-└─────────────────────────────────────┘
-```
-
-### Token Discovery Process
-
-1. **Stylesheet Scanning**: Iterates through all loaded stylesheets
-2. **Rule Filtering**: Identifies `:root` and `html` CSS rules
-3. **Token Validation**: Applies regex patterns to find design system tokens
-4. **Color Validation**: Ensures values are valid CSS colors
-5. **Sorting**: Organizes tokens by category and state
-
-### Persistence Strategy
-
-- **Theme-Specific Storage**: Separate localStorage entries for light/dark themes
-- **Key Format**: `tokenOverrides_${theme}` (e.g., `tokenOverrides_light`)
-- **Graceful Degradation**: Continues functioning even if localStorage is unavailable
-- **Reset Capability**: Complete restoration to default values
-
-## Browser Compatibility
-
-- **Modern Browsers**: Full support for Chrome 88+, Firefox 85+, Safari 14+, Edge 88+
-- **CSS Custom Properties**: Required for core functionality
-- **localStorage**: Required for persistence (graceful degradation if unavailable)
-- **Touch Events**: Mobile drag support included
-
-## Development & Testing
-
-### Running Tests
+### Run tests
 
 ```bash
 cd widgets/colortokeneditor/tests
 npx jest
 ```
 
-### Building the Widget
+### Build the widget
 
 ```bash
 cd widgets/colortokeneditor
 npm run build
 ```
 
-### Development Mode
+### Local development
 
 ```bash
 cd widgets/colortokeneditor
@@ -155,33 +76,10 @@ npm run dev
 
 ## Troubleshooting
 
-### Common Issues
-
-**Q: No tokens appear in the editor**
-A: Ensure your theme includes valid TRIMM Design System color tokens with the expected naming convention.
-
-**Q: Changes don't persist**
-A: Check browser localStorage availability and ensure the domain allows local storage.
-
-**Q: Dark theme colors look incorrect**
-A: The widget automatically derives dark colors. For custom dark theme colors, modify the `deriveDarkColor` function.
-
-### Debug Mode
-
-Enable debug logging by setting:
-```javascript
-localStorage.setItem('trimm-color-editor-debug', 'true');
-```
-
-## Contributing
-
-When contributing to this widget:
-
-1. **Follow TRIMM Design System conventions**
-2. **Maintain accessibility standards**
-3. **Add comprehensive tests for new features**
-4. **Update this README for any API changes**
+- No tokens appear: confirm the TRIMM Design System theme is imported and the expected CSS variables are present in built stylesheets
+- Changes do not persist: verify localStorage is available in the browser for the app origin
+- Theme switching: the widget listens to `data-theme` on `<html>`. Make sure your theme toggles that attribute when switching between light and dark
 
 ## License
 
-© TRIMM 2024. All rights reserved. Licensed under Apache-2.0.
+© TRIMM 2024. Apache-2.0
