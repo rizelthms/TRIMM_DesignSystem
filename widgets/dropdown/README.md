@@ -38,7 +38,7 @@ Styling for this widget lives in the TRIMM theme module. Include that module so 
 * Menu closes after an item is clicked
 * Icons are rendered based on type: glyphicon classes, MDI classes, or image URLs
 
-## Styling and tokens
+## Styling and theming
 
 * Classes used: `trimm-dropdown`, `trimm-dropdown-toggle`, `trimm-dropdown-menu`, `trimm-dropdown-item`, `trimm-dropdown-icon`, `trimm-dropdown-label`, `trimm-dropdown-caret`
 * Colors, spacing, borders and typography come from the TRIMM Design System tokens and SCSS variables in the theme

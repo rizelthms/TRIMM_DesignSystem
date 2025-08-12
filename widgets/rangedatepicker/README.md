@@ -1,6 +1,6 @@
 # TRIMM Range Datepicker Widget
 
-The TRIMM Range Datepicker is a Mendix pluggable widget styled with the TRIMM Design System. It provides a sophisticated date range selection interface with dual-month calendar views, drag-and-drop functionality, and comprehensive date validation.
+The TRIMM Range Datepicker is a Mendix pluggable widget styled with the TRIMM Design System. It provides a date range selection interface with dual-month calendar views, drag-and-drop functionality, and date validation.
 
 ## Requirements and setup
 
@@ -45,7 +45,7 @@ Styling for this widget lives in the TRIMM theme module. Include that module so 
 5. **Range Completion**: Both dates are set, onChange action executes, calendar closes
 6. **Invalid Selection**: If end < start, resets to start step with new start date
 
-## Styling and tokens
+## Styling and theming
 
 The widget uses these CSS classes from the TRIMM Design System:
 
@@ -58,8 +58,6 @@ The widget uses these CSS classes from the TRIMM Design System:
 * `.trimm-range-datepicker-day.selected` - Selected start/end dates
 * `.trimm-range-datepicker-day.in-range` - Dates between start and end
 * `.trimm-range-datepicker-day.disabled` - Out of range dates
-
-Design tokens used: `--brand-1`, `--base-white`, `--base-black`, `--brand-2`, `$spacing-*`, `$font-*`, `$radius-*`
 
 ## Testing
 
