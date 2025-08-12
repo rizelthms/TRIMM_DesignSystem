@@ -1,8 +1,11 @@
 // === BASE MENU STYLE ===
-// Use on Mendix Menu widget
+// Navigation menu styling for Mendix Menu widgets
+// Provides consistent TRIMM design system appearance for navigation
+
 .menu-base {
     font-family: $font-primary;
 
+    // Main menu container styling
     > ul,
     > .mx-menubar-list,
     > .mx-popupmenu-list {
@@ -11,6 +14,7 @@
         list-style: none;
     }
 
+    // Individual menu item styling
     li,
     .mx-menubar-item,
     .mx-popupmenu-item,
@@ -22,10 +26,11 @@
         margin: 0;
         padding: 0;
 
-        // Remove Atlas default styling
+        // Remove default Atlas styling
         border: none !important;
         box-shadow: none !important;
 
+        // Menu link styling
         a {
             display: flex;
             align-items: center;
@@ -38,7 +43,7 @@
             background-color: transparent !important;
             transition: background-color 0.2s ease;
 
-            // Force hover + active state override
+            // Interactive states
             &:hover,
             &.active,
             &.selected {
@@ -46,7 +51,7 @@
                 color: var(--base-white) !important;
             }
 
-            // Force icon color
+            // Icon styling
             svg,
             i.mdi,
             span > svg {
@@ -59,7 +64,7 @@
         }
     }
 
-    // Extra override block to handle Atlas deep nesting
+    // Additional override for Atlas deep nesting
     .mx-menubar > ul > li:hover > a,
     .mx-menubar > ul > li.active > a,
     .mx-menubar-list > li:hover > a,
@@ -71,13 +76,13 @@
     }
 }
 
-// Kill background color on Menu Bar's outer container
+// Menu bar background color override
 .menu-base,
 .menu-base.mx-menubar {
     background-color: var(--brand-3) !important;
 }
 
-// Ensure dropdown menus inside .menu-base are always visible and readable
+// Dropdown menu styling
 .menu-base .dropdown-menu,
 .menu-base .mx-navbar-submenu {
     background: var(--base-white) !important;
@@ -93,6 +98,7 @@
     font-family: $font-primary !important;
 }
 
+// Dropdown menu item styling
 .menu-base .dropdown-menu a,
 .menu-base .mx-navbar-submenu a {
     color: var(--base-black) !important;
@@ -108,6 +114,7 @@
         color 0.18s;
 }
 
+// Dropdown menu item hover states
 .menu-base .dropdown-menu a:hover,
 .menu-base .mx-navbar-submenu a:hover,
 .menu-base .dropdown-menu a:focus,
@@ -116,12 +123,14 @@
     color: var(--base-white) !important;
 }
 
+// Dropdown menu item active states
 .menu-base .dropdown-menu a.active,
 .menu-base .mx-navbar-submenu a.active {
     background: var(--brand-2-active) !important;
     color: var(--base-white) !important;
 }
 
+// Ensure dropdown visibility
 .menu-base li.mx-navbar-item.dropdown.open {
     overflow: visible !important;
 }

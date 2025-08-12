@@ -1,10 +1,13 @@
 // === BASE TOOLTIP STYLE ===
-// Use on Mendix Tooltip widget
+// Tooltip styling for Mendix Tooltip widgets
+// Provides consistent TRIMM design system appearance for tooltips
+
 .tooltip-base {
     font-family: $font-primary;
 
+    // Tooltip content container styling
     .widget-tooltip-content {
-        background: var(--brand-2) !important; // Orange
+        background: var(--brand-2) !important;
         color: var(--base-white) !important;
         padding: $spacing-8 $spacing-12;
         border-radius: $radius-4;
@@ -17,7 +20,9 @@
 }
 
 // === SIZE MODIFIERS ===
-// Use in combination with .tooltip-base
+// Different tooltip sizes for various contexts, use in combination with .tooltip-base
+
+// Small tooltip for compact information
 .tooltip-sm {
     @extend .tooltip-base;
     .widget-tooltip-content {
@@ -26,6 +31,7 @@
     }
 }
 
+// Medium tooltip (default size)
 .tooltip-md {
     @extend .tooltip-base;
     .widget-tooltip-content {
@@ -34,6 +40,7 @@
     }
 }
 
+// Large tooltip for detailed information
 .tooltip-lg {
     @extend .tooltip-base;
     .widget-tooltip-content {

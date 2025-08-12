@@ -1,9 +1,11 @@
 // === BASE RADIO STYLE ===
-// Applies to Radio Buttons via form widget structure
+// Custom radio button styling for Mendix Radio Button widgets
+// Provides consistent TRIMM design system appearance with custom radio circles
 
 .radio-base {
   font-family: $font-primary;
 
+  // Hide native radio input
   input[type="radio"] {
     opacity: 0;
     position: absolute;
@@ -11,6 +13,7 @@
     height: 16px;
     margin: 0;
 
+    // Custom radio styling with label
     & + label {
       position: relative;
       padding-left: 28px;
@@ -51,6 +54,7 @@
       }
     }
 
+    // Checked state styling
     &:checked + label::after {
       transform: translateY(-50%) scale(1);
       background: var(--brand-2);
@@ -60,6 +64,7 @@
       border-color: var(--brand-2);
     }
 
+    // Disabled state styling
     &:disabled + label {
       color: var(--secondary-1-disabled);
       cursor: not-allowed;
@@ -75,6 +80,7 @@
     }
   }
 
+  // Label styling
   label {
     margin-left: $spacing-8;
     font-size: $font-size-body-2;
@@ -91,8 +97,9 @@
 }
 
 // === SIZE MODIFIERS ===
-// Use in combination with .radio-base
+// Different sizes for various contexts and hierarchies
 
+// Small radio buttons for compact layouts
 .radio-sm {
   @extend .radio-base;
   input[type="radio"] + label {
@@ -116,6 +123,7 @@
   }
 }
 
+// Medium radio buttons (default size)
 .radio-md {
   @extend .radio-base;
   input[type="radio"] + label {
@@ -139,6 +147,7 @@
   }
 }
 
+// Large radio buttons for prominent selections
 .radio-lg {
   @extend .radio-base;
   input[type="radio"] + label {

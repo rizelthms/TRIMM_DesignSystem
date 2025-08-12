@@ -1,6 +1,7 @@
 // === BASE BUTTON STYLE ===
-// Use on Mendix Button widget
-// Used by all button variants to provide consistent structure
+// Foundation styling for all button components
+// Provides consistent structure, typography, and interactions
+
 .button-base {
   display: inline-flex;
   align-items: center;
@@ -20,7 +21,9 @@
 }
 
 // === DEFAULT VARIANT ===
-// Transparent background, black border, black text
+// Standard button with transparent background and border
+// Use for secondary actions or when primary button would be too prominent
+
 .btn-default {
   @extend .button-base;
   background-color: transparent;
@@ -55,7 +58,9 @@
 }
 
 // === CTA VARIANT ===
-// Orange background, white text, no border
+// Call-to-action button for primary user actions
+// High contrast orange background for maximum visibility
+
 .btn-cta {
   @extend .button-base;
   background-color: var(--brand-2);
@@ -85,6 +90,9 @@
 }
 
 // === INVERSE VARIANT ===
+// Dark button for light backgrounds or high contrast needs
+// Use when you need a button that stands out against light content
+
 .btn-inverse {
   @extend .button-base;
   background-color: var(--base-black);
@@ -112,6 +120,9 @@
 }
 
 // === PRIMARY VARIANT ===
+// Primary brand color button for main actions
+// Use for the most important action on a page
+
 .btn-primary {
   @extend .button-base;
   background-color: var(--brand-1);
@@ -139,6 +150,9 @@
 }
 
 // === INFO VARIANT ===
+// Information button for informational actions
+// Teal background for info-related functionality
+
 .btn-info {
   @extend .button-base;
   background-color: var(--brand-3);
@@ -165,6 +179,9 @@
 }
 
 // === SUCCESS VARIANT ===
+// Success button for positive actions
+// Green background for success-related functionality
+
 .btn-success {
   @extend .button-base;
   background-color: var(--support-3);
@@ -191,6 +208,9 @@
 }
 
 // === WARNING VARIANT ===
+// Warning button for cautionary actions
+// Yellow background for warning-related functionality
+
 .btn-warning {
   @extend .button-base;
   background-color: var(--support-4);
@@ -217,6 +237,9 @@
 }
 
 // === DANGER VARIANT ===
+// Danger button for destructive actions
+// Red background for dangerous or destructive functionality
+
 .btn-danger {
   @extend .button-base;
   background-color: var(--support-2);
@@ -243,19 +266,23 @@
 }
 
 // === SIZE MODIFIERS ===
-// Applies to text-based buttons only. Use in combination with variant classes.
+// Adjust button size for different contexts and hierarchies
+
+// Small button for compact layouts
 .btn-sm {
   @extend .button-base;
   padding: $spacing-8 $spacing-16;
   font-size: $font-size-body-3;
 }
 
+// Medium button (default size)
 .btn-md {
   @extend .button-base;
   padding: $spacing-12 $spacing-24;
   font-size: $font-size-body-2;
 }
 
+// Large button for prominent actions
 .btn-lg {
   @extend .button-base;
   padding: $spacing-16 $spacing-32;
@@ -263,12 +290,15 @@
 }
 
 // === ICON ALIGNMENT ===
-// Controls direction of icon when combined with label
+// Control icon positioning relative to button text
+
+// Icon positioned to the right of text
 .btn-icon-right svg,
 .btn-icon-right i.mdi {
   margin-left: $spacing-4;
 }
 
+// Icon positioned to the left of text
 .btn-icon-left svg,
 .btn-icon-left i.mdi {
   margin-right: $spacing-4;

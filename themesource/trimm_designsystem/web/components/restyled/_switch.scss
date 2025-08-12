@@ -1,7 +1,9 @@
 // === BASE SWITCH STYLE ===
-// Works with native Mendix Switch widget (toggle)
+// Toggle switch styling for Mendix Switch widgets
+// Provides custom switch appearance with smooth animations
 
 .switch-base {
+  // Switch track and thumb container
   .widget-switch-btn-wrapper {
     --track-height: 28px;
     --track-width: 48px;
@@ -16,17 +18,20 @@
     box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled);
     transition: all 0.2s ease-in-out;
 
+    // Checked/ON state styling
     &.checked {
       background-color: var(--brand-3) !important;
       border-color: var(--brand-3) !important;
       box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3) !important;
 
+      // Hover state when checked
       &:hover:not(.disabled) {
         background-color: var(--brand-3-hover) !important;
         border-color: var(--brand-3-hover) !important;
         box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-hover) !important;
       }
 
+      // Disabled state when checked
       &.disabled {
         background-color: var(--brand-3-disabled) !important;
         border-color: var(--brand-3-disabled) !important;
@@ -34,21 +39,25 @@
       }
     }
 
+    // Unchecked/OFF state styling
     &:not(.checked) {
       background-color: var(--secondary-1-hover) !important;
       border-color: var(--secondary-1) !important;
 
+      // Hover state when unchecked
       &:hover:not(.disabled) {
         border-color: var(--secondary-1-hover) !important;
         box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-hover) !important;
       }
 
+      // Disabled state when unchecked
       &.disabled {
         border-color: var(--secondary-1-disabled) !important;
         box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled) !important;
       }
     }
 
+    // Switch thumb (sliding circle)
     .widget-switch-btn {
       position: absolute;
       top: 50%;
@@ -61,16 +70,19 @@
       box-shadow: 0 2px 4px var(--secondary-1-disabled);
       transition: left 0.2s ease-in-out;
 
+      // Disabled thumb styling
       &.disabled {
         background-color: var(--base-white-disabled) !important;
       }
     }
 
+    // Thumb position when checked
     &.checked .widget-switch-btn {
       left: calc(100% - var(--thumb-size) - 2px);
     }
   }
 
+  // Switch label styling
   .control-label {
     color: var(--base-black);
     font-family: $font-primary;
@@ -82,7 +94,10 @@
   }
 }
 
-// Size modifiers
+// === SIZE MODIFIERS ===
+// Different switch sizes for various contexts
+
+// Small switch for compact layouts
 .switch-sm {
   @extend .switch-base;
 
@@ -97,6 +112,7 @@
   }
 }
 
+// Medium switch (default size)
 .switch-md {
   @extend .switch-base;
 
@@ -111,6 +127,7 @@
   }
 }
 
+// Large switch for prominent toggles
 .switch-lg {
   @extend .switch-base;
 

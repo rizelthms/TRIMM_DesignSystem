@@ -1,5 +1,6 @@
 // === BASE TEXT BOX STYLE ===
-// Works with Mendix Text Box widget
+// Single-line text input styling for Mendix Text Box widgets
+// Provides consistent TRIMM design system appearance for text inputs
 
 .textbox-base,
 input.form-control {
@@ -17,16 +18,19 @@ input.form-control {
     width: 100%;
     box-sizing: border-box;
 
+    // Placeholder text styling
     &::placeholder {
         color: var(--base-black) !important;
         font-style: italic !important;
     }
 
+    // Focus state styling
     &:focus {
         outline: none;
         border-color: var(--brand-2) !important;
     }
 
+    // Disabled state styling
     &:disabled {
         background-color: var(--secondary-1-disabled) !important;
         color: var(--base-black) !important;
@@ -35,8 +39,7 @@ input.form-control {
     }
 }
 
-// === REMOVE OUTER BORDER FOR TEXTBOX FORM GROUPS ONLY ===
-// Ensures only textbox demo/usage containers lose their border, not other form groups
+// Remove outer border for textbox form groups
 .textbox-base.form-group,
 .textbox-sm.form-group,
 .textbox-md.form-group,
@@ -45,8 +48,7 @@ input.form-control {
     box-shadow: none !important;
 }
 
-// === CONTROL LABEL ALIGNMENT FOR TEXTBOX FORM GROUPS ONLY ===
-// Override label alignment for textbox form groups
+// Control label alignment for textbox form groups
 .textbox-base.form-group .control-label,
 .textbox-sm.form-group .control-label,
 .textbox-md.form-group .control-label,
@@ -55,7 +57,9 @@ input.form-control {
 }
 
 // === TEXT BOX SIZE MODIFIERS ===
-// When wrapper has textbox-[size], style both input and label together
+// Different textbox sizes for various contexts
+
+// Small textbox for compact layouts
 .textbox-sm {
     @extend .textbox-base;
     input.form-control {
@@ -69,6 +73,7 @@ input.form-control {
     }
 }
 
+// Medium textbox (default size)
 .textbox-md {
     @extend .textbox-base;
     input.form-control {
@@ -82,6 +87,7 @@ input.form-control {
     }
 }
 
+// Large textbox for prominent input areas
 .textbox-lg {
     @extend .textbox-base;
     input.form-control {
