@@ -39,7 +39,7 @@ Styling for this widget lives in the TRIMM theme module. Include that module so 
 * Selecting a valid day updates the Mendix attribute when provided, otherwise local state
 * After selection the calendar closes and the input reflects the new date
 
-## Styling and tokens
+## Styling and theming
 
 * Classes used: `trimm-datepicker`, `trimm-datepicker-input`, `trimm-datepicker-calendar`, `trimm-datepicker-day-label`, `trimm-datepicker-cell`, `trimm-datepicker-header-label`
 * Colors, spacing, borders and typography come from the TRIMM Design System tokens and SCSS variables in the theme

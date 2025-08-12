@@ -1,8 +1,11 @@
 // === BASE TEXT AREA STYLE ===
+// Multi-line text input styling for Mendix Text Area widgets
+// Provides consistent TRIMM design system appearance for text areas
+
 .textarea-base {
     font-family: $font-primary;
 
-    // Target the actual input field inside
+    // Textarea input field styling
     textarea.mx-textarea-input {
         font-size: $font-size-body-2;
         font-weight: $font-weight-normal;
@@ -16,16 +19,19 @@
         resize: vertical;
         transition: border-color 0.2s ease-in-out;
 
+        // Placeholder text styling
         &::placeholder {
             color: var(--base-black);
             font-style: italic;
         }
 
+        // Focus state styling
         &:focus {
             outline: none;
             border-color: var(--brand-2) !important;
         }
 
+        // Disabled state styling
         &:disabled {
             background-color: var(--secondary-1-disabled) !important;
             color: var(--base-black) !important;
@@ -36,7 +42,9 @@
 }
 
 // === SIZE MODIFIERS ===
-// When wrapper has textarea-[size], style both textarea and label together
+// Different textarea sizes for various contexts
+
+// Small textarea for compact layouts
 .textarea-sm {
     @extend .textarea-base;
     textarea.mx-textarea-input {
@@ -49,6 +57,8 @@
         font-weight: $font-weight-regular;
     }
 }
+
+// Medium textarea (default size)
 .textarea-md {
     @extend .textarea-base;
     textarea.mx-textarea-input {
@@ -62,6 +72,7 @@
     }
 }
 
+// Large textarea for prominent input areas
 .textarea-lg {
     @extend .textarea-base;
     textarea.mx-textarea-input {

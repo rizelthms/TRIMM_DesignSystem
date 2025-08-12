@@ -1,5 +1,6 @@
 // === BASE TABS COMPONENT ===
-// Applies to Mendix Tab Container widget
+// Tab container styling for Mendix Tab Container widgets
+// Provides consistent TRIMM design system appearance for tabbed interfaces
 
 .tab-base {
     font-family: $font-primary;
@@ -7,7 +8,7 @@
     font-weight: $font-weight-medium;
     color: var(--base-black);
 
-    // === Tab List ===
+    // Tab navigation list styling
     .mx-tabcontainer-tabs {
         display: flex;
         gap: $spacing-4;
@@ -16,12 +17,13 @@
         background-color: var(--base-white);
     }
 
-    // === Tab Items ===
+    // Individual tab item styling
     .mx-tabcontainer-tabs > li {
         list-style: none;
         margin: 0;
         padding: 0;
 
+        // Tab link styling
         a {
             display: inline-block;
             padding: $spacing-8 $spacing-16;
@@ -36,19 +38,20 @@
                 background-color 0.2s ease,
                 color 0.2s ease;
 
+            // Hover state
             &:hover {
                 background-color: var(--brand-3-hover);
                 color: var(--brand-3);
             }
         }
 
-        // === Active Tab ===
+        // Active tab styling
         &.active a {
             color: var(--base-white);
             background-color: var(--secondary-1);
         }
 
-        // === Disabled Tab ===
+        // Disabled tab styling
         &.disabled a {
             color: var(--secondary-1);
             cursor: not-allowed;
@@ -57,7 +60,7 @@
         }
     }
 
-    // === Tab Panels ===
+    // Tab content panel styling
     .mx-tabcontainer-content {
         padding: $spacing-16 $spacing-24;
         background-color: var(--secondary-1);

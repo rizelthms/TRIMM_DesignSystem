@@ -7,6 +7,9 @@
 ========================================================================== */
 
 // === CHAT POPUP BUTTON ===
+// Floating action button to open chat interface
+// Positioned in bottom-right corner with hover animations
+
 .btn-chat-popup {
     position: fixed;
     right: $spacing-32;
@@ -47,6 +50,9 @@
 }
 
 // === CHAT POPUP WINDOW ===
+// Modal window for chat interface
+// Fixed positioning with custom header and body styling
+
 .layout-chat-popup.mx-window {
     position: fixed !important;
     right: $spacing-32 !important;
@@ -61,7 +67,7 @@
     box-shadow: $shadow-12;
     border: none !important;
 
-    // Disable window resizers
+    // Disable window resizing for consistent experience
     .mx-resizer-n,
     .mx-resizer-s,
     .mx-resizer-e,
@@ -73,6 +79,7 @@
         display: none;
     }
 
+    // Custom header with TRIMM branding
     .mx-window-header {
         background: var(--brand-1) !important;
         border: none !important;
@@ -88,6 +95,7 @@
             margin: 0 !important;
         }
 
+        // Custom close button styling
         button.close {
             color: transparent !important;
             background: none !important;
@@ -107,6 +115,7 @@
         }
     }
 
+    // Chat content area
     .modal-body {
         height: calc(100% - 60px) !important;
         overflow: hidden !important;
@@ -128,6 +137,9 @@
 }
 
 // === CHAT SIDEBAR ===
+// Full-height sidebar chat interface
+// Alternative to popup for larger screens
+
 .layout-chat-sidebar {
     right: 0 !important;
     top: 0 !important;
@@ -143,6 +155,7 @@
         border: none !important;
         height: 100% !important;
 
+        // Sidebar header
         .mx-window-header {
             background: var(--brand-1) !important;
             border: none !important;
@@ -168,6 +181,7 @@
             }
         }
 
+        // Sidebar content area
         .mx-window-body {
             overflow: hidden !important;
             padding: 0 !important;
@@ -182,6 +196,8 @@
 }
 
 // === CHAT CONTAINER & MESSAGES ===
+// Main chat interface layout and structure
+
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -190,6 +206,7 @@
     font-family: $font-primary;
     background-color: transparent !important;
 
+    // Scrollable message area
     .messages-container {
         flex: 1 1 0;
         overflow-y: auto;
@@ -198,6 +215,7 @@
         background-color: transparent !important;
     }
 
+    // Centered layout variant
     &--center {
         max-width: 800px;
         margin: 0 auto;
@@ -206,6 +224,8 @@
 }
 
 // === CHAT LOADING ANIMATION ===
+// Animated dots while waiting for AI response
+
 .chat-loading-wrapper {
     display: flex;
     justify-content: flex-start;
@@ -218,6 +238,7 @@
         width: $spacing-8;
         height: $spacing-8;
 
+        // Staggered animation for wave effect
         &:nth-child(1) {
             animation: preloader 0.9s ease-in-out alternate infinite;
         }
@@ -246,6 +267,8 @@
 }
 
 // === CHAT BUBBLES ===
+// Message bubble styling for user and AI messages
+
 .chat-bubble-wrapper {
     margin-top: $spacing-16;
     display: flex;
@@ -254,9 +277,11 @@
     justify-content: center;
     position: relative;
 
+    // AI/Assistant message styling
     &:not(.chat-bubble-wrapper--user) {
         margin-left: $spacing-16;
 
+        // AI avatar with glyphicon
         &::before {
             content: "\e085";
             font-family: "Glyphicons Halflings" !important;
@@ -275,11 +300,12 @@
         }
     }
 
+    // Message bubble styling
     .chat-message-card {
         background: var(--base-white);
         border: $border-1 solid var(--brand-3);
         border-radius: $radius-8 $radius-8 $radius-8 $spacing-4;
-        margin: 0 10% 0 0; // Reduced from 20%
+        margin: 0 10% 0 0;
         padding: $spacing-12 $spacing-16;
         font-family: $font-primary;
         font-size: $font-size-body-2;
@@ -290,10 +316,12 @@
         max-width: 100%;
     }
 
+    // User message styling (right-aligned)
     &--user {
         align-items: flex-end;
         margin-right: $spacing-16;
 
+        // User avatar with glyphicon
         &::after {
             content: "\e008";
             font-family: "Glyphicons Halflings" !important;
@@ -311,6 +339,7 @@
             color: var(--base-white);
         }
 
+        // User message bubble styling
         .chat-message-card {
             background: var(--brand-2);
             color: var(--base-white);
@@ -322,6 +351,8 @@
 }
 
 // === CHAT INPUT ===
+// Message input area with send button
+
 .chat-input-wrapper {
     position: relative;
     display: flex !important;
@@ -332,11 +363,13 @@
     background-color: var(--base-white);
     border-top: $border-1 solid var(--brand-3);
 
+    // Input field container
     .form-group {
         width: 100%;
         padding: 0 !important;
         margin: 0 !important;
 
+        // Text input styling
         .form-control {
             font-family: $font-primary !important;
             font-size: $font-size-body-2 !important;
@@ -362,6 +395,7 @@
         }
     }
 
+    // Error state handling
     .has-error {
         &:before {
             display: none;
@@ -372,12 +406,14 @@
         }
     }
 
+    // Send button container
     .send-btn-container {
         display: flex !important;
         align-items: center !important;
         flex-flow: row !important;
         justify-content: flex-end !important;
 
+        // Send button styling
         .send-btn {
             position: absolute;
             right: $spacing-24;
@@ -418,6 +454,8 @@
 }
 
 // === USER INPUT INSTRUCTIONS ===
+// Helper text below input field
+
 .user-input-instructions,
 span.user-input-instructions,
 .mx-text.user-input-instructions,
@@ -434,6 +472,8 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 // === CHAT MESSAGE TIME ===
+// Timestamp styling for messages
+
 .chat-message-time {
     color: var(--base-white) !important;
     font-size: $font-size-body-4 !important;
@@ -443,7 +483,8 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 // === TEXT DETAIL OVERRIDE FOR CHAT ===
-// Override the default text-detail color for chat components to be white
+// Override default text detail colors for chat context
+
 .chat-container,
 .chat-bubble-wrapper,
 .messages-container {
@@ -455,6 +496,8 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 // === CONVERSATION STARTERS ===
+// Quick action buttons for common queries
+
 .conversationstarter.card {
     margin-bottom: $spacing-12 !important;
     padding: $spacing-16 !important;
@@ -492,6 +535,8 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 // === CHAT HISTORY SIDEBAR ===
+// Previous conversation list
+
 .chat-history-sidebar {
     overflow-y: auto;
     padding: $spacing-16;
@@ -505,6 +550,8 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 // === DISABLED STATE ===
+// Styling when chat is disabled or unavailable
+
 .chat-container-disabled {
     .panel-content {
         flex-direction: column;
@@ -541,6 +588,8 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 // === RESPONSIVE ADJUSTMENTS ===
+// Mobile and tablet optimizations
+
 @media (max-width: 768px) {
     .layout-chat-popup.mx-window {
         width: calc(100vw - $spacing-32) !important;

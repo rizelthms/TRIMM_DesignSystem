@@ -1,26 +1,28 @@
 // === BASE ALERT STYLE ===
-// Use on a container wrapping the alert. Works with Mendix building blocks.
+// Base styling for all alert components
+// Apply to alert containers for consistent TRIMM design system appearance
+
 .alert-base {
     font-family: $font-primary;
     border-radius: $radius-4;
     padding: $spacing-16;
-    background-color: var(--brand-3); // TRIMM Teal
+    background-color: var(--brand-3);
     color: var(--base-white);
     transition: background-color 0.2s ease;
 
-    // Reset text styles inside
+    // Ensure text elements inherit alert colors
     .alert-title,
     .alert-description {
         color: var(--base-white) !important;
     }
 
-    // Style internal buttons if present
+    // Style buttons within alerts
     .mx-button {
         background-color: var(--brand-2) !important;
         color: var(--base-white) !important;
         font-weight: $font-weight-semibold;
         font-family: $font-primary;
-        font-size: $font-size-body-3; // smaller button text
+        font-size: $font-size-body-3;
         padding: $spacing-8 $spacing-16;
         border: none;
         border-radius: $radius-4;
@@ -45,6 +47,7 @@
             cursor: not-allowed;
         }
 
+        // Ensure icons inherit button colors
         svg,
         i.mdi,
         span > svg {
@@ -54,7 +57,7 @@
         }
     }
 
-    // Hover: lighter variant for base
+    // Interactive states
     &:hover {
         background-color: var(--brand-3-hover);
     }
@@ -63,6 +66,7 @@
         background-color: var(--brand-3-active);
     }
 
+    // Disabled state
     &.disabled {
         background-color: var(--brand-3-disabled);
         color: var(--base-white-disabled);
@@ -77,8 +81,9 @@
 }
 
 // === VARIANTS ===
-// Apply alongside alert-base
+// Different alert types for various use cases
 
+// Success alerts for positive feedback
 .alert-success {
     @extend .alert-base;
     background-color: var(--support-3) !important;
@@ -107,6 +112,7 @@
     }
 }
 
+// Danger alerts for errors and warnings
 .alert-danger {
     @extend .alert-base;
     background-color: var(--support-2) !important;
@@ -135,6 +141,7 @@
     }
 }
 
+// Warning alerts for cautionary messages
 .alert-warning {
     @extend .alert-base;
     background-color: var(--support-4) !important;
@@ -163,6 +170,7 @@
     }
 }
 
+// Info alerts for informational messages
 .alert-info {
     @extend .alert-base;
     background-color: var(--secondary-1) !important;
