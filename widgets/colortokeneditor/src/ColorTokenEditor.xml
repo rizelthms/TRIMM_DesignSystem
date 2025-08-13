@@ -4,7 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>Color Token Editor</name>
     <description>A pluggable Mendix widget for viewing, editing, and resetting theme color tokens (CSS custom properties) at runtime, enabling dynamic theming and rapid UI customization within the TRIMM Design System.</description>
-    <icon/>
+    <icon>
+    PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNjQwIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDcuMC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTY0IDExMkM2NCA4NS41IDg1LjUgNjQgMTEyIDY0TDIwOCA2NEMyMzQuNSA2NCAyNTYgODUuNSAyNTYgMTEyTDI1NiA0ODBDMjU2IDUzMyAyMTMgNTc2IDE2MCA1NzZDMTA3IDU3NiA2NCA1MzMgNjQgNDgwTDY0IDExMnpNMzA0IDQ3My42TDMwNCAyMDIuMUwzNTIuMSAxNTRDMzcwLjggMTM1LjMgNDAxLjIgMTM1LjMgNDIwIDE1NEw0ODcuOSAyMjEuOUM1MDYuNiAyNDAuNiA1MDYuNiAyNzEgNDg3LjkgMjg5LjhMMzA0IDQ3My42ek0yNjkuNSA1NzZMNDYxLjUgMzg0TDUyOC4xIDM4NEM1NTQuNiAzODQgNTc2LjEgNDA1LjUgNTc2LjEgNDMyTDU3Ni4xIDUyOEM1NzYuMSA1NTQuNSA1NTQuNiA1NzYgNTI4LjEgNTc2TDI2OS42IDU3NnpNMTQ0IDEyOEMxMzUuMiAxMjggMTI4IDEzNS4yIDEyOCAxNDRMMTI4IDE3NkMxMjggMTg0LjggMTM1LjIgMTkyIDE0NCAxOTJMMTc2IDE5MkMxODQuOCAxOTIgMTkyIDE4NC44IDE5MiAxNzZMMTkyIDE0NEMxOTIgMTM1LjIgMTg0LjggMTI4IDE3NiAxMjhMMTQ0IDEyOHpNMTI4IDI3MkwxMjggMzA0QzEyOCAzMTIuOCAxMzUuMiAzMjAgMTQ0IDMyMEwxNzYgMzIwQzE4NC44IDMyMCAxOTIgMzEyLjggMTkyIDMwNEwxOTIgMjcyQzE5MiAyNjMuMiAxODQuOCAyNTYgMTc2IDI1NkwxNDQgMjU2QzEzNS4yIDI1NiAxMjggMjYzLjIgMTI4IDI3MnpNMTYwIDUwNEMxNzMuMyA1MDQgMTg0IDQ5My4zIDE4NCA0ODBDMTg0IDQ2Ni43IDE3My4zIDQ1NiAxNjAgNDU2QzE0Ni43IDQ1NiAxMzYgNDY2LjcgMTM2IDQ4MEMxMzYgNDkzLjMgMTQ2LjcgNTA0IDE2MCA1MDR6Ii8+PC9zdmc+
+    </icon>
     <properties>
         <propertyGroup caption="Configuration">
             <property key="side" type="enumeration" required="true" defaultValue="right">
