@@ -313,7 +313,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// (optional)
 		Object[][] componentClasses = new Object[][] {
 				// Button Component Classes (associate to "Button")
-				{ "button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
+				{ "trimm-button button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
 				{ "btn-default", "Default button variant with transparent background", 2, "Button" },
 				{ "btn-cta", "Call-to-action button with orange background", 3, "Button" },
 				{ "btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
@@ -327,6 +327,20 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "btn-lg", "Large button size variant", 12, "Button" },
 				{ "btn-icon-right", "Button with icon on the right", 13, "Button" },
 				{ "btn-icon-left", "Button with icon on the left", 14, "Button" },
+
+				{ "trimm-button btn-default", "Default button variant with transparent background", 2, "Button" },
+				{ "trimm-button btn-cta", "Call-to-action button with orange background", 3, "Button" },
+				{ "trimm-button btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
+				{ "trimm-button btn-primary", "Primary button variant with navy blue background", 5, "Button" },
+				{ "trimm-button btn-info", "Info button variant with teal background", 6, "Button" },
+				{ "trimm-button btn-success", "Success button variant with green background", 7, "Button" },
+				{ "trimm-button btn-warning", "Warning button variant with yellow background", 8, "Button" },
+				{ "trimm-button btn-danger", "Danger button variant with red background", 9, "Button" },
+				{ "trimm-button btn-sm", "Small button size variant", 10, "Button" },
+				{ "trimm-button btn-md", "Medium button size variant", 11, "Button" },
+				{ "trimm-button btn-lg", "Large button size variant", 12, "Button" },
+				{ "trimm-button btn-icon-right", "Button with icon on the right", 13, "Button" },
+				{ "trimm-button btn-icon-left", "Button with icon on the left", 14, "Button" },
 
 				// Accordion Component Classes (associate to "Accordion")
 				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
@@ -426,9 +440,9 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject buttonCompObj = buttonCompList.get(0);
 			trimm_designsystem.proxies.DS_Component buttonComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, buttonCompObj);
-			String[] buttonClassNames = { "button-base", "btn-default", "btn-cta", "btn-inverse", "btn-primary",
-					"btn-info", "btn-success", "btn-warning", "btn-danger", "btn-sm", "btn-md", "btn-lg",
-					"btn-icon-right", "btn-icon-left" };
+			String[] buttonClassNames = { "trimm-button button-base", "trimm-button btn-default", "trimm-button btn-cta", "trimm-button btn-inverse", "trimm-button btn-primary",
+					"trimm-button btn-info", "trimm-button btn-success", "trimm-button btn-warning", "trimm-button btn-danger", "trimm-button btn-sm", "trimm-button btn-md", "trimm-button btn-lg",
+					"trimm-button btn-icon-right", "trimm-button btn-icon-left" };
 			for (String className : buttonClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")

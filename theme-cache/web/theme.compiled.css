@@ -29129,7 +29129,7 @@ p {
   color: var(--base-white-disabled) !important;
 }
 
-.button-base, .btn-lg, .btn-md, .btn-sm, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
+.trimm-button .button-base, .trimm-button .btn-lg, .trimm-button .btn-md, .trimm-button .btn-sm, .trimm-button .btn-danger, .trimm-button .btn-warning, .trimm-button .btn-success, .trimm-button .btn-info, .trimm-button .btn-primary, .trimm-button .btn-inverse, .trimm-button .btn-cta, .trimm-button .btn-default, .trimm-button.button-base, .trimm-button.btn-lg, .trimm-button.btn-md, .trimm-button.btn-sm, .trimm-button.btn-danger, .trimm-button.btn-warning, .trimm-button.btn-success, .trimm-button.btn-info, .trimm-button.btn-primary, .trimm-button.btn-inverse, .trimm-button.btn-cta, .trimm-button.btn-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29144,193 +29144,186 @@ p {
   text-decoration: none;
   padding: 12px 24px;
 }
-
-.btn-default {
+.trimm-button .btn-default, .trimm-button.btn-default {
   background-color: transparent;
   color: var(--base-black);
   border: 1px solid var(--base-white);
   box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
 }
-.btn-default:hover, .btn-default:focus {
+.trimm-button .btn-default:hover, .trimm-button .btn-default:focus, .trimm-button.btn-default:hover, .trimm-button.btn-default:focus {
   background-color: var(--base-white-hover);
   color: var(--base-black);
 }
-.btn-default:active {
+.trimm-button .btn-default:active, .trimm-button.btn-default:active {
   background-color: var(--base-white-active);
   color: var(--base-black-active);
 }
-.btn-default:disabled, .btn-default.btn-disabled {
+.trimm-button .btn-default:disabled, .trimm-button .btn-default.btn-disabled, .trimm-button.btn-default:disabled, .trimm-button.btn-default.btn-disabled {
   background-color: var(--secondary-1-disabled);
   color: var(--base-white-disabled);
   border-color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-.btn-default svg,
-.btn-default i.mdi,
-.btn-default span > svg {
+.trimm-button .btn-default svg,
+.trimm-button .btn-default i.mdi,
+.trimm-button .btn-default span > svg, .trimm-button.btn-default svg,
+.trimm-button.btn-default i.mdi,
+.trimm-button.btn-default span > svg {
   color: currentColor;
 }
-
-.btn-cta {
+.trimm-button .btn-cta, .trimm-button.btn-cta {
   background-color: var(--brand-2);
   color: var(--base-white);
   border: none;
 }
-.btn-cta:hover {
+.trimm-button .btn-cta:hover, .trimm-button.btn-cta:hover {
   background-color: var(--brand-2-hover);
 }
-.btn-cta:active {
+.trimm-button .btn-cta:active, .trimm-button.btn-cta:active {
   background-color: var(--brand-2-active);
 }
-.btn-cta:disabled, .btn-cta.btn-disabled {
+.trimm-button .btn-cta:disabled, .trimm-button .btn-cta.btn-disabled, .trimm-button.btn-cta:disabled, .trimm-button.btn-cta.btn-disabled {
   background-color: var(--brand-2-disabled);
   color: var(--base-white-disabled);
   cursor: not-allowed;
 }
-.btn-cta svg,
-.btn-cta i.mdi,
-.btn-cta span > svg {
+.trimm-button .btn-cta svg,
+.trimm-button .btn-cta i.mdi,
+.trimm-button .btn-cta span > svg, .trimm-button.btn-cta svg,
+.trimm-button.btn-cta i.mdi,
+.trimm-button.btn-cta span > svg {
   color: currentColor;
 }
-
-.btn-inverse {
+.trimm-button .btn-inverse, .trimm-button.btn-inverse {
   background-color: var(--base-black);
   color: var(--base-white);
   border: 1px solid var(--base-black);
 }
-.btn-inverse:hover, .btn-inverse:focus {
+.trimm-button .btn-inverse:hover, .trimm-button .btn-inverse:focus, .trimm-button.btn-inverse:hover, .trimm-button.btn-inverse:focus {
   background-color: var(--base-black-hover);
   color: var(--base-white);
 }
-.btn-inverse:active {
+.trimm-button .btn-inverse:active, .trimm-button.btn-inverse:active {
   background-color: var(--base-black-active);
   color: var(--base-white-active);
 }
-.btn-inverse:disabled, .btn-inverse.btn-disabled {
+.trimm-button .btn-inverse:disabled, .trimm-button .btn-inverse.btn-disabled, .trimm-button.btn-inverse:disabled, .trimm-button.btn-inverse.btn-disabled {
   background-color: var(--base-black-disabled);
   color: var(--base-white-disabled);
   border-color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-
-.btn-primary {
+.trimm-button .btn-primary, .trimm-button.btn-primary {
   background-color: var(--brand-1);
   color: var(--base-white);
   border: 1px solid var(--brand-1);
 }
-.btn-primary:hover, .btn-primary:focus {
+.trimm-button .btn-primary:hover, .trimm-button .btn-primary:focus, .trimm-button.btn-primary:hover, .trimm-button.btn-primary:focus {
   background-color: var(--brand-1-hover);
   color: var(--base-white);
 }
-.btn-primary:active {
+.trimm-button .btn-primary:active, .trimm-button.btn-primary:active {
   background-color: var(--brand-1-active);
   color: var(--base-white-active);
 }
-.btn-primary:disabled, .btn-primary.btn-disabled {
+.trimm-button .btn-primary:disabled, .trimm-button .btn-primary.btn-disabled, .trimm-button.btn-primary:disabled, .trimm-button.btn-primary.btn-disabled {
   background-color: var(--brand-1-disabled);
   color: var(--base-white-disabled);
   border-color: var(--brand-1-disabled);
   cursor: not-allowed;
 }
-
-.btn-info {
+.trimm-button .btn-info, .trimm-button.btn-info {
   background-color: var(--brand-3);
   color: var(--base-white);
   border: 1px solid var(--brand-3);
 }
-.btn-info:hover, .btn-info:focus {
+.trimm-button .btn-info:hover, .trimm-button .btn-info:focus, .trimm-button.btn-info:hover, .trimm-button.btn-info:focus {
   background-color: var(--brand-3-hover);
 }
-.btn-info:active {
+.trimm-button .btn-info:active, .trimm-button.btn-info:active {
   background-color: var(--brand-3-active);
   color: var(--base-white-active);
 }
-.btn-info:disabled, .btn-info.btn-disabled {
+.trimm-button .btn-info:disabled, .trimm-button .btn-info.btn-disabled, .trimm-button.btn-info:disabled, .trimm-button.btn-info.btn-disabled {
   background-color: var(--brand-3-disabled);
   color: var(--base-white-disabled);
   border-color: var(--brand-3-disabled);
   cursor: not-allowed;
 }
-
-.btn-success {
+.trimm-button .btn-success, .trimm-button.btn-success {
   background-color: var(--support-3);
   color: var(--base-white);
   border: 1px solid var(--support-3);
 }
-.btn-success:hover, .btn-success:focus {
+.trimm-button .btn-success:hover, .trimm-button .btn-success:focus, .trimm-button.btn-success:hover, .trimm-button.btn-success:focus {
   background-color: var(--support-3-hover);
 }
-.btn-success:active {
+.trimm-button .btn-success:active, .trimm-button.btn-success:active {
   background-color: var(--support-3-active);
   color: var(--base-white-active);
 }
-.btn-success:disabled, .btn-success.btn-disabled {
+.trimm-button .btn-success:disabled, .trimm-button .btn-success.btn-disabled, .trimm-button.btn-success:disabled, .trimm-button.btn-success.btn-disabled {
   background-color: var(--support-3-disabled);
   color: var(--base-white-disabled);
   border-color: var(--support-3-disabled);
   cursor: not-allowed;
 }
-
-.btn-warning {
+.trimm-button .btn-warning, .trimm-button.btn-warning {
   background-color: var(--support-4);
   color: var(--base-black);
   border: 1px solid var(--support-4);
 }
-.btn-warning:hover, .btn-warning:focus {
+.trimm-button .btn-warning:hover, .trimm-button .btn-warning:focus, .trimm-button.btn-warning:hover, .trimm-button.btn-warning:focus {
   background-color: var(--support-4-hover);
 }
-.btn-warning:active {
+.trimm-button .btn-warning:active, .trimm-button.btn-warning:active {
   background-color: var(--support-4-active);
   color: var(--base-black-active);
 }
-.btn-warning:disabled, .btn-warning.btn-disabled {
+.trimm-button .btn-warning:disabled, .trimm-button .btn-warning.btn-disabled, .trimm-button.btn-warning:disabled, .trimm-button.btn-warning.btn-disabled {
   background-color: var(--support-4-disabled);
   color: var(--base-black-disabled);
   border-color: var(--support-4-disabled);
   cursor: not-allowed;
 }
-
-.btn-danger {
+.trimm-button .btn-danger, .trimm-button.btn-danger {
   background-color: var(--support-2);
   color: var(--base-white);
   border: 1px solid var(--support-2);
 }
-.btn-danger:hover, .btn-danger:focus {
+.trimm-button .btn-danger:hover, .trimm-button .btn-danger:focus, .trimm-button.btn-danger:hover, .trimm-button.btn-danger:focus {
   background-color: var(--support-2-hover);
 }
-.btn-danger:active {
+.trimm-button .btn-danger:active, .trimm-button.btn-danger:active {
   background-color: var(--support-2-active);
   color: var(--base-white-active);
 }
-.btn-danger:disabled, .btn-danger.btn-disabled {
+.trimm-button .btn-danger:disabled, .trimm-button .btn-danger.btn-disabled, .trimm-button.btn-danger:disabled, .trimm-button.btn-danger.btn-disabled {
   background-color: var(--support-2-disabled);
   color: var(--base-white-disabled);
   border-color: var(--support-2-disabled);
   cursor: not-allowed;
 }
-
-.btn-sm {
+.trimm-button .btn-sm, .trimm-button.btn-sm {
   padding: 8px 16px;
   font-size: 14px;
 }
-
-.btn-md {
+.trimm-button .btn-md, .trimm-button.btn-md {
   padding: 12px 24px;
   font-size: 16px;
 }
-
-.btn-lg {
+.trimm-button .btn-lg, .trimm-button.btn-lg {
   padding: 16px 32px;
   font-size: 18px;
 }
-
-.btn-icon-right svg,
-.btn-icon-right i.mdi {
+.trimm-button .btn-icon-right svg,
+.trimm-button .btn-icon-right i.mdi, .trimm-button.btn-icon-right svg,
+.trimm-button.btn-icon-right i.mdi {
   margin-left: 4px;
 }
-
-.btn-icon-left svg,
-.btn-icon-left i.mdi {
+.trimm-button .btn-icon-left svg,
+.trimm-button .btn-icon-left i.mdi, .trimm-button.btn-icon-left svg,
+.trimm-button.btn-icon-left i.mdi {
   margin-right: 4px;
 }
 
