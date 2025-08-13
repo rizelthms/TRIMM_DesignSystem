@@ -4,8 +4,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
     <name>TRIMM Range Date Picker</name>
     <description>A comprehensive date range picker for Mendix, allowing users to select start and end dates. Fully styled with the TRIMM Design System for consistent theming and seamless integration.</description>
-    <icon/>
-
+    <icon>
+    PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNjQwIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDcuMC4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIyNCA2NEMyNDEuNyA2NCAyNTYgNzguMyAyNTYgOTZMMjU2IDEyOEwzODQgMTI4TDM4NCA5NkMzODQgNzguMyAzOTguMyA2NCA0MTYgNjRDNDMzLjcgNjQgNDQ4IDc4LjMgNDQ4IDk2TDQ0OCAxMjhMNDgwIDEyOEM1MTUuMyAxMjggNTQ0IDE1Ni43IDU0NCAxOTJMNTQ0IDQ4MEM1NDQgNTE1LjMgNTE1LjMgNTQ0IDQ4MCA1NDRMMTYwIDU0NEMxMjQuNyA1NDQgOTYgNTE1LjMgOTYgNDgwTDk2IDE5MkM5NiAxNTYuNyAxMjQuNyAxMjggMTYwIDEyOEwxOTIgMTI4TDE5MiA5NkMxOTIgNzguMyAyMDYuMyA2NCAyMjQgNjR6TTIyNCAzMjBDMjA2LjMgMzIwIDE5MiAzMzQuMyAxOTIgMzUyTDE5MiA0MTZDMTkyIDQzMy43IDIwNi4zIDQ0OCAyMjQgNDQ4TDQxNiA0NDhDNDMzLjcgNDQ4IDQ0OCA0MzMuNyA0NDggNDE2TDQ0OCAzNTJDNDQ4IDMzNC4zIDQzMy43IDMyMCA0MTYgMzIwTDIyNCAzMjB6Ii8+PC9zdmc+
+    </icon>
     <properties>
         <propertyGroup caption="Data">
             <property key="startDate" type="attribute" required="true">
