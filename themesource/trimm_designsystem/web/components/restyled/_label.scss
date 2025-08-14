@@ -1,84 +1,99 @@
-// === BASE LABEL STYLE ===
-// Foundation styling for all label components
-// Provides consistent typography, padding, and border styling
+// === SCOPED LABEL STYLES ===
+// TRIMM label styles only apply when 'trimm-label' class is present on the label or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.label-base {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-family: $font-primary;
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-body-3;
-    padding: $spacing-4 $spacing-8;
-    border-radius: $radius-4;
-    border: $border-1 solid var(--secondary-1);
-    white-space: nowrap;
-    color: var(--base-black);
-}
+.trimm-label {
+    // === BASE LABEL STYLE ===
+    // Foundation styling for all label components
+    // Provides consistent typography, padding, and border styling
 
-// === LABEL VARIANTS ===
-// Different label types for various use cases and contexts
+    .label-base,
+    &.label-base {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $font-primary;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-body-3;
+        padding: $spacing-4 $spacing-8;
+        border-radius: $radius-4;
+        border: $border-1 solid var(--secondary-1);
+        white-space: nowrap;
+        color: var(--base-black);
+    }
 
-// Default label with teal background
-.label-default {
-    @extend .label-base;
-    background-color: var(--brand-3);
-    color: var(--base-white);
-    border: none;
-}
+    // === LABEL VARIANTS ===
+    // Different label types for various use cases and contexts
 
-// Secondary label with orange background
-.label-secondary {
-    @extend .label-base;
-    background-color: var(--brand-2);
-    color: var(--base-white);
-    border: none;
-}
+    // Default label with teal background
+    .label-default,
+    &.label-default {
+        @extend .label-base;
+        background-color: var(--brand-3);
+        color: var(--base-white);
+        border: none;
+    }
 
-// Success label for positive status indicators
-.label-success {
-    @extend .label-base;
-    background-color: var(--support-3);
-    color: var(--base-white);
-    border: none;
-}
+    // Secondary label with orange background
+    .label-secondary,
+    &.label-secondary {
+        @extend .label-base;
+        background-color: var(--brand-2);
+        color: var(--base-white);
+        border: none;
+    }
 
-// Danger label for error or warning indicators
-.label-danger {
-    @extend .label-base;
-    background-color: var(--support-2);
-    color: var(--base-white);
-    border: none;
-}
+    // Success label for positive status indicators
+    .label-success,
+    &.label-success {
+        @extend .label-base;
+        background-color: var(--support-3);
+        color: var(--base-white);
+        border: none;
+    }
 
-// Warning label for cautionary indicators
-.label-warning {
-    @extend .label-base;
-    background-color: var(--support-4);
-    color: var(--base-white);
-    border: none;
-}
+    // Danger label for error or warning indicators
+    .label-danger,
+    &.label-danger {
+        @extend .label-base;
+        background-color: var(--support-2);
+        color: var(--base-white);
+        border: none;
+    }
 
-// === LABEL SIZES ===
-// Size variations for different contexts and hierarchies
+    // Warning label for cautionary indicators
+    .label-warning,
+    &.label-warning {
+        @extend .label-base;
+        background-color: var(--support-4);
+        color: var(--base-white);
+        border: none;
+    }
 
-// Small label for compact layouts
-.label-sm {
-    @extend .label-base;
-    font-size: $font-size-body-3;
-    padding: $spacing-4;
-}
+    // === LABEL SIZES ===
+    // Size variations for different contexts and hierarchies
 
-// Medium label (default size)
-.label-md {
-    @extend .label-base;
-    font-size: $font-size-body-2;
-    padding: $spacing-8;
-}
+    // Small label for compact layouts
+    .label-sm,
+    &.label-sm {
+        @extend .label-base;
+        font-size: $font-size-body-3;
+        padding: $spacing-4;
+    }
 
-// Large label for prominent indicators
-.label-lg {
-    @extend .label-base;
-    font-size: $font-size-body-1;
-    padding: $spacing-12;
+    // Medium label (default size)
+    .label-md,
+    &.label-md {
+        @extend .label-base;
+        font-size: $font-size-body-2;
+        padding: $spacing-8;
+    }
+
+    // Large label for prominent indicators
+    .label-lg,
+    &.label-lg {
+        @extend .label-base;
+        font-size: $font-size-body-1;
+        padding: $spacing-12;
+    }
 }

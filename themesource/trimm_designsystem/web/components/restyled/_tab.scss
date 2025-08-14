@@ -1,8 +1,14 @@
-// === BASE TABS COMPONENT ===
-// Tab container styling for Mendix Tab Container widgets
-// Provides consistent TRIMM design system appearance for tabbed interfaces
+// === SCOPED TAB STYLES ===
+// TRIMM tab styles only apply when 'trimm-tab' class is present on the tab or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.tab-base {
+.trimm-tab {
+  // === BASE TABS COMPONENT ===
+  // Tab container styling for Mendix Tab Container widgets
+  // Provides consistent TRIMM design system appearance for tabbed interfaces
+
+  .tab-base,
+  &.tab-base {
     font-family: $font-primary;
     font-size: $font-size-body-2;
     font-weight: $font-weight-medium;
@@ -10,60 +16,61 @@
 
     // Tab navigation list styling
     .mx-tabcontainer-tabs {
-        display: flex;
-        gap: $spacing-4;
-        padding: 0 $spacing-8;
-        box-shadow: $shadow-2;
-        background-color: var(--base-white);
+      display: flex;
+      gap: $spacing-4;
+      padding: 0 $spacing-8;
+      box-shadow: $shadow-2;
+      background-color: var(--base-white);
     }
 
     // Individual tab item styling
     .mx-tabcontainer-tabs > li {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+      list-style: none;
+      margin: 0;
+      padding: 0;
 
-        // Tab link styling
-        a {
-            display: inline-block;
-            padding: $spacing-8 $spacing-16;
-            font-family: $font-primary;
-            font-weight: $font-weight-semibold;
-            color: var(--base-black);
-            text-decoration: none;
-            border: none;
-            border-radius: $radius-4 $radius-4 0 0;
-            background-color: transparent;
-            transition:
-                background-color 0.2s ease,
-                color 0.2s ease;
+      // Tab link styling
+      a {
+        display: inline-block;
+        padding: $spacing-8 $spacing-16;
+        font-family: $font-primary;
+        font-weight: $font-weight-semibold;
+        color: var(--base-black);
+        text-decoration: none;
+        border: none;
+        border-radius: $radius-4 $radius-4 0 0;
+        background-color: transparent;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
 
-            // Hover state
-            &:hover {
-                background-color: var(--brand-3-hover);
-                color: var(--brand-3);
-            }
+        // Hover state
+        &:hover {
+          background-color: var(--brand-3-hover);
+          color: var(--brand-3);
         }
+      }
 
-        // Active tab styling
-        &.active a {
-            color: var(--base-white);
-            background-color: var(--secondary-1);
-        }
+      // Active tab styling
+      &.active a {
+        color: var(--base-white);
+        background-color: var(--secondary-1);
+      }
 
-        // Disabled tab styling
-        &.disabled a {
-            color: var(--secondary-1);
-            cursor: not-allowed;
-            pointer-events: none;
-            background-color: var(--secondary-1-disabled);
-        }
+      // Disabled tab styling
+      &.disabled a {
+        color: var(--secondary-1);
+        cursor: not-allowed;
+        pointer-events: none;
+        background-color: var(--secondary-1-disabled);
+      }
     }
 
     // Tab content panel styling
     .mx-tabcontainer-content {
-        padding: $spacing-16 $spacing-24;
-        background-color: var(--secondary-1);
-        border-radius: 0 0 $radius-4 $radius-4;
+      padding: $spacing-16 $spacing-24;
+      background-color: var(--secondary-1);
+      border-radius: 0 0 $radius-4 $radius-4;
     }
+  }
 }

@@ -1,87 +1,97 @@
-// === BASE TEXT AREA STYLE ===
-// Multi-line text input styling for Mendix Text Area widgets
-// Provides consistent TRIMM design system appearance for text areas
+// === SCOPED TEXTAREA STYLES ===
+// TRIMM textarea styles only apply when 'trimm-textarea' class is present on the textarea or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.textarea-base {
-    font-family: $font-primary;
+.trimm-textarea {
+    // === BASE TEXT AREA STYLE ===
+    // Multi-line text input styling for Mendix Text Area widgets
+    // Provides consistent TRIMM design system appearance for text areas
 
-    // Textarea input field styling
-    textarea.mx-textarea-input {
-        font-size: $font-size-body-2;
-        font-weight: $font-weight-normal;
-        color: var(--base-black) !important;
-        background-color: var(--base-white) !important;
-        border: $border-1 solid var(--brand-3) !important;
-        border-radius: $radius-4 !important;
-        padding: $spacing-12 $spacing-16 !important;
-        line-height: $line-height-body-2;
-        min-height: 120px;
-        resize: vertical;
-        transition: border-color 0.2s ease-in-out;
+    .textarea-base,
+    &.textarea-base {
+        font-family: $font-primary;
 
-        // Placeholder text styling
-        &::placeholder {
-            color: var(--base-black);
-            font-style: italic;
-        }
-
-        // Focus state styling
-        &:focus {
-            outline: none;
-            border-color: var(--brand-2) !important;
-        }
-
-        // Disabled state styling
-        &:disabled {
-            background-color: var(--secondary-1-disabled) !important;
+        // Textarea input field styling
+        textarea.mx-textarea-input {
+            font-size: $font-size-body-2;
+            font-weight: $font-weight-normal;
             color: var(--base-black) !important;
-            border-color: var(--base-black) !important;
-            cursor: not-allowed;
+            background-color: var(--base-white) !important;
+            border: $border-1 solid var(--brand-3) !important;
+            border-radius: $radius-4 !important;
+            padding: $spacing-12 $spacing-16 !important;
+            line-height: $line-height-body-2;
+            min-height: 120px;
+            resize: vertical;
+            transition: border-color 0.2s ease-in-out;
+
+            // Placeholder text styling
+            &::placeholder {
+                color: var(--base-black);
+                font-style: italic;
+            }
+
+            // Focus state styling
+            &:focus {
+                outline: none;
+                border-color: var(--brand-2) !important;
+            }
+
+            // Disabled state styling
+            &:disabled {
+                background-color: var(--secondary-1-disabled) !important;
+                color: var(--base-black) !important;
+                border-color: var(--base-black) !important;
+                cursor: not-allowed;
+            }
         }
     }
-}
 
-// === SIZE MODIFIERS ===
-// Different textarea sizes for various contexts
+    // === SIZE MODIFIERS ===
+    // Different textarea sizes for various contexts
 
-// Small textarea for compact layouts
-.textarea-sm {
-    @extend .textarea-base;
-    textarea.mx-textarea-input {
-        font-size: $font-size-body-3 !important;
-        padding: $spacing-8 $spacing-12 !important;
+    // Small textarea for compact layouts
+    .textarea-sm,
+    &.textarea-sm {
+        @extend .textarea-base;
+        textarea.mx-textarea-input {
+            font-size: $font-size-body-3 !important;
+            padding: $spacing-8 $spacing-12 !important;
+        }
+
+        .control-label {
+            font-size: $font-size-body-3 !important;
+            font-weight: $font-weight-regular;
+        }
     }
 
-    .control-label {
-        font-size: $font-size-body-3 !important;
-        font-weight: $font-weight-regular;
-    }
-}
+    // Medium textarea (default size)
+    .textarea-md,
+    &.textarea-md {
+        @extend .textarea-base;
+        textarea.mx-textarea-input {
+            font-size: $font-size-body-2 !important;
+            padding: $spacing-12 $spacing-16 !important;
+        }
 
-// Medium textarea (default size)
-.textarea-md {
-    @extend .textarea-base;
-    textarea.mx-textarea-input {
-        font-size: $font-size-body-2 !important;
-        padding: $spacing-12 $spacing-16 !important;
-    }
-
-    .control-label {
-        font-size: $font-size-body-2 !important;
-        font-weight: $font-weight-medium;
-    }
-}
-
-// Large textarea for prominent input areas
-.textarea-lg {
-    @extend .textarea-base;
-    textarea.mx-textarea-input {
-        font-size: $font-size-body-1 !important;
-        padding: $spacing-16 $spacing-24 !important;
+        .control-label {
+            font-size: $font-size-body-2 !important;
+            font-weight: $font-weight-medium;
+        }
     }
 
-    .control-label {
-        font-size: $font-size-body-1 !important;
-        font-weight: $font-weight-semibold;
+    // Large textarea for prominent input areas
+    .textarea-lg,
+    &.textarea-lg {
+        @extend .textarea-base;
+        textarea.mx-textarea-input {
+            font-size: $font-size-body-1 !important;
+            padding: $spacing-16 $spacing-24 !important;
+        }
+
+        .control-label {
+            font-size: $font-size-body-1 !important;
+            font-weight: $font-weight-semibold;
+        }
     }
 }

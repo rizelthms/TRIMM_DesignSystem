@@ -1,102 +1,120 @@
-// === BASE TEXT BOX STYLE ===
-// Single-line text input styling for Mendix Text Box widgets
-// Provides consistent TRIMM design system appearance for text inputs
+// === SCOPED TEXTBOX STYLES ===
+// TRIMM textbox styles only apply when 'trimm-textbox' class is present on the textbox or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.textbox-base,
-input.form-control {
-    font-family: $font-primary !important;
-    font-size: $font-size-body-2 !important;
-    font-weight: $font-weight-normal !important;
-    color: var(--base-black) !important;
-    background-color: var(--base-white) !important;
-    border: $border-1 solid var(--brand-3) !important;
-    border-radius: $radius-4 !important;
-    padding: $spacing-12 $spacing-16 !important;
-    line-height: $line-height-body-2 !important;
-    background-image: none !important;
-    box-shadow: none !important;
-    width: 100%;
-    box-sizing: border-box;
+.trimm-textbox {
+    // === BASE TEXT BOX STYLE ===
+    // Single-line text input styling for Mendix Text Box widgets
+    // Provides consistent TRIMM design system appearance for text inputs
 
-    // Placeholder text styling
-    &::placeholder {
-        color: var(--base-black) !important;
-        font-style: italic !important;
-    }
-
-    // Focus state styling
-    &:focus {
-        outline: none;
-        border-color: var(--brand-2) !important;
-    }
-
-    // Disabled state styling
-    &:disabled {
-        background-color: var(--secondary-1-disabled) !important;
-        color: var(--base-black) !important;
-        border-color: var(--base-black) !important;
-        cursor: not-allowed;
-    }
-}
-
-// Remove outer border for textbox form groups
-.textbox-base.form-group,
-.textbox-sm.form-group,
-.textbox-md.form-group,
-.textbox-lg.form-group {
-    border: none !important;
-    box-shadow: none !important;
-}
-
-// Control label alignment for textbox form groups
-.textbox-base.form-group .control-label,
-.textbox-sm.form-group .control-label,
-.textbox-md.form-group .control-label,
-.textbox-lg.form-group .control-label {
-    text-align: right !important;
-}
-
-// === TEXT BOX SIZE MODIFIERS ===
-// Different textbox sizes for various contexts
-
-// Small textbox for compact layouts
-.textbox-sm {
-    @extend .textbox-base;
+    .textbox-base,
+    &.textbox-base,
     input.form-control {
-        font-size: $font-size-body-3 !important;
-        padding: $spacing-8 $spacing-12 !important;
-    }
-
-    .control-label {
-        font-size: $font-size-body-3 !important;
-        font-weight: $font-weight-regular;
-    }
-}
-
-// Medium textbox (default size)
-.textbox-md {
-    @extend .textbox-base;
-    input.form-control {
+        font-family: $font-primary !important;
         font-size: $font-size-body-2 !important;
+        font-weight: $font-weight-normal !important;
+        color: var(--base-black) !important;
+        background-color: var(--base-white) !important;
+        border: $border-1 solid var(--brand-3) !important;
+        border-radius: $radius-4 !important;
         padding: $spacing-12 $spacing-16 !important;
+        line-height: $line-height-body-2 !important;
+        background-image: none !important;
+        box-shadow: none !important;
+        width: 100%;
+        box-sizing: border-box;
+
+        // Placeholder text styling
+        &::placeholder {
+            color: var(--base-black) !important;
+            font-style: italic !important;
+        }
+
+        // Focus state styling
+        &:focus {
+            outline: none;
+            border-color: var(--brand-2) !important;
+        }
+
+        // Disabled state styling
+        &:disabled {
+            background-color: var(--secondary-1-disabled) !important;
+            color: var(--base-black) !important;
+            border-color: var(--base-black) !important;
+            cursor: not-allowed;
+        }
     }
 
-    .control-label {
-        font-size: $font-size-body-2 !important;
-        font-weight: $font-weight-medium;
+    // Remove outer border for textbox form groups
+    .textbox-base.form-group,
+    &.textbox-base.form-group,
+    .textbox-sm.form-group,
+    &.textbox-sm.form-group,
+    .textbox-md.form-group,
+    &.textbox-md.form-group,
+    .textbox-lg.form-group,
+    &.textbox-lg.form-group {
+        border: none !important;
+        box-shadow: none !important;
     }
-}
 
-// Large textbox for prominent input areas
-.textbox-lg {
-    @extend .textbox-base;
-    input.form-control {
-        font-size: $font-size-body-1 !important;
-        padding: $spacing-16 $spacing-24 !important;
+    // Control label alignment for textbox form groups
+    .textbox-base.form-group .control-label,
+    &.textbox-base.form-group .control-label,
+    .textbox-sm.form-group .control-label,
+    &.textbox-sm.form-group .control-label,
+    .textbox-md.form-group .control-label,
+    &.textbox-md.form-group .control-label,
+    .textbox-lg.form-group .control-label,
+    &.textbox-lg.form-group .control-label {
+        text-align: right !important;
     }
 
-    .control-label {
-        font-size: $font-size-body-1 !important;
-        font-weight: $font-weight-semibold;
+    // === TEXT BOX SIZE MODIFIERS ===
+    // Different textbox sizes for various contexts
+
+    // Small textbox for compact layouts
+    .textbox-sm,
+    &.textbox-sm {
+        @extend .textbox-base;
+        input.form-control {
+            font-size: $font-size-body-3 !important;
+            padding: $spacing-8 $spacing-12 !important;
+        }
+
+        .control-label {
+            font-size: $font-size-body-3 !important;
+            font-weight: $font-weight-regular;
+        }
+    }
+
+    // Medium textbox (default size)
+    .textbox-md,
+    &.textbox-md {
+        @extend .textbox-base;
+        input.form-control {
+            font-size: $font-size-body-2 !important;
+            padding: $spacing-12 $spacing-16 !important;
+        }
+
+        .control-label {
+            font-size: $font-size-body-2 !important;
+            font-weight: $font-weight-medium;
+        }
+    }
+
+    // Large textbox for prominent input areas
+    .textbox-lg,
+    &.textbox-lg {
+        @extend .textbox-base;
+        input.form-control {
+            font-size: $font-size-body-1 !important;
+            padding: $spacing-16 $spacing-24 !important;
+        }
+
+        .control-label {
+            font-size: $font-size-body-1 !important;
+            font-weight: $font-weight-semibold;
+        }
     }
 }

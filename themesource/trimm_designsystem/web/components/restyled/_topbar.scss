@@ -17,6 +17,14 @@
   color: var(--base-white) !important;
 }
 
+// Override hide-icons behavior to show icons in TRIMM topbar
+.region-topbar .mx-navbar.hide-icons .mx-icon-lined,
+.region-topbar .mx-navbar.hide-icons .mx-icon-filled,
+.region-topbar .mx-navbar.hide-icons .glyphicon {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
 // Topbar dropdown menu styling
 .region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {
   background-color: var(--brand-3) !important;

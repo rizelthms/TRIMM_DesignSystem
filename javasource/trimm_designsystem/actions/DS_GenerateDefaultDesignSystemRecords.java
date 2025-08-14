@@ -313,83 +313,83 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// (optional)
 		Object[][] componentClasses = new Object[][] {
 				// Button Component Classes (associate to "Button")
-				{ "button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
-				{ "btn-default", "Default button variant with transparent background", 2, "Button" },
-				{ "btn-cta", "Call-to-action button with orange background", 3, "Button" },
-				{ "btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
-				{ "btn-primary", "Primary button variant with navy blue background", 5, "Button" },
-				{ "btn-info", "Info button variant with teal background", 6, "Button" },
-				{ "btn-success", "Success button variant with green background", 7, "Button" },
-				{ "btn-warning", "Warning button variant with yellow background", 8, "Button" },
-				{ "btn-danger", "Danger button variant with red background", 9, "Button" },
-				{ "btn-sm", "Small button size variant", 10, "Button" },
-				{ "btn-md", "Medium button size variant", 11, "Button" },
-				{ "btn-lg", "Large button size variant", 12, "Button" },
-				{ "btn-icon-right", "Button with icon on the right", 13, "Button" },
-				{ "btn-icon-left", "Button with icon on the left", 14, "Button" },
+				{ "trimm-button button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
+				{ "trimm-button btn-default", "Default button variant with transparent background", 2, "Button" },
+				{ "trimm-button btn-cta", "Call-to-action button with orange background", 3, "Button" },
+				{ "trimm-button btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
+				{ "trimm-button btn-primary", "Primary button variant with navy blue background", 5, "Button" },
+				{ "trimm-button btn-info", "Info button variant with teal background", 6, "Button" },
+				{ "trimm-button btn-success", "Success button variant with green background", 7, "Button" },
+				{ "trimm-button btn-warning", "Warning button variant with yellow background", 8, "Button" },
+				{ "trimm-button btn-danger", "Danger button variant with red background", 9, "Button" },
+				{ "trimm-button btn-sm", "Small button size variant", 10, "Button" },
+				{ "trimm-button btn-md", "Medium button size variant", 11, "Button" },
+				{ "trimm-button btn-lg", "Large button size variant", 12, "Button" },
+				{ "trimm-button btn-icon-right", "Button with icon on the right", 13, "Button" },
+				{ "trimm-button btn-icon-left", "Button with icon on the left", 14, "Button" },
 
 				// Accordion Component Classes (associate to "Accordion")
-				{ "accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
+				{ "trimm-accordion accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
 
 				// Alert Component Classes (associate to "Alert")
-				{ "alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
-				{ "alert-success", "Success alert variant with green background", 17, "Alert" },
-				{ "alert-danger", "Danger alert variant with red background", 18, "Alert" },
-				{ "alert-warning", "Warning alert variant with yellow background", 19, "Alert" },
-				{ "alert-info", "Info alert variant with teal background", 20, "Alert" },
+				{ "trimm-alert alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
+				{ "trimm-alert alert-success", "Success alert variant with green background", 17, "Alert" },
+				{ "trimm-alert alert-danger", "Danger alert variant with red background", 18, "Alert" },
+				{ "trimm-alert alert-warning", "Warning alert variant with yellow background", 19, "Alert" },
+				{ "trimm-alert alert-info", "Info alert variant with teal background", 20, "Alert" },
 
 				// Checkbox Component Classes (associate to "Checkbox")
-				{ "checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
-				{ "checkbox-sm", "Small checkbox size variant", 22, "Checkbox" },
-				{ "checkbox-md", "Medium checkbox size variant", 23, "Checkbox" },
-				{ "checkbox-lg", "Large checkbox size variant", 24, "Checkbox" },
+				{ "trimm-checkbox checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
+				{ "trimm-checkbox checkbox-sm", "Small checkbox size variant", 22, "Checkbox" },
+				{ "trimm-checkbox checkbox-md", "Medium checkbox size variant", 23, "Checkbox" },
+				{ "trimm-checkbox checkbox-lg", "Large checkbox size variant", 24, "Checkbox" },
 
 				// Label Component Classes (associate to "Label")
-				{ "label-base", "Base label styling with TRIMM design tokens", 25, "Label" },
-				{ "label-default", "Default label variant with teal background", 26, "Label" },
-				{ "label-secondary", "Secondary label variant with orange background", 27, "Label" },
-				{ "label-success", "Success label variant with green background", 28, "Label" },
-				{ "label-danger", "Danger label variant with red background", 29, "Label" },
-				{ "label-warning", "Warning label variant with yellow background", 30, "Label" },
-				{ "label-sm", "Small label size variant", 31, "Label" },
-				{ "label-md", "Medium label size variant", 32, "Label" },
-				{ "label-lg", "Large label size variant", 33, "Label" },
+				{ "trimm-label label-base", "Base label styling with TRIMM design tokens", 25, "Label" },
+				{ "trimm-label label-default", "Default label variant with teal background", 26, "Label" },
+				{ "trimm-label label-secondary", "Secondary label variant with orange background", 27, "Label" },
+				{ "trimm-label label-success", "Success label variant with green background", 28, "Label" },
+				{ "trimm-label label-danger", "Danger label variant with red background", 29, "Label" },
+				{ "trimm-label label-warning", "Warning label variant with yellow background", 30, "Label" },
+				{ "trimm-label label-sm", "Small label size variant", 31, "Label" },
+				{ "trimm-label label-md", "Medium label size variant", 32, "Label" },
+				{ "trimm-label label-lg", "Large label size variant", 33, "Label" },
 
 				// Radio Component Classes (associate to "Radio")
-				{ "radio-base", "Base radio button styling with TRIMM design tokens", 34, "Radio" },
-				{ "radio-sm", "Small radio button size variant", 35, "Radio" },
-				{ "radio-md", "Medium radio button size variant", 36, "Radio" },
-				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
+				{ "trimm-radio radio-base", "Base radio button styling with TRIMM design tokens", 34, "Radio" },
+				{ "trimm-radio radio-sm", "Small radio button size variant", 35, "Radio" },
+				{ "trimm-radio radio-md", "Medium radio button size variant", 36, "Radio" },
+				{ "trimm-radio radio-lg", "Large radio button size variant", 37, "Radio" },
 
 				// Textbox Component Classes (associate to "Textbox")
-				{ "textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
-				{ "textbox-sm", "Small textbox size variant", 39, "Textbox" },
-				{ "textbox-md", "Medium textbox size variant", 40, "Textbox" },
-				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" },
+				{ "trimm-textbox textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
+				{ "trimm-textbox textbox-sm", "Small textbox size variant", 39, "Textbox" },
+				{ "trimm-textbox textbox-md", "Medium textbox size variant", 40, "Textbox" },
+				{ "trimm-textbox textbox-lg", "Large textbox size variant", 41, "Textbox" },
 
 				// Textarea Component Classes (associate to "TextArea")
-				{ "textarea-base", "Base textarea styling with TRIMM design tokens", 42, "TextArea" },
-				{ "textarea-sm", "Small textarea size variant", 43, "TextArea" },
-				{ "textarea-md", "Medium textarea size variant", 44, "TextArea" },
-				{ "textarea-lg", "Large textarea size variant", 45, "TextArea" },
+				{ "trimm-textarea textarea-base", "Base textarea styling with TRIMM design tokens", 42, "TextArea" },
+				{ "trimm-textarea textarea-sm", "Small textarea size variant", 43, "TextArea" },
+				{ "trimm-textarea textarea-md", "Medium textarea size variant", 44, "TextArea" },
+				{ "trimm-textarea textarea-lg", "Large textarea size variant", 45, "TextArea" },
 
 				// Switch Component Classes (associate to "Switch")
-				{ "switch-base", "Base switch styling with TRIMM design tokens", 46, "Switch" },
-				{ "switch-sm", "Small switch size variant", 47, "Switch" },
-				{ "switch-md", "Medium switch size variant", 48, "Switch" },
-				{ "switch-lg", "Large switch size variant", 49, "Switch" },
+				{ "trimm-switch switch-base", "Base switch styling with TRIMM design tokens", 46, "Switch" },
+				{ "trimm-switch switch-sm", "Small switch size variant", 47, "Switch" },
+				{ "trimm-switch switch-md", "Medium switch size variant", 48, "Switch" },
+				{ "trimm-switch switch-lg", "Large switch size variant", 49, "Switch" },
 
 				// Menu Component Classes (associate to "Menu")
-				{ "menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
+				{ "trimm-menu menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
 
 				// Tab Component Classes (associate to "TabContainer")
-				{ "tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
+				{ "trimm-tab tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
 
 				// Tooltip Component Classes (associate to "Tooltip")
-				{ "tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
-				{ "tooltip-sm", "Small tooltip size variant", 43, "Tooltip" },
-				{ "tooltip-md", "Medium tooltip size variant", 44, "Tooltip" },
-				{ "tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
+				{ "trimm-tooltip tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
+				{ "trimm-tooltip tooltip-sm", "Small tooltip size variant", 43, "Tooltip" },
+				{ "trimm-tooltip tooltip-md", "Medium tooltip size variant", 44, "Tooltip" },
+				{ "trimm-tooltip tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
 		};
 
 		// Create classes and link to components when the component name is known
@@ -426,9 +426,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject buttonCompObj = buttonCompList.get(0);
 			trimm_designsystem.proxies.DS_Component buttonComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, buttonCompObj);
-			String[] buttonClassNames = { "button-base", "btn-default", "btn-cta", "btn-inverse", "btn-primary",
-					"btn-info", "btn-success", "btn-warning", "btn-danger", "btn-sm", "btn-md", "btn-lg",
-					"btn-icon-right", "btn-icon-left" };
+			String[] buttonClassNames = { "trimm-button button-base", "trimm-button btn-default",
+					"trimm-button btn-cta", "trimm-button btn-inverse", "trimm-button btn-primary",
+					"trimm-button btn-info", "trimm-button btn-success", "trimm-button btn-warning",
+					"trimm-button btn-danger", "trimm-button btn-sm", "trimm-button btn-md", "trimm-button btn-lg",
+					"trimm-button btn-icon-right", "trimm-button btn-icon-left" };
 			for (String className : buttonClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -449,7 +451,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject accordionCompObj = accordionCompList.get(0);
 			trimm_designsystem.proxies.DS_Component accordionComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, accordionCompObj);
-			String[] accordionClassNames = { "accordion-base" };
+			String[] accordionClassNames = { "trimm-accordion accordion-base" };
 			for (String className : accordionClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -470,7 +472,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject alertCompObj = alertCompList.get(0);
 			trimm_designsystem.proxies.DS_Component alertComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, alertCompObj);
-			String[] alertClassNames = { "alert-base", "alert-success", "alert-danger", "alert-warning", "alert-info" };
+			String[] alertClassNames = { "trimm-alert alert-base", "trimm-alert alert-success",
+					"trimm-alert alert-danger", "trimm-alert alert-warning", "trimm-alert alert-info" };
 			for (String className : alertClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -491,7 +494,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject checkboxCompObj = checkboxCompList.get(0);
 			trimm_designsystem.proxies.DS_Component checkboxComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, checkboxCompObj);
-			String[] checkboxClassNames = { "checkbox-base", "checkbox-sm", "checkbox-md", "checkbox-lg" };
+			String[] checkboxClassNames = { "trimm-checkbox checkbox-base", "trimm-checkbox checkbox-sm",
+					"trimm-checkbox checkbox-md", "trimm-checkbox checkbox-lg" };
 			for (String className : checkboxClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -512,8 +516,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject labelCompObj = labelCompList.get(0);
 			trimm_designsystem.proxies.DS_Component labelComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, labelCompObj);
-			String[] labelClassNames = { "label-base", "label-default", "label-secondary", "label-success",
-					"label-danger", "label-warning", "label-sm", "label-md", "label-lg" };
+			String[] labelClassNames = { "trimm-label label-base", "trimm-label label-default",
+					"trimm-label label-secondary", "trimm-label label-success",
+					"trimm-label label-danger", "trimm-label label-warning", "trimm-label label-sm",
+					"trimm-label label-md", "trimm-label label-lg" };
 			for (String className : labelClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -534,7 +540,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject radioCompObj = radioCompList.get(0);
 			trimm_designsystem.proxies.DS_Component radioComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, radioCompObj);
-			String[] radioClassNames = { "radio-base", "radio-sm", "radio-md", "radio-lg" };
+			String[] radioClassNames = { "trimm-radio radio-base", "trimm-radio radio-sm", "trimm-radio radio-md",
+					"trimm-radio radio-lg" };
 			for (String className : radioClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -555,7 +562,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject textboxCompObj = textboxCompList.get(0);
 			trimm_designsystem.proxies.DS_Component textboxComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, textboxCompObj);
-			String[] textboxClassNames = { "textbox-base", "textbox-sm", "textbox-md", "textbox-lg" };
+			String[] textboxClassNames = { "trimm-textbox textbox-base", "trimm-textbox textbox-sm",
+					"trimm-textbox textbox-md", "trimm-textbox textbox-lg" };
 			for (String className : textboxClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -576,7 +584,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject textareaCompObj = textareaCompList.get(0);
 			trimm_designsystem.proxies.DS_Component textareaComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, textareaCompObj);
-			String[] textareaClassNames = { "textarea-base", "textarea-sm", "textarea-md", "textarea-lg" };
+			String[] textareaClassNames = { "trimm-textarea textarea-base", "trimm-textarea textarea-sm",
+					"trimm-textarea textarea-md", "trimm-textarea textarea-lg" };
 			for (String className : textareaClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -597,7 +606,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject switchCompObj = switchCompList.get(0);
 			trimm_designsystem.proxies.DS_Component switchComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, switchCompObj);
-			String[] switchClassNames = { "switch-base", "switch-sm", "switch-md", "switch-lg" };
+			String[] switchClassNames = { "trimm-switch switch-base", "trimm-switch switch-sm",
+					"trimm-switch switch-md", "trimm-switch switch-lg" };
 			for (String className : switchClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -618,7 +628,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject menuCompObj = menuCompList.get(0);
 			trimm_designsystem.proxies.DS_Component menuComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, menuCompObj);
-			String[] menuClassNames = { "menu-base" };
+			String[] menuClassNames = { "trimm-menu menu-base" };
 			for (String className : menuClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -639,7 +649,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject tabCompObj = tabCompList.get(0);
 			trimm_designsystem.proxies.DS_Component tabComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, tabCompObj);
-			String[] tabClassNames = { "tab-base" };
+			String[] tabClassNames = { "trimm-tab tab-base" };
 			for (String className : tabClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -660,7 +670,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject tooltipCompObj = tooltipCompList.get(0);
 			trimm_designsystem.proxies.DS_Component tooltipComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, tooltipCompObj);
-			String[] tooltipClassNames = { "tooltip-base", "tooltip-sm", "tooltip-md", "tooltip-lg" };
+			String[] tooltipClassNames = { "trimm-tooltip tooltip-base", "trimm-tooltip tooltip-sm",
+					"trimm-tooltip tooltip-md", "trimm-tooltip tooltip-lg" };
 			for (String className : tooltipClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")

@@ -28852,7 +28852,7 @@ p {
   --support-4-disabled: rgba(186, 139, 0, 0.4);
 }
 
-.accordion-base {
+.trimm-accordion .accordion-base, .trimm-accordion.accordion-base {
   border: none;
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
@@ -28860,16 +28860,18 @@ p {
   overflow: hidden;
   transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
-.accordion-base.mx-groupbox-open {
+.trimm-accordion .accordion-base.mx-groupbox-open, .trimm-accordion.accordion-base.mx-groupbox-open {
   background-color: var(--base-black);
   box-shadow: none;
 }
-.accordion-base .widget-accordion-group-header {
+.trimm-accordion .accordion-base .widget-accordion-group-header, .trimm-accordion.accordion-base .widget-accordion-group-header {
   padding: 0;
 }
-.accordion-base .widget-accordion-group-header-button,
-.accordion-base .widget-accordion-group-header-button-clickable,
-.accordion-base .widget-accordion-group-header-button-icon-right {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right, .trimm-accordion.accordion-base .widget-accordion-group-header-button,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right {
   background-color: var(--base-white) !important;
   color: var(--brand-1) !important;
   padding: 16px 24px;
@@ -28880,51 +28882,73 @@ p {
   border-radius: 4px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.accordion-base .widget-accordion-group-header-button:hover,
-.accordion-base .widget-accordion-group-header-button-clickable:hover,
-.accordion-base .widget-accordion-group-header-button-icon-right:hover {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:hover,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:hover,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:hover, .trimm-accordion.accordion-base .widget-accordion-group-header-button:hover,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:hover,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:hover {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button:hover .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button:hover h3,
-.accordion-base .widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-clickable:hover h3,
-.accordion-base .widget-accordion-group-header-button-icon-right:hover .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-icon-right:hover h3 {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:hover .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:hover h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:hover h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:hover .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:hover h3, .trimm-accordion.accordion-base .widget-accordion-group-header-button:hover .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button:hover h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:hover h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:hover .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:hover h3 {
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button:active,
-.accordion-base .widget-accordion-group-header-button-clickable:active,
-.accordion-base .widget-accordion-group-header-button-icon-right:active {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:active,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:active,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:active, .trimm-accordion.accordion-base .widget-accordion-group-header-button:active,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:active,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:active {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button:active .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button:active h3,
-.accordion-base .widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-clickable:active h3,
-.accordion-base .widget-accordion-group-header-button-icon-right:active .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-icon-right:active h3 {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:active .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:active h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:active h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:active .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:active h3, .trimm-accordion.accordion-base .widget-accordion-group-header-button:active .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button:active h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:active h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:active .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:active h3 {
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button[aria-expanded=true],
-.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true],
-.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button[aria-expanded=true],
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true],
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true], .trimm-accordion.accordion-base .widget-accordion-group-header-button[aria-expanded=true],
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true],
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] {
   background-color: var(--brand-1);
   color: var(--base-white);
   border-radius: 0px;
 }
-.accordion-base .widget-accordion-group-header-button[aria-expanded=true] > h3,
-.accordion-base .widget-accordion-group-header-button[aria-expanded=true] .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] > h3,
-.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] > h3,
-.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] .widget-accordion-group-header-title {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button[aria-expanded=true] > h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] > h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] > h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] .widget-accordion-group-header-title, .trimm-accordion.accordion-base .widget-accordion-group-header-button[aria-expanded=true] > h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] > h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] > h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] .widget-accordion-group-header-title {
   color: var(--base-white);
 }
-.accordion-base .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button > h3 {
+.trimm-accordion .accordion-base .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button > h3, .trimm-accordion.accordion-base .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button > h3 {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -28932,7 +28956,7 @@ p {
   margin: 0;
   transition: color 0.2s ease;
 }
-.accordion-base .widget-accordion-group-content {
+.trimm-accordion .accordion-base .widget-accordion-group-content, .trimm-accordion.accordion-base .widget-accordion-group-content {
   padding: 16px 24px;
   font-family: "GothamSSm", sans-serif;
   font-size: 14px;
@@ -28940,20 +28964,21 @@ p {
   color: var(--base-black);
   background-color: var(--base-white);
 }
-.accordion-base[aria-disabled=true] {
+.trimm-accordion .accordion-base[aria-disabled=true], .trimm-accordion.accordion-base[aria-disabled=true] {
   background-color: var(--base-white-disabled);
   pointer-events: none;
 }
-.accordion-base[aria-disabled=true] .widget-accordion-group-header-button {
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-header-button, .trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-header-button {
   background-color: var(--base-white-disabled);
   color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-.accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
-.accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3 {
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3, .trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3 {
   color: var(--base-black-disabled);
 }
-.accordion-base[aria-disabled=true] .widget-accordion-group-content {
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-content, .trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-content {
   padding: 16px 24px;
   font-family: "GothamSSm", sans-serif;
   font-size: 14px;
@@ -28962,7 +28987,7 @@ p {
   background-color: var(--secondary-1-disabled);
 }
 
-.alert-base, .alert-info, .alert-warning, .alert-danger, .alert-success {
+.trimm-alert .alert-base, .trimm-alert .alert-info, .trimm-alert .alert-warning, .trimm-alert .alert-danger, .trimm-alert .alert-success, .trimm-alert.alert-base, .trimm-alert.alert-info, .trimm-alert.alert-warning, .trimm-alert.alert-danger, .trimm-alert.alert-success {
   font-family: "GothamSSm", sans-serif;
   border-radius: 4px;
   padding: 16px;
@@ -28970,15 +28995,20 @@ p {
   color: var(--base-white);
   transition: background-color 0.2s ease;
 }
-.alert-base .alert-title, .alert-info .alert-title, .alert-warning .alert-title, .alert-danger .alert-title, .alert-success .alert-title,
-.alert-base .alert-description,
-.alert-info .alert-description,
-.alert-warning .alert-description,
-.alert-danger .alert-description,
-.alert-success .alert-description {
+.trimm-alert .alert-base .alert-title, .trimm-alert .alert-info .alert-title, .trimm-alert .alert-warning .alert-title, .trimm-alert .alert-danger .alert-title, .trimm-alert .alert-success .alert-title,
+.trimm-alert .alert-base .alert-description,
+.trimm-alert .alert-info .alert-description,
+.trimm-alert .alert-warning .alert-description,
+.trimm-alert .alert-danger .alert-description,
+.trimm-alert .alert-success .alert-description, .trimm-alert.alert-base .alert-title, .trimm-alert.alert-info .alert-title, .trimm-alert.alert-warning .alert-title, .trimm-alert.alert-danger .alert-title, .trimm-alert.alert-success .alert-title,
+.trimm-alert.alert-base .alert-description,
+.trimm-alert.alert-info .alert-description,
+.trimm-alert.alert-warning .alert-description,
+.trimm-alert.alert-danger .alert-description,
+.trimm-alert.alert-success .alert-description {
   color: var(--base-white) !important;
 }
-.alert-base .mx-button, .alert-info .mx-button, .alert-warning .mx-button, .alert-danger .mx-button, .alert-success .mx-button {
+.trimm-alert .alert-base .mx-button, .trimm-alert .alert-info .mx-button, .trimm-alert .alert-warning .mx-button, .trimm-alert .alert-danger .mx-button, .trimm-alert .alert-success .mx-button, .trimm-alert.alert-base .mx-button, .trimm-alert.alert-info .mx-button, .trimm-alert.alert-warning .mx-button, .trimm-alert.alert-danger .mx-button, .trimm-alert.alert-success .mx-button {
   background-color: var(--brand-2) !important;
   color: var(--base-white) !important;
   font-weight: 600;
@@ -28994,142 +29024,157 @@ p {
   justify-content: center;
   align-items: center;
 }
-.alert-base .mx-button:hover, .alert-info .mx-button:hover, .alert-warning .mx-button:hover, .alert-danger .mx-button:hover, .alert-success .mx-button:hover {
+.trimm-alert .alert-base .mx-button:hover, .trimm-alert .alert-info .mx-button:hover, .trimm-alert .alert-warning .mx-button:hover, .trimm-alert .alert-danger .mx-button:hover, .trimm-alert .alert-success .mx-button:hover, .trimm-alert.alert-base .mx-button:hover, .trimm-alert.alert-info .mx-button:hover, .trimm-alert.alert-warning .mx-button:hover, .trimm-alert.alert-danger .mx-button:hover, .trimm-alert.alert-success .mx-button:hover {
   background-color: var(--brand-2-hover) !important;
 }
-.alert-base .mx-button:active, .alert-info .mx-button:active, .alert-warning .mx-button:active, .alert-danger .mx-button:active, .alert-success .mx-button:active {
+.trimm-alert .alert-base .mx-button:active, .trimm-alert .alert-info .mx-button:active, .trimm-alert .alert-warning .mx-button:active, .trimm-alert .alert-danger .mx-button:active, .trimm-alert .alert-success .mx-button:active, .trimm-alert.alert-base .mx-button:active, .trimm-alert.alert-info .mx-button:active, .trimm-alert.alert-warning .mx-button:active, .trimm-alert.alert-danger .mx-button:active, .trimm-alert.alert-success .mx-button:active {
   background-color: var(--brand-2-active) !important;
 }
-.alert-base .mx-button:disabled, .alert-info .mx-button:disabled, .alert-warning .mx-button:disabled, .alert-danger .mx-button:disabled, .alert-success .mx-button:disabled {
+.trimm-alert .alert-base .mx-button:disabled, .trimm-alert .alert-info .mx-button:disabled, .trimm-alert .alert-warning .mx-button:disabled, .trimm-alert .alert-danger .mx-button:disabled, .trimm-alert .alert-success .mx-button:disabled, .trimm-alert.alert-base .mx-button:disabled, .trimm-alert.alert-info .mx-button:disabled, .trimm-alert.alert-warning .mx-button:disabled, .trimm-alert.alert-danger .mx-button:disabled, .trimm-alert.alert-success .mx-button:disabled {
   background-color: var(--brand-2-disabled) !important;
   color: var(--base-white-disabled) !important;
   cursor: not-allowed;
 }
-.alert-base .mx-button svg, .alert-info .mx-button svg, .alert-warning .mx-button svg, .alert-danger .mx-button svg, .alert-success .mx-button svg,
-.alert-base .mx-button i.mdi,
-.alert-info .mx-button i.mdi,
-.alert-warning .mx-button i.mdi,
-.alert-danger .mx-button i.mdi,
-.alert-success .mx-button i.mdi,
-.alert-base .mx-button span > svg {
+.trimm-alert .alert-base .mx-button svg, .trimm-alert .alert-info .mx-button svg, .trimm-alert .alert-warning .mx-button svg, .trimm-alert .alert-danger .mx-button svg, .trimm-alert .alert-success .mx-button svg,
+.trimm-alert .alert-base .mx-button i.mdi,
+.trimm-alert .alert-info .mx-button i.mdi,
+.trimm-alert .alert-warning .mx-button i.mdi,
+.trimm-alert .alert-danger .mx-button i.mdi,
+.trimm-alert .alert-success .mx-button i.mdi,
+.trimm-alert .alert-base .mx-button span > svg, .trimm-alert.alert-base .mx-button svg, .trimm-alert.alert-info .mx-button svg, .trimm-alert.alert-warning .mx-button svg, .trimm-alert.alert-danger .mx-button svg, .trimm-alert.alert-success .mx-button svg,
+.trimm-alert.alert-base .mx-button i.mdi,
+.trimm-alert.alert-info .mx-button i.mdi,
+.trimm-alert.alert-warning .mx-button i.mdi,
+.trimm-alert.alert-danger .mx-button i.mdi,
+.trimm-alert.alert-success .mx-button i.mdi,
+.trimm-alert.alert-base .mx-button span > svg {
   color: currentColor;
   width: 20px;
   height: 20px;
 }
-.alert-base:hover, .alert-info:hover, .alert-warning:hover, .alert-danger:hover, .alert-success:hover {
+.trimm-alert .alert-base:hover, .trimm-alert .alert-info:hover, .trimm-alert .alert-warning:hover, .trimm-alert .alert-danger:hover, .trimm-alert .alert-success:hover, .trimm-alert.alert-base:hover, .trimm-alert.alert-info:hover, .trimm-alert.alert-warning:hover, .trimm-alert.alert-danger:hover, .trimm-alert.alert-success:hover {
   background-color: var(--brand-3-hover);
 }
-.alert-base:active, .alert-info:active, .alert-warning:active, .alert-danger:active, .alert-success:active {
+.trimm-alert .alert-base:active, .trimm-alert .alert-info:active, .trimm-alert .alert-warning:active, .trimm-alert .alert-danger:active, .trimm-alert .alert-success:active, .trimm-alert.alert-base:active, .trimm-alert.alert-info:active, .trimm-alert.alert-warning:active, .trimm-alert.alert-danger:active, .trimm-alert.alert-success:active {
   background-color: var(--brand-3-active);
 }
-.alert-base.disabled, .disabled.alert-info, .disabled.alert-warning, .disabled.alert-danger, .disabled.alert-success {
+.trimm-alert .alert-base.disabled, .trimm-alert .disabled.alert-info, .trimm-alert .disabled.alert-warning, .trimm-alert .disabled.alert-danger, .trimm-alert .disabled.alert-success, .trimm-alert.alert-base.disabled, .trimm-alert.disabled.alert-info, .trimm-alert.disabled.alert-warning, .trimm-alert.disabled.alert-danger, .trimm-alert.disabled.alert-success {
   background-color: var(--brand-3-disabled);
   color: var(--base-white-disabled);
   pointer-events: none;
   cursor: not-allowed;
 }
-.alert-base.disabled .alert-title, .disabled.alert-info .alert-title, .disabled.alert-warning .alert-title, .disabled.alert-danger .alert-title, .disabled.alert-success .alert-title,
-.alert-base.disabled .alert-description,
-.disabled.alert-info .alert-description,
-.disabled.alert-warning .alert-description,
-.disabled.alert-danger .alert-description,
-.disabled.alert-success .alert-description {
+.trimm-alert .alert-base.disabled .alert-title, .trimm-alert .disabled.alert-info .alert-title, .trimm-alert .disabled.alert-warning .alert-title, .trimm-alert .disabled.alert-danger .alert-title, .trimm-alert .disabled.alert-success .alert-title,
+.trimm-alert .alert-base.disabled .alert-description,
+.trimm-alert .disabled.alert-info .alert-description,
+.trimm-alert .disabled.alert-warning .alert-description,
+.trimm-alert .disabled.alert-danger .alert-description,
+.trimm-alert .disabled.alert-success .alert-description, .trimm-alert.alert-base.disabled .alert-title, .trimm-alert.disabled.alert-info .alert-title, .trimm-alert.disabled.alert-warning .alert-title, .trimm-alert.disabled.alert-danger .alert-title, .trimm-alert.disabled.alert-success .alert-title,
+.trimm-alert.alert-base.disabled .alert-description,
+.trimm-alert.disabled.alert-info .alert-description,
+.trimm-alert.disabled.alert-warning .alert-description,
+.trimm-alert.disabled.alert-danger .alert-description,
+.trimm-alert.disabled.alert-success .alert-description {
   color: var(--base-white-disabled) !important;
 }
-
-.alert-success {
+.trimm-alert .alert-success, .trimm-alert.alert-success {
   background-color: var(--support-3) !important;
   color: var(--base-white) !important;
 }
-.alert-success .alert-title,
-.alert-success .alert-description {
+.trimm-alert .alert-success .alert-title,
+.trimm-alert .alert-success .alert-description, .trimm-alert.alert-success .alert-title,
+.trimm-alert.alert-success .alert-description {
   color: var(--base-white) !important;
 }
-.alert-success:hover {
+.trimm-alert .alert-success:hover, .trimm-alert.alert-success:hover {
   background-color: var(--support-3-hover) !important;
 }
-.alert-success:active {
+.trimm-alert .alert-success:active, .trimm-alert.alert-success:active {
   background-color: var(--support-3-active) !important;
 }
-.alert-success.disabled {
+.trimm-alert .alert-success.disabled, .trimm-alert.alert-success.disabled {
   background-color: var(--support-3-disabled) !important;
   color: var(--base-white-disabled) !important;
 }
-.alert-success.disabled .alert-title,
-.alert-success.disabled .alert-description {
+.trimm-alert .alert-success.disabled .alert-title,
+.trimm-alert .alert-success.disabled .alert-description, .trimm-alert.alert-success.disabled .alert-title,
+.trimm-alert.alert-success.disabled .alert-description {
   color: var(--base-white-disabled) !important;
 }
-
-.alert-danger {
+.trimm-alert .alert-danger, .trimm-alert.alert-danger {
   background-color: var(--support-2) !important;
   color: var(--base-white) !important;
 }
-.alert-danger .alert-title,
-.alert-danger .alert-description {
+.trimm-alert .alert-danger .alert-title,
+.trimm-alert .alert-danger .alert-description, .trimm-alert.alert-danger .alert-title,
+.trimm-alert.alert-danger .alert-description {
   color: var(--base-white) !important;
 }
-.alert-danger:hover {
+.trimm-alert .alert-danger:hover, .trimm-alert.alert-danger:hover {
   background-color: var(--support-2-hover) !important;
 }
-.alert-danger:active {
+.trimm-alert .alert-danger:active, .trimm-alert.alert-danger:active {
   background-color: var(--support-2-active) !important;
 }
-.alert-danger.disabled {
+.trimm-alert .alert-danger.disabled, .trimm-alert.alert-danger.disabled {
   background-color: var(--support-2-disabled) !important;
   color: var(--base-white-disabled) !important;
 }
-.alert-danger.disabled .alert-title,
-.alert-danger.disabled .alert-description {
+.trimm-alert .alert-danger.disabled .alert-title,
+.trimm-alert .alert-danger.disabled .alert-description, .trimm-alert.alert-danger.disabled .alert-title,
+.trimm-alert.alert-danger.disabled .alert-description {
   color: var(--base-white-disabled) !important;
 }
-
-.alert-warning {
+.trimm-alert .alert-warning, .trimm-alert.alert-warning {
   background-color: var(--support-4) !important;
   color: var(--base-black) !important;
 }
-.alert-warning .alert-title,
-.alert-warning .alert-description {
+.trimm-alert .alert-warning .alert-title,
+.trimm-alert .alert-warning .alert-description, .trimm-alert.alert-warning .alert-title,
+.trimm-alert.alert-warning .alert-description {
   color: var(--base-black) !important;
 }
-.alert-warning:hover {
+.trimm-alert .alert-warning:hover, .trimm-alert.alert-warning:hover {
   background-color: var(--support-4-hover) !important;
 }
-.alert-warning:active {
+.trimm-alert .alert-warning:active, .trimm-alert.alert-warning:active {
   background-color: var(--support-4-active) !important;
 }
-.alert-warning.disabled {
+.trimm-alert .alert-warning.disabled, .trimm-alert.alert-warning.disabled {
   background-color: var(--support-4-disabled) !important;
   color: var(--base-black-disabled) !important;
 }
-.alert-warning.disabled .alert-title,
-.alert-warning.disabled .alert-description {
+.trimm-alert .alert-warning.disabled .alert-title,
+.trimm-alert .alert-warning.disabled .alert-description, .trimm-alert.alert-warning.disabled .alert-title,
+.trimm-alert.alert-warning.disabled .alert-description {
   color: var(--base-black-disabled) !important;
 }
-
-.alert-info {
+.trimm-alert .alert-info, .trimm-alert.alert-info {
   background-color: var(--secondary-1) !important;
   color: var(--base-white) !important;
 }
-.alert-info .alert-title,
-.alert-info .alert-description {
+.trimm-alert .alert-info .alert-title,
+.trimm-alert .alert-info .alert-description, .trimm-alert.alert-info .alert-title,
+.trimm-alert.alert-info .alert-description {
   color: var(--base-white) !important;
 }
-.alert-info:hover {
+.trimm-alert .alert-info:hover, .trimm-alert.alert-info:hover {
   background-color: var(--secondary-1-hover) !important;
 }
-.alert-info:active {
+.trimm-alert .alert-info:active, .trimm-alert.alert-info:active {
   background-color: var(--secondary-1-active) !important;
 }
-.alert-info.disabled {
+.trimm-alert .alert-info.disabled, .trimm-alert.alert-info.disabled {
   background-color: var(--secondary-1-disabled) !important;
   color: var(--base-white-disabled) !important;
 }
-.alert-info.disabled .alert-title,
-.alert-info.disabled .alert-description {
+.trimm-alert .alert-info.disabled .alert-title,
+.trimm-alert .alert-info.disabled .alert-description, .trimm-alert.alert-info.disabled .alert-title,
+.trimm-alert.alert-info.disabled .alert-description {
   color: var(--base-white-disabled) !important;
 }
 
-.button-base, .btn-lg, .btn-md, .btn-sm, .btn-danger, .btn-warning, .btn-success, .btn-info, .btn-primary, .btn-inverse, .btn-cta, .btn-default {
+.trimm-button .button-base, .trimm-button .btn-lg, .trimm-button .btn-md, .trimm-button .btn-sm, .trimm-button .btn-danger, .trimm-button .btn-warning, .trimm-button .btn-success, .trimm-button .btn-info, .trimm-button .btn-primary, .trimm-button .btn-inverse, .trimm-button .btn-cta, .trimm-button .btn-default, .trimm-button.button-base, .trimm-button.btn-lg, .trimm-button.btn-md, .trimm-button.btn-sm, .trimm-button.btn-danger, .trimm-button.btn-warning, .trimm-button.btn-success, .trimm-button.btn-info, .trimm-button.btn-primary, .trimm-button.btn-inverse, .trimm-button.btn-cta, .trimm-button.btn-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29144,203 +29189,196 @@ p {
   text-decoration: none;
   padding: 12px 24px;
 }
-
-.btn-default {
+.trimm-button .btn-default, .trimm-button.btn-default {
   background-color: transparent;
   color: var(--base-black);
   border: 1px solid var(--base-white);
   box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
 }
-.btn-default:hover, .btn-default:focus {
+.trimm-button .btn-default:hover, .trimm-button .btn-default:focus, .trimm-button.btn-default:hover, .trimm-button.btn-default:focus {
   background-color: var(--base-white-hover);
   color: var(--base-black);
 }
-.btn-default:active {
+.trimm-button .btn-default:active, .trimm-button.btn-default:active {
   background-color: var(--base-white-active);
   color: var(--base-black-active);
 }
-.btn-default:disabled, .btn-default.btn-disabled {
+.trimm-button .btn-default:disabled, .trimm-button .btn-default.btn-disabled, .trimm-button.btn-default:disabled, .trimm-button.btn-default.btn-disabled {
   background-color: var(--secondary-1-disabled);
   color: var(--base-white-disabled);
   border-color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-.btn-default svg,
-.btn-default i.mdi,
-.btn-default span > svg {
+.trimm-button .btn-default svg,
+.trimm-button .btn-default i.mdi,
+.trimm-button .btn-default span > svg, .trimm-button.btn-default svg,
+.trimm-button.btn-default i.mdi,
+.trimm-button.btn-default span > svg {
   color: currentColor;
 }
-
-.btn-cta {
+.trimm-button .btn-cta, .trimm-button.btn-cta {
   background-color: var(--brand-2);
   color: var(--base-white);
   border: none;
 }
-.btn-cta:hover {
+.trimm-button .btn-cta:hover, .trimm-button.btn-cta:hover {
   background-color: var(--brand-2-hover);
 }
-.btn-cta:active {
+.trimm-button .btn-cta:active, .trimm-button.btn-cta:active {
   background-color: var(--brand-2-active);
 }
-.btn-cta:disabled, .btn-cta.btn-disabled {
+.trimm-button .btn-cta:disabled, .trimm-button .btn-cta.btn-disabled, .trimm-button.btn-cta:disabled, .trimm-button.btn-cta.btn-disabled {
   background-color: var(--brand-2-disabled);
   color: var(--base-white-disabled);
   cursor: not-allowed;
 }
-.btn-cta svg,
-.btn-cta i.mdi,
-.btn-cta span > svg {
+.trimm-button .btn-cta svg,
+.trimm-button .btn-cta i.mdi,
+.trimm-button .btn-cta span > svg, .trimm-button.btn-cta svg,
+.trimm-button.btn-cta i.mdi,
+.trimm-button.btn-cta span > svg {
   color: currentColor;
 }
-
-.btn-inverse {
+.trimm-button .btn-inverse, .trimm-button.btn-inverse {
   background-color: var(--base-black);
   color: var(--base-white);
   border: 1px solid var(--base-black);
 }
-.btn-inverse:hover, .btn-inverse:focus {
+.trimm-button .btn-inverse:hover, .trimm-button .btn-inverse:focus, .trimm-button.btn-inverse:hover, .trimm-button.btn-inverse:focus {
   background-color: var(--base-black-hover);
   color: var(--base-white);
 }
-.btn-inverse:active {
+.trimm-button .btn-inverse:active, .trimm-button.btn-inverse:active {
   background-color: var(--base-black-active);
   color: var(--base-white-active);
 }
-.btn-inverse:disabled, .btn-inverse.btn-disabled {
+.trimm-button .btn-inverse:disabled, .trimm-button .btn-inverse.btn-disabled, .trimm-button.btn-inverse:disabled, .trimm-button.btn-inverse.btn-disabled {
   background-color: var(--base-black-disabled);
   color: var(--base-white-disabled);
   border-color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-
-.btn-primary {
+.trimm-button .btn-primary, .trimm-button.btn-primary {
   background-color: var(--brand-1);
   color: var(--base-white);
   border: 1px solid var(--brand-1);
 }
-.btn-primary:hover, .btn-primary:focus {
+.trimm-button .btn-primary:hover, .trimm-button .btn-primary:focus, .trimm-button.btn-primary:hover, .trimm-button.btn-primary:focus {
   background-color: var(--brand-1-hover);
   color: var(--base-white);
 }
-.btn-primary:active {
+.trimm-button .btn-primary:active, .trimm-button.btn-primary:active {
   background-color: var(--brand-1-active);
   color: var(--base-white-active);
 }
-.btn-primary:disabled, .btn-primary.btn-disabled {
+.trimm-button .btn-primary:disabled, .trimm-button .btn-primary.btn-disabled, .trimm-button.btn-primary:disabled, .trimm-button.btn-primary.btn-disabled {
   background-color: var(--brand-1-disabled);
   color: var(--base-white-disabled);
   border-color: var(--brand-1-disabled);
   cursor: not-allowed;
 }
-
-.btn-info {
+.trimm-button .btn-info, .trimm-button.btn-info {
   background-color: var(--brand-3);
   color: var(--base-white);
   border: 1px solid var(--brand-3);
 }
-.btn-info:hover, .btn-info:focus {
+.trimm-button .btn-info:hover, .trimm-button .btn-info:focus, .trimm-button.btn-info:hover, .trimm-button.btn-info:focus {
   background-color: var(--brand-3-hover);
 }
-.btn-info:active {
+.trimm-button .btn-info:active, .trimm-button.btn-info:active {
   background-color: var(--brand-3-active);
   color: var(--base-white-active);
 }
-.btn-info:disabled, .btn-info.btn-disabled {
+.trimm-button .btn-info:disabled, .trimm-button .btn-info.btn-disabled, .trimm-button.btn-info:disabled, .trimm-button.btn-info.btn-disabled {
   background-color: var(--brand-3-disabled);
   color: var(--base-white-disabled);
   border-color: var(--brand-3-disabled);
   cursor: not-allowed;
 }
-
-.btn-success {
+.trimm-button .btn-success, .trimm-button.btn-success {
   background-color: var(--support-3);
   color: var(--base-white);
   border: 1px solid var(--support-3);
 }
-.btn-success:hover, .btn-success:focus {
+.trimm-button .btn-success:hover, .trimm-button .btn-success:focus, .trimm-button.btn-success:hover, .trimm-button.btn-success:focus {
   background-color: var(--support-3-hover);
 }
-.btn-success:active {
+.trimm-button .btn-success:active, .trimm-button.btn-success:active {
   background-color: var(--support-3-active);
   color: var(--base-white-active);
 }
-.btn-success:disabled, .btn-success.btn-disabled {
+.trimm-button .btn-success:disabled, .trimm-button .btn-success.btn-disabled, .trimm-button.btn-success:disabled, .trimm-button.btn-success.btn-disabled {
   background-color: var(--support-3-disabled);
   color: var(--base-white-disabled);
   border-color: var(--support-3-disabled);
   cursor: not-allowed;
 }
-
-.btn-warning {
+.trimm-button .btn-warning, .trimm-button.btn-warning {
   background-color: var(--support-4);
   color: var(--base-black);
   border: 1px solid var(--support-4);
 }
-.btn-warning:hover, .btn-warning:focus {
+.trimm-button .btn-warning:hover, .trimm-button .btn-warning:focus, .trimm-button.btn-warning:hover, .trimm-button.btn-warning:focus {
   background-color: var(--support-4-hover);
 }
-.btn-warning:active {
+.trimm-button .btn-warning:active, .trimm-button.btn-warning:active {
   background-color: var(--support-4-active);
   color: var(--base-black-active);
 }
-.btn-warning:disabled, .btn-warning.btn-disabled {
+.trimm-button .btn-warning:disabled, .trimm-button .btn-warning.btn-disabled, .trimm-button.btn-warning:disabled, .trimm-button.btn-warning.btn-disabled {
   background-color: var(--support-4-disabled);
   color: var(--base-black-disabled);
   border-color: var(--support-4-disabled);
   cursor: not-allowed;
 }
-
-.btn-danger {
+.trimm-button .btn-danger, .trimm-button.btn-danger {
   background-color: var(--support-2);
   color: var(--base-white);
   border: 1px solid var(--support-2);
 }
-.btn-danger:hover, .btn-danger:focus {
+.trimm-button .btn-danger:hover, .trimm-button .btn-danger:focus, .trimm-button.btn-danger:hover, .trimm-button.btn-danger:focus {
   background-color: var(--support-2-hover);
 }
-.btn-danger:active {
+.trimm-button .btn-danger:active, .trimm-button.btn-danger:active {
   background-color: var(--support-2-active);
   color: var(--base-white-active);
 }
-.btn-danger:disabled, .btn-danger.btn-disabled {
+.trimm-button .btn-danger:disabled, .trimm-button .btn-danger.btn-disabled, .trimm-button.btn-danger:disabled, .trimm-button.btn-danger.btn-disabled {
   background-color: var(--support-2-disabled);
   color: var(--base-white-disabled);
   border-color: var(--support-2-disabled);
   cursor: not-allowed;
 }
-
-.btn-sm {
+.trimm-button .btn-sm, .trimm-button.btn-sm {
   padding: 8px 16px;
   font-size: 14px;
 }
-
-.btn-md {
+.trimm-button .btn-md, .trimm-button.btn-md {
   padding: 12px 24px;
   font-size: 16px;
 }
-
-.btn-lg {
+.trimm-button .btn-lg, .trimm-button.btn-lg {
   padding: 16px 32px;
   font-size: 18px;
 }
-
-.btn-icon-right svg,
-.btn-icon-right i.mdi {
+.trimm-button .btn-icon-right svg,
+.trimm-button .btn-icon-right i.mdi, .trimm-button.btn-icon-right svg,
+.trimm-button.btn-icon-right i.mdi {
   margin-left: 4px;
 }
-
-.btn-icon-left svg,
-.btn-icon-left i.mdi {
+.trimm-button .btn-icon-left svg,
+.trimm-button .btn-icon-left i.mdi, .trimm-button.btn-icon-left svg,
+.trimm-button.btn-icon-left i.mdi {
   margin-right: 4px;
 }
 
-.checkbox-base, .checkbox-lg, .checkbox-md, .checkbox-sm {
+.trimm-checkbox .checkbox-base, .trimm-checkbox .checkbox-lg, .trimm-checkbox .checkbox-md, .trimm-checkbox .checkbox-sm, .trimm-checkbox.checkbox-base, .trimm-checkbox.checkbox-lg, .trimm-checkbox.checkbox-md, .trimm-checkbox.checkbox-sm {
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
 }
-.checkbox-base input[type=checkbox], .checkbox-lg input[type=checkbox], .checkbox-md input[type=checkbox], .checkbox-sm input[type=checkbox] {
+.trimm-checkbox .checkbox-base input[type=checkbox], .trimm-checkbox .checkbox-lg input[type=checkbox], .trimm-checkbox .checkbox-md input[type=checkbox], .trimm-checkbox .checkbox-sm input[type=checkbox], .trimm-checkbox.checkbox-base input[type=checkbox], .trimm-checkbox.checkbox-lg input[type=checkbox], .trimm-checkbox.checkbox-md input[type=checkbox], .trimm-checkbox.checkbox-sm input[type=checkbox] {
   appearance: checkbox;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -29357,7 +29395,7 @@ p {
   transition: all 0.2s ease-in-out;
   outline: none;
 }
-.checkbox-base input[type=checkbox]::before, .checkbox-lg input[type=checkbox]::before, .checkbox-md input[type=checkbox]::before, .checkbox-sm input[type=checkbox]::before {
+.trimm-checkbox .checkbox-base input[type=checkbox]::before, .trimm-checkbox .checkbox-lg input[type=checkbox]::before, .trimm-checkbox .checkbox-md input[type=checkbox]::before, .trimm-checkbox .checkbox-sm input[type=checkbox]::before, .trimm-checkbox.checkbox-base input[type=checkbox]::before, .trimm-checkbox.checkbox-lg input[type=checkbox]::before, .trimm-checkbox.checkbox-md input[type=checkbox]::before, .trimm-checkbox.checkbox-sm input[type=checkbox]::before {
   content: "";
   display: block;
   position: absolute;
@@ -29373,46 +29411,50 @@ p {
   z-index: 1;
   opacity: 0;
 }
-.checkbox-base input[type=checkbox]:focus::before, .checkbox-lg input[type=checkbox]:focus::before, .checkbox-md input[type=checkbox]:focus::before, .checkbox-sm input[type=checkbox]:focus::before {
+.trimm-checkbox .checkbox-base input[type=checkbox]:focus::before, .trimm-checkbox .checkbox-lg input[type=checkbox]:focus::before, .trimm-checkbox .checkbox-md input[type=checkbox]:focus::before, .trimm-checkbox .checkbox-sm input[type=checkbox]:focus::before, .trimm-checkbox.checkbox-base input[type=checkbox]:focus::before, .trimm-checkbox.checkbox-lg input[type=checkbox]:focus::before, .trimm-checkbox.checkbox-md input[type=checkbox]:focus::before, .trimm-checkbox.checkbox-sm input[type=checkbox]:focus::before {
   opacity: none;
   background-color: var(--brand-2-hover);
 }
-.checkbox-base input[type=checkbox]::-ms-check, .checkbox-lg input[type=checkbox]::-ms-check, .checkbox-md input[type=checkbox]::-ms-check, .checkbox-sm input[type=checkbox]::-ms-check, .checkbox-base input[type=checkbox]::-webkit-check, .checkbox-lg input[type=checkbox]::-webkit-check, .checkbox-md input[type=checkbox]::-webkit-check, .checkbox-sm input[type=checkbox]::-webkit-check, .checkbox-base input[type=checkbox]::-webkit-inner-spin-button, .checkbox-lg input[type=checkbox]::-webkit-inner-spin-button, .checkbox-md input[type=checkbox]::-webkit-inner-spin-button, .checkbox-sm input[type=checkbox]::-webkit-inner-spin-button, .checkbox-base input[type=checkbox]::-webkit-outer-spin-button, .checkbox-lg input[type=checkbox]::-webkit-outer-spin-button, .checkbox-md input[type=checkbox]::-webkit-outer-spin-button, .checkbox-sm input[type=checkbox]::-webkit-outer-spin-button {
+.trimm-checkbox .checkbox-base input[type=checkbox]::-ms-check, .trimm-checkbox .checkbox-lg input[type=checkbox]::-ms-check, .trimm-checkbox .checkbox-md input[type=checkbox]::-ms-check, .trimm-checkbox .checkbox-sm input[type=checkbox]::-ms-check, .trimm-checkbox .checkbox-base input[type=checkbox]::-webkit-check, .trimm-checkbox .checkbox-lg input[type=checkbox]::-webkit-check, .trimm-checkbox .checkbox-md input[type=checkbox]::-webkit-check, .trimm-checkbox .checkbox-sm input[type=checkbox]::-webkit-check, .trimm-checkbox .checkbox-base input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox .checkbox-lg input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox .checkbox-md input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox .checkbox-sm input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox .checkbox-base input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox .checkbox-lg input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox .checkbox-md input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox .checkbox-sm input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox.checkbox-base input[type=checkbox]::-ms-check, .trimm-checkbox.checkbox-lg input[type=checkbox]::-ms-check, .trimm-checkbox.checkbox-md input[type=checkbox]::-ms-check, .trimm-checkbox.checkbox-sm input[type=checkbox]::-ms-check, .trimm-checkbox.checkbox-base input[type=checkbox]::-webkit-check, .trimm-checkbox.checkbox-lg input[type=checkbox]::-webkit-check, .trimm-checkbox.checkbox-md input[type=checkbox]::-webkit-check, .trimm-checkbox.checkbox-sm input[type=checkbox]::-webkit-check, .trimm-checkbox.checkbox-base input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox.checkbox-lg input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox.checkbox-md input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox.checkbox-sm input[type=checkbox]::-webkit-inner-spin-button, .trimm-checkbox.checkbox-base input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox.checkbox-lg input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox.checkbox-md input[type=checkbox]::-webkit-outer-spin-button, .trimm-checkbox.checkbox-sm input[type=checkbox]::-webkit-outer-spin-button {
   display: none !important;
 }
-.checkbox-base input[type=checkbox]::after, .checkbox-lg input[type=checkbox]::after, .checkbox-md input[type=checkbox]::after, .checkbox-sm input[type=checkbox]::after {
+.trimm-checkbox .checkbox-base input[type=checkbox]::after, .trimm-checkbox .checkbox-lg input[type=checkbox]::after, .trimm-checkbox .checkbox-md input[type=checkbox]::after, .trimm-checkbox .checkbox-sm input[type=checkbox]::after, .trimm-checkbox.checkbox-base input[type=checkbox]::after, .trimm-checkbox.checkbox-lg input[type=checkbox]::after, .trimm-checkbox.checkbox-md input[type=checkbox]::after, .trimm-checkbox.checkbox-sm input[type=checkbox]::after {
   color: transparent;
   font-weight: bold;
   line-height: 1;
   transition: color 0.2s ease-in-out;
 }
-.checkbox-base input[type=checkbox]:checked, .checkbox-lg input[type=checkbox]:checked, .checkbox-md input[type=checkbox]:checked, .checkbox-sm input[type=checkbox]:checked {
+.trimm-checkbox .checkbox-base input[type=checkbox]:checked, .trimm-checkbox .checkbox-lg input[type=checkbox]:checked, .trimm-checkbox .checkbox-md input[type=checkbox]:checked, .trimm-checkbox .checkbox-sm input[type=checkbox]:checked, .trimm-checkbox.checkbox-base input[type=checkbox]:checked, .trimm-checkbox.checkbox-lg input[type=checkbox]:checked, .trimm-checkbox.checkbox-md input[type=checkbox]:checked, .trimm-checkbox.checkbox-sm input[type=checkbox]:checked {
   background-color: var(--brand-2);
   border-color: var(--brand-2);
 }
-.checkbox-base input[type=checkbox]:checked::after, .checkbox-lg input[type=checkbox]:checked::after, .checkbox-md input[type=checkbox]:checked::after, .checkbox-sm input[type=checkbox]:checked::after {
+.trimm-checkbox .checkbox-base input[type=checkbox]:checked::after, .trimm-checkbox .checkbox-lg input[type=checkbox]:checked::after, .trimm-checkbox .checkbox-md input[type=checkbox]:checked::after, .trimm-checkbox .checkbox-sm input[type=checkbox]:checked::after, .trimm-checkbox.checkbox-base input[type=checkbox]:checked::after, .trimm-checkbox.checkbox-lg input[type=checkbox]:checked::after, .trimm-checkbox.checkbox-md input[type=checkbox]:checked::after, .trimm-checkbox.checkbox-sm input[type=checkbox]:checked::after {
   color: var(--base-white);
 }
-.checkbox-base input[type=checkbox]:checked:hover, .checkbox-lg input[type=checkbox]:checked:hover, .checkbox-md input[type=checkbox]:checked:hover, .checkbox-sm input[type=checkbox]:checked:hover {
+.trimm-checkbox .checkbox-base input[type=checkbox]:checked:hover, .trimm-checkbox .checkbox-lg input[type=checkbox]:checked:hover, .trimm-checkbox .checkbox-md input[type=checkbox]:checked:hover, .trimm-checkbox .checkbox-sm input[type=checkbox]:checked:hover, .trimm-checkbox.checkbox-base input[type=checkbox]:checked:hover, .trimm-checkbox.checkbox-lg input[type=checkbox]:checked:hover, .trimm-checkbox.checkbox-md input[type=checkbox]:checked:hover, .trimm-checkbox.checkbox-sm input[type=checkbox]:checked:hover {
   background-color: var(--brand-2-hover);
   border-color: var(--brand-2-hover);
 }
-.checkbox-base input[type=checkbox]:active::after, .checkbox-lg input[type=checkbox]:active::after, .checkbox-md input[type=checkbox]:active::after, .checkbox-sm input[type=checkbox]:active::after {
+.trimm-checkbox .checkbox-base input[type=checkbox]:active::after, .trimm-checkbox .checkbox-lg input[type=checkbox]:active::after, .trimm-checkbox .checkbox-md input[type=checkbox]:active::after, .trimm-checkbox .checkbox-sm input[type=checkbox]:active::after, .trimm-checkbox.checkbox-base input[type=checkbox]:active::after, .trimm-checkbox.checkbox-lg input[type=checkbox]:active::after, .trimm-checkbox.checkbox-md input[type=checkbox]:active::after, .trimm-checkbox.checkbox-sm input[type=checkbox]:active::after {
   color: var(--base-white-active);
 }
-.checkbox-base input[type=checkbox]:disabled, .checkbox-lg input[type=checkbox]:disabled, .checkbox-md input[type=checkbox]:disabled, .checkbox-sm input[type=checkbox]:disabled {
+.trimm-checkbox .checkbox-base input[type=checkbox]:disabled, .trimm-checkbox .checkbox-lg input[type=checkbox]:disabled, .trimm-checkbox .checkbox-md input[type=checkbox]:disabled, .trimm-checkbox .checkbox-sm input[type=checkbox]:disabled, .trimm-checkbox.checkbox-base input[type=checkbox]:disabled, .trimm-checkbox.checkbox-lg input[type=checkbox]:disabled, .trimm-checkbox.checkbox-md input[type=checkbox]:disabled, .trimm-checkbox.checkbox-sm input[type=checkbox]:disabled {
   background-color: var(--brand-2-disabled);
   border-color: var(--brand-2-disabled);
   cursor: not-allowed;
 }
-.checkbox-base input[type=checkbox]:disabled::after, .checkbox-lg input[type=checkbox]:disabled::after, .checkbox-md input[type=checkbox]:disabled::after, .checkbox-sm input[type=checkbox]:disabled::after {
+.trimm-checkbox .checkbox-base input[type=checkbox]:disabled::after, .trimm-checkbox .checkbox-lg input[type=checkbox]:disabled::after, .trimm-checkbox .checkbox-md input[type=checkbox]:disabled::after, .trimm-checkbox .checkbox-sm input[type=checkbox]:disabled::after, .trimm-checkbox.checkbox-base input[type=checkbox]:disabled::after, .trimm-checkbox.checkbox-lg input[type=checkbox]:disabled::after, .trimm-checkbox.checkbox-md input[type=checkbox]:disabled::after, .trimm-checkbox.checkbox-sm input[type=checkbox]:disabled::after {
   color: var(--base-white-disabled);
 }
-.checkbox-base label, .checkbox-lg label, .checkbox-md label, .checkbox-sm label,
-.checkbox-base .mx-checkbox-label,
-.checkbox-lg .mx-checkbox-label,
-.checkbox-md .mx-checkbox-label,
-.checkbox-sm .mx-checkbox-label {
+.trimm-checkbox .checkbox-base label, .trimm-checkbox .checkbox-lg label, .trimm-checkbox .checkbox-md label, .trimm-checkbox .checkbox-sm label,
+.trimm-checkbox .checkbox-base .mx-checkbox-label,
+.trimm-checkbox .checkbox-lg .mx-checkbox-label,
+.trimm-checkbox .checkbox-md .mx-checkbox-label,
+.trimm-checkbox .checkbox-sm .mx-checkbox-label, .trimm-checkbox.checkbox-base label, .trimm-checkbox.checkbox-lg label, .trimm-checkbox.checkbox-md label, .trimm-checkbox.checkbox-sm label,
+.trimm-checkbox.checkbox-base .mx-checkbox-label,
+.trimm-checkbox.checkbox-lg .mx-checkbox-label,
+.trimm-checkbox.checkbox-md .mx-checkbox-label,
+.trimm-checkbox.checkbox-sm .mx-checkbox-label {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -29420,59 +29462,66 @@ p {
   user-select: none;
   cursor: pointer;
 }
-.checkbox-base label:disabled, .checkbox-lg label:disabled, .checkbox-md label:disabled, .checkbox-sm label:disabled,
-.checkbox-base .mx-checkbox-label:disabled,
-.checkbox-lg .mx-checkbox-label:disabled,
-.checkbox-md .mx-checkbox-label:disabled,
-.checkbox-sm .mx-checkbox-label:disabled {
+.trimm-checkbox .checkbox-base label:disabled, .trimm-checkbox .checkbox-lg label:disabled, .trimm-checkbox .checkbox-md label:disabled, .trimm-checkbox .checkbox-sm label:disabled,
+.trimm-checkbox .checkbox-base .mx-checkbox-label:disabled,
+.trimm-checkbox .checkbox-lg .mx-checkbox-label:disabled,
+.trimm-checkbox .checkbox-md .mx-checkbox-label:disabled,
+.trimm-checkbox .checkbox-sm .mx-checkbox-label:disabled, .trimm-checkbox.checkbox-base label:disabled, .trimm-checkbox.checkbox-lg label:disabled, .trimm-checkbox.checkbox-md label:disabled, .trimm-checkbox.checkbox-sm label:disabled,
+.trimm-checkbox.checkbox-base .mx-checkbox-label:disabled,
+.trimm-checkbox.checkbox-lg .mx-checkbox-label:disabled,
+.trimm-checkbox.checkbox-md .mx-checkbox-label:disabled,
+.trimm-checkbox.checkbox-sm .mx-checkbox-label:disabled {
   color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-
-.checkbox-sm input[type=checkbox] {
+.trimm-checkbox .checkbox-sm input[type=checkbox], .trimm-checkbox.checkbox-sm input[type=checkbox] {
   width: 16px;
   height: 16px;
 }
-.checkbox-sm input[type=checkbox]::after {
+.trimm-checkbox .checkbox-sm input[type=checkbox]::after, .trimm-checkbox.checkbox-sm input[type=checkbox]::after {
   font-size: 12px;
 }
-.checkbox-sm label,
-.checkbox-sm .mx-checkbox-label,
-.checkbox-sm .control-label {
+.trimm-checkbox .checkbox-sm label,
+.trimm-checkbox .checkbox-sm .mx-checkbox-label,
+.trimm-checkbox .checkbox-sm .control-label, .trimm-checkbox.checkbox-sm label,
+.trimm-checkbox.checkbox-sm .mx-checkbox-label,
+.trimm-checkbox.checkbox-sm .control-label {
   font-weight: 400;
   font-size: 14px;
 }
-
-.checkbox-md input[type=checkbox] {
+.trimm-checkbox .checkbox-md input[type=checkbox], .trimm-checkbox.checkbox-md input[type=checkbox] {
   width: 20px;
   height: 20px;
 }
-.checkbox-md input[type=checkbox]::after {
+.trimm-checkbox .checkbox-md input[type=checkbox]::after, .trimm-checkbox.checkbox-md input[type=checkbox]::after {
   font-weight: 500;
   font-size: 14px;
 }
-.checkbox-md label,
-.checkbox-md .mx-checkbox-label,
-.checkbox-md .control-label {
+.trimm-checkbox .checkbox-md label,
+.trimm-checkbox .checkbox-md .mx-checkbox-label,
+.trimm-checkbox .checkbox-md .control-label, .trimm-checkbox.checkbox-md label,
+.trimm-checkbox.checkbox-md .mx-checkbox-label,
+.trimm-checkbox.checkbox-md .control-label {
   font-weight: 500;
   font-size: 16px;
 }
-
-.checkbox-lg input[type=checkbox] {
+.trimm-checkbox .checkbox-lg input[type=checkbox], .trimm-checkbox.checkbox-lg input[type=checkbox] {
   width: 24px;
   height: 24px;
 }
-.checkbox-lg input[type=checkbox]::after {
+.trimm-checkbox .checkbox-lg input[type=checkbox]::after, .trimm-checkbox.checkbox-lg input[type=checkbox]::after {
   font-size: 16px;
 }
-.checkbox-lg label,
-.checkbox-lg .mx-checkbox-label,
-.checkbox-lg .control-label {
+.trimm-checkbox .checkbox-lg label,
+.trimm-checkbox .checkbox-lg .mx-checkbox-label,
+.trimm-checkbox .checkbox-lg .control-label, .trimm-checkbox.checkbox-lg label,
+.trimm-checkbox.checkbox-lg .mx-checkbox-label,
+.trimm-checkbox.checkbox-lg .control-label {
   font-weight: 600;
   font-size: 18px;
 }
 
-.label-base, .label-lg, .label-md, .label-sm, .label-warning, .label-danger, .label-success, .label-secondary, .label-default {
+.trimm-label .label-base, .trimm-label .label-lg, .trimm-label .label-md, .trimm-label .label-sm, .trimm-label .label-warning, .trimm-label .label-danger, .trimm-label .label-success, .trimm-label .label-secondary, .trimm-label .label-default, .trimm-label.label-base, .trimm-label.label-lg, .trimm-label.label-md, .trimm-label.label-sm, .trimm-label.label-warning, .trimm-label.label-danger, .trimm-label.label-success, .trimm-label.label-secondary, .trimm-label.label-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29485,66 +29534,63 @@ p {
   white-space: nowrap;
   color: var(--base-black);
 }
-
-.label-default {
+.trimm-label .label-default, .trimm-label.label-default {
   background-color: var(--brand-3);
   color: var(--base-white);
   border: none;
 }
-
-.label-secondary {
+.trimm-label .label-secondary, .trimm-label.label-secondary {
   background-color: var(--brand-2);
   color: var(--base-white);
   border: none;
 }
-
-.label-success {
+.trimm-label .label-success, .trimm-label.label-success {
   background-color: var(--support-3);
   color: var(--base-white);
   border: none;
 }
-
-.label-danger {
+.trimm-label .label-danger, .trimm-label.label-danger {
   background-color: var(--support-2);
   color: var(--base-white);
   border: none;
 }
-
-.label-warning {
+.trimm-label .label-warning, .trimm-label.label-warning {
   background-color: var(--support-4);
   color: var(--base-white);
   border: none;
 }
-
-.label-sm {
+.trimm-label .label-sm, .trimm-label.label-sm {
   font-size: 14px;
   padding: 4px;
 }
-
-.label-md {
+.trimm-label .label-md, .trimm-label.label-md {
   font-size: 16px;
   padding: 8px;
 }
-
-.label-lg {
+.trimm-label .label-lg, .trimm-label.label-lg {
   font-size: 18px;
   padding: 12px;
 }
 
-.menu-base {
+.trimm-menu .menu-base, .trimm-menu.menu-base {
   font-family: "GothamSSm", sans-serif;
 }
-.menu-base > ul,
-.menu-base > .mx-menubar-list,
-.menu-base > .mx-popupmenu-list {
+.trimm-menu .menu-base > ul,
+.trimm-menu .menu-base > .mx-menubar-list,
+.trimm-menu .menu-base > .mx-popupmenu-list, .trimm-menu.menu-base > ul,
+.trimm-menu.menu-base > .mx-menubar-list,
+.trimm-menu.menu-base > .mx-popupmenu-list {
   background-color: var(--brand-3);
   padding: 0;
   list-style: none;
 }
-.menu-base li,
-.menu-base .mx-menubar-item,
-.menu-base .mx-popupmenu-item,
-.menu-base .mx-navigationlist-item {
+.trimm-menu .menu-base li,
+.trimm-menu .menu-base .mx-menubar-item,
+.trimm-menu .menu-base .mx-popupmenu-item,
+.trimm-menu .menu-base .mx-navigationlist-item, .trimm-menu.menu-base li,
+.trimm-menu.menu-base .mx-menubar-item,
+.trimm-menu.menu-base .mx-popupmenu-item,
+.trimm-menu.menu-base .mx-navigationlist-item {
   font-weight: 600;
   font-size: 16px;
   border-radius: 4px;
@@ -29554,10 +29600,13 @@ p {
   border: none !important;
   box-shadow: none !important;
 }
-.menu-base li a,
-.menu-base .mx-menubar-item a,
-.menu-base .mx-popupmenu-item a,
-.menu-base .mx-navigationlist-item a {
+.trimm-menu .menu-base li a,
+.trimm-menu .menu-base .mx-menubar-item a,
+.trimm-menu .menu-base .mx-popupmenu-item a,
+.trimm-menu .menu-base .mx-navigationlist-item a, .trimm-menu.menu-base li a,
+.trimm-menu.menu-base .mx-menubar-item a,
+.trimm-menu.menu-base .mx-popupmenu-item a,
+.trimm-menu.menu-base .mx-navigationlist-item a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -29569,57 +29618,81 @@ p {
   background-color: transparent !important;
   transition: background-color 0.2s ease;
 }
-.menu-base li a:hover, .menu-base li a.active, .menu-base li a.selected,
-.menu-base .mx-menubar-item a:hover,
-.menu-base .mx-menubar-item a.active,
-.menu-base .mx-menubar-item a.selected,
-.menu-base .mx-popupmenu-item a:hover,
-.menu-base .mx-popupmenu-item a.active,
-.menu-base .mx-popupmenu-item a.selected,
-.menu-base .mx-navigationlist-item a:hover,
-.menu-base .mx-navigationlist-item a.active,
-.menu-base .mx-navigationlist-item a.selected {
+.trimm-menu .menu-base li a:hover, .trimm-menu .menu-base li a.active, .trimm-menu .menu-base li a.selected,
+.trimm-menu .menu-base .mx-menubar-item a:hover,
+.trimm-menu .menu-base .mx-menubar-item a.active,
+.trimm-menu .menu-base .mx-menubar-item a.selected,
+.trimm-menu .menu-base .mx-popupmenu-item a:hover,
+.trimm-menu .menu-base .mx-popupmenu-item a.active,
+.trimm-menu .menu-base .mx-popupmenu-item a.selected,
+.trimm-menu .menu-base .mx-navigationlist-item a:hover,
+.trimm-menu .menu-base .mx-navigationlist-item a.active,
+.trimm-menu .menu-base .mx-navigationlist-item a.selected, .trimm-menu.menu-base li a:hover, .trimm-menu.menu-base li a.active, .trimm-menu.menu-base li a.selected,
+.trimm-menu.menu-base .mx-menubar-item a:hover,
+.trimm-menu.menu-base .mx-menubar-item a.active,
+.trimm-menu.menu-base .mx-menubar-item a.selected,
+.trimm-menu.menu-base .mx-popupmenu-item a:hover,
+.trimm-menu.menu-base .mx-popupmenu-item a.active,
+.trimm-menu.menu-base .mx-popupmenu-item a.selected,
+.trimm-menu.menu-base .mx-navigationlist-item a:hover,
+.trimm-menu.menu-base .mx-navigationlist-item a.active,
+.trimm-menu.menu-base .mx-navigationlist-item a.selected {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-.menu-base li a svg,
-.menu-base li a i.mdi,
-.menu-base li a span > svg,
-.menu-base .mx-menubar-item a svg,
-.menu-base .mx-menubar-item a i.mdi,
-.menu-base .mx-menubar-item a span > svg,
-.menu-base .mx-popupmenu-item a svg,
-.menu-base .mx-popupmenu-item a i.mdi,
-.menu-base .mx-popupmenu-item a span > svg,
-.menu-base .mx-navigationlist-item a svg,
-.menu-base .mx-navigationlist-item a i.mdi,
-.menu-base .mx-navigationlist-item a span > svg {
+.trimm-menu .menu-base li a svg,
+.trimm-menu .menu-base li a i.mdi,
+.trimm-menu .menu-base li a span > svg,
+.trimm-menu .menu-base .mx-menubar-item a svg,
+.trimm-menu .menu-base .mx-menubar-item a i.mdi,
+.trimm-menu .menu-base .mx-menubar-item a span > svg,
+.trimm-menu .menu-base .mx-popupmenu-item a svg,
+.trimm-menu .menu-base .mx-popupmenu-item a i.mdi,
+.trimm-menu .menu-base .mx-popupmenu-item a span > svg,
+.trimm-menu .menu-base .mx-navigationlist-item a svg,
+.trimm-menu .menu-base .mx-navigationlist-item a i.mdi,
+.trimm-menu .menu-base .mx-navigationlist-item a span > svg, .trimm-menu.menu-base li a svg,
+.trimm-menu.menu-base li a i.mdi,
+.trimm-menu.menu-base li a span > svg,
+.trimm-menu.menu-base .mx-menubar-item a svg,
+.trimm-menu.menu-base .mx-menubar-item a i.mdi,
+.trimm-menu.menu-base .mx-menubar-item a span > svg,
+.trimm-menu.menu-base .mx-popupmenu-item a svg,
+.trimm-menu.menu-base .mx-popupmenu-item a i.mdi,
+.trimm-menu.menu-base .mx-popupmenu-item a span > svg,
+.trimm-menu.menu-base .mx-navigationlist-item a svg,
+.trimm-menu.menu-base .mx-navigationlist-item a i.mdi,
+.trimm-menu.menu-base .mx-navigationlist-item a span > svg {
   color: currentColor;
 }
-.menu-base li a .caret,
-.menu-base .mx-menubar-item a .caret,
-.menu-base .mx-popupmenu-item a .caret,
-.menu-base .mx-navigationlist-item a .caret {
+.trimm-menu .menu-base li a .caret,
+.trimm-menu .menu-base .mx-menubar-item a .caret,
+.trimm-menu .menu-base .mx-popupmenu-item a .caret,
+.trimm-menu .menu-base .mx-navigationlist-item a .caret, .trimm-menu.menu-base li a .caret,
+.trimm-menu.menu-base .mx-menubar-item a .caret,
+.trimm-menu.menu-base .mx-popupmenu-item a .caret,
+.trimm-menu.menu-base .mx-navigationlist-item a .caret {
   border-top-color: var(--base-white) !important;
   border-bottom-color: var(--base-white) !important;
 }
-.menu-base .mx-menubar > ul > li:hover > a,
-.menu-base .mx-menubar > ul > li.active > a,
-.menu-base .mx-menubar-list > li:hover > a,
-.menu-base .mx-menubar-list > li.active > a,
-.menu-base .mx-navigationlist-item:hover,
-.menu-base .mx-navigationlist-item.active {
+.trimm-menu .menu-base .mx-menubar > ul > li:hover > a,
+.trimm-menu .menu-base .mx-menubar > ul > li.active > a,
+.trimm-menu .menu-base .mx-menubar-list > li:hover > a,
+.trimm-menu .menu-base .mx-menubar-list > li.active > a,
+.trimm-menu .menu-base .mx-navigationlist-item:hover,
+.trimm-menu .menu-base .mx-navigationlist-item.active, .trimm-menu.menu-base .mx-menubar > ul > li:hover > a,
+.trimm-menu.menu-base .mx-menubar > ul > li.active > a,
+.trimm-menu.menu-base .mx-menubar-list > li:hover > a,
+.trimm-menu.menu-base .mx-menubar-list > li.active > a,
+.trimm-menu.menu-base .mx-navigationlist-item:hover,
+.trimm-menu.menu-base .mx-navigationlist-item.active {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-
-.menu-base,
-.menu-base.mx-menubar {
+.trimm-menu.menu-base, .trimm-menu.menu-base.mx-menubar {
   background-color: var(--brand-3) !important;
 }
-
-.menu-base .dropdown-menu,
-.menu-base .mx-navbar-submenu {
+.trimm-menu.menu-base .dropdown-menu, .trimm-menu.menu-base .mx-navbar-submenu {
   background: var(--base-white) !important;
   color: var(--base-black) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
@@ -29630,9 +29703,7 @@ p {
   font-size: 16px !important;
   font-family: "GothamSSm", sans-serif !important;
 }
-
-.menu-base .dropdown-menu a,
-.menu-base .mx-navbar-submenu a {
+.trimm-menu.menu-base .dropdown-menu a, .trimm-menu.menu-base .mx-navbar-submenu a {
   color: var(--base-black) !important;
   font-size: 14px !important;
   padding: 12px 16px !important;
@@ -29643,36 +29714,29 @@ p {
   border-radius: 4px !important;
   transition: background 0.18s, color 0.18s;
 }
-
-.menu-base .dropdown-menu a:hover,
-.menu-base .mx-navbar-submenu a:hover,
-.menu-base .dropdown-menu a:focus,
-.menu-base .mx-navbar-submenu a:focus {
+.trimm-menu.menu-base .dropdown-menu a:hover, .trimm-menu.menu-base .mx-navbar-submenu a:hover, .trimm-menu.menu-base .dropdown-menu a:focus, .trimm-menu.menu-base .mx-navbar-submenu a:focus {
   background: var(--brand-2-hover) !important;
   color: var(--base-white) !important;
 }
-
-.menu-base .dropdown-menu a.active,
-.menu-base .mx-navbar-submenu a.active {
+.trimm-menu.menu-base .dropdown-menu a.active, .trimm-menu.menu-base .mx-navbar-submenu a.active {
   background: var(--brand-2-active) !important;
   color: var(--base-white) !important;
 }
-
-.menu-base li.mx-navbar-item.dropdown.open {
+.trimm-menu.menu-base li.mx-navbar-item.dropdown.open {
   overflow: visible !important;
 }
 
-.radio-base, .radio-lg, .radio-md, .radio-sm {
+.trimm-radio .radio-base, .trimm-radio .radio-lg, .trimm-radio .radio-md, .trimm-radio .radio-sm, .trimm-radio.radio-base, .trimm-radio.radio-lg, .trimm-radio.radio-md, .trimm-radio.radio-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.radio-base input[type=radio], .radio-lg input[type=radio], .radio-md input[type=radio], .radio-sm input[type=radio] {
+.trimm-radio .radio-base input[type=radio], .trimm-radio .radio-lg input[type=radio], .trimm-radio .radio-md input[type=radio], .trimm-radio .radio-sm input[type=radio], .trimm-radio.radio-base input[type=radio], .trimm-radio.radio-lg input[type=radio], .trimm-radio.radio-md input[type=radio], .trimm-radio.radio-sm input[type=radio] {
   opacity: 0;
   position: absolute;
   width: 16px;
   height: 16px;
   margin: 0;
 }
-.radio-base input[type=radio] + label, .radio-lg input[type=radio] + label, .radio-md input[type=radio] + label, .radio-sm input[type=radio] + label {
+.trimm-radio .radio-base input[type=radio] + label, .trimm-radio .radio-lg input[type=radio] + label, .trimm-radio .radio-md input[type=radio] + label, .trimm-radio .radio-sm input[type=radio] + label, .trimm-radio.radio-base input[type=radio] + label, .trimm-radio.radio-lg input[type=radio] + label, .trimm-radio.radio-md input[type=radio] + label, .trimm-radio.radio-sm input[type=radio] + label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -29680,7 +29744,7 @@ p {
   font-weight: normal;
   color: var(--base-black);
 }
-.radio-base input[type=radio] + label::before, .radio-lg input[type=radio] + label::before, .radio-md input[type=radio] + label::before, .radio-sm input[type=radio] + label::before {
+.trimm-radio .radio-base input[type=radio] + label::before, .trimm-radio .radio-lg input[type=radio] + label::before, .trimm-radio .radio-md input[type=radio] + label::before, .trimm-radio .radio-sm input[type=radio] + label::before, .trimm-radio.radio-base input[type=radio] + label::before, .trimm-radio.radio-lg input[type=radio] + label::before, .trimm-radio.radio-md input[type=radio] + label::before, .trimm-radio.radio-sm input[type=radio] + label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -29693,7 +29757,7 @@ p {
   background: var(--base-white);
   transition: border-color 0.2s, background 0.2s;
 }
-.radio-base input[type=radio] + label::after, .radio-lg input[type=radio] + label::after, .radio-md input[type=radio] + label::after, .radio-sm input[type=radio] + label::after {
+.trimm-radio .radio-base input[type=radio] + label::after, .trimm-radio .radio-lg input[type=radio] + label::after, .trimm-radio .radio-md input[type=radio] + label::after, .trimm-radio .radio-sm input[type=radio] + label::after, .trimm-radio.radio-base input[type=radio] + label::after, .trimm-radio.radio-lg input[type=radio] + label::after, .trimm-radio.radio-md input[type=radio] + label::after, .trimm-radio.radio-sm input[type=radio] + label::after {
   content: "";
   position: absolute;
   left: 4px;
@@ -29705,92 +29769,92 @@ p {
   background: var(--brand-2);
   transition: transform 0.2s;
 }
-.radio-base input[type=radio]:checked + label::after, .radio-lg input[type=radio]:checked + label::after, .radio-md input[type=radio]:checked + label::after, .radio-sm input[type=radio]:checked + label::after {
+.trimm-radio .radio-base input[type=radio]:checked + label::after, .trimm-radio .radio-lg input[type=radio]:checked + label::after, .trimm-radio .radio-md input[type=radio]:checked + label::after, .trimm-radio .radio-sm input[type=radio]:checked + label::after, .trimm-radio.radio-base input[type=radio]:checked + label::after, .trimm-radio.radio-lg input[type=radio]:checked + label::after, .trimm-radio.radio-md input[type=radio]:checked + label::after, .trimm-radio.radio-sm input[type=radio]:checked + label::after {
   transform: translateY(-50%) scale(1);
   background: var(--brand-2);
 }
-.radio-base input[type=radio]:checked + label::before, .radio-lg input[type=radio]:checked + label::before, .radio-md input[type=radio]:checked + label::before, .radio-sm input[type=radio]:checked + label::before {
+.trimm-radio .radio-base input[type=radio]:checked + label::before, .trimm-radio .radio-lg input[type=radio]:checked + label::before, .trimm-radio .radio-md input[type=radio]:checked + label::before, .trimm-radio .radio-sm input[type=radio]:checked + label::before, .trimm-radio.radio-base input[type=radio]:checked + label::before, .trimm-radio.radio-lg input[type=radio]:checked + label::before, .trimm-radio.radio-md input[type=radio]:checked + label::before, .trimm-radio.radio-sm input[type=radio]:checked + label::before {
   border-color: var(--brand-2);
 }
-.radio-base input[type=radio]:disabled + label, .radio-lg input[type=radio]:disabled + label, .radio-md input[type=radio]:disabled + label, .radio-sm input[type=radio]:disabled + label {
+.trimm-radio .radio-base input[type=radio]:disabled + label, .trimm-radio .radio-lg input[type=radio]:disabled + label, .trimm-radio .radio-md input[type=radio]:disabled + label, .trimm-radio .radio-sm input[type=radio]:disabled + label, .trimm-radio.radio-base input[type=radio]:disabled + label, .trimm-radio.radio-lg input[type=radio]:disabled + label, .trimm-radio.radio-md input[type=radio]:disabled + label, .trimm-radio.radio-sm input[type=radio]:disabled + label {
   color: var(--secondary-1-disabled);
   cursor: not-allowed;
 }
-.radio-base input[type=radio]:disabled + label::before, .radio-lg input[type=radio]:disabled + label::before, .radio-md input[type=radio]:disabled + label::before, .radio-sm input[type=radio]:disabled + label::before {
+.trimm-radio .radio-base input[type=radio]:disabled + label::before, .trimm-radio .radio-lg input[type=radio]:disabled + label::before, .trimm-radio .radio-md input[type=radio]:disabled + label::before, .trimm-radio .radio-sm input[type=radio]:disabled + label::before, .trimm-radio.radio-base input[type=radio]:disabled + label::before, .trimm-radio.radio-lg input[type=radio]:disabled + label::before, .trimm-radio.radio-md input[type=radio]:disabled + label::before, .trimm-radio.radio-sm input[type=radio]:disabled + label::before {
   border-color: var(--secondary-1-disabled);
   background: var(--base-white-disabled);
 }
-.radio-base input[type=radio]:disabled:checked + label::after, .radio-lg input[type=radio]:disabled:checked + label::after, .radio-md input[type=radio]:disabled:checked + label::after, .radio-sm input[type=radio]:disabled:checked + label::after {
+.trimm-radio .radio-base input[type=radio]:disabled:checked + label::after, .trimm-radio .radio-lg input[type=radio]:disabled:checked + label::after, .trimm-radio .radio-md input[type=radio]:disabled:checked + label::after, .trimm-radio .radio-sm input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-base input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-lg input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-md input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-sm input[type=radio]:disabled:checked + label::after {
   background: var(--secondary-1-disabled);
 }
-.radio-base label, .radio-lg label, .radio-md label, .radio-sm label {
+.trimm-radio .radio-base label, .trimm-radio .radio-lg label, .trimm-radio .radio-md label, .trimm-radio .radio-sm label, .trimm-radio.radio-base label, .trimm-radio.radio-lg label, .trimm-radio.radio-md label, .trimm-radio.radio-sm label {
   margin-left: 8px;
   font-size: 16px;
   font-weight: normal;
 }
-.radio-base label.disabled, .radio-lg label.disabled, .radio-md label.disabled, .radio-sm label.disabled {
+.trimm-radio .radio-base label.disabled, .trimm-radio .radio-lg label.disabled, .trimm-radio .radio-md label.disabled, .trimm-radio .radio-sm label.disabled, .trimm-radio.radio-base label.disabled, .trimm-radio.radio-lg label.disabled, .trimm-radio.radio-md label.disabled, .trimm-radio.radio-sm label.disabled {
   color: var(--secondary-1);
 }
-.radio-base label.invalid, .radio-lg label.invalid, .radio-md label.invalid, .radio-sm label.invalid {
+.trimm-radio .radio-base label.invalid, .trimm-radio .radio-lg label.invalid, .trimm-radio .radio-md label.invalid, .trimm-radio .radio-sm label.invalid, .trimm-radio.radio-base label.invalid, .trimm-radio.radio-lg label.invalid, .trimm-radio.radio-md label.invalid, .trimm-radio.radio-sm label.invalid {
   color: var(--support-2);
 }
-
-.radio-sm input[type=radio] + label {
+.trimm-radio .radio-sm input[type=radio] + label, .trimm-radio.radio-sm input[type=radio] + label {
   font-size: 14px;
   padding-left: 22px;
   font-weight: 400;
 }
-.radio-sm input[type=radio] + label::before {
+.trimm-radio .radio-sm input[type=radio] + label::before, .trimm-radio.radio-sm input[type=radio] + label::before {
   width: 14px;
   height: 14px;
 }
-.radio-sm input[type=radio] + label::after {
+.trimm-radio .radio-sm input[type=radio] + label::after, .trimm-radio.radio-sm input[type=radio] + label::after {
   width: 8px;
   height: 8px;
   left: 3px;
 }
-.radio-sm .control-label,
-.radio-sm .mx-radio label {
+.trimm-radio .radio-sm .control-label,
+.trimm-radio .radio-sm .mx-radio label, .trimm-radio.radio-sm .control-label,
+.trimm-radio.radio-sm .mx-radio label {
   font-size: 14px;
   font-weight: 400;
 }
-
-.radio-md input[type=radio] + label {
+.trimm-radio .radio-md input[type=radio] + label, .trimm-radio.radio-md input[type=radio] + label {
   font-size: 16px;
   padding-left: 28px;
   font-weight: 500;
 }
-.radio-md input[type=radio] + label::before {
+.trimm-radio .radio-md input[type=radio] + label::before, .trimm-radio.radio-md input[type=radio] + label::before {
   width: 18px;
   height: 18px;
 }
-.radio-md input[type=radio] + label::after {
+.trimm-radio .radio-md input[type=radio] + label::after, .trimm-radio.radio-md input[type=radio] + label::after {
   width: 10px;
   height: 10px;
   left: 4px;
 }
-.radio-md .control-label,
-.radio-md .mx-radio label {
+.trimm-radio .radio-md .control-label,
+.trimm-radio .radio-md .mx-radio label, .trimm-radio.radio-md .control-label,
+.trimm-radio.radio-md .mx-radio label {
   font-size: 16px;
   font-weight: 500;
 }
-
-.radio-lg input[type=radio] + label {
+.trimm-radio .radio-lg input[type=radio] + label, .trimm-radio.radio-lg input[type=radio] + label {
   font-size: 18px;
   padding-left: 36px;
   font-weight: 600;
 }
-.radio-lg input[type=radio] + label::before {
+.trimm-radio .radio-lg input[type=radio] + label::before, .trimm-radio.radio-lg input[type=radio] + label::before {
   width: 24px;
   height: 24px;
 }
-.radio-lg input[type=radio] + label::after {
+.trimm-radio .radio-lg input[type=radio] + label::after, .trimm-radio.radio-lg input[type=radio] + label::after {
   width: 14px;
   height: 14px;
   left: 5px;
 }
-.radio-lg .control-label,
-.radio-lg .mx-radio label {
+.trimm-radio .radio-lg .control-label,
+.trimm-radio .radio-lg .mx-radio label, .trimm-radio.radio-lg .control-label,
+.trimm-radio.radio-lg .mx-radio label {
   font-size: 18px;
   font-weight: 600;
 }
@@ -29870,7 +29934,7 @@ p {
   border-bottom-color: var(--base-white) !important;
 }
 
-.switch-base .widget-switch-btn-wrapper, .switch-lg .widget-switch-btn-wrapper, .switch-md .widget-switch-btn-wrapper, .switch-sm .widget-switch-btn-wrapper {
+.trimm-switch .switch-base .widget-switch-btn-wrapper, .trimm-switch .switch-lg .widget-switch-btn-wrapper, .trimm-switch .switch-md .widget-switch-btn-wrapper, .trimm-switch .switch-sm .widget-switch-btn-wrapper, .trimm-switch.switch-base .widget-switch-btn-wrapper, .trimm-switch.switch-lg .widget-switch-btn-wrapper, .trimm-switch.switch-md .widget-switch-btn-wrapper, .trimm-switch.switch-sm .widget-switch-btn-wrapper {
   --track-height: 28px;
   --track-width: 48px;
   --thumb-size: 22px;
@@ -29883,34 +29947,34 @@ p {
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled);
   transition: all 0.2s ease-in-out;
 }
-.switch-base .widget-switch-btn-wrapper.checked, .switch-lg .widget-switch-btn-wrapper.checked, .switch-md .widget-switch-btn-wrapper.checked, .switch-sm .widget-switch-btn-wrapper.checked {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked, .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked, .trimm-switch .switch-md .widget-switch-btn-wrapper.checked, .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked, .trimm-switch.switch-base .widget-switch-btn-wrapper.checked, .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked, .trimm-switch.switch-md .widget-switch-btn-wrapper.checked, .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked {
   background-color: var(--brand-3) !important;
   border-color: var(--brand-3) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3) !important;
 }
-.switch-base .widget-switch-btn-wrapper.checked:hover:not(.disabled), .switch-lg .widget-switch-btn-wrapper.checked:hover:not(.disabled), .switch-md .widget-switch-btn-wrapper.checked:hover:not(.disabled), .switch-sm .widget-switch-btn-wrapper.checked:hover:not(.disabled) {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch .switch-md .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-base .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-md .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked:hover:not(.disabled) {
   background-color: var(--brand-3-hover) !important;
   border-color: var(--brand-3-hover) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-hover) !important;
 }
-.switch-base .widget-switch-btn-wrapper.checked.disabled, .switch-lg .widget-switch-btn-wrapper.checked.disabled, .switch-md .widget-switch-btn-wrapper.checked.disabled, .switch-sm .widget-switch-btn-wrapper.checked.disabled {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked.disabled, .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked.disabled, .trimm-switch .switch-md .widget-switch-btn-wrapper.checked.disabled, .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-base .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-md .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked.disabled {
   background-color: var(--brand-3-disabled) !important;
   border-color: var(--brand-3-disabled) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-disabled) !important;
 }
-.switch-base .widget-switch-btn-wrapper:not(.checked), .switch-lg .widget-switch-btn-wrapper:not(.checked), .switch-md .widget-switch-btn-wrapper:not(.checked), .switch-sm .widget-switch-btn-wrapper:not(.checked) {
+.trimm-switch .switch-base .widget-switch-btn-wrapper:not(.checked), .trimm-switch .switch-lg .widget-switch-btn-wrapper:not(.checked), .trimm-switch .switch-md .widget-switch-btn-wrapper:not(.checked), .trimm-switch .switch-sm .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-base .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-lg .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-md .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-sm .widget-switch-btn-wrapper:not(.checked) {
   background-color: var(--secondary-1-hover) !important;
   border-color: var(--secondary-1) !important;
 }
-.switch-base .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .switch-lg .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .switch-md .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .switch-sm .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled) {
+.trimm-switch .switch-base .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch .switch-lg .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch .switch-md .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch .switch-sm .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-base .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-lg .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-md .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-sm .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled) {
   border-color: var(--secondary-1-hover) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-hover) !important;
 }
-.switch-base .widget-switch-btn-wrapper:not(.checked).disabled, .switch-lg .widget-switch-btn-wrapper:not(.checked).disabled, .switch-md .widget-switch-btn-wrapper:not(.checked).disabled, .switch-sm .widget-switch-btn-wrapper:not(.checked).disabled {
+.trimm-switch .switch-base .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch .switch-lg .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch .switch-md .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch .switch-sm .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-base .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-lg .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-md .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-sm .widget-switch-btn-wrapper:not(.checked).disabled {
   border-color: var(--secondary-1-disabled) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled) !important;
 }
-.switch-base .widget-switch-btn-wrapper .widget-switch-btn, .switch-lg .widget-switch-btn-wrapper .widget-switch-btn, .switch-md .widget-switch-btn-wrapper .widget-switch-btn, .switch-sm .widget-switch-btn-wrapper .widget-switch-btn {
+.trimm-switch .switch-base .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch .switch-lg .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch .switch-md .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch .switch-sm .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-base .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-lg .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-md .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-sm .widget-switch-btn-wrapper .widget-switch-btn {
   position: absolute;
   top: 50%;
   left: 2px;
@@ -29922,70 +29986,67 @@ p {
   box-shadow: 0 2px 4px var(--secondary-1-disabled);
   transition: left 0.2s ease-in-out;
 }
-.switch-base .widget-switch-btn-wrapper .widget-switch-btn.disabled, .switch-lg .widget-switch-btn-wrapper .widget-switch-btn.disabled, .switch-md .widget-switch-btn-wrapper .widget-switch-btn.disabled, .switch-sm .widget-switch-btn-wrapper .widget-switch-btn.disabled {
+.trimm-switch .switch-base .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch .switch-lg .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch .switch-md .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch .switch-sm .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-base .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-lg .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-md .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-sm .widget-switch-btn-wrapper .widget-switch-btn.disabled {
   background-color: var(--base-white-disabled) !important;
 }
-.switch-base .widget-switch-btn-wrapper.checked .widget-switch-btn, .switch-lg .widget-switch-btn-wrapper.checked .widget-switch-btn, .switch-md .widget-switch-btn-wrapper.checked .widget-switch-btn, .switch-sm .widget-switch-btn-wrapper.checked .widget-switch-btn {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch .switch-md .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-base .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-md .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked .widget-switch-btn {
   left: calc(100% - var(--thumb-size) - 2px);
 }
-.switch-base .control-label, .switch-lg .control-label, .switch-md .control-label, .switch-sm .control-label {
+.trimm-switch .switch-base .control-label, .trimm-switch .switch-lg .control-label, .trimm-switch .switch-md .control-label, .trimm-switch .switch-sm .control-label, .trimm-switch.switch-base .control-label, .trimm-switch.switch-lg .control-label, .trimm-switch.switch-md .control-label, .trimm-switch.switch-sm .control-label {
   color: var(--base-black);
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
 }
-.switch-base .control-label.disabled, .switch-lg .control-label.disabled, .switch-md .control-label.disabled, .switch-sm .control-label.disabled {
+.trimm-switch .switch-base .control-label.disabled, .trimm-switch .switch-lg .control-label.disabled, .trimm-switch .switch-md .control-label.disabled, .trimm-switch .switch-sm .control-label.disabled, .trimm-switch.switch-base .control-label.disabled, .trimm-switch.switch-lg .control-label.disabled, .trimm-switch.switch-md .control-label.disabled, .trimm-switch.switch-sm .control-label.disabled {
   color: var(--secondary-1);
 }
-
-.switch-sm .widget-switch-btn-wrapper {
+.trimm-switch .switch-sm .widget-switch-btn-wrapper, .trimm-switch.switch-sm .widget-switch-btn-wrapper {
   --track-height: 20px;
   --track-width: 36px;
   --thumb-size: 16px;
 }
-.switch-sm .control-label {
+.trimm-switch .switch-sm .control-label, .trimm-switch.switch-sm .control-label {
   font-size: 14px;
   font-weight: 400;
 }
-
-.switch-md .widget-switch-btn-wrapper {
+.trimm-switch .switch-md .widget-switch-btn-wrapper, .trimm-switch.switch-md .widget-switch-btn-wrapper {
   --track-height: 28px;
   --track-width: 48px;
   --thumb-size: 22px;
 }
-.switch-md .control-label {
+.trimm-switch .switch-md .control-label, .trimm-switch.switch-md .control-label {
   font-size: 16px;
   font-weight: 500;
 }
-
-.switch-lg .widget-switch-btn-wrapper {
+.trimm-switch .switch-lg .widget-switch-btn-wrapper, .trimm-switch.switch-lg .widget-switch-btn-wrapper {
   --track-height: 36px;
   --track-width: 64px;
   --thumb-size: 30px;
 }
-.switch-lg .control-label {
+.trimm-switch .switch-lg .control-label, .trimm-switch.switch-lg .control-label {
   font-size: 18px;
   font-weight: 600;
 }
 
-.tab-base {
+.trimm-tab .tab-base, .trimm-tab.tab-base {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 500;
   color: var(--base-black);
 }
-.tab-base .mx-tabcontainer-tabs {
+.trimm-tab .tab-base .mx-tabcontainer-tabs, .trimm-tab.tab-base .mx-tabcontainer-tabs {
   display: flex;
   gap: 4px;
   padding: 0 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
   background-color: var(--base-white);
 }
-.tab-base .mx-tabcontainer-tabs > li {
+.trimm-tab .tab-base .mx-tabcontainer-tabs > li, .trimm-tab.tab-base .mx-tabcontainer-tabs > li {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.tab-base .mx-tabcontainer-tabs > li a {
+.trimm-tab .tab-base .mx-tabcontainer-tabs > li a, .trimm-tab.tab-base .mx-tabcontainer-tabs > li a {
   display: inline-block;
   padding: 8px 16px;
   font-family: "GothamSSm", sans-serif;
@@ -29997,30 +30058,30 @@ p {
   background-color: transparent;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.tab-base .mx-tabcontainer-tabs > li a:hover {
+.trimm-tab .tab-base .mx-tabcontainer-tabs > li a:hover, .trimm-tab.tab-base .mx-tabcontainer-tabs > li a:hover {
   background-color: var(--brand-3-hover);
   color: var(--brand-3);
 }
-.tab-base .mx-tabcontainer-tabs > li.active a {
+.trimm-tab .tab-base .mx-tabcontainer-tabs > li.active a, .trimm-tab.tab-base .mx-tabcontainer-tabs > li.active a {
   color: var(--base-white);
   background-color: var(--secondary-1);
 }
-.tab-base .mx-tabcontainer-tabs > li.disabled a {
+.trimm-tab .tab-base .mx-tabcontainer-tabs > li.disabled a, .trimm-tab.tab-base .mx-tabcontainer-tabs > li.disabled a {
   color: var(--secondary-1);
   cursor: not-allowed;
   pointer-events: none;
   background-color: var(--secondary-1-disabled);
 }
-.tab-base .mx-tabcontainer-content {
+.trimm-tab .tab-base .mx-tabcontainer-content, .trimm-tab.tab-base .mx-tabcontainer-content {
   padding: 16px 24px;
   background-color: var(--secondary-1);
   border-radius: 0 0 4px 4px;
 }
 
-.textarea-base, .textarea-lg, .textarea-md, .textarea-sm {
+.trimm-textarea .textarea-base, .trimm-textarea .textarea-lg, .trimm-textarea .textarea-md, .trimm-textarea .textarea-sm, .trimm-textarea.textarea-base, .trimm-textarea.textarea-lg, .trimm-textarea.textarea-md, .trimm-textarea.textarea-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.textarea-base textarea.mx-textarea-input, .textarea-lg textarea.mx-textarea-input, .textarea-md textarea.mx-textarea-input, .textarea-sm textarea.mx-textarea-input {
+.trimm-textarea .textarea-base textarea.mx-textarea-input, .trimm-textarea .textarea-lg textarea.mx-textarea-input, .trimm-textarea .textarea-md textarea.mx-textarea-input, .trimm-textarea .textarea-sm textarea.mx-textarea-input, .trimm-textarea.textarea-base textarea.mx-textarea-input, .trimm-textarea.textarea-lg textarea.mx-textarea-input, .trimm-textarea.textarea-md textarea.mx-textarea-input, .trimm-textarea.textarea-sm textarea.mx-textarea-input {
   font-size: 16px;
   font-weight: normal;
   color: var(--base-black) !important;
@@ -30033,50 +30094,47 @@ p {
   resize: vertical;
   transition: border-color 0.2s ease-in-out;
 }
-.textarea-base textarea.mx-textarea-input::placeholder, .textarea-lg textarea.mx-textarea-input::placeholder, .textarea-md textarea.mx-textarea-input::placeholder, .textarea-sm textarea.mx-textarea-input::placeholder {
+.trimm-textarea .textarea-base textarea.mx-textarea-input::placeholder, .trimm-textarea .textarea-lg textarea.mx-textarea-input::placeholder, .trimm-textarea .textarea-md textarea.mx-textarea-input::placeholder, .trimm-textarea .textarea-sm textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-base textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-lg textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-md textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-sm textarea.mx-textarea-input::placeholder {
   color: var(--base-black);
   font-style: italic;
 }
-.textarea-base textarea.mx-textarea-input:focus, .textarea-lg textarea.mx-textarea-input:focus, .textarea-md textarea.mx-textarea-input:focus, .textarea-sm textarea.mx-textarea-input:focus {
+.trimm-textarea .textarea-base textarea.mx-textarea-input:focus, .trimm-textarea .textarea-lg textarea.mx-textarea-input:focus, .trimm-textarea .textarea-md textarea.mx-textarea-input:focus, .trimm-textarea .textarea-sm textarea.mx-textarea-input:focus, .trimm-textarea.textarea-base textarea.mx-textarea-input:focus, .trimm-textarea.textarea-lg textarea.mx-textarea-input:focus, .trimm-textarea.textarea-md textarea.mx-textarea-input:focus, .trimm-textarea.textarea-sm textarea.mx-textarea-input:focus {
   outline: none;
   border-color: var(--brand-2) !important;
 }
-.textarea-base textarea.mx-textarea-input:disabled, .textarea-lg textarea.mx-textarea-input:disabled, .textarea-md textarea.mx-textarea-input:disabled, .textarea-sm textarea.mx-textarea-input:disabled {
+.trimm-textarea .textarea-base textarea.mx-textarea-input:disabled, .trimm-textarea .textarea-lg textarea.mx-textarea-input:disabled, .trimm-textarea .textarea-md textarea.mx-textarea-input:disabled, .trimm-textarea .textarea-sm textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-base textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-lg textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-md textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-sm textarea.mx-textarea-input:disabled {
   background-color: var(--secondary-1-disabled) !important;
   color: var(--base-black) !important;
   border-color: var(--base-black) !important;
   cursor: not-allowed;
 }
-
-.textarea-sm textarea.mx-textarea-input {
+.trimm-textarea .textarea-sm textarea.mx-textarea-input, .trimm-textarea.textarea-sm textarea.mx-textarea-input {
   font-size: 14px !important;
   padding: 8px 12px !important;
 }
-.textarea-sm .control-label {
+.trimm-textarea .textarea-sm .control-label, .trimm-textarea.textarea-sm .control-label {
   font-size: 14px !important;
   font-weight: 400;
 }
-
-.textarea-md textarea.mx-textarea-input {
+.trimm-textarea .textarea-md textarea.mx-textarea-input, .trimm-textarea.textarea-md textarea.mx-textarea-input {
   font-size: 16px !important;
   padding: 12px 16px !important;
 }
-.textarea-md .control-label {
+.trimm-textarea .textarea-md .control-label, .trimm-textarea.textarea-md .control-label {
   font-size: 16px !important;
   font-weight: 500;
 }
-
-.textarea-lg textarea.mx-textarea-input {
+.trimm-textarea .textarea-lg textarea.mx-textarea-input, .trimm-textarea.textarea-lg textarea.mx-textarea-input {
   font-size: 18px !important;
   padding: 16px 24px !important;
 }
-.textarea-lg .control-label {
+.trimm-textarea .textarea-lg .control-label, .trimm-textarea.textarea-lg .control-label {
   font-size: 18px !important;
   font-weight: 600;
 }
 
-.textbox-base, .textbox-lg, .textbox-md, .textbox-sm,
-input.form-control {
+.trimm-textbox .textbox-base, .trimm-textbox .textbox-lg, .trimm-textbox .textbox-md, .trimm-textbox .textbox-sm, .trimm-textbox.textbox-base, .trimm-textbox.textbox-lg, .trimm-textbox.textbox-md, .trimm-textbox.textbox-sm,
+.trimm-textbox input.form-control {
   font-family: "GothamSSm", sans-serif !important;
   font-size: 16px !important;
   font-weight: normal !important;
@@ -30091,70 +30149,65 @@ input.form-control {
   width: 100%;
   box-sizing: border-box;
 }
-.textbox-base::placeholder, .textbox-lg::placeholder, .textbox-md::placeholder, .textbox-sm::placeholder,
-input.form-control::placeholder {
+.trimm-textbox .textbox-base::placeholder, .trimm-textbox .textbox-lg::placeholder, .trimm-textbox .textbox-md::placeholder, .trimm-textbox .textbox-sm::placeholder, .trimm-textbox.textbox-base::placeholder, .trimm-textbox.textbox-lg::placeholder, .trimm-textbox.textbox-md::placeholder, .trimm-textbox.textbox-sm::placeholder,
+.trimm-textbox input.form-control::placeholder {
   color: var(--base-black) !important;
   font-style: italic !important;
 }
-.textbox-base:focus, .textbox-lg:focus, .textbox-md:focus, .textbox-sm:focus,
-input.form-control:focus {
+.trimm-textbox .textbox-base:focus, .trimm-textbox .textbox-lg:focus, .trimm-textbox .textbox-md:focus, .trimm-textbox .textbox-sm:focus, .trimm-textbox.textbox-base:focus, .trimm-textbox.textbox-lg:focus, .trimm-textbox.textbox-md:focus, .trimm-textbox.textbox-sm:focus,
+.trimm-textbox input.form-control:focus {
   outline: none;
   border-color: var(--brand-2) !important;
 }
-.textbox-base:disabled, .textbox-lg:disabled, .textbox-md:disabled, .textbox-sm:disabled,
-input.form-control:disabled {
+.trimm-textbox .textbox-base:disabled, .trimm-textbox .textbox-lg:disabled, .trimm-textbox .textbox-md:disabled, .trimm-textbox .textbox-sm:disabled, .trimm-textbox.textbox-base:disabled, .trimm-textbox.textbox-lg:disabled, .trimm-textbox.textbox-md:disabled, .trimm-textbox.textbox-sm:disabled,
+.trimm-textbox input.form-control:disabled {
   background-color: var(--secondary-1-disabled) !important;
   color: var(--base-black) !important;
   border-color: var(--base-black) !important;
   cursor: not-allowed;
 }
-
-.textbox-base.form-group,
-.textbox-sm.form-group,
-.textbox-md.form-group,
-.textbox-lg.form-group {
+.trimm-textbox .textbox-base.form-group, .trimm-textbox.textbox-base.form-group,
+.trimm-textbox .textbox-sm.form-group, .trimm-textbox.textbox-sm.form-group,
+.trimm-textbox .textbox-md.form-group, .trimm-textbox.textbox-md.form-group,
+.trimm-textbox .textbox-lg.form-group, .trimm-textbox.textbox-lg.form-group {
   border: none !important;
   box-shadow: none !important;
 }
-
-.textbox-base.form-group .control-label,
-.textbox-sm.form-group .control-label,
-.textbox-md.form-group .control-label,
-.textbox-lg.form-group .control-label {
+.trimm-textbox .textbox-base.form-group .control-label, .trimm-textbox.textbox-base.form-group .control-label,
+.trimm-textbox .textbox-sm.form-group .control-label, .trimm-textbox.textbox-sm.form-group .control-label,
+.trimm-textbox .textbox-md.form-group .control-label, .trimm-textbox.textbox-md.form-group .control-label,
+.trimm-textbox .textbox-lg.form-group .control-label, .trimm-textbox.textbox-lg.form-group .control-label {
   text-align: right !important;
 }
-
-.textbox-sm input.form-control {
+.trimm-textbox .textbox-sm input.form-control, .trimm-textbox.textbox-sm input.form-control {
   font-size: 14px !important;
   padding: 8px 12px !important;
 }
-.textbox-sm .control-label {
+.trimm-textbox .textbox-sm .control-label, .trimm-textbox.textbox-sm .control-label {
   font-size: 14px !important;
   font-weight: 400;
 }
-
-.textbox-md input.form-control {
+.trimm-textbox .textbox-md input.form-control, .trimm-textbox.textbox-md input.form-control {
   font-size: 16px !important;
   padding: 12px 16px !important;
 }
-.textbox-md .control-label {
+.trimm-textbox .textbox-md .control-label, .trimm-textbox.textbox-md .control-label {
   font-size: 16px !important;
   font-weight: 500;
 }
-
-.textbox-lg input.form-control {
+.trimm-textbox .textbox-lg input.form-control, .trimm-textbox.textbox-lg input.form-control {
   font-size: 18px !important;
   padding: 16px 24px !important;
 }
-.textbox-lg .control-label {
+.trimm-textbox .textbox-lg .control-label, .trimm-textbox.textbox-lg .control-label {
   font-size: 18px !important;
   font-weight: 600;
 }
 
-.tooltip-base, .tooltip-lg, .tooltip-md, .tooltip-sm {
+.trimm-tooltip .tooltip-base, .trimm-tooltip .tooltip-lg, .trimm-tooltip .tooltip-md, .trimm-tooltip .tooltip-sm, .trimm-tooltip.tooltip-base, .trimm-tooltip.tooltip-lg, .trimm-tooltip.tooltip-md, .trimm-tooltip.tooltip-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.tooltip-base .widget-tooltip-content, .tooltip-lg .widget-tooltip-content, .tooltip-md .widget-tooltip-content, .tooltip-sm .widget-tooltip-content {
+.trimm-tooltip .tooltip-base .widget-tooltip-content, .trimm-tooltip .tooltip-lg .widget-tooltip-content, .trimm-tooltip .tooltip-md .widget-tooltip-content, .trimm-tooltip .tooltip-sm .widget-tooltip-content, .trimm-tooltip.tooltip-base .widget-tooltip-content, .trimm-tooltip.tooltip-lg .widget-tooltip-content, .trimm-tooltip.tooltip-md .widget-tooltip-content, .trimm-tooltip.tooltip-sm .widget-tooltip-content {
   background: var(--brand-2) !important;
   color: var(--base-white) !important;
   padding: 8px 12px;
@@ -30165,18 +30218,15 @@ input.form-control:disabled {
   line-height: 1.4;
   white-space: pre-line;
 }
-
-.tooltip-sm .widget-tooltip-content {
+.trimm-tooltip .tooltip-sm .widget-tooltip-content, .trimm-tooltip.tooltip-sm .widget-tooltip-content {
   font-size: 12px;
   padding: 4px 8px;
 }
-
-.tooltip-md .widget-tooltip-content {
+.trimm-tooltip .tooltip-md .widget-tooltip-content, .trimm-tooltip.tooltip-md .widget-tooltip-content {
   font-size: 14px;
   padding: 8px 12px;
 }
-
-.tooltip-lg .widget-tooltip-content {
+.trimm-tooltip .tooltip-lg .widget-tooltip-content, .trimm-tooltip.tooltip-lg .widget-tooltip-content {
   font-size: 16px;
   padding: 12px 24px;
 }
@@ -30193,6 +30243,13 @@ input.form-control:disabled {
 .layout-atlas-tablet .region-topbar {
   background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
+}
+
+.region-topbar .mx-navbar.hide-icons .mx-icon-lined,
+.region-topbar .mx-navbar.hide-icons .mx-icon-filled,
+.region-topbar .mx-navbar.hide-icons .glyphicon {
+  display: inline-block !important;
+  visibility: visible !important;
 }
 
 .region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {

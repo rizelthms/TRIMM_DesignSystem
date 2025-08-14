@@ -1,185 +1,195 @@
-// === BASE CHECKBOX STYLE ===
-// Custom checkbox styling for Mendix Checkbox widgets
-// Wraps the checkbox in a container with this class for TRIMM design system appearance
+// === SCOPED CHECKBOX STYLES ===
+// TRIMM checkbox styles only apply when 'trimm-checkbox' class is present on the checkbox or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.checkbox-base {
-  display: flex;
-  align-items: center;
-  gap: $spacing-8;
-  cursor: pointer;
+.trimm-checkbox {
+  // === BASE CHECKBOX STYLE ===
+  // Custom checkbox styling for Mendix Checkbox widgets
+  // Wraps the checkbox in a container with this class for TRIMM design system appearance
 
-  // Custom checkbox input styling
-  input[type="checkbox"] {
-    appearance: checkbox;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 20px;
-    height: 20px;
-    display: inline-flex;
-    justify-content: center;
+  .checkbox-base,
+  &.checkbox-base {
+    display: flex;
     align-items: center;
-    border: $border-1 solid var(--secondary-1);
-    border-radius: $radius-4;
-    background: var(--base-white);
-    position: relative;
+    gap: $spacing-8;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    outline: none;
 
-    // Focus ring for accessibility
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
+    // Custom checkbox input styling
+    input[type="checkbox"] {
+      appearance: checkbox;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: $border-1 solid var(--secondary-1);
       border-radius: $radius-4;
-      border: 2px solid transparent;
-      background: transparent;
-      transition:
-        border-color 0.2s,
-        background-color 0.2s;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0;
-    }
+      background: var(--base-white);
+      position: relative;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      outline: none;
 
-    // Focus state styling
-    &:focus::before {
-      opacity: none;
-      background-color: var(--brand-2-hover);
-    }
+      // Focus ring for accessibility
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        border-radius: $radius-4;
+        border: 2px solid transparent;
+        background: transparent;
+        transition:
+          border-color 0.2s,
+          background-color 0.2s;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0;
+      }
 
-    // Remove native browser styling for consistency
-    &::-ms-check,
-    &::-webkit-check,
-    &::-webkit-inner-spin-button,
-    &::-webkit-outer-spin-button {
-      display: none !important;
-    }
+      // Focus state styling
+      &:focus::before {
+        opacity: none;
+        background-color: var(--brand-2-hover);
+      }
 
-    // Custom checkmark
-    &::after {
-      color: transparent;
-      font-weight: bold;
-      line-height: 1;
-      transition: color 0.2s ease-in-out;
-    }
+      // Remove native browser styling for consistency
+      &::-ms-check,
+      &::-webkit-check,
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        display: none !important;
+      }
 
-    // Checked state
-    &:checked {
-      background-color: var(--brand-2);
-      border-color: var(--brand-2);
-
+      // Custom checkmark
       &::after {
-        color: var(--base-white);
+        color: transparent;
+        font-weight: bold;
+        line-height: 1;
+        transition: color 0.2s ease-in-out;
+      }
+
+      // Checked state
+      &:checked {
+        background-color: var(--brand-2);
+        border-color: var(--brand-2);
+
+        &::after {
+          color: var(--base-white);
+        }
+      }
+
+      // Hover state when checked
+      &:checked:hover {
+        background-color: var(--brand-2-hover);
+        border-color: var(--brand-2-hover);
+      }
+
+      // Active state
+      &:active {
+        &::after {
+          color: var(--base-white-active);
+        }
+      }
+
+      // Disabled state
+      &:disabled {
+        background-color: var(--brand-2-disabled);
+        border-color: var(--brand-2-disabled);
+        cursor: not-allowed;
+
+        &::after {
+          color: var(--base-white-disabled);
+        }
       }
     }
 
-    // Hover state when checked
-    &:checked:hover {
-      background-color: var(--brand-2-hover);
-      border-color: var(--brand-2-hover);
-    }
+    // Label styling
+    label,
+    .mx-checkbox-label {
+      font-family: $font-primary;
+      font-size: $font-size-body-2;
+      font-weight: $font-weight-semibold;
+      color: var(--base-black);
+      user-select: none;
+      cursor: pointer;
 
-    // Active state
-    &:active {
-      &::after {
-        color: var(--base-white-active);
-      }
-    }
-
-    // Disabled state
-    &:disabled {
-      background-color: var(--brand-2-disabled);
-      border-color: var(--brand-2-disabled);
-      cursor: not-allowed;
-
-      &::after {
-        color: var(--base-white-disabled);
+      &:disabled {
+        color: var(--base-black-disabled);
+        cursor: not-allowed;
       }
     }
   }
 
-  // Label styling
-  label,
-  .mx-checkbox-label {
-    font-family: $font-primary;
-    font-size: $font-size-body-2;
-    font-weight: $font-weight-semibold;
-    color: var(--base-black);
-    user-select: none;
-    cursor: pointer;
+  // === CHECKBOX SIZE MODIFIERS ===
+  // Different sizes for various contexts and hierarchies
 
-    &:disabled {
-      color: var(--base-black-disabled);
-      cursor: not-allowed;
+  // Small checkbox for compact layouts
+  .checkbox-sm,
+  &.checkbox-sm {
+    @extend .checkbox-base;
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+
+      &::after {
+        font-size: $font-size-body-4;
+      }
     }
-  }
-}
 
-// === CHECKBOX SIZE MODIFIERS ===
-// Different sizes for various contexts and hierarchies
-
-// Small checkbox for compact layouts
-.checkbox-sm {
-  @extend .checkbox-base;
-  input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-
-    &::after {
-      font-size: $font-size-body-4;
+    label,
+    .mx-checkbox-label,
+    .control-label {
+      font-weight: $font-weight-regular;
+      font-size: $font-size-body-3;
     }
   }
 
-  label,
-  .mx-checkbox-label,
-  .control-label {
-    font-weight: $font-weight-regular;
-    font-size: $font-size-body-3;
-  }
-}
+  // Medium checkbox (default size)
+  .checkbox-md,
+  &.checkbox-md {
+    @extend .checkbox-base;
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
 
-// Medium checkbox (default size)
-.checkbox-md {
-  @extend .checkbox-base;
-  input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
+      &::after {
+        font-weight: $font-weight-medium;
+        font-size: 14px;
+      }
+    }
 
-    &::after {
+    label,
+    .mx-checkbox-label,
+    .control-label {
       font-weight: $font-weight-medium;
-      font-size: 14px;
+      font-size: $font-size-body-2;
     }
   }
 
-  label,
-  .mx-checkbox-label,
-  .control-label {
-    font-weight: $font-weight-medium;
-    font-size: $font-size-body-2;
-  }
-}
+  // Large checkbox for prominent selections
+  .checkbox-lg,
+  &.checkbox-lg {
+    @extend .checkbox-base;
+    input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
 
-// Large checkbox for prominent selections
-.checkbox-lg {
-  @extend .checkbox-base;
-  input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-
-    &::after {
-      font-size: 16px;
+      &::after {
+        font-size: 16px;
+      }
     }
-  }
 
-  label,
-  .mx-checkbox-label,
-  .control-label {
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-body-1;
+    label,
+    .mx-checkbox-label,
+    .control-label {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-body-1;
+    }
   }
 }

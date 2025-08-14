@@ -9,7 +9,7 @@ export function preview({ side = "right" }: { side?: string }): ReactElement {
     return (
         <div style={{ position: "relative", minHeight: 100 }}>
             <button
-                className="btn btn-info trimm-color-token-fab"
+                className="trimm-button btn-info trimm-color-token-fab"
                 type="button"
                 aria-label="Open color token editor"
                 style={{

@@ -1,305 +1,329 @@
-// === BASE BUTTON STYLE ===
-// Foundation styling for all button components
-// Provides consistent structure, typography, and interactions
+// === SCOPED BUTTON STYLES ===
+// TRIMM button styles only apply when 'trimm-button' class is present on the button or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.button-base {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $font-primary;
-  font-weight: $font-weight-bold;
-  border-radius: $radius-full;
-  border: $border-1 solid transparent;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
-  gap: $spacing-8;
-  line-height: $line-height-body-1;
-  text-decoration: none;
-  padding: $spacing-12 $spacing-24;
-}
+.trimm-button {
+  // === BASE BUTTON STYLE ===
+  // Foundation styling applied when 'trimm-button' class is present
+  // Provides consistent TRIMM structure, typography, and interactions
 
-// === DEFAULT VARIANT ===
-// Standard button with transparent background and border
-// Use for secondary actions or when primary button would be too prominent
+  .button-base,
+  &.button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-primary;
+    font-weight: $font-weight-bold;
+    border-radius: $radius-full;
+    border: $border-1 solid transparent;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease-in-out,
+      color 0.2s ease-in-out;
+    gap: $spacing-8;
+    line-height: $line-height-body-1;
+    text-decoration: none;
+    padding: $spacing-12 $spacing-24;
+  }
 
-.btn-default {
-  @extend .button-base;
-  background-color: transparent;
-  color: var(--base-black);
-  border: $border-1 solid var(--base-white);
-  box-shadow: $shadow-8;
+  // === DEFAULT VARIANT ===
+  // Standard button with transparent background and border
+  // Use for secondary actions or when primary button would be too prominent
 
-  &:hover,
-  &:focus {
-    background-color: var(--base-white-hover);
+  .btn-default,
+  &.btn-default {
+    @extend .button-base;
+    background-color: transparent;
     color: var(--base-black);
+    border: $border-1 solid var(--base-white);
+    box-shadow: $shadow-8;
+
+    &:hover,
+    &:focus {
+      background-color: var(--base-white-hover);
+      color: var(--base-black);
+    }
+
+    &:active {
+      background-color: var(--base-white-active);
+      color: var(--base-black-active);
+    }
+
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--secondary-1-disabled);
+      color: var(--base-white-disabled);
+      border-color: var(--base-black-disabled);
+      cursor: not-allowed;
+    }
+
+    svg,
+    i.mdi,
+    span > svg {
+      color: currentColor;
+    }
   }
 
-  &:active {
-    background-color: var(--base-white-active);
-    color: var(--base-black-active);
-  }
+  // === CTA VARIANT ===
+  // Call-to-action button for primary user actions
+  // High contrast orange background for maximum visibility
 
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--secondary-1-disabled);
-    color: var(--base-white-disabled);
-    border-color: var(--base-black-disabled);
-    cursor: not-allowed;
-  }
-
-  svg,
-  i.mdi,
-  span > svg {
-    color: currentColor;
-  }
-}
-
-// === CTA VARIANT ===
-// Call-to-action button for primary user actions
-// High contrast orange background for maximum visibility
-
-.btn-cta {
-  @extend .button-base;
-  background-color: var(--brand-2);
-  color: var(--base-white);
-  border: none;
-
-  &:hover {
-    background-color: var(--brand-2-hover);
-  }
-
-  &:active {
-    background-color: var(--brand-2-active);
-  }
-
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--brand-2-disabled);
-    color: var(--base-white-disabled);
-    cursor: not-allowed;
-  }
-
-  svg,
-  i.mdi,
-  span > svg {
-    color: currentColor;
-  }
-}
-
-// === INVERSE VARIANT ===
-// Dark button for light backgrounds or high contrast needs
-// Use when you need a button that stands out against light content
-
-.btn-inverse {
-  @extend .button-base;
-  background-color: var(--base-black);
-  color: var(--base-white);
-  border: $border-1 solid var(--base-black);
-
-  &:hover,
-  &:focus {
-    background-color: var(--base-black-hover);
+  .btn-cta,
+  &.btn-cta {
+    @extend .button-base;
+    background-color: var(--brand-2);
     color: var(--base-white);
+    border: none;
+
+    &:hover {
+      background-color: var(--brand-2-hover);
+    }
+
+    &:active {
+      background-color: var(--brand-2-active);
+    }
+
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--brand-2-disabled);
+      color: var(--base-white-disabled);
+      cursor: not-allowed;
+    }
+
+    svg,
+    i.mdi,
+    span > svg {
+      color: currentColor;
+    }
   }
 
-  &:active {
-    background-color: var(--base-black-active);
-    color: var(--base-white-active);
-  }
+  // === INVERSE VARIANT ===
+  // Dark button for light backgrounds or high contrast needs
+  // Use when you need a button that stands out against light content
 
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--base-black-disabled);
-    color: var(--base-white-disabled);
-    border-color: var(--base-black-disabled);
-    cursor: not-allowed;
-  }
-}
-
-// === PRIMARY VARIANT ===
-// Primary brand color button for main actions
-// Use for the most important action on a page
-
-.btn-primary {
-  @extend .button-base;
-  background-color: var(--brand-1);
-  color: var(--base-white);
-  border: $border-1 solid var(--brand-1);
-
-  &:hover,
-  &:focus {
-    background-color: var(--brand-1-hover);
+  .btn-inverse,
+  &.btn-inverse {
+    @extend .button-base;
+    background-color: var(--base-black);
     color: var(--base-white);
+    border: $border-1 solid var(--base-black);
+
+    &:hover,
+    &:focus {
+      background-color: var(--base-black-hover);
+      color: var(--base-white);
+    }
+
+    &:active {
+      background-color: var(--base-black-active);
+      color: var(--base-white-active);
+    }
+
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--base-black-disabled);
+      color: var(--base-white-disabled);
+      border-color: var(--base-black-disabled);
+      cursor: not-allowed;
+    }
   }
 
-  &:active {
-    background-color: var(--brand-1-active);
-    color: var(--base-white-active);
+  // === PRIMARY VARIANT ===
+  // Primary brand color button for main actions
+  // Use for the most important action on a page
+
+  .btn-primary,
+  &.btn-primary {
+    @extend .button-base;
+    background-color: var(--brand-1);
+    color: var(--base-white);
+    border: $border-1 solid var(--brand-1);
+
+    &:hover,
+    &:focus {
+      background-color: var(--brand-1-hover);
+      color: var(--base-white);
+    }
+
+    &:active {
+      background-color: var(--brand-1-active);
+      color: var(--base-white-active);
+    }
+
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--brand-1-disabled);
+      color: var(--base-white-disabled);
+      border-color: var(--brand-1-disabled);
+      cursor: not-allowed;
+    }
   }
 
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--brand-1-disabled);
-    color: var(--base-white-disabled);
-    border-color: var(--brand-1-disabled);
-    cursor: not-allowed;
-  }
-}
+  // === INFO VARIANT ===
+  // Information button for informational actions
+  // Teal background for info-related functionality
 
-// === INFO VARIANT ===
-// Information button for informational actions
-// Teal background for info-related functionality
+  .btn-info,
+  &.btn-info {
+    @extend .button-base;
+    background-color: var(--brand-3);
+    color: var(--base-white);
+    border: $border-1 solid var(--brand-3);
 
-.btn-info {
-  @extend .button-base;
-  background-color: var(--brand-3);
-  color: var(--base-white);
-  border: $border-1 solid var(--brand-3);
+    &:hover,
+    &:focus {
+      background-color: var(--brand-3-hover);
+    }
 
-  &:hover,
-  &:focus {
-    background-color: var(--brand-3-hover);
-  }
+    &:active {
+      background-color: var(--brand-3-active);
+      color: var(--base-white-active);
+    }
 
-  &:active {
-    background-color: var(--brand-3-active);
-    color: var(--base-white-active);
-  }
-
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--brand-3-disabled);
-    color: var(--base-white-disabled);
-    border-color: var(--brand-3-disabled);
-    cursor: not-allowed;
-  }
-}
-
-// === SUCCESS VARIANT ===
-// Success button for positive actions
-// Green background for success-related functionality
-
-.btn-success {
-  @extend .button-base;
-  background-color: var(--support-3);
-  color: var(--base-white);
-  border: $border-1 solid var(--support-3);
-
-  &:hover,
-  &:focus {
-    background-color: var(--support-3-hover);
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--brand-3-disabled);
+      color: var(--base-white-disabled);
+      border-color: var(--brand-3-disabled);
+      cursor: not-allowed;
+    }
   }
 
-  &:active {
-    background-color: var(--support-3-active);
-    color: var(--base-white-active);
+  // === SUCCESS VARIANT ===
+  // Success button for positive actions
+  // Green background for success-related functionality
+
+  .btn-success,
+  &.btn-success {
+    @extend .button-base;
+    background-color: var(--support-3);
+    color: var(--base-white);
+    border: $border-1 solid var(--support-3);
+
+    &:hover,
+    &:focus {
+      background-color: var(--support-3-hover);
+    }
+
+    &:active {
+      background-color: var(--support-3-active);
+      color: var(--base-white-active);
+    }
+
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--support-3-disabled);
+      color: var(--base-white-disabled);
+      border-color: var(--support-3-disabled);
+      cursor: not-allowed;
+    }
   }
 
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--support-3-disabled);
-    color: var(--base-white-disabled);
-    border-color: var(--support-3-disabled);
-    cursor: not-allowed;
-  }
-}
+  // === WARNING VARIANT ===
+  // Warning button for cautionary actions
+  // Yellow background for warning-related functionality
 
-// === WARNING VARIANT ===
-// Warning button for cautionary actions
-// Yellow background for warning-related functionality
+  .btn-warning,
+  &.btn-warning {
+    @extend .button-base;
+    background-color: var(--support-4);
+    color: var(--base-black);
+    border: $border-1 solid var(--support-4);
 
-.btn-warning {
-  @extend .button-base;
-  background-color: var(--support-4);
-  color: var(--base-black);
-  border: $border-1 solid var(--support-4);
+    &:hover,
+    &:focus {
+      background-color: var(--support-4-hover);
+    }
 
-  &:hover,
-  &:focus {
-    background-color: var(--support-4-hover);
-  }
+    &:active {
+      background-color: var(--support-4-active);
+      color: var(--base-black-active);
+    }
 
-  &:active {
-    background-color: var(--support-4-active);
-    color: var(--base-black-active);
-  }
-
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--support-4-disabled);
-    color: var(--base-black-disabled);
-    border-color: var(--support-4-disabled);
-    cursor: not-allowed;
-  }
-}
-
-// === DANGER VARIANT ===
-// Danger button for destructive actions
-// Red background for dangerous or destructive functionality
-
-.btn-danger {
-  @extend .button-base;
-  background-color: var(--support-2);
-  color: var(--base-white);
-  border: $border-1 solid var(--support-2);
-
-  &:hover,
-  &:focus {
-    background-color: var(--support-2-hover);
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--support-4-disabled);
+      color: var(--base-black-disabled);
+      border-color: var(--support-4-disabled);
+      cursor: not-allowed;
+    }
   }
 
-  &:active {
-    background-color: var(--support-2-active);
-    color: var(--base-white-active);
+  // === DANGER VARIANT ===
+  // Danger button for destructive actions
+  // Red background for dangerous or destructive functionality
+
+  .btn-danger,
+  &.btn-danger {
+    @extend .button-base;
+    background-color: var(--support-2);
+    color: var(--base-white);
+    border: $border-1 solid var(--support-2);
+
+    &:hover,
+    &:focus {
+      background-color: var(--support-2-hover);
+    }
+
+    &:active {
+      background-color: var(--support-2-active);
+      color: var(--base-white-active);
+    }
+
+    &:disabled,
+    &.btn-disabled {
+      background-color: var(--support-2-disabled);
+      color: var(--base-white-disabled);
+      border-color: var(--support-2-disabled);
+      cursor: not-allowed;
+    }
   }
 
-  &:disabled,
-  &.btn-disabled {
-    background-color: var(--support-2-disabled);
-    color: var(--base-white-disabled);
-    border-color: var(--support-2-disabled);
-    cursor: not-allowed;
+  // === SIZE MODIFIERS ===
+  // Adjust button size for different contexts and hierarchies
+
+  // Small button for compact layouts
+  .btn-sm,
+  &.btn-sm {
+    @extend .button-base;
+    padding: $spacing-8 $spacing-16;
+    font-size: $font-size-body-3;
   }
-}
 
-// === SIZE MODIFIERS ===
-// Adjust button size for different contexts and hierarchies
+  // Medium button (default size)
+  .btn-md,
+  &.btn-md {
+    @extend .button-base;
+    padding: $spacing-12 $spacing-24;
+    font-size: $font-size-body-2;
+  }
 
-// Small button for compact layouts
-.btn-sm {
-  @extend .button-base;
-  padding: $spacing-8 $spacing-16;
-  font-size: $font-size-body-3;
-}
+  // Large button for prominent actions
+  .btn-lg,
+  &.btn-lg {
+    @extend .button-base;
+    padding: $spacing-16 $spacing-32;
+    font-size: $font-size-body-1;
+  }
 
-// Medium button (default size)
-.btn-md {
-  @extend .button-base;
-  padding: $spacing-12 $spacing-24;
-  font-size: $font-size-body-2;
-}
+  // === ICON ALIGNMENT ===
+  // Control icon positioning relative to button text
 
-// Large button for prominent actions
-.btn-lg {
-  @extend .button-base;
-  padding: $spacing-16 $spacing-32;
-  font-size: $font-size-body-1;
-}
+  // Icon positioned to the right of text
+  .btn-icon-right,
+  &.btn-icon-right {
+    svg,
+    i.mdi {
+      margin-left: $spacing-4;
+    }
+  }
 
-// === ICON ALIGNMENT ===
-// Control icon positioning relative to button text
-
-// Icon positioned to the right of text
-.btn-icon-right svg,
-.btn-icon-right i.mdi {
-  margin-left: $spacing-4;
-}
-
-// Icon positioned to the left of text
-.btn-icon-left svg,
-.btn-icon-left i.mdi {
-  margin-right: $spacing-4;
+  // Icon positioned to the left of text
+  .btn-icon-left,
+  &.btn-icon-left {
+    svg,
+    i.mdi {
+      margin-right: $spacing-4;
+    }
+  }
 }

@@ -5,8 +5,9 @@
 
     <name>TRIMM Dropdown</name>
     <description>A customizable dropdown/select component for Mendix, styled with the TRIMM Design System. Features flexible option selection, icon support, and seamless integration with Mendix actions.</description>
-    <icon/>
-
+    <icon>
+PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjYwIDY0IDUyMCA1MjAiPjwhLS0hRm9udCBBd2Vzb21lIEZyZWUgNy4wLjAgYnkgQGZvbnRhd2Vzb21lIC0gaHR0cHM6Ly9mb250YXdlc29tZS5jb20gTGljZW5zZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tL2xpY2Vuc2UvZnJlZSBDb3B5cmlnaHQgMjAyNSBGb250aWNvbnMsIEluYy4tLT48cGF0aCBmaWxsPSIjMGU4MDhhIiBkPSJNNDgwIDU0NEM1MTUuMyA1NDQgNTQ0IDUxNS4zIDU0NCA0ODBMNTQ0IDE2MEM1NDQgMTI0LjcgNTE1LjMgOTYgNDgwIDk2TDE2MCA5NkMxMjQuNyA5NiA5NiAxMjQuNyA5NiAxNjBMOTYgNDgwQzk2IDUxNS4zIDEyNC43IDU0NCAxNjAgNTQ0TDQ4MCA1NDR6TTMyMCA0MTZDMzEzLjMgNDE2IDMwNyA0MTMuMiAzMDIuNCA0MDguM0wxOTguNCAyOTYuM0MxOTEuOSAyODkuMyAxOTAuMiAyNzkuMSAxOTQgMjcwLjRDMTk3LjggMjYxLjcgMjA2LjUgMjU2IDIxNiAyNTZMNDI0IDI1NkM0MzMuNSAyNTYgNDQyLjIgMjYxLjcgNDQ2IDI3MC40QzQ0OS44IDI3OS4xIDQ0OC4xIDI4OS4zIDQ0MS42IDI5Ni4zTDMzNy42IDQwOC4zQzMzMy4xIDQxMy4yIDMyNi43IDQxNiAzMjAgNDE2eiIvPjwvc3ZnPg==
+    </icon>
     <properties>
         <propertyGroup caption="Data">
             <property key="dropdownItems" type="object" isList="true">
