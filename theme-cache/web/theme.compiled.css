@@ -29521,7 +29521,7 @@ p {
   font-size: 18px;
 }
 
-.label-base, .label-lg, .label-md, .label-sm, .label-warning, .label-danger, .label-success, .label-secondary, .label-default {
+.trimm-label .label-base, .trimm-label .label-lg, .trimm-label .label-md, .trimm-label .label-sm, .trimm-label .label-warning, .trimm-label .label-danger, .trimm-label .label-success, .trimm-label .label-secondary, .trimm-label .label-default, .trimm-label.label-base, .trimm-label.label-lg, .trimm-label.label-md, .trimm-label.label-sm, .trimm-label.label-warning, .trimm-label.label-danger, .trimm-label.label-success, .trimm-label.label-secondary, .trimm-label.label-default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -29534,48 +29534,40 @@ p {
   white-space: nowrap;
   color: var(--base-black);
 }
-
-.label-default {
+.trimm-label .label-default, .trimm-label.label-default {
   background-color: var(--brand-3);
   color: var(--base-white);
   border: none;
 }
-
-.label-secondary {
+.trimm-label .label-secondary, .trimm-label.label-secondary {
   background-color: var(--brand-2);
   color: var(--base-white);
   border: none;
 }
-
-.label-success {
+.trimm-label .label-success, .trimm-label.label-success {
   background-color: var(--support-3);
   color: var(--base-white);
   border: none;
 }
-
-.label-danger {
+.trimm-label .label-danger, .trimm-label.label-danger {
   background-color: var(--support-2);
   color: var(--base-white);
   border: none;
 }
-
-.label-warning {
+.trimm-label .label-warning, .trimm-label.label-warning {
   background-color: var(--support-4);
   color: var(--base-white);
   border: none;
 }
-
-.label-sm {
+.trimm-label .label-sm, .trimm-label.label-sm {
   font-size: 14px;
   padding: 4px;
 }
-
-.label-md {
+.trimm-label .label-md, .trimm-label.label-md {
   font-size: 16px;
   padding: 8px;
 }
-
-.label-lg {
+.trimm-label .label-lg, .trimm-label.label-lg {
   font-size: 18px;
   padding: 12px;
 }

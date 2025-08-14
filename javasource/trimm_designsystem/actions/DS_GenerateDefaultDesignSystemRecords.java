@@ -14,16 +14,13 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
-{
-	public DS_GenerateDefaultDesignSystemRecords(IContext context)
-	{
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
+	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception
-	{
+	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
 		// Purpose: Seed the TRIMM Design System data model with default tokens,
 		// components,
@@ -317,20 +314,6 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		Object[][] componentClasses = new Object[][] {
 				// Button Component Classes (associate to "Button")
 				{ "trimm-button button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
-				{ "btn-default", "Default button variant with transparent background", 2, "Button" },
-				{ "btn-cta", "Call-to-action button with orange background", 3, "Button" },
-				{ "btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
-				{ "btn-primary", "Primary button variant with navy blue background", 5, "Button" },
-				{ "btn-info", "Info button variant with teal background", 6, "Button" },
-				{ "btn-success", "Success button variant with green background", 7, "Button" },
-				{ "btn-warning", "Warning button variant with yellow background", 8, "Button" },
-				{ "btn-danger", "Danger button variant with red background", 9, "Button" },
-				{ "btn-sm", "Small button size variant", 10, "Button" },
-				{ "btn-md", "Medium button size variant", 11, "Button" },
-				{ "btn-lg", "Large button size variant", 12, "Button" },
-				{ "btn-icon-right", "Button with icon on the right", 13, "Button" },
-				{ "btn-icon-left", "Button with icon on the left", 14, "Button" },
-
 				{ "trimm-button btn-default", "Default button variant with transparent background", 2, "Button" },
 				{ "trimm-button btn-cta", "Call-to-action button with orange background", 3, "Button" },
 				{ "trimm-button btn-inverse", "Inverse button variant with inverted colors", 4, "Button" },
@@ -362,15 +345,15 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-checkbox checkbox-lg", "Large checkbox size variant", 24, "Checkbox" },
 
 				// Label Component Classes (associate to "Label")
-				{ "label-base", "Base label styling with TRIMM design tokens", 25, "Label" },
-				{ "label-default", "Default label variant with teal background", 26, "Label" },
-				{ "label-secondary", "Secondary label variant with orange background", 27, "Label" },
-				{ "label-success", "Success label variant with green background", 28, "Label" },
-				{ "label-danger", "Danger label variant with red background", 29, "Label" },
-				{ "label-warning", "Warning label variant with yellow background", 30, "Label" },
-				{ "label-sm", "Small label size variant", 31, "Label" },
-				{ "label-md", "Medium label size variant", 32, "Label" },
-				{ "label-lg", "Large label size variant", 33, "Label" },
+				{ "trimm-label label-base", "Base label styling with TRIMM design tokens", 25, "Label" },
+				{ "trimm-label label-default", "Default label variant with teal background", 26, "Label" },
+				{ "trimm-label label-secondary", "Secondary label variant with orange background", 27, "Label" },
+				{ "trimm-label label-success", "Success label variant with green background", 28, "Label" },
+				{ "trimm-label label-danger", "Danger label variant with red background", 29, "Label" },
+				{ "trimm-label label-warning", "Warning label variant with yellow background", 30, "Label" },
+				{ "trimm-label label-sm", "Small label size variant", 31, "Label" },
+				{ "trimm-label label-md", "Medium label size variant", 32, "Label" },
+				{ "trimm-label label-lg", "Large label size variant", 33, "Label" },
 
 				// Radio Component Classes (associate to "Radio")
 				{ "radio-base", "Base radio button styling with TRIMM design tokens", 34, "Radio" },
@@ -511,7 +494,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject checkboxCompObj = checkboxCompList.get(0);
 			trimm_designsystem.proxies.DS_Component checkboxComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, checkboxCompObj);
-			String[] checkboxClassNames = { "trimm-checkbox checkbox-base", "trimm-checkbox checkbox-sm", "trimm-checkbox checkbox-md", "trimm-checkbox checkbox-lg" };
+			String[] checkboxClassNames = { "trimm-checkbox checkbox-base", "trimm-checkbox checkbox-sm",
+					"trimm-checkbox checkbox-md", "trimm-checkbox checkbox-lg" };
 			for (String className : checkboxClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -532,8 +516,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject labelCompObj = labelCompList.get(0);
 			trimm_designsystem.proxies.DS_Component labelComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, labelCompObj);
-			String[] labelClassNames = { "label-base", "label-default", "label-secondary", "label-success",
-					"label-danger", "label-warning", "label-sm", "label-md", "label-lg" };
+			String[] labelClassNames = { "trimm-label label-base", "trimm-label label-default",
+					"trimm-label label-secondary", "trimm-label label-success",
+					"trimm-label label-danger", "trimm-label label-warning", "trimm-label label-sm",
+					"trimm-label label-md", "trimm-label label-lg" };
 			for (String className : labelClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -700,11 +686,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
+	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString()
-	{
+	public java.lang.String toString() {
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
