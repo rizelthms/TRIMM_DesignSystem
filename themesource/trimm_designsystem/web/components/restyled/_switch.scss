@@ -1,143 +1,153 @@
-// === BASE SWITCH STYLE ===
-// Toggle switch styling for Mendix Switch widgets
-// Provides custom switch appearance with smooth animations
+// === SCOPED SWITCH STYLES ===
+// TRIMM switch styles only apply when 'trimm-switch' class is present on the switch or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.switch-base {
-  // Switch track and thumb container
-  .widget-switch-btn-wrapper {
-    --track-height: 28px;
-    --track-width: 48px;
-    --thumb-size: 22px;
+.trimm-switch {
+  // === BASE SWITCH STYLE ===
+  // Toggle switch styling for Mendix Switch widgets
+  // Provides custom switch appearance with smooth animations
 
-    position: relative;
-    height: var(--track-height);
-    width: var(--track-width);
-    background-color: var(--base-white);
-    border: 1px solid var(--secondary-1);
-    border-radius: var(--track-height);
-    box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled);
-    transition: all 0.2s ease-in-out;
+  .switch-base,
+  &.switch-base {
+    // Switch track and thumb container
+    .widget-switch-btn-wrapper {
+      --track-height: 28px;
+      --track-width: 48px;
+      --thumb-size: 22px;
 
-    // Checked/ON state styling
-    &.checked {
-      background-color: var(--brand-3) !important;
-      border-color: var(--brand-3) !important;
-      box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3) !important;
+      position: relative;
+      height: var(--track-height);
+      width: var(--track-width);
+      background-color: var(--base-white);
+      border: 1px solid var(--secondary-1);
+      border-radius: var(--track-height);
+      box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled);
+      transition: all 0.2s ease-in-out;
 
-      // Hover state when checked
-      &:hover:not(.disabled) {
-        background-color: var(--brand-3-hover) !important;
-        border-color: var(--brand-3-hover) !important;
-        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-hover) !important;
+      // Checked/ON state styling
+      &.checked {
+        background-color: var(--brand-3) !important;
+        border-color: var(--brand-3) !important;
+        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3) !important;
+
+        // Hover state when checked
+        &:hover:not(.disabled) {
+          background-color: var(--brand-3-hover) !important;
+          border-color: var(--brand-3-hover) !important;
+          box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-hover) !important;
+        }
+
+        // Disabled state when checked
+        &.disabled {
+          background-color: var(--brand-3-disabled) !important;
+          border-color: var(--brand-3-disabled) !important;
+          box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-disabled) !important;
+        }
       }
 
-      // Disabled state when checked
+      // Unchecked/OFF state styling
+      &:not(.checked) {
+        background-color: var(--secondary-1-hover) !important;
+        border-color: var(--secondary-1) !important;
+
+        // Hover state when unchecked
+        &:hover:not(.disabled) {
+          border-color: var(--secondary-1-hover) !important;
+          box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-hover) !important;
+        }
+
+        // Disabled state when unchecked
+        &.disabled {
+          border-color: var(--secondary-1-disabled) !important;
+          box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled) !important;
+        }
+      }
+
+      // Switch thumb (sliding circle)
+      .widget-switch-btn {
+        position: absolute;
+        top: 50%;
+        left: 2px;
+        width: var(--thumb-size);
+        height: var(--thumb-size);
+        background-color: var(--base-white) !important;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        box-shadow: 0 2px 4px var(--secondary-1-disabled);
+        transition: left 0.2s ease-in-out;
+
+        // Disabled thumb styling
+        &.disabled {
+          background-color: var(--base-white-disabled) !important;
+        }
+      }
+
+      // Thumb position when checked
+      &.checked .widget-switch-btn {
+        left: calc(100% - var(--thumb-size) - 2px);
+      }
+    }
+
+    // Switch label styling
+    .control-label {
+      color: var(--base-black);
+      font-family: $font-primary;
+      font-size: $font-size-body-2;
+
       &.disabled {
-        background-color: var(--brand-3-disabled) !important;
-        border-color: var(--brand-3-disabled) !important;
-        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-disabled) !important;
+        color: var(--secondary-1);
       }
     }
+  }
 
-    // Unchecked/OFF state styling
-    &:not(.checked) {
-      background-color: var(--secondary-1-hover) !important;
-      border-color: var(--secondary-1) !important;
+  // === SIZE MODIFIERS ===
+  // Different switch sizes for various contexts
 
-      // Hover state when unchecked
-      &:hover:not(.disabled) {
-        border-color: var(--secondary-1-hover) !important;
-        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-hover) !important;
-      }
+  // Small switch for compact layouts
+  .switch-sm,
+  &.switch-sm {
+    @extend .switch-base;
 
-      // Disabled state when unchecked
-      &.disabled {
-        border-color: var(--secondary-1-disabled) !important;
-        box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled) !important;
-      }
+    .widget-switch-btn-wrapper {
+      --track-height: 20px;
+      --track-width: 36px;
+      --thumb-size: 16px;
     }
-
-    // Switch thumb (sliding circle)
-    .widget-switch-btn {
-      position: absolute;
-      top: 50%;
-      left: 2px;
-      width: var(--thumb-size);
-      height: var(--thumb-size);
-      background-color: var(--base-white) !important;
-      border-radius: 50%;
-      transform: translateY(-50%);
-      box-shadow: 0 2px 4px var(--secondary-1-disabled);
-      transition: left 0.2s ease-in-out;
-
-      // Disabled thumb styling
-      &.disabled {
-        background-color: var(--base-white-disabled) !important;
-      }
-    }
-
-    // Thumb position when checked
-    &.checked .widget-switch-btn {
-      left: calc(100% - var(--thumb-size) - 2px);
+    .control-label {
+      font-size: $font-size-body-3;
+      font-weight: $font-weight-regular;
     }
   }
 
-  // Switch label styling
-  .control-label {
-    color: var(--base-black);
-    font-family: $font-primary;
-    font-size: $font-size-body-2;
+  // Medium switch (default size)
+  .switch-md,
+  &.switch-md {
+    @extend .switch-base;
 
-    &.disabled {
-      color: var(--secondary-1);
+    .widget-switch-btn-wrapper {
+      --track-height: 28px;
+      --track-width: 48px;
+      --thumb-size: 22px;
+    }
+    .control-label {
+      font-size: $font-size-body-2;
+      font-weight: $font-weight-medium;
     }
   }
-}
 
-// === SIZE MODIFIERS ===
-// Different switch sizes for various contexts
+  // Large switch for prominent toggles
+  .switch-lg,
+  &.switch-lg {
+    @extend .switch-base;
 
-// Small switch for compact layouts
-.switch-sm {
-  @extend .switch-base;
-
-  .widget-switch-btn-wrapper {
-    --track-height: 20px;
-    --track-width: 36px;
-    --thumb-size: 16px;
-  }
-  .control-label {
-    font-size: $font-size-body-3;
-    font-weight: $font-weight-regular;
-  }
-}
-
-// Medium switch (default size)
-.switch-md {
-  @extend .switch-base;
-
-  .widget-switch-btn-wrapper {
-    --track-height: 28px;
-    --track-width: 48px;
-    --thumb-size: 22px;
-  }
-  .control-label {
-    font-size: $font-size-body-2;
-    font-weight: $font-weight-medium;
-  }
-}
-
-// Large switch for prominent toggles
-.switch-lg {
-  @extend .switch-base;
-
-  .widget-switch-btn-wrapper {
-    --track-height: 36px;
-    --track-width: 64px;
-    --thumb-size: 30px;
-  }
-  .control-label {
-    font-size: $font-size-body-1;
-    font-weight: $font-weight-semibold;
+    .widget-switch-btn-wrapper {
+      --track-height: 36px;
+      --track-width: 64px;
+      --thumb-size: 30px;
+    }
+    .control-label {
+      font-size: $font-size-body-1;
+      font-weight: $font-weight-semibold;
+    }
   }
 }

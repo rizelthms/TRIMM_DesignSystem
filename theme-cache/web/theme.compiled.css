@@ -29934,7 +29934,7 @@ p {
   border-bottom-color: var(--base-white) !important;
 }
 
-.switch-base .widget-switch-btn-wrapper, .switch-lg .widget-switch-btn-wrapper, .switch-md .widget-switch-btn-wrapper, .switch-sm .widget-switch-btn-wrapper {
+.trimm-switch .switch-base .widget-switch-btn-wrapper, .trimm-switch .switch-lg .widget-switch-btn-wrapper, .trimm-switch .switch-md .widget-switch-btn-wrapper, .trimm-switch .switch-sm .widget-switch-btn-wrapper, .trimm-switch.switch-base .widget-switch-btn-wrapper, .trimm-switch.switch-lg .widget-switch-btn-wrapper, .trimm-switch.switch-md .widget-switch-btn-wrapper, .trimm-switch.switch-sm .widget-switch-btn-wrapper {
   --track-height: 28px;
   --track-width: 48px;
   --thumb-size: 22px;
@@ -29947,34 +29947,34 @@ p {
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled);
   transition: all 0.2s ease-in-out;
 }
-.switch-base .widget-switch-btn-wrapper.checked, .switch-lg .widget-switch-btn-wrapper.checked, .switch-md .widget-switch-btn-wrapper.checked, .switch-sm .widget-switch-btn-wrapper.checked {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked, .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked, .trimm-switch .switch-md .widget-switch-btn-wrapper.checked, .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked, .trimm-switch.switch-base .widget-switch-btn-wrapper.checked, .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked, .trimm-switch.switch-md .widget-switch-btn-wrapper.checked, .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked {
   background-color: var(--brand-3) !important;
   border-color: var(--brand-3) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3) !important;
 }
-.switch-base .widget-switch-btn-wrapper.checked:hover:not(.disabled), .switch-lg .widget-switch-btn-wrapper.checked:hover:not(.disabled), .switch-md .widget-switch-btn-wrapper.checked:hover:not(.disabled), .switch-sm .widget-switch-btn-wrapper.checked:hover:not(.disabled) {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch .switch-md .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-base .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-md .widget-switch-btn-wrapper.checked:hover:not(.disabled), .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked:hover:not(.disabled) {
   background-color: var(--brand-3-hover) !important;
   border-color: var(--brand-3-hover) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-hover) !important;
 }
-.switch-base .widget-switch-btn-wrapper.checked.disabled, .switch-lg .widget-switch-btn-wrapper.checked.disabled, .switch-md .widget-switch-btn-wrapper.checked.disabled, .switch-sm .widget-switch-btn-wrapper.checked.disabled {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked.disabled, .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked.disabled, .trimm-switch .switch-md .widget-switch-btn-wrapper.checked.disabled, .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-base .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-md .widget-switch-btn-wrapper.checked.disabled, .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked.disabled {
   background-color: var(--brand-3-disabled) !important;
   border-color: var(--brand-3-disabled) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--brand-3-disabled) !important;
 }
-.switch-base .widget-switch-btn-wrapper:not(.checked), .switch-lg .widget-switch-btn-wrapper:not(.checked), .switch-md .widget-switch-btn-wrapper:not(.checked), .switch-sm .widget-switch-btn-wrapper:not(.checked) {
+.trimm-switch .switch-base .widget-switch-btn-wrapper:not(.checked), .trimm-switch .switch-lg .widget-switch-btn-wrapper:not(.checked), .trimm-switch .switch-md .widget-switch-btn-wrapper:not(.checked), .trimm-switch .switch-sm .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-base .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-lg .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-md .widget-switch-btn-wrapper:not(.checked), .trimm-switch.switch-sm .widget-switch-btn-wrapper:not(.checked) {
   background-color: var(--secondary-1-hover) !important;
   border-color: var(--secondary-1) !important;
 }
-.switch-base .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .switch-lg .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .switch-md .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .switch-sm .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled) {
+.trimm-switch .switch-base .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch .switch-lg .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch .switch-md .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch .switch-sm .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-base .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-lg .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-md .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled), .trimm-switch.switch-sm .widget-switch-btn-wrapper:not(.checked):hover:not(.disabled) {
   border-color: var(--secondary-1-hover) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-hover) !important;
 }
-.switch-base .widget-switch-btn-wrapper:not(.checked).disabled, .switch-lg .widget-switch-btn-wrapper:not(.checked).disabled, .switch-md .widget-switch-btn-wrapper:not(.checked).disabled, .switch-sm .widget-switch-btn-wrapper:not(.checked).disabled {
+.trimm-switch .switch-base .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch .switch-lg .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch .switch-md .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch .switch-sm .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-base .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-lg .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-md .widget-switch-btn-wrapper:not(.checked).disabled, .trimm-switch.switch-sm .widget-switch-btn-wrapper:not(.checked).disabled {
   border-color: var(--secondary-1-disabled) !important;
   box-shadow: inset 0 0 0 calc(var(--track-height) / 2) var(--secondary-1-disabled) !important;
 }
-.switch-base .widget-switch-btn-wrapper .widget-switch-btn, .switch-lg .widget-switch-btn-wrapper .widget-switch-btn, .switch-md .widget-switch-btn-wrapper .widget-switch-btn, .switch-sm .widget-switch-btn-wrapper .widget-switch-btn {
+.trimm-switch .switch-base .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch .switch-lg .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch .switch-md .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch .switch-sm .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-base .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-lg .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-md .widget-switch-btn-wrapper .widget-switch-btn, .trimm-switch.switch-sm .widget-switch-btn-wrapper .widget-switch-btn {
   position: absolute;
   top: 50%;
   left: 2px;
@@ -29986,47 +29986,44 @@ p {
   box-shadow: 0 2px 4px var(--secondary-1-disabled);
   transition: left 0.2s ease-in-out;
 }
-.switch-base .widget-switch-btn-wrapper .widget-switch-btn.disabled, .switch-lg .widget-switch-btn-wrapper .widget-switch-btn.disabled, .switch-md .widget-switch-btn-wrapper .widget-switch-btn.disabled, .switch-sm .widget-switch-btn-wrapper .widget-switch-btn.disabled {
+.trimm-switch .switch-base .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch .switch-lg .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch .switch-md .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch .switch-sm .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-base .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-lg .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-md .widget-switch-btn-wrapper .widget-switch-btn.disabled, .trimm-switch.switch-sm .widget-switch-btn-wrapper .widget-switch-btn.disabled {
   background-color: var(--base-white-disabled) !important;
 }
-.switch-base .widget-switch-btn-wrapper.checked .widget-switch-btn, .switch-lg .widget-switch-btn-wrapper.checked .widget-switch-btn, .switch-md .widget-switch-btn-wrapper.checked .widget-switch-btn, .switch-sm .widget-switch-btn-wrapper.checked .widget-switch-btn {
+.trimm-switch .switch-base .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch .switch-lg .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch .switch-md .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch .switch-sm .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-base .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-lg .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-md .widget-switch-btn-wrapper.checked .widget-switch-btn, .trimm-switch.switch-sm .widget-switch-btn-wrapper.checked .widget-switch-btn {
   left: calc(100% - var(--thumb-size) - 2px);
 }
-.switch-base .control-label, .switch-lg .control-label, .switch-md .control-label, .switch-sm .control-label {
+.trimm-switch .switch-base .control-label, .trimm-switch .switch-lg .control-label, .trimm-switch .switch-md .control-label, .trimm-switch .switch-sm .control-label, .trimm-switch.switch-base .control-label, .trimm-switch.switch-lg .control-label, .trimm-switch.switch-md .control-label, .trimm-switch.switch-sm .control-label {
   color: var(--base-black);
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
 }
-.switch-base .control-label.disabled, .switch-lg .control-label.disabled, .switch-md .control-label.disabled, .switch-sm .control-label.disabled {
+.trimm-switch .switch-base .control-label.disabled, .trimm-switch .switch-lg .control-label.disabled, .trimm-switch .switch-md .control-label.disabled, .trimm-switch .switch-sm .control-label.disabled, .trimm-switch.switch-base .control-label.disabled, .trimm-switch.switch-lg .control-label.disabled, .trimm-switch.switch-md .control-label.disabled, .trimm-switch.switch-sm .control-label.disabled {
   color: var(--secondary-1);
 }
-
-.switch-sm .widget-switch-btn-wrapper {
+.trimm-switch .switch-sm .widget-switch-btn-wrapper, .trimm-switch.switch-sm .widget-switch-btn-wrapper {
   --track-height: 20px;
   --track-width: 36px;
   --thumb-size: 16px;
 }
-.switch-sm .control-label {
+.trimm-switch .switch-sm .control-label, .trimm-switch.switch-sm .control-label {
   font-size: 14px;
   font-weight: 400;
 }
-
-.switch-md .widget-switch-btn-wrapper {
+.trimm-switch .switch-md .widget-switch-btn-wrapper, .trimm-switch.switch-md .widget-switch-btn-wrapper {
   --track-height: 28px;
   --track-width: 48px;
   --thumb-size: 22px;
 }
-.switch-md .control-label {
+.trimm-switch .switch-md .control-label, .trimm-switch.switch-md .control-label {
   font-size: 16px;
   font-weight: 500;
 }
-
-.switch-lg .widget-switch-btn-wrapper {
+.trimm-switch .switch-lg .widget-switch-btn-wrapper, .trimm-switch.switch-lg .widget-switch-btn-wrapper {
   --track-height: 36px;
   --track-width: 64px;
   --thumb-size: 30px;
 }
-.switch-lg .control-label {
+.trimm-switch .switch-lg .control-label, .trimm-switch.switch-lg .control-label {
   font-size: 18px;
   font-weight: 600;
 }

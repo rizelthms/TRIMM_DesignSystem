@@ -374,10 +374,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "textarea-lg", "Large textarea size variant", 45, "TextArea" },
 
 				// Switch Component Classes (associate to "Switch")
-				{ "switch-base", "Base switch styling with TRIMM design tokens", 46, "Switch" },
-				{ "switch-sm", "Small switch size variant", 47, "Switch" },
-				{ "switch-md", "Medium switch size variant", 48, "Switch" },
-				{ "switch-lg", "Large switch size variant", 49, "Switch" },
+				{ "trimm-switch switch-base", "Base switch styling with TRIMM design tokens", 46, "Switch" },
+				{ "trimm-switch switch-sm", "Small switch size variant", 47, "Switch" },
+				{ "trimm-switch switch-md", "Medium switch size variant", 48, "Switch" },
+				{ "trimm-switch switch-lg", "Large switch size variant", 49, "Switch" },
 
 				// Menu Component Classes (associate to "Menu")
 				{ "trimm-menu menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
@@ -604,7 +604,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject switchCompObj = switchCompList.get(0);
 			trimm_designsystem.proxies.DS_Component switchComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, switchCompObj);
-			String[] switchClassNames = { "switch-base", "switch-sm", "switch-md", "switch-lg" };
+			String[] switchClassNames = { "trimm-switch switch-base", "trimm-switch switch-sm",
+					"trimm-switch switch-md", "trimm-switch switch-lg" };
 			for (String className : switchClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
