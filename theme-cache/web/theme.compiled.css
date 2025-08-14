@@ -30245,6 +30245,13 @@ p {
   color: var(--base-white) !important;
 }
 
+.region-topbar .mx-navbar.hide-icons .mx-icon-lined,
+.region-topbar .mx-navbar.hide-icons .mx-icon-filled,
+.region-topbar .mx-navbar.hide-icons .glyphicon {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+
 .region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {
   background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
