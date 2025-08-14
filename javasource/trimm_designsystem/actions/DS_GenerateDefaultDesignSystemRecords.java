@@ -346,11 +346,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-accordion accordion-base", "Base accordion wrapper with TRIMM styling", 15, "Accordion" },
 
 				// Alert Component Classes (associate to "Alert")
-				{ "alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
-				{ "alert-success", "Success alert variant with green background", 17, "Alert" },
-				{ "alert-danger", "Danger alert variant with red background", 18, "Alert" },
-				{ "alert-warning", "Warning alert variant with yellow background", 19, "Alert" },
-				{ "alert-info", "Info alert variant with teal background", 20, "Alert" },
+				{ "trimm-alert alert-base", "Base alert styling with TRIMM design tokens", 16, "Alert" },
+				{ "trimm-alert alert-success", "Success alert variant with green background", 17, "Alert" },
+				{ "trimm-alert alert-danger", "Danger alert variant with red background", 18, "Alert" },
+				{ "trimm-alert alert-warning", "Warning alert variant with yellow background", 19, "Alert" },
+				{ "trimm-alert alert-info", "Info alert variant with teal background", 20, "Alert" },
 
 				// Checkbox Component Classes (associate to "Checkbox")
 				{ "checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
@@ -486,7 +486,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject alertCompObj = alertCompList.get(0);
 			trimm_designsystem.proxies.DS_Component alertComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, alertCompObj);
-			String[] alertClassNames = { "alert-base", "alert-success", "alert-danger", "alert-warning", "alert-info" };
+			String[] alertClassNames = { "trimm-alert alert-base", "trimm-alert alert-success",
+					"trimm-alert alert-danger", "trimm-alert alert-warning", "trimm-alert alert-info" };
 			for (String className : alertClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")

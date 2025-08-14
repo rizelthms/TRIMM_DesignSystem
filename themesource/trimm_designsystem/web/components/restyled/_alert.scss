@@ -1,8 +1,14 @@
-// === BASE ALERT STYLE ===
-// Base styling for all alert components
-// Apply to alert containers for consistent TRIMM design system appearance
+// === SCOPED ALERT STYLES ===
+// TRIMM alert styles only apply when 'trimm-alert' class is present on the alert or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.alert-base {
+.trimm-alert {
+  // === BASE ALERT STYLE ===
+  // Base styling for all alert components
+  // Apply to alert containers for consistent TRIMM design system appearance
+
+  .alert-base,
+  &.alert-base {
     font-family: $font-primary;
     border-radius: $radius-4;
     padding: $spacing-16;
@@ -78,13 +84,14 @@
             color: var(--base-white-disabled) !important;
         }
     }
-}
+  }
 
-// === VARIANTS ===
-// Different alert types for various use cases
+  // === VARIANTS ===
+  // Different alert types for various use cases
 
-// Success alerts for positive feedback
-.alert-success {
+  // Success alerts for positive feedback
+  .alert-success,
+  &.alert-success {
     @extend .alert-base;
     background-color: var(--support-3) !important;
     color: var(--base-white) !important;
@@ -110,10 +117,11 @@
             color: var(--base-white-disabled) !important;
         }
     }
-}
+  }
 
-// Danger alerts for errors and warnings
-.alert-danger {
+  // Danger alerts for errors and warnings
+  .alert-danger,
+  &.alert-danger {
     @extend .alert-base;
     background-color: var(--support-2) !important;
     color: var(--base-white) !important;
@@ -139,10 +147,11 @@
             color: var(--base-white-disabled) !important;
         }
     }
-}
+  }
 
-// Warning alerts for cautionary messages
-.alert-warning {
+  // Warning alerts for cautionary messages
+  .alert-warning,
+  &.alert-warning {
     @extend .alert-base;
     background-color: var(--support-4) !important;
     color: var(--base-black) !important;
@@ -168,10 +177,11 @@
             color: var(--base-black-disabled) !important;
         }
     }
-}
+  }
 
-// Info alerts for informational messages
-.alert-info {
+  // Info alerts for informational messages
+  .alert-info,
+  &.alert-info {
     @extend .alert-base;
     background-color: var(--secondary-1) !important;
     color: var(--base-white) !important;
@@ -197,4 +207,5 @@
             color: var(--base-white-disabled) !important;
         }
     }
+  }
 }
