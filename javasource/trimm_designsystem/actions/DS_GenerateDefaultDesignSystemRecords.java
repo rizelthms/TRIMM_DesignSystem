@@ -362,10 +362,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-radio radio-lg", "Large radio button size variant", 37, "Radio" },
 
 				// Textbox Component Classes (associate to "Textbox")
-				{ "textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
-				{ "textbox-sm", "Small textbox size variant", 39, "Textbox" },
-				{ "textbox-md", "Medium textbox size variant", 40, "Textbox" },
-				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" },
+				{ "trimm-textbox textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
+				{ "trimm-textbox textbox-sm", "Small textbox size variant", 39, "Textbox" },
+				{ "trimm-textbox textbox-md", "Medium textbox size variant", 40, "Textbox" },
+				{ "trimm-textbox textbox-lg", "Large textbox size variant", 41, "Textbox" },
 
 				// Textarea Component Classes (associate to "TextArea")
 				{ "trimm-textarea textarea-base", "Base textarea styling with TRIMM design tokens", 42, "TextArea" },
@@ -562,7 +562,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject textboxCompObj = textboxCompList.get(0);
 			trimm_designsystem.proxies.DS_Component textboxComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, textboxCompObj);
-			String[] textboxClassNames = { "textbox-base", "textbox-sm", "textbox-md", "textbox-lg" };
+			String[] textboxClassNames = { "trimm-textbox textbox-base", "trimm-textbox textbox-sm",
+					"trimm-textbox textbox-md", "trimm-textbox textbox-lg" };
 			for (String className : textboxClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
