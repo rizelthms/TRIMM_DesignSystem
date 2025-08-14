@@ -368,10 +368,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "textbox-lg", "Large textbox size variant", 41, "Textbox" },
 
 				// Textarea Component Classes (associate to "TextArea")
-				{ "textarea-base", "Base textarea styling with TRIMM design tokens", 42, "TextArea" },
-				{ "textarea-sm", "Small textarea size variant", 43, "TextArea" },
-				{ "textarea-md", "Medium textarea size variant", 44, "TextArea" },
-				{ "textarea-lg", "Large textarea size variant", 45, "TextArea" },
+				{ "trimm-textarea textarea-base", "Base textarea styling with TRIMM design tokens", 42, "TextArea" },
+				{ "trimm-textarea textarea-sm", "Small textarea size variant", 43, "TextArea" },
+				{ "trimm-textarea textarea-md", "Medium textarea size variant", 44, "TextArea" },
+				{ "trimm-textarea textarea-lg", "Large textarea size variant", 45, "TextArea" },
 
 				// Switch Component Classes (associate to "Switch")
 				{ "trimm-switch switch-base", "Base switch styling with TRIMM design tokens", 46, "Switch" },
@@ -583,7 +583,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject textareaCompObj = textareaCompList.get(0);
 			trimm_designsystem.proxies.DS_Component textareaComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, textareaCompObj);
-			String[] textareaClassNames = { "textarea-base", "textarea-sm", "textarea-md", "textarea-lg" };
+			String[] textareaClassNames = { "trimm-textarea textarea-base", "trimm-textarea textarea-sm",
+					"trimm-textarea textarea-md", "trimm-textarea textarea-lg" };
 			for (String className : textareaClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")

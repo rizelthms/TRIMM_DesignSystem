@@ -30078,10 +30078,10 @@ p {
   border-radius: 0 0 4px 4px;
 }
 
-.textarea-base, .textarea-lg, .textarea-md, .textarea-sm {
+.trimm-textarea .textarea-base, .trimm-textarea .textarea-lg, .trimm-textarea .textarea-md, .trimm-textarea .textarea-sm, .trimm-textarea.textarea-base, .trimm-textarea.textarea-lg, .trimm-textarea.textarea-md, .trimm-textarea.textarea-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.textarea-base textarea.mx-textarea-input, .textarea-lg textarea.mx-textarea-input, .textarea-md textarea.mx-textarea-input, .textarea-sm textarea.mx-textarea-input {
+.trimm-textarea .textarea-base textarea.mx-textarea-input, .trimm-textarea .textarea-lg textarea.mx-textarea-input, .trimm-textarea .textarea-md textarea.mx-textarea-input, .trimm-textarea .textarea-sm textarea.mx-textarea-input, .trimm-textarea.textarea-base textarea.mx-textarea-input, .trimm-textarea.textarea-lg textarea.mx-textarea-input, .trimm-textarea.textarea-md textarea.mx-textarea-input, .trimm-textarea.textarea-sm textarea.mx-textarea-input {
   font-size: 16px;
   font-weight: normal;
   color: var(--base-black) !important;
@@ -30094,44 +30094,41 @@ p {
   resize: vertical;
   transition: border-color 0.2s ease-in-out;
 }
-.textarea-base textarea.mx-textarea-input::placeholder, .textarea-lg textarea.mx-textarea-input::placeholder, .textarea-md textarea.mx-textarea-input::placeholder, .textarea-sm textarea.mx-textarea-input::placeholder {
+.trimm-textarea .textarea-base textarea.mx-textarea-input::placeholder, .trimm-textarea .textarea-lg textarea.mx-textarea-input::placeholder, .trimm-textarea .textarea-md textarea.mx-textarea-input::placeholder, .trimm-textarea .textarea-sm textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-base textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-lg textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-md textarea.mx-textarea-input::placeholder, .trimm-textarea.textarea-sm textarea.mx-textarea-input::placeholder {
   color: var(--base-black);
   font-style: italic;
 }
-.textarea-base textarea.mx-textarea-input:focus, .textarea-lg textarea.mx-textarea-input:focus, .textarea-md textarea.mx-textarea-input:focus, .textarea-sm textarea.mx-textarea-input:focus {
+.trimm-textarea .textarea-base textarea.mx-textarea-input:focus, .trimm-textarea .textarea-lg textarea.mx-textarea-input:focus, .trimm-textarea .textarea-md textarea.mx-textarea-input:focus, .trimm-textarea .textarea-sm textarea.mx-textarea-input:focus, .trimm-textarea.textarea-base textarea.mx-textarea-input:focus, .trimm-textarea.textarea-lg textarea.mx-textarea-input:focus, .trimm-textarea.textarea-md textarea.mx-textarea-input:focus, .trimm-textarea.textarea-sm textarea.mx-textarea-input:focus {
   outline: none;
   border-color: var(--brand-2) !important;
 }
-.textarea-base textarea.mx-textarea-input:disabled, .textarea-lg textarea.mx-textarea-input:disabled, .textarea-md textarea.mx-textarea-input:disabled, .textarea-sm textarea.mx-textarea-input:disabled {
+.trimm-textarea .textarea-base textarea.mx-textarea-input:disabled, .trimm-textarea .textarea-lg textarea.mx-textarea-input:disabled, .trimm-textarea .textarea-md textarea.mx-textarea-input:disabled, .trimm-textarea .textarea-sm textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-base textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-lg textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-md textarea.mx-textarea-input:disabled, .trimm-textarea.textarea-sm textarea.mx-textarea-input:disabled {
   background-color: var(--secondary-1-disabled) !important;
   color: var(--base-black) !important;
   border-color: var(--base-black) !important;
   cursor: not-allowed;
 }
-
-.textarea-sm textarea.mx-textarea-input {
+.trimm-textarea .textarea-sm textarea.mx-textarea-input, .trimm-textarea.textarea-sm textarea.mx-textarea-input {
   font-size: 14px !important;
   padding: 8px 12px !important;
 }
-.textarea-sm .control-label {
+.trimm-textarea .textarea-sm .control-label, .trimm-textarea.textarea-sm .control-label {
   font-size: 14px !important;
   font-weight: 400;
 }
-
-.textarea-md textarea.mx-textarea-input {
+.trimm-textarea .textarea-md textarea.mx-textarea-input, .trimm-textarea.textarea-md textarea.mx-textarea-input {
   font-size: 16px !important;
   padding: 12px 16px !important;
 }
-.textarea-md .control-label {
+.trimm-textarea .textarea-md .control-label, .trimm-textarea.textarea-md .control-label {
   font-size: 16px !important;
   font-weight: 500;
 }
-
-.textarea-lg textarea.mx-textarea-input {
+.trimm-textarea .textarea-lg textarea.mx-textarea-input, .trimm-textarea.textarea-lg textarea.mx-textarea-input {
   font-size: 18px !important;
   padding: 16px 24px !important;
 }
-.textarea-lg .control-label {
+.trimm-textarea .textarea-lg .control-label, .trimm-textarea.textarea-lg .control-label {
   font-size: 18px !important;
   font-weight: 600;
 }
