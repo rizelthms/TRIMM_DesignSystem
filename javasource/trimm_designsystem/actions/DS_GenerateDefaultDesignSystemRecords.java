@@ -14,13 +14,16 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
-	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
+{
+	public DS_GenerateDefaultDesignSystemRecords(IContext context)
+	{
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception {
+	public java.lang.Void executeAction() throws Exception
+	{
 		// BEGIN USER CODE
 		// Purpose: Seed the TRIMM Design System data model with default tokens,
 		// components,
@@ -353,10 +356,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-alert alert-info", "Info alert variant with teal background", 20, "Alert" },
 
 				// Checkbox Component Classes (associate to "Checkbox")
-				{ "checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
-				{ "checkbox-sm", "Small checkbox size variant", 22, "Checkbox" },
-				{ "checkbox-md", "Medium checkbox size variant", 23, "Checkbox" },
-				{ "checkbox-lg", "Large checkbox size variant", 24, "Checkbox" },
+				{ "trimm-checkbox checkbox-base", "Base checkbox styling with TRIMM design tokens", 21, "Checkbox" },
+				{ "trimm-checkbox checkbox-sm", "Small checkbox size variant", 22, "Checkbox" },
+				{ "trimm-checkbox checkbox-md", "Medium checkbox size variant", 23, "Checkbox" },
+				{ "trimm-checkbox checkbox-lg", "Large checkbox size variant", 24, "Checkbox" },
 
 				// Label Component Classes (associate to "Label")
 				{ "label-base", "Base label styling with TRIMM design tokens", 25, "Label" },
@@ -508,7 +511,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject checkboxCompObj = checkboxCompList.get(0);
 			trimm_designsystem.proxies.DS_Component checkboxComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, checkboxCompObj);
-			String[] checkboxClassNames = { "checkbox-base", "checkbox-sm", "checkbox-md", "checkbox-lg" };
+			String[] checkboxClassNames = { "trimm-checkbox checkbox-base", "trimm-checkbox checkbox-sm", "trimm-checkbox checkbox-md", "trimm-checkbox checkbox-lg" };
 			for (String className : checkboxClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
@@ -697,11 +700,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
-	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString() {
+	public java.lang.String toString()
+	{
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
