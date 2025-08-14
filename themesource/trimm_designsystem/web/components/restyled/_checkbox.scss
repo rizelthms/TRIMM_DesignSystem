@@ -124,72 +124,72 @@
         cursor: not-allowed;
       }
     }
+  }
 
-    // === CHECKBOX SIZE MODIFIERS ===
-    // Different sizes for various contexts and hierarchies
+  // === CHECKBOX SIZE MODIFIERS ===
+  // Different sizes for various contexts and hierarchies
 
-    // Small checkbox for compact layouts
-    .checkbox-sm,
-    &.checkbox-sm {
-      @extend .checkbox-base;
-      input[type="checkbox"] {
-        width: 16px;
-        height: 16px;
+  // Small checkbox for compact layouts
+  .checkbox-sm,
+  &.checkbox-sm {
+    @extend .checkbox-base;
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
 
-        &::after {
-          font-size: $font-size-body-4;
-        }
-      }
-
-      label,
-      .mx-checkbox-label,
-      .control-label {
-        font-weight: $font-weight-regular;
-        font-size: $font-size-body-3;
+      &::after {
+        font-size: $font-size-body-4;
       }
     }
 
-    // Medium checkbox (default size)
-    .checkbox-md,
-    &.checkbox-md {
-      @extend .checkbox-base;
-      input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
+    label,
+    .mx-checkbox-label,
+    .control-label {
+      font-weight: $font-weight-regular;
+      font-size: $font-size-body-3;
+    }
+  }
 
-        &::after {
-          font-weight: $font-weight-medium;
-          font-size: 14px;
-        }
-      }
+  // Medium checkbox (default size)
+  .checkbox-md,
+  &.checkbox-md {
+    @extend .checkbox-base;
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
 
-      label,
-      .mx-checkbox-label,
-      .control-label {
+      &::after {
         font-weight: $font-weight-medium;
-        font-size: $font-size-body-2;
+        font-size: 14px;
       }
     }
 
-    // Large checkbox for prominent selections
-    .checkbox-lg,
-    &.checkbox-lg {
-      @extend .checkbox-base;
-      input[type="checkbox"] {
-        width: 24px;
-        height: 24px;
+    label,
+    .mx-checkbox-label,
+    .control-label {
+      font-weight: $font-weight-medium;
+      font-size: $font-size-body-2;
+    }
+  }
 
-        &::after {
-          font-size: 16px;
-        }
-      }
+  // Large checkbox for prominent selections
+  .checkbox-lg,
+  &.checkbox-lg {
+    @extend .checkbox-base;
+    input[type="checkbox"] {
+      width: 24px;
+      height: 24px;
 
-      label,
-      .mx-checkbox-label,
-      .control-label {
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-body-1;
+      &::after {
+        font-size: 16px;
       }
+    }
+
+    label,
+    .mx-checkbox-label,
+    .control-label {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-body-1;
     }
   }
 }
