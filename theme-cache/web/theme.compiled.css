@@ -28852,7 +28852,7 @@ p {
   --support-4-disabled: rgba(186, 139, 0, 0.4);
 }
 
-.accordion-base {
+.trimm-accordion .accordion-base, .trimm-accordion.accordion-base {
   border: none;
   border-radius: 4px;
   box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
@@ -28860,16 +28860,18 @@ p {
   overflow: hidden;
   transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
-.accordion-base.mx-groupbox-open {
+.trimm-accordion .accordion-base.mx-groupbox-open, .trimm-accordion.accordion-base.mx-groupbox-open {
   background-color: var(--base-black);
   box-shadow: none;
 }
-.accordion-base .widget-accordion-group-header {
+.trimm-accordion .accordion-base .widget-accordion-group-header, .trimm-accordion.accordion-base .widget-accordion-group-header {
   padding: 0;
 }
-.accordion-base .widget-accordion-group-header-button,
-.accordion-base .widget-accordion-group-header-button-clickable,
-.accordion-base .widget-accordion-group-header-button-icon-right {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right, .trimm-accordion.accordion-base .widget-accordion-group-header-button,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right {
   background-color: var(--base-white) !important;
   color: var(--brand-1) !important;
   padding: 16px 24px;
@@ -28880,51 +28882,73 @@ p {
   border-radius: 4px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-.accordion-base .widget-accordion-group-header-button:hover,
-.accordion-base .widget-accordion-group-header-button-clickable:hover,
-.accordion-base .widget-accordion-group-header-button-icon-right:hover {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:hover,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:hover,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:hover, .trimm-accordion.accordion-base .widget-accordion-group-header-button:hover,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:hover,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:hover {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button:hover .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button:hover h3,
-.accordion-base .widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-clickable:hover h3,
-.accordion-base .widget-accordion-group-header-button-icon-right:hover .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-icon-right:hover h3 {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:hover .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:hover h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:hover h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:hover .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:hover h3, .trimm-accordion.accordion-base .widget-accordion-group-header-button:hover .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button:hover h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:hover .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:hover h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:hover .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:hover h3 {
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button:active,
-.accordion-base .widget-accordion-group-header-button-clickable:active,
-.accordion-base .widget-accordion-group-header-button-icon-right:active {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:active,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:active,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:active, .trimm-accordion.accordion-base .widget-accordion-group-header-button:active,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:active,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:active {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button:active .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button:active h3,
-.accordion-base .widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-clickable:active h3,
-.accordion-base .widget-accordion-group-header-button-icon-right:active .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-icon-right:active h3 {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:active .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button:active h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable:active h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:active .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right:active h3, .trimm-accordion.accordion-base .widget-accordion-group-header-button:active .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button:active h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:active .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable:active h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:active .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right:active h3 {
   color: var(--base-white) !important;
 }
-.accordion-base .widget-accordion-group-header-button[aria-expanded=true],
-.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true],
-.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button[aria-expanded=true],
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true],
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true], .trimm-accordion.accordion-base .widget-accordion-group-header-button[aria-expanded=true],
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true],
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] {
   background-color: var(--brand-1);
   color: var(--base-white);
   border-radius: 0px;
 }
-.accordion-base .widget-accordion-group-header-button[aria-expanded=true] > h3,
-.accordion-base .widget-accordion-group-header-button[aria-expanded=true] .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] > h3,
-.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] > h3,
-.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] .widget-accordion-group-header-title {
+.trimm-accordion .accordion-base .widget-accordion-group-header-button[aria-expanded=true] > h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] > h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] > h3,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] .widget-accordion-group-header-title, .trimm-accordion.accordion-base .widget-accordion-group-header-button[aria-expanded=true] > h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] > h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-clickable[aria-expanded=true] .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] > h3,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button-icon-right[aria-expanded=true] .widget-accordion-group-header-title {
   color: var(--base-white);
 }
-.accordion-base .widget-accordion-group-header-title,
-.accordion-base .widget-accordion-group-header-button > h3 {
+.trimm-accordion .accordion-base .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base .widget-accordion-group-header-button > h3, .trimm-accordion.accordion-base .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base .widget-accordion-group-header-button > h3 {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -28932,7 +28956,7 @@ p {
   margin: 0;
   transition: color 0.2s ease;
 }
-.accordion-base .widget-accordion-group-content {
+.trimm-accordion .accordion-base .widget-accordion-group-content, .trimm-accordion.accordion-base .widget-accordion-group-content {
   padding: 16px 24px;
   font-family: "GothamSSm", sans-serif;
   font-size: 14px;
@@ -28940,20 +28964,21 @@ p {
   color: var(--base-black);
   background-color: var(--base-white);
 }
-.accordion-base[aria-disabled=true] {
+.trimm-accordion .accordion-base[aria-disabled=true], .trimm-accordion.accordion-base[aria-disabled=true] {
   background-color: var(--base-white-disabled);
   pointer-events: none;
 }
-.accordion-base[aria-disabled=true] .widget-accordion-group-header-button {
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-header-button, .trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-header-button {
   background-color: var(--base-white-disabled);
   color: var(--base-black-disabled);
   cursor: not-allowed;
 }
-.accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
-.accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3 {
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3, .trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-header-title,
+.trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-header-button > h3 {
   color: var(--base-black-disabled);
 }
-.accordion-base[aria-disabled=true] .widget-accordion-group-content {
+.trimm-accordion .accordion-base[aria-disabled=true] .widget-accordion-group-content, .trimm-accordion.accordion-base[aria-disabled=true] .widget-accordion-group-content {
   padding: 16px 24px;
   font-family: "GothamSSm", sans-serif;
   font-size: 14px;

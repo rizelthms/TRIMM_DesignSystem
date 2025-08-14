@@ -1,8 +1,14 @@
-// === BASE ACCORDION WRAPPER ===
-// Provides consistent styling for Mendix Accordion widgets
-// Apply this class to the accordion container for TRIMM design system styling
+// === SCOPED ACCORDION STYLES ===
+// TRIMM accordion styles only apply when 'trimm-accordion' class is present on the accordion or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.accordion-base {
+.trimm-accordion {
+  // === BASE ACCORDION WRAPPER ===
+  // Provides consistent styling for Mendix Accordion widgets
+  // Apply this class to the accordion container for TRIMM design system styling
+
+  .accordion-base,
+  &.accordion-base {
     border: none;
     border-radius: $radius-4;
     box-shadow: $shadow-6;
@@ -72,9 +78,10 @@
             > h3,
             .widget-accordion-group-header-title {
                 color: var(--base-white);
-            }
-        }
+                    }
     }
+  }
+
 
     // === TITLE ===
     // Header text styling
@@ -125,4 +132,5 @@
             background-color: var(--secondary-1-disabled);
         }
     }
+}
 }
