@@ -1,172 +1,182 @@
-// === BASE RADIO STYLE ===
-// Custom radio button styling for Mendix Radio Button widgets
-// Provides consistent TRIMM design system appearance with custom radio circles
+// === SCOPED RADIO STYLES ===
+// TRIMM radio styles only apply when 'trimm-radio' class is present on the radio or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.radio-base {
-  font-family: $font-primary;
+.trimm-radio {
+  // === BASE RADIO STYLE ===
+  // Custom radio button styling for Mendix Radio Button widgets
+  // Provides consistent TRIMM design system appearance with custom radio circles
 
-  // Hide native radio input
-  input[type="radio"] {
-    opacity: 0;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    margin: 0;
+  .radio-base,
+  &.radio-base {
+    font-family: $font-primary;
 
-    // Custom radio styling with label
-    & + label {
-      position: relative;
-      padding-left: 28px;
-      cursor: pointer;
+    // Hide native radio input
+    input[type="radio"] {
+      opacity: 0;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      margin: 0;
+
+      // Custom radio styling with label
+      & + label {
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+        font-size: $font-size-body-2;
+        font-weight: $font-weight-normal;
+        color: var(--base-black);
+
+        // Custom radio outer circle
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          border: $border-1 solid var(--brand-2);
+          background: var(--base-white);
+          transition:
+            border-color 0.2s,
+            background 0.2s;
+        }
+
+        // Custom radio inner dot
+        &::after {
+          content: "";
+          position: absolute;
+          left: 4px;
+          top: 50%;
+          transform: translateY(-50%) scale(0);
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--brand-2);
+          transition: transform 0.2s;
+        }
+      }
+
+      // Checked state styling
+      &:checked + label::after {
+        transform: translateY(-50%) scale(1);
+        background: var(--brand-2);
+      }
+
+      &:checked + label::before {
+        border-color: var(--brand-2);
+      }
+
+      // Disabled state styling
+      &:disabled + label {
+        color: var(--secondary-1-disabled);
+        cursor: not-allowed;
+      }
+
+      &:disabled + label::before {
+        border-color: var(--secondary-1-disabled);
+        background: var(--base-white-disabled);
+      }
+
+      &:disabled:checked + label::after {
+        background: var(--secondary-1-disabled);
+      }
+    }
+
+    // Label styling
+    label {
+      margin-left: $spacing-8;
       font-size: $font-size-body-2;
       font-weight: $font-weight-normal;
-      color: var(--base-black);
 
-      // Custom radio outer circle
-      &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        border: $border-1 solid var(--brand-2);
-        background: var(--base-white);
-        transition:
-          border-color 0.2s,
-          background 0.2s;
+      &.disabled {
+        color: var(--secondary-1);
       }
 
-      // Custom radio inner dot
-      &::after {
-        content: "";
-        position: absolute;
-        left: 4px;
-        top: 50%;
-        transform: translateY(-50%) scale(0);
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--brand-2);
-        transition: transform 0.2s;
+      &.invalid {
+        color: var(--support-2);
       }
     }
-
-    // Checked state styling
-    &:checked + label::after {
-      transform: translateY(-50%) scale(1);
-      background: var(--brand-2);
-    }
-
-    &:checked + label::before {
-      border-color: var(--brand-2);
-    }
-
-    // Disabled state styling
-    &:disabled + label {
-      color: var(--secondary-1-disabled);
-      cursor: not-allowed;
-    }
-
-    &:disabled + label::before {
-      border-color: var(--secondary-1-disabled);
-      background: var(--base-white-disabled);
-    }
-
-    &:disabled:checked + label::after {
-      background: var(--secondary-1-disabled);
-    }
   }
 
-  // Label styling
-  label {
-    margin-left: $spacing-8;
-    font-size: $font-size-body-2;
-    font-weight: $font-weight-normal;
+  // === SIZE MODIFIERS ===
+  // Different sizes for various contexts and hierarchies
 
-    &.disabled {
-      color: var(--secondary-1);
+  // Small radio buttons for compact layouts
+  .radio-sm,
+  &.radio-sm {
+    @extend .radio-base;
+    input[type="radio"] + label {
+      font-size: $font-size-body-3;
+      padding-left: 22px;
+      font-weight: $font-weight-regular;
     }
-
-    &.invalid {
-      color: var(--support-2);
+    input[type="radio"] + label::before {
+      width: 14px;
+      height: 14px;
+    }
+    input[type="radio"] + label::after {
+      width: 8px;
+      height: 8px;
+      left: 3px;
+    }
+    .control-label,
+    .mx-radio label {
+      font-size: $font-size-body-3;
+      font-weight: $font-weight-regular;
     }
   }
-}
 
-// === SIZE MODIFIERS ===
-// Different sizes for various contexts and hierarchies
+  // Medium radio buttons (default size)
+  .radio-md,
+  &.radio-md {
+    @extend .radio-base;
+    input[type="radio"] + label {
+      font-size: $font-size-body-2;
+      padding-left: 28px;
+      font-weight: $font-weight-medium;
+    }
+    input[type="radio"] + label::before {
+      width: 18px;
+      height: 18px;
+    }
+    input[type="radio"] + label::after {
+      width: 10px;
+      height: 10px;
+      left: 4px;
+    }
+    .control-label,
+    .mx-radio label {
+      font-size: $font-size-body-2;
+      font-weight: $font-weight-medium;
+    }
+  }
 
-// Small radio buttons for compact layouts
-.radio-sm {
-  @extend .radio-base;
-  input[type="radio"] + label {
-    font-size: $font-size-body-3;
-    padding-left: 22px;
-    font-weight: $font-weight-regular;
-  }
-  input[type="radio"] + label::before {
-    width: 14px;
-    height: 14px;
-  }
-  input[type="radio"] + label::after {
-    width: 8px;
-    height: 8px;
-    left: 3px;
-  }
-  .control-label,
-  .mx-radio label {
-    font-size: $font-size-body-3;
-    font-weight: $font-weight-regular;
-  }
-}
-
-// Medium radio buttons (default size)
-.radio-md {
-  @extend .radio-base;
-  input[type="radio"] + label {
-    font-size: $font-size-body-2;
-    padding-left: 28px;
-    font-weight: $font-weight-medium;
-  }
-  input[type="radio"] + label::before {
-    width: 18px;
-    height: 18px;
-  }
-  input[type="radio"] + label::after {
-    width: 10px;
-    height: 10px;
-    left: 4px;
-  }
-  .control-label,
-  .mx-radio label {
-    font-size: $font-size-body-2;
-    font-weight: $font-weight-medium;
-  }
-}
-
-// Large radio buttons for prominent selections
-.radio-lg {
-  @extend .radio-base;
-  input[type="radio"] + label {
-    font-size: $font-size-body-1;
-    padding-left: 36px;
-    font-weight: $font-weight-semibold;
-  }
-  input[type="radio"] + label::before {
-    width: 24px;
-    height: 24px;
-  }
-  input[type="radio"] + label::after {
-    width: 14px;
-    height: 14px;
-    left: 5px;
-  }
-  .control-label,
-  .mx-radio label {
-    font-size: $font-size-body-1;
-    font-weight: $font-weight-semibold;
+  // Large radio buttons for prominent selections
+  .radio-lg,
+  &.radio-lg {
+    @extend .radio-base;
+    input[type="radio"] + label {
+      font-size: $font-size-body-1;
+      padding-left: 36px;
+      font-weight: $font-weight-semibold;
+    }
+    input[type="radio"] + label::before {
+      width: 24px;
+      height: 24px;
+    }
+    input[type="radio"] + label::after {
+      width: 14px;
+      height: 14px;
+      left: 5px;
+    }
+    .control-label,
+    .mx-radio label {
+      font-size: $font-size-body-1;
+      font-weight: $font-weight-semibold;
+    }
   }
 }

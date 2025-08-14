@@ -29726,17 +29726,17 @@ p {
   overflow: visible !important;
 }
 
-.radio-base, .radio-lg, .radio-md, .radio-sm {
+.trimm-radio .radio-base, .trimm-radio .radio-lg, .trimm-radio .radio-md, .trimm-radio .radio-sm, .trimm-radio.radio-base, .trimm-radio.radio-lg, .trimm-radio.radio-md, .trimm-radio.radio-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.radio-base input[type=radio], .radio-lg input[type=radio], .radio-md input[type=radio], .radio-sm input[type=radio] {
+.trimm-radio .radio-base input[type=radio], .trimm-radio .radio-lg input[type=radio], .trimm-radio .radio-md input[type=radio], .trimm-radio .radio-sm input[type=radio], .trimm-radio.radio-base input[type=radio], .trimm-radio.radio-lg input[type=radio], .trimm-radio.radio-md input[type=radio], .trimm-radio.radio-sm input[type=radio] {
   opacity: 0;
   position: absolute;
   width: 16px;
   height: 16px;
   margin: 0;
 }
-.radio-base input[type=radio] + label, .radio-lg input[type=radio] + label, .radio-md input[type=radio] + label, .radio-sm input[type=radio] + label {
+.trimm-radio .radio-base input[type=radio] + label, .trimm-radio .radio-lg input[type=radio] + label, .trimm-radio .radio-md input[type=radio] + label, .trimm-radio .radio-sm input[type=radio] + label, .trimm-radio.radio-base input[type=radio] + label, .trimm-radio.radio-lg input[type=radio] + label, .trimm-radio.radio-md input[type=radio] + label, .trimm-radio.radio-sm input[type=radio] + label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -29744,7 +29744,7 @@ p {
   font-weight: normal;
   color: var(--base-black);
 }
-.radio-base input[type=radio] + label::before, .radio-lg input[type=radio] + label::before, .radio-md input[type=radio] + label::before, .radio-sm input[type=radio] + label::before {
+.trimm-radio .radio-base input[type=radio] + label::before, .trimm-radio .radio-lg input[type=radio] + label::before, .trimm-radio .radio-md input[type=radio] + label::before, .trimm-radio .radio-sm input[type=radio] + label::before, .trimm-radio.radio-base input[type=radio] + label::before, .trimm-radio.radio-lg input[type=radio] + label::before, .trimm-radio.radio-md input[type=radio] + label::before, .trimm-radio.radio-sm input[type=radio] + label::before {
   content: "";
   position: absolute;
   left: 0;
@@ -29757,7 +29757,7 @@ p {
   background: var(--base-white);
   transition: border-color 0.2s, background 0.2s;
 }
-.radio-base input[type=radio] + label::after, .radio-lg input[type=radio] + label::after, .radio-md input[type=radio] + label::after, .radio-sm input[type=radio] + label::after {
+.trimm-radio .radio-base input[type=radio] + label::after, .trimm-radio .radio-lg input[type=radio] + label::after, .trimm-radio .radio-md input[type=radio] + label::after, .trimm-radio .radio-sm input[type=radio] + label::after, .trimm-radio.radio-base input[type=radio] + label::after, .trimm-radio.radio-lg input[type=radio] + label::after, .trimm-radio.radio-md input[type=radio] + label::after, .trimm-radio.radio-sm input[type=radio] + label::after {
   content: "";
   position: absolute;
   left: 4px;
@@ -29769,92 +29769,92 @@ p {
   background: var(--brand-2);
   transition: transform 0.2s;
 }
-.radio-base input[type=radio]:checked + label::after, .radio-lg input[type=radio]:checked + label::after, .radio-md input[type=radio]:checked + label::after, .radio-sm input[type=radio]:checked + label::after {
+.trimm-radio .radio-base input[type=radio]:checked + label::after, .trimm-radio .radio-lg input[type=radio]:checked + label::after, .trimm-radio .radio-md input[type=radio]:checked + label::after, .trimm-radio .radio-sm input[type=radio]:checked + label::after, .trimm-radio.radio-base input[type=radio]:checked + label::after, .trimm-radio.radio-lg input[type=radio]:checked + label::after, .trimm-radio.radio-md input[type=radio]:checked + label::after, .trimm-radio.radio-sm input[type=radio]:checked + label::after {
   transform: translateY(-50%) scale(1);
   background: var(--brand-2);
 }
-.radio-base input[type=radio]:checked + label::before, .radio-lg input[type=radio]:checked + label::before, .radio-md input[type=radio]:checked + label::before, .radio-sm input[type=radio]:checked + label::before {
+.trimm-radio .radio-base input[type=radio]:checked + label::before, .trimm-radio .radio-lg input[type=radio]:checked + label::before, .trimm-radio .radio-md input[type=radio]:checked + label::before, .trimm-radio .radio-sm input[type=radio]:checked + label::before, .trimm-radio.radio-base input[type=radio]:checked + label::before, .trimm-radio.radio-lg input[type=radio]:checked + label::before, .trimm-radio.radio-md input[type=radio]:checked + label::before, .trimm-radio.radio-sm input[type=radio]:checked + label::before {
   border-color: var(--brand-2);
 }
-.radio-base input[type=radio]:disabled + label, .radio-lg input[type=radio]:disabled + label, .radio-md input[type=radio]:disabled + label, .radio-sm input[type=radio]:disabled + label {
+.trimm-radio .radio-base input[type=radio]:disabled + label, .trimm-radio .radio-lg input[type=radio]:disabled + label, .trimm-radio .radio-md input[type=radio]:disabled + label, .trimm-radio .radio-sm input[type=radio]:disabled + label, .trimm-radio.radio-base input[type=radio]:disabled + label, .trimm-radio.radio-lg input[type=radio]:disabled + label, .trimm-radio.radio-md input[type=radio]:disabled + label, .trimm-radio.radio-sm input[type=radio]:disabled + label {
   color: var(--secondary-1-disabled);
   cursor: not-allowed;
 }
-.radio-base input[type=radio]:disabled + label::before, .radio-lg input[type=radio]:disabled + label::before, .radio-md input[type=radio]:disabled + label::before, .radio-sm input[type=radio]:disabled + label::before {
+.trimm-radio .radio-base input[type=radio]:disabled + label::before, .trimm-radio .radio-lg input[type=radio]:disabled + label::before, .trimm-radio .radio-md input[type=radio]:disabled + label::before, .trimm-radio .radio-sm input[type=radio]:disabled + label::before, .trimm-radio.radio-base input[type=radio]:disabled + label::before, .trimm-radio.radio-lg input[type=radio]:disabled + label::before, .trimm-radio.radio-md input[type=radio]:disabled + label::before, .trimm-radio.radio-sm input[type=radio]:disabled + label::before {
   border-color: var(--secondary-1-disabled);
   background: var(--base-white-disabled);
 }
-.radio-base input[type=radio]:disabled:checked + label::after, .radio-lg input[type=radio]:disabled:checked + label::after, .radio-md input[type=radio]:disabled:checked + label::after, .radio-sm input[type=radio]:disabled:checked + label::after {
+.trimm-radio .radio-base input[type=radio]:disabled:checked + label::after, .trimm-radio .radio-lg input[type=radio]:disabled:checked + label::after, .trimm-radio .radio-md input[type=radio]:disabled:checked + label::after, .trimm-radio .radio-sm input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-base input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-lg input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-md input[type=radio]:disabled:checked + label::after, .trimm-radio.radio-sm input[type=radio]:disabled:checked + label::after {
   background: var(--secondary-1-disabled);
 }
-.radio-base label, .radio-lg label, .radio-md label, .radio-sm label {
+.trimm-radio .radio-base label, .trimm-radio .radio-lg label, .trimm-radio .radio-md label, .trimm-radio .radio-sm label, .trimm-radio.radio-base label, .trimm-radio.radio-lg label, .trimm-radio.radio-md label, .trimm-radio.radio-sm label {
   margin-left: 8px;
   font-size: 16px;
   font-weight: normal;
 }
-.radio-base label.disabled, .radio-lg label.disabled, .radio-md label.disabled, .radio-sm label.disabled {
+.trimm-radio .radio-base label.disabled, .trimm-radio .radio-lg label.disabled, .trimm-radio .radio-md label.disabled, .trimm-radio .radio-sm label.disabled, .trimm-radio.radio-base label.disabled, .trimm-radio.radio-lg label.disabled, .trimm-radio.radio-md label.disabled, .trimm-radio.radio-sm label.disabled {
   color: var(--secondary-1);
 }
-.radio-base label.invalid, .radio-lg label.invalid, .radio-md label.invalid, .radio-sm label.invalid {
+.trimm-radio .radio-base label.invalid, .trimm-radio .radio-lg label.invalid, .trimm-radio .radio-md label.invalid, .trimm-radio .radio-sm label.invalid, .trimm-radio.radio-base label.invalid, .trimm-radio.radio-lg label.invalid, .trimm-radio.radio-md label.invalid, .trimm-radio.radio-sm label.invalid {
   color: var(--support-2);
 }
-
-.radio-sm input[type=radio] + label {
+.trimm-radio .radio-sm input[type=radio] + label, .trimm-radio.radio-sm input[type=radio] + label {
   font-size: 14px;
   padding-left: 22px;
   font-weight: 400;
 }
-.radio-sm input[type=radio] + label::before {
+.trimm-radio .radio-sm input[type=radio] + label::before, .trimm-radio.radio-sm input[type=radio] + label::before {
   width: 14px;
   height: 14px;
 }
-.radio-sm input[type=radio] + label::after {
+.trimm-radio .radio-sm input[type=radio] + label::after, .trimm-radio.radio-sm input[type=radio] + label::after {
   width: 8px;
   height: 8px;
   left: 3px;
 }
-.radio-sm .control-label,
-.radio-sm .mx-radio label {
+.trimm-radio .radio-sm .control-label,
+.trimm-radio .radio-sm .mx-radio label, .trimm-radio.radio-sm .control-label,
+.trimm-radio.radio-sm .mx-radio label {
   font-size: 14px;
   font-weight: 400;
 }
-
-.radio-md input[type=radio] + label {
+.trimm-radio .radio-md input[type=radio] + label, .trimm-radio.radio-md input[type=radio] + label {
   font-size: 16px;
   padding-left: 28px;
   font-weight: 500;
 }
-.radio-md input[type=radio] + label::before {
+.trimm-radio .radio-md input[type=radio] + label::before, .trimm-radio.radio-md input[type=radio] + label::before {
   width: 18px;
   height: 18px;
 }
-.radio-md input[type=radio] + label::after {
+.trimm-radio .radio-md input[type=radio] + label::after, .trimm-radio.radio-md input[type=radio] + label::after {
   width: 10px;
   height: 10px;
   left: 4px;
 }
-.radio-md .control-label,
-.radio-md .mx-radio label {
+.trimm-radio .radio-md .control-label,
+.trimm-radio .radio-md .mx-radio label, .trimm-radio.radio-md .control-label,
+.trimm-radio.radio-md .mx-radio label {
   font-size: 16px;
   font-weight: 500;
 }
-
-.radio-lg input[type=radio] + label {
+.trimm-radio .radio-lg input[type=radio] + label, .trimm-radio.radio-lg input[type=radio] + label {
   font-size: 18px;
   padding-left: 36px;
   font-weight: 600;
 }
-.radio-lg input[type=radio] + label::before {
+.trimm-radio .radio-lg input[type=radio] + label::before, .trimm-radio.radio-lg input[type=radio] + label::before {
   width: 24px;
   height: 24px;
 }
-.radio-lg input[type=radio] + label::after {
+.trimm-radio .radio-lg input[type=radio] + label::after, .trimm-radio.radio-lg input[type=radio] + label::after {
   width: 14px;
   height: 14px;
   left: 5px;
 }
-.radio-lg .control-label,
-.radio-lg .mx-radio label {
+.trimm-radio .radio-lg .control-label,
+.trimm-radio .radio-lg .mx-radio label, .trimm-radio.radio-lg .control-label,
+.trimm-radio.radio-lg .mx-radio label {
   font-size: 18px;
   font-weight: 600;
 }

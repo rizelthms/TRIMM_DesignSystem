@@ -356,10 +356,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-label label-lg", "Large label size variant", 33, "Label" },
 
 				// Radio Component Classes (associate to "Radio")
-				{ "radio-base", "Base radio button styling with TRIMM design tokens", 34, "Radio" },
-				{ "radio-sm", "Small radio button size variant", 35, "Radio" },
-				{ "radio-md", "Medium radio button size variant", 36, "Radio" },
-				{ "radio-lg", "Large radio button size variant", 37, "Radio" },
+				{ "trimm-radio radio-base", "Base radio button styling with TRIMM design tokens", 34, "Radio" },
+				{ "trimm-radio radio-sm", "Small radio button size variant", 35, "Radio" },
+				{ "trimm-radio radio-md", "Medium radio button size variant", 36, "Radio" },
+				{ "trimm-radio radio-lg", "Large radio button size variant", 37, "Radio" },
 
 				// Textbox Component Classes (associate to "Textbox")
 				{ "textbox-base", "Base textbox styling with TRIMM design tokens", 38, "Textbox" },
@@ -540,7 +540,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject radioCompObj = radioCompList.get(0);
 			trimm_designsystem.proxies.DS_Component radioComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, radioCompObj);
-			String[] radioClassNames = { "radio-base", "radio-sm", "radio-md", "radio-lg" };
+			String[] radioClassNames = { "trimm-radio radio-base", "trimm-radio radio-sm", "trimm-radio radio-md",
+					"trimm-radio radio-lg" };
 			for (String className : radioClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
