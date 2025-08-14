@@ -383,7 +383,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-menu menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
 
 				// Tab Component Classes (associate to "TabContainer")
-				{ "tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
+				{ "trimm-tab tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
 
 				// Tooltip Component Classes (associate to "Tooltip")
 				{ "tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
@@ -647,7 +647,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject tabCompObj = tabCompList.get(0);
 			trimm_designsystem.proxies.DS_Component tabComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, tabCompObj);
-			String[] tabClassNames = { "tab-base" };
+			String[] tabClassNames = { "trimm-tab tab-base" };
 			for (String className : tabClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
