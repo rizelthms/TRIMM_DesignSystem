@@ -30204,10 +30204,10 @@ p {
   font-weight: 600;
 }
 
-.tooltip-base, .tooltip-lg, .tooltip-md, .tooltip-sm {
+.trimm-tooltip .tooltip-base, .trimm-tooltip .tooltip-lg, .trimm-tooltip .tooltip-md, .trimm-tooltip .tooltip-sm, .trimm-tooltip.tooltip-base, .trimm-tooltip.tooltip-lg, .trimm-tooltip.tooltip-md, .trimm-tooltip.tooltip-sm {
   font-family: "GothamSSm", sans-serif;
 }
-.tooltip-base .widget-tooltip-content, .tooltip-lg .widget-tooltip-content, .tooltip-md .widget-tooltip-content, .tooltip-sm .widget-tooltip-content {
+.trimm-tooltip .tooltip-base .widget-tooltip-content, .trimm-tooltip .tooltip-lg .widget-tooltip-content, .trimm-tooltip .tooltip-md .widget-tooltip-content, .trimm-tooltip .tooltip-sm .widget-tooltip-content, .trimm-tooltip.tooltip-base .widget-tooltip-content, .trimm-tooltip.tooltip-lg .widget-tooltip-content, .trimm-tooltip.tooltip-md .widget-tooltip-content, .trimm-tooltip.tooltip-sm .widget-tooltip-content {
   background: var(--brand-2) !important;
   color: var(--base-white) !important;
   padding: 8px 12px;
@@ -30218,18 +30218,15 @@ p {
   line-height: 1.4;
   white-space: pre-line;
 }
-
-.tooltip-sm .widget-tooltip-content {
+.trimm-tooltip .tooltip-sm .widget-tooltip-content, .trimm-tooltip.tooltip-sm .widget-tooltip-content {
   font-size: 12px;
   padding: 4px 8px;
 }
-
-.tooltip-md .widget-tooltip-content {
+.trimm-tooltip .tooltip-md .widget-tooltip-content, .trimm-tooltip.tooltip-md .widget-tooltip-content {
   font-size: 14px;
   padding: 8px 12px;
 }
-
-.tooltip-lg .widget-tooltip-content {
+.trimm-tooltip .tooltip-lg .widget-tooltip-content, .trimm-tooltip.tooltip-lg .widget-tooltip-content {
   font-size: 16px;
   padding: 12px 24px;
 }

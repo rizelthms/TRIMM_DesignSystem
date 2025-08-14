@@ -1,50 +1,60 @@
-// === BASE TOOLTIP STYLE ===
-// Tooltip styling for Mendix Tooltip widgets
-// Provides consistent TRIMM design system appearance for tooltips
+// === SCOPED TOOLTIP STYLES ===
+// TRIMM tooltip styles only apply when 'trimm-tooltip' class is present on the tooltip or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.tooltip-base {
-    font-family: $font-primary;
+.trimm-tooltip {
+    // === BASE TOOLTIP STYLE ===
+    // Tooltip styling for Mendix Tooltip widgets
+    // Provides consistent TRIMM design system appearance for tooltips
 
-    // Tooltip content container styling
-    .widget-tooltip-content {
-        background: var(--brand-2) !important;
-        color: var(--base-white) !important;
-        padding: $spacing-8 $spacing-12;
-        border-radius: $radius-4;
-        font-size: $font-size-body-3;
-        font-weight: $font-weight-medium;
-        box-shadow: $shadow-3;
-        line-height: 1.4;
-        white-space: pre-line;
+    .tooltip-base,
+    &.tooltip-base {
+        font-family: $font-primary;
+
+        // Tooltip content container styling
+        .widget-tooltip-content {
+            background: var(--brand-2) !important;
+            color: var(--base-white) !important;
+            padding: $spacing-8 $spacing-12;
+            border-radius: $radius-4;
+            font-size: $font-size-body-3;
+            font-weight: $font-weight-medium;
+            box-shadow: $shadow-3;
+            line-height: 1.4;
+            white-space: pre-line;
+        }
     }
-}
 
-// === SIZE MODIFIERS ===
-// Different tooltip sizes for various contexts, use in combination with .tooltip-base
+    // === SIZE MODIFIERS ===
+    // Different tooltip sizes for various contexts, use in combination with .tooltip-base
 
-// Small tooltip for compact information
-.tooltip-sm {
-    @extend .tooltip-base;
-    .widget-tooltip-content {
-        font-size: $font-size-body-4;
-        padding: $spacing-4 $spacing-8;
+    // Small tooltip for compact information
+    .tooltip-sm,
+    &.tooltip-sm {
+        @extend .tooltip-base;
+        .widget-tooltip-content {
+            font-size: $font-size-body-4;
+            padding: $spacing-4 $spacing-8;
+        }
     }
-}
 
-// Medium tooltip (default size)
-.tooltip-md {
-    @extend .tooltip-base;
-    .widget-tooltip-content {
-        font-size: $font-size-body-3;
-        padding: $spacing-8 $spacing-12;
+    // Medium tooltip (default size)
+    .tooltip-md,
+    &.tooltip-md {
+        @extend .tooltip-base;
+        .widget-tooltip-content {
+            font-size: $font-size-body-3;
+            padding: $spacing-8 $spacing-12;
+        }
     }
-}
 
-// Large tooltip for detailed information
-.tooltip-lg {
-    @extend .tooltip-base;
-    .widget-tooltip-content {
-        font-size: $font-size-body-2;
-        padding: $spacing-12 $spacing-24;
+    // Large tooltip for detailed information
+    .tooltip-lg,
+    &.tooltip-lg {
+        @extend .tooltip-base;
+        .widget-tooltip-content {
+            font-size: $font-size-body-2;
+            padding: $spacing-12 $spacing-24;
+        }
     }
 }

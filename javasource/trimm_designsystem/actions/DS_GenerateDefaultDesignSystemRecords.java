@@ -386,10 +386,10 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-tab tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
 
 				// Tooltip Component Classes (associate to "Tooltip")
-				{ "tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
-				{ "tooltip-sm", "Small tooltip size variant", 43, "Tooltip" },
-				{ "tooltip-md", "Medium tooltip size variant", 44, "Tooltip" },
-				{ "tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
+				{ "trimm-tooltip tooltip-base", "Base tooltip styling with TRIMM design tokens", 42, "Tooltip" },
+				{ "trimm-tooltip tooltip-sm", "Small tooltip size variant", 43, "Tooltip" },
+				{ "trimm-tooltip tooltip-md", "Medium tooltip size variant", 44, "Tooltip" },
+				{ "trimm-tooltip tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
 		};
 
 		// Create classes and link to components when the component name is known
@@ -670,7 +670,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject tooltipCompObj = tooltipCompList.get(0);
 			trimm_designsystem.proxies.DS_Component tooltipComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, tooltipCompObj);
-			String[] tooltipClassNames = { "tooltip-base", "tooltip-sm", "tooltip-md", "tooltip-lg" };
+			String[] tooltipClassNames = { "trimm-tooltip tooltip-base", "trimm-tooltip tooltip-sm",
+					"trimm-tooltip tooltip-md", "trimm-tooltip tooltip-lg" };
 			for (String className : tooltipClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
