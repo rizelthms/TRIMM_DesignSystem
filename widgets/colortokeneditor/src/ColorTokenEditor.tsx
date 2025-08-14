@@ -419,7 +419,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         <div>
             {/* Draggable floating action button */}
             <button
-                className="btn btn-info trimm-color-token-fab"
+                className="trimm-color-token-fab"
                 onClick={() => setOpen(true)}
                 aria-label="Open color token editor"
                 type="button"
@@ -447,7 +447,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                 <div className="trimm-color-token-drawer-header">
                     <h3>Color Token Editor</h3>
                     <button
-                        className="btn btn-default"
+                        className="trimm-button btn-default"
                         onClick={() => setOpen(false)}
                         aria-label="Close color token editor"
                         type="button"
@@ -491,7 +491,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                 </div>
 
                 <button
-                    className="btn btn-info"
+                    className="trimm-button btn-info"
                     onClick={handleReset}
                     type="button"
                 >
