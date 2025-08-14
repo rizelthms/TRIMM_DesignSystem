@@ -1,136 +1,143 @@
-// === BASE MENU STYLE ===
-// Navigation menu styling for Mendix Menu widgets
-// Provides consistent TRIMM design system appearance for navigation
+// === SCOPED MENU STYLES ===
+// TRIMM menu styles only apply when 'trimm-menu' class is present on the menu or an ancestor
+// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
 
-.menu-base {
-    font-family: $font-primary;
+.trimm-menu {
+    // === BASE MENU STYLE ===
+    // Navigation menu styling for Mendix Menu widgets
+    // Provides consistent TRIMM design system appearance for navigation
 
-    // Main menu container styling
-    > ul,
-    > .mx-menubar-list,
-    > .mx-popupmenu-list {
-        background-color: var(--brand-3);
-        padding: 0;
-        list-style: none;
-    }
+    .menu-base,
+    &.menu-base {
+        font-family: $font-primary;
 
-    // Individual menu item styling
-    li,
-    .mx-menubar-item,
-    .mx-popupmenu-item,
-    .mx-navigationlist-item {
-        font-weight: $font-weight-semibold;
-        font-size: $font-size-body-2;
-        border-radius: $radius-4;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
+        // Main menu container styling
+        > ul,
+        > .mx-menubar-list,
+        > .mx-popupmenu-list {
+            background-color: var(--brand-3);
+            padding: 0;
+            list-style: none;
+        }
 
-        // Remove default Atlas styling
-        border: none !important;
-        box-shadow: none !important;
+        // Individual menu item styling
+        li,
+        .mx-menubar-item,
+        .mx-popupmenu-item,
+        .mx-navigationlist-item {
+            font-weight: $font-weight-semibold;
+            font-size: $font-size-body-2;
+            border-radius: $radius-4;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
 
-        // Menu link styling
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: $spacing-8;
-            padding: $spacing-8 $spacing-16;
-            text-decoration: none;
-            color: var(--base-white) !important;
-            border-radius: inherit;
-            background-color: transparent !important;
-            transition: background-color 0.2s ease;
+            // Remove default Atlas styling
+            border: none !important;
+            box-shadow: none !important;
 
-            // Interactive states
-            &:hover,
-            &.active,
-            &.selected {
-                background-color: var(--brand-1-hover) !important;
+            // Menu link styling
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: $spacing-8;
+                padding: $spacing-8 $spacing-16;
+                text-decoration: none;
                 color: var(--base-white) !important;
-            }
+                border-radius: inherit;
+                background-color: transparent !important;
+                transition: background-color 0.2s ease;
 
-            // Icon styling
-            svg,
-            i.mdi,
-            span > svg {
-                color: currentColor;
+                // Interactive states
+                &:hover,
+                &.active,
+                &.selected {
+                    background-color: var(--brand-1-hover) !important;
+                    color: var(--base-white) !important;
+                }
+
+                // Icon styling
+                svg,
+                i.mdi,
+                span > svg {
+                    color: currentColor;
+                }
+                .caret {
+                    border-top-color: var(--base-white) !important;
+                    border-bottom-color: var(--base-white) !important;
+                }
             }
-            .caret {
-                border-top-color: var(--base-white) !important;
-                border-bottom-color: var(--base-white) !important;
-            }
+        }
+
+        // Additional override for Atlas deep nesting
+        .mx-menubar > ul > li:hover > a,
+        .mx-menubar > ul > li.active > a,
+        .mx-menubar-list > li:hover > a,
+        .mx-menubar-list > li.active > a,
+        .mx-navigationlist-item:hover,
+        .mx-navigationlist-item.active {
+            background-color: var(--brand-1-hover) !important;
+            color: var(--base-white) !important;
         }
     }
 
-    // Additional override for Atlas deep nesting
-    .mx-menubar > ul > li:hover > a,
-    .mx-menubar > ul > li.active > a,
-    .mx-menubar-list > li:hover > a,
-    .mx-menubar-list > li.active > a,
-    .mx-navigationlist-item:hover,
-    .mx-navigationlist-item.active {
-        background-color: var(--brand-1-hover) !important;
+    // Menu bar background color override
+    &.menu-base,
+    &.menu-base.mx-menubar {
+        background-color: var(--brand-3) !important;
+    }
+
+    // Dropdown menu styling
+    &.menu-base .dropdown-menu,
+    &.menu-base .mx-navbar-submenu {
+        background: var(--base-white) !important;
+        color: var(--base-black) !important;
+        box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.12),
+            0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
+        border-radius: $radius-8 !important;
+        border: $border-1 solid #e5e7eb !important;
+        padding: $spacing-8 0 !important;
+        margin-top: $spacing-8 !important;
+        font-size: $font-size-body-2 !important;
+        font-family: $font-primary !important;
+    }
+
+    // Dropdown menu item styling
+    &.menu-base .dropdown-menu a,
+    &.menu-base .mx-navbar-submenu a {
+        color: var(--base-black) !important;
+        font-size: $font-size-body-3 !important;
+        padding: $spacing-12 $spacing-16 !important;
+        font-weight: $font-weight-medium !important;
+        background: none !important;
+        text-decoration: none !important;
+        display: block !important;
+        border-radius: $radius-4 !important;
+        transition:
+            background 0.18s,
+            color 0.18s;
+    }
+
+    // Dropdown menu item hover states
+    &.menu-base .dropdown-menu a:hover,
+    &.menu-base .mx-navbar-submenu a:hover,
+    &.menu-base .dropdown-menu a:focus,
+    &.menu-base .mx-navbar-submenu a:focus {
+        background: var(--brand-2-hover) !important;
         color: var(--base-white) !important;
     }
-}
 
-// Menu bar background color override
-.menu-base,
-.menu-base.mx-menubar {
-    background-color: var(--brand-3) !important;
-}
+    // Dropdown menu item active states
+    &.menu-base .dropdown-menu a.active,
+    &.menu-base .mx-navbar-submenu a.active {
+        background: var(--brand-2-active) !important;
+        color: var(--base-white) !important;
+    }
 
-// Dropdown menu styling
-.menu-base .dropdown-menu,
-.menu-base .mx-navbar-submenu {
-    background: var(--base-white) !important;
-    color: var(--base-black) !important;
-    box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.12),
-        0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
-    border-radius: $radius-8 !important;
-    border: $border-1 solid #e5e7eb !important;
-    padding: $spacing-8 0 !important;
-    margin-top: $spacing-8 !important;
-    font-size: $font-size-body-2 !important;
-    font-family: $font-primary !important;
-}
-
-// Dropdown menu item styling
-.menu-base .dropdown-menu a,
-.menu-base .mx-navbar-submenu a {
-    color: var(--base-black) !important;
-    font-size: $font-size-body-3 !important;
-    padding: $spacing-12 $spacing-16 !important;
-    font-weight: $font-weight-medium !important;
-    background: none !important;
-    text-decoration: none !important;
-    display: block !important;
-    border-radius: $radius-4 !important;
-    transition:
-        background 0.18s,
-        color 0.18s;
-}
-
-// Dropdown menu item hover states
-.menu-base .dropdown-menu a:hover,
-.menu-base .mx-navbar-submenu a:hover,
-.menu-base .dropdown-menu a:focus,
-.menu-base .mx-navbar-submenu a:focus {
-    background: var(--brand-2-hover) !important;
-    color: var(--base-white) !important;
-}
-
-// Dropdown menu item active states
-.menu-base .dropdown-menu a.active,
-.menu-base .mx-navbar-submenu a.active {
-    background: var(--brand-2-active) !important;
-    color: var(--base-white) !important;
-}
-
-// Ensure dropdown visibility
-.menu-base li.mx-navbar-item.dropdown.open {
-    overflow: visible !important;
+    // Ensure dropdown visibility
+    &.menu-base li.mx-navbar-item.dropdown.open {
+        overflow: visible !important;
+    }
 }

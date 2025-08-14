@@ -29572,20 +29572,25 @@ p {
   padding: 12px;
 }
 
-.menu-base {
+.trimm-menu .menu-base, .trimm-menu.menu-base {
   font-family: "GothamSSm", sans-serif;
 }
-.menu-base > ul,
-.menu-base > .mx-menubar-list,
-.menu-base > .mx-popupmenu-list {
+.trimm-menu .menu-base > ul,
+.trimm-menu .menu-base > .mx-menubar-list,
+.trimm-menu .menu-base > .mx-popupmenu-list, .trimm-menu.menu-base > ul,
+.trimm-menu.menu-base > .mx-menubar-list,
+.trimm-menu.menu-base > .mx-popupmenu-list {
   background-color: var(--brand-3);
   padding: 0;
   list-style: none;
 }
-.menu-base li,
-.menu-base .mx-menubar-item,
-.menu-base .mx-popupmenu-item,
-.menu-base .mx-navigationlist-item {
+.trimm-menu .menu-base li,
+.trimm-menu .menu-base .mx-menubar-item,
+.trimm-menu .menu-base .mx-popupmenu-item,
+.trimm-menu .menu-base .mx-navigationlist-item, .trimm-menu.menu-base li,
+.trimm-menu.menu-base .mx-menubar-item,
+.trimm-menu.menu-base .mx-popupmenu-item,
+.trimm-menu.menu-base .mx-navigationlist-item {
   font-weight: 600;
   font-size: 16px;
   border-radius: 4px;
@@ -29595,10 +29600,13 @@ p {
   border: none !important;
   box-shadow: none !important;
 }
-.menu-base li a,
-.menu-base .mx-menubar-item a,
-.menu-base .mx-popupmenu-item a,
-.menu-base .mx-navigationlist-item a {
+.trimm-menu .menu-base li a,
+.trimm-menu .menu-base .mx-menubar-item a,
+.trimm-menu .menu-base .mx-popupmenu-item a,
+.trimm-menu .menu-base .mx-navigationlist-item a, .trimm-menu.menu-base li a,
+.trimm-menu.menu-base .mx-menubar-item a,
+.trimm-menu.menu-base .mx-popupmenu-item a,
+.trimm-menu.menu-base .mx-navigationlist-item a {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -29610,57 +29618,81 @@ p {
   background-color: transparent !important;
   transition: background-color 0.2s ease;
 }
-.menu-base li a:hover, .menu-base li a.active, .menu-base li a.selected,
-.menu-base .mx-menubar-item a:hover,
-.menu-base .mx-menubar-item a.active,
-.menu-base .mx-menubar-item a.selected,
-.menu-base .mx-popupmenu-item a:hover,
-.menu-base .mx-popupmenu-item a.active,
-.menu-base .mx-popupmenu-item a.selected,
-.menu-base .mx-navigationlist-item a:hover,
-.menu-base .mx-navigationlist-item a.active,
-.menu-base .mx-navigationlist-item a.selected {
+.trimm-menu .menu-base li a:hover, .trimm-menu .menu-base li a.active, .trimm-menu .menu-base li a.selected,
+.trimm-menu .menu-base .mx-menubar-item a:hover,
+.trimm-menu .menu-base .mx-menubar-item a.active,
+.trimm-menu .menu-base .mx-menubar-item a.selected,
+.trimm-menu .menu-base .mx-popupmenu-item a:hover,
+.trimm-menu .menu-base .mx-popupmenu-item a.active,
+.trimm-menu .menu-base .mx-popupmenu-item a.selected,
+.trimm-menu .menu-base .mx-navigationlist-item a:hover,
+.trimm-menu .menu-base .mx-navigationlist-item a.active,
+.trimm-menu .menu-base .mx-navigationlist-item a.selected, .trimm-menu.menu-base li a:hover, .trimm-menu.menu-base li a.active, .trimm-menu.menu-base li a.selected,
+.trimm-menu.menu-base .mx-menubar-item a:hover,
+.trimm-menu.menu-base .mx-menubar-item a.active,
+.trimm-menu.menu-base .mx-menubar-item a.selected,
+.trimm-menu.menu-base .mx-popupmenu-item a:hover,
+.trimm-menu.menu-base .mx-popupmenu-item a.active,
+.trimm-menu.menu-base .mx-popupmenu-item a.selected,
+.trimm-menu.menu-base .mx-navigationlist-item a:hover,
+.trimm-menu.menu-base .mx-navigationlist-item a.active,
+.trimm-menu.menu-base .mx-navigationlist-item a.selected {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-.menu-base li a svg,
-.menu-base li a i.mdi,
-.menu-base li a span > svg,
-.menu-base .mx-menubar-item a svg,
-.menu-base .mx-menubar-item a i.mdi,
-.menu-base .mx-menubar-item a span > svg,
-.menu-base .mx-popupmenu-item a svg,
-.menu-base .mx-popupmenu-item a i.mdi,
-.menu-base .mx-popupmenu-item a span > svg,
-.menu-base .mx-navigationlist-item a svg,
-.menu-base .mx-navigationlist-item a i.mdi,
-.menu-base .mx-navigationlist-item a span > svg {
+.trimm-menu .menu-base li a svg,
+.trimm-menu .menu-base li a i.mdi,
+.trimm-menu .menu-base li a span > svg,
+.trimm-menu .menu-base .mx-menubar-item a svg,
+.trimm-menu .menu-base .mx-menubar-item a i.mdi,
+.trimm-menu .menu-base .mx-menubar-item a span > svg,
+.trimm-menu .menu-base .mx-popupmenu-item a svg,
+.trimm-menu .menu-base .mx-popupmenu-item a i.mdi,
+.trimm-menu .menu-base .mx-popupmenu-item a span > svg,
+.trimm-menu .menu-base .mx-navigationlist-item a svg,
+.trimm-menu .menu-base .mx-navigationlist-item a i.mdi,
+.trimm-menu .menu-base .mx-navigationlist-item a span > svg, .trimm-menu.menu-base li a svg,
+.trimm-menu.menu-base li a i.mdi,
+.trimm-menu.menu-base li a span > svg,
+.trimm-menu.menu-base .mx-menubar-item a svg,
+.trimm-menu.menu-base .mx-menubar-item a i.mdi,
+.trimm-menu.menu-base .mx-menubar-item a span > svg,
+.trimm-menu.menu-base .mx-popupmenu-item a svg,
+.trimm-menu.menu-base .mx-popupmenu-item a i.mdi,
+.trimm-menu.menu-base .mx-popupmenu-item a span > svg,
+.trimm-menu.menu-base .mx-navigationlist-item a svg,
+.trimm-menu.menu-base .mx-navigationlist-item a i.mdi,
+.trimm-menu.menu-base .mx-navigationlist-item a span > svg {
   color: currentColor;
 }
-.menu-base li a .caret,
-.menu-base .mx-menubar-item a .caret,
-.menu-base .mx-popupmenu-item a .caret,
-.menu-base .mx-navigationlist-item a .caret {
+.trimm-menu .menu-base li a .caret,
+.trimm-menu .menu-base .mx-menubar-item a .caret,
+.trimm-menu .menu-base .mx-popupmenu-item a .caret,
+.trimm-menu .menu-base .mx-navigationlist-item a .caret, .trimm-menu.menu-base li a .caret,
+.trimm-menu.menu-base .mx-menubar-item a .caret,
+.trimm-menu.menu-base .mx-popupmenu-item a .caret,
+.trimm-menu.menu-base .mx-navigationlist-item a .caret {
   border-top-color: var(--base-white) !important;
   border-bottom-color: var(--base-white) !important;
 }
-.menu-base .mx-menubar > ul > li:hover > a,
-.menu-base .mx-menubar > ul > li.active > a,
-.menu-base .mx-menubar-list > li:hover > a,
-.menu-base .mx-menubar-list > li.active > a,
-.menu-base .mx-navigationlist-item:hover,
-.menu-base .mx-navigationlist-item.active {
+.trimm-menu .menu-base .mx-menubar > ul > li:hover > a,
+.trimm-menu .menu-base .mx-menubar > ul > li.active > a,
+.trimm-menu .menu-base .mx-menubar-list > li:hover > a,
+.trimm-menu .menu-base .mx-menubar-list > li.active > a,
+.trimm-menu .menu-base .mx-navigationlist-item:hover,
+.trimm-menu .menu-base .mx-navigationlist-item.active, .trimm-menu.menu-base .mx-menubar > ul > li:hover > a,
+.trimm-menu.menu-base .mx-menubar > ul > li.active > a,
+.trimm-menu.menu-base .mx-menubar-list > li:hover > a,
+.trimm-menu.menu-base .mx-menubar-list > li.active > a,
+.trimm-menu.menu-base .mx-navigationlist-item:hover,
+.trimm-menu.menu-base .mx-navigationlist-item.active {
   background-color: var(--brand-1-hover) !important;
   color: var(--base-white) !important;
 }
-
-.menu-base,
-.menu-base.mx-menubar {
+.trimm-menu.menu-base, .trimm-menu.menu-base.mx-menubar {
   background-color: var(--brand-3) !important;
 }
-
-.menu-base .dropdown-menu,
-.menu-base .mx-navbar-submenu {
+.trimm-menu.menu-base .dropdown-menu, .trimm-menu.menu-base .mx-navbar-submenu {
   background: var(--base-white) !important;
   color: var(--base-black) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 1.5px 4px rgba(0, 0, 0, 0.08) !important;
@@ -29671,9 +29703,7 @@ p {
   font-size: 16px !important;
   font-family: "GothamSSm", sans-serif !important;
 }
-
-.menu-base .dropdown-menu a,
-.menu-base .mx-navbar-submenu a {
+.trimm-menu.menu-base .dropdown-menu a, .trimm-menu.menu-base .mx-navbar-submenu a {
   color: var(--base-black) !important;
   font-size: 14px !important;
   padding: 12px 16px !important;
@@ -29684,22 +29714,15 @@ p {
   border-radius: 4px !important;
   transition: background 0.18s, color 0.18s;
 }
-
-.menu-base .dropdown-menu a:hover,
-.menu-base .mx-navbar-submenu a:hover,
-.menu-base .dropdown-menu a:focus,
-.menu-base .mx-navbar-submenu a:focus {
+.trimm-menu.menu-base .dropdown-menu a:hover, .trimm-menu.menu-base .mx-navbar-submenu a:hover, .trimm-menu.menu-base .dropdown-menu a:focus, .trimm-menu.menu-base .mx-navbar-submenu a:focus {
   background: var(--brand-2-hover) !important;
   color: var(--base-white) !important;
 }
-
-.menu-base .dropdown-menu a.active,
-.menu-base .mx-navbar-submenu a.active {
+.trimm-menu.menu-base .dropdown-menu a.active, .trimm-menu.menu-base .mx-navbar-submenu a.active {
   background: var(--brand-2-active) !important;
   color: var(--base-white) !important;
 }
-
-.menu-base li.mx-navbar-item.dropdown.open {
+.trimm-menu.menu-base li.mx-navbar-item.dropdown.open {
   overflow: visible !important;
 }
 

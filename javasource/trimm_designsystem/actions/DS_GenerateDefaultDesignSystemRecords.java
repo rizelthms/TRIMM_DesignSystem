@@ -380,7 +380,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "switch-lg", "Large switch size variant", 49, "Switch" },
 
 				// Menu Component Classes (associate to "Menu")
-				{ "menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
+				{ "trimm-menu menu-base", "Base menu styling with TRIMM design tokens", 42, "Menu" },
 
 				// Tab Component Classes (associate to "TabContainer")
 				{ "tab-base", "Base tab styling with TRIMM design tokens", 43, "TabContainer" },
@@ -624,7 +624,7 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			com.mendix.systemwideinterfaces.core.IMendixObject menuCompObj = menuCompList.get(0);
 			trimm_designsystem.proxies.DS_Component menuComp = trimm_designsystem.proxies.DS_Component
 					.initialize(context, menuCompObj);
-			String[] menuClassNames = { "menu-base" };
+			String[] menuClassNames = { "trimm-menu menu-base" };
 			for (String className : menuClassNames) {
 				java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> classList = com.mendix.core.Core
 						.createXPathQuery("//TRIMM_DesignSystem.DS_ComponentClass[ClassName='" + className + "']")
