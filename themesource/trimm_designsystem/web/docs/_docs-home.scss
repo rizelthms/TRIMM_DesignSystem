@@ -1,0 +1,48 @@
+.docs-home {
+    margin-left: $spacing-12;
+    margin-right: $spacing-12;
+    padding: $spacing-32;
+    background: var(--base-white);
+    box-sizing: border-box;
+    font-family: $font-primary;
+
+    h1,
+    .mx-text h1,
+    & .mx-text > h1 {
+        font-size: $font-size-h1 !important;
+        line-height: $line-height-h1 !important;
+        font-weight: $font-weight-bold !important;
+        color: var(--base-black);
+        text-wrap: balance;
+    }
+
+    h2,
+    .mx-text h2,
+    & .mx-text > h2 {
+        font-size: $font-size-h2 !important;
+        line-height: $line-height-h2 !important;
+        font-weight: $font-weight-bold !important;
+        color: var(--base-black);
+    }
+
+    h3,
+    .mx-text h3,
+    & .mx-text > h3 {
+        font-size: $font-size-h3 !important;
+        line-height: $line-height-h3 !important;
+        font-weight: $font-weight-semibold !important;
+        color: var(--base-black);
+    }
+
+    p,
+    .mx-text {
+        font-size: $font-size-body-2;
+        line-height: $line-height-body-1 !important;
+        font-weight: $font-weight-regular;
+        color: var(--base-black);
+        margin-top: $spacing-24 !important;
+        margin-bottom: $spacing-16 !important;
+    }
+}
+
+

@@ -31467,6 +31467,356 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   background: transparent;
 }
 
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-BlackItalic.woff2") format("woff2");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-BookItalic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-Book.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-XLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-LightItalic.woff2") format("woff2");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-XLightItalic.woff2") format("woff2");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GothamSSm";
+  src: url("GothamSSm-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+h1 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 31px;
+  font-weight: bold;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h4 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h5 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+h6 {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--brand-1);
+  margin-bottom: 24px;
+}
+
+p {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--base-black);
+  margin-bottom: 16px;
+}
+
+/**
+ * TRIMM Design System - Color Tokens
+ * 
+ * This file defines the color system for both light and dark modes.
+ * Colors are organized by their role (brand, base, secondary, support)
+ * and include state variations for interactive elements:
+ * 
+ * State Variations:
+ * - Default: Base color
+ * - Hover: 15% lighter in light mode, 10% lighter in dark mode
+ * - Active: 10% darker than base
+ * - Disabled: 60% transparent (40% for white)
+ */
+:root {
+  /**
+   * Brand Colors
+   * Primary colors that represent the TRIMM brand identity
+   */
+  --brand-1: #00172b;
+  --brand-1-hover: #004078;
+  --brand-1-active: black;
+  --brand-1-disabled: rgba(0, 23, 43, 0.4);
+  --brand-2: #f37123;
+  --brand-2-hover: #f7a06c;
+  --brand-2-active: #d7580c;
+  --brand-2-disabled: rgba(243, 113, 35, 0.4);
+  --brand-3: #0e808a;
+  --brand-3-hover: #15c0cf;
+  --brand-3-active: #09555c;
+  --brand-3-disabled: rgba(14, 128, 138, 0.4);
+  /**
+   * Base Colors
+   * Fundamental colors for text, backgrounds, and borders
+   */
+  --base-black: #231f20;
+  --base-black-hover: #4c4345;
+  --base-black-active: #080707;
+  --base-black-disabled: rgba(35, 31, 32, 0.4);
+  --base-white: #ffffff;
+  --base-white-hover: #d9d9d9;
+  --base-white-active: #cccccc;
+  --base-white-disabled: rgba(255, 255, 255, 0.6);
+  /**
+   * Secondary Colors
+   * Supporting colors for UI elements and backgrounds
+   */
+  --secondary-1: #6e6f72;
+  --secondary-1-hover: #949598;
+  --secondary-1-active: #555658;
+  --secondary-1-disabled: rgba(110, 111, 114, 0.4);
+  --secondary-2: #edd7c4;
+  --secondary-2-hover: white;
+  --secondary-2-active: #e1bd9d;
+  --secondary-2-disabled: rgba(237, 215, 196, 0.4);
+  /**
+   * Support Colors
+   * Used for status, alerts, and system feedback
+   */
+  --support-1: #392b78;
+  --support-1-hover: #543fb0;
+  --support-1-active: #271e52;
+  --support-1-disabled: rgba(57, 43, 120, 0.4);
+  --support-2: #b92025;
+  --support-2-hover: #df464b;
+  --support-2-active: #8e181c;
+  --support-2-disabled: rgba(185, 32, 37, 0.4);
+  --support-3: #176e4e;
+  --support-3-hover: #24ad7b;
+  --support-3-active: #0e4430;
+  --support-3-disabled: rgba(23, 110, 78, 0.4);
+  --support-4: #ffc107;
+  --support-4-hover: #ffd454;
+  --support-4-active: #d39e00;
+  --support-4-disabled: rgba(255, 193, 7, 0.4);
+}
+
+/**
+ * Dark Mode Theme
+ * Colors are adjusted for dark mode by:
+ * 1. Darkening the base color by 15%
+ * 2. Adjusting hover/active states relative to the darkened base
+ * 3. Maintaining consistent transparency for disabled states
+ */
+[data-theme=dark] {
+  --brand-1: black;
+  --brand-1-hover: #001b33;
+  --brand-1-active: black;
+  --brand-1-disabled: rgba(0, 0, 0, 0.4);
+  --brand-2: #bf4e0a;
+  --brand-2-hover: #ef620d;
+  --brand-2-active: #8f3a08;
+  --brand-2-disabled: rgba(191, 78, 10, 0.4);
+  --brand-3: #074045;
+  --brand-3-hover: #0c6b73;
+  --brand-3-active: #021516;
+  --brand-3-disabled: rgba(7, 64, 69, 0.4);
+  --base-black: black;
+  --base-black-hover: #1b1819;
+  --base-black-active: black;
+  --base-black-disabled: rgba(0, 0, 0, 0.4);
+  --base-white: #d9d9d9;
+  --base-white-hover: #bfbfbf;
+  --base-white-active: #a6a6a6;
+  --base-white-disabled: rgba(217, 217, 217, 0.6);
+  --secondary-1: #48494b;
+  --secondary-1-hover: #616265;
+  --secondary-1-active: #2f3031;
+  --secondary-1-disabled: rgba(72, 73, 75, 0.4);
+  --secondary-2: #dbaf89;
+  --secondary-2-hover: #e7cab0;
+  --secondary-2-active: #cf9562;
+  --secondary-2-disabled: rgba(219, 175, 137, 0.4);
+  --support-1: #1e1740;
+  --support-1-hover: #302465;
+  --support-1-active: #0c091a;
+  --support-1-disabled: rgba(30, 23, 64, 0.4);
+  --support-2: #781518;
+  --support-2-hover: #a31c21;
+  --support-2-active: #4c0d0f;
+  --support-2-disabled: rgba(120, 21, 24, 0.4);
+  --support-3: #0a2f21;
+  --support-3-hover: #13593f;
+  --support-3-active: #010503;
+  --support-3-disabled: rgba(10, 47, 33, 0.4);
+  --support-4: #ba8b00;
+  --support-4-hover: #edb100;
+  --support-4-active: #876500;
+  --support-4-disabled: rgba(186, 139, 0, 0.4);
+}
+
+.docs-borderToken-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  padding: 16px;
+  margin: 12px;
+  width: 190px;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  background: var(--base-white);
+  border: 1px solid #f0f0f0;
+  transition: box-shadow 0.2s;
+  position: relative;
+}
+
+.docs-borderToken-card:hover {
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
+}
+
+.docs-borderToken-container {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  background: var(--base-white);
+  box-sizing: border-box;
+}
+
+.docs-borderToken-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+}
+
+.docs-borderToken-value {
+  font-family: "GothamSSm", sans-serif;
+  font-size: 12px;
+  color: var(--secondary-1);
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+
+.docs-borderToken-desc {
+  font-size: 12px;
+  font-weight: 100;
+  color: var(--secondary-1);
+  margin-bottom: 8px;
+}
+
+.docs-borderToken-center-card,
+mx-templategrid-content-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  text-align: center;
+}
+
+.border-style-0 {
+  border: 0px solid var(--brand-2);
+}
+
+.border-style-1 {
+  border: 1px solid var(--brand-2);
+}
+
+.border-style-2 {
+  border: 2px solid var(--brand-2);
+}
+
+.border-style-4 {
+  border: 4px solid var(--brand-2);
+}
+
+.border-style-8 {
+  border: 8px solid var(--brand-2);
+}
+
 .docs-colorToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -31569,86 +31919,6 @@ mx-templategrid-content-wrapper {
 
 .swatch-support-4 {
   background: var(--support-4);
-}
-
-.docs-borderToken-card {
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  padding: 16px;
-  margin: 12px;
-  width: 190px;
-  display: inline-block;
-  vertical-align: top;
-  text-align: center;
-  background: var(--base-white);
-  border: 1px solid #f0f0f0;
-  transition: box-shadow 0.2s;
-  position: relative;
-}
-
-.docs-borderToken-card:hover {
-  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12);
-}
-
-.docs-borderToken-container {
-  width: 100%;
-  height: 48px;
-  border-radius: 8px;
-  margin-top: 8px;
-  margin-bottom: 12px;
-  background: var(--base-white);
-  box-sizing: border-box;
-}
-
-.docs-borderToken-name {
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-}
-
-.docs-borderToken-value {
-  font-family: "GothamSSm", sans-serif;
-  font-size: 12px;
-  color: var(--secondary-1);
-  margin-bottom: 8px;
-  word-break: break-all;
-}
-
-.docs-borderToken-desc {
-  font-size: 12px;
-  font-weight: 100;
-  color: var(--secondary-1);
-  margin-bottom: 8px;
-}
-
-.docs-borderToken-center-card,
-mx-templategrid-content-wrapper {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  text-align: center;
-}
-
-.border-style-0 {
-  border: 0px solid var(--brand-2);
-}
-
-.border-style-1 {
-  border: 1px solid var(--brand-2);
-}
-
-.border-style-2 {
-  border: 2px solid var(--brand-2);
-}
-
-.border-style-4 {
-  border: 4px solid var(--brand-2);
-}
-
-.border-style-8 {
-  border: 8px solid var(--brand-2);
 }
 
 .docs-radiusToken-card {
@@ -32203,190 +32473,6 @@ mx-templategrid-content-wrapper {
   margin-top: 0;
 }
 
-.docs-dropdownCustom-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 32px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
-  min-height: unset;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-dropdownCustom-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-dropdownCustom-sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 24px;
-}
-
-.docs-dropdownCustom-sectionText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.docs-dropdownCustom-card table,
-.docs-dropdownCustom-card table th,
-.docs-dropdownCustom-card table td {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.docs-datepickerCustom-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 32px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
-  min-height: unset;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-datepickerCustom-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-datepickerCustom-sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 24px;
-}
-
-.docs-datepickerCustom-sectionText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.docs-datepickerCustom-card table,
-.docs-datepickerCustom-card table th,
-.docs-datepickerCustom-card table td {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.docs-colorTokenEditorCustom-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 8px 8px;
-  padding-top: 16px;
-  background: var(--base-white);
-  border-radius: 4px;
-  margin-bottom: 8px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
-  width: 100%;
-  max-width: 1200px;
-  box-sizing: border-box;
-  position: relative;
-}
-.docs-colorTokenEditorCustom-card .trimm-color-token-fab {
-  position: absolute !important;
-  left: 50% !important;
-  top: 16px !important;
-  transform: translateX(-50%) !important;
-  z-index: 10 !important;
-  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12) rgba(0, 0, 0, 0.1);
-}
-
-.docs-colorTokenEditorCustom-fabArea {
-  width: 100%;
-  min-height: 80px;
-  margin-bottom: 8px;
-  position: relative;
-}
-
-.docs-colorTokenEditorCustom-sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 24px;
-}
-
-.docs-colorTokenEditorCustom-sectionText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.docs-colorTokenEditorCustom-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-colorTokenEditorCustom-card table {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.docs-colorTokenEditorCustom-card table th,
-.docs-colorTokenEditorCustom-card table td {
-  text-align: center;
-  vertical-align: middle;
-}
-
 .docs-accordionClass-card {
   display: flex;
   flex-direction: column;
@@ -32814,6 +32900,230 @@ mx-templategrid-content-wrapper {
   color: var(--secondary-1);
   margin-bottom: 16px;
   text-align: center;
+}
+
+.docs-datepickerCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  min-height: unset;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-datepickerCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-datepickerCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-datepickerCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-datepickerCustom-card table,
+.docs-datepickerCustom-card table th,
+.docs-datepickerCustom-card table td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.docs-dropdownCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  min-height: unset;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-dropdownCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-dropdownCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-dropdownCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-dropdownCustom-card table,
+.docs-dropdownCustom-card table th,
+.docs-dropdownCustom-card table td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.docs-colorTokenEditorCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 8px;
+  padding-top: 16px;
+  background: var(--base-white);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  width: 100%;
+  max-width: 1200px;
+  box-sizing: border-box;
+  position: relative;
+}
+.docs-colorTokenEditorCustom-card .trimm-color-token-fab {
+  position: absolute !important;
+  left: 50% !important;
+  top: 16px !important;
+  transform: translateX(-50%) !important;
+  z-index: 10 !important;
+  box-shadow: 0 6px 12px rgba(27, 28, 29, 0.12) rgba(0, 0, 0, 0.1);
+}
+
+.docs-colorTokenEditorCustom-fabArea {
+  width: 100%;
+  min-height: 80px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.docs-colorTokenEditorCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-colorTokenEditorCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-colorTokenEditorCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-colorTokenEditorCustom-card table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.docs-colorTokenEditorCustom-card table th,
+.docs-colorTokenEditorCustom-card table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.docs-home {
+  margin-left: 12px;
+  margin-right: 12px;
+  padding: 32px;
+  background: var(--base-white);
+  box-sizing: border-box;
+  font-family: "GothamSSm", sans-serif;
+}
+.docs-home h1,
+.docs-home .mx-text h1, .docs-home .mx-text > h1 {
+  font-size: 31px !important;
+  line-height: 150px !important;
+  font-weight: bold !important;
+  color: var(--base-black);
+  text-wrap: balance;
+}
+.docs-home h2,
+.docs-home .mx-text h2, .docs-home .mx-text > h2 {
+  font-size: 26px !important;
+  line-height: 130px !important;
+  font-weight: bold !important;
+  color: var(--base-black);
+}
+.docs-home h3,
+.docs-home .mx-text h3, .docs-home .mx-text > h3 {
+  font-size: 24px !important;
+  line-height: 130px !important;
+  font-weight: 600 !important;
+  color: var(--base-black);
+}
+.docs-home p,
+.docs-home .mx-text {
+  font-size: 16px;
+  line-height: 28px !important;
+  font-weight: 400;
+  color: var(--base-black);
+  margin-top: 24px !important;
+  margin-bottom: 16px !important;
 }
 
 body {
