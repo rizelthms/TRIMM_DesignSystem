@@ -40,15 +40,18 @@
         line-height: $line-height-body-1 !important;
         font-weight: $font-weight-regular;
         color: var(--base-black);
-        margin-top: $spacing-24 !important;
+        margin-top: $spacing-16 !important;
         margin-bottom: $spacing-16 !important;
     }
 
     .docs-section {
-        margin-top: $spacing-12;
-        padding-top: $spacing-12;
-        border-top: $border-1 solid #e5e7eb;
+        margin-top: $spacing-16;
+        margin-bottom: $spacing-16;
+        padding: $spacing-16;
+        background: var(--base-white);
+        border: $border-1 solid #e5e7eb;
         border-radius: $radius-8;
+        box-sizing: border-box;
         transition:
             background-color 0.2s ease,
             box-shadow 0.2s ease,
@@ -59,13 +62,11 @@
     .docs-section:hover {
         background: #fafafa;
         box-shadow: $shadow-2;
-        border-top-color: var(--brand-2);
+        border-color: var(--brand-2);
         transform: translateY(-1px);
     }
 
     > .docs-section:first-child {
         margin-top: 0;
-        padding-top: 0;
-        border-top: 0;
     }
 }

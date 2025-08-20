@@ -33122,26 +33122,27 @@ mx-templategrid-content-wrapper {
   line-height: 28px !important;
   font-weight: 400;
   color: var(--base-black);
-  margin-top: 24px !important;
+  margin-top: 16px !important;
   margin-bottom: 16px !important;
 }
 .docs-home .docs-section {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #e5e7eb;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--base-white);
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
+  box-sizing: border-box;
   transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 .docs-home .docs-section:hover {
   background: #fafafa;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  border-top-color: var(--brand-2);
+  border-color: var(--brand-2);
   transform: translateY(-1px);
 }
 .docs-home > .docs-section:first-child {
   margin-top: 0;
-  padding-top: 0;
-  border-top: 0;
 }
 
 body {
