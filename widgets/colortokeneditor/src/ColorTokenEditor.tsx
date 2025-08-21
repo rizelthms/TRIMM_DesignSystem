@@ -775,6 +775,8 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     function handleImportThemeFile(file: File | null) {
         if (!file) {
             setThemeMessage({ type: "error", text: "No file selected" });
+            const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
+            if (input) input.value = "";
             return;
         }
         const reader = new FileReader();
@@ -788,9 +790,13 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             } else {
                 setThemeMessage({ type: "error", text: result.error || "Failed to import theme" });
             }
+            const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
+            if (input) input.value = "";
         };
         reader.onerror = () => {
             setThemeMessage({ type: "error", text: "Failed to read file" });
+            const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
+            if (input) input.value = "";
         };
         reader.readAsText(file);
     }
@@ -952,7 +958,10 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             type="button"
                             onClick={() => {
                                 const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
-                                if (input) input.click();
+                                if (input) {
+                                    input.value = "";
+                                    input.click();
+                                }
                             }}
                             aria-label="Import theme from JSON"
                         >
