@@ -392,146 +392,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const [showImportModal, setShowImportModal] = useState(false);
     const [themeMessage, setThemeMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
-    function loadTheme(name: string) {
-        try {
-            const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
-            if (themeData) {
-                const theme = JSON.parse(themeData);
-                applyOverrides(theme.overrides);
-                setSelectedTheme(name);
-            }
-        } catch (error) {
-            console.error("Failed to load theme:", error);
-        }
-    }
 
-    function handleLoadTheme() {
-        if (selectedTheme) {
-            loadTheme(selectedTheme);
-        }
-    }
-
-    function handleSaveChanges() {
-        if (selectedTheme) {
-            const overrides = getOverrides(theme);
-            const existingData = localStorage.getItem(`${THEME_PREFIX}${selectedTheme}`);
-            if (existingData) {
-                const theme = JSON.parse(existingData);
-                theme.overrides = overrides;
-                theme.updatedAt = new Date().toISOString();
-                localStorage.setItem(`${THEME_PREFIX}${selectedTheme}`, JSON.stringify(theme));
-            }
-        }
-    }
-
-    function handleDeleteTheme() {
-        if (selectedTheme) {
-            localStorage.removeItem(`${THEME_PREFIX}${selectedTheme}`);
-            const index = getSavedThemeNames();
-            const newIndex = index.filter(name => name !== selectedTheme);
-            localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(newIndex));
-
-            // If we're deleting the currently loaded theme, fallback to default
-            const currentOverrides = getOverrides(theme);
-            const themeData = localStorage.getItem(`${THEME_PREFIX}${selectedTheme}`);
-            if (themeData) {
-                const themeToDelete = JSON.parse(themeData);
-                const isCurrentlyLoaded = JSON.stringify(currentOverrides) === JSON.stringify(themeToDelete.overrides);
-                if (isCurrentlyLoaded) {
-                    resetOverrides(tokens, "light");
-                    resetOverrides(tokens, "dark");
-                }
-            }
-
-            setSelectedTheme("");
-        }
-    }
-
-    function handleExportTheme() {
-        const themeName = selectedTheme || "Default TRIMM";
-        let themeData;
-
-        if (themeName === "Default TRIMM") {
-            const defaultOverrides: Record<string, string> = {};
-            tokens.forEach(token => {
-                const computedValue = getComputedStyle(document.documentElement).getPropertyValue(token.name);
-                if (computedValue) {
-                    defaultOverrides[token.name] = computedValue.trim();
-                }
-            });
-            themeData = {
-                name: themeName,
-                overrides: defaultOverrides,
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString()
-            };
-        } else {
-            const stored = localStorage.getItem(`${THEME_PREFIX}${themeName}`);
-            if (stored) {
-                themeData = JSON.parse(stored);
-                themeData.name = themeName;
-            }
-        }
-
-        if (themeData) {
-            const blob = new Blob([JSON.stringify(themeData, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `${themeName.replace(/\s+/g, '_')}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-    }
-
-    function handleImportTheme() {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = '.json';
-        input.onchange = (e) => {
-            const file = (e.target as HTMLInputElement).files?.[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    try {
-                        const themeData = JSON.parse(e.target?.result as string);
-                        if (themeData.name && themeData.overrides) {
-                            const index = getSavedThemeNames();
-                            if (!index.includes(themeData.name)) {
-                                index.push(themeData.name);
-                                localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(index));
-                            }
-                            localStorage.setItem(`${THEME_PREFIX}${themeData.name}`, JSON.stringify(themeData));
-                            setSelectedTheme(themeData.name);
-                        }
-                    } catch (error) {
-                        console.error("Failed to import theme:", error);
-                    }
-                };
-                reader.readAsText(file);
-            }
-        };
-        input.click();
-    }
-
-    function handleSaveTheme() {
-        const name = newThemeName.trim();
-        if (!name) return;
-        const themeObj = {
-            name,
-            version: "1.0.0",
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString(),
-            light: getOverrides("light"),
-            dark: getOverrides("dark")
-        };
-        localStorage.setItem(`${THEME_PREFIX}${name}`, JSON.stringify(themeObj));
-        const index = Array.from(new Set([...getSavedThemeNames(), name]));
-        localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(index));
-        setNewThemeName("");
-    }
 
     // Draggable FAB state
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
@@ -980,8 +841,25 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     </button>
                 </div>
 
-                {/* Minimal theme toolbar: save only */}
+                {/* Drawer resize handle */}
+                <div
+                    className={`trimm-color-token-drawer-resize-handle ${normalizedSide}`}
+                    onMouseDown={onResizeMouseDown}
+                    style={{ cursor: "ew-resize", pointerEvents: "auto" }}
+                    aria-label="Resize color token drawer"
+                    role="separator"
+                />
+
+                {/* Theme message */}
+                {themeMessage && (
+                    <div className={`trimm-theme-message trimm-theme-message-${themeMessage.type}`}>
+                        {themeMessage.text}
+                    </div>
+                )}
+
+                {/* Theme management section */}
                 <div className="trimm-theme-manager">
+                    {/* Row 1: create new theme */}
                     <div className="trimm-theme-compact-row" aria-label="Create theme">
                         <input
                             type="text"
@@ -989,74 +867,87 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             value={newThemeName}
                             onChange={(e) => setNewThemeName(e.target.value)}
                             className="trimm-theme-input-small"
+                            aria-label="Theme name"
                         />
                         <button
-                            onClick={() => {
-                                if (newThemeName.trim()) {
-                                    const overrides = getOverrides(theme);
-                                    localStorage.setItem(`${THEME_PREFIX}${newThemeName}`, JSON.stringify({
-                                        overrides,
-                                        createdAt: new Date().toISOString(),
-                                        updatedAt: new Date().toISOString()
-                                    }));
-                                    const index = getSavedThemeNames();
-                                    if (!index.includes(newThemeName)) {
-                                        index.push(newThemeName);
-                                        localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(index));
-                                    }
-                                    setNewThemeName("");
-                                }
-                            }}
-                            className="trimm-button-small btn-cta"
+                            className="trimm-button btn-cta trimm-button-small"
+                            onClick={handleSaveTheme}
+                            type="button"
+                            aria-label="Create new theme"
                         >
                             Save new theme
                         </button>
                     </div>
 
-                    <div className="trimm-theme-compact-row" aria-label="Choose theme">
+                    {/* Row 2: choose theme and actions */}
+                    <div className="trimm-theme-compact-row" aria-label="Manage theme">
                         <select
                             value={selectedTheme}
                             onChange={(e) => setSelectedTheme(e.target.value)}
                             className="trimm-theme-select-small"
+                            aria-label="Choose theme"
                         >
-                            <option value="">Choose theme</option>
+                            <option value="">Choose theme...</option>
+                            <option value="default">Default TRIMM</option>
                             {savedThemes.map(name => (
                                 <option key={name} value={name}>{name}</option>
                             ))}
                         </select>
                         <button
+                            className="trimm-button btn-info trimm-button-small"
                             onClick={handleLoadTheme}
+                            type="button"
                             disabled={!selectedTheme}
-                            className="trimm-button-small"
+                            aria-label="Load selected theme"
                         >
                             Load theme
                         </button>
                         <button
+                            className="trimm-button btn-success trimm-button-small"
                             onClick={handleSaveChanges}
-                            disabled={!selectedTheme}
-                            className="trimm-button-small"
+                            type="button"
+                            disabled={!selectedTheme || selectedTheme === "default"}
+                            aria-label="Update selected theme"
                         >
                             Update theme
                         </button>
                         <button
+                            className="trimm-button btn-danger trimm-button-small"
                             onClick={handleDeleteTheme}
-                            disabled={!selectedTheme}
-                            className="trimm-button-small btn-danger"
+                            type="button"
+                            disabled={!selectedTheme || selectedTheme === "default"}
+                            aria-label="Delete selected theme"
                         >
-                            Delete
+                            Delete theme
                         </button>
                     </div>
 
-                    <div className="trimm-theme-compact-row" aria-label="Export import">
+                    {/* Row 3: export/import */}
+                    <div className="trimm-theme-compact-row" aria-label="Import and export">
                         <button
+                            className="trimm-button btn-primary trimm-button-small"
                             onClick={handleExportTheme}
-                            className="trimm-button-small"
+                            type="button"
+                            disabled={!selectedTheme}
+                            aria-label="Export selected theme to JSON"
                         >
                             Export JSON
                         </button>
+                        <input
+                            id="trimm-theme-file-input"
+                            type="file"
+                            accept="application/json,.json"
+                            style={{ display: "none" }}
+                            onChange={(e) => handleImportThemeFile(e.target.files && e.target.files[0] ? e.target.files[0] : null)}
+                        />
                         <button
-                            onClick={handleImportTheme}
-                            className="trimm-button-small"
+                            className="trimm-button btn-primary trimm-button-small"
+                            type="button"
+                            onClick={() => {
+                                const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
+                                if (input) input.click();
+                            }}
+                            aria-label="Import theme from JSON"
                         >
                             Import JSON
                         </button>
