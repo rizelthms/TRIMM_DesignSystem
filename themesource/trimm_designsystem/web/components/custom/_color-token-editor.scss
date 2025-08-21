@@ -378,6 +378,27 @@
     font-size: $font-size-body-4;
 }
 
+// Theme message
+.trimm-theme-message {
+    padding: $spacing-4 $spacing-8;
+    border-radius: $radius-4;
+    margin-bottom: $spacing-8;
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-medium;
+    
+    &.trimm-theme-message-success {
+        background-color: var(--support-3);
+        color: var(--base-white);
+        border: $border-1 solid var(--support-3);
+    }
+    
+    &.trimm-theme-message-error {
+        background-color: var(--support-2);
+        color: var(--base-white);
+        border: $border-1 solid var(--support-2);
+    }
+}
+
 // Modal styles
 .trimm-modal-overlay {
     position: fixed;
@@ -411,14 +432,14 @@
     justify-content: space-between;
     padding: $spacing-16 $spacing-24;
     border-bottom: $border-1 solid var(--secondary-1);
-
+    
     h4 {
         margin: 0;
         font-size: $font-size-h4;
         font-weight: $font-weight-semibold;
         color: var(--base-black);
     }
-
+    
     button {
         background: none;
         border: none;
@@ -428,7 +449,7 @@
         padding: $spacing-4;
         border-radius: $radius-4;
         transition: color 0.2s ease-in-out;
-
+        
         &:hover {
             color: var(--base-black);
         }
@@ -439,7 +460,7 @@
     padding: $spacing-24;
     flex: 1;
     overflow-y: auto;
-
+    
     p {
         margin: 0 0 $spacing-12 0;
         font-size: $font-size-body-2;
@@ -453,7 +474,7 @@
     padding: $spacing-16 $spacing-24;
     border-top: $border-1 solid var(--secondary-1);
     justify-content: flex-end;
-
+    
     button {
         min-width: 80px;
     }
@@ -472,13 +493,13 @@
     color: var(--base-black);
     resize: vertical;
     transition: border-color 0.2s ease-in-out;
-
+    
     &:focus {
         outline: none;
         border-color: var(--brand-1);
         box-shadow: 0 0 0 2px rgba(var(--brand-1-rgb), 0.2);
     }
-
+    
     &::placeholder {
         color: var(--secondary-1);
         font-style: italic;
