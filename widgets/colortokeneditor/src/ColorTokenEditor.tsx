@@ -249,6 +249,29 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         }
     }
 
+    function handleSaveChanges() {
+        if (selectedTheme) {
+            const overrides = getOverrides(theme);
+            const existingData = localStorage.getItem(`${THEME_PREFIX}${selectedTheme}`);
+            if (existingData) {
+                const theme = JSON.parse(existingData);
+                theme.overrides = overrides;
+                theme.updatedAt = new Date().toISOString();
+                localStorage.setItem(`${THEME_PREFIX}${selectedTheme}`, JSON.stringify(theme));
+            }
+        }
+    }
+
+    function handleDeleteTheme() {
+        if (selectedTheme) {
+            localStorage.removeItem(`${THEME_PREFIX}${selectedTheme}`);
+            const index = getSavedThemeNames();
+            const newIndex = index.filter(name => name !== selectedTheme);
+            localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(newIndex));
+            setSelectedTheme("");
+        }
+    }
+
     function handleSaveTheme() {
         const name = newThemeName.trim();
         if (!name) return;
@@ -557,6 +580,20 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             className="trimm-button-small"
                         >
                             Load theme
+                        </button>
+                        <button
+                            onClick={handleSaveChanges}
+                            disabled={!selectedTheme}
+                            className="trimm-button-small"
+                        >
+                            Update theme
+                        </button>
+                        <button
+                            onClick={handleDeleteTheme}
+                            disabled={!selectedTheme}
+                            className="trimm-button-small btn-danger"
+                        >
+                            Delete
                         </button>
                     </div>
                 </div>
