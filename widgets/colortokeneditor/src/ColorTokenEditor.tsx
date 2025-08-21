@@ -234,6 +234,16 @@ function sanitizeOverrides(source: Overrides): Overrides {
     return clean;
 }
 
+function areOverridesEqual(a: Overrides, b: Overrides): boolean {
+    const aKeys = Object.keys(a);
+    const bKeys = Object.keys(b);
+    if (aKeys.length !== bKeys.length) return false;
+    for (const key of aKeys) {
+        if (a[key] !== b[key]) return false;
+    }
+    return true;
+}
+
 /**
  * Theme Management Functions
  */
@@ -560,6 +570,30 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         return () => observer.disconnect();
     }, []);
 
+    // Detect active theme name on mount based on stored overrides matching a saved theme
+    useEffect(() => {
+        try {
+            const names = getSavedThemeNames();
+            const currentLight = sanitizeOverrides(getOverrides("light"));
+            const currentDark = sanitizeOverrides(getOverrides("dark"));
+            for (const name of names) {
+                const raw = localStorage.getItem(`${THEME_PREFIX}${name}`);
+                if (!raw) continue;
+                const saved: SavedTheme = JSON.parse(raw);
+                if (areOverridesEqual(sanitizeOverrides(saved.light || {}), currentLight) &&
+                    areOverridesEqual(sanitizeOverrides(saved.dark || {}), currentDark)) {
+                    setActiveThemeName(name);
+                    return;
+                }
+            }
+            setActiveThemeName("default");
+        } catch {
+            setActiveThemeName("default");
+        }
+        // run once on mount
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /**
      * Handles color changes with automatic theme derivation
      * When user changes a color in light mode, derives a dark version and vice versa
@@ -681,6 +715,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     setOverrides("dark", {});
                     setOverridesState({});
                     setActiveThemeName("default");
+                    setThemeMessage({ type: "success", text: "Default TRIMM theme restored" });
                 }
             } else {
                 setThemeMessage({ type: "error", text: "Failed to delete theme" });
