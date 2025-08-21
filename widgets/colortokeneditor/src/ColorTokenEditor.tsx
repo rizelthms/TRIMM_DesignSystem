@@ -219,9 +219,36 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const [newThemeName, setNewThemeName] = useState("");
     function getSavedThemeNames(): string[] {
         try {
-            return JSON.parse(localStorage.getItem(THEMES_INDEX_KEY) || "[]");
-        } catch { return []; }
+            const index = localStorage.getItem(THEMES_INDEX_KEY);
+            return index ? JSON.parse(index) : [];
+        } catch {
+            return [];
+        }
     }
+
+    // --- Choose theme dropdown ---
+    const [selectedTheme, setSelectedTheme] = useState("");
+    const savedThemes = getSavedThemeNames();
+
+    function loadTheme(name: string) {
+        try {
+            const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
+            if (themeData) {
+                const theme = JSON.parse(themeData);
+                applyOverrides(theme.overrides);
+                setSelectedTheme(name);
+            }
+        } catch (error) {
+            console.error("Failed to load theme:", error);
+        }
+    }
+
+    function handleLoadTheme() {
+        if (selectedTheme) {
+            loadTheme(selectedTheme);
+        }
+    }
+
     function handleSaveTheme() {
         const name = newThemeName.trim();
         if (!name) return;
@@ -491,11 +518,45 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             className="trimm-theme-input-small"
                         />
                         <button
-                            className="trimm-button btn-cta trimm-button-small"
-                            onClick={handleSaveTheme}
-                            type="button"
+                            onClick={() => {
+                                if (newThemeName.trim()) {
+                                    const overrides = getOverrides(theme);
+                                    localStorage.setItem(`${THEME_PREFIX}${newThemeName}`, JSON.stringify({
+                                        overrides,
+                                        createdAt: new Date().toISOString(),
+                                        updatedAt: new Date().toISOString()
+                                    }));
+                                    const index = getSavedThemeNames();
+                                    if (!index.includes(newThemeName)) {
+                                        index.push(newThemeName);
+                                        localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(index));
+                                    }
+                                    setNewThemeName("");
+                                }
+                            }}
+                            className="trimm-button-small btn-cta"
                         >
                             Save new theme
+                        </button>
+                    </div>
+
+                    <div className="trimm-theme-compact-row" aria-label="Choose theme">
+                        <select
+                            value={selectedTheme}
+                            onChange={(e) => setSelectedTheme(e.target.value)}
+                            className="trimm-theme-select-small"
+                        >
+                            <option value="">Choose theme</option>
+                            {savedThemes.map(name => (
+                                <option key={name} value={name}>{name}</option>
+                            ))}
+                        </select>
+                        <button
+                            onClick={handleLoadTheme}
+                            disabled={!selectedTheme}
+                            className="trimm-button-small"
+                        >
+                            Load theme
                         </button>
                     </div>
                 </div>
