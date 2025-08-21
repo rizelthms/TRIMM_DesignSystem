@@ -315,7 +315,7 @@
     width: 16px;
     z-index: 1003;
     cursor: ew-resize;
-    background: rgba(14, 128, 138, 0.08); // subtle teal background
+    background: rgba(14, 128, 138, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -513,31 +513,31 @@
         left: $spacing-16;
         right: $spacing-16;
         transform: translateY(100%);
-
+        
         &.open {
             transform: translateY(0);
         }
-
+        
         &.left,
         &.right {
             left: $spacing-16;
             right: $spacing-16;
             transform: translateY(100%);
-
+            
             &.open {
                 transform: translateY(0);
             }
         }
     }
-
+    
     .trimm-modal {
         margin: $spacing-16;
         max-height: calc(100vh - $spacing-32);
     }
-
+    
     .trimm-theme-button-group {
         flex-direction: column;
-
+        
         button {
             width: 100%;
         }
