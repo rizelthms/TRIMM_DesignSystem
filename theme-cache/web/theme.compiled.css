@@ -31077,6 +31077,161 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   left: auto;
 }
 
+.trimm-theme-manager {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: var(--base-white);
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+.trimm-theme-compact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.trimm-theme-input-small,
+.trimm-theme-select-small,
+.trimm-button-small {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  background: var(--base-white);
+  font-family: "GothamSSm", sans-serif;
+  font-size: 12px;
+}
+
+.trimm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1004;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.trimm-modal {
+  background: var(--base-white);
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.trimm-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--secondary-1);
+}
+.trimm-modal-header h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--base-black);
+}
+.trimm-modal-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--secondary-1);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s ease-in-out;
+}
+.trimm-modal-header button:hover {
+  color: var(--base-black);
+}
+
+.trimm-modal-body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+.trimm-modal-body p {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: var(--base-black);
+}
+
+.trimm-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--secondary-1);
+  justify-content: flex-end;
+}
+.trimm-modal-footer button {
+  min-width: 80px;
+}
+
+.trimm-theme-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 12px;
+  border: 1px solid var(--secondary-1);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
+  background-color: var(--base-white);
+  color: var(--base-black);
+  resize: vertical;
+  transition: border-color 0.2s ease-in-out;
+}
+.trimm-theme-textarea:focus {
+  outline: none;
+  border-color: var(--brand-1);
+  box-shadow: 0 0 0 2px rgba(var(--brand-1-rgb), 0.2);
+}
+.trimm-theme-textarea::placeholder {
+  color: var(--secondary-1);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .trimm-color-token-drawer {
+    width: calc(100vw - 32px);
+    left: 16px;
+    right: 16px;
+    transform: translateY(100%);
+  }
+  .trimm-color-token-drawer.open {
+    transform: translateY(0);
+  }
+  .trimm-color-token-drawer.left, .trimm-color-token-drawer.right {
+    left: 16px;
+    right: 16px;
+    transform: translateY(100%);
+  }
+  .trimm-color-token-drawer.left.open, .trimm-color-token-drawer.right.open {
+    transform: translateY(0);
+  }
+
+  .trimm-modal {
+    margin: 16px;
+    max-height: calc(100vh - 32px);
+  }
+
+  .trimm-theme-button-group {
+    flex-direction: column;
+  }
+  .trimm-theme-button-group button {
+    width: 100%;
+  }
+}
 .trimm-datepicker {
   position: relative;
   display: inline-block;

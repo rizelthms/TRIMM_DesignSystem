@@ -265,3 +265,177 @@
         left: auto;
     }
 }
+
+// Theme Management Styles
+
+// Minimal scaffold for initial toolbar
+.trimm-theme-manager {
+    margin-bottom: $spacing-8;
+    padding: $spacing-8;
+    background-color: var(--base-white);
+    border-radius: $radius-4;
+    border: $border-1 solid #e5e7eb;
+}
+
+.trimm-theme-compact-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    flex-wrap: wrap;
+}
+
+.trimm-theme-input-small,
+.trimm-theme-select-small,
+.trimm-button-small {
+    padding: $spacing-4 $spacing-8;
+    border-radius: $radius-4;
+    border: $border-1 solid #e5e7eb;
+    background: var(--base-white);
+    font-family: $font-primary;
+    font-size: $font-size-body-4;
+}
+
+// Modal styles
+.trimm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1004;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-16;
+}
+
+.trimm-modal {
+    background: var(--base-white);
+    border-radius: $radius-8;
+    box-shadow: $shadow-12;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.trimm-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-16 $spacing-24;
+    border-bottom: $border-1 solid var(--secondary-1);
+
+    h4 {
+        margin: 0;
+        font-size: $font-size-h4;
+        font-weight: $font-weight-semibold;
+        color: var(--base-black);
+    }
+
+    button {
+        background: none;
+        border: none;
+        font-size: $font-size-h3;
+        color: var(--secondary-1);
+        cursor: pointer;
+        padding: $spacing-4;
+        border-radius: $radius-4;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--base-black);
+        }
+    }
+}
+
+.trimm-modal-body {
+    padding: $spacing-24;
+    flex: 1;
+    overflow-y: auto;
+
+    p {
+        margin: 0 0 $spacing-12 0;
+        font-size: $font-size-body-2;
+        color: var(--base-black);
+    }
+}
+
+.trimm-modal-footer {
+    display: flex;
+    gap: $spacing-12;
+    padding: $spacing-16 $spacing-24;
+    border-top: $border-1 solid var(--secondary-1);
+    justify-content: flex-end;
+
+    button {
+        min-width: 80px;
+    }
+}
+
+// Textarea for import
+.trimm-theme-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: $spacing-12;
+    border: $border-1 solid var(--secondary-1);
+    border-radius: $radius-4;
+    font-family: monospace;
+    font-size: $font-size-body-3;
+    background-color: var(--base-white);
+    color: var(--base-black);
+    resize: vertical;
+    transition: border-color 0.2s ease-in-out;
+
+    &:focus {
+        outline: none;
+        border-color: var(--brand-1);
+        box-shadow: 0 0 0 2px rgba(var(--brand-1-rgb), 0.2);
+    }
+
+    &::placeholder {
+        color: var(--secondary-1);
+        font-style: italic;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .trimm-color-token-drawer {
+        width: calc(100vw - $spacing-32);
+        left: $spacing-16;
+        right: $spacing-16;
+        transform: translateY(100%);
+
+        &.open {
+            transform: translateY(0);
+        }
+
+        &.left,
+        &.right {
+            left: $spacing-16;
+            right: $spacing-16;
+            transform: translateY(100%);
+
+            &.open {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .trimm-modal {
+        margin: $spacing-16;
+        max-height: calc(100vh - $spacing-32);
+    }
+
+    .trimm-theme-button-group {
+        flex-direction: column;
+
+        button {
+            width: 100%;
+        }
+    }
+}
