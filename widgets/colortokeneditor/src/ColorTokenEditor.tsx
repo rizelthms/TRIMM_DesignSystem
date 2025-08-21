@@ -11,6 +11,7 @@ import React, { createElement, useState, useRef, useEffect } from "react";
 // --- minimal types/utilities for theme save ---
 const THEMES_INDEX_KEY = "DS_Themes_Index";
 const THEME_PREFIX = "DS_Theme_";
+const THEME_VERSION = "1.0.0";
 
 type Token = {
     name: string;
@@ -18,6 +19,24 @@ type Token = {
 };
 
 type Overrides = Record<string, string>;
+
+type SavedTheme = {
+    name: string;
+    version: string;
+    light: Overrides;
+    dark: Overrides;
+    createdAt: string;
+    updatedAt: string;
+};
+
+type ThemeExport = {
+    metadata: {
+        version: string;
+        exportedAt: string;
+        source: string;
+    };
+    theme: SavedTheme;
+};
 
 /**
  * Validates if a string represents a valid CSS color value
@@ -133,6 +152,11 @@ function applyOverrides(overrides: Overrides) {
     });
 }
 
+// Remove all token properties from document style so CSS defaults apply
+function removeTokenProperties(tokenNames: string[]) {
+    tokenNames.forEach(name => document.documentElement.style.removeProperty(name));
+}
+
 /**
  * Resets all overrides for a theme and restores original token values
  */
@@ -193,6 +217,152 @@ const DEFAULT_DRAWER_WIDTH = 340;
 export function getValidHex(value: string, fallback = "#000000"): string {
     if (/^#([0-9a-f]{3}){1,2}$/i.test(value)) return value;
     return fallback;
+}
+
+function sanitizeOverrides(source: Overrides): Overrides {
+    const clean: Overrides = {};
+    Object.entries(source || {}).forEach(([k, v]) => {
+        if (isValidColor(v)) clean[k] = v;
+    });
+    return clean;
+}
+
+/**
+ * Theme Management Functions
+ */
+
+/**
+ * Gets the list of saved theme names
+ */
+function getSavedThemeNames(): string[] {
+    try {
+        return JSON.parse(localStorage.getItem(THEMES_INDEX_KEY) || "[]") as string[];
+    } catch {
+        return [];
+    }
+}
+
+/**
+ * Saves the current theme state with a given name
+ */
+function saveTheme(name: string, _description?: string, explicitLight?: Overrides, explicitDark?: Overrides): boolean {
+    try {
+        const now = new Date().toISOString();
+        const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
+        const existingTheme: SavedTheme | null = themeData ? JSON.parse(themeData) : null;
+
+        const theme: SavedTheme = {
+            name,
+            version: THEME_VERSION,
+            light: sanitizeOverrides(explicitLight ?? getOverrides("light")),
+            dark: sanitizeOverrides(explicitDark ?? getOverrides("dark")),
+            createdAt: existingTheme?.createdAt || now,
+            updatedAt: now
+        };
+
+        localStorage.setItem(`${THEME_PREFIX}${name}`, JSON.stringify(theme));
+
+        const themeNames = getSavedThemeNames();
+        if (!themeNames.includes(name)) {
+            themeNames.push(name);
+            localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(themeNames));
+        }
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+/**
+ * Loads a saved theme by name
+ */
+function loadTheme(name: string): boolean {
+    try {
+        const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
+        if (!themeData) return false;
+
+        const theme: SavedTheme = JSON.parse(themeData);
+
+        // Replace both light and dark overrides stores and clear DOM props first
+        const tokenNames = Array.from(document.styleSheets) ? Object.keys(theme.light).concat(Object.keys(theme.dark)) : [];
+        removeTokenProperties(Array.from(new Set(tokenNames)));
+        setOverrides("light", sanitizeOverrides(theme.light));
+        setOverrides("dark", sanitizeOverrides(theme.dark));
+
+        const currentTheme = getCurrentTheme();
+        applyOverrides(currentTheme === "dark" ? theme.dark : theme.light);
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+/**
+ * Deletes a saved theme
+ */
+function deleteTheme(name: string): boolean {
+    try {
+        // Remove theme data
+        localStorage.removeItem(`${THEME_PREFIX}${name}`);
+
+        // Update theme index
+        const themeNames = getSavedThemeNames();
+        const updatedNames = themeNames.filter(n => n !== name);
+        localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(updatedNames));
+
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+/**
+ * Exports a theme to JSON format
+ */
+function exportTheme(name: string): string | null {
+    try {
+        const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
+        if (!themeData) return null;
+
+        const theme: SavedTheme = JSON.parse(themeData);
+        const exportData: ThemeExport = {
+            metadata: {
+                version: THEME_VERSION,
+                exportedAt: new Date().toISOString(),
+                source: "TRIMM Design System Color Token Editor"
+            },
+            theme: {
+                ...theme,
+                updatedAt: new Date().toISOString()
+            }
+        };
+
+        return JSON.stringify(exportData, null, 2);
+    } catch {
+        return null;
+    }
+}
+
+/**
+ * Imports a theme from JSON format
+ */
+function importTheme(jsonData: string): { success: boolean; error?: string } {
+    try {
+        const data: ThemeExport = JSON.parse(jsonData);
+
+        if (!data.theme || !data.theme.name || !data.theme.light || !data.theme.dark) {
+            return { success: false, error: "Invalid theme format" };
+        }
+
+        const light = sanitizeOverrides(data.theme.light);
+        const dark = sanitizeOverrides(data.theme.dark);
+
+        const success = saveTheme(data.theme.name, undefined, light, dark);
+        return { success, error: success ? undefined : "Failed to save imported theme" };
+    } catch (error) {
+        return { success: false, error: "Invalid JSON format" };
+    }
 }
 
 import { ColorTokenEditorContainerProps } from "../typings/ColorTokenEditorProps";
@@ -268,7 +438,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             const index = getSavedThemeNames();
             const newIndex = index.filter(name => name !== selectedTheme);
             localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(newIndex));
-            
+
             // If we're deleting the currently loaded theme, fallback to default
             const currentOverrides = getOverrides(theme);
             const themeData = localStorage.getItem(`${THEME_PREFIX}${selectedTheme}`);
@@ -280,7 +450,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     resetOverrides(tokens, "dark");
                 }
             }
-            
+
             setSelectedTheme("");
         }
     }
