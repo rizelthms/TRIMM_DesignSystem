@@ -6,6 +6,13 @@ import React, { createElement, useState, useRef, useEffect } from "react";
  * A Mendix pluggable widget that enables runtime editing of CSS custom properties
  * (design tokens) for the TRIMM Design System. Allows users to customize theme
  * colors without code changes or application restarts.
+ * 
+ * Features:
+ * - Real-time color token editing
+ * - Light/dark theme support
+ * - Theme management (save, load, export, import, delete)
+ * - Draggable floating action button
+ * - Resizable drawer interface
  */
 
 // --- minimal types/utilities for theme save ---
@@ -988,9 +995,6 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                 </button>
             </div>
 
-            {/* Overlay for closing drawer */}
-            {open && <div className="trimm-color-token-overlay" onClick={() => setOpen(false)} />}
-
             {/* Import modal */}
             {showImportModal && (
                 <div className="trimm-modal-overlay" onClick={() => setShowImportModal(false)}>
@@ -1025,6 +1029,9 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     </div>
                 </div>
             )}
+
+            {/* Overlay for closing drawer */}
+            {open && <div className="trimm-color-token-overlay" onClick={() => setOpen(false)} />}
         </div>
     );
 };
