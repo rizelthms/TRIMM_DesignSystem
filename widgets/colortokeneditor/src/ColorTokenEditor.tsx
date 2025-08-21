@@ -624,13 +624,15 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
      * Resets all color overrides and reloads the page to restore original theme
      */
     function handleReset() {
-        resetOverrides(tokens, "light");
-        resetOverrides(tokens, "dark");
+        try {
+            localStorage.removeItem("tokenOverrides_light");
+            localStorage.removeItem("tokenOverrides_dark");
+        } catch {}
+        const tokenNames = tokens.map(t => t.name);
+        removeTokenProperties(tokenNames);
+        setOverrides("light", {});
+        setOverrides("dark", {});
         setOverridesState({});
-        // Skip reload in test environment (jsdom sets hostname to 'localhost')
-        if (window.location.hostname !== "localhost" || window.location.port !== "") {
-            window.location.reload();
-        }
     }
 
     /**
