@@ -97,6 +97,9 @@ describe("getValidHex", () => {
     it("returns custom fallback if provided", () => {
         expect(getValidHex("notacolor", "#fff111")).toBe("#fff111");
     });
+    it("returns fallback for rgb inputs (non-hex)", () => {
+        expect(getValidHex("rgb(1,2,3)")).toBe("#000000");
+    });
 });
 
 describe("getValidHex edge cases", () => {

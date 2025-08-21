@@ -19,6 +19,7 @@ Tests component behavior with Mendix props and user interactions:
 - **Theme persistence**: localStorage integration and cross-render persistence
 - **Accessibility**: ARIA compliance and keyboard navigation
 - **Edge cases**: Invalid tokens, localStorage errors, multiple instances
+- **Theme management**: Save, load, update, delete themes; automatic fallback to Default TRIMM when deleting the active theme; file-based import/export including re-importing the same JSON
 
 ## What Is Being Tested
 
@@ -82,7 +83,7 @@ Tests component behavior with Mendix props and user interactions:
 ### Commands
 ```bash
 # Run all tests
-npm test
+npm test -- --runInBand
 
 # Run tests in watch mode
 npm test -- --watch
@@ -128,6 +129,7 @@ npm test -- --watch
 - **act()**: Wraps state updates and effects
 - **waitFor()**: Handles asynchronous DOM updates
 - **fireEvent**: Simulates user interactions
+- **FileReader mocking**: Tests that simulate import behavior replace `FileReader` with a synchronous mock and restore it after assertions
 
 ## Troubleshooting
 

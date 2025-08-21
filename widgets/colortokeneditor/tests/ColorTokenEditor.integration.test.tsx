@@ -399,6 +399,114 @@ describe("ColorTokenEditor integration", () => {
         });
     });
 
+    it("restores Default TRIMM immediately after deleting the active theme", async () => {
+        // Force light theme
+        document.documentElement.setAttribute("data-theme", "light");
+        await act(async () => {
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        });
+        await act(async () => {
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        });
+        // Change a color to create a visible override
+        const colorInputs = document.querySelectorAll("input[type='color']");
+        await act(async () => {
+            fireEvent.change(colorInputs[0], { target: { value: "#111111" } });
+        });
+        // Create theme "a"
+        const nameInput = screen.getByLabelText(/theme name/i) as HTMLInputElement;
+        await act(async () => {
+            fireEvent.change(nameInput, { target: { value: "a" } });
+        });
+        await act(async () => {
+            fireEvent.click(screen.getByRole("button", { name: /create new theme/i }));
+        });
+        // Load theme "a"
+        const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
+        await act(async () => {
+            fireEvent.change(select, { target: { value: "a" } });
+        });
+        await act(async () => {
+            fireEvent.click(screen.getByRole("button", { name: /load selected theme/i }));
+        });
+        // Delete theme "a" and confirm
+        const confirmSpy = jest.spyOn(window, "confirm").mockReturnValue(true);
+        await act(async () => {
+            fireEvent.click(screen.getByRole("button", { name: /delete selected theme/i }));
+        });
+        confirmSpy.mockRestore();
+        // Should display restoration message and clear overrides in storage
+        expect(await screen.findByText(/default trimm theme restored/i)).toBeInTheDocument();
+        const lightOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_light") || "{}");
+        const darkOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_dark") || "{}");
+        expect(Object.keys(lightOverrides).length).toBe(0);
+        expect(Object.keys(darkOverrides).length).toBe(0);
+    });
+
+    it("allows re-importing the same JSON file after deleting the theme", async () => {
+        // Mock FileReader to synchronously provide content
+        let mockFileContent = "";
+        const OriginalFileReader = (globalThis as any).FileReader;
+        class FRMock {
+            public result: string | ArrayBuffer | null = null;
+            public onload: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null = null;
+            public onerror: ((this: FileReader, ev: ProgressEvent<FileReader>) => any) | null = null;
+            readAsText(_file: Blob) {
+                this.result = mockFileContent as any;
+                if (this.onload) this.onload.call(this as any, {} as any);
+            }
+        }
+        (globalThis as any).FileReader = FRMock as any;
+
+        await act(async () => {
+            render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
+        });
+        await act(async () => {
+            fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
+        });
+
+        // Prepare import JSON for theme "a"
+        const exportJson = {
+            metadata: { version: "1.0.0", exportedAt: new Date().toISOString(), source: "TRIMM Design System Color Token Editor" },
+            theme: {
+                name: "a",
+                version: "1.0.0",
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+                light: { "--brand-1": "#112233" },
+                dark: { "--brand-1": "#0f1520" }
+            }
+        };
+        mockFileContent = JSON.stringify(exportJson);
+
+        const hiddenInput = document.getElementById("trimm-theme-file-input") as HTMLInputElement;
+        // First import
+        await act(async () => {
+            fireEvent.change(hiddenInput, { target: { files: [new File([mockFileContent], "a.json", { type: "application/json" })] } });
+        });
+        // Ensure theme "a" appears
+        const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
+        expect(Array.from(select.options).some(opt => opt.value === "a")).toBe(true);
+
+        // Delete theme "a"
+        const confirmSpy = jest.spyOn(window, "confirm").mockReturnValue(true);
+        await act(async () => {
+            fireEvent.change(select, { target: { value: "a" } });
+            fireEvent.click(screen.getByRole("button", { name: /delete selected theme/i }));
+        });
+        confirmSpy.mockRestore();
+
+        // Re-import the exact same file again (input value cleared by widget)
+        await act(async () => {
+            fireEvent.change(hiddenInput, { target: { files: [new File([mockFileContent], "a.json", { type: "application/json" })] } });
+        });
+        // "a" should be available again
+        expect(Array.from(select.options).some(opt => opt.value === "a")).toBe(true);
+
+        // Restore FileReader
+        (globalThis as any).FileReader = OriginalFileReader;
+    });
+
     it("has correct tab order and focus management", async () => {
         const tokens = [
             { name: "--brand-1", value: "#ff0000" },
