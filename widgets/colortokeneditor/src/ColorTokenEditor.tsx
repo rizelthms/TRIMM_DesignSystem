@@ -398,6 +398,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const [newThemeName, setNewThemeName] = useState<string>("");
     const [showImportModal, setShowImportModal] = useState(false);
     const [themeMessage, setThemeMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+    const [activeThemeName, setActiveThemeName] = useState<string>("default");
 
 
 
@@ -642,6 +643,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             resetOverrides(tokens, "light");
             resetOverrides(tokens, "dark");
             setOverridesState({});
+            setActiveThemeName("default");
             setThemeMessage({ type: "success", text: "Default TRIMM theme loaded" });
             return;
         }
@@ -649,6 +651,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         const success = loadTheme(selectedTheme);
         if (success) {
             setOverridesState(getOverrides(getCurrentTheme()));
+            setActiveThemeName(selectedTheme);
             setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" loaded successfully` });
         } else {
             setThemeMessage({ type: "error", text: "Failed to load theme" });
@@ -662,7 +665,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         }
 
         if (window.confirm(`Are you sure you want to delete theme "${selectedTheme}"?`)) {
-            const deletingActive = selectedTheme === prevThemeRef.current || selectedTheme === selectedTheme;
+            const deletingActive = selectedTheme === activeThemeName;
             const success = deleteTheme(selectedTheme);
             if (success) {
                 setSavedThemes(getSavedThemeNames());
@@ -677,6 +680,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     setOverrides("light", {});
                     setOverrides("dark", {});
                     setOverridesState({});
+                    setActiveThemeName("default");
                 }
             } else {
                 setThemeMessage({ type: "error", text: "Failed to delete theme" });
