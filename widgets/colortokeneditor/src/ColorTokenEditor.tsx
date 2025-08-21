@@ -268,6 +268,19 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             const index = getSavedThemeNames();
             const newIndex = index.filter(name => name !== selectedTheme);
             localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(newIndex));
+            
+            // If we're deleting the currently loaded theme, fallback to default
+            const currentOverrides = getOverrides(theme);
+            const themeData = localStorage.getItem(`${THEME_PREFIX}${selectedTheme}`);
+            if (themeData) {
+                const themeToDelete = JSON.parse(themeData);
+                const isCurrentlyLoaded = JSON.stringify(currentOverrides) === JSON.stringify(themeToDelete.overrides);
+                if (isCurrentlyLoaded) {
+                    resetOverrides(tokens, "light");
+                    resetOverrides(tokens, "dark");
+                }
+            }
+            
             setSelectedTheme("");
         }
     }
