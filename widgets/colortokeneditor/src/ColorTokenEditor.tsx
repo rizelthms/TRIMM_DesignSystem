@@ -385,20 +385,12 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
     const [open, setOpen] = useState(false);
 
-    // --- Save new theme (minimal) ---
-    const [newThemeName, setNewThemeName] = useState("");
-    function getSavedThemeNames(): string[] {
-        try {
-            const index = localStorage.getItem(THEMES_INDEX_KEY);
-            return index ? JSON.parse(index) : [];
-        } catch {
-            return [];
-        }
-    }
-
-    // --- Choose theme dropdown ---
-    const [selectedTheme, setSelectedTheme] = useState("");
-    const savedThemes = getSavedThemeNames();
+    // Theme management state
+    const [savedThemes, setSavedThemes] = useState<string[]>(getSavedThemeNames());
+    const [selectedTheme, setSelectedTheme] = useState<string>("");
+    const [newThemeName, setNewThemeName] = useState<string>("");
+    const [showImportModal, setShowImportModal] = useState(false);
+    const [themeMessage, setThemeMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
     function loadTheme(name: string) {
         try {
