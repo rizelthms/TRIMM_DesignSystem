@@ -8,6 +8,10 @@ import React, { createElement, useState, useRef, useEffect } from "react";
  * colors without code changes or application restarts.
  */
 
+// --- minimal types/utilities for theme save ---
+const THEMES_INDEX_KEY = "DS_Themes_Index";
+const THEME_PREFIX = "DS_Theme_";
+
 type Token = {
     name: string;
     value: string;
@@ -211,6 +215,30 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
     const [open, setOpen] = useState(false);
 
+    // --- Save new theme (minimal) ---
+    const [newThemeName, setNewThemeName] = useState("");
+    function getSavedThemeNames(): string[] {
+        try {
+            return JSON.parse(localStorage.getItem(THEMES_INDEX_KEY) || "[]");
+        } catch { return []; }
+    }
+    function handleSaveTheme() {
+        const name = newThemeName.trim();
+        if (!name) return;
+        const themeObj = {
+            name,
+            version: "1.0.0",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            light: getOverrides("light"),
+            dark: getOverrides("dark")
+        };
+        localStorage.setItem(`${THEME_PREFIX}${name}`, JSON.stringify(themeObj));
+        const index = Array.from(new Set([...getSavedThemeNames(), name]));
+        localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(index));
+        setNewThemeName("");
+    }
+
     // Draggable FAB state
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
         try {
@@ -377,7 +405,6 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         const currentTheme = getCurrentTheme();
 
         if (currentTheme === "light") {
-            // User is in light mode: set light color to their choice, derive dark color
             const lightOverrides = { ...getOverrides("light"), [token]: value };
             setOverrides("light", lightOverrides);
             const derivedDark = deriveDarkColor(value);
@@ -386,7 +413,6 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             setOverridesState(lightOverrides);
             applyOverrides(lightOverrides);
         } else {
-            // User is in dark mode: set dark color to their choice, derive light color
             const darkOverrides = { ...getOverrides("dark"), [token]: value };
             setOverrides("dark", darkOverrides);
             const derivedLight = deriveLightColor(value);
@@ -404,13 +430,11 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         resetOverrides(tokens, "light");
         resetOverrides(tokens, "dark");
         setOverridesState({});
-        // Skip reload in test environment (jsdom sets hostname to 'localhost')
         if (window.location.hostname !== "localhost" || window.location.port !== "") {
             window.location.reload();
         }
     }
 
-    // Palette icon using Glyphicon 'tint' icon
     const paletteIcon = (
         <span className="glyphicon glyphicon-tint" aria-hidden="true" />
     );
@@ -456,14 +480,25 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                     </button>
                 </div>
 
-                {/* Drawer resize handle */}
-                <div
-                    className={`trimm-color-token-drawer-resize-handle ${normalizedSide}`}
-                    onMouseDown={onResizeMouseDown}
-                    style={{ cursor: "ew-resize", pointerEvents: "auto" }}
-                    aria-label="Resize color token drawer"
-                    role="separator"
-                />
+                {/* Minimal theme toolbar: save only */}
+                <div className="trimm-theme-manager">
+                    <div className="trimm-theme-compact-row" aria-label="Create theme">
+                        <input
+                            type="text"
+                            placeholder="Theme name"
+                            value={newThemeName}
+                            onChange={(e) => setNewThemeName(e.target.value)}
+                            className="trimm-theme-input-small"
+                        />
+                        <button
+                            className="trimm-button btn-cta trimm-button-small"
+                            onClick={handleSaveTheme}
+                            type="button"
+                        >
+                            Save new theme
+                        </button>
+                    </div>
+                </div>
 
                 {/* Token grid */}
                 <div className="trimm-color-token-grid">
