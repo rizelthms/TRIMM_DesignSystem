@@ -990,6 +990,41 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
             {/* Overlay for closing drawer */}
             {open && <div className="trimm-color-token-overlay" onClick={() => setOpen(false)} />}
+
+            {/* Import modal */}
+            {showImportModal && (
+                <div className="trimm-modal-overlay" onClick={() => setShowImportModal(false)}>
+                    <div className="trimm-modal" onClick={(e) => e.stopPropagation()}>
+                        <div className="trimm-modal-header">
+                            <h4>Import Theme</h4>
+                            <button
+                                className="trimm-button btn-default"
+                                onClick={() => setShowImportModal(false)}
+                                type="button"
+                            >
+                                <span className="glyphicon glyphicon-remove" aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div className="trimm-modal-body">
+                            <input
+                                type="file"
+                                accept="application/json,.json"
+                                onChange={(e) => handleImportThemeFile(e.target.files && e.target.files[0] ? e.target.files[0] : null)}
+                                aria-label="Select theme JSON file"
+                            />
+                        </div>
+                        <div className="trimm-modal-footer">
+                            <button
+                                className="trimm-button btn-default"
+                                onClick={() => setShowImportModal(false)}
+                                type="button"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
