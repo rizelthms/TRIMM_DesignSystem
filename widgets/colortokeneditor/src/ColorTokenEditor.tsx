@@ -272,6 +272,75 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         }
     }
 
+    function handleExportTheme() {
+        const themeName = selectedTheme || "Default TRIMM";
+        let themeData;
+        
+        if (themeName === "Default TRIMM") {
+            const defaultOverrides: Record<string, string> = {};
+            tokens.forEach(token => {
+                const computedValue = getComputedStyle(document.documentElement).getPropertyValue(token.name);
+                if (computedValue) {
+                    defaultOverrides[token.name] = computedValue.trim();
+                }
+            });
+            themeData = {
+                name: themeName,
+                overrides: defaultOverrides,
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+        } else {
+            const stored = localStorage.getItem(`${THEME_PREFIX}${themeName}`);
+            if (stored) {
+                themeData = JSON.parse(stored);
+                themeData.name = themeName;
+            }
+        }
+        
+        if (themeData) {
+            const blob = new Blob([JSON.stringify(themeData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${themeName.replace(/\s+/g, '_')}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    }
+
+    function handleImportTheme() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        input.onchange = (e) => {
+            const file = (e.target as HTMLInputElement).files?.[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const themeData = JSON.parse(e.target?.result as string);
+                        if (themeData.name && themeData.overrides) {
+                            const index = getSavedThemeNames();
+                            if (!index.includes(themeData.name)) {
+                                index.push(themeData.name);
+                                localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(index));
+                            }
+                            localStorage.setItem(`${THEME_PREFIX}${themeData.name}`, JSON.stringify(themeData));
+                            setSelectedTheme(themeData.name);
+                        }
+                    } catch (error) {
+                        console.error("Failed to import theme:", error);
+                    }
+                };
+                reader.readAsText(file);
+            }
+        };
+        input.click();
+    }
+
     function handleSaveTheme() {
         const name = newThemeName.trim();
         if (!name) return;
@@ -594,6 +663,21 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             className="trimm-button-small btn-danger"
                         >
                             Delete
+                        </button>
+                    </div>
+
+                    <div className="trimm-theme-compact-row" aria-label="Export import">
+                        <button
+                            onClick={handleExportTheme}
+                            className="trimm-button-small"
+                        >
+                            Export JSON
+                        </button>
+                        <button
+                            onClick={handleImportTheme}
+                            className="trimm-button-small"
+                        >
+                            Import JSON
                         </button>
                     </div>
                 </div>
