@@ -104,32 +104,115 @@
 .trimm-color-token-drawer {
     position: fixed;
     top: 0;
-    bottom: 0;
+    right: 0;
     width: 340px;
+    height: 100vh;
     background: var(--base-white);
-    box-shadow: $shadow-12;
-    z-index: 1002;
+    border-left: 1px solid var(--secondary-1);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     transform: translateX(100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
+    z-index: 9999;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+
     &.open {
         transform: translateX(0);
     }
+
     &.left {
         left: 0;
         right: auto;
+        border-left: none;
+        border-right: 1px solid var(--secondary-1);
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
         transform: translateX(-100%);
-        &.open {
-            transform: translateX(0);
+    }
+
+    .trimm-theme-manager {
+        background-color: var(--base-white);
+        border: 1px solid var(--secondary-1);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: $spacing-12;
+        margin: $spacing-12;
+        border-radius: $border-radius-8;
+
+        .trimm-theme-compact-row {
+            display: flex;
+            gap: $spacing-8;
+            align-items: center;
+            margin-bottom: $spacing-8;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .trimm-theme-input-small,
+        .trimm-theme-select-small {
+            flex: 1;
+            height: 40px;
+            padding: $spacing-8 $spacing-12;
+            border: 1px solid var(--secondary-1);
+            border-radius: $border-radius-4;
+            font-size: $font-size-14;
+            min-width: 120px;
+            background: var(--base-white);
+            color: var(--text-primary);
+
+            &:focus {
+                outline: none;
+                border-color: var(--brand-1);
+                box-shadow: 0 0 0 2px rgba(var(--brand-1-rgb), 0.2);
+            }
+        }
+
+        .trimm-button-small {
+            height: 40px;
+            padding: $spacing-4 $spacing-8;
+            border: 1px solid var(--secondary-1);
+            border-radius: $border-radius-4;
+            background: var(--base-white);
+            color: var(--text-primary);
+            font-size: $font-size-14;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+
+            &:hover:not(:disabled) {
+                background: var(--secondary-1);
+                border-color: var(--secondary-2);
+            }
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            &.btn-cta {
+                background: var(--brand-1);
+                color: var(--base-white);
+                border-color: var(--brand-1);
+
+                &:hover:not(:disabled) {
+                    background: var(--brand-1-hover);
+                    border-color: var(--brand-1-hover);
+                }
+            }
+
+            &.btn-danger {
+                background: var(--error-1);
+                color: var(--base-white);
+                border-color: var(--error-1);
+
+                &:hover:not(:disabled) {
+                    background: var(--error-1-hover);
+                    border-color: var(--error-1-hover);
+                }
+            }
         }
     }
-    &.right {
-        right: 0;
-        left: auto;
-    }
-    display: flex;
-    flex-direction: column;
-    padding: $spacing-24;
-    overflow: visible;
 }
 
 // Overlay

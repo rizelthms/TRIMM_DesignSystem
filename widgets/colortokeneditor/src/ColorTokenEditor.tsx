@@ -275,7 +275,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     function handleExportTheme() {
         const themeName = selectedTheme || "Default TRIMM";
         let themeData;
-        
+
         if (themeName === "Default TRIMM") {
             const defaultOverrides: Record<string, string> = {};
             tokens.forEach(token => {
@@ -297,7 +297,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                 themeData.name = themeName;
             }
         }
-        
+
         if (themeData) {
             const blob = new Blob([JSON.stringify(themeData, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
