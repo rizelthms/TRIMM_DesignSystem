@@ -724,10 +724,216 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         resetOverrides(tokens, "light");
         resetOverrides(tokens, "dark");
         setOverridesState({});
+        // Skip reload in test environment (jsdom sets hostname to 'localhost')
         if (window.location.hostname !== "localhost" || window.location.port !== "") {
             window.location.reload();
         }
     }
+
+    /**
+     * Theme Management Handlers
+     */
+    function handleSaveTheme() {
+        if (!newThemeName.trim()) {
+            setThemeMessage({ type: "error", text: "Theme name is required" });
+            return;
+        }
+
+        const success = saveTheme(newThemeName.trim());
+        if (success) {
+            setSavedThemes(getSavedThemeNames());
+            setNewThemeName("");
+            setThemeMessage({ type: "success", text: `Theme "${newThemeName}" saved successfully` });
+        } else {
+            setThemeMessage({ type: "error", text: "Failed to save theme" });
+        }
+    }
+
+    function handleSaveChanges() {
+        if (!selectedTheme) {
+            setThemeMessage({ type: "error", text: "No theme selected to save changes to" });
+            return;
+        }
+
+        const success = saveTheme(selectedTheme);
+        if (success) {
+            setThemeMessage({ type: "success", text: `Changes saved to "${selectedTheme}"` });
+        } else {
+            setThemeMessage({ type: "error", text: "Failed to save changes" });
+        }
+    }
+
+    function handleLoadTheme() {
+        if (!selectedTheme) {
+            setThemeMessage({ type: "error", text: "Please select a theme to load" });
+            return;
+        }
+
+        if (selectedTheme === "default") {
+            // Reset to default TRIMM design system
+            resetOverrides(tokens, "light");
+            resetOverrides(tokens, "dark");
+            setOverridesState({});
+            setThemeMessage({ type: "success", text: "Default TRIMM theme loaded" });
+            return;
+        }
+
+        const success = loadTheme(selectedTheme);
+        if (success) {
+            setOverridesState(getOverrides(getCurrentTheme()));
+            setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" loaded successfully` });
+        } else {
+            setThemeMessage({ type: "error", text: "Failed to load theme" });
+        }
+    }
+
+    function handleDeleteTheme() {
+        if (!selectedTheme) {
+            setThemeMessage({ type: "error", text: "Please select a theme to delete" });
+            return;
+        }
+
+        if (window.confirm(`Are you sure you want to delete theme "${selectedTheme}"?`)) {
+            const deletingActive = selectedTheme === prevThemeRef.current || selectedTheme === selectedTheme;
+            const success = deleteTheme(selectedTheme);
+            if (success) {
+                setSavedThemes(getSavedThemeNames());
+                setSelectedTheme("");
+                setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" deleted successfully` });
+
+                // Fallback to default if the deleted theme was effectively active
+                if (deletingActive) {
+                    // Clear inline properties so CSS defaults (Default TRIMM) apply immediately
+                    const tokenNames = new Set<string>([...Object.keys(getOverrides("light")), ...Object.keys(getOverrides("dark"))]);
+                    removeTokenProperties(Array.from(tokenNames));
+                    setOverrides("light", {});
+                    setOverrides("dark", {});
+                    setOverridesState({});
+                }
+            } else {
+                setThemeMessage({ type: "error", text: "Failed to delete theme" });
+            }
+        }
+    }
+
+    function handleExportTheme() {
+        if (!selectedTheme) {
+            setThemeMessage({ type: "error", text: "Please select a theme to export" });
+            return;
+        }
+
+        // Special handling: export Default TRIMM from computed values
+        if (selectedTheme === "default") {
+            try {
+                const tokenNames = tokens.map(t => t.name);
+
+                // Helper to read computed values for a theme, ignoring overrides
+                const readComputedFor = (mode: "light" | "dark"): Overrides => {
+                    const prev = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+                    // Temporarily switch theme
+                    if (mode === "dark") {
+                        document.documentElement.setAttribute("data-theme", "dark");
+                    } else {
+                        document.documentElement.removeAttribute("data-theme");
+                    }
+                    // Read computed values
+                    const style = getComputedStyle(document.documentElement);
+                    const out: Overrides = {};
+                    tokenNames.forEach(name => {
+                        const v = style.getPropertyValue(name).trim();
+                        if (isValidColor(v)) out[name] = v;
+                    });
+                    // Restore theme
+                    if (prev === "dark") {
+                        document.documentElement.setAttribute("data-theme", "dark");
+                    } else {
+                        document.documentElement.removeAttribute("data-theme");
+                    }
+                    return out;
+                };
+
+                const exportData: ThemeExport = {
+                    metadata: {
+                        version: THEME_VERSION,
+                        exportedAt: new Date().toISOString(),
+                        source: "TRIMM Design System Color Token Editor"
+                    },
+                    theme: {
+                        name: "Default TRIMM",
+                        version: THEME_VERSION,
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString(),
+                        light: readComputedFor("light"),
+                        dark: readComputedFor("dark")
+                    }
+                };
+
+                const json = JSON.stringify(exportData, null, 2);
+                const blob = new Blob([json], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `DefaultTRIMM-theme.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                setThemeMessage({ type: "success", text: `Default TRIMM exported` });
+                return;
+            } catch {
+                setThemeMessage({ type: "error", text: "Failed to export Default TRIMM" });
+                return;
+            }
+        }
+
+        const exportData = exportTheme(selectedTheme);
+        if (exportData) {
+            // Create and download file
+            const blob = new Blob([exportData], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `${selectedTheme}-theme.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" exported successfully` });
+        } else {
+            setThemeMessage({ type: "error", text: "Failed to export theme" });
+        }
+    }
+
+    function handleImportThemeFile(file: File | null) {
+        if (!file) {
+            setThemeMessage({ type: "error", text: "No file selected" });
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => {
+            const text = String(reader.result || "");
+            const result = importTheme(text);
+            if (result.success) {
+                setSavedThemes(getSavedThemeNames());
+                setShowImportModal(false);
+                setThemeMessage({ type: "success", text: "Theme imported successfully" });
+            } else {
+                setThemeMessage({ type: "error", text: result.error || "Failed to import theme" });
+            }
+        };
+        reader.onerror = () => {
+            setThemeMessage({ type: "error", text: "Failed to read file" });
+        };
+        reader.readAsText(file);
+    }
+
+    // Clear theme message after 3 seconds
+    useEffect(() => {
+        if (themeMessage) {
+            const timer = setTimeout(() => setThemeMessage(null), 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [themeMessage]);
 
     const paletteIcon = (
         <span className="glyphicon glyphicon-tint" aria-hidden="true" />
