@@ -29,7 +29,7 @@
     .mx-text h3,
     & .mx-text > h3 {
         font-size: $font-size-h3 !important;
-        line-height: $line-height-h3 !important;
+        line-height: $line-height-h3;
         font-weight: $font-weight-semibold !important;
         color: var(--base-black);
     }
