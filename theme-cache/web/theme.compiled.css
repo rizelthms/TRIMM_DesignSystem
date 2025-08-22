@@ -30899,11 +30899,12 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
 }
 
 .trimm-color-token-fab {
-  position: fixed;
-  top: 24px;
-  right: auto;
-  left: auto;
-  z-index: 1001;
+  position: fixed !important;
+  top: var(--fab-top, 24px) !important;
+  left: var(--fab-left, 24px) !important;
+  right: var(--fab-right, auto) !important;
+  bottom: auto;
+  z-index: 1001 !important;
   width: 48px;
   height: 48px;
   border-radius: 16px;
@@ -30928,7 +30929,7 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   width: 340px;
   background: var(--base-white);
   box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
-  z-index: 1002;
+  z-index: 4002;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
@@ -30959,7 +30960,7 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 4000;
 }
 
 .trimm-color-token-drawer-header {
@@ -30968,11 +30969,13 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   justify-content: space-between;
   margin-bottom: 12px;
 }
-.trimm-color-token-drawer-header h3 {
+.trimm-color-token-drawer-header h3,
+.trimm-color-token-drawer-header .mx-text h3, .trimm-color-token-drawer-header .mx-text > h3 {
   margin: 0;
   font-size: 26px;
   color: var(--base-black);
   font-weight: 500;
+  line-height: 28px !important;
 }
 
 .trimm-color-token-grid {
@@ -31044,7 +31047,7 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   top: 0;
   bottom: 0;
   width: 16px;
-  z-index: 1003;
+  z-index: 4003;
   cursor: ew-resize;
   background: rgba(14, 128, 138, 0.08);
   display: flex;
@@ -31160,7 +31163,7 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 1004;
+  z-index: 4004;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33317,7 +33320,7 @@ mx-templategrid-content-wrapper {
 .docs-home h3,
 .docs-home .mx-text h3, .docs-home .mx-text > h3 {
   font-size: 24px !important;
-  line-height: 130px !important;
+  line-height: 130px;
   font-weight: 600 !important;
   color: var(--base-black);
 }

@@ -218,6 +218,16 @@ const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
 const DRAWER_WIDTH_KEY = "colorTokenEditorDrawerWidth";
 const DEFAULT_DRAWER_WIDTH = 340;
 
+// Clamp a given position to the current viewport so the FAB stays visible
+function clampToViewport(pos: { x: number; y: number }, buttonSize = 48, padding = 8) {
+    const maxX = Math.max(padding, (typeof window !== "undefined" ? window.innerWidth : 800) - buttonSize - padding);
+    const maxY = Math.max(padding, (typeof window !== "undefined" ? window.innerHeight : 600) - buttonSize - padding);
+    return {
+        x: Math.min(Math.max(padding, pos.x), maxX),
+        y: Math.min(Math.max(padding, pos.y), maxY)
+    };
+}
+
 /**
  * Validates and returns a valid hex color value, with fallback
  */
@@ -414,11 +424,21 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
     // Draggable FAB state
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
+        const buttonSize = 48;
+        const margin = 24;
+        // Side-aware default position
+        const defaultPos = {
+            x: normalizedSide === "right" 
+                ? Math.max(margin, (typeof window !== "undefined" ? window.innerWidth : 800) - margin - buttonSize)
+                : margin,
+            y: margin
+        };
         try {
             const saved = localStorage.getItem(PALETTE_POS_KEY);
-            return saved ? JSON.parse(saved) : { x: 24, y: 24 };
+            const initial = saved ? JSON.parse(saved) : defaultPos;
+            return clampToViewport(initial, buttonSize, 8);
         } catch {
-            return { x: 24, y: 24 };
+            return clampToViewport(defaultPos, buttonSize, 8);
         }
     });
     const dragging = useRef(false);
@@ -443,6 +463,15 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
         } catch { }
     }, [fabPos]);
+
+    // Keep FAB in view when the window resizes
+    useEffect(() => {
+        function onResize() {
+            setFabPos(prev => clampToViewport(prev));
+        }
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
 
     useEffect(() => {
         try {
@@ -863,10 +892,8 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                 aria-label="Open color token editor"
                 type="button"
                 style={{
-                    position: "fixed",
-                    left: fabPos.x,
-                    top: fabPos.y,
-                    zIndex: 1001,
+                    ["--fab-left" as any]: `${fabPos.x}px`,
+                    ["--fab-top" as any]: `${fabPos.y}px`,
                     cursor: dragging.current ? "grabbing" : "grab",
                     pointerEvents: "auto"
                 }}
