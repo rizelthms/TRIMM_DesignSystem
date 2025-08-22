@@ -428,7 +428,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         const margin = 24;
         // Side-aware default position
         const defaultPos = {
-            x: normalizedSide === "right" 
+            x: normalizedSide === "right"
                 ? Math.max(margin, (typeof window !== "undefined" ? window.innerWidth : 800) - margin - buttonSize)
                 : margin,
             y: margin
@@ -656,7 +656,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         try {
             localStorage.removeItem("tokenOverrides_light");
             localStorage.removeItem("tokenOverrides_dark");
-        } catch {}
+        } catch { }
         const tokenNames = tokens.map(t => t.name);
         removeTokenProperties(tokenNames);
         setOverrides("light", {});
