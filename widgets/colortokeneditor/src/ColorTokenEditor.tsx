@@ -659,8 +659,6 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         } catch { }
         const tokenNames = tokens.map(t => t.name);
         removeTokenProperties(tokenNames);
-        setOverrides("light", {});
-        setOverrides("dark", {});
         setOverridesState({});
     }
 
