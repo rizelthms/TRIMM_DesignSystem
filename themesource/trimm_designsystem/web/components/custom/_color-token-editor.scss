@@ -78,10 +78,12 @@
 
 // Floating action button (palette)
 .trimm-color-token-fab {
-    position: fixed;
-    top: $spacing-24;
-    right: $spacing-24;
-    z-index: 1001;
+    position: fixed !important;
+    top: var(--fab-top, 24px) !important;
+    left: var(--fab-left, 24px) !important;
+    right: var(--fab-right, auto) !important;
+    bottom: auto;
+    z-index: 1001 !important;
     width: 48px;
     height: 48px;
     border-radius: $radius-16;
@@ -108,7 +110,7 @@
     width: 340px;
     background: var(--base-white);
     box-shadow: $shadow-12;
-    z-index: 1002;
+    z-index: 4002;
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &.open {
@@ -140,7 +142,7 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 4000;
 }
 
 // Drawer header
@@ -148,12 +150,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: $spacing-24;
-    h3 {
+    margin-bottom: $spacing-12;
+    h3,
+    .mx-text h3,
+    & .mx-text > h3 {
         margin: 0;
         font-size: $font-size-h2;
         color: var(--base-black);
         font-weight: $font-weight-medium;
+        line-height: $line-height-h6 !important;
     }
 }
 
@@ -230,9 +235,9 @@
     top: 0;
     bottom: 0;
     width: 16px;
-    z-index: 1003;
+    z-index: 4003;
     cursor: ew-resize;
-    background: rgba(14, 128, 138, 0.08); // subtle teal background
+    background: rgba(14, 128, 138, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -263,5 +268,237 @@
     &.left {
         right: 0;
         left: auto;
+    }
+}
+
+// Theme Management Styles
+
+// Theme message
+.trimm-theme-message {
+    padding: $spacing-4 $spacing-8;
+    border-radius: $radius-4;
+    margin-bottom: $spacing-8;
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-medium;
+
+    &.trimm-theme-message-success {
+        background-color: var(--support-3);
+        color: var(--base-white);
+        border: $border-1 solid var(--support-3);
+    }
+
+    &.trimm-theme-message-error {
+        background-color: var(--support-2);
+        color: var(--base-white);
+        border: $border-1 solid var(--support-2);
+    }
+}
+
+// Theme manager container
+.trimm-theme-manager {
+    margin-bottom: $spacing-16;
+    padding: $spacing-8;
+    background-color: var(--base-white);
+    border-radius: $radius-4;
+    border: $border-1 solid #e5e7eb;
+    box-shadow: $shadow-6;
+}
+
+.trimm-theme-compact-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+    flex-wrap: wrap;
+    padding: $spacing-8 0;
+
+    .trimm-theme-input-small,
+    .trimm-theme-select-small {
+        padding: $spacing-8 $spacing-12;
+        height: 40px;
+        border: $border-1 solid #e5e7eb;
+        border-radius: $radius-4;
+        font-size: $font-size-body-4;
+        font-family: $font-primary;
+        background-color: var(--base-white);
+        color: var(--base-black);
+        transition:
+            border-color 0.2s ease-in-out,
+            box-shadow 0.2s ease-in-out;
+        min-width: 180px;
+
+        &:focus {
+            outline: none;
+            border-color: var(--brand-1);
+            box-shadow: 0 0 0 2px rgba(var(--brand-1-rgb), 0.18);
+        }
+
+        &::placeholder {
+            color: var(--secondary-1);
+        }
+    }
+
+    .trimm-theme-select-small {
+        cursor: pointer;
+
+        &:disabled {
+            background-color: var(--secondary-1-disabled);
+            color: var(--base-black-disabled);
+            cursor: not-allowed;
+        }
+    }
+
+    .trimm-button-small {
+        padding: $spacing-4 $spacing-8;
+        height: 28px;
+        line-height: 1.1;
+        font-size: $font-size-body-4;
+        min-width: 88px;
+        white-space: nowrap;
+        border-radius: $radius-4;
+    }
+}
+
+// Modal styles
+.trimm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 4004;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-16;
+}
+
+.trimm-modal {
+    background: var(--base-white);
+    border-radius: $radius-8;
+    box-shadow: $shadow-12;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.trimm-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-16 $spacing-24;
+    border-bottom: $border-1 solid var(--secondary-1);
+
+    h4 {
+        margin: 0;
+        font-size: $font-size-h4;
+        font-weight: $font-weight-semibold;
+        color: var(--base-black);
+    }
+
+    button {
+        background: none;
+        border: none;
+        font-size: $font-size-h3;
+        color: var(--secondary-1);
+        cursor: pointer;
+        padding: $spacing-4;
+        border-radius: $radius-4;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: var(--base-black);
+        }
+    }
+}
+
+.trimm-modal-body {
+    padding: $spacing-24;
+    flex: 1;
+    overflow-y: auto;
+
+    p {
+        margin: 0 0 $spacing-12 0;
+        font-size: $font-size-body-2;
+        color: var(--base-black);
+    }
+}
+
+.trimm-modal-footer {
+    display: flex;
+    gap: $spacing-12;
+    padding: $spacing-16 $spacing-24;
+    border-top: $border-1 solid var(--secondary-1);
+    justify-content: flex-end;
+
+    button {
+        min-width: 80px;
+    }
+}
+
+// Textarea for import
+.trimm-theme-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: $spacing-12;
+    border: $border-1 solid var(--secondary-1);
+    border-radius: $radius-4;
+    font-family: monospace;
+    font-size: $font-size-body-3;
+    background-color: var(--base-white);
+    color: var(--base-black);
+    resize: vertical;
+    transition: border-color 0.2s ease-in-out;
+
+    &:focus {
+        outline: none;
+        border-color: var(--brand-1);
+        box-shadow: 0 0 0 2px rgba(var(--brand-1-rgb), 0.2);
+    }
+
+    &::placeholder {
+        color: var(--secondary-1);
+        font-style: italic;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .trimm-color-token-drawer {
+        width: calc(100vw - $spacing-32);
+        left: $spacing-16;
+        right: $spacing-16;
+        transform: translateY(100%);
+
+        &.open {
+            transform: translateY(0);
+        }
+
+        &.left,
+        &.right {
+            left: $spacing-16;
+            right: $spacing-16;
+            transform: translateY(100%);
+
+            &.open {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    .trimm-modal {
+        margin: $spacing-16;
+        max-height: calc(100vh - $spacing-32);
+    }
+
+    .trimm-theme-button-group {
+        flex-direction: column;
+
+        button {
+            width: 100%;
+        }
     }
 }

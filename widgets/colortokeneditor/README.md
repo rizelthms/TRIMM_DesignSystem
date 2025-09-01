@@ -9,6 +9,8 @@ The Color Token Editor is a Mendix pluggable widget in the TRIMM Design System. 
 - Automatic dark or light derivation when you change a color in the opposite theme
 - Draggable floating action button to open the editor
 - Resizable drawer that lists the detected tokens
+- Theme management: save, load, update, delete named themes
+- Import/export themes as JSON files (includes special export for "Default TRIMM")
 
 ## Requirements
 
@@ -23,6 +25,16 @@ The Color Token Editor is a Mendix pluggable widget in the TRIMM Design System. 
 2. Add the Color Token Editor widget to any page
 3. Set the property Drawer Position to `left` or `right`
 4. Run the app. The widget will scan loaded stylesheets for valid TRIMM token names and render color inputs
+
+### Theme Management
+
+- Create a theme: Enter a name and click "Save new theme". The widget saves current light/dark overrides.
+- Choose a theme: Select from the dropdown, including "Default TRIMM".
+- Load: Applies the selected theme overrides to the current UI.
+- Update: Saves current overrides back into the selected theme.
+- Delete: Removes the selected theme. If the deleted theme is the active theme, the widget immediately restores Default TRIMM.
+- Export JSON: Downloads a JSON file for the selected theme. When "Default TRIMM" is selected, export captures computed CSS values for both light and dark modes.
+- Import JSON: Select a `.json` file to add or overwrite a named theme.
 
 ### Properties
 
@@ -40,6 +52,7 @@ The Color Token Editor is a Mendix pluggable widget in the TRIMM Design System. 
   - If the current theme is light, the widget stores the chosen light color and derives a dark color for the dark theme
   - If the current theme is dark, it stores the chosen dark color and derives a light color for the light theme
 - Overrides are persisted per theme in localStorage under `tokenOverrides_light` and `tokenOverrides_dark`. On load and on theme changes, overrides are applied to `document.documentElement`
+- Named themes are stored under `DS_Theme_<name>` and indexed by `DS_Themes_Index`. The active theme is inferred on mount by comparing stored overrides to saved themes.
 - UI behavior
   - Floating action button with class `trimm-color-token-fab` opens the drawer
   - Drawer `trimm-color-token-drawer` is resizable and lists tokens with swatch, name, and color input
@@ -57,7 +70,7 @@ The Color Token Editor is a Mendix pluggable widget in the TRIMM Design System. 
 
 ```bash
 cd widgets/colortokeneditor/tests
-npx jest
+npx jest --runInBand
 ```
 
 ### Build the widget
