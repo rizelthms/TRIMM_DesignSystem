@@ -5,6 +5,7 @@ import "@testing-library/jest-dom";
 import { TrimmDatepicker } from "../src/TrimmDatepicker";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
 import { describe, it, expect, jest } from "@jest/globals";
+import { isBefore, isAfter } from "date-fns";
 
 function getProps(overrides: Partial<TrimmDatepickerContainerProps> = {}): TrimmDatepickerContainerProps {
     return {
@@ -77,8 +78,12 @@ describe("TrimmDatepicker Integration", () => {
         // Days before min and after max should have 'disabled' class
         const allCells = screen.getAllByText(/\d+/);
         for (const cell of allCells) {
-            const day = parseInt(cell.textContent || "0", 10);
-            if (day < min.getDate() || day > max.getDate()) {
+            const dayNumber = parseInt(cell.textContent || "0", 10);
+            // Create a date for this day in the current month
+            const cellDate = new Date(today.getFullYear(), today.getMonth(), dayNumber);
+            const isBeforeMin = isBefore(cellDate, min);
+            const isAfterMax = isAfter(cellDate, max);
+            if (isBeforeMin || isAfterMax) {
                 expect(cell.className).toMatch(/disabled/);
             }
         }
