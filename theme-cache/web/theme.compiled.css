@@ -28582,6 +28582,49 @@ Do not render = "none"
   z-index: 1000001;
 }
 
+/**
+ * TRIMM Design System - Main SCSS Entry Point
+ * 
+ * This file serves as the single entry point for the TRIMM Design System theme.
+ * It imports all design tokens, component styles, and documentation styles
+ * in the correct order to ensure proper CSS cascade and functionality.
+ */
+/**
+ * TRIMM Design System - Token Imports
+ * 
+ * 
+ * Imports:
+ * 1. Border tokens - Border width scale variables
+ * 2. Font tokens - Font face definitions and family variables
+ * 3. Spacing tokens - Spacing scale variables for consistent spacing
+ * 4. Radius tokens - Border radius scale variables
+ * 5. Shadow tokens - Elevation and shadow presets
+ * 6. Typography tokens - Font sizes, weights, and base HTML styles
+ * 7. Theme tokens - Color system with light/dark mode support
+ */
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * These tokens define the border width scale for consistent border thickness
+ * across all components. The scale follows a logical progression from no border
+ * to extra thick borders.
+ */
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * This file defines the GothamSSm font family used throughout the TRIMM Design System.
+ * The font includes multiple weights and styles to support the typography scale.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
 @font-face {
   font-family: "GothamSSm";
   src: url("GothamSSm-Light.woff2") format("woff2");
@@ -28666,6 +28709,27 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * These tokens define the spacing scale for consistent margins, padding, and gaps
+ * across all components. The scale follows a logical progression that provides
+ * appropriate spacing for different use cases.
+ */
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * These tokens define the border radius scale for consistent corner rounding
+ * across all components. The scale provides options from sharp corners to
+ * fully rounded elements.
+ */
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * These tokens define the elevation and shadow system for consistent depth
+ * and layering across all components. The scale provides options from no shadow
+ * to prominent elevation effects.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -31675,6 +31739,42 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   background: transparent;
 }
 
+/**
+ * TRIMM Design System - Token Imports
+ * 
+ * 
+ * Imports:
+ * 1. Border tokens - Border width scale variables
+ * 2. Font tokens - Font face definitions and family variables
+ * 3. Spacing tokens - Spacing scale variables for consistent spacing
+ * 4. Radius tokens - Border radius scale variables
+ * 5. Shadow tokens - Elevation and shadow presets
+ * 6. Typography tokens - Font sizes, weights, and base HTML styles
+ * 7. Theme tokens - Color system with light/dark mode support
+ */
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * These tokens define the border width scale for consistent border thickness
+ * across all components. The scale follows a logical progression from no border
+ * to extra thick borders.
+ */
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * This file defines the GothamSSm font family used throughout the TRIMM Design System.
+ * The font includes multiple weights and styles to support the typography scale.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
 @font-face {
   font-family: "GothamSSm";
   src: url("GothamSSm-Light.woff2") format("woff2");
@@ -31759,6 +31859,27 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * These tokens define the spacing scale for consistent margins, padding, and gaps
+ * across all components. The scale follows a logical progression that provides
+ * appropriate spacing for different use cases.
+ */
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * These tokens define the border radius scale for consistent corner rounding
+ * across all components. The scale provides options from sharp corners to
+ * fully rounded elements.
+ */
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * These tokens define the elevation and shadow system for consistent depth
+ * and layering across all components. The scale provides options from no shadow
+ * to prominent elevation effects.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -33353,6 +33474,12 @@ mx-templategrid-content-wrapper {
   margin-top: 0;
 }
 
+/**
+ * Base Application Styles
+ * 
+ * These styles provide the foundation for the TRIMM Design System
+ * and ensure consistent typography and color application across the application.
+ */
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);
