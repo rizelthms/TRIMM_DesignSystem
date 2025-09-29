@@ -1,5 +1,12 @@
-// Documentation styles for border tokens (border swatches, cards, etc.)
-// BEM naming: docs-borderToken-card, docs-borderToken-swatch, etc.
+/**
+ * TRIMM Design System - Border Token Documentation Styles
+ * 
+ * This file contains styles for displaying border tokens in the documentation.
+ * It provides visual representations of the TRIMM border width scale including
+ * various border thickness options from no border to extra thick borders.
+ * 
+ * BEM naming convention: docs-borderToken-card, docs-borderToken-swatch, etc.
+ */
 
 .docs-borderToken-card {
     border-radius: $radius-8;
@@ -65,6 +72,9 @@ mx-templategrid-content-wrapper {
 // Border style utility classes for Mendix Dynamic Classes binding
 // Usage: Add the class name (e.g., 'border-style-1') to the BorderStyle attribute in the Java action
 // These classes are used with the docs-borderToken-container class for border display
+//
+// These utility classes provide visual representations of each border width token
+// in the TRIMM Design System for documentation purposes.
 
 .border-style-0 {
     border: $border-0 solid var(--brand-2);
