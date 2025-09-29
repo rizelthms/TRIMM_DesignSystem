@@ -1,5 +1,13 @@
-$border-0: 0px !default;
-$border-1: 1px !default;
-$border-2: 2px !default;
-$border-4: 4px !default;
-$border-8: 8px !default;
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * Defines the border width scale used throughout the design system.
+ * These values provide consistent border thickness for elements that require borders.
+ */
+
+// Border Width Scale
+$border-0: 0px !default; // No border
+$border-1: 1px !default; // Thin border
+$border-2: 2px !default; // Medium border
+$border-4: 4px !default; // Thick border
+$border-8: 8px !default; // Extra thick border

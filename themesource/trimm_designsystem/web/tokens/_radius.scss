@@ -1,5 +1,13 @@
-$radius-0: 0px !default;
-$radius-4: 4px !default;
-$radius-8: 8px !default;
-$radius-16: 16px !default;
-$radius-full: 999px !default;
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * Defines the border radius scale used for rounded corners throughout the design system.
+ * These values provide consistent border radius for buttons, cards, inputs, and other elements.
+ */
+
+// Border Radius Scale
+$radius-0: 0px !default;        // No border radius (square corners)
+$radius-4: 4px !default;        // Small border radius
+$radius-8: 8px !default;        // Medium border radius
+$radius-16: 16px !default;       // Large border radius
+$radius-full: 999px !default;    // Full border radius (circular/pill shape)

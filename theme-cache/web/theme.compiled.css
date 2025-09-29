@@ -28582,6 +28582,35 @@ Do not render = "none"
   z-index: 1000001;
 }
 
+/**
+ * TRIMM Design System - Main SCSS Entry Point
+ * 
+ * This file serves as the single entry point for the TRIMM Design System theme.
+ * It imports all design tokens, component styles, and documentation styles
+ * in the correct order to ensure proper CSS cascade and functionality.
+ */
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * Defines the border width scale used throughout the design system.
+ * These values provide consistent border thickness for elements that require borders.
+ */
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * Defines the GothamSSm font family with multiple weights and styles.
+ * This font is used as the primary typeface throughout the TRIMM Design System.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
 @font-face {
   font-family: "GothamSSm";
   src: url("GothamSSm-Light.woff2") format("woff2");
@@ -28666,6 +28695,41 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * Defines the spacing scale used throughout the design system.
+ * These values provide consistent spacing for margins, padding, and gaps.
+ */
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * Defines the border radius scale used for rounded corners throughout the design system.
+ * These values provide consistent border radius for buttons, cards, inputs, and other elements.
+ */
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * Defines the elevation/shadow scale used throughout the design system.
+ * These values provide consistent depth and visual hierarchy for cards, buttons, and other elevated elements.
+ */
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights,
+ * sizes, and line heights. It also provides automatic styling for HTML elements
+ * that correspond to Mendix Text widget render modes.
+ */
+/**
+ * Automatic Typography Styles for Mendix Render Modes
+ * 
+ * These styles are applied automatically based on the HTML tag rendered by 
+ * Mendix Text widget's Render mode. No need to add classes—just select the 
+ * Render mode (Heading 1, Paragraph, etc.) in Mendix Studio Pro.
+ * 
+ * This provides consistent typography across the application without requiring
+ * developers to manually apply classes to every text element.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -31675,6 +31739,28 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   background: transparent;
 }
 
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * Defines the border width scale used throughout the design system.
+ * These values provide consistent border thickness for elements that require borders.
+ */
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * Defines the GothamSSm font family with multiple weights and styles.
+ * This font is used as the primary typeface throughout the TRIMM Design System.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
 @font-face {
   font-family: "GothamSSm";
   src: url("GothamSSm-Light.woff2") format("woff2");
@@ -31759,6 +31845,41 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * Defines the spacing scale used throughout the design system.
+ * These values provide consistent spacing for margins, padding, and gaps.
+ */
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * Defines the border radius scale used for rounded corners throughout the design system.
+ * These values provide consistent border radius for buttons, cards, inputs, and other elements.
+ */
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * Defines the elevation/shadow scale used throughout the design system.
+ * These values provide consistent depth and visual hierarchy for cards, buttons, and other elevated elements.
+ */
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights,
+ * sizes, and line heights. It also provides automatic styling for HTML elements
+ * that correspond to Mendix Text widget render modes.
+ */
+/**
+ * Automatic Typography Styles for Mendix Render Modes
+ * 
+ * These styles are applied automatically based on the HTML tag rendered by 
+ * Mendix Text widget's Render mode. No need to add classes—just select the 
+ * Render mode (Heading 1, Paragraph, etc.) in Mendix Studio Pro.
+ * 
+ * This provides consistent typography across the application without requiring
+ * developers to manually apply classes to every text element.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -33353,6 +33474,12 @@ mx-templategrid-content-wrapper {
   margin-top: 0;
 }
 
+/**
+ * Base Application Styles
+ * 
+ * These styles provide the foundation for the TRIMM Design System
+ * and ensure consistent typography and color application across the application.
+ */
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);

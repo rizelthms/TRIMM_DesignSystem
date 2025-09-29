@@ -1,6 +1,13 @@
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights,
+ * sizes, and line heights. It also provides automatic styling for HTML elements
+ * that correspond to Mendix Text widget render modes.
+ */
+
 // Font Family
 $font-primary: 'GothamSSm', sans-serif !default;
-
 
 // Font Weights
 $font-weight-light: 300 !default;
@@ -9,7 +16,7 @@ $font-weight-medium: 500 !default;
 $font-weight-semibold: 600 !default;
 $font-weight-bold: 700 !default;
 
-// Headings
+// Heading Sizes
 $font-size-h1: 130px !default;
 $font-size-h2: 50px !default;
 $font-size-h3: 40px !default;
@@ -25,21 +32,30 @@ $line-height-h4: 120px !default;
 $line-height-h5: 32px !default;
 $line-height-h6: 28px !default;
 
-// Body Text
+// Body Text Sizes
 $font-size-body-1: 18px !default;
 $font-size-body-2: 16px !default;
 $font-size-body-3: 14px !default;
 $font-size-body-4: 12px !default;
 
+// Line Heights (for body text)
 $line-height-body-1: 28px !default;
 $line-height-body-2: 24px !default;
 $line-height-body-3: 20px !default;
 $line-height-body-4: 18px !default;
 
-// === AUTOMATIC TYPOGRAPHY STYLES FOR MENDIX RENDER MODES ===
-// These styles are applied automatically based on the HTML tag rendered by Mendix Text widget's Render mode.
-// No need to add a class—just select the Render mode (Heading 1, Paragraph, etc.) in Mendix.
+/**
+ * Automatic Typography Styles for Mendix Render Modes
+ * 
+ * These styles are applied automatically based on the HTML tag rendered by 
+ * Mendix Text widget's Render mode. No need to add classes—just select the 
+ * Render mode (Heading 1, Paragraph, etc.) in Mendix Studio Pro.
+ * 
+ * This provides consistent typography across the application without requiring
+ * developers to manually apply classes to every text element.
+ */
 
+// Heading 1 (H1) - Large display heading
 h1 {
   font-family: $font-primary;
   font-size: $font-size-h1;
@@ -47,6 +63,8 @@ h1 {
   color: var(--brand-1);
   margin-bottom: $spacing-24;
 }
+
+// Heading 2 (H2) - Section heading
 h2 {
   font-family: $font-primary;
   font-size: $font-size-h2;
@@ -54,6 +72,8 @@ h2 {
   color: var(--brand-1);
   margin-bottom: $spacing-24;
 }
+
+// Heading 3 (H3) - Subsection heading
 h3 {
   font-family: $font-primary;
   font-size: $font-size-h3;
@@ -61,6 +81,8 @@ h3 {
   color: var(--brand-1);
   margin-bottom: $spacing-24;
 }
+
+// Heading 4 (H4) - Component heading
 h4 {
   font-family: $font-primary;
   font-size: $font-size-h4;
@@ -68,6 +90,8 @@ h4 {
   color: var(--brand-1);
   margin-bottom: $spacing-24;
 }
+
+// Heading 5 (H5) - Small heading
 h5 {
   font-family: $font-primary;
   font-size: $font-size-h5;
@@ -75,6 +99,8 @@ h5 {
   color: var(--brand-1);
   margin-bottom: $spacing-24;
 }
+
+// Heading 6 (H6) - Smallest heading
 h6 {
   font-family: $font-primary;
   font-size: $font-size-h6;
@@ -82,6 +108,8 @@ h6 {
   color: var(--brand-1);
   margin-bottom: $spacing-24;
 }
+
+// Paragraph (P) - Body text
 p {
   font-family: $font-primary;
   font-size: $font-size-body-1;

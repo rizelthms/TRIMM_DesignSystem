@@ -1,3 +1,21 @@
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * Defines the GothamSSm font family with multiple weights and styles.
+ * This font is used as the primary typeface throughout the TRIMM Design System.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
+
+// Light (300)
 @font-face {
     font-family: 'GothamSSm';
     src: url('GothamSSm-Light.woff2') format('woff2');
