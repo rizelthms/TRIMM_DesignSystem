@@ -11,18 +11,10 @@ The documentation styles provide visual representations and interactive examples
 
 ## Project Structure
 
-### Core Documentation Files
-- `index.scss`: Main entry point that aggregates all documentation styles
-- `_docs-home.scss`: Home page and main documentation layout styles
-- `README.md`: This documentation file
-
 ### Documentation Categories
 - `design-tokens/`: Visual representations of design tokens (colors, spacing, radius, shadows, typography)
 - `restyled-components/`: Interactive examples for class-based Mendix widget styling
 - `custom-components/`: Live demonstrations of TRIMM custom widgets
-- `design-tokens/index.scss`: Aggregates all design token documentation styles
-- `custom-components/index.scss`: Aggregates all custom component documentation styles
-- `restyled-components/index.scss`: Aggregates all restyled component documentation styles
 
 ## Implementation Guidelines
 
@@ -30,18 +22,4 @@ The documentation styles provide visual representations and interactive examples
 - Include `docs/index.scss` in demo environments or dedicated style guide pages
 - These styles provide the complete documentation experience with interactive examples
 
-### For Production Applications
-- Production apps should import `web/main.scss`, which currently includes docs by default
-- Remove the docs import from `web/main.scss` if you don't want documentation styles in production
-
-### Removing Documentation Styles from Production
-In `web/main.scss`, remove or comment out the line:
-```scss
-@import "./docs/index.scss";
 ```
-
-## Best Practices
-
-- **Documentation Only**: These styles are specifically for showcasing the design system, not for production use
-- **Performance**: Exclude documentation styles from production builds to reduce bundle size
-- **Maintenance**: Keep documentation styles separate from production styles for easier maintenance

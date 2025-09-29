@@ -32095,12 +32095,9 @@ p {
 }
 
 /**
- * TRIMM Design System - Design Token Documentation Index
+ * TRIMM Design System - Design Token Documentation Imports
  * 
- * This file aggregates all design token documentation styles used to showcase
- * the TRIMM Design System's foundational design decisions in a visual format.
- * 
- * Import Order:
+ * Imports:
  * 1. Border tokens - Border width scale demonstrations
  * 2. Color tokens - Color palette and theme showcases
  * 3. Radius tokens - Border radius scale examples
@@ -32907,13 +32904,10 @@ mx-templategrid-content-wrapper {
 }
 
 /**
- * TRIMM Design System - Custom Component Documentation Index
+ * TRIMM Design System - Custom Component Documentation Imports
  * 
- * This file aggregates all custom component documentation styles used to showcase
- * TRIMM's custom widgets in the documentation. These styles provide visual
- * representations and interactive examples of custom TRIMM components.
  * 
- * Import Order:
+ * Imports:
  * 1. Color Token Editor - Custom color editing widget documentation
  * 2. Datepicker - Custom date selection widget documentation  
  * 3. Dropdown - Custom dropdown widget documentation
@@ -33124,14 +33118,9 @@ mx-templategrid-content-wrapper {
 }
 
 /**
- * TRIMM Design System - Restyled Component Documentation Index
+ * TRIMM Design System - Restyled Component Documentation Imports
  * 
- * This file aggregates all restyled component documentation styles used to showcase
- * TRIMM's enhanced Mendix widgets in the documentation. These styles provide visual
- * representations and interactive examples of restyled Mendix components with
- * TRIMM Design System styling applied.
- * 
- * Import Order:
+ * Imports:
  * 1. Accordion - Collapsible content widget documentation
  * 2. Alert - Notification and feedback widget documentation
  * 3. Button - Interactive button widget documentation
