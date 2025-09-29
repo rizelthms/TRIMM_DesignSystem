@@ -11,6 +11,7 @@ import { Big } from "big.js";
 // BEGIN EXTRA CODE
 // Initialize theme on page load by checking localStorage for saved preference
 // This ensures the correct theme is applied immediately when the page loads
+// and provides a seamless user experience across browser sessions
 document.addEventListener("DOMContentLoaded", function () {
 	const theme = localStorage.getItem("theme");
 	if (theme === "dark") {
@@ -23,22 +24,32 @@ document.addEventListener("DOMContentLoaded", function () {
  * Toggles between light and dark themes by updating the document's data-theme attribute
  * and persisting the user's preference in localStorage for future visits
  * 
+ * This function implements a simple but effective theme switching mechanism that:
+ * - Uses CSS custom properties (CSS variables) for theme implementation
+ * - Persists user preference across browser sessions
+ * - Works seamlessly with the TRIMM Design System's theme architecture
+ * 
  * @returns {Promise.<void>} - Resolves when theme toggle completes
  */
 export async function ToggleTheme() {
 	// BEGIN USER CODE
-	// Get the current theme from the document's data-theme attribute
+	// Get reference to the document element and current theme state
+	// The data-theme attribute is used to control CSS custom properties
 	const html = document.documentElement;
 	const current = html.getAttribute("data-theme");
 
-	// Toggle between light and dark themes
+	// Toggle between light and dark themes based on current state
 	if (current === "dark") {
 		// Switch from dark to light theme
-		html.removeAttribute("data-theme"); // No attribute = light theme
+		// Remove the data-theme attribute to apply light theme (default)
+		html.removeAttribute("data-theme");
+		// Persist the user's preference for future visits
 		localStorage.setItem("theme", "light");
 	} else {
 		// Switch from light to dark theme
+		// Set data-theme attribute to "dark" to apply dark theme styles
 		html.setAttribute("data-theme", "dark");
+		// Persist the user's preference for future visits
 		localStorage.setItem("theme", "dark");
 	}
 	// END USER CODE
