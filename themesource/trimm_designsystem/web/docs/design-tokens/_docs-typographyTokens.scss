@@ -1,5 +1,12 @@
-// Documentation styles for typography tokens (typography swatches, cards, etc.)
-// BEM naming: docs-typographyToken-card, docs-typographyToken-swatch, etc.
+/**
+ * TRIMM Design System - Typography Token Documentation Styles
+ * 
+ * This file contains styles for displaying typography tokens in the documentation.
+ * It provides visual representations of the TRIMM typography system including
+ * font sizes, weights, line heights, and complete typography examples.
+ * 
+ * BEM naming convention: docs-typographyToken-card, docs-typographyToken-swatch, etc.
+ */
 
 .docs-typographyToken-card {
     border-radius: $radius-8;
@@ -76,16 +83,19 @@ mx-templategrid-content-wrapper {
     border: 1px solid var(--secondary-1);
     transition: box-shadow 0.2s;
     position: relative;
-  }
-  
-  // Optional: Add a hover effect for interactivity
-  .docs-typographyToken-section-grid:hover {
+}
+
+// Optional: Add a hover effect for interactivity
+.docs-typographyToken-section-grid:hover {
     box-shadow: $shadow-6;
     border-color: var(--brand-2);
-  }
+}
 
 // Typography swatch utility classes for documentation/demo purposes
 // Usage: Add the class name (e.g., 'font-size-h1-swatch') to the SwatchClass attribute in Mendix
+//
+// These classes provide visual examples of the TRIMM typography system
+// for documentation and demonstration purposes.
 
 .font-size-h1-swatch {
     font-size: $font-size-h1;
@@ -175,6 +185,9 @@ mx-templategrid-content-wrapper {
 // === Line height swatch utility classes for documentation/demo purposes ===
 // Usage: Add the class name (e.g., 'line-height-h1-swatch') to the SwatchClass attribute in Mendix
 // These use a fixed font size (18px) so the line height effect is visible
+//
+// These classes demonstrate the line height variations in the TRIMM typography system
+// using a consistent font size to clearly show the line height differences.
 
 .line-height-h1-swatch {
     font-size: $font-size-body-2;
