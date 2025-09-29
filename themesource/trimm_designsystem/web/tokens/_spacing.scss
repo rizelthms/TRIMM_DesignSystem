@@ -1,10 +1,37 @@
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * These tokens define the spacing scale for consistent margins, padding, and gaps
+ * across all components. The scale follows a logical progression that provides
+ * appropriate spacing for different use cases.
+ */
+
+// No spacing - for elements that should be flush
 $spacing-0: 0px !default;
+
+// Extra small spacing - for tight layouts and small elements
 $spacing-4: 4px !default;
+
+// Small spacing - for compact layouts and form elements
 $spacing-8: 8px !default;
+
+// Medium-small spacing - for standard component spacing
 $spacing-12: 12px !default;
+
+// Medium spacing - for standard layouts and component gaps
 $spacing-16: 16px !default;
+
+// Large spacing - for section separation and prominent gaps
 $spacing-24: 24px !default;
+
+// Extra large spacing - for major section breaks
 $spacing-32: 32px !default;
+
+// Very large spacing - for page-level separation
 $spacing-40: 40px !default;
+
+// Huge spacing - for maximum separation between major sections
 $spacing-64: 64px !default;
+
+// Auto spacing - for flexible layouts and centering
 $spacing-auto: auto !default;
