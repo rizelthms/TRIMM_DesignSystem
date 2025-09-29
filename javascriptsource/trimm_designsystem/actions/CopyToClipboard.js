@@ -15,32 +15,45 @@ import { Big } from "big.js";
  * Copies text to the system clipboard using the modern Clipboard API
  * with fallback support for older browsers using document.execCommand
  * 
+ * This function provides a robust clipboard implementation that works across
+ * different browser versions and handles various edge cases gracefully.
+ * 
  * @param {string} textToCopy - The text string to copy to clipboard
  * @returns {Promise.<void>} - Resolves when copy operation completes
  */
 export async function CopyToClipboard(textToCopy) {
 	// BEGIN USER CODE
-	// Try modern Clipboard API first (supported in most modern browsers)
+	// Primary approach: Use modern Clipboard API (supported in most modern browsers)
+	// This is the preferred method as it's more secure and user-friendly
 	if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
 		await navigator.clipboard.writeText(textToCopy);
 		return;
 	} else {
-		// Fallback for older browsers using document.execCommand
-		// Create a temporary textarea element to hold the text
+		// Fallback approach: Use legacy document.execCommand for older browsers
+		// This method requires creating a temporary DOM element to hold the text
+
+		// Create a temporary textarea element to hold the text content
 		var textarea = document.createElement("textarea");
 		textarea.value = textToCopy;
-		// Add to DOM temporarily (required for execCommand to work)
+
+		// Add the textarea to the DOM temporarily (required for execCommand to work)
+		// The element must be visible and selectable for the copy operation
 		document.body.appendChild(textarea);
-		// Select the text content
+
+		// Select all text content in the textarea
 		textarea.select();
+
 		try {
-			// Execute the copy command
+			// Execute the copy command using the legacy API
+			// This will copy the selected text to the system clipboard
 			document.execCommand('copy');
 		} catch (err) {
-			// Silently handle errors (e.g., user denied clipboard access)
-			// Optionally handle error logging here if needed
+			// Silently handle errors (e.g., user denied clipboard access, security restrictions)
+			// In production, you might want to log these errors for debugging purposes
 		}
-		// Clean up: remove the temporary textarea from DOM
+
+		// Clean up: remove the temporary textarea from the DOM
+		// This prevents memory leaks and keeps the DOM clean
 		document.body.removeChild(textarea);
 		return;
 	}
