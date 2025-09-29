@@ -22,30 +22,48 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 	@java.lang.Override
 	public java.lang.Void executeAction() throws Exception {
 		// BEGIN USER CODE
-		// Purpose: Seed the TRIMM Design System data model with default tokens,
-		// components,
-		// and component classes so demo screens and documentation work immediately.
-		// This action is safe to run multiple times; it creates records with consistent
-		// values
-		// and links classes to components by name where applicable.
+		/**
+		 * Purpose: Seed the TRIMM Design System data model with default tokens,
+		 * components, and component classes so demo screens and documentation work
+		 * immediately.
+		 * 
+		 * This action is safe to run multiple times; it creates records with consistent
+		 * values and links classes to components by name where applicable.
+		 * 
+		 * The action is structured in four main sections:
+		 * 1. Design Tokens - CSS variables and SCSS variables for colors, spacing,
+		 * typography, etc.
+		 * 2. Components - Both restyled Mendix widgets and custom components
+		 * 3. Component Classes - CSS classes that define styling variants for each
+		 * component
+		 * 4. Safety Linking - Ensures proper associations between components and their
+		 * classes
+		 */
 
 		IContext context = getContext();
 
 		// ------------------------------
 		// 1) Design Tokens
 		// ------------------------------
-		// Schema per row:
-		// [0] TokenName (CSS var or SCSS var),
-		// [1] TokenValue (string representation),
-		// [2] Category (Color | Border | Radius | Shadow | Spacing | Typography),
-		// [3] Description (human-friendly),
-		// [4] ColorStyle (optional class for color swatches),
-		// [5] ShadowStyle (optional class),
-		// [6] RadiusStyle (optional class),
-		// [7] BorderStyle (optional class),
-		// [8] SpacingStyle (optional class),
-		// [9] TypographyStyle (optional class),
-		// [10] SortOrder (int)
+		/**
+		 * Design tokens are the foundational design decisions that define the visual
+		 * language of the TRIMM Design System. They include colors, spacing,
+		 * typography,
+		 * borders, shadows, and border radius values.
+		 * 
+		 * Schema per row:
+		 * [0] TokenName (CSS var or SCSS var),
+		 * [1] TokenValue (string representation),
+		 * [2] Category (Color | Border | Radius | Shadow | Spacing | Typography),
+		 * [3] Description (human-friendly),
+		 * [4] ColorStyle (optional class for color swatches),
+		 * [5] ShadowStyle (optional class),
+		 * [6] RadiusStyle (optional class),
+		 * [7] BorderStyle (optional class),
+		 * [8] SpacingStyle (optional class),
+		 * [9] TypographyStyle (optional class),
+		 * [10] SortOrder (int)
+		 */
 		Object[][] tokens = new Object[][] {
 				// Brand Colors (from _themes.scss)
 				{ "--brand-1", "#00172b", "Color", "Primary brand color (Navy Blue)", "swatch-brand-1", null, null,
@@ -188,7 +206,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 						"line-height-body-4-swatch", 62 }
 		};
 
-		// Persist tokens
+		// Persist design tokens to the database
+		// Each token becomes a DS_DesignToken entity with all its properties
 		for (Object[] t : tokens) {
 			IMendixObject token = Core.instantiate(context, "TRIMM_DesignSystem.DS_DesignToken");
 			token.setValue(context, "TokenName", t[0]);
@@ -208,10 +227,16 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// ------------------------------
 		// 2) Components (Restyled + Custom)
 		// ------------------------------
-		// Schema per row:
-		// [0] Name (identifier), [1] DisplayName, [2] ComponentType (RestyledMendix |
-		// Custom),
-		// [3] Category, [4] Status, [5] Description, [6] Version, [7] IsActive
+		/**
+		 * Components represent the UI building blocks of the TRIMM Design System.
+		 * They include both restyled Mendix widgets (enhanced with TRIMM styling)
+		 * and custom components built specifically for the design system.
+		 * 
+		 * Schema per row:
+		 * [0] Name (identifier), [1] DisplayName, [2] ComponentType (RestyledMendix |
+		 * Custom),
+		 * [3] Category, [4] Status, [5] Description, [6] Version, [7] IsActive
+		 */
 		Object[][] components = new Object[][] {
 				// Accordion Component
 				{ "Accordion", "Accordion", "RestyledMendix", "Navigation", "Stable",
@@ -288,9 +313,13 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 						true }
 		};
 
-		// Index components by name to allow linking classes later
+		// Create a map to index components by name for later linking with component
+		// classes
+		// This allows us to establish relationships between components and their
+		// styling classes
 		java.util.Map<String, trimm_designsystem.proxies.DS_Component> componentByName = new java.util.HashMap<>();
 
+		// Persist components to the database and build the name index
 		for (Object[] c : components) {
 			IMendixObject component = Core.instantiate(context, "TRIMM_DesignSystem.DS_Component");
 			component.setValue(context, "Name", c[0]);
@@ -302,15 +331,23 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			component.setValue(context, "Version", c[6]);
 			component.setValue(context, "IsActive", c[7]);
 			Core.commit(context, component);
+			// Store in map for later use in component class associations
 			componentByName.put((String) c[0], trimm_designsystem.proxies.DS_Component.initialize(context, component));
 		}
 
 		// ------------------------------
 		// 3) Component Classes
 		// ------------------------------
-		// Schema per row:
-		// [0] ClassName, [1] Description, [2] SortOrder, [3] ComponentName to associate
-		// (optional)
+		/**
+		 * Component classes define the CSS styling variants available for each
+		 * component.
+		 * These classes implement the TRIMM Design System's visual language through
+		 * consistent naming conventions and design token usage.
+		 * 
+		 * Schema per row:
+		 * [0] ClassName, [1] Description, [2] SortOrder, [3] ComponentName to associate
+		 * (optional)
+		 */
 		Object[][] componentClasses = new Object[][] {
 				// Button Component Classes (associate to "Button")
 				{ "trimm-button button-base", "Base button styling with TRIMM design tokens", 1, "Button" },
@@ -392,12 +429,17 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 				{ "trimm-tooltip tooltip-lg", "Large tooltip size variant", 45, "Tooltip" }
 		};
 
-		// Create classes and link to components when the component name is known
+		// Create component classes and establish associations with their parent
+		// components
+		// This creates the relationship between components and their available styling
+		// variants
 		for (Object[] cc : componentClasses) {
 			IMendixObject componentClass = Core.instantiate(context, "TRIMM_DesignSystem.DS_ComponentClass");
 			componentClass.setValue(context, "ClassName", cc[0]);
 			componentClass.setValue(context, "Description", cc[1]);
 			componentClass.setValue(context, "SortOrder", cc[2]);
+
+			// Link to parent component if specified
 			String linkToComponentName = (String) cc[3];
 			if (linkToComponentName != null) {
 				trimm_designsystem.proxies.DS_Component compProxy = componentByName.get(linkToComponentName);
@@ -414,12 +456,17 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 		// ------------------------------
 		// 4) Safety linking passes
 		// ------------------------------
-		// For key components, perform a targeted association step to ensure classes are
-		// linked
-		// even if the initial association did not occur (e.g., due to ordering in the
-		// runtime).
+		/**
+		 * Safety linking ensures that component classes are properly associated with
+		 * their parent components, even if the initial association failed due to
+		 * timing or ordering issues in the runtime environment.
+		 * 
+		 * This section performs targeted queries to find and link specific component
+		 * classes to their corresponding components, providing a robust fallback
+		 * mechanism.
+		 */
 
-		// Buttons
+		// Button component classes linking
 		java.util.List<com.mendix.systemwideinterfaces.core.IMendixObject> buttonCompList = com.mendix.core.Core
 				.createXPathQuery("//TRIMM_DesignSystem.DS_Component[Name='Button']").execute(context);
 		if (!buttonCompList.isEmpty()) {
@@ -685,6 +732,8 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 			}
 		}
 
+		// Return null as this is a void action that performs database operations
+		// All design system records have been successfully created and linked
 		return null;
 		// END USER CODE
 	}
