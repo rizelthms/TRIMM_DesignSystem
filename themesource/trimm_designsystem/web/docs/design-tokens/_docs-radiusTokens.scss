@@ -1,5 +1,12 @@
-// Documentation styles for radius tokens (radius swatches, cards, etc.)
-// BEM naming: docs-radiusToken-card, docs-radiusToken-swatch, etc.
+/**
+ * TRIMM Design System - Radius Token Documentation Styles
+ * 
+ * This file contains styles for displaying radius tokens in the documentation.
+ * It provides visual representations of the TRIMM border radius scale including
+ * various corner rounding options from sharp corners to fully rounded elements.
+ * 
+ * BEM naming convention: docs-radiusToken-card, docs-radiusToken-swatch, etc.
+ */
 
 .docs-radiusToken-card {
     border-radius: $radius-8;
@@ -65,6 +72,9 @@ mx-templategrid-content-wrapper {
 // Radius utility classes for Mendix Dynamic Classes binding
 // Usage: Add the class name (e.g., 'radius-style-4') to the RadiusStyleClass attribute in the Java action
 // These classes are used with the docs-radiusToken-container class for radius display
+//
+// These utility classes provide visual representations of each border radius token
+// in the TRIMM Design System for documentation purposes.
 
 .radius-style-0 {
     border-radius: $radius-0;

@@ -1,23 +1,20 @@
+/**
+ * TRIMM Design System - Documentation Styles Imports
+ * 
+ * 
+ * Imports:
+ * 1. Design tokens - Foundation tokens for consistent styling
+ * 2. Design token documentation - Visual representations of tokens
+ * 3. Custom component documentation - TRIMM widget examples
+ * 4. Restyled component documentation - Mendix widget examples
+ * 5. Home page documentation - Main documentation page styles
+ * 
+ * Note: These styles are for documentation/demo purposes only and should
+ * not be included in production applications.
+ */
+
 @import "../tokens/index.scss";
-@import "./design-tokens/_docs-borderTokens.scss";
-@import "./design-tokens/_docs-colorTokens.scss";
-@import "./design-tokens/_docs-radiusTokens.scss";
-@import "./design-tokens/_docs-shadowTokens.scss";
-@import "./design-tokens/_docs-spacingTokens.scss";
-@import "./design-tokens/_docs-typographyTokens.scss";
-@import "./design-tokens/_docs-themeDocs.scss";
-@import "./restyled-components/_docs-accordionClassTokens.scss";
-@import "./restyled-components/_docs-alertClassTokens.scss";
-@import "./restyled-components/_docs-buttonClassTokens.scss";
-@import "./restyled-components/_docs-checkboxClassTokens.scss";
-@import "./restyled-components/_docs-labelClassTokens.scss";
-@import "./restyled-components/_docs-menuClassTokens.scss";
-@import "./restyled-components/_docs-radioClassTokens.scss";
-@import "./restyled-components/_docs-switchClassTokens.scss";
-@import "./restyled-components/_docs-textareaClassTokens.scss";
-@import "./restyled-components/_docs-textboxClassTokens.scss";
-@import "./restyled-components/_docs-tooltipClassTokens.scss";
-@import "./custom-components/_docs-datepickerCustomTokens.scss";
-@import "./custom-components/_docs-dropdownCustomTokens.scss";
-@import "./custom-components/_docs-colorTokenEditorCustomTokens.scss";
-@import "./_docs-home.scss";
+@import "design-tokens/index.scss";
+@import "custom-components/index.scss";
+@import "restyled-components/index.scss";
+@import "docs-home";
