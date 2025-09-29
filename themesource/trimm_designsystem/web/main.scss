@@ -1,9 +1,29 @@
+/**
+ * TRIMM Design System - Main SCSS Entry Point
+ * 
+ * This file serves as the single entry point for the TRIMM Design System theme.
+ * It imports all design tokens, component styles, and documentation styles
+ * in the correct order to ensure proper CSS cascade and functionality.
+ */
+
+// Import Mendix custom variables (if any exist in the app)
 @import "../../../theme/web/custom-variables";
+
+// Import design tokens (colors, spacing, typography, etc.)
 @import "./tokens/index.scss";
+
+// Import component styles (restyled Mendix widgets and custom components)
 @import "./components/index.scss";
+
+// Import documentation and demo styles (optional for production)
 @import "./docs/index.scss";
 
-// Base styles js for testing
+/**
+ * Base Application Styles
+ * 
+ * These styles provide the foundation for the TRIMM Design System
+ * and ensure consistent typography and color application across the application.
+ */
 body {
     font-family: $font-primary;
     background-color: var(--base-white);
