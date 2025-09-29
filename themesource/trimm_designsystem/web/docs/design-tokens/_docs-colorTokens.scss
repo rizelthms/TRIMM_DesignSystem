@@ -1,5 +1,12 @@
-// Documentation styles for color tokens (color swatches, cards, etc.)
-// BEM naming: docs-colorToken-card, docs-colorToken-swatch, docs-colorToken-copy, etc.
+/**
+ * TRIMM Design System - Color Token Documentation Styles
+ * 
+ * This file contains styles for displaying color tokens in the documentation.
+ * It provides visual representations of the TRIMM color palette including
+ * brand colors, base colors, secondary colors, and support colors.
+ * 
+ * BEM naming convention: docs-colorToken-card, docs-colorToken-swatch, etc.
+ */
 
 .docs-colorToken-card {
   border-radius: $radius-8;
@@ -64,6 +71,9 @@ mx-templategrid-content-wrapper {
 // Swatch color classes for Mendix Dynamic Classes binding
 // Usage: Add the class name (e.g., 'swatch-brand-1') to the ColorStyle attribute in the Java action
 // These classes are used with the docs-colorToken-container class for color display
+//
+// These utility classes provide visual representations of each color token
+// in the TRIMM Design System color palette for documentation purposes.
 
 .swatch-brand-1 {
   background: var(--brand-1);
