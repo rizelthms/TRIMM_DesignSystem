@@ -1,18 +1,10 @@
-/**
- * TRIMM Design System - Spacing Tokens
- * 
- * Defines the spacing scale used throughout the design system.
- * These values provide consistent spacing for margins, padding, and gaps.
- */
-
-// Spacing Scale
-$spacing-0: 0px !default;      // No spacing
-$spacing-4: 4px !default;      // Extra small spacing
-$spacing-8: 8px !default;      // Small spacing
-$spacing-12: 12px !default;     // Medium-small spacing
-$spacing-16: 16px !default;     // Medium spacing
-$spacing-24: 24px !default;     // Large spacing
-$spacing-32: 32px !default;     // Extra large spacing
-$spacing-40: 40px !default;     // Very large spacing
-$spacing-64: 64px !default;     // Huge spacing
-$spacing-auto: auto !default;   // Auto spacing (browser calculated)
+$spacing-0: 0px !default;
+$spacing-4: 4px !default;
+$spacing-8: 8px !default;
+$spacing-12: 12px !default;
+$spacing-16: 16px !default;
+$spacing-24: 24px !default;
+$spacing-32: 32px !default;
+$spacing-40: 40px !default;
+$spacing-64: 64px !default;
+$spacing-auto: auto !default;
