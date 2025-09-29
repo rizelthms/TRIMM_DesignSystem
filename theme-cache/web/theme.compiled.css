@@ -28730,6 +28730,13 @@ Do not render = "none"
  * and layering across all components. The scale provides options from no shadow
  * to prominent elevation effects.
  */
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights, sizes,
+ * and line heights. It also provides automatic styling for Mendix text widgets
+ * based on their render mode selection.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -31879,6 +31886,13 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
  * These tokens define the elevation and shadow system for consistent depth
  * and layering across all components. The scale provides options from no shadow
  * to prominent elevation effects.
+ */
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights, sizes,
+ * and line heights. It also provides automatic styling for Mendix text widgets
+ * based on their render mode selection.
  */
 h1 {
   font-family: "GothamSSm", sans-serif;
