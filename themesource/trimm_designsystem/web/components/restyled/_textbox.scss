@@ -1,6 +1,22 @@
-// === SCOPED TEXTBOX STYLES ===
-// TRIMM textbox styles only apply when 'trimm-textbox' class is present on the textbox or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Textbox Component Styles
+ * 
+ * This file contains scoped styling for Mendix Text Box widgets.
+ * It provides enhanced textbox functionality with consistent theming,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM textbox styles only apply when 'trimm-textbox' class
+ * is present on the textbox or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced textbox input styling with TRIMM branding
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (focus, disabled)
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ * - Placeholder text styling and validation states
+ */
 
 .trimm-textbox {
     // === BASE TEXT BOX STYLE ===
