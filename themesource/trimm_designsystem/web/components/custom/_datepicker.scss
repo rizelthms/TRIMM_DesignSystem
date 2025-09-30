@@ -1,8 +1,19 @@
-// _datepicker.scss
-// Styles for the Trimm Datepicker widget.
-// Uses design system tokens for all colors, spacing, and typography.
-// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
-// This file is imported by the main design system theme and applies styles globally to .trimm-datepicker classes.
+/**
+ * TRIMM Design System - Datepicker Widget Styles
+ * 
+ * This file contains styles for the TRIMM Datepicker custom widget.
+ * It provides a single date selection interface with calendar popup,
+ * including navigation controls, day selection, and hover states.
+ * 
+ * The widget features:
+ * - Input field with calendar icon
+ * - Popup calendar with month navigation
+ * - Day selection with hover and selected states
+ * - Today highlighting and disabled date support
+ * - Responsive design with proper z-index layering
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 .trimm-datepicker {
     position: relative;
