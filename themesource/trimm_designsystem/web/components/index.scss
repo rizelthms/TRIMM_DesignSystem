@@ -1,4 +1,17 @@
-// Restyled Atlas UI Components
+/**
+ * TRIMM Design System - Components Imports
+ * 
+ * This file aggregates all component styles for the TRIMM Design System.
+ * It imports both restyled Mendix widgets and custom TRIMM components.
+ * 
+ * Imported Items:
+ * 1. Restyled Components - Enhanced Mendix widgets with TRIMM styling
+ * 2. Custom Components - TRIMM-specific widgets and functionality
+ */
+
+// === RESTYLED ATLAS UI COMPONENTS ===
+// Enhanced Mendix widgets with TRIMM design system styling
+// These components require specific classes to be applied for TRIMM styling
 @import "./restyled/_accordion.scss";
 @import "./restyled/_alert.scss";
 @import "./restyled/_button.scss";
@@ -15,7 +28,9 @@
 @import "./restyled/_topbar.scss";
 @import "./restyled/_conversational-ui.scss";
 
-// Custom Components
+// === CUSTOM TRIMM COMPONENTS ===
+// TRIMM-specific widgets with automatic styling
+// These components are styled automatically when the widgets are included
 @import "./custom/_color-token-editor.scss";
 @import "./custom/_datepicker.scss";
 @import "./custom/_dropdown.scss";
