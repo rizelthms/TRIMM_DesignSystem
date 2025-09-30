@@ -1,6 +1,22 @@
-// === SCOPED CHECKBOX STYLES ===
-// TRIMM checkbox styles only apply when 'trimm-checkbox' class is present on the checkbox or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Checkbox Component Styles
+ * 
+ * This file contains scoped styling for Mendix Checkbox widgets.
+ * It provides enhanced checkbox functionality with custom styling,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM checkbox styles only apply when 'trimm-checkbox' class
+ * is present on the checkbox or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Custom checkbox styling with brand colors
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (hover, focus, checked, disabled)
+ * - Accessibility support with focus rings
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ */
 
 .trimm-checkbox {
   // === BASE CHECKBOX STYLE ===

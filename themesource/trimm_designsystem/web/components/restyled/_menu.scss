@@ -1,6 +1,22 @@
-// === SCOPED MENU STYLES ===
-// TRIMM menu styles only apply when 'trimm-menu' class is present on the menu or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Menu Component Styles
+ * 
+ * This file contains scoped styling for Mendix Menu widgets.
+ * It provides enhanced menu functionality with dropdown support,
+ * consistent theming, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM menu styles only apply when 'trimm-menu' class
+ * is present on the menu or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced menu bar styling with TRIMM branding
+ * - Dropdown menu support with proper positioning
+ * - Interactive states (hover, active, selected)
+ * - Icon support and caret styling
+ * - Consistent typography and spacing using design tokens
+ * - Proper z-index layering for dropdown menus
+ */
 
 .trimm-menu {
     // === BASE MENU STYLE ===

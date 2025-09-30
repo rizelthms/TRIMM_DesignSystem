@@ -1,6 +1,22 @@
-// === SCOPED TAB STYLES ===
-// TRIMM tab styles only apply when 'trimm-tab' class is present on the tab or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Tab Component Styles
+ * 
+ * This file contains scoped styling for Mendix Tab Container widgets.
+ * It provides enhanced tab functionality with consistent theming,
+ * interactive states, and proper content organization using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM tab styles only apply when 'trimm-tab' class
+ * is present on the tab or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced tab navigation styling with TRIMM branding
+ * - Interactive states (hover, active, disabled)
+ * - Tab content panel styling
+ * - Consistent typography and spacing using design tokens
+ * - Proper visual hierarchy and organization
+ * - Disabled state support with appropriate visual feedback
+ */
 
 .trimm-tab {
   // === BASE TABS COMPONENT ===
