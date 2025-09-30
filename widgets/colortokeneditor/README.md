@@ -64,23 +64,38 @@ The Color Token Editor is a comprehensive Mendix pluggable widget in the TRIMM D
 - The documentation styling for the token examples is in `web/docs/custom-components/_docs-colorTokenEditorCustomTokens.scss` inside that module
 - The widget UI classes include `trimm-color-token-fab`, `trimm-color-token-drawer`, `trimm-color-token-grid`, and related elements
 
-## Development and testing
+## Development and Testing
 
-### Run tests
+### Test Suite
+
+The Color Token Editor includes a comprehensive test suite with both unit and integration tests:
+
+- **Unit Tests**: Test individual utility functions (color validation, derivation, hex processing)
+- **Integration Tests**: Test component behavior, user interactions, theme persistence, and accessibility
+- **Test Coverage**: Color validation, theme management, localStorage integration, edge cases, and performance
+
+### Run Tests
 
 ```bash
+# Run all tests
 cd widgets/colortokeneditor/tests
 npx jest --runInBand
+
+# Run tests in watch mode
+npx jest --watch
+
+# Run tests with coverage
+npx jest --coverage
 ```
 
-### Build the widget
+### Build the Widget
 
 ```bash
 cd widgets/colortokeneditor
 npm run build
 ```
 
-### Local development
+### Local Development
 
 ```bash
 cd widgets/colortokeneditor
