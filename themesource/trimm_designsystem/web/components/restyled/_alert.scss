@@ -1,6 +1,21 @@
-// === SCOPED ALERT STYLES ===
-// TRIMM alert styles only apply when 'trimm-alert' class is present on the alert or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Alert Component Styles
+ * 
+ * This file contains scoped styling for Mendix Alert widgets.
+ * It provides enhanced alert functionality with multiple variants,
+ * consistent theming, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM alert styles only apply when 'trimm-alert' class
+ * is present on the alert or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple alert variants (success, danger, warning, info)
+ * - Enhanced button styling within alerts
+ * - Consistent typography and spacing using design tokens
+ * - Interactive hover and active states
+ * - Disabled state support with appropriate visual feedback
+ */
 
 .trimm-alert {
   // === BASE ALERT STYLE ===
