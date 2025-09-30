@@ -1,8 +1,8 @@
-# Datepicker Testing Documentation
+# TRIMM Design System - Datepicker Testing Documentation
 
 ## Test Philosophy
 
-The Datepicker widget testing approach focuses on ensuring reliable date selection functionality with proper Mendix integration. Tests validate user interactions, date formatting, locale support, accessibility compliance, and edge case handling to maintain a robust date selection experience.
+The TRIMM Datepicker widget testing approach focuses on ensuring reliable date selection functionality with proper Mendix integration. Tests validate user interactions, date formatting, locale support, accessibility compliance, and edge case handling to maintain a robust date selection experience across all supported platforms and use cases.
 
 ## Test Structure
 

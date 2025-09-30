@@ -19,11 +19,26 @@ import { enUS } from "date-fns/locale/en-US";
 import { nl } from "date-fns/locale/nl";
 
 /**
- * TRIMM Datepicker Widget
+ * TRIMM Design System - Datepicker Widget
  * 
  * A Mendix pluggable widget that provides an accessible calendar interface
  * styled with the TRIMM Design System. Features locale-aware formatting,
  * date constraints, and seamless integration with Mendix data attributes.
+ * 
+ * Key Features:
+ * - Accessible calendar popup with month navigation and date selection
+ * - Locale-aware date formatting using date-fns (English US and Dutch NL)
+ * - Min/max date constraints with visual disabled state
+ * - Draggable calendar header for repositioning
+ * - Today highlighting and selected day styling
+ * - Seamless Mendix EditableValue integration
+ * - Keyboard navigation and screen reader support
+ * 
+ * Architecture:
+ * - Uses date-fns for robust date manipulation and formatting
+ * - Implements drag functionality for calendar repositioning
+ * - Manages local state for date selection when no Mendix attribute provided
+ * - Supports multiple locales with proper date formatting
  */
 
 /**
@@ -62,14 +77,14 @@ export function TrimmDatepicker({
     const calendarRef = useRef<HTMLDivElement>(null);
     const [popupOffset, setPopupOffset] = useState<{ left: number; top: number }>({ left: 0, top: 0 });
 
-    // Sync local state with selectedDate prop
+    // Sync local state with selectedDate prop for Mendix integration
     useEffect(() => {
         const base = selectedDate?.value ?? null;
         setLocalSelectedDate(base);
         if (base) setCurrentMonth(base);
     }, [selectedDate?.value]);
 
-    // Calendar drag functionality
+    // Calendar drag functionality for user repositioning of the popup
     useEffect(() => {
         function onMouseUp() {
             setDragging(false);
@@ -95,14 +110,14 @@ export function TrimmDatepicker({
         };
     }, [dragging, dragStart]);
 
-    // Reset popup position when opening
+    // Reset popup position when opening to ensure consistent placement
     useEffect(() => {
         if (showCalendar && inputRef.current) {
             setPopupOffset({ left: 0, top: 0 });
         }
     }, [showCalendar]);
 
-    // Click outside to close calendar
+    // Click outside to close calendar for better user experience
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (showCalendar &&

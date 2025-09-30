@@ -1,3 +1,18 @@
+/**
+ * TRIMM Design System - Datepicker Unit Tests
+ * 
+ * This file contains unit tests for the TRIMM Datepicker widget.
+ * It validates component behavior, date handling, locale support,
+ * and performance in isolation to ensure reliable date selection functionality.
+ * 
+ * Test Coverage:
+ * - Date rendering and formatting
+ * - Date validation and constraints
+ * - Locale support and formatting
+ * - Component props and styling
+ * - Performance and edge cases
+ */
+
 // @ts-nocheck
 import '@testing-library/jest-dom';
 import * as React from "react";
@@ -6,7 +21,7 @@ import { render, fireEvent, act, waitFor } from "@testing-library/react";
 import { TrimmDatepicker } from "../src/TrimmDatepicker";
 import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
 
-// Helper to get props for the component
+// Helper to get props for the component with consistent test data
 function getProps(overrides) {
     return {
         name: "TrimmDatepicker",
@@ -21,7 +36,7 @@ function getProps(overrides) {
     };
 }
 
-// Mock performance API for performance testing
+// Mock performance API for performance testing and measurement
 const mockPerformance = {
     now: jest.fn(() => Date.now()),
     mark: jest.fn(),
