@@ -1,6 +1,22 @@
-// === SCOPED TOOLTIP STYLES ===
-// TRIMM tooltip styles only apply when 'trimm-tooltip' class is present on the tooltip or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Tooltip Component Styles
+ * 
+ * This file contains scoped styling for Mendix Tooltip widgets.
+ * It provides enhanced tooltip functionality with consistent theming,
+ * size variants, and proper positioning using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM tooltip styles only apply when 'trimm-tooltip' class
+ * is present on the tooltip or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced tooltip content styling with TRIMM branding
+ * - Size modifiers (small, medium, large)
+ * - Consistent typography and spacing using design tokens
+ * - Proper shadow and border radius styling
+ * - Multi-line text support with pre-line formatting
+ * - Brand color integration for visual consistency
+ */
 
 .trimm-tooltip {
     // === BASE TOOLTIP STYLE ===
