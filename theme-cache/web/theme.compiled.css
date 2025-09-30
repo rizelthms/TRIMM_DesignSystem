@@ -28582,6 +28582,49 @@ Do not render = "none"
   z-index: 1000001;
 }
 
+/**
+ * TRIMM Design System - Main SCSS Entry Point
+ * 
+ * This file serves as the single entry point for the TRIMM Design System theme.
+ * It imports all design tokens, component styles, and documentation styles
+ * in the correct order to ensure proper CSS cascade and functionality.
+ */
+/**
+ * TRIMM Design System - Token Imports
+ * 
+ * 
+ * Imports:
+ * 1. Border tokens - Border width scale variables
+ * 2. Font tokens - Font face definitions and family variables
+ * 3. Spacing tokens - Spacing scale variables for consistent spacing
+ * 4. Radius tokens - Border radius scale variables
+ * 5. Shadow tokens - Elevation and shadow presets
+ * 6. Typography tokens - Font sizes, weights, and base HTML styles
+ * 7. Theme tokens - Color system with light/dark mode support
+ */
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * These tokens define the border width scale for consistent border thickness
+ * across all components. The scale follows a logical progression from no border
+ * to extra thick borders.
+ */
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * This file defines the GothamSSm font family used throughout the TRIMM Design System.
+ * The font includes multiple weights and styles to support the typography scale.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
 @font-face {
   font-family: "GothamSSm";
   src: url("GothamSSm-Light.woff2") format("woff2");
@@ -28666,6 +28709,34 @@ Do not render = "none"
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * These tokens define the spacing scale for consistent margins, padding, and gaps
+ * across all components. The scale follows a logical progression that provides
+ * appropriate spacing for different use cases.
+ */
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * These tokens define the border radius scale for consistent corner rounding
+ * across all components. The scale provides options from sharp corners to
+ * fully rounded elements.
+ */
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * These tokens define the elevation and shadow system for consistent depth
+ * and layering across all components. The scale provides options from no shadow
+ * to prominent elevation effects.
+ */
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights, sizes,
+ * and line heights. It also provides automatic styling for Mendix text widgets
+ * based on their render mode selection.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -31675,6 +31746,56 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   background: transparent;
 }
 
+/**
+ * TRIMM Design System - Documentation Styles Imports
+ * 
+ * 
+ * Imports:
+ * 1. Design tokens - Foundation tokens for consistent styling
+ * 2. Design token documentation - Visual representations of tokens
+ * 3. Custom component documentation - TRIMM widget examples
+ * 4. Restyled component documentation - Mendix widget examples
+ * 5. Home page documentation - Main documentation page styles
+ * 
+ * Note: These styles are for documentation/demo purposes only and should
+ * not be included in production applications.
+ */
+/**
+ * TRIMM Design System - Token Imports
+ * 
+ * 
+ * Imports:
+ * 1. Border tokens - Border width scale variables
+ * 2. Font tokens - Font face definitions and family variables
+ * 3. Spacing tokens - Spacing scale variables for consistent spacing
+ * 4. Radius tokens - Border radius scale variables
+ * 5. Shadow tokens - Elevation and shadow presets
+ * 6. Typography tokens - Font sizes, weights, and base HTML styles
+ * 7. Theme tokens - Color system with light/dark mode support
+ */
+/**
+ * TRIMM Design System - Border Width Tokens
+ * 
+ * These tokens define the border width scale for consistent border thickness
+ * across all components. The scale follows a logical progression from no border
+ * to extra thick borders.
+ */
+/**
+ * TRIMM Design System - Font Face Definitions
+ * 
+ * This file defines the GothamSSm font family used throughout the TRIMM Design System.
+ * The font includes multiple weights and styles to support the typography scale.
+ * 
+ * Font weights available:
+ * - 200 (Extra Light)
+ * - 300 (Light)
+ * - 400 (Regular/Book)
+ * - 500 (Medium)
+ * - 700 (Bold)
+ * - 900 (Black)
+ * 
+ * Each weight includes both normal and italic variants.
+ */
 @font-face {
   font-family: "GothamSSm";
   src: url("GothamSSm-Light.woff2") format("woff2");
@@ -31759,6 +31880,34 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   font-style: italic;
   font-display: swap;
 }
+/**
+ * TRIMM Design System - Spacing Tokens
+ * 
+ * These tokens define the spacing scale for consistent margins, padding, and gaps
+ * across all components. The scale follows a logical progression that provides
+ * appropriate spacing for different use cases.
+ */
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * These tokens define the border radius scale for consistent corner rounding
+ * across all components. The scale provides options from sharp corners to
+ * fully rounded elements.
+ */
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * These tokens define the elevation and shadow system for consistent depth
+ * and layering across all components. The scale provides options from no shadow
+ * to prominent elevation effects.
+ */
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights, sizes,
+ * and line heights. It also provides automatic styling for Mendix text widgets
+ * based on their render mode selection.
+ */
 h1 {
   font-family: "GothamSSm", sans-serif;
   font-size: 31px;
@@ -31945,6 +32094,27 @@ p {
   --support-4-disabled: rgba(186, 139, 0, 0.4);
 }
 
+/**
+ * TRIMM Design System - Design Token Documentation Imports
+ * 
+ * Imports:
+ * 1. Border tokens - Border width scale demonstrations
+ * 2. Color tokens - Color palette and theme showcases
+ * 3. Radius tokens - Border radius scale examples
+ * 4. Shadow tokens - Elevation and shadow system displays
+ * 5. Spacing tokens - Spacing scale visualizations
+ * 6. Theme documentation - Light/dark mode demonstrations
+ * 7. Typography tokens - Font system and typography examples
+ */
+/**
+ * TRIMM Design System - Border Token Documentation Styles
+ * 
+ * This file contains styles for displaying border tokens in the documentation.
+ * It provides visual representations of the TRIMM border width scale including
+ * various border thickness options from no border to extra thick borders.
+ * 
+ * BEM naming convention: docs-borderToken-card, docs-borderToken-swatch, etc.
+ */
 .docs-borderToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -32025,6 +32195,15 @@ mx-templategrid-content-wrapper {
   border: 8px solid var(--brand-2);
 }
 
+/**
+ * TRIMM Design System - Color Token Documentation Styles
+ * 
+ * This file contains styles for displaying color tokens in the documentation.
+ * It provides visual representations of the TRIMM color palette including
+ * brand colors, base colors, secondary colors, and support colors.
+ * 
+ * BEM naming convention: docs-colorToken-card, docs-colorToken-swatch, etc.
+ */
 .docs-colorToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -32129,6 +32308,15 @@ mx-templategrid-content-wrapper {
   background: var(--support-4);
 }
 
+/**
+ * TRIMM Design System - Radius Token Documentation Styles
+ * 
+ * This file contains styles for displaying radius tokens in the documentation.
+ * It provides visual representations of the TRIMM border radius scale including
+ * various corner rounding options from sharp corners to fully rounded elements.
+ * 
+ * BEM naming convention: docs-radiusToken-card, docs-radiusToken-swatch, etc.
+ */
 .docs-radiusToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -32209,6 +32397,15 @@ mx-templategrid-content-wrapper {
   border-radius: 999px;
 }
 
+/**
+ * TRIMM Design System - Shadow Token Documentation Styles
+ * 
+ * This file contains styles for displaying shadow tokens in the documentation.
+ * It provides visual representations of the TRIMM elevation and shadow system
+ * including various depth options from no shadow to maximum elevation effects.
+ * 
+ * BEM naming convention: docs-shadowToken-card, docs-shadowToken-swatch, etc.
+ */
 .docs-shadowToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -32293,6 +32490,15 @@ mx-templategrid-content-wrapper {
   box-shadow: 0 12px 24px rgba(27, 28, 29, 0.2);
 }
 
+/**
+ * TRIMM Design System - Spacing Token Documentation Styles
+ * 
+ * This file contains styles for displaying spacing tokens in the documentation.
+ * It provides visual representations of the TRIMM spacing scale including
+ * various spacing options from no spacing to maximum separation values.
+ * 
+ * BEM naming convention: docs-spacingToken-card, docs-spacingToken-swatch, etc.
+ */
 .docs-spacingToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -32396,6 +32602,59 @@ mx-templategrid-content-wrapper {
   width: auto;
 }
 
+/**
+ * TRIMM Design System - Theme Documentation Styles
+ * 
+ * This file contains styles for displaying theme documentation in the documentation.
+ * It provides visual representations of the TRIMM theme system including
+ * light and dark mode demonstrations and theme switching functionality.
+ */
+.docs-theme-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  width: 100%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.docs-theme-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 4px;
+}
+
+.docs-theme-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+/**
+ * TRIMM Design System - Typography Token Documentation Styles
+ * 
+ * This file contains styles for displaying typography tokens in the documentation.
+ * It provides visual representations of the TRIMM typography system including
+ * font sizes, weights, line heights, and complete typography examples.
+ * 
+ * BEM naming convention: docs-typographyToken-card, docs-typographyToken-swatch, etc.
+ */
 .docs-typographyToken-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
@@ -32644,582 +32903,22 @@ mx-templategrid-content-wrapper {
   font-family: "GothamSSm", sans-serif;
 }
 
-.docs-theme-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
-  width: 100%;
-  max-width: 900px;
-  box-sizing: border-box;
-}
-
-.docs-theme-sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 4px;
-}
-
-.docs-theme-sectionText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 0;
-}
-
-.docs-accordionClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-accordionClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-accordionClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.docs-alertClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-alertClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-alertClass-optionName {
-  font-weight: 600;
-  font-size: 14px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-alertClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.docs-buttonClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-buttonClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-buttonClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.docs-checkboxClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-checkboxClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-checkboxClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.checkbox-demo-row {
-  align-items: center !important;
-}
-
-.checkbox-demo-row .col-sm-9 {
-  flex: none !important;
-  max-width: none !important;
-  width: auto !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 4px !important;
-  margin: 0 !important;
-}
-
-.docs-labelClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-labelClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-labelClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.docs-menuClass-card {
-  display: block;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  width: 100%;
-  margin-bottom: 1000px;
-  box-sizing: border-box;
-  overflow: visible !important;
-}
-
-.docs-menuClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-menuClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.docs-radioClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-radioClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-radioClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.radio-demo-row .col-sm-3 {
-  flex: none !important;
-  max-width: none !important;
-  width: auto !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 4px !important;
-  margin: 0 !important;
-}
-
-.docs-switchClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.docs-switchClass-card .col-sm-3,
-.docs-switchClass-card .col-md-3,
-.docs-switchClass-card .col-lg-3,
-.docs-switchClass-card .col-xl-3 {
-  flex: none !important;
-  max-width: none !important;
-  width: auto !important;
-}
-
-.docs-switchClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-switchClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.switch-demo-row .col-sm-3 {
-  flex: none !important;
-  max-width: none !important;
-  width: auto !important;
-  display: flex !important;
-  align-items: center !important;
-  padding: 4px !important;
-  margin: 0 !important;
-  white-space: normal !important;
-  overflow: visible !important;
-}
-
-.docs-textareaClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-textareaClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-textareaClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.docs-textboxClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-textboxClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-textboxClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.docs-tooltipClass-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 24px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 32px;
-  margin-right: 12px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
-  min-height: 200px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-tooltipClass-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 12px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-tooltipClass-desc {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--secondary-1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.docs-datepickerCustom-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 32px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
-  min-height: unset;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-datepickerCustom-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-datepickerCustom-sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 24px;
-}
-
-.docs-datepickerCustom-sectionText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.docs-datepickerCustom-card table,
-.docs-datepickerCustom-card table th,
-.docs-datepickerCustom-card table td {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.docs-dropdownCustom-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 32px 32px;
-  background: var(--base-white);
-  border-radius: 8px;
-  margin-bottom: 24px;
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
-  min-height: unset;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.docs-dropdownCustom-name {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: var(--base-black);
-  word-break: break-all;
-  text-align: center;
-}
-
-.docs-dropdownCustom-sectionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 8px;
-  margin-top: 24px;
-}
-
-.docs-dropdownCustom-sectionText {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  color: "GothamSSm", sans-serif;
-  text-align: left;
-  margin-bottom: 16px;
-  margin-top: 0;
-}
-
-.docs-dropdownCustom-card table,
-.docs-dropdownCustom-card table th,
-.docs-dropdownCustom-card table td {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  vertical-align: middle;
-}
-
+/**
+ * TRIMM Design System - Custom Component Documentation Imports
+ * 
+ * 
+ * Imports:
+ * 1. Color Token Editor - Custom color editing widget documentation
+ * 2. Datepicker - Custom date selection widget documentation  
+ * 3. Dropdown - Custom dropdown widget documentation
+ */
+/**
+ * TRIMM Design System - Color Token Editor Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Color Token Editor
+ * custom widget. It provides visual representations and layout styles
+ * for showcasing the color token editing functionality.
+ */
 .docs-colorTokenEditorCustom-card {
   display: flex;
   flex-direction: column;
@@ -33294,6 +32993,671 @@ mx-templategrid-content-wrapper {
   vertical-align: middle;
 }
 
+/**
+ * TRIMM Design System - Datepicker Custom Widget Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Datepicker custom widget.
+ * It provides visual representations and layout styles for showcasing the
+ * date selection functionality and calendar interface.
+ */
+.docs-datepickerCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  min-height: unset;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-datepickerCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-datepickerCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-datepickerCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-datepickerCustom-card table,
+.docs-datepickerCustom-card table th,
+.docs-datepickerCustom-card table td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/**
+ * TRIMM Design System - Dropdown Custom Widget Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Dropdown custom widget.
+ * It provides visual representations and layout styles for showcasing the
+ * dropdown selection functionality and menu interface.
+ */
+.docs-dropdownCustom-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 32px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 16px rgba(27, 28, 29, 0.15);
+  min-height: unset;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-dropdownCustom-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-dropdownCustom-sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 8px;
+  margin-top: 24px;
+}
+
+.docs-dropdownCustom-sectionText {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  color: "GothamSSm", sans-serif;
+  text-align: left;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.docs-dropdownCustom-card table,
+.docs-dropdownCustom-card table th,
+.docs-dropdownCustom-card table td {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/**
+ * TRIMM Design System - Restyled Component Documentation Imports
+ * 
+ * Imports:
+ * 1. Accordion - Collapsible content widget documentation
+ * 2. Alert - Notification and feedback widget documentation
+ * 3. Button - Interactive button widget documentation
+ * 4. Checkbox - Form input widget documentation
+ * 5. Label - Text display widget documentation
+ * 6. Menu - Navigation widget documentation
+ * 7. Radio - Form input widget documentation
+ * 8. Switch - Toggle widget documentation
+ * 9. Textarea - Multi-line text input documentation
+ * 10. Textbox - Single-line text input documentation
+ * 11. Tooltip - Contextual help widget documentation
+ */
+/**
+ * TRIMM Design System - Accordion Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Accordion component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * collapsible content functionality and accordion interactions.
+ */
+.docs-accordionClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-accordionClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-accordionClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Alert Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Alert component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * notification and feedback functionality with various alert variants.
+ */
+.docs-alertClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-alertClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-alertClass-optionName {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-alertClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Button Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Button component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * various button variants, sizes, and states available in the design system.
+ * 
+ * BEM naming convention: docs-buttonClass-card, docs-buttonClass-name, docs-buttonClass-desc
+ */
+.docs-buttonClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-buttonClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-buttonClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Checkbox Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Checkbox component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * form input functionality with various checkbox states and sizes.
+ * 
+ * BEM naming convention: docs-checkboxClass-card, docs-checkboxClass-name, docs-checkboxClass-desc
+ */
+.docs-checkboxClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-checkboxClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-checkboxClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.checkbox-demo-row {
+  align-items: center !important;
+}
+
+.checkbox-demo-row .col-sm-9 {
+  flex: none !important;
+  max-width: none !important;
+  width: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 4px !important;
+  margin: 0 !important;
+}
+
+/**
+ * TRIMM Design System - Label Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Label component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * text display functionality with various label variants and sizes.
+ */
+.docs-labelClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-labelClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-labelClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Menu Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Menu component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * navigation functionality with various menu states and interactions.
+ */
+.docs-menuClass-card {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  width: 100%;
+  margin-bottom: 1000px;
+  box-sizing: border-box;
+  overflow: visible !important;
+}
+
+.docs-menuClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-menuClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Radio Button Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Radio Button component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * form input functionality with various radio button states and sizes.
+ * 
+ * BEM naming convention: docs-radioClass-card, docs-radioClass-name, docs-radioClass-desc
+ */
+.docs-radioClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-radioClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-radioClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.radio-demo-row .col-sm-3 {
+  flex: none !important;
+  max-width: none !important;
+  width: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 4px !important;
+  margin: 0 !important;
+}
+
+/**
+ * TRIMM Design System - Switch Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Switch component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * toggle functionality with various switch states and sizes.
+ * 
+ * BEM naming convention: docs-switchClass-card, docs-switchClass-name, docs-switchClass-desc
+ */
+.docs-switchClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.docs-switchClass-card .col-sm-3,
+.docs-switchClass-card .col-md-3,
+.docs-switchClass-card .col-lg-3,
+.docs-switchClass-card .col-xl-3 {
+  flex: none !important;
+  max-width: none !important;
+  width: auto !important;
+}
+
+.docs-switchClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-switchClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.switch-demo-row .col-sm-3 {
+  flex: none !important;
+  max-width: none !important;
+  width: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 4px !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+}
+
+/**
+ * TRIMM Design System - Textarea Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Textarea component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * multi-line text input functionality with various textarea states and sizes.
+ * 
+ * BEM naming convention: docs-textareaClass-card, docs-textareaClass-name, docs-textareaClass-desc
+ */
+.docs-textareaClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-textareaClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-textareaClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Textbox Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Textbox component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * single-line text input functionality with various textbox states and sizes.
+ * 
+ * BEM naming convention: docs-textboxClass-card, docs-textboxClass-name, docs-textboxClass-desc
+ */
+.docs-textboxClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-textboxClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-textboxClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Tooltip Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Tooltip component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * contextual help functionality with various tooltip states and sizes.
+ */
+.docs-tooltipClass-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--base-white);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  margin-right: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(27, 28, 29, 0.05);
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.docs-tooltipClass-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: var(--base-black);
+  word-break: break-all;
+  text-align: center;
+}
+
+.docs-tooltipClass-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--secondary-1);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/**
+ * TRIMM Design System - Documentation Home Page Styles
+ * 
+ * This file contains the main documentation page layout and typography styles
+ * for the TRIMM Design System documentation. It provides a clean, readable
+ * interface for showcasing the design system components and tokens.
+ */
 .docs-home {
   margin-left: 12px;
   margin-right: 12px;
@@ -33353,6 +33717,12 @@ mx-templategrid-content-wrapper {
   margin-top: 0;
 }
 
+/**
+ * Base Application Styles
+ * 
+ * These styles provide the foundation for the TRIMM Design System
+ * and ensure consistent typography and color application across the application.
+ */
 body {
   font-family: "GothamSSm", sans-serif;
   background-color: var(--base-white);

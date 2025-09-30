@@ -1,6 +1,20 @@
-// === TOPBAR NAVIGATION STYLING ===
-// Top navigation bar styling for Mendix Navigation widgets
-// Provides consistent TRIMM design system appearance for top navigation
+/**
+ * TRIMM Design System - Topbar Navigation Component Styles
+ * 
+ * This file contains styling for Mendix Navigation widgets used in top navigation bars.
+ * It provides consistent TRIMM design system appearance for top navigation
+ * with enhanced styling, dropdown menus, and proper hierarchy indication.
+ * 
+ * Features:
+ * - Enhanced top navigation bar styling with TRIMM branding
+ * - Dropdown menu styling with proper positioning and shadows
+ * - Hover and active states for navigation items
+ * - Icon visibility controls for navigation elements
+ * - Disabled state support with appropriate visual feedback
+ * - Consistent typography and spacing using design tokens
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 // Main topbar container styling
 .region-topbar,

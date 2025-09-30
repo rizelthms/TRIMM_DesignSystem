@@ -1,5 +1,22 @@
+/**
+ * TRIMM Design System - Border Radius Tokens
+ * 
+ * These tokens define the border radius scale for consistent corner rounding
+ * across all components. The scale provides options from sharp corners to
+ * fully rounded elements.
+ */
+
+// No border radius - for sharp, angular elements
 $radius-0: 0px !default;
+
+// Small border radius - for subtle rounding on small elements
 $radius-4: 4px !default;
+
+// Medium border radius - for standard component rounding
 $radius-8: 8px !default;
+
+// Large border radius - for prominent rounding on cards and panels
 $radius-16: 16px !default;
+
+// Full border radius - for circular elements (buttons, avatars, etc.)
 $radius-full: 999px !default;

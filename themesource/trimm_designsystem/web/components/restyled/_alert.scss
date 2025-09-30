@@ -1,211 +1,226 @@
-// === SCOPED ALERT STYLES ===
-// TRIMM alert styles only apply when 'trimm-alert' class is present on the alert or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Alert Component Styles
+ * 
+ * This file contains scoped styling for Mendix Alert widgets.
+ * It provides enhanced alert functionality with multiple variants,
+ * consistent theming, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM alert styles only apply when 'trimm-alert' class
+ * is present on the alert or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple alert variants (success, danger, warning, info)
+ * - Enhanced button styling within alerts
+ * - Consistent typography and spacing using design tokens
+ * - Interactive hover and active states
+ * - Disabled state support with appropriate visual feedback
+ */
 
 .trimm-alert {
-  // === BASE ALERT STYLE ===
-  // Base styling for all alert components
-  // Apply to alert containers for consistent TRIMM design system appearance
+    // === BASE ALERT STYLE ===
+    // Base styling for all alert components
+    // Apply to alert containers for consistent TRIMM design system appearance
 
-  .alert-base,
-  &.alert-base {
-    font-family: $font-primary;
-    border-radius: $radius-4;
-    padding: $spacing-16;
-    background-color: var(--brand-3);
-    color: var(--base-white);
-    transition: background-color 0.2s ease;
-
-    // Ensure text elements inherit alert colors
-    .alert-title,
-    .alert-description {
-        color: var(--base-white) !important;
-    }
-
-    // Style buttons within alerts
-    .mx-button {
-        background-color: var(--brand-2) !important;
-        color: var(--base-white) !important;
-        font-weight: $font-weight-semibold;
+    .alert-base,
+    &.alert-base {
         font-family: $font-primary;
-        font-size: $font-size-body-3;
-        padding: $spacing-8 $spacing-16;
-        border: none;
         border-radius: $radius-4;
-        line-height: 1;
-        min-height: 29px;
-        min-width: 76px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+        padding: $spacing-16;
+        background-color: var(--brand-3);
+        color: var(--base-white);
+        transition: background-color 0.2s ease;
 
+        // Ensure text elements inherit alert colors
+        .alert-title,
+        .alert-description {
+            color: var(--base-white) !important;
+        }
+
+        // Style buttons within alerts
+        .mx-button {
+            background-color: var(--brand-2) !important;
+            color: var(--base-white) !important;
+            font-weight: $font-weight-semibold;
+            font-family: $font-primary;
+            font-size: $font-size-body-3;
+            padding: $spacing-8 $spacing-16;
+            border: none;
+            border-radius: $radius-4;
+            line-height: 1;
+            min-height: 29px;
+            min-width: 76px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                background-color: var(--brand-2-hover) !important;
+            }
+
+            &:active {
+                background-color: var(--brand-2-active) !important;
+            }
+
+            &:disabled {
+                background-color: var(--brand-2-disabled) !important;
+                color: var(--base-white-disabled) !important;
+                cursor: not-allowed;
+            }
+
+            // Ensure icons inherit button colors
+            svg,
+            i.mdi,
+            span > svg {
+                color: currentColor;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        // Interactive states
         &:hover {
-            background-color: var(--brand-2-hover) !important;
+            background-color: var(--brand-3-hover);
         }
 
         &:active {
-            background-color: var(--brand-2-active) !important;
+            background-color: var(--brand-3-active);
         }
 
-        &:disabled {
-            background-color: var(--brand-2-disabled) !important;
-            color: var(--base-white-disabled) !important;
+        // Disabled state
+        &.disabled {
+            background-color: var(--brand-3-disabled);
+            color: var(--base-white-disabled);
+            pointer-events: none;
             cursor: not-allowed;
-        }
 
-        // Ensure icons inherit button colors
-        svg,
-        i.mdi,
-        span > svg {
-            color: currentColor;
-            width: 20px;
-            height: 20px;
+            .alert-title,
+            .alert-description {
+                color: var(--base-white-disabled) !important;
+            }
         }
     }
 
-    // Interactive states
-    &:hover {
-        background-color: var(--brand-3-hover);
-    }
+    // === VARIANTS ===
+    // Different alert types for various use cases
 
-    &:active {
-        background-color: var(--brand-3-active);
-    }
-
-    // Disabled state
-    &.disabled {
-        background-color: var(--brand-3-disabled);
-        color: var(--base-white-disabled);
-        pointer-events: none;
-        cursor: not-allowed;
-
-        .alert-title,
-        .alert-description {
-            color: var(--base-white-disabled) !important;
-        }
-    }
-  }
-
-  // === VARIANTS ===
-  // Different alert types for various use cases
-
-  // Success alerts for positive feedback
-  .alert-success,
-  &.alert-success {
-    @extend .alert-base;
-    background-color: var(--support-3) !important;
-    color: var(--base-white) !important;
-
-    .alert-title,
-    .alert-description {
+    // Success alerts for positive feedback
+    .alert-success,
+    &.alert-success {
+        @extend .alert-base;
+        background-color: var(--support-3) !important;
         color: var(--base-white) !important;
-    }
 
-    &:hover {
-        background-color: var(--support-3-hover) !important;
-    }
-
-    &:active {
-        background-color: var(--support-3-active) !important;
-    }
-
-    &.disabled {
-        background-color: var(--support-3-disabled) !important;
-        color: var(--base-white-disabled) !important;
         .alert-title,
         .alert-description {
+            color: var(--base-white) !important;
+        }
+
+        &:hover {
+            background-color: var(--support-3-hover) !important;
+        }
+
+        &:active {
+            background-color: var(--support-3-active) !important;
+        }
+
+        &.disabled {
+            background-color: var(--support-3-disabled) !important;
             color: var(--base-white-disabled) !important;
+            .alert-title,
+            .alert-description {
+                color: var(--base-white-disabled) !important;
+            }
         }
     }
-  }
 
-  // Danger alerts for errors and warnings
-  .alert-danger,
-  &.alert-danger {
-    @extend .alert-base;
-    background-color: var(--support-2) !important;
-    color: var(--base-white) !important;
-
-    .alert-title,
-    .alert-description {
+    // Danger alerts for errors and warnings
+    .alert-danger,
+    &.alert-danger {
+        @extend .alert-base;
+        background-color: var(--support-2) !important;
         color: var(--base-white) !important;
-    }
 
-    &:hover {
-        background-color: var(--support-2-hover) !important;
-    }
-
-    &:active {
-        background-color: var(--support-2-active) !important;
-    }
-
-    &.disabled {
-        background-color: var(--support-2-disabled) !important;
-        color: var(--base-white-disabled) !important;
         .alert-title,
         .alert-description {
+            color: var(--base-white) !important;
+        }
+
+        &:hover {
+            background-color: var(--support-2-hover) !important;
+        }
+
+        &:active {
+            background-color: var(--support-2-active) !important;
+        }
+
+        &.disabled {
+            background-color: var(--support-2-disabled) !important;
             color: var(--base-white-disabled) !important;
+            .alert-title,
+            .alert-description {
+                color: var(--base-white-disabled) !important;
+            }
         }
     }
-  }
 
-  // Warning alerts for cautionary messages
-  .alert-warning,
-  &.alert-warning {
-    @extend .alert-base;
-    background-color: var(--support-4) !important;
-    color: var(--base-black) !important;
-
-    .alert-title,
-    .alert-description {
+    // Warning alerts for cautionary messages
+    .alert-warning,
+    &.alert-warning {
+        @extend .alert-base;
+        background-color: var(--support-4) !important;
         color: var(--base-black) !important;
-    }
 
-    &:hover {
-        background-color: var(--support-4-hover) !important;
-    }
-
-    &:active {
-        background-color: var(--support-4-active) !important;
-    }
-
-    &.disabled {
-        background-color: var(--support-4-disabled) !important;
-        color: var(--base-black-disabled) !important;
         .alert-title,
         .alert-description {
+            color: var(--base-black) !important;
+        }
+
+        &:hover {
+            background-color: var(--support-4-hover) !important;
+        }
+
+        &:active {
+            background-color: var(--support-4-active) !important;
+        }
+
+        &.disabled {
+            background-color: var(--support-4-disabled) !important;
             color: var(--base-black-disabled) !important;
+            .alert-title,
+            .alert-description {
+                color: var(--base-black-disabled) !important;
+            }
         }
     }
-  }
 
-  // Info alerts for informational messages
-  .alert-info,
-  &.alert-info {
-    @extend .alert-base;
-    background-color: var(--secondary-1) !important;
-    color: var(--base-white) !important;
-
-    .alert-title,
-    .alert-description {
+    // Info alerts for informational messages
+    .alert-info,
+    &.alert-info {
+        @extend .alert-base;
+        background-color: var(--secondary-1) !important;
         color: var(--base-white) !important;
-    }
 
-    &:hover {
-        background-color: var(--secondary-1-hover) !important;
-    }
-
-    &:active {
-        background-color: var(--secondary-1-active) !important;
-    }
-
-    &.disabled {
-        background-color: var(--secondary-1-disabled) !important;
-        color: var(--base-white-disabled) !important;
         .alert-title,
         .alert-description {
+            color: var(--base-white) !important;
+        }
+
+        &:hover {
+            background-color: var(--secondary-1-hover) !important;
+        }
+
+        &:active {
+            background-color: var(--secondary-1-active) !important;
+        }
+
+        &.disabled {
+            background-color: var(--secondary-1-disabled) !important;
             color: var(--base-white-disabled) !important;
+            .alert-title,
+            .alert-description {
+                color: var(--base-white-disabled) !important;
+            }
         }
     }
-  }
 }

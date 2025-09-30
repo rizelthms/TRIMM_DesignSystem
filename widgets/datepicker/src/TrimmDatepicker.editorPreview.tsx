@@ -5,11 +5,20 @@ import { TrimmDatepickerPreviewProps } from "../typings/TrimmDatepickerProps";
 import { ValueStatus, EditableValue } from "mendix";
 
 /**
- * Preview component for Studio Pro
- * Shows a simplified version of the TRIMM Datepicker with mock data
+ * TRIMM Design System - Datepicker Preview Component
+ * 
+ * This file contains the preview component for the TRIMM Datepicker widget
+ * in Mendix Studio Pro. It provides a visual representation of the widget
+ * during development and design time.
+ * 
+ * Features:
+ * - Simplified widget preview for Studio Pro
+ * - Mock data for realistic preview
+ * - Consistent styling with production widget
+ * - Helper functions for date manipulation
  */
 
-// Helper for min/max dates
+// Helper for min/max dates to create realistic preview constraints
 function daysFromNow(days: number) {
     const d = new Date();
     d.setDate(d.getDate() + days);

@@ -2,7 +2,7 @@
   "name": "trimmdropdown",
   "widgetName": "TrimmDropdown",
   "version": "1.0.0",
-  "description": "A customizable dropdown/select component for Mendix, styled with the TRIMM Design System. Features flexible option selection, icon support, and seamless integration with Mendix actions.",
+  "description": "TRIMM Design System - A comprehensive Mendix pluggable widget for dropdown menus with configurable items, icon support, and seamless integration with Mendix actions.",
   "copyright": "© TRIMM 2024. All rights reserved.",
   "author": "TRIMM Design System Team",
   "engines": {

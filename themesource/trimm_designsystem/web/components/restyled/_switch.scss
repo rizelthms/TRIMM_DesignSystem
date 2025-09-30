@@ -1,6 +1,22 @@
-// === SCOPED SWITCH STYLES ===
-// TRIMM switch styles only apply when 'trimm-switch' class is present on the switch or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Switch Component Styles
+ * 
+ * This file contains scoped styling for Mendix Switch widgets.
+ * It provides enhanced switch functionality with custom toggle styling,
+ * size variants, and smooth animations using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM switch styles only apply when 'trimm-switch' class
+ * is present on the switch or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Custom switch track and thumb styling
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (hover, focus, checked, disabled)
+ * - Smooth animations for toggle transitions
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ */
 
 .trimm-switch {
   // === BASE SWITCH STYLE ===

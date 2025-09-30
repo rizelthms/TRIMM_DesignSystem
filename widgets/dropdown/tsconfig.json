@@ -1,7 +1,12 @@
 {
+  // TRIMM Design System - Dropdown TypeScript Configuration
+  // Extends Mendix pluggable widgets base configuration for widget development
   "extends": "@mendix/pluggable-widgets-tools/configs/tsconfig.base",
   "compilerOptions": {
     "baseUrl": "./"
   },
-  "include": ["./src", "./typings"]
+  "include": [
+    "./src",
+    "./typings"
+  ]
 }

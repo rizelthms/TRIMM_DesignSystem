@@ -1,10 +1,20 @@
-/* ==========================================================================
-   Conversational UI (Chat) Components
-   
-   This file provides TRIMM design system styling for Mendix ConversationalUI module.
-   Supports popup, sidebar, and fullscreen chat modes.
-   Uses TRIMM design tokens for consistent theming.
-========================================================================== */
+/**
+ * TRIMM Design System - Conversational UI Component Styles
+ * 
+ * This file provides comprehensive styling for Mendix ConversationalUI module.
+ * It supports multiple chat interface modes including popup, sidebar, and
+ * fullscreen layouts with consistent TRIMM design system theming.
+ * 
+ * Features:
+ * - Multiple chat layouts (popup, sidebar, fullscreen)
+ * - Chat bubble styling for user and AI messages
+ * - Loading animations and interactive states
+ * - Input field styling with send button
+ * - Responsive design for mobile and tablet
+ * - Theme integration with TRIMM design tokens
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 // === CHAT POPUP BUTTON ===
 // Floating action button to open chat interface

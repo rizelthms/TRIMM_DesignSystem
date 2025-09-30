@@ -6,10 +6,16 @@
     "test": "jest --config jest.config.js",
     "test:coverage": "jest --config jest.config.js --coverage"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "trimm",
+    "design-system",
+    "mendix",
+    "widget",
+    "testing"
+  ],
+  "author": "TRIMM Design System Team",
   "license": "ISC",
-  "description": "",
+  "description": "TRIMM Design System - Datepicker widget test suite for comprehensive date selection functionality validation",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -21,4 +27,4 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {}
-} 
+}

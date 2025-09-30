@@ -1,11 +1,25 @@
+/**
+ * TRIMM Design System - Shadow Tokens
+ * 
+ * These tokens define the elevation and shadow system for consistent depth
+ * and layering across all components. The scale provides options from no shadow
+ * to prominent elevation effects.
+ */
+
+// No shadow - for flat elements and base layers
 $shadow-0: none !default;
 
+// Light shadow - for subtle elevation and hover states
 $shadow-2: 0 2px 4px rgba(27, 28, 29, 0.05) !default;
 
-$shadow-3: 0 4px 8px rgba(27, 28, 29, 0.10) !default;
+// Small shadow - for basic elevation on cards and buttons
+$shadow-3: 0 4px 8px rgba(27, 28, 29, 0.1) !default;
 
+// Medium shadow - for standard elevation on panels and modals
 $shadow-6: 0 6px 12px rgba(27, 28, 29, 0.12) !default;
 
+// Large shadow - for prominent elevation on overlays and dialogs
 $shadow-8: 0 8px 16px rgba(27, 28, 29, 0.15) !default;
 
-$shadow-12: 0 12px 24px rgba(27, 28, 29, 0.20) !default;
+// Extra large shadow - for maximum elevation on floating elements
+$shadow-12: 0 12px 24px rgba(27, 28, 29, 0.2) !default;

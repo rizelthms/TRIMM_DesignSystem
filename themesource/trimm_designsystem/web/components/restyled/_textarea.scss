@@ -1,6 +1,22 @@
-// === SCOPED TEXTAREA STYLES ===
-// TRIMM textarea styles only apply when 'trimm-textarea' class is present on the textarea or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Textarea Component Styles
+ * 
+ * This file contains scoped styling for Mendix Text Area widgets.
+ * It provides enhanced textarea functionality with consistent theming,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM textarea styles only apply when 'trimm-textarea' class
+ * is present on the textarea or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced textarea input styling with TRIMM branding
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (focus, disabled)
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ * - Placeholder text styling and validation states
+ */
 
 .trimm-textarea {
     // === BASE TEXT AREA STYLE ===

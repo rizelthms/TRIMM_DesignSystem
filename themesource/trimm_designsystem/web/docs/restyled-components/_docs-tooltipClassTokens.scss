@@ -1,3 +1,12 @@
+/**
+ * TRIMM Design System - Tooltip Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Tooltip component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * contextual help functionality with various tooltip states and sizes.
+ */
+
+// Main documentation card for Tooltip component
 .docs-tooltipClass-card {
   display: flex;
   flex-direction: column;
@@ -30,4 +39,4 @@
   color: var(--secondary-1);
   margin-bottom: $spacing-16;
   text-align: center;
-} 
+}

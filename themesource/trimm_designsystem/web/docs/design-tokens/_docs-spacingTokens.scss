@@ -1,5 +1,12 @@
-// Documentation styles for spacing tokens (spacing swatches, cards, etc.)
-// BEM naming: docs-spacingToken-card, docs-spacingToken-swatch, etc.
+/**
+ * TRIMM Design System - Spacing Token Documentation Styles
+ * 
+ * This file contains styles for displaying spacing tokens in the documentation.
+ * It provides visual representations of the TRIMM spacing scale including
+ * various spacing options from no spacing to maximum separation values.
+ * 
+ * BEM naming convention: docs-spacingToken-card, docs-spacingToken-swatch, etc.
+ */
 
 .docs-spacingToken-card {
     border-radius: $radius-8;
@@ -68,6 +75,9 @@ mx-templategrid-content-wrapper {
 // Spacing utility classes for Mendix Dynamic Classes binding
 // Usage: Add the class name (e.g., 'spacing-style-8') to the SpacingStyleClass attribute in the Java action
 // These classes are used with the docs-spacingToken-container class for spacing display
+//
+// These utility classes provide visual representations of each spacing token
+// in the TRIMM Design System for documentation purposes.
 
 .spacing-style-0 {
     width: $spacing-0;

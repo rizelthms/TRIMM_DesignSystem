@@ -1,44 +1,55 @@
-// Font Family
-$font-primary: 'GothamSSm', sans-serif !default;
+/**
+ * TRIMM Design System - Typography Tokens
+ * 
+ * This file defines the typography system including font family, weights, sizes,
+ * and line heights. It also provides automatic styling for Mendix text widgets
+ * based on their render mode selection.
+ */
 
+// Primary font family used throughout the system
+$font-primary: "GothamSSm", sans-serif !default;
 
-// Font Weights
-$font-weight-light: 300 !default;
-$font-weight-regular: 400 !default;
-$font-weight-medium: 500 !default;
-$font-weight-semibold: 600 !default;
-$font-weight-bold: 700 !default;
+// Font weight scale for consistent text emphasis
+$font-weight-light: 300 !default; // Light weight for subtle text
+$font-weight-regular: 400 !default; // Regular weight for body text
+$font-weight-medium: 500 !default; // Medium weight for labels and emphasis
+$font-weight-semibold: 600 !default; // Semibold weight for subheadings
+$font-weight-bold: 700 !default; // Bold weight for headings
 
-// Headings
-$font-size-h1: 130px !default;
-$font-size-h2: 50px !default;
-$font-size-h3: 40px !default;
-$font-size-h4: 30px !default;
-$font-size-h5: 24px !default;
-$font-size-h6: 20px !default;
+// Heading font sizes - for page titles and section headers
+$font-size-h1: 130px !default; // Main page title
+$font-size-h2: 50px !default; // Section headers
+$font-size-h3: 40px !default; // Subsection headers
+$font-size-h4: 30px !default; // Component headers
+$font-size-h5: 24px !default; // Small headers
+$font-size-h6: 20px !default; // Smallest headers
 
-// Line Heights (for headings)
-$line-height-h1: 150px !default;
-$line-height-h2: 130px !default;
-$line-height-h3: 130px !default;
-$line-height-h4: 120px !default;
-$line-height-h5: 32px !default;
-$line-height-h6: 28px !default;
+// Line heights for headings - optimized for readability
+$line-height-h1: 150px !default; // Tight line height for large titles
+$line-height-h2: 130px !default; // Balanced line height for section headers
+$line-height-h3: 130px !default; // Consistent with h2 for hierarchy
+$line-height-h4: 120px !default; // Slightly tighter for component headers
+$line-height-h5: 32px !default; // Standard line height for small headers
+$line-height-h6: 28px !default; // Compact line height for smallest headers
 
-// Body Text
-$font-size-body-1: 18px !default;
-$font-size-body-2: 16px !default;
-$font-size-body-3: 14px !default;
-$font-size-body-4: 12px !default;
+// Body text font sizes - for content and interface text
+$font-size-body-1: 18px !default; // Large body text for emphasis
+$font-size-body-2: 16px !default; // Standard body text
+$font-size-body-3: 14px !default; // Small body text for captions
+$font-size-body-4: 12px !default; // Extra small text for labels
 
-$line-height-body-1: 28px !default;
-$line-height-body-2: 24px !default;
-$line-height-body-3: 20px !default;
-$line-height-body-4: 18px !default;
+// Line heights for body text - optimized for reading comfort
+$line-height-body-1: 28px !default; // Comfortable reading for large text
+$line-height-body-2: 24px !default; // Standard reading line height
+$line-height-body-3: 20px !default; // Compact for small text
+$line-height-body-4: 18px !default; // Tight for labels and captions
 
 // === AUTOMATIC TYPOGRAPHY STYLES FOR MENDIX RENDER MODES ===
 // These styles are applied automatically based on the HTML tag rendered by Mendix Text widget's Render mode.
 // No need to add a class—just select the Render mode (Heading 1, Paragraph, etc.) in Mendix.
+//
+// This integration ensures that Mendix text widgets automatically receive
+// TRIMM Design System typography styling without requiring additional configuration.
 
 h1 {
   font-family: $font-primary;

@@ -1,3 +1,17 @@
+/**
+ * TRIMM Design System - Token Imports
+ * 
+ * 
+ * Imports:
+ * 1. Border tokens - Border width scale variables
+ * 2. Font tokens - Font face definitions and family variables
+ * 3. Spacing tokens - Spacing scale variables for consistent spacing
+ * 4. Radius tokens - Border radius scale variables
+ * 5. Shadow tokens - Elevation and shadow presets
+ * 6. Typography tokens - Font sizes, weights, and base HTML styles
+ * 7. Theme tokens - Color system with light/dark mode support
+ */
+
 @import "./_border.scss";
 @import "./_fonts.scss";
 @import "./_spacing.scss";

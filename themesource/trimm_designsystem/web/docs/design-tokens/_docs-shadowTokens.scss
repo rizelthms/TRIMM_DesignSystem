@@ -1,5 +1,12 @@
-// Documentation styles for shadow tokens (shadow swatches, cards, etc.)
-// BEM naming: docs-shadowToken-card, docs-shadowToken-swatch, etc.
+/**
+ * TRIMM Design System - Shadow Token Documentation Styles
+ * 
+ * This file contains styles for displaying shadow tokens in the documentation.
+ * It provides visual representations of the TRIMM elevation and shadow system
+ * including various depth options from no shadow to maximum elevation effects.
+ * 
+ * BEM naming convention: docs-shadowToken-card, docs-shadowToken-swatch, etc.
+ */
 
 .docs-shadowToken-card {
     border-radius: $radius-8;
@@ -65,6 +72,9 @@ mx-templategrid-content-wrapper {
 // Shadow utility classes for Mendix Dynamic Classes binding
 // Usage: Add the class name (e.g., 'shadow-style-2') to the ShadowStyleClass attribute in the Java action
 // These classes are used with the docs-shadowToken-container class for shadow display
+//
+// These utility classes provide visual representations of each shadow token
+// in the TRIMM Design System for documentation purposes.
 
 .shadow-style-0 {
     box-shadow: $shadow-0;

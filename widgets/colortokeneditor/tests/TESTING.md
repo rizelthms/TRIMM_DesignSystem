@@ -1,8 +1,6 @@
-# Color Token Editor Testing Documentation
+# TRIMM Design System - Color Token Editor Testing Documentation
 
-## Test Philosophy
-
-The Color Token Editor testing approach focuses on ensuring reliable runtime theming functionality for the TRIMM Design System. Tests validate user interactions, theme persistence, accessibility compliance, and edge case handling to maintain a strong theming experience.
+The Color Token Editor testing approach focuses on ensuring reliable runtime theming functionality for the TRIMM Design System. Tests validate user interactions, theme persistence, accessibility compliance, and edge case handling to maintain a strong theming experience across all supported platforms and use cases.
 
 ## Test Structure
 
@@ -88,8 +86,8 @@ npm test -- --runInBand
 # Run tests in watch mode
 npm test -- --watch
 
-# Run tests in watch mode
-npm test -- --watch
+# Run tests with coverage
+npm test -- --coverage
 ```
 
 ### Test Environment

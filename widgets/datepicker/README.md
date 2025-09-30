@@ -1,6 +1,6 @@
-# TRIMM Datepicker Widget
+# TRIMM Design System - Datepicker Widget
 
-The TRIMM Datepicker is a Mendix pluggable widget styled with the TRIMM Design System. It provides an accessible calendar with locale aware formatting, min and max constraints, and clean integration with Mendix data.
+The TRIMM Datepicker is a comprehensive Mendix pluggable widget styled with the TRIMM Design System. It provides an accessible calendar with locale-aware formatting, min and max constraints, and seamless integration with Mendix data attributes.
 
 ## Requirements and setup
 
@@ -44,23 +44,38 @@ Styling for this widget lives in the TRIMM theme module. Include that module so 
 * Classes used: `trimm-datepicker`, `trimm-datepicker-input`, `trimm-datepicker-calendar`, `trimm-datepicker-day-label`, `trimm-datepicker-cell`, `trimm-datepicker-header-label`
 * Colors, spacing, borders and typography come from the TRIMM Design System tokens and SCSS variables in the theme
 
-## Development and testing
+## Development and Testing
 
-### Run tests
+### Test Suite
+
+The TRIMM Datepicker includes a comprehensive test suite with both unit and integration tests:
+
+- **Unit Tests**: Test component behavior, date handling, locale support, and performance
+- **Integration Tests**: Test user interactions, Mendix integration, accessibility, and edge cases
+- **Test Coverage**: Date rendering, validation, locale support, component props, and performance testing
+
+### Run Tests
 
 ```bash
+# Run all tests
 cd widgets/datepicker/tests
 npx jest
+
+# Run tests in watch mode
+npx jest --watch
+
+# Run tests with coverage
+npx jest --coverage
 ```
 
-### Build
+### Build the Widget
 
 ```bash
 cd widgets/datepicker
 npm run build
 ```
 
-### Local development
+### Local Development
 
 ```bash
 cd widgets/datepicker

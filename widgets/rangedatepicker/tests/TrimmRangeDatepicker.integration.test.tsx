@@ -1,10 +1,25 @@
+/**
+ * TRIMM Design System - Range Datepicker Integration Tests
+ * 
+ * This file contains integration tests for the TRIMM Range Datepicker widget.
+ * It validates component behavior, user interactions, Mendix integration,
+ * and accessibility compliance to ensure reliable date range selection functionality.
+ * 
+ * Test Coverage:
+ * - Component rendering and user interactions
+ * - Mendix EditableValue and ActionValue integration
+ * - Accessibility compliance and keyboard navigation
+ * - Edge cases and error handling
+ * - Multiple widget instances and performance
+ */
+
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { act } from "react";
 import { TrimmRangeDatePicker } from "../src/TrimmRangeDatepicker";
 import { createElement } from "react";
 import { LocaleEnum } from "../typings/TrimmRangeDatepickerProps";
 
-// Mock Mendix types for integration testing
+// Mock Mendix types for integration testing with realistic data structures
 const mockEditableValue = (value: Date | null) => ({
     value,
     status: "available" as const,

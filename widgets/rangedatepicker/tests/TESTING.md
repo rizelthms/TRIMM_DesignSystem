@@ -1,8 +1,8 @@
-# Range Datepicker Testing Documentation
+# TRIMM Design System - Range Datepicker Testing Documentation
 
 ## Test Philosophy
 
-The Range Datepicker widget testing approach focuses on ensuring reliable date range selection functionality with proper Mendix integration. Tests validate user interactions, date range logic, accessibility compliance, and edge case handling to maintain a robust date range selection experience.
+The TRIMM Range Datepicker widget testing approach focuses on ensuring reliable date range selection functionality with proper Mendix integration. Tests validate user interactions, date range logic, accessibility compliance, and edge case handling to maintain a robust date range selection experience across all supported platforms and use cases.
 
 ## Test Structure
 

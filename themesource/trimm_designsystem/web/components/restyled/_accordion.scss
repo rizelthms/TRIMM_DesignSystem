@@ -1,136 +1,150 @@
-// === SCOPED ACCORDION STYLES ===
-// TRIMM accordion styles only apply when 'trimm-accordion' class is present on the accordion or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Accordion Component Styles
+ * 
+ * This file contains scoped styling for Mendix Accordion widgets.
+ * It provides enhanced accordion functionality with TRIMM design system
+ * styling, including hover states, transitions, and consistent theming.
+ * 
+ * Scoping: TRIMM accordion styles only apply when 'trimm-accordion' class
+ * is present on the accordion or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced header button styling with hover and active states
+ * - Smooth transitions for expand/collapse animations
+ * - Consistent typography and spacing using design tokens
+ * - Disabled state support with appropriate visual feedback
+ * - Open/closed state styling with visual indicators
+ */
 
 .trimm-accordion {
-  // === BASE ACCORDION WRAPPER ===
-  // Provides consistent styling for Mendix Accordion widgets
-  // Apply this class to the accordion container for TRIMM design system styling
+    // === BASE ACCORDION WRAPPER ===
+    // Provides consistent styling for Mendix Accordion widgets
+    // Apply this class to the accordion container for TRIMM design system styling
 
-  .accordion-base,
-  &.accordion-base {
-    border: none;
-    border-radius: $radius-4;
-    box-shadow: $shadow-6;
-    background-color: var(--base-white);
-    overflow: hidden;
-    transition:
-        box-shadow 0.2s ease,
-        background-color 0.2s ease;
-
-    // Open state styling
-    &.mx-groupbox-open {
-        background-color: var(--base-black);
-        box-shadow: $shadow-0;
-    }
-
-    // === HEADER WRAPPER ===
-    // Container for the clickable header area
-    .widget-accordion-group-header {
-        padding: 0;
-    }
-
-    // === HEADER BUTTON ===
-    // Clickable header button with hover and active states
-    .widget-accordion-group-header-button,
-    .widget-accordion-group-header-button-clickable,
-    .widget-accordion-group-header-button-icon-right {
-        background-color: var(--base-white) !important;
-        color: var(--brand-1) !important;
-        padding: $spacing-16 $spacing-24;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    .accordion-base,
+    &.accordion-base {
+        border: none;
         border-radius: $radius-4;
-        transition:
-            background-color 0.2s ease,
-            color 0.2s ease;
-
-        // Hover state
-        &:hover {
-            background-color: var(--brand-1-hover) !important;
-            color: var(--base-white) !important;
-
-            .widget-accordion-group-header-title,
-            h3 {
-                color: var(--base-white) !important;
-            }
-        }
-
-        // Active/pressed state
-        &:active {
-            background-color: var(--brand-1-hover) !important;
-            color: var(--base-white) !important;
-
-            .widget-accordion-group-header-title,
-            h3 {
-                color: var(--base-white) !important;
-            }
-        }
-
-        // Expanded state styling
-        &[aria-expanded="true"] {
-            background-color: var(--brand-1);
-            color: var(--base-white);
-            border-radius: $radius-0;
-
-            > h3,
-            .widget-accordion-group-header-title {
-                color: var(--base-white);
-                    }
-    }
-  }
-
-
-    // === TITLE ===
-    // Header text styling
-    .widget-accordion-group-header-title,
-    .widget-accordion-group-header-button > h3 {
-        font-family: $font-primary;
-        font-size: $font-size-body-2;
-        font-weight: $font-weight-semibold;
-        color: var(--base-black);
-        margin: 0;
-        transition: color 0.2s ease;
-    }
-
-    // === BODY CONTENT ===
-    // Content area styling when accordion is expanded
-    .widget-accordion-group-content {
-        padding: $spacing-16 $spacing-24;
-        font-family: $font-primary;
-        font-size: $font-size-body-3;
-        font-weight: $font-weight-normal;
-        color: var(--base-black);
+        box-shadow: $shadow-6;
         background-color: var(--base-white);
-    }
+        overflow: hidden;
+        transition:
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
 
-    // === DISABLED STATE ===
-    // Styling when accordion is disabled
-    &[aria-disabled="true"] {
-        background-color: var(--base-white-disabled);
-        pointer-events: none;
-
-        .widget-accordion-group-header-button {
-            background-color: var(--base-white-disabled);
-            color: var(--base-black-disabled);
-            cursor: not-allowed;
+        // Open state styling
+        &.mx-groupbox-open {
+            background-color: var(--base-black);
+            box-shadow: $shadow-0;
         }
 
+        // === HEADER WRAPPER ===
+        // Container for the clickable header area
+        .widget-accordion-group-header {
+            padding: 0;
+        }
+
+        // === HEADER BUTTON ===
+        // Clickable header button with hover and active states
+        .widget-accordion-group-header-button,
+        .widget-accordion-group-header-button-clickable,
+        .widget-accordion-group-header-button-icon-right {
+            background-color: var(--base-white) !important;
+            color: var(--brand-1) !important;
+            padding: $spacing-16 $spacing-24;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: $radius-4;
+            transition:
+                background-color 0.2s ease,
+                color 0.2s ease;
+
+            // Hover state
+            &:hover {
+                background-color: var(--brand-1-hover) !important;
+                color: var(--base-white) !important;
+
+                .widget-accordion-group-header-title,
+                h3 {
+                    color: var(--base-white) !important;
+                }
+            }
+
+            // Active/pressed state
+            &:active {
+                background-color: var(--brand-1-hover) !important;
+                color: var(--base-white) !important;
+
+                .widget-accordion-group-header-title,
+                h3 {
+                    color: var(--base-white) !important;
+                }
+            }
+
+            // Expanded state styling
+            &[aria-expanded="true"] {
+                background-color: var(--brand-1);
+                color: var(--base-white);
+                border-radius: $radius-0;
+
+                > h3,
+                .widget-accordion-group-header-title {
+                    color: var(--base-white);
+                }
+            }
+        }
+
+        // === TITLE ===
+        // Header text styling
         .widget-accordion-group-header-title,
         .widget-accordion-group-header-button > h3 {
-            color: var(--base-black-disabled);
+            font-family: $font-primary;
+            font-size: $font-size-body-2;
+            font-weight: $font-weight-semibold;
+            color: var(--base-black);
+            margin: 0;
+            transition: color 0.2s ease;
         }
 
+        // === BODY CONTENT ===
+        // Content area styling when accordion is expanded
         .widget-accordion-group-content {
             padding: $spacing-16 $spacing-24;
             font-family: $font-primary;
             font-size: $font-size-body-3;
             font-weight: $font-weight-normal;
-            color: var(--base-white-disabled);
-            background-color: var(--secondary-1-disabled);
+            color: var(--base-black);
+            background-color: var(--base-white);
+        }
+
+        // === DISABLED STATE ===
+        // Styling when accordion is disabled
+        &[aria-disabled="true"] {
+            background-color: var(--base-white-disabled);
+            pointer-events: none;
+
+            .widget-accordion-group-header-button {
+                background-color: var(--base-white-disabled);
+                color: var(--base-black-disabled);
+                cursor: not-allowed;
+            }
+
+            .widget-accordion-group-header-title,
+            .widget-accordion-group-header-button > h3 {
+                color: var(--base-black-disabled);
+            }
+
+            .widget-accordion-group-content {
+                padding: $spacing-16 $spacing-24;
+                font-family: $font-primary;
+                font-size: $font-size-body-3;
+                font-weight: $font-weight-normal;
+                color: var(--base-white-disabled);
+                background-color: var(--secondary-1-disabled);
+            }
         }
     }
-}
 }

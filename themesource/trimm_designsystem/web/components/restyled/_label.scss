@@ -1,6 +1,21 @@
-// === SCOPED LABEL STYLES ===
-// TRIMM label styles only apply when 'trimm-label' class is present on the label or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Label Component Styles
+ * 
+ * This file contains scoped styling for Mendix Label widgets.
+ * It provides enhanced label functionality with multiple variants,
+ * size options, and consistent theming using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM label styles only apply when 'trimm-label' class
+ * is present on the label or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple label variants (default, secondary, success, danger, warning)
+ * - Size modifiers (small, medium, large)
+ * - Consistent typography and spacing using design tokens
+ * - Interactive states and proper alignment
+ * - Brand color integration for status indicators
+ */
 
 .trimm-label {
     // === BASE LABEL STYLE ===

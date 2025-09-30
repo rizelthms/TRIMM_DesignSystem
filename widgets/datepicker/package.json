@@ -2,7 +2,7 @@
   "name": "trimmdatepicker",
   "widgetName": "TrimmDatepicker",
   "version": "1.0.0",
-  "description": "A custom datepicker component styled using the TRIMM Design System, featuring localization, date constraints, and seamless integration with Mendix data attributes.",
+  "description": "TRIMM Design System - A comprehensive Mendix pluggable widget for date selection with accessible calendar interface, locale-aware formatting, date constraints, and seamless integration with Mendix data attributes.",
   "copyright": "© TRIMM 2024. All rights reserved.",
   "author": "TRIMM Design System Team",
   "engines": {

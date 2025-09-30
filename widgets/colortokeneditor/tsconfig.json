@@ -1,8 +1,13 @@
 {
+  // TRIMM Design System - Color Token Editor TypeScript Configuration
+  // Extends Mendix pluggable widgets base configuration for widget development
   "extends": "@mendix/pluggable-widgets-tools/configs/tsconfig.base",
   "compilerOptions": {
     "baseUrl": "",
     "outDir": "dist"
   },
-  "include": ["src", "typings"]
+  "include": [
+    "src",
+    "typings"
+  ]
 }

@@ -1,17 +1,48 @@
 # Custom Components
 
-Styles for TRIMM custom widgets. Include the TRIMM Design System module and the styles here will apply to the widgets automatically.
+This folder contains styles for TRIMM custom widgets. These components are automatically styled when the TRIMM Design System module is included in your Mendix application.
 
-## Widgets styled
-- Datepicker: `custom/_datepicker.scss`
-- Range Datepicker: `custom/_range-datepicker.scss`
-- Dropdown: `custom/_dropdown.scss`
-- Color Token Editor: `custom/_color-token-editor.scss`
+## Widgets Styled
 
-## Theming
-- Colors, spacing, borders, and typography are driven by tokens in `web/tokens/`
-- Override colors via CSS variables in your app after importing TRIMM `main.scss`
+### Available Custom Widgets
+- **Datepicker**: `_datepicker.scss` - Single date selection widget with calendar interface
+- **Range Datepicker**: `_range-datepicker.scss` - Date range selection with dual calendar interface
+- **Dropdown**: `_dropdown.scss` - Custom dropdown widget with enhanced styling
+- **Color Token Editor**: `_color-token-editor.scss` - Advanced color editing widget with theme management
 
-## Where to customize
-- Adjust individual widget styling by editing the corresponding SCSS file above
-- For token-driven changes (brand colors, spacings), prefer overriding tokens rather than component rules
+## Implementation
+
+### Automatic Styling
+- **No Configuration Required**: Styles are applied automatically when widgets are included
+- **Class-Based**: Widgets use specific CSS classes that are styled by these SCSS files
+- **Design System Integration**: All widgets use TRIMM design tokens for consistent theming
+
+### Usage
+1. **Include Widget**: Add the TRIMM custom widget to your Mendix app
+2. **Import Module**: Ensure the TRIMM Design System module is imported
+3. **Automatic Styling**: Widget styling is applied automatically based on widget markup
+
+## Theming and Customization
+
+### Design Token Integration
+- **Colors**: All colors use CSS custom properties from `web/tokens/`
+- **Spacing**: Consistent spacing using design token variables
+- **Typography**: Font family, sizes, and weights from typography tokens
+- **Borders & Radius**: Border styles and corner rounding from design tokens
+
+### Customization Options
+- **Token Overrides**: Override CSS custom properties in your app theme after importing TRIMM `main.scss`
+- **Component-Specific**: Edit individual SCSS files for widget-specific customizations
+- **Global Theming**: Use design token overrides for consistent changes across all widgets
+
+## Best Practices
+
+### Token-Driven Customization
+- **Preferred Method**: Override design tokens rather than component-specific rules
+- **Consistency**: Token overrides ensure consistent theming across all components
+- **Maintainability**: Easier to maintain and update when using token-based customization
+
+### Component-Specific Customization
+- **Targeted Changes**: Edit individual SCSS files for widget-specific modifications
+- **Preserve Structure**: Maintain the existing class structure and naming conventions
+- **Test Thoroughly**: Ensure changes work across different widget states and configurations

@@ -1,5 +1,12 @@
-// Documentation styles for Button component classes (for docs/demo pages)
-// BEM naming: docs-buttonClass-card, docs-buttonClass-name, docs-buttonClass-desc
+/**
+ * TRIMM Design System - Button Component Documentation Styles
+ * 
+ * This file contains styles for documenting the TRIMM Button component classes.
+ * It provides visual representations and layout styles for showcasing the
+ * various button variants, sizes, and states available in the design system.
+ * 
+ * BEM naming convention: docs-buttonClass-card, docs-buttonClass-name, docs-buttonClass-desc
+ */
 
 .docs-buttonClass-card {
   display: flex;
@@ -33,4 +40,4 @@
   color: var(--secondary-1);
   margin-bottom: $spacing-16;
   text-align: center;
-} 
+}

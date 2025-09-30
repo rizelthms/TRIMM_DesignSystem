@@ -1,8 +1,19 @@
-// _color-token-editor.scss
-// Styles for the Trimm Color Token Editor widget.
-// Uses design system tokens for all colors, spacing, and typography.
-// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
-// This file is imported by the main design system theme and applies styles globally to .trimm-color-token-editor classes.
+/**
+ * TRIMM Design System - Color Token Editor Widget Styles
+ * 
+ * This file contains styles for the TRIMM Color Token Editor custom widget.
+ * It provides a comprehensive color editing interface with theme management,
+ * including floating action button, drawer/sidebar, and modal components.
+ * 
+ * The widget supports:
+ * - Color token editing with live preview
+ * - Theme management and export/import functionality
+ * - Floating action button for easy access
+ * - Resizable drawer/sidebar interface
+ * - Modal dialogs for advanced operations
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 .trimm-color-token-editor {
     padding: $spacing-16;

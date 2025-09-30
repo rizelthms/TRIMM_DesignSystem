@@ -1,6 +1,6 @@
-# TRIMM Range Datepicker Widget
+# TRIMM Design System - Range Datepicker Widget
 
-The TRIMM Range Datepicker is a Mendix pluggable widget styled with the TRIMM Design System. It provides a date range selection interface with dual-month calendar views, drag-and-drop functionality, and date validation.
+The TRIMM Range Datepicker is a comprehensive Mendix pluggable widget styled with the TRIMM Design System. It provides a date range selection interface with dual-month calendar views, drag-and-drop functionality, and comprehensive date validation.
 
 ## Requirements and setup
 
@@ -59,21 +59,38 @@ The widget uses these CSS classes from the TRIMM Design System:
 * `.trimm-range-datepicker-day.in-range` - Dates between start and end
 * `.trimm-range-datepicker-day.disabled` - Out of range dates
 
-## Testing
+## Development and Testing
+
+### Test Suite
+
+The TRIMM Range Datepicker includes a comprehensive test suite with both unit and integration tests:
+
+- **Unit Tests**: Test component behavior, date range logic, locale support, and state management
+- **Integration Tests**: Test user interactions, Mendix integration, accessibility, and edge cases
+- **Test Coverage**: Component rendering, date range selection, Mendix integration, accessibility, and performance
+
+### Run Tests
 
 ```bash
+# Run all tests
 cd widgets/rangedatepicker/tests
 npm test
+
+# Run tests in watch mode
+npm test -- --watch
+
+# Run tests with coverage
+npm test --coverage
 ```
 
-## Build
+### Build the Widget
 
 ```bash
 cd widgets/rangedatepicker
 npm run build
 ```
 
-## Development
+### Local Development
 
 ```bash
 cd widgets/rangedatepicker

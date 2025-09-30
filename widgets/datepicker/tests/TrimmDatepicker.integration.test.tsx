@@ -1,3 +1,18 @@
+/**
+ * TRIMM Design System - Datepicker Integration Tests
+ * 
+ * This file contains integration tests for the TRIMM Datepicker widget.
+ * It validates component behavior, user interactions, Mendix integration,
+ * and accessibility compliance to ensure reliable date selection functionality.
+ * 
+ * Test Coverage:
+ * - Component rendering and user interactions
+ * - Mendix EditableValue integration
+ * - Accessibility compliance and keyboard navigation
+ * - Edge cases and error handling
+ * - Multiple widget instances and performance
+ */
+
 /** @jsx createElement */
 import { createElement } from "react";
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
@@ -7,6 +22,7 @@ import { TrimmDatepickerContainerProps } from "../typings/TrimmDatepickerProps";
 import { describe, it, expect, jest } from "@jest/globals";
 import { isBefore, isAfter } from "date-fns";
 
+// Helper function to create consistent test props for the Datepicker widget
 function getProps(overrides: Partial<TrimmDatepickerContainerProps> = {}): TrimmDatepickerContainerProps {
     return {
         name: "TrimmDatepicker",

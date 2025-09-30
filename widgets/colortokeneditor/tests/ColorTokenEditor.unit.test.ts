@@ -1,3 +1,17 @@
+/**
+ * TRIMM Design System - Color Token Editor Unit Tests
+ * 
+ * This file contains unit tests for the Color Token Editor widget utility functions.
+ * It validates color validation, derivation, and hex processing functions in isolation
+ * to ensure reliable theming functionality.
+ * 
+ * Test Coverage:
+ * - Color validation (isValidColor)
+ * - Color derivation (deriveDarkColor, deriveLightColor)
+ * - Hex validation (getValidHex)
+ * - Edge cases and error handling
+ */
+
 import { describe, it, expect } from "@jest/globals";
 import { isValidColor } from "../src/ColorTokenEditor";
 import { deriveDarkColor } from "../src/ColorTokenEditor";

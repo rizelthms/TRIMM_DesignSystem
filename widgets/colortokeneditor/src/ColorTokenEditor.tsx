@@ -1,18 +1,28 @@
 import React, { createElement, useState, useRef, useEffect } from "react";
 
 /**
- * Color Token Editor Widget
+ * TRIMM Design System - Color Token Editor Widget
  * 
  * A Mendix pluggable widget that enables runtime editing of CSS custom properties
- * (design tokens) for the TRIMM Design System. Allows users to customize theme
- * colors without code changes or application restarts.
+ * (design tokens) for the TRIMM Design System. This widget provides a comprehensive
+ * theming solution that allows users to customize theme colors without code changes
+ * or application restarts.
  * 
- * Features:
- * - Real-time color token editing
- * - Light/dark theme support
+ * Key Features:
+ * - Real-time color token editing with live preview
+ * - Light/dark theme support with automatic derivation
  * - Theme management (save, load, export, import, delete)
- * - Draggable floating action button
- * - Resizable drawer interface
+ * - Draggable floating action button for easy access
+ * - Resizable drawer interface for optimal workspace
+ * - localStorage persistence for theme overrides
+ * - JSON import/export for theme sharing
+ * - Accessibility compliance with ARIA support
+ * 
+ * Architecture:
+ * - Scans loaded stylesheets for TRIMM design tokens
+ * - Applies overrides via CSS custom properties on document root
+ * - Manages theme state with localStorage persistence
+ * - Supports multiple widget instances independently
  */
 
 // --- minimal types/utilities for theme save ---
@@ -66,14 +76,14 @@ export function isValidColor(value: string | undefined): boolean {
 function getAllCSSCustomProperties(): Token[] {
     const vars: Record<string, string> = {};
     for (const sheet of Array.from(document.styleSheets)) {
-        // Skip Mendix widget stylesheets to avoid conflicts
+        // Skip Mendix widget stylesheets to avoid conflicts with TRIMM design system tokens
         if (sheet.href && sheet.href.includes('widgets.css')) continue;
 
         let rules: CSSRuleList | undefined;
         try {
             rules = sheet.cssRules;
         } catch (e) {
-            // Skip cross-origin stylesheets
+            // Skip cross-origin stylesheets that cannot be accessed due to CORS restrictions
             continue;
         }
         if (!rules) continue;
@@ -86,7 +96,7 @@ function getAllCSSCustomProperties(): Token[] {
                 const style = (rule as CSSStyleRule).style;
                 for (let i = 0; i < style.length; i++) {
                     const name = style[i];
-                    // Match TRIMM Design System token patterns
+                    // Match TRIMM Design System token patterns for brand, base, secondary, and support colors
                     if (name.startsWith("--") && (
                         /^--brand-[1-9](-hover|-active|-disabled)?$/.test(name) ||
                         /^--base-(black|white)(-hover|-active|-disabled)?$/.test(name) ||
@@ -213,12 +223,12 @@ function clearOverrides(overrides: Overrides) {
     });
 }
 
-// LocalStorage keys for persisting widget state
+// LocalStorage keys for persisting widget state across browser sessions
 const PALETTE_POS_KEY = "colorTokenEditorPalettePos";
 const DRAWER_WIDTH_KEY = "colorTokenEditorDrawerWidth";
 const DEFAULT_DRAWER_WIDTH = 340;
 
-// Clamp a given position to the current viewport so the FAB stays visible
+// Clamp a given position to the current viewport so the FAB stays visible and accessible
 function clampToViewport(pos: { x: number; y: number }, buttonSize = 48, padding = 8) {
     const maxX = Math.max(padding, (typeof window !== "undefined" ? window.innerWidth : 800) - buttonSize - padding);
     const maxY = Math.max(padding, (typeof window !== "undefined" ? window.innerHeight : 600) - buttonSize - padding);
@@ -405,14 +415,14 @@ export interface ColorTokenEditorProps extends Partial<ColorTokenEditorContainer
 const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) => {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
 
-    // Use injected getTokens or fallback to automatic discovery
+    // Use injected getTokens function or fallback to automatic CSS token discovery
     const tokens = (getTokens ?? getAllCSSCustomProperties)();
     const [theme, setTheme] = React.useState<"light" | "dark">(getCurrentTheme());
     const [overrides, setOverridesState] = React.useState<Overrides>(getOverrides(theme));
     const prevThemeRef = useRef<"light" | "dark">(getCurrentTheme());
     const [open, setOpen] = useState(false);
 
-    // Theme management state
+    // Theme management state for save, load, export, import, and delete functionality
     const [savedThemes, setSavedThemes] = useState<string[]>(getSavedThemeNames());
     const [selectedTheme, setSelectedTheme] = useState<string>("");
     const [newThemeName, setNewThemeName] = useState<string>("");
@@ -422,11 +432,11 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
 
 
-    // Draggable FAB state
+    // Draggable FAB state for position persistence and viewport clamping
     const [fabPos, setFabPos] = useState<{ x: number; y: number }>(() => {
         const buttonSize = 48;
         const margin = 24;
-        // Side-aware default position
+        // Side-aware default position based on drawer position preference
         const defaultPos = {
             x: normalizedSide === "right"
                 ? Math.max(margin, (typeof window !== "undefined" ? window.innerWidth : 800) - margin - buttonSize)
@@ -444,7 +454,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const dragging = useRef(false);
     const offset = useRef({ x: 0, y: 0 });
 
-    // Resizable drawer state
+    // Resizable drawer state for width persistence and user customization
     const [drawerWidth, setDrawerWidth] = useState(() => {
         try {
             const saved = localStorage.getItem(DRAWER_WIDTH_KEY);
@@ -457,14 +467,14 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const startX = useRef(0);
     const startWidth = useRef(drawerWidth);
 
-    // Persist FAB position and drawer width in localStorage
+    // Persist FAB position and drawer width in localStorage for user preference retention
     useEffect(() => {
         try {
             localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
         } catch { }
     }, [fabPos]);
 
-    // Keep FAB in view when the window resizes
+    // Keep FAB in view when the window resizes to maintain accessibility
     useEffect(() => {
         function onResize() {
             setFabPos(prev => clampToViewport(prev));
@@ -479,7 +489,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         } catch { }
     }, [drawerWidth]);
 
-    // Mouse drag handlers for FAB
+    // Mouse drag handlers for FAB positioning and user interaction
     function onMouseDown(e: React.MouseEvent) {
         dragging.current = true;
         offset.current = {
@@ -557,7 +567,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         document.removeEventListener("mouseup", onResizeMouseUp);
     }
 
-    // Cleanup event listeners on unmount
+    // Cleanup event listeners on unmount to prevent memory leaks
     useEffect(() => {
         return () => {
             document.removeEventListener("mousemove", onMouseMove);
@@ -569,7 +579,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         };
     }, []);
 
-    // Theme change detection and override management
+    // Theme change detection and override management for light/dark mode switching
     React.useEffect(() => {
         function handleThemeChange() {
             const currentTheme = getCurrentTheme();
@@ -591,7 +601,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
         updateTokens();
 
-        // Watch for theme changes via data-theme attribute
+        // Watch for theme changes via data-theme attribute on document element
         const observer = new MutationObserver(() => {
             handleThemeChange();
         });
@@ -599,7 +609,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         return () => observer.disconnect();
     }, []);
 
-    // Detect active theme name on mount based on stored overrides matching a saved theme
+    // Detect active theme name on mount based on stored overrides matching a saved theme for UI consistency
     useEffect(() => {
         try {
             const names = getSavedThemeNames();
@@ -619,7 +629,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         } catch {
             setActiveThemeName("default");
         }
-        // run once on mount
+        // Run once on mount to initialize theme state
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

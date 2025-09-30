@@ -1,6 +1,22 @@
-// === SCOPED RADIO STYLES ===
-// TRIMM radio styles only apply when 'trimm-radio' class is present on the radio or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Radio Button Component Styles
+ * 
+ * This file contains scoped styling for Mendix Radio Button widgets.
+ * It provides enhanced radio button functionality with custom styling,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM radio styles only apply when 'trimm-radio' class
+ * is present on the radio or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Custom radio button styling with brand colors
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (hover, focus, checked, disabled)
+ * - Label styling with proper alignment
+ * - Consistent typography and spacing using design tokens
+ * - Accessibility support with proper focus states
+ */
 
 .trimm-radio {
   // === BASE RADIO STYLE ===

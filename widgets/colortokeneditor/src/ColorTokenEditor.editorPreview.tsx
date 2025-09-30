@@ -1,9 +1,18 @@
-import { createElement, ReactElement } from "react";
-
 /**
- * Preview component for Studio Pro
- * Shows a simplified version of the Color Token Editor with the FAB and drawer structure
+ * TRIMM Design System - Color Token Editor Preview Component
+ * 
+ * This file contains the preview component for the Color Token Editor widget
+ * in Mendix Studio Pro. It provides a visual representation of the widget
+ * during development and design time.
+ * 
+ * Features:
+ * - Simplified widget preview for Studio Pro
+ * - FAB button positioning based on side property
+ * - Drawer structure visualization
+ * - Consistent styling with production widget
  */
+
+import { createElement, ReactElement } from "react";
 export function preview({ side = "right" }: { side?: string }): ReactElement {
     const normalizedSide = (side || "right").toLowerCase() === "left" ? "left" : "right";
     return (

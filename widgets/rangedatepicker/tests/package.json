@@ -6,10 +6,16 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "trimm",
+    "design-system",
+    "mendix",
+    "widget",
+    "testing"
+  ],
+  "author": "TRIMM Design System Team",
   "license": "ISC",
-  "description": "",
+  "description": "TRIMM Design System - Range Datepicker widget test suite for comprehensive date range selection functionality validation",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -22,4 +28,4 @@
     "date-fns": "^2.30.0"
   },
   "dependencies": {}
-} 
+}

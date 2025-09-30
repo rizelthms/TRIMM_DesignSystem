@@ -1,3 +1,11 @@
+/**
+ * TRIMM Design System - Color Token Editor Jest Configuration
+ * 
+ * Jest configuration for testing the Color Token Editor widget.
+ * Provides TypeScript support, DOM environment, and proper module resolution
+ * for comprehensive testing of the theming functionality.
+ */
+
 module.exports = {
     rootDir: '.',
     preset: 'ts-jest',
