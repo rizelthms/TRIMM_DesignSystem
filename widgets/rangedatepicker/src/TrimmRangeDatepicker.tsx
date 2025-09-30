@@ -19,11 +19,26 @@ import { enUS } from "date-fns/locale/en-US";
 import { nl } from "date-fns/locale/nl";
 
 /**
- * TRIMM Range Datepicker Widget
+ * TRIMM Design System - Range Datepicker Widget
  * 
- * A Mendix pluggable widget that provides a date range selection interface
+ * A Mendix pluggable widget that provides a comprehensive date range selection interface
  * styled with the TRIMM Design System. Features dual-month calendar views, drag-and-drop
  * functionality, and comprehensive date validation.
+ * 
+ * Key Features:
+ * - Dual Calendar Interface: Shows two months side-by-side for easy range selection
+ * - Two-Step Selection: Select start date first, then end date with automatic validation
+ * - Drag & Drop: Reposition the calendar popup for optimal visibility
+ * - Date Constraints: Enforce minimum and maximum selectable dates
+ * - Localization: Support for English (US) and Dutch (NL) with proper date formatting
+ * - Visual Feedback: Clear indicators for selected dates, range highlighting, and disabled dates
+ * 
+ * Architecture:
+ * - Uses date-fns for robust date manipulation and formatting
+ * - Implements two-step selection process with state management
+ * - Supports drag functionality for calendar repositioning
+ * - Manages local state for date selection with Mendix integration
+ * - Provides comprehensive date validation and constraint handling
  */
 
 /**
@@ -57,13 +72,13 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
     const popupRef = useRef<HTMLDivElement>(null);
     const toggleRef = useRef<HTMLDivElement>(null);
 
-    // Sync local state with startDate and endDate props
+    // Sync local state with startDate and endDate props for Mendix integration
     useEffect(() => {
         if (startDate?.value) setLocalStart(startDate.value);
         if (endDate?.value) setLocalEnd(endDate.value);
     }, [startDate?.value, endDate?.value]);
 
-    // Reset popup position when opening calendar
+    // Reset popup position when opening calendar to ensure consistent placement
     useEffect(() => {
         if (showCalendar) {
             // Always reset to default anchored position below the toggle (relative to parent)
@@ -71,7 +86,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         }
     }, [showCalendar]);
 
-    // Click outside to close calendar
+    // Click outside to close calendar for better user experience
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (showCalendar &&
@@ -92,7 +107,7 @@ export function TrimmRangeDatePicker(props: TrimmRangeDatepickerContainerProps) 
         };
     }, [showCalendar]);
 
-    // Calendar drag functionality
+    // Calendar drag functionality for user repositioning of the popup
     useEffect(() => {
         function onMouseMove(e: MouseEvent) {
             if (dragging && dragStart) {

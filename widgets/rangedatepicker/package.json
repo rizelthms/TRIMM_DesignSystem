@@ -2,7 +2,7 @@
   "name": "trimmrangedatepicker",
   "widgetName": "TrimmRangeDatepicker",
   "version": "1.0.0",
-  "description": "A comprehensive date range picker for Mendix, allowing users to select start and end dates. Fully styled with the TRIMM Design System for consistent theming and seamless integration.",
+  "description": "TRIMM Design System - A comprehensive Mendix pluggable widget for date range selection with dual-month calendar views, drag-and-drop functionality, and seamless integration with Mendix data attributes.",
   "copyright": "© TRIMM 2024. All rights reserved.",
   "author": "TRIMM Design System Team",
   "engines": {

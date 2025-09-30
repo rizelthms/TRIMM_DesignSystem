@@ -6,12 +6,22 @@ import { useState } from "react";
 import { ValueStatus, EditableValue } from "mendix";
 
 /**
- * Preview component for Studio Pro
- * Shows a simplified version of the TRIMM Range Datepicker with mock data
+ * TRIMM Design System - Range Datepicker Preview Component
+ * 
+ * This file contains the preview component for the TRIMM Range Datepicker widget
+ * in Mendix Studio Pro. It provides a visual representation of the widget
+ * during development and design time.
+ * 
+ * Features:
+ * - Simplified widget preview for Studio Pro
+ * - Mock data for realistic preview
+ * - Consistent styling with production widget
+ * - Helper functions for date manipulation
  */
 export function preview(props: TrimmRangeDatepickerPreviewProps) {
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date(Date.now() + 86400000)); // +1 day
+    // Helper function to create dates relative to current date for preview
     const daysFromNow = (days: number) => {
         const d = new Date();
         d.setDate(d.getDate() + days);

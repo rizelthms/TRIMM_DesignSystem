@@ -1,3 +1,11 @@
+/**
+ * TRIMM Design System - Range Datepicker Jest Configuration
+ * 
+ * Jest configuration for testing the TRIMM Range Datepicker widget.
+ * Provides TypeScript support, DOM environment, and proper module resolution
+ * for comprehensive testing of the date range selection functionality.
+ */
+
 module.exports = {
     rootDir: '.',
     preset: 'ts-jest',
