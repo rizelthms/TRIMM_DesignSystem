@@ -5,11 +5,20 @@ import { TrimmDropdownPreviewProps, TrimmDropdownContainerProps, DropdownItemsTy
 import { ActionValue, ValueStatus, DynamicValue, WebIcon } from "mendix";
 
 /**
- * Preview component for Studio Pro
- * Shows a simplified version of the TRIMM Dropdown with mock data
+ * TRIMM Design System - Dropdown Preview Component
+ * 
+ * This file contains the preview component for the TRIMM Dropdown widget
+ * in Mendix Studio Pro. It provides a visual representation of the widget
+ * during development and design time.
+ * 
+ * Features:
+ * - Simplified widget preview for Studio Pro
+ * - Mock data for realistic preview
+ * - Consistent styling with production widget
+ * - Helper functions for Mendix type conversion
  */
 export function preview(props: TrimmDropdownPreviewProps) {
-    // Convert preview icon prop to expected DynamicValue<WebIcon> format
+    // Convert preview icon prop to expected DynamicValue<WebIcon> format for Mendix integration
     const iconForWidget: DynamicValue<WebIcon> = {
         status: ValueStatus.Available,
         value: props.icon || { type: "glyph", iconClass: "" }

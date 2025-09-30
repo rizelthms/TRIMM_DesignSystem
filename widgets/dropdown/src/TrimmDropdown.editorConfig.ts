@@ -1,3 +1,17 @@
+/**
+ * TRIMM Design System - Dropdown Editor Configuration
+ * 
+ * This file contains the editor configuration for the TRIMM Dropdown widget
+ * in Mendix Studio Pro. It defines the widget properties, validation rules,
+ * and preview functionality for the development environment.
+ * 
+ * Features:
+ * - Property definitions for widget configuration
+ * - Preview component integration for Studio Pro
+ * - Validation and error handling
+ * - Type definitions for widget properties
+ */
+
 import { TrimmDropdownPreviewProps } from "../typings/TrimmDropdownProps";
 
 export type Platform = "web" | "desktop";

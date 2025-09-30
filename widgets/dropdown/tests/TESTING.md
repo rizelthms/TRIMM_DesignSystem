@@ -1,8 +1,8 @@
-# Dropdown Testing Documentation
+# TRIMM Design System - Dropdown Testing Documentation
 
 ## Test Philosophy
 
-The Dropdown widget testing approach focuses on ensuring reliable menu functionality with proper Mendix integration. Tests validate user interactions, action execution, accessibility compliance, and edge case handling to maintain a robust dropdown menu experience.
+The TRIMM Dropdown widget testing approach focuses on ensuring reliable menu functionality with proper Mendix integration. Tests validate user interactions, action execution, accessibility compliance, and edge case handling to maintain a robust dropdown menu experience across all supported platforms and use cases.
 
 ## Test Structure
 

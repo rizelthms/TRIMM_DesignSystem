@@ -1,3 +1,11 @@
+/**
+ * TRIMM Design System - Dropdown Jest Configuration
+ * 
+ * Jest configuration for testing the TRIMM Dropdown widget.
+ * Provides TypeScript support, DOM environment, and proper module resolution
+ * for comprehensive testing of the dropdown menu functionality.
+ */
+
 module.exports = {
     rootDir: '.',
     preset: 'ts-jest',

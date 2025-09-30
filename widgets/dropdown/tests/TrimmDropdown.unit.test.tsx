@@ -1,8 +1,23 @@
+/**
+ * TRIMM Design System - Dropdown Unit Tests
+ * 
+ * This file contains unit tests for the TRIMM Dropdown widget.
+ * It validates component behavior, prop handling, icon rendering,
+ * and state management in isolation to ensure reliable dropdown functionality.
+ * 
+ * Test Coverage:
+ * - Component rendering and prop handling
+ * - Icon rendering and type validation
+ * - User interactions and state management
+ * - Edge cases and error handling
+ * - Accessibility and performance
+ */
+
 import { render, screen, fireEvent } from "@testing-library/react";
 import { TrimmDropdown } from "../src/TrimmDropdown";
 import { createElement } from "react";
 
-// Mock Mendix types
+// Mock Mendix types for unit testing with simplified data structures
 const mockDynamicValue = (value: any) => ({
     value,
     status: "available" as const

@@ -1,9 +1,24 @@
+/**
+ * TRIMM Design System - Dropdown Integration Tests
+ * 
+ * This file contains integration tests for the TRIMM Dropdown widget.
+ * It validates component behavior, user interactions, Mendix integration,
+ * and accessibility compliance to ensure reliable dropdown menu functionality.
+ * 
+ * Test Coverage:
+ * - Component rendering and user interactions
+ * - Mendix ActionValue and DynamicValue integration
+ * - Accessibility compliance and keyboard navigation
+ * - Edge cases and error handling
+ * - Multiple widget instances and performance
+ */
+
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { act } from "react";
 import { TrimmDropdown } from "../src/TrimmDropdown";
 import { createElement } from "react";
 
-// Mock Mendix types for integration testing
+// Mock Mendix types for integration testing with realistic data structures
 const mockDynamicValue = (value: any) => ({
     value,
     status: "available" as const

@@ -1,6 +1,6 @@
-# TRIMM Dropdown Widget
+# TRIMM Design System - Dropdown Widget
 
-The TRIMM Dropdown is a Mendix pluggable widget styled with the TRIMM Design System. It provides a customizable dropdown menu with configurable items, optional icons, and Mendix action integration.
+The TRIMM Dropdown is a comprehensive Mendix pluggable widget styled with the TRIMM Design System. It provides a customizable dropdown menu with configurable items, optional icons, and seamless Mendix action integration.
 
 ## Requirements and setup
 
@@ -43,23 +43,38 @@ Styling for this widget lives in the TRIMM theme module. Include that module so 
 * Classes used: `trimm-dropdown`, `trimm-dropdown-toggle`, `trimm-dropdown-menu`, `trimm-dropdown-item`, `trimm-dropdown-icon`, `trimm-dropdown-label`, `trimm-dropdown-caret`
 * Colors, spacing, borders and typography come from the TRIMM Design System tokens and SCSS variables in the theme
 
-## Development and testing
+## Development and Testing
 
-### Run tests
+### Test Suite
+
+The TRIMM Dropdown includes a comprehensive test suite with both unit and integration tests:
+
+- **Unit Tests**: Test component behavior, prop handling, icon rendering, and state management
+- **Integration Tests**: Test user interactions, Mendix integration, accessibility, and edge cases
+- **Test Coverage**: Component rendering, user interactions, Mendix integration, accessibility, and performance
+
+### Run Tests
 
 ```bash
+# Run all tests
 cd widgets/dropdown/tests
 npx jest
+
+# Run tests in watch mode
+npx jest --watch
+
+# Run tests with coverage
+npx jest --coverage
 ```
 
-### Build
+### Build the Widget
 
 ```bash
 cd widgets/dropdown
 npm run build
 ```
 
-### Local development
+### Local Development
 
 ```bash
 cd widgets/dropdown

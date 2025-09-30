@@ -6,10 +6,16 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "trimm",
+    "design-system",
+    "mendix",
+    "widget",
+    "testing"
+  ],
+  "author": "TRIMM Design System Team",
   "license": "ISC",
-  "description": "",
+  "description": "TRIMM Design System - Dropdown widget test suite for comprehensive dropdown menu functionality validation",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^14.1.2",
@@ -20,4 +26,4 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
-} 
+}
