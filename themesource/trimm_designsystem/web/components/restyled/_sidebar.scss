@@ -1,6 +1,20 @@
-// === SIDEBAR NAVIGATION STYLING ===
-// Navigation sidebar styling for Mendix Navigation Tree widgets
-// Provides consistent TRIMM design system appearance for sidebar navigation
+/**
+ * TRIMM Design System - Sidebar Navigation Component Styles
+ * 
+ * This file contains styling for Mendix Navigation Tree widgets used in sidebar navigation.
+ * It provides consistent TRIMM design system appearance for sidebar navigation
+ * with enhanced styling, hover states, and proper hierarchy indication.
+ * 
+ * Features:
+ * - Enhanced navigation tree styling with TRIMM branding
+ * - Hover and active states for navigation items
+ * - Proper hierarchy indication for nested items
+ * - Disabled state support with appropriate visual feedback
+ * - Consistent typography and spacing using design tokens
+ * - Dropdown caret styling for expandable items
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 // Main sidebar container styling
 .region-sidebar,
@@ -21,7 +35,9 @@
   color: var(--base-white) !important;
   font-size: $font-size-body-3;
   font-weight: $font-weight-regular;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 // Nested sub-items styling
@@ -30,7 +46,9 @@
   color: var(--base-white) !important;
   font-size: $font-size-body-4;
   font-weight: $font-weight-light;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 // Hover states for top-level items
