@@ -16,7 +16,7 @@
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import { ColorTokenEditor } from "../src/ColorTokenEditor";
 
-// Mock localStorage for test isolation and verification
+// Mock localStorage for test isolation and verification of theme persistence functionality
 const localStorageMock = (() => {
     let store: Record<string, string> = {};
     return {
@@ -57,7 +57,7 @@ describe("ColorTokenEditor integration", () => {
         });
         const drawer = screen.getByRole("dialog");
         expect(drawer).toBeVisible();
-        // Close via overlay
+        // Close via overlay click to test user interaction patterns
         const overlay = document.querySelector(".trimm-color-token-overlay");
         expect(overlay).toBeTruthy();
         await act(async () => {
@@ -80,7 +80,7 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
         });
-        // Check localStorage was updated
+        // Check localStorage was updated with the new color value for theme persistence
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
         const overrides = JSON.parse(window.localStorage.getItem(`tokenOverrides_${theme}`) || "{}");
         expect(Object.values(overrides)).toContain("#123456");
@@ -93,16 +93,16 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
-        // Change a color
+        // Change a color to create a test override for reset functionality validation
         const colorInputs = document.querySelectorAll("input[type='color']");
         await act(async () => {
             fireEvent.change(colorInputs[0], { target: { value: "#654321" } });
         });
-        // Click reset
+        // Click reset to test override clearing functionality
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /reset/i }));
         });
-        // All overrides should be cleared
+        // All overrides should be cleared from localStorage after reset
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
         expect(window.localStorage.getItem(`tokenOverrides_${theme}`)).toBeNull();
     });
@@ -120,14 +120,14 @@ describe("ColorTokenEditor integration", () => {
             fireEvent.change(colorInputs[0], { target: { value: "#abcdef" } });
         });
         unmount!();
-        // Render a new instance
+        // Render a new instance to test cross-render persistence
         await act(async () => {
             render(<ColorTokenEditor side="right" getTokens={() => mockTokens} />);
         });
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
-        // The color input should reflect the override
+        // The color input should reflect the override from localStorage persistence
         const colorInputsAfter = document.querySelectorAll("input[type='color']");
         expect((colorInputsAfter[0] as HTMLInputElement).value).toBe("#abcdef");
     });
@@ -137,12 +137,12 @@ describe("ColorTokenEditor integration", () => {
             { name: "--brand-1", value: "#ff0000" },
             { name: "--brand-2", value: "#00ff00" }
         ];
-        // Start with light theme
+        // Start with light theme to test theme-specific override behavior
         document.documentElement.setAttribute("data-theme", "light");
         await act(async () => {
             render(<ColorTokenEditor side="right" getTokens={() => tokens} />);
         });
-        // Open drawer and change color in light theme
+        // Open drawer and change color in light theme to create theme-specific overrides
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
@@ -150,36 +150,36 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.change(colorInputs[0], { target: { value: "#123456" } });
         });
-        // Close drawer to flush state
+        // Close drawer to flush state and ensure localStorage persistence
         fireEvent.click(document.querySelector(".trimm-color-token-overlay")!);
         await waitFor(() => {
             expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
         });
-        // Assert light theme override
+        // Assert light theme override is stored in localStorage
         let lightOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_light") || "{}");
         expect(Object.values(lightOverrides)).toContain("#123456");
-        // Switch to dark theme
+        // Switch to dark theme to test theme switching and automatic color derivation
         await act(async () => {
             document.documentElement.setAttribute("data-theme", "dark");
-            fireEvent.click(document.body); // trigger MutationObserver
+            fireEvent.click(document.body); // trigger MutationObserver for theme change detection
         });
-        // Open drawer in dark theme
+        // Open drawer in dark theme to verify theme-specific color display
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
         colorInputs = document.querySelectorAll("input[type='color']");
-        // The widget may show either the user override or the derived dark color
+        // The widget may show either the user override or the derived dark color for theme consistency
         let value = (colorInputs[0] as HTMLInputElement).value.toLowerCase();
         expect(["#123456", "#000c2e"]).toContain(value);
-        // Close drawer
+        // Close drawer to flush dark theme state changes
         fireEvent.click(document.querySelector(".trimm-color-token-overlay")!);
         await waitFor(() => {
             expect(document.querySelector(".trimm-color-token-overlay")).toBeNull();
         });
-        // Assert dark theme override is the derived color
+        // Assert dark theme override is the derived color from light theme input
         let darkOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_dark") || "{}");
         expect(Object.values(darkOverrides).map(v => (v as string).toLowerCase())).toContain("#000c2e");
-        // Switch back to light and check persistence
+        // Switch back to light and check persistence of original overrides
         await act(async () => {
             document.documentElement.setAttribute("data-theme", "light");
             fireEvent.click(document.body);
@@ -276,7 +276,7 @@ describe("ColorTokenEditor integration", () => {
             </>);
         });
         const fabs = screen.getAllByRole("button", { name: /open color token editor/i });
-        // Open both drawers
+        // Open both drawers to test multiple widget instance independence
         await act(async () => {
             fireEvent.click(fabs[0]);
         });
@@ -285,30 +285,30 @@ describe("ColorTokenEditor integration", () => {
         });
         const dialogs = screen.getAllByRole("dialog");
         expect(dialogs.length).toBe(2);
-        // Change color in first widget
+        // Change color in first widget to test independent state management
         let colorInputs1 = dialogs[0].querySelectorAll("input[type='color']");
         await act(async () => {
             fireEvent.change(colorInputs1[0], { target: { value: "#111111" } });
         });
-        // Close first drawer to flush state
+        // Close first drawer to flush state and test isolation between instances
         fireEvent.click(document.querySelectorAll(".trimm-color-token-overlay")[0]);
         await waitFor(() => {
             expect(document.querySelectorAll(".trimm-color-token-overlay").length).toBe(1);
         });
-        // Change color in second widget
+        // Change color in second widget to verify independent operation
         let colorInputs2 = dialogs[1].querySelectorAll("input[type='color']");
         await act(async () => {
             fireEvent.change(colorInputs2[0], { target: { value: "#222222" } });
         });
-        // Close second drawer to flush state
+        // Close second drawer to flush state and complete independent testing
         fireEvent.click(document.querySelectorAll(".trimm-color-token-overlay")[0]);
         await waitFor(() => {
             expect(document.querySelectorAll(".trimm-color-token-overlay").length).toBe(0);
         });
-        // The widget only saves the last override for each token in the current theme
+        // The widget only saves the last override for each token in the current theme for consistency
         const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
         const overrides = JSON.parse(window.localStorage.getItem(`tokenOverrides_${theme}`) || "{}");
-        // Only the last changed value for each token is present
+        // Only the last changed value for each token is present in localStorage
         expect(overrides["--brand-1-instance1"]).toBeDefined();
         expect(overrides["--brand-1-instance2"]).toBeDefined();
     });
