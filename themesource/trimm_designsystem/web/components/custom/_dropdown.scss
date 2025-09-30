@@ -1,8 +1,19 @@
-// _dropdown.scss
-// Styles for the Trimm Dropdown widget.
-// Uses design system tokens for all colors, spacing, and typography.
-// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
-// This file is imported by the main design system theme and applies styles globally to .trimm-dropdown classes.
+/**
+ * TRIMM Design System - Dropdown Widget Styles
+ * 
+ * This file contains styles for the TRIMM Dropdown custom widget.
+ * It provides a custom dropdown interface with enhanced styling,
+ * including toggle button, menu positioning, and item interactions.
+ * 
+ * The widget features:
+ * - Custom toggle button with brand styling
+ * - Dropdown menu with proper positioning and shadows
+ * - Menu items with hover states and icon support
+ * - Caret indicators for dropdown state
+ * - High z-index for proper layering
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 .trimm-dropdown {
     position: relative;
