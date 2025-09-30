@@ -1,6 +1,6 @@
-# Color Token Editor Widget
+# TRIMM Design System - Color Token Editor Widget
 
-The Color Token Editor is a Mendix pluggable widget in the TRIMM Design System. It lets you edit CSS custom properties at runtime so you can brand an app without code changes or restarts.
+The Color Token Editor is a comprehensive Mendix pluggable widget in the TRIMM Design System. It provides runtime editing of CSS custom properties (design tokens) enabling dynamic theming and rapid UI customization without code changes or application restarts.
 
 ## What it does
 

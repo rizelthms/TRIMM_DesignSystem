@@ -1,18 +1,28 @@
 import React, { createElement, useState, useRef, useEffect } from "react";
 
 /**
- * Color Token Editor Widget
+ * TRIMM Design System - Color Token Editor Widget
  * 
  * A Mendix pluggable widget that enables runtime editing of CSS custom properties
- * (design tokens) for the TRIMM Design System. Allows users to customize theme
- * colors without code changes or application restarts.
+ * (design tokens) for the TRIMM Design System. This widget provides a comprehensive
+ * theming solution that allows users to customize theme colors without code changes
+ * or application restarts.
  * 
- * Features:
- * - Real-time color token editing
- * - Light/dark theme support
+ * Key Features:
+ * - Real-time color token editing with live preview
+ * - Light/dark theme support with automatic derivation
  * - Theme management (save, load, export, import, delete)
- * - Draggable floating action button
- * - Resizable drawer interface
+ * - Draggable floating action button for easy access
+ * - Resizable drawer interface for optimal workspace
+ * - localStorage persistence for theme overrides
+ * - JSON import/export for theme sharing
+ * - Accessibility compliance with ARIA support
+ * 
+ * Architecture:
+ * - Scans loaded stylesheets for TRIMM design tokens
+ * - Applies overrides via CSS custom properties on document root
+ * - Manages theme state with localStorage persistence
+ * - Supports multiple widget instances independently
  */
 
 // --- minimal types/utilities for theme save ---

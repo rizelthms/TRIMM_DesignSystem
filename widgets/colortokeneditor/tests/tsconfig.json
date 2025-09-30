@@ -1,4 +1,6 @@
 {
+  // TRIMM Design System - Color Token Editor Test TypeScript Configuration
+  // Provides TypeScript compilation settings for test files with Jest and React Testing Library support
   "compilerOptions": {
     "target": "ES2019",
     "module": "commonjs",

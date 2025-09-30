@@ -6,10 +6,16 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "trimm",
+    "design-system",
+    "mendix",
+    "widget",
+    "testing"
+  ],
+  "author": "TRIMM Design System Team",
   "license": "ISC",
-  "description": "",
+  "description": "TRIMM Design System - Color Token Editor widget test suite for comprehensive theming functionality validation",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",

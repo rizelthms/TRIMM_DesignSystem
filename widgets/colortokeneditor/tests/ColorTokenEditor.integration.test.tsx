@@ -1,7 +1,22 @@
+/**
+ * TRIMM Design System - Color Token Editor Integration Tests
+ * 
+ * This file contains integration tests for the Color Token Editor widget.
+ * It validates component behavior, user interactions, theme persistence,
+ * and accessibility compliance to ensure reliable theming functionality.
+ * 
+ * Test Coverage:
+ * - Component rendering and user interactions
+ * - Theme persistence and localStorage integration
+ * - Accessibility compliance and keyboard navigation
+ * - Edge cases and error handling
+ * - Multiple widget instances and performance
+ */
+
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import { ColorTokenEditor } from "../src/ColorTokenEditor";
 
-// Mock localStorage for test isolation
+// Mock localStorage for test isolation and verification
 const localStorageMock = (() => {
     let store: Record<string, string> = {};
     return {
