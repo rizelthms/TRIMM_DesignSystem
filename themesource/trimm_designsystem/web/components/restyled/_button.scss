@@ -1,6 +1,22 @@
-// === SCOPED BUTTON STYLES ===
-// TRIMM button styles only apply when 'trimm-button' class is present on the button or an ancestor
-// This ensures Atlas UI remains default unless explicitly opted into TRIMM styling
+/**
+ * TRIMM Design System - Button Component Styles
+ * 
+ * This file contains scoped styling for Mendix Button widgets.
+ * It provides comprehensive button functionality with multiple variants,
+ * sizes, and states using TRIMM design tokens for consistent theming.
+ * 
+ * Scoping: TRIMM button styles only apply when 'trimm-button' class
+ * is present on the button or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple button variants (default, primary, CTA, inverse, info, success, warning, danger)
+ * - Size modifiers (small, medium, large)
+ * - Icon alignment support (left and right positioning)
+ * - Interactive states (hover, active, disabled)
+ * - Consistent typography and spacing using design tokens
+ * - Focus states for accessibility compliance
+ */
 
 .trimm-button {
   // === BASE BUTTON STYLE ===
