@@ -1,8 +1,20 @@
-// _range-datepicker.scss
-// Styles for the Trimm Range Datepicker widget.
-// Uses design system tokens for all colors, spacing, and typography.
-// To customize, override the relevant SCSS variables or CSS custom properties in the theme.
-// This file is imported by the main design system theme and applies styles globally to .trimm-range-datepicker classes.
+/**
+ * TRIMM Design System - Range Datepicker Widget Styles
+ * 
+ * This file contains styles for the TRIMM Range Datepicker custom widget.
+ * It provides a dual calendar interface for date range selection,
+ * including month navigation, range highlighting, and popup positioning.
+ * 
+ * The widget features:
+ * - Dual calendar layout for range selection
+ * - Range highlighting between selected dates
+ * - Month navigation with arrow controls
+ * - Popup positioning with drag handle
+ * - Responsive design for different screen sizes
+ * - Today highlighting and disabled date support
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 
 .trimm-range-datepicker {
     font-family: $font-primary;
