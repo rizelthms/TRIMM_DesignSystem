@@ -14,21 +14,20 @@ import React, { createElement, useState, useRef, useEffect } from "react";
  * - Theme management (save, load, export, import, delete)
  * - Draggable floating action button for easy access
  * - Resizable drawer interface for optimal workspace
- * - localStorage persistence for theme overrides
+ * - Mendix database persistence for theme overrides
  * - JSON import/export for theme sharing
  * - Accessibility compliance with ARIA support
  * 
  * Architecture:
  * - Scans loaded stylesheets for TRIMM design tokens
  * - Applies overrides via CSS custom properties on document root
- * - Manages theme state with localStorage persistence
+ * - Manages theme state with Mendix database persistence via mx.data API
  * - Supports multiple widget instances independently
  */
 
 // --- minimal types/utilities for theme save ---
-const THEMES_INDEX_KEY = "DS_Themes_Index";
-const THEME_PREFIX = "DS_Theme_";
 const THEME_VERSION = "1.0.0";
+const DEFAULT_TRIMM_NAME = "Default TRIMM";
 
 type Token = {
     name: string;
@@ -141,7 +140,8 @@ function getCurrentTheme(): "light" | "dark" {
 }
 
 /**
- * Retrieves stored color overrides for a specific theme from localStorage
+ * Retrieves stored color overrides for a specific theme from localStorage (temporary runtime cache)
+ * The source of truth is the database, but we cache here for performance during editing
  */
 function getOverrides(theme: "light" | "dark"): Overrides {
     try {
@@ -152,7 +152,8 @@ function getOverrides(theme: "light" | "dark"): Overrides {
 }
 
 /**
- * Stores color overrides for a specific theme in localStorage
+ * Stores color overrides for a specific theme in localStorage (temporary runtime cache)
+ * The source of truth is the database, but we cache here for performance during editing
  */
 function setOverrides(theme: "light" | "dark", overrides: Overrides) {
     try {
@@ -265,140 +266,274 @@ function areOverridesEqual(a: Overrides, b: Overrides): boolean {
 }
 
 /**
- * Theme Management Functions
+ * Theme Management Functions - Using Mendix Database (mx.data API)
  */
 
 /**
- * Gets the list of saved theme names
+ * Gets the list of saved theme names from the Mendix database
  */
-function getSavedThemeNames(): string[] {
-    try {
-        return JSON.parse(localStorage.getItem(THEMES_INDEX_KEY) || "[]") as string[];
-    } catch {
-        return [];
-    }
-}
-
-/**
- * Saves the current theme state with a given name
- */
-function saveTheme(name: string, _description?: string, explicitLight?: Overrides, explicitDark?: Overrides): boolean {
-    try {
-        const now = new Date().toISOString();
-        const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
-        const existingTheme: SavedTheme | null = themeData ? JSON.parse(themeData) : null;
-
-        const theme: SavedTheme = {
-            name,
-            version: THEME_VERSION,
-            light: sanitizeOverrides(explicitLight ?? getOverrides("light")),
-            dark: sanitizeOverrides(explicitDark ?? getOverrides("dark")),
-            createdAt: existingTheme?.createdAt || now,
-            updatedAt: now
-        };
-
-        localStorage.setItem(`${THEME_PREFIX}${name}`, JSON.stringify(theme));
-
-        const themeNames = getSavedThemeNames();
-        if (!themeNames.includes(name)) {
-            themeNames.push(name);
-            localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(themeNames));
-        }
-
-        return true;
-    } catch {
-        return false;
-    }
-}
-
-/**
- * Loads a saved theme by name
- */
-function loadTheme(name: string): boolean {
-    try {
-        const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
-        if (!themeData) return false;
-
-        const theme: SavedTheme = JSON.parse(themeData);
-
-        // Replace both light and dark overrides stores and clear DOM props first
-        const tokenNames = Array.from(document.styleSheets) ? Object.keys(theme.light).concat(Object.keys(theme.dark)) : [];
-        removeTokenProperties(Array.from(new Set(tokenNames)));
-        setOverrides("light", sanitizeOverrides(theme.light));
-        setOverrides("dark", sanitizeOverrides(theme.dark));
-
-        const currentTheme = getCurrentTheme();
-        applyOverrides(currentTheme === "dark" ? theme.dark : theme.light);
-        return true;
-    } catch {
-        return false;
-    }
-}
-
-/**
- * Deletes a saved theme
- */
-function deleteTheme(name: string): boolean {
-    try {
-        // Remove theme data
-        localStorage.removeItem(`${THEME_PREFIX}${name}`);
-
-        // Update theme index
-        const themeNames = getSavedThemeNames();
-        const updatedNames = themeNames.filter(n => n !== name);
-        localStorage.setItem(THEMES_INDEX_KEY, JSON.stringify(updatedNames));
-
-        return true;
-    } catch {
-        return false;
-    }
-}
-
-/**
- * Exports a theme to JSON format
- */
-function exportTheme(name: string): string | null {
-    try {
-        const themeData = localStorage.getItem(`${THEME_PREFIX}${name}`);
-        if (!themeData) return null;
-
-        const theme: SavedTheme = JSON.parse(themeData);
-        const exportData: ThemeExport = {
-            metadata: {
-                version: THEME_VERSION,
-                exportedAt: new Date().toISOString(),
-                source: "TRIMM Design System Color Token Editor"
+function getSavedThemeNames(callback: (names: string[]) => void): void {
+    if (typeof window !== "undefined" && (window as any).mx) {
+        const mx = (window as any).mx;
+        mx.data.get({
+            xpath: "//TRIMM_DesignSystem.DS_ThemeProfile",
+            callback: (objs: any[]) => {
+                const names = objs
+                    .map((obj: any) => obj.get("Name"))
+                    .filter((name: string) => name && name !== DEFAULT_TRIMM_NAME);
+                callback(names);
             },
-            theme: {
-                ...theme,
-                updatedAt: new Date().toISOString()
+            error: (err: Error) => {
+                console.error("Failed to load theme names from database:", err);
+                callback([]);
             }
-        };
-
-        return JSON.stringify(exportData, null, 2);
-    } catch {
-        return null;
+        });
+    } else {
+        console.warn("Mendix API not available");
+        callback([]);
     }
 }
 
 /**
- * Imports a theme from JSON format
+ * Saves the current theme state with a given name to the Mendix database
  */
-function importTheme(jsonData: string): { success: boolean; error?: string } {
+function saveTheme(name: string, callback: (success: boolean) => void, _description?: string, explicitLight?: Overrides, explicitDark?: Overrides): void {
+    if (typeof window === "undefined" || !(window as any).mx) {
+        callback(false);
+        return;
+    }
+
+    const mx = (window as any).mx;
+    const now = new Date().toISOString();
+
+    const theme: SavedTheme = {
+        name,
+        version: THEME_VERSION,
+        light: sanitizeOverrides(explicitLight ?? getOverrides("light")),
+        dark: sanitizeOverrides(explicitDark ?? getOverrides("dark")),
+        createdAt: now,
+        updatedAt: now
+    };
+
+    // Check if theme already exists
+    mx.data.get({
+        xpath: `//TRIMM_DesignSystem.DS_ThemeProfile[Name='${name}']`,
+        callback: (objs: any[]) => {
+            if (objs.length > 0) {
+                // Update existing theme
+                const obj = objs[0];
+                obj.set("ColorOverrides", JSON.stringify(theme));
+                mx.data.commit({
+                    mxobj: obj,
+                    callback: () => callback(true),
+                    error: (err: Error) => {
+                        console.error("Failed to update theme:", err);
+                        callback(false);
+                    }
+                });
+            } else {
+                // Create new theme
+                console.log("Creating new theme:", name);
+                console.log("Theme data:", theme);
+
+                mx.data.create({
+                    entity: "TRIMM_DesignSystem.DS_ThemeProfile",
+                    callback: (obj: any) => {
+                        console.log("Theme object created, setting attributes...");
+                        try {
+                            obj.set("Name", name);
+                            obj.set("IsDefault", false);
+                            obj.set("IsDarkDefault", false);
+                            obj.set("ColorOverrides", JSON.stringify(theme));
+                            console.log("Attributes set, committing...");
+
+                            mx.data.commit({
+                                mxobj: obj,
+                                callback: () => {
+                                    console.log("Theme saved successfully:", name);
+                                    callback(true);
+                                },
+                                error: (err: Error) => {
+                                    console.error("Failed to commit theme:", err);
+                                    console.error("Error details:", err.message);
+                                    callback(false);
+                                }
+                            });
+                        } catch (setError) {
+                            console.error("Failed to set attributes:", setError);
+                            callback(false);
+                        }
+                    },
+                    error: (err: Error) => {
+                        console.error("Failed to create theme object:", err);
+                        console.error("Error details:", err.message);
+                        console.error("Entity name: TRIMM_DesignSystem.DS_ThemeProfile");
+                        callback(false);
+                    }
+                });
+            }
+        },
+        error: (err: Error) => {
+            console.error("Failed to check for existing theme:", err);
+            callback(false);
+        }
+    });
+}
+
+/**
+ * Loads a saved theme by name from the Mendix database
+ */
+function loadTheme(name: string, callback: (success: boolean) => void): void {
+    if (typeof window === "undefined" || !(window as any).mx) {
+        callback(false);
+        return;
+    }
+
+    const mx = (window as any).mx;
+    mx.data.get({
+        xpath: `//TRIMM_DesignSystem.DS_ThemeProfile[Name='${name}']`,
+        callback: (objs: any[]) => {
+            if (objs.length === 0) {
+                callback(false);
+                return;
+            }
+
+            try {
+                const obj = objs[0];
+                const colorOverridesStr = obj.get("ColorOverrides");
+                const theme: SavedTheme = JSON.parse(colorOverridesStr);
+
+                // Replace both light and dark overrides stores and clear DOM props first
+                const tokenNames = Object.keys(theme.light).concat(Object.keys(theme.dark));
+                removeTokenProperties(Array.from(new Set(tokenNames)));
+                setOverrides("light", sanitizeOverrides(theme.light));
+                setOverrides("dark", sanitizeOverrides(theme.dark));
+
+                const currentTheme = getCurrentTheme();
+                applyOverrides(currentTheme === "dark" ? theme.dark : theme.light);
+                callback(true);
+            } catch (err) {
+                console.error("Failed to parse theme data:", err);
+                callback(false);
+            }
+        },
+        error: (err: Error) => {
+            console.error("Failed to load theme from database:", err);
+            callback(false);
+        }
+    });
+}
+
+/**
+ * Deletes a saved theme from the Mendix database
+ * Protects Default TRIMM theme from deletion
+ */
+function deleteTheme(name: string, callback: (success: boolean) => void): void {
+    // Protect Default TRIMM from deletion
+    if (name === DEFAULT_TRIMM_NAME) {
+        console.warn("Cannot delete Default TRIMM theme");
+        callback(false);
+        return;
+    }
+
+    if (typeof window === "undefined" || !(window as any).mx) {
+        callback(false);
+        return;
+    }
+
+    const mx = (window as any).mx;
+    mx.data.get({
+        xpath: `//TRIMM_DesignSystem.DS_ThemeProfile[Name='${name}']`,
+        callback: (objs: any[]) => {
+            if (objs.length === 0) {
+                callback(false);
+                return;
+            }
+
+            mx.data.remove({
+                guid: objs[0].getGuid(),
+                callback: () => callback(true),
+                error: (err: Error) => {
+                    console.error("Failed to delete theme:", err);
+                    callback(false);
+                }
+            });
+        },
+        error: (err: Error) => {
+            console.error("Failed to find theme for deletion:", err);
+            callback(false);
+        }
+    });
+}
+
+/**
+ * Exports a theme to JSON format from the Mendix database
+ */
+function exportTheme(name: string, callback: (json: string | null) => void): void {
+    if (typeof window === "undefined" || !(window as any).mx) {
+        callback(null);
+        return;
+    }
+
+    const mx = (window as any).mx;
+    mx.data.get({
+        xpath: `//TRIMM_DesignSystem.DS_ThemeProfile[Name='${name}']`,
+        callback: (objs: any[]) => {
+            if (objs.length === 0) {
+                callback(null);
+                return;
+            }
+
+            try {
+                const obj = objs[0];
+                const colorOverridesStr = obj.get("ColorOverrides");
+                const theme: SavedTheme = JSON.parse(colorOverridesStr);
+
+                const exportData: ThemeExport = {
+                    metadata: {
+                        version: THEME_VERSION,
+                        exportedAt: new Date().toISOString(),
+                        source: "TRIMM Design System Color Token Editor"
+                    },
+                    theme: {
+                        ...theme,
+                        updatedAt: new Date().toISOString()
+                    }
+                };
+
+                callback(JSON.stringify(exportData, null, 2));
+            } catch (err) {
+                console.error("Failed to export theme:", err);
+                callback(null);
+            }
+        },
+        error: (err: Error) => {
+            console.error("Failed to find theme for export:", err);
+            callback(null);
+        }
+    });
+}
+
+/**
+ * Imports a theme from JSON format to the Mendix database
+ */
+function importTheme(jsonData: string, callback: (result: { success: boolean; error?: string }) => void): void {
     try {
         const data: ThemeExport = JSON.parse(jsonData);
 
         if (!data.theme || !data.theme.name || !data.theme.light || !data.theme.dark) {
-            return { success: false, error: "Invalid theme format" };
+            callback({ success: false, error: "Invalid theme format" });
+            return;
         }
 
         const light = sanitizeOverrides(data.theme.light);
         const dark = sanitizeOverrides(data.theme.dark);
 
-        const success = saveTheme(data.theme.name, undefined, light, dark);
-        return { success, error: success ? undefined : "Failed to save imported theme" };
+        saveTheme(data.theme.name, (success) => {
+            callback({ success, error: success ? undefined : "Failed to save imported theme" });
+        }, undefined, light, dark);
     } catch (error) {
-        return { success: false, error: "Invalid JSON format" };
+        callback({ success: false, error: "Invalid JSON format" });
     }
 }
 
@@ -423,12 +558,19 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const [open, setOpen] = useState(false);
 
     // Theme management state for save, load, export, import, and delete functionality
-    const [savedThemes, setSavedThemes] = useState<string[]>(getSavedThemeNames());
+    const [savedThemes, setSavedThemes] = useState<string[]>([]);
     const [selectedTheme, setSelectedTheme] = useState<string>("");
     const [newThemeName, setNewThemeName] = useState<string>("");
     const [showImportModal, setShowImportModal] = useState(false);
     const [themeMessage, setThemeMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const [activeThemeName, setActiveThemeName] = useState<string>("default");
+
+    // Load saved themes from database on mount
+    useEffect(() => {
+        getSavedThemeNames((names) => {
+            setSavedThemes(names);
+        });
+    }, []);
 
 
 
@@ -609,26 +751,62 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         return () => observer.disconnect();
     }, []);
 
-    // Detect active theme name on mount based on stored overrides matching a saved theme for UI consistency
+    // Load active theme from database on mount if overrides exist
     useEffect(() => {
-        try {
-            const names = getSavedThemeNames();
-            const currentLight = sanitizeOverrides(getOverrides("light"));
-            const currentDark = sanitizeOverrides(getOverrides("dark"));
-            for (const name of names) {
-                const raw = localStorage.getItem(`${THEME_PREFIX}${name}`);
-                if (!raw) continue;
-                const saved: SavedTheme = JSON.parse(raw);
-                if (areOverridesEqual(sanitizeOverrides(saved.light || {}), currentLight) &&
-                    areOverridesEqual(sanitizeOverrides(saved.dark || {}), currentDark)) {
-                    setActiveThemeName(name);
-                    return;
-                }
-            }
+        const currentLight = sanitizeOverrides(getOverrides("light"));
+        const currentDark = sanitizeOverrides(getOverrides("dark"));
+
+        // If no overrides exist, we're using Default TRIMM
+        if (Object.keys(currentLight).length === 0 && Object.keys(currentDark).length === 0) {
             setActiveThemeName("default");
-        } catch {
-            setActiveThemeName("default");
+            return;
         }
+
+        // Try to find matching theme in database
+        getSavedThemeNames((names) => {
+            if (typeof window !== "undefined" && (window as any).mx) {
+                const mx = (window as any).mx;
+                let found = false;
+
+                // Check each theme
+                names.forEach((name) => {
+                    if (found) return;
+
+                    mx.data.get({
+                        xpath: `//TRIMM_DesignSystem.DS_ThemeProfile[Name='${name}']`,
+                        callback: (objs: any[]) => {
+                            if (objs.length > 0 && !found) {
+                                try {
+                                    const obj = objs[0];
+                                    const colorOverridesStr = obj.get("ColorOverrides");
+                                    const saved: SavedTheme = JSON.parse(colorOverridesStr);
+
+                                    if (areOverridesEqual(sanitizeOverrides(saved.light || {}), currentLight) &&
+                                        areOverridesEqual(sanitizeOverrides(saved.dark || {}), currentDark)) {
+                                        setActiveThemeName(name);
+                                        found = true;
+                                    }
+                                } catch (err) {
+                                    console.error("Error parsing theme:", err);
+                                }
+                            }
+                        },
+                        error: (err: Error) => {
+                            console.error("Error loading theme:", err);
+                        }
+                    });
+                });
+
+                // If no match found after checking all themes
+                setTimeout(() => {
+                    if (!found) {
+                        setActiveThemeName("default");
+                    }
+                }, 500);
+            } else {
+                setActiveThemeName("default");
+            }
+        });
         // Run once on mount to initialize theme state
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -681,14 +859,17 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             return;
         }
 
-        const success = saveTheme(newThemeName.trim());
-        if (success) {
-            setSavedThemes(getSavedThemeNames());
-            setNewThemeName("");
-            setThemeMessage({ type: "success", text: `Theme "${newThemeName}" saved successfully` });
-        } else {
-            setThemeMessage({ type: "error", text: "Failed to save theme" });
-        }
+        saveTheme(newThemeName.trim(), (success) => {
+            if (success) {
+                getSavedThemeNames((names) => {
+                    setSavedThemes(names);
+                });
+                setNewThemeName("");
+                setThemeMessage({ type: "success", text: `Theme "${newThemeName}" saved successfully` });
+            } else {
+                setThemeMessage({ type: "error", text: "Failed to save theme" });
+            }
+        });
     }
 
     function handleSaveChanges() {
@@ -697,12 +878,19 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             return;
         }
 
-        const success = saveTheme(selectedTheme);
-        if (success) {
-            setThemeMessage({ type: "success", text: `Changes saved to "${selectedTheme}"` });
-        } else {
-            setThemeMessage({ type: "error", text: "Failed to save changes" });
+        // Protect Default TRIMM from being edited
+        if (selectedTheme === DEFAULT_TRIMM_NAME) {
+            setThemeMessage({ type: "error", text: "Cannot edit Default TRIMM theme" });
+            return;
         }
+
+        saveTheme(selectedTheme, (success) => {
+            if (success) {
+                setThemeMessage({ type: "success", text: `Changes saved to "${selectedTheme}"` });
+            } else {
+                setThemeMessage({ type: "error", text: "Failed to save changes" });
+            }
+        });
     }
 
     function handleLoadTheme() {
@@ -711,7 +899,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             return;
         }
 
-        if (selectedTheme === "default") {
+        if (selectedTheme === "default" || selectedTheme === DEFAULT_TRIMM_NAME) {
             // Reset to default TRIMM design system
             resetOverrides(tokens, "light");
             resetOverrides(tokens, "dark");
@@ -721,14 +909,15 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             return;
         }
 
-        const success = loadTheme(selectedTheme);
-        if (success) {
-            setOverridesState(getOverrides(getCurrentTheme()));
-            setActiveThemeName(selectedTheme);
-            setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" loaded successfully` });
-        } else {
-            setThemeMessage({ type: "error", text: "Failed to load theme" });
-        }
+        loadTheme(selectedTheme, (success) => {
+            if (success) {
+                setOverridesState(getOverrides(getCurrentTheme()));
+                setActiveThemeName(selectedTheme);
+                setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" loaded successfully` });
+            } else {
+                setThemeMessage({ type: "error", text: "Failed to load theme" });
+            }
+        });
     }
 
     function handleDeleteTheme() {
@@ -737,28 +926,37 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             return;
         }
 
+        // Protect Default TRIMM from deletion
+        if (selectedTheme === DEFAULT_TRIMM_NAME || selectedTheme === "default") {
+            setThemeMessage({ type: "error", text: "Cannot delete Default TRIMM theme" });
+            return;
+        }
+
         if (window.confirm(`Are you sure you want to delete theme "${selectedTheme}"?`)) {
             const deletingActive = selectedTheme === activeThemeName;
-            const success = deleteTheme(selectedTheme);
-            if (success) {
-                setSavedThemes(getSavedThemeNames());
-                setSelectedTheme("");
-                setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" deleted successfully` });
+            deleteTheme(selectedTheme, (success) => {
+                if (success) {
+                    getSavedThemeNames((names) => {
+                        setSavedThemes(names);
+                    });
+                    setSelectedTheme("");
+                    setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" deleted successfully` });
 
-                // Fallback to default if the deleted theme was effectively active
-                if (deletingActive) {
-                    // Clear inline properties so CSS defaults (Default TRIMM) apply immediately
-                    const tokenNames = new Set<string>([...Object.keys(getOverrides("light")), ...Object.keys(getOverrides("dark"))]);
-                    removeTokenProperties(Array.from(tokenNames));
-                    setOverrides("light", {});
-                    setOverrides("dark", {});
-                    setOverridesState({});
-                    setActiveThemeName("default");
-                    setThemeMessage({ type: "success", text: "Default TRIMM theme restored" });
+                    // Fallback to default if the deleted theme was effectively active
+                    if (deletingActive) {
+                        // Clear inline properties so CSS defaults (Default TRIMM) apply immediately
+                        const tokenNames = new Set<string>([...Object.keys(getOverrides("light")), ...Object.keys(getOverrides("dark"))]);
+                        removeTokenProperties(Array.from(tokenNames));
+                        setOverrides("light", {});
+                        setOverrides("dark", {});
+                        setOverridesState({});
+                        setActiveThemeName("default");
+                        setThemeMessage({ type: "success", text: "Default TRIMM theme restored" });
+                    }
+                } else {
+                    setThemeMessage({ type: "error", text: "Failed to delete theme" });
                 }
-            } else {
-                setThemeMessage({ type: "error", text: "Failed to delete theme" });
-            }
+            });
         }
     }
 
@@ -769,7 +967,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         }
 
         // Special handling: export Default TRIMM from computed values
-        if (selectedTheme === "default") {
+        if (selectedTheme === "default" || selectedTheme === DEFAULT_TRIMM_NAME) {
             try {
                 const tokenNames = tokens.map(t => t.name);
 
@@ -832,22 +1030,23 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
             }
         }
 
-        const exportData = exportTheme(selectedTheme);
-        if (exportData) {
-            // Create and download file
-            const blob = new Blob([exportData], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = `${selectedTheme}-theme.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" exported successfully` });
-        } else {
-            setThemeMessage({ type: "error", text: "Failed to export theme" });
-        }
+        exportTheme(selectedTheme, (exportData) => {
+            if (exportData) {
+                // Create and download file
+                const blob = new Blob([exportData], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = `${selectedTheme}-theme.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                setThemeMessage({ type: "success", text: `Theme "${selectedTheme}" exported successfully` });
+            } else {
+                setThemeMessage({ type: "error", text: "Failed to export theme" });
+            }
+        });
     }
 
     function handleImportThemeFile(file: File | null) {
@@ -860,16 +1059,19 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         const reader = new FileReader();
         reader.onload = () => {
             const text = String(reader.result || "");
-            const result = importTheme(text);
-            if (result.success) {
-                setSavedThemes(getSavedThemeNames());
-                setShowImportModal(false);
-                setThemeMessage({ type: "success", text: "Theme imported successfully" });
-            } else {
-                setThemeMessage({ type: "error", text: result.error || "Failed to import theme" });
-            }
-            const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
-            if (input) input.value = "";
+            importTheme(text, (result) => {
+                if (result.success) {
+                    getSavedThemeNames((names) => {
+                        setSavedThemes(names);
+                    });
+                    setShowImportModal(false);
+                    setThemeMessage({ type: "success", text: "Theme imported successfully" });
+                } else {
+                    setThemeMessage({ type: "error", text: result.error || "Failed to import theme" });
+                }
+                const input = document.getElementById("trimm-theme-file-input") as HTMLInputElement | null;
+                if (input) input.value = "";
+            });
         };
         reader.onerror = () => {
             setThemeMessage({ type: "error", text: "Failed to read file" });
@@ -977,7 +1179,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             aria-label="Choose theme"
                         >
                             <option value="">Choose theme...</option>
-                            <option value="default">Default TRIMM</option>
+                            <option value={DEFAULT_TRIMM_NAME}>Default TRIMM</option>
                             {savedThemes.map(name => (
                                 <option key={name} value={name}>{name}</option>
                             ))}
@@ -995,7 +1197,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             className="trimm-button btn-success trimm-button-small"
                             onClick={handleSaveChanges}
                             type="button"
-                            disabled={!selectedTheme || selectedTheme === "default"}
+                            disabled={!selectedTheme || selectedTheme === "default" || selectedTheme === DEFAULT_TRIMM_NAME}
                             aria-label="Update selected theme"
                         >
                             Update theme
@@ -1004,7 +1206,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
                             className="trimm-button btn-danger trimm-button-small"
                             onClick={handleDeleteTheme}
                             type="button"
-                            disabled={!selectedTheme || selectedTheme === "default"}
+                            disabled={!selectedTheme || selectedTheme === "default" || selectedTheme === DEFAULT_TRIMM_NAME}
                             aria-label="Delete selected theme"
                         >
                             Delete theme
