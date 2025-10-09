@@ -12,127 +12,74 @@ The Color Token Editor is a comprehensive Mendix pluggable widget in the TRIMM D
 - Theme management: save, load, update, delete named themes
 - Import/export themes as JSON files (includes special export for "Default TRIMM")
 - Protection for Default TRIMM theme (cannot be edited or deleted)
+- **Cross-browser and cross-device theme persistence** for logged-in users.
 
 ## Requirements
 
 - Mendix 11
-- TRIMM Design System module included in your app. Styling for this widget lives in the TRIMM theme and must be present for the UI to look right
-  - The styles are part of the theme under `themesource/trimm_designsystem/`
-  - The docs styling that showcases tokens is defined in `themesource/trimm_designsystem/web/docs/custom-components/_docs-colorTokenEditorCustomTokens.scss`
-- `DS_ThemeProfile` entity must exist in your domain model with these attributes:
-  - `Name` (String)
-  - `IsDefault` (Boolean)
-  - `IsDarkDefault` (Boolean)  
-  - `ColorOverrides` (String unlimited)
+- TRIMM Design System module included in your app. Styling for this widget lives in the TRIMM theme and must be present for the UI to look right.
+- `DS_ThemeProfile` entity must exist in your domain model (included in the module).
+- **Domain Model Association**: For user-specific theme persistence, a **1-to-1 association** must be created between `System.User` and `TRIMM_DesignSystem.DS_ThemeProfile`.
 
 ## Install and set up in Mendix
 
-1. Import the TRIMM Design System module into your Mendix project so the theme is available
-2. Ensure the `DS_ThemeProfile` entity exists in your domain model (it should be part of the TRIMM_DesignSystem module)
-3. Add the Color Token Editor widget to any page
-4. Set the property Drawer Position to `left` or `right`
-5. Run the app. The widget will scan loaded stylesheets for valid TRIMM token names and render color inputs
+1. Import the TRIMM Design System module into your Mendix project.
+2. Go to the project's domain model, find the `TRIMM_DesignSystem` module, and create a **1-to-1 association** from `System.User` to `TRIMM_DesignSystem.DS_ThemeProfile`.
+3. Add the Color Token Editor widget to any page layout.
+4. Set the property Drawer Position to `left` or `right`.
+5. Run the app. The widget will scan loaded stylesheets for valid TRIMM token names and render color inputs.
 
 ### Theme Management
 
-- **Create a theme**: Enter a name and click "Save new theme". The widget saves current light/dark overrides to the database.
+- **Create a theme**: Enter a name and click "Save new theme". The widget saves the current color settings to the database but does not automatically apply them.
 - **Choose a theme**: Select from the dropdown, including "Default TRIMM".
-- **Load**: Applies the selected theme overrides to the current UI. Loads data from the database.
-- **Update**: Saves current overrides back into the selected theme in the database. ⚠️ Disabled for "Default TRIMM".
-- **Delete**: Removes the selected theme from the database. If the deleted theme is the active theme, the widget immediately restores Default TRIMM. ⚠️ Disabled for "Default TRIMM".
-- **Export JSON**: Downloads a JSON file for the selected theme. When "Default TRIMM" is selected, export captures computed CSS values for both light and dark modes.
+- **Load**: Applies the selected theme to the UI and saves it as the active theme for your user, which will persist across browsers and devices.
+- **Update**: Saves the current color settings into the selected theme in the database. ⚠️ Disabled for "Default TRIMM".
+- **Delete**: Removes the selected theme from the database. If the deleted theme is the active theme for any user, it will be reset to Default TRIMM across all their sessions. ⚠️ Disabled for "Default TRIMM".
+- **Export JSON**: Downloads a JSON file for the selected theme.
 - **Import JSON**: Select a `.json` file to add or overwrite a named theme in the database.
 
 ### Properties
 
-- Drawer Position: `left` or `right`. Controls where the drawer opens
+- Drawer Position: `left` or `right`. Controls where the drawer opens.
 
 ## How it works
 
-- **Token discovery** runs in the browser and scans loaded stylesheets for CSS variables matching TRIMM token patterns
-  - Brand: `--brand-1..9` plus optional `-hover`, `-active`, `-disabled`
-  - Base: `--base-black`, `--base-white` plus states
-  - Secondary: `--secondary-1..9` plus states
-  - Support: `--support-1..9` plus states
-- Only valid colors are shown. Values are validated before rendering
-- **When you change a color**
-  - If the current theme is light, the widget stores the chosen light color and derives a dark color for the dark theme
-  - If the current theme is dark, it stores the chosen dark color and derives a light color for the light theme
+- **Token discovery**: Scans loaded stylesheets for CSS variables matching TRIMM token patterns.
+- **When you change a color**: The widget stores the chosen color and derives a version for the other theme (light/dark).
 - **Persistence**:
-  - Overrides are temporarily cached in localStorage (`tokenOverrides_light` and `tokenOverrides_dark`) for runtime performance
-  - Named themes are stored in the Mendix database using the `DS_ThemeProfile` entity
-  - The `ColorOverrides` field contains a JSON string with the full theme data (light/dark overrides, metadata)
-  - On load and theme changes, overrides are applied to `document.documentElement`
-- **Database operations**: The widget uses the Mendix Client API (`mx.data`) to interact with the database:
-  - `mx.data.create()` - Create new theme records
-  - `mx.data.get()` - Retrieve themes via XPath queries
-  - `mx.data.commit()` - Save/update themes
-  - `mx.data.remove()` - Delete themes
-- **UI behavior**
-  - Floating action button with class `trimm-color-token-fab` opens the drawer
-  - Drawer `trimm-color-token-drawer` is resizable and lists tokens with swatch, name, and color input
-  - Clicking the overlay closes the drawer
+  - **Saved Themes**: All named themes are stored in the Mendix database using the `DS_ThemeProfile` entity, making them available to all users of the app.
+  - **Active Theme**: The user's currently active theme preference is stored in the database.
+    - If App Security is **ON**, it's stored via the `System.User` to `DS_ThemeProfile` association, making it user-specific.
+    - If App Security is **OFF**, it falls back to a single system-wide record, allowing persistence in development/demo environments.
+  - **Synchronization**: The widget periodically checks if the active theme is still valid, ensuring that if it's deleted in one browser session, it automatically resets to default in others.
+  - `localStorage` is used only for non-critical UI state like the editor's position and width.
+- **Database operations**: The widget uses the Mendix Client API (`mx.data`) for all theme and preference management.
 
 ## Testing the Widget
 
-### Basic Functionality Test
+### Core Functionality
 
-1. **Open the widget**
-   - Find the floating palette icon button (usually in the top-right corner)
-   - Click it to open the color token editor drawer
+1. **Open and Edit**: Open the widget and edit colors to see live updates.
+2. **Save a Theme**: Enter a name and click "Save new theme". Verify the UI does **not** change.
+3. **Load a Theme**: Select your new theme and click "Load theme". Verify the colors are applied.
+4. **Update a Theme**: Load a theme, change colors, and click "Update theme". Reload the page and the theme to confirm changes.
+5. **Delete a Theme**: Delete a theme and verify it's gone from the dropdown.
 
-2. **Edit colors**
-   - Change a few color tokens (e.g., `--brand-1`, `--brand-2`)
-   - Observe that the colors update in real-time on your page
-   - Toggle between light/dark themes to see the derived colors
+### Cross-Browser Persistence Test
 
-3. **Save a theme**
-   - Enter a theme name (e.g., "My Custom Theme")
-   - Click "Save new theme"
-   - Verify success message appears
-   - Check the database: Open the Data Hub or use a microflow to query `DS_ThemeProfile` records
-
-4. **Load a theme**
-   - Make some color changes (don't save them)
-   - Select your saved theme from the dropdown
-   - Click "Load theme"
-   - Verify that your previously saved colors are restored
-
-5. **Update a theme**
-   - Load your saved theme
-   - Make some color changes
-   - Select the same theme from the dropdown
-   - Click "Update theme"
-   - Verify success message
-   - Reload the page and load the theme again to confirm changes were saved
-
-6. **Export and Import**
-   - Select a theme and click "Export JSON"
-   - Verify a `.json` file downloads
-   - Delete the theme from the database
-   - Click "Import JSON" and select the exported file
-   - Verify the theme reappears in the dropdown
-
-7. **Delete a theme**
-   - Select a theme you don't need
-   - Click "Delete theme"
-   - Confirm the deletion
-   - Verify the theme is removed from the dropdown and database
-
-8. **Protection checks**
-   - Select "Default TRIMM" from the dropdown
-   - Verify that "Update theme" and "Delete theme" buttons are disabled
-   - Try to delete it anyway (buttons should be grayed out)
+1. **Open two different browsers** (e.g., Chrome and an Incognito window).
+2. In **Browser A**, create and load a theme named "SyncTest".
+3. In **Browser B**, refresh the page. "SyncTest" should automatically load as the active theme.
+4. In **Browser A**, delete the "SyncTest" theme. It will reset to the Default TRIMM theme.
+5. After a few seconds, **Browser B should automatically reset** to the Default TRIMM theme without a page refresh.
 
 ### Database Verification
 
 After saving a theme, verify in Mendix Studio Pro:
-1. Go to View > Data Hub or use a microflow
-2. Query: `//TRIMM_DesignSystem.DS_ThemeProfile`
-3. Check that your theme exists with:
-   - `Name` = your theme name
-   - `ColorOverrides` = JSON string containing light/dark color data
-   - `IsDefault` = false
+1. Go to the Data Hub.
+2. Query: `//TRIMM_DesignSystem.DS_ThemeProfile`.
+3. Check that your theme exists as a record.
 
 ### Troubleshooting
 

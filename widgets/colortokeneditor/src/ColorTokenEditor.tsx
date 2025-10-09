@@ -2,26 +2,27 @@ import React, { createElement, useState, useRef, useEffect } from "react";
 
 /**
  * TRIMM Design System - Color Token Editor Widget
- * 
+ *
  * A Mendix pluggable widget that enables runtime editing of CSS custom properties
  * (design tokens) for the TRIMM Design System. This widget provides a comprehensive
  * theming solution that allows users to customize theme colors without code changes
  * or application restarts.
- * 
+ *
  * Key Features:
  * - Real-time color token editing with live preview
  * - Light/dark theme support with automatic derivation
  * - Theme management (save, load, export, import, delete)
  * - Draggable floating action button for easy access
  * - Resizable drawer interface for optimal workspace
- * - Mendix database persistence for theme overrides
+ * - Mendix database persistence for themes and user preferences
  * - JSON import/export for theme sharing
  * - Accessibility compliance with ARIA support
- * 
+ *
  * Architecture:
  * - Scans loaded stylesheets for TRIMM design tokens
  * - Applies overrides via CSS custom properties on document root
  * - Manages theme state with Mendix database persistence via mx.data API
+ * - Active theme persists via User association (security ON) or a system-wide record (security OFF)
  * - Supports multiple widget instances independently
  */
 
@@ -142,8 +143,8 @@ function getCurrentTheme(): "light" | "dark" {
 }
 
 /**
- * Retrieves stored color overrides for a specific theme from localStorage (temporary runtime cache)
- * The source of truth is the database, but we cache here for performance during editing
+ * Retrieves stored color overrides for a specific theme from localStorage (runtime cache).
+ * This is a performance optimization for the editor. The database is the source of truth for saved themes.
  */
 function getOverrides(theme: "light" | "dark"): Overrides {
     try {
@@ -154,8 +155,8 @@ function getOverrides(theme: "light" | "dark"): Overrides {
 }
 
 /**
- * Stores color overrides for a specific theme in localStorage (temporary runtime cache)
- * The source of truth is the database, but we cache here for performance during editing
+ * Stores color overrides for a specific theme in localStorage (runtime cache).
+ * This is a performance optimization for the editor. The database is the source of truth for saved themes.
  */
 function setOverrides(theme: "light" | "dark", overrides: Overrides) {
     try {
@@ -558,9 +559,9 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const [themeMessage, setThemeMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
     const [activeThemeName, setActiveThemeName] = useState<string>("default");
 
-    // Load saved themes from database on mount
+    // Load saved themes from database on mount to populate the dropdown
     useEffect(() => {
-        getSavedThemeNames((names) => {
+        getSavedThemeNames(names => {
             setSavedThemes(names);
         });
     }, []);
@@ -602,7 +603,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
     const startX = useRef(0);
     const startWidth = useRef(drawerWidth);
 
-    // Persist FAB position and drawer width in localStorage for user preference retention
+    // Persist FAB position and drawer width in localStorage
     useEffect(() => {
         try {
             localStorage.setItem(PALETTE_POS_KEY, JSON.stringify(fabPos));
@@ -624,7 +625,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         } catch { }
     }, [drawerWidth]);
 
-    // Mouse drag handlers for FAB positioning and user interaction
+    // Mouse drag handlers for FAB positioning
     function onMouseDown(e: React.MouseEvent) {
         dragging.current = true;
         offset.current = {
@@ -649,7 +650,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         document.removeEventListener("mouseup", onMouseUp);
     }
 
-    // Touch support for FAB
+    // Touch support for FAB positioning
     function onTouchStart(e: React.TouchEvent) {
         dragging.current = true;
         const touch = e.touches[0];
@@ -702,7 +703,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         document.removeEventListener("mouseup", onResizeMouseUp);
     }
 
-    // Cleanup event listeners on unmount to prevent memory leaks
+    // Cleanup all document-level event listeners on unmount
     useEffect(() => {
         return () => {
             document.removeEventListener("mousemove", onMouseMove);
@@ -714,7 +715,7 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         };
     }, []);
 
-    // Theme change detection and override management for light/dark mode switching
+    // Theme change detection (light/dark mode)
     React.useEffect(() => {
         function handleThemeChange() {
             const currentTheme = getCurrentTheme();
@@ -753,7 +754,51 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // Function to load active theme: prefer user association; fallback to system-wide record when no session
+    // Effect to periodically check if the active theme still exists, to sync across browser tabs
+    useEffect(() => {
+        // Don't run this check for the default theme
+        if (activeThemeName === "default" || activeThemeName === DEFAULT_TRIMM_NAME) {
+            return;
+        }
+
+        const intervalId = setInterval(() => {
+            console.log(`[SyncCheck] Verifying active theme '${activeThemeName}' still exists...`);
+            validateActiveTheme(activeThemeName);
+        }, 5000); // Check every 5 seconds
+
+        return () => clearInterval(intervalId); // Cleanup on component unmount or when theme changes
+    }, [activeThemeName]);
+
+    // Function that checks if a theme name exists in the DB and resets if not
+    function validateActiveTheme(themeName: string) {
+        if (typeof window === "undefined" || !(window as any).mx) return;
+
+        const mx = (window as any).mx;
+        mx.data.get({
+            xpath: `//TRIMM_DesignSystem.DS_ThemeProfile[Name='${themeName}']`,
+            callback: (objs: any[]) => {
+                if (objs.length === 0) {
+                    console.warn(`[SyncCheck] Active theme '${themeName}' no longer exists. Resetting to default.`);
+                    // The theme was deleted in another tab/browser. Reset this session.
+                    const tokenNames = new Set<string>([
+                        ...Object.keys(getOverrides("light")),
+                        ...Object.keys(getOverrides("dark"))
+                    ]);
+                    removeTokenProperties(Array.from(tokenNames));
+                    setOverrides("light", {});
+                    setOverrides("dark", {});
+                    setOverridesState({});
+                    setActiveThemeName("default");
+                    setThemeMessage({ type: "success", text: "Active theme was deleted elsewhere. Restored default." });
+                }
+            },
+            error: (e: Error) => {
+                console.error("[SyncCheck] Error validating active theme:", e);
+            }
+        });
+    }
+
+    // Function to load active theme: prefer user association; fallback to system record when no session
     function loadActiveTheme() {
         if (typeof window === "undefined" || !(window as any).mx) {
             setActiveThemeName("default");
