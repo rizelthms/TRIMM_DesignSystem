@@ -9,7 +9,7 @@ The Color Token Editor is a comprehensive Mendix pluggable widget in the TRIMM D
 - Automatic dark or light derivation when you change a color in the opposite theme
 - Draggable floating action button to open the editor
 - Resizable drawer that lists the detected tokens
-- Theme management: save, load, update, delete named themes
+- Theme management: save, load, update, delete named themes stored in the Mendix database
 - Import/export themes as JSON files (includes special export for "Default TRIMM")
 - Protection for Default TRIMM theme (cannot be edited or deleted)
 - **Cross-browser and cross-device theme persistence** for logged-in users.
@@ -110,8 +110,8 @@ After saving a theme, verify in Mendix Studio Pro:
 The Color Token Editor includes a comprehensive test suite with both unit and integration tests:
 
 - **Unit Tests**: Test individual utility functions (color validation, derivation, hex processing)
-- **Integration Tests**: Test component behavior, user interactions, theme persistence, and accessibility
-- **Test Coverage**: Color validation, theme management, localStorage integration, edge cases, and performance
+- **Integration Tests**: Test component behavior, user interactions, database-backed theme persistence, and accessibility
+- **Test Coverage**: Color validation, theme management, Mendix database persistence, edge cases, and performance
 
 ### Run Tests
 
@@ -144,7 +144,7 @@ npm run dev
 ## Troubleshooting
 
 - No tokens appear: confirm the TRIMM Design System theme is imported and the expected CSS variables are present in built stylesheets
-- Changes do not persist: verify localStorage is available in the browser for the app origin
+- Changes do not persist: verify `DS_ThemeProfile` access rights and confirm the widget has access to the Mendix Client API (`mx.data`)
 - Theme switching: the widget listens to `data-theme` on `<html>`. Make sure your theme toggles that attribute when switching between light and dark
 
 ## License
