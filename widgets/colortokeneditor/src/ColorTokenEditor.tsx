@@ -747,6 +747,10 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
     // Load the active theme on mount (user association when available, otherwise system record)
     useEffect(() => {
+        // Skip active theme loading if Mendix API is not available (e.g., in tests)
+        if (typeof window === "undefined" || !(window as any).mx) {
+            return;
+        }
         // Small delay helps when running locally with slow session init
         setTimeout(() => {
             loadActiveTheme();
@@ -756,6 +760,10 @@ const ColorTokenEditor = ({ side = "right", getTokens }: ColorTokenEditorProps) 
 
     // Effect to periodically check if the active theme still exists, to sync across browser tabs
     useEffect(() => {
+        // Skip if Mendix API is not available (e.g., in tests)
+        if (typeof window === "undefined" || !(window as any).mx) {
+            return;
+        }
         // Don't run this check for the default theme
         if (activeThemeName === "default" || activeThemeName === DEFAULT_TRIMM_NAME) {
             return;
