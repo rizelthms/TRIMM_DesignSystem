@@ -28,16 +28,157 @@ const localStorageMock = (() => {
 })();
 Object.defineProperty(window, "localStorage", { value: localStorageMock });
 
+// Mock Mendix API (mx.data) for database operations
+let mockThemeDatabase: Map<string, any> = new Map();
+let mockUserDatabase: Map<string, any> = new Map(); // userGuid -> user object
+let mockUserAssociation: Map<string, string> = new Map(); // userGuid -> themeGuid
+let guidCounter = 0;
+
+function generateGuid(): string {
+    return `mock-guid-${++guidCounter}`;
+}
+
+function createMockMxObject(data: Record<string, any>, guid: string): any {
+    return {
+        getGuid: () => guid,
+        get: (attr: string) => data[attr],
+        set: (attr: string, value: any) => {
+            data[attr] = value;
+        }
+    };
+}
+
+function parseXpath(xpath: string): { entity?: string; filter?: string } {
+    // Simple xpath parser for test purposes
+    // Handles: //EntityName[Attribute='Value']
+    const match = xpath.match(/\/\/([^.]+)\.([^\[]+)(?:\[([^\]]+)\])?/);
+    if (!match) return {};
+    const [, module, entity, filter] = match;
+    return { entity: `${module}.${entity}`, filter };
+}
+
+const mockMx = {
+    data: {
+        get: (options: { xpath?: string; guid?: string; callback: (objs: any[]) => void; error?: (err: Error) => void }) => {
+            // Use setImmediate or Promise.resolve().then() for better async handling
+            Promise.resolve().then(() => {
+                try {
+                    if (options.guid) {
+                        // Get by GUID - check both theme and user databases
+                        const themeObj = Array.from(mockThemeDatabase.values()).find(o => o.getGuid() === options.guid);
+                        if (themeObj) {
+                            options.callback([themeObj]);
+                            return;
+                        }
+                        const userObj = mockUserDatabase.get(options.guid);
+                        if (userObj) {
+                            options.callback([userObj]);
+                            return;
+                        }
+                        options.callback([]);
+                    } else if (options.xpath) {
+                        // Get by xpath
+                        const parsed = parseXpath(options.xpath);
+                        let results: any[] = Array.from(mockThemeDatabase.values());
+
+                        if (parsed.filter) {
+                            // Apply filter: Name='value'
+                            const filterMatch = parsed.filter.match(/(\w+)='([^']+)'/);
+                            if (filterMatch) {
+                                const [, attr, value] = filterMatch;
+                                results = results.filter(obj => obj.get(attr) === value);
+                            }
+                        } else {
+                            // No filter, return all
+                            results = Array.from(mockThemeDatabase.values());
+                        }
+
+                        options.callback(results);
+                    } else {
+                        options.callback([]);
+                    }
+                } catch (err) {
+                    options.error?.(err as Error);
+                }
+            });
+        },
+        create: (options: { entity: string; callback: (obj: any) => void; error?: (err: Error) => void }) => {
+            Promise.resolve().then(() => {
+                try {
+                    const guid = generateGuid();
+                    const data: Record<string, any> = {};
+                    const obj = createMockMxObject(data, guid);
+                    options.callback(obj);
+                } catch (err) {
+                    options.error?.(err as Error);
+                }
+            });
+        },
+        commit: (options: { mxobj: any; callback: () => void; error?: (err: Error) => void }) => {
+            Promise.resolve().then(() => {
+                try {
+                    const guid = options.mxobj.getGuid();
+                    const name = options.mxobj.get("Name");
+                    if (name) {
+                        mockThemeDatabase.set(name, options.mxobj);
+                    } else {
+                        // Check if it's a user object (has association attribute)
+                        const userGuid = options.mxobj.get("TRIMM_DesignSystem.DS_ThemeProfile_User");
+                        if (userGuid !== undefined) {
+                            mockUserDatabase.set(guid, options.mxobj);
+                        } else {
+                            mockThemeDatabase.set(guid, options.mxobj);
+                        }
+                    }
+                    options.callback();
+                } catch (err) {
+                    options.error?.(err as Error);
+                }
+            });
+        },
+        remove: (options: { guid: string; callback: () => void; error?: (err: Error) => void }) => {
+            Promise.resolve().then(() => {
+                try {
+                    // Find and remove by GUID from both databases
+                    for (const [key, obj] of mockThemeDatabase.entries()) {
+                        if (obj.getGuid() === options.guid) {
+                            mockThemeDatabase.delete(key);
+                            break;
+                        }
+                    }
+                    mockUserDatabase.delete(options.guid);
+                    options.callback();
+                } catch (err) {
+                    options.error?.(err as Error);
+                }
+            });
+        }
+    },
+    session: {
+        getUserGuid: () => null // No user session by default (security off)
+    }
+};
+
+// Setup Mendix API mock before each test
+beforeAll(() => {
+    (window as any).mx = mockMx;
+});
+
+beforeEach(() => {
+    mockThemeDatabase.clear();
+    mockUserDatabase.clear();
+    mockUserAssociation.clear();
+    guidCounter = 0;
+    window.localStorage.clear();
+    document.body.innerHTML = "";
+});
+
 const mockTokens = [
     { name: "--brand-1", value: "#ff0000" },
     { name: "--brand-2", value: "#00ff00" }
 ];
 
 describe("ColorTokenEditor integration", () => {
-    beforeEach(() => {
-        window.localStorage.clear();
-        document.body.innerHTML = "";
-    });
 
     it("renders the floating action button (FAB)", async () => {
         await act(async () => {
@@ -423,11 +564,17 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
+        // Wait for initial load to complete
+        await waitFor(() => {
+            expect(screen.getByLabelText(/choose theme/i)).toBeInTheDocument();
+        });
+
         // Change a color to create a visible override
         const colorInputs = document.querySelectorAll("input[type='color']");
         await act(async () => {
             fireEvent.change(colorInputs[0], { target: { value: "#111111" } });
         });
+
         // Create theme "a"
         const nameInput = screen.getByLabelText(/theme name/i) as HTMLInputElement;
         await act(async () => {
@@ -436,6 +583,17 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /create new theme/i }));
         });
+        // Wait for save to complete
+        await waitFor(() => {
+            expect(screen.queryByText(/failed to save/i)).not.toBeInTheDocument();
+        }, { timeout: 3000 });
+
+        // Wait for theme to appear in dropdown
+        await waitFor(() => {
+            const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
+            expect(Array.from(select.options).some(opt => opt.value === "a")).toBe(true);
+        });
+
         // Load theme "a"
         const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
         await act(async () => {
@@ -444,14 +602,24 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /load selected theme/i }));
         });
+        // Wait for load to complete
+        await waitFor(() => {
+            expect(screen.queryByText(/failed to load/i)).not.toBeInTheDocument();
+        }, { timeout: 3000 });
+
         // Delete theme "a" and confirm
         const confirmSpy = jest.spyOn(window, "confirm").mockReturnValue(true);
         await act(async () => {
             fireEvent.click(screen.getByRole("button", { name: /delete selected theme/i }));
         });
         confirmSpy.mockRestore();
+
         // Should display restoration message and clear overrides in storage
-        expect(await screen.findByText(/default trimm theme restored/i)).toBeInTheDocument();
+        // The message is "Active theme was deleted. Default TRIMM restored."
+        // Wait for the message to appear - it may take a moment for async DB operations
+        const message = await screen.findByText(/active theme was deleted/i, {}, { timeout: 8000 });
+        expect(message).toBeInTheDocument();
+        expect(message.textContent?.toLowerCase()).toContain("default trimm restored");
         const lightOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_light") || "{}");
         const darkOverrides = JSON.parse(window.localStorage.getItem("tokenOverrides_dark") || "{}");
         expect(Object.keys(lightOverrides).length).toBe(0);
@@ -480,6 +648,11 @@ describe("ColorTokenEditor integration", () => {
             fireEvent.click(screen.getByRole("button", { name: /open color token editor/i }));
         });
 
+        // Wait for initial load
+        await waitFor(() => {
+            expect(screen.getByLabelText(/choose theme/i)).toBeInTheDocument();
+        });
+
         // Prepare import JSON for theme "a"
         const exportJson = {
             metadata: { version: "1.0.0", exportedAt: new Date().toISOString(), source: "TRIMM Design System Color Token Editor" },
@@ -499,11 +672,14 @@ describe("ColorTokenEditor integration", () => {
         await act(async () => {
             fireEvent.change(hiddenInput, { target: { files: [new File([mockFileContent], "a.json", { type: "application/json" })] } });
         });
-        // Ensure theme "a" appears
-        const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
-        expect(Array.from(select.options).some(opt => opt.value === "a")).toBe(true);
+        // Wait for import to complete and theme to appear
+        await waitFor(() => {
+            const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
+            expect(Array.from(select.options).some(opt => opt.value === "a")).toBe(true);
+        }, { timeout: 3000 });
 
         // Delete theme "a"
+        const select = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
         const confirmSpy = jest.spyOn(window, "confirm").mockReturnValue(true);
         await act(async () => {
             fireEvent.change(select, { target: { value: "a" } });
@@ -511,12 +687,21 @@ describe("ColorTokenEditor integration", () => {
         });
         confirmSpy.mockRestore();
 
+        // Wait for deletion to complete
+        await waitFor(() => {
+            const selectAfterDelete = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
+            expect(Array.from(selectAfterDelete.options).some(opt => opt.value === "a")).toBe(false);
+        }, { timeout: 3000 });
+
         // Re-import the exact same file again (input value cleared by widget)
         await act(async () => {
             fireEvent.change(hiddenInput, { target: { files: [new File([mockFileContent], "a.json", { type: "application/json" })] } });
         });
         // "a" should be available again
-        expect(Array.from(select.options).some(opt => opt.value === "a")).toBe(true);
+        await waitFor(() => {
+            const selectAfterReimport = screen.getByLabelText(/choose theme/i) as HTMLSelectElement;
+            expect(Array.from(selectAfterReimport.options).some(opt => opt.value === "a")).toBe(true);
+        }, { timeout: 3000 });
 
         // Restore FileReader
         (globalThis as any).FileReader = OriginalFileReader;

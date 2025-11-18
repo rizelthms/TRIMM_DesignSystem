@@ -28923,6 +28923,34 @@ p {
   --support-4-disabled: rgba(186, 139, 0, 0.4);
 }
 
+/**
+ * TRIMM Design System - Components Imports
+ * 
+ * This file aggregates all component styles for the TRIMM Design System.
+ * It imports both restyled Mendix widgets and custom TRIMM components.
+ * 
+ * Imported Items:
+ * 1. Restyled Components - Enhanced Mendix widgets with TRIMM styling
+ * 2. Custom Components - TRIMM-specific widgets and functionality
+ */
+/**
+ * TRIMM Design System - Accordion Component Styles
+ * 
+ * This file contains scoped styling for Mendix Accordion widgets.
+ * It provides enhanced accordion functionality with TRIMM design system
+ * styling, including hover states, transitions, and consistent theming.
+ * 
+ * Scoping: TRIMM accordion styles only apply when 'trimm-accordion' class
+ * is present on the accordion or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced header button styling with hover and active states
+ * - Smooth transitions for expand/collapse animations
+ * - Consistent typography and spacing using design tokens
+ * - Disabled state support with appropriate visual feedback
+ * - Open/closed state styling with visual indicators
+ */
 .trimm-accordion .accordion-base, .trimm-accordion.accordion-base {
   border: none;
   border-radius: 4px;
@@ -29058,6 +29086,24 @@ p {
   background-color: var(--secondary-1-disabled);
 }
 
+/**
+ * TRIMM Design System - Alert Component Styles
+ * 
+ * This file contains scoped styling for Mendix Alert widgets.
+ * It provides enhanced alert functionality with multiple variants,
+ * consistent theming, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM alert styles only apply when 'trimm-alert' class
+ * is present on the alert or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple alert variants (success, danger, warning, info)
+ * - Enhanced button styling within alerts
+ * - Consistent typography and spacing using design tokens
+ * - Interactive hover and active states
+ * - Disabled state support with appropriate visual feedback
+ */
 .trimm-alert .alert-base, .trimm-alert .alert-info, .trimm-alert .alert-warning, .trimm-alert .alert-danger, .trimm-alert .alert-success, .trimm-alert.alert-base, .trimm-alert.alert-info, .trimm-alert.alert-warning, .trimm-alert.alert-danger, .trimm-alert.alert-success {
   font-family: "GothamSSm", sans-serif;
   border-radius: 4px;
@@ -29245,6 +29291,25 @@ p {
   color: var(--base-white-disabled) !important;
 }
 
+/**
+ * TRIMM Design System - Button Component Styles
+ * 
+ * This file contains scoped styling for Mendix Button widgets.
+ * It provides comprehensive button functionality with multiple variants,
+ * sizes, and states using TRIMM design tokens for consistent theming.
+ * 
+ * Scoping: TRIMM button styles only apply when 'trimm-button' class
+ * is present on the button or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple button variants (default, primary, CTA, inverse, info, success, warning, danger)
+ * - Size modifiers (small, medium, large)
+ * - Icon alignment support (left and right positioning)
+ * - Interactive states (hover, active, disabled)
+ * - Consistent typography and spacing using design tokens
+ * - Focus states for accessibility compliance
+ */
 .trimm-button .button-base, .trimm-button .btn-lg, .trimm-button .btn-md, .trimm-button .btn-sm, .trimm-button .btn-danger, .trimm-button .btn-warning, .trimm-button .btn-success, .trimm-button .btn-info, .trimm-button .btn-primary, .trimm-button .btn-inverse, .trimm-button .btn-cta, .trimm-button .btn-default, .trimm-button.button-base, .trimm-button.btn-lg, .trimm-button.btn-md, .trimm-button.btn-sm, .trimm-button.btn-danger, .trimm-button.btn-warning, .trimm-button.btn-success, .trimm-button.btn-info, .trimm-button.btn-primary, .trimm-button.btn-inverse, .trimm-button.btn-cta, .trimm-button.btn-default {
   display: inline-flex;
   align-items: center;
@@ -29443,6 +29508,25 @@ p {
   margin-right: 4px;
 }
 
+/**
+ * TRIMM Design System - Checkbox Component Styles
+ * 
+ * This file contains scoped styling for Mendix Checkbox widgets.
+ * It provides enhanced checkbox functionality with custom styling,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM checkbox styles only apply when 'trimm-checkbox' class
+ * is present on the checkbox or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Custom checkbox styling with brand colors
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (hover, focus, checked, disabled)
+ * - Accessibility support with focus rings
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ */
 .trimm-checkbox .checkbox-base, .trimm-checkbox .checkbox-lg, .trimm-checkbox .checkbox-md, .trimm-checkbox .checkbox-sm, .trimm-checkbox.checkbox-base, .trimm-checkbox.checkbox-lg, .trimm-checkbox.checkbox-md, .trimm-checkbox.checkbox-sm {
   display: flex;
   align-items: center;
@@ -29592,6 +29676,24 @@ p {
   font-size: 18px;
 }
 
+/**
+ * TRIMM Design System - Label Component Styles
+ * 
+ * This file contains scoped styling for Mendix Label widgets.
+ * It provides enhanced label functionality with multiple variants,
+ * size options, and consistent theming using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM label styles only apply when 'trimm-label' class
+ * is present on the label or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Multiple label variants (default, secondary, success, danger, warning)
+ * - Size modifiers (small, medium, large)
+ * - Consistent typography and spacing using design tokens
+ * - Interactive states and proper alignment
+ * - Brand color integration for status indicators
+ */
 .trimm-label .label-base, .trimm-label .label-lg, .trimm-label .label-md, .trimm-label .label-sm, .trimm-label .label-warning, .trimm-label .label-danger, .trimm-label .label-success, .trimm-label .label-secondary, .trimm-label .label-default, .trimm-label.label-base, .trimm-label.label-lg, .trimm-label.label-md, .trimm-label.label-sm, .trimm-label.label-warning, .trimm-label.label-danger, .trimm-label.label-success, .trimm-label.label-secondary, .trimm-label.label-default {
   display: inline-flex;
   align-items: center;
@@ -29643,6 +29745,25 @@ p {
   padding: 12px;
 }
 
+/**
+ * TRIMM Design System - Menu Component Styles
+ * 
+ * This file contains scoped styling for Mendix Menu widgets.
+ * It provides enhanced menu functionality with dropdown support,
+ * consistent theming, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM menu styles only apply when 'trimm-menu' class
+ * is present on the menu or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced menu bar styling with TRIMM branding
+ * - Dropdown menu support with proper positioning
+ * - Interactive states (hover, active, selected)
+ * - Icon support and caret styling
+ * - Consistent typography and spacing using design tokens
+ * - Proper z-index layering for dropdown menus
+ */
 .trimm-menu .menu-base, .trimm-menu.menu-base {
   font-family: "GothamSSm", sans-serif;
 }
@@ -29797,6 +29918,25 @@ p {
   overflow: visible !important;
 }
 
+/**
+ * TRIMM Design System - Radio Button Component Styles
+ * 
+ * This file contains scoped styling for Mendix Radio Button widgets.
+ * It provides enhanced radio button functionality with custom styling,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM radio styles only apply when 'trimm-radio' class
+ * is present on the radio or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Custom radio button styling with brand colors
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (hover, focus, checked, disabled)
+ * - Label styling with proper alignment
+ * - Consistent typography and spacing using design tokens
+ * - Accessibility support with proper focus states
+ */
 .trimm-radio .radio-base, .trimm-radio .radio-lg, .trimm-radio .radio-md, .trimm-radio .radio-sm, .trimm-radio.radio-base, .trimm-radio.radio-lg, .trimm-radio.radio-md, .trimm-radio.radio-sm {
   font-family: "GothamSSm", sans-serif;
 }
@@ -29930,6 +30070,23 @@ p {
   font-weight: 600;
 }
 
+/**
+ * TRIMM Design System - Sidebar Navigation Component Styles
+ * 
+ * This file contains styling for Mendix Navigation Tree widgets used in sidebar navigation.
+ * It provides consistent TRIMM design system appearance for sidebar navigation
+ * with enhanced styling, hover states, and proper hierarchy indication.
+ * 
+ * Features:
+ * - Enhanced navigation tree styling with TRIMM branding
+ * - Hover and active states for navigation items
+ * - Proper hierarchy indication for nested items
+ * - Disabled state support with appropriate visual feedback
+ * - Consistent typography and spacing using design tokens
+ * - Dropdown caret styling for expandable items
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .region-sidebar,
 .mx-navigationtree.mx-name-navigationTree3,
 .navbar-inner {
@@ -30005,6 +30162,25 @@ p {
   border-bottom-color: var(--base-white) !important;
 }
 
+/**
+ * TRIMM Design System - Switch Component Styles
+ * 
+ * This file contains scoped styling for Mendix Switch widgets.
+ * It provides enhanced switch functionality with custom toggle styling,
+ * size variants, and smooth animations using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM switch styles only apply when 'trimm-switch' class
+ * is present on the switch or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Custom switch track and thumb styling
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (hover, focus, checked, disabled)
+ * - Smooth animations for toggle transitions
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ */
 .trimm-switch .switch-base .widget-switch-btn-wrapper, .trimm-switch .switch-lg .widget-switch-btn-wrapper, .trimm-switch .switch-md .widget-switch-btn-wrapper, .trimm-switch .switch-sm .widget-switch-btn-wrapper, .trimm-switch.switch-base .widget-switch-btn-wrapper, .trimm-switch.switch-lg .widget-switch-btn-wrapper, .trimm-switch.switch-md .widget-switch-btn-wrapper, .trimm-switch.switch-sm .widget-switch-btn-wrapper {
   --track-height: 28px;
   --track-width: 48px;
@@ -30099,6 +30275,25 @@ p {
   font-weight: 600;
 }
 
+/**
+ * TRIMM Design System - Tab Component Styles
+ * 
+ * This file contains scoped styling for Mendix Tab Container widgets.
+ * It provides enhanced tab functionality with consistent theming,
+ * interactive states, and proper content organization using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM tab styles only apply when 'trimm-tab' class
+ * is present on the tab or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced tab navigation styling with TRIMM branding
+ * - Interactive states (hover, active, disabled)
+ * - Tab content panel styling
+ * - Consistent typography and spacing using design tokens
+ * - Proper visual hierarchy and organization
+ * - Disabled state support with appropriate visual feedback
+ */
 .trimm-tab .tab-base, .trimm-tab.tab-base {
   font-family: "GothamSSm", sans-serif;
   font-size: 16px;
@@ -30149,6 +30344,25 @@ p {
   border-radius: 0 0 4px 4px;
 }
 
+/**
+ * TRIMM Design System - Textarea Component Styles
+ * 
+ * This file contains scoped styling for Mendix Text Area widgets.
+ * It provides enhanced textarea functionality with consistent theming,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM textarea styles only apply when 'trimm-textarea' class
+ * is present on the textarea or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced textarea input styling with TRIMM branding
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (focus, disabled)
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ * - Placeholder text styling and validation states
+ */
 .trimm-textarea .textarea-base, .trimm-textarea .textarea-lg, .trimm-textarea .textarea-md, .trimm-textarea .textarea-sm, .trimm-textarea.textarea-base, .trimm-textarea.textarea-lg, .trimm-textarea.textarea-md, .trimm-textarea.textarea-sm {
   font-family: "GothamSSm", sans-serif;
 }
@@ -30204,6 +30418,25 @@ p {
   font-weight: 600;
 }
 
+/**
+ * TRIMM Design System - Textbox Component Styles
+ * 
+ * This file contains scoped styling for Mendix Text Box widgets.
+ * It provides enhanced textbox functionality with consistent theming,
+ * size variants, and interactive states using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM textbox styles only apply when 'trimm-textbox' class
+ * is present on the textbox or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced textbox input styling with TRIMM branding
+ * - Size modifiers (small, medium, large)
+ * - Interactive states (focus, disabled)
+ * - Consistent typography and spacing using design tokens
+ * - Label styling with proper alignment
+ * - Placeholder text styling and validation states
+ */
 .trimm-textbox .textbox-base, .trimm-textbox .textbox-lg, .trimm-textbox .textbox-md, .trimm-textbox .textbox-sm, .trimm-textbox.textbox-base, .trimm-textbox.textbox-lg, .trimm-textbox.textbox-md, .trimm-textbox.textbox-sm,
 .trimm-textbox input.form-control {
   font-family: "GothamSSm", sans-serif !important;
@@ -30275,6 +30508,25 @@ p {
   font-weight: 600;
 }
 
+/**
+ * TRIMM Design System - Tooltip Component Styles
+ * 
+ * This file contains scoped styling for Mendix Tooltip widgets.
+ * It provides enhanced tooltip functionality with consistent theming,
+ * size variants, and proper positioning using TRIMM design tokens.
+ * 
+ * Scoping: TRIMM tooltip styles only apply when 'trimm-tooltip' class
+ * is present on the tooltip or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
+ * 
+ * Features:
+ * - Enhanced tooltip content styling with TRIMM branding
+ * - Size modifiers (small, medium, large)
+ * - Consistent typography and spacing using design tokens
+ * - Proper shadow and border radius styling
+ * - Multi-line text support with pre-line formatting
+ * - Brand color integration for visual consistency
+ */
 .trimm-tooltip .tooltip-base, .trimm-tooltip .tooltip-lg, .trimm-tooltip .tooltip-md, .trimm-tooltip .tooltip-sm, .trimm-tooltip.tooltip-base, .trimm-tooltip.tooltip-lg, .trimm-tooltip.tooltip-md, .trimm-tooltip.tooltip-sm {
   font-family: "GothamSSm", sans-serif;
 }
@@ -30302,6 +30554,23 @@ p {
   padding: 12px 24px;
 }
 
+/**
+ * TRIMM Design System - Topbar Navigation Component Styles
+ * 
+ * This file contains styling for Mendix Navigation widgets used in top navigation bars.
+ * It provides consistent TRIMM design system appearance for top navigation
+ * with enhanced styling, dropdown menus, and proper hierarchy indication.
+ * 
+ * Features:
+ * - Enhanced top navigation bar styling with TRIMM branding
+ * - Dropdown menu styling with proper positioning and shadows
+ * - Hover and active states for navigation items
+ * - Icon visibility controls for navigation elements
+ * - Disabled state support with appropriate visual feedback
+ * - Consistent typography and spacing using design tokens
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .region-topbar,
 .region-topbar.mx-scrollcontainer-top,
 .layout-atlas .region-topbar,
@@ -30398,13 +30667,23 @@ p {
   border-bottom-color: var(--base-white) !important;
 }
 
-/* ==========================================================================
-   Conversational UI (Chat) Components
-
-   This file provides TRIMM design system styling for Mendix ConversationalUI module.
-   Supports popup, sidebar, and fullscreen chat modes.
-   Uses TRIMM design tokens for consistent theming.
-========================================================================== */
+/**
+ * TRIMM Design System - Conversational UI Component Styles
+ * 
+ * This file provides comprehensive styling for Mendix ConversationalUI module.
+ * It supports multiple chat interface modes including popup, sidebar, and
+ * fullscreen layouts with consistent TRIMM design system theming.
+ * 
+ * Features:
+ * - Multiple chat layouts (popup, sidebar, fullscreen)
+ * - Chat bubble styling for user and AI messages
+ * - Loading animations and interactive states
+ * - Input field styling with send button
+ * - Responsive design for mobile and tablet
+ * - Theme integration with TRIMM design tokens
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .btn-chat-popup {
   position: fixed;
   right: 32px;
@@ -30902,6 +31181,22 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
     font-size: 14px;
   }
 }
+/**
+ * TRIMM Design System - Color Token Editor Widget Styles
+ * 
+ * This file contains styles for the TRIMM Color Token Editor custom widget.
+ * It provides a comprehensive color editing interface with theme management,
+ * including floating action button, drawer/sidebar, and modal components.
+ * 
+ * The widget supports:
+ * - Color token editing with live preview
+ * - Theme management and export/import functionality
+ * - Floating action button for easy access
+ * - Resizable drawer/sidebar interface
+ * - Modal dialogs for advanced operations
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .trimm-color-token-editor {
   padding: 16px;
   background-color: var(--base-white);
@@ -31356,6 +31651,22 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
     width: 100%;
   }
 }
+/**
+ * TRIMM Design System - Datepicker Widget Styles
+ * 
+ * This file contains styles for the TRIMM Datepicker custom widget.
+ * It provides a single date selection interface with calendar popup,
+ * including navigation controls, day selection, and hover states.
+ * 
+ * The widget features:
+ * - Input field with calendar icon
+ * - Popup calendar with month navigation
+ * - Day selection with hover and selected states
+ * - Today highlighting and disabled date support
+ * - Responsive design with proper z-index layering
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .trimm-datepicker {
   position: relative;
   display: inline-block;
@@ -31486,6 +31797,22 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   margin: 0 4px;
 }
 
+/**
+ * TRIMM Design System - Dropdown Widget Styles
+ * 
+ * This file contains styles for the TRIMM Dropdown custom widget.
+ * It provides a custom dropdown interface with enhanced styling,
+ * including toggle button, menu positioning, and item interactions.
+ * 
+ * The widget features:
+ * - Custom toggle button with brand styling
+ * - Dropdown menu with proper positioning and shadows
+ * - Menu items with hover states and icon support
+ * - Caret indicators for dropdown state
+ * - High z-index for proper layering
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .trimm-dropdown {
   position: relative;
   display: inline-block;
@@ -31549,6 +31876,23 @@ span.mx-text.mx-name-text3.user-input-instructions.text-small.spacing-outer-top-
   vertical-align: middle;
 }
 
+/**
+ * TRIMM Design System - Range Datepicker Widget Styles
+ * 
+ * This file contains styles for the TRIMM Range Datepicker custom widget.
+ * It provides a dual calendar interface for date range selection,
+ * including month navigation, range highlighting, and popup positioning.
+ * 
+ * The widget features:
+ * - Dual calendar layout for range selection
+ * - Range highlighting between selected dates
+ * - Month navigation with arrow controls
+ * - Popup positioning with drag handle
+ * - Responsive design for different screen sizes
+ * - Today highlighting and disabled date support
+ * 
+ * All styling uses TRIMM design tokens for consistent theming and easy customization.
+ */
 .trimm-range-datepicker {
   font-family: "GothamSSm", sans-serif;
   width: 100%;
