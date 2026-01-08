@@ -21,15 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // END EXTRA CODE
 
 /**
- * Toggles between light and dark themes by updating the document's data-theme attribute
- * and persisting the user's preference in localStorage for future visits
- * 
- * This function implements a simple but effective theme switching mechanism that:
- * - Uses CSS custom properties (CSS variables) for theme implementation
- * - Persists user preference across browser sessions
- * - Works seamlessly with the TRIMM Design System's theme architecture
- * 
- * @returns {Promise.<void>} - Resolves when theme toggle completes
+ * @returns {Promise.<void>}
  */
 export async function ToggleTheme() {
 	// BEGIN USER CODE

@@ -12,14 +12,8 @@ import { Big } from "big.js";
 // END EXTRA CODE
 
 /**
- * Copies text to the system clipboard using the modern Clipboard API
- * with fallback support for older browsers using document.execCommand
- * 
- * This function provides a robust clipboard implementation that works across
- * different browser versions and handles various edge cases gracefully.
- * 
- * @param {string} textToCopy - The text string to copy to clipboard
- * @returns {Promise.<void>} - Resolves when copy operation completes
+ * @param {string} textToCopy
+ * @returns {Promise.<void>}
  */
 export async function CopyToClipboard(textToCopy) {
 	// BEGIN USER CODE

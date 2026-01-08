@@ -14,13 +14,16 @@ import com.mendix.systemwideinterfaces.core.IContext;
 import com.mendix.systemwideinterfaces.core.IMendixObject;
 import com.mendix.systemwideinterfaces.core.UserAction;
 
-public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void> {
-	public DS_GenerateDefaultDesignSystemRecords(IContext context) {
+public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.Void>
+{
+	public DS_GenerateDefaultDesignSystemRecords(IContext context)
+	{
 		super(context);
 	}
 
 	@java.lang.Override
-	public java.lang.Void executeAction() throws Exception {
+	public java.lang.Void executeAction() throws Exception
+	{
 		// BEGIN USER CODE
 		/**
 		 * Purpose: Seed the TRIMM Design System data model with default tokens,
@@ -740,11 +743,11 @@ public class DS_GenerateDefaultDesignSystemRecords extends UserAction<java.lang.
 
 	/**
 	 * Returns a string representation of this action
-	 * 
 	 * @return a string representation of this action
 	 */
 	@java.lang.Override
-	public java.lang.String toString() {
+	public java.lang.String toString()
+	{
 		return "DS_GenerateDefaultDesignSystemRecords";
 	}
 
