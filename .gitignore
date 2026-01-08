@@ -8,9 +8,13 @@ Thumbs.db
 # Mendix Team Server SVN files (not used)
 .svn/
 
-# Build artifacts
+# Build artifacts (app packages and module exports)
 *.mpk
 *.mda
+
+# BUT: Include custom TRIMM widgets (these need to be tracked!)
+!widgets/trimm.*.mpk
+!widgets/trimm*.mpk
 
 # IDE/editor files
 .vscode/
