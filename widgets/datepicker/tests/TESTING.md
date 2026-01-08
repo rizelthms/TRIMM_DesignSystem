@@ -137,6 +137,7 @@ npm test -- --watch
 - **Component presence**: `toBeInTheDocument()`, `toBeVisible()`
 - **User interactions**: Event firing and state verification
 - **Date formatting**: Exact date string matching
+- **Date comparison**: Use `Date` objects or timestamps for range checks (>=, <=) instead of string comparison, to avoid format-dependent failures
 - **Accessibility**: ARIA attribute and role checking
 
 ### Async Testing

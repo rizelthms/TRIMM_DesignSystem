@@ -123,7 +123,8 @@ describe("TrimmDatepicker Unit", () => {
         // (simulate opening calendar for Jan 2025)
         // For unit test, just check that the rendered input value is >= min
         const input = container.querySelector('input');
-        expect(input && input.value >= "01/10/2025").toBe(true);
+        const inputValue = input ? new Date(input.value) : new Date(0); // Fallback to epoch if null
+        expect(inputValue.getTime()).toBeGreaterThanOrEqual(min.getTime());
     });
 
     it("treats dates after maxDate as out of range", () => {
@@ -132,7 +133,9 @@ describe("TrimmDatepicker Unit", () => {
             <TrimmDatepicker {...getProps({ maxDate: { value: max } })} />
         );
         const input = container.querySelector('input');
-        expect(input && input.value <= "01/05/2025").toBe(false); // today is after max, so should be out of range
+        const inputValue = input ? new Date(input.value) : new Date(0);
+        // today (2025+) is after max (Jan 5 2025), so inputValue <= max should be false
+        expect(inputValue.getTime() <= max.getTime()).toBe(false);
     });
 
     it("treats dates within min/max as in range", () => {
