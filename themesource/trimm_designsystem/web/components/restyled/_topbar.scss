@@ -1,9 +1,13 @@
 /**
  * TRIMM Design System - Topbar Navigation Component Styles
  * 
- * This file contains styling for Mendix Navigation widgets used in top navigation bars.
+ * This file contains scoped styling for Mendix Navigation widgets used in top navigation bars.
  * It provides consistent TRIMM design system appearance for top navigation
  * with enhanced styling, dropdown menus, and proper hierarchy indication.
+ * 
+ * Scoping: TRIMM topbar styles only apply when 'trimm-topbar' class
+ * is present on the region-topbar element or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
  * 
  * Features:
  * - Enhanced top navigation bar styling with TRIMM branding
@@ -16,115 +20,107 @@
  * All styling uses TRIMM design tokens for consistent theming and easy customization.
  */
 
-// Main topbar container styling
-.region-topbar,
-.region-topbar.mx-scrollcontainer-top,
-.layout-atlas .region-topbar,
-.layout-atlas .region-topbar .mx-navbar,
-.layout-atlas .region-topbar .mx-navigationtree,
-.layout-atlas .region-topbar .mx-menubar,
-.layout-atlas .region-topbar.mx-scrollcontainer-top,
-.layout-atlas .region-topbar .mx-navbar .topbar-content,
-.layout-atlas-phone .region-topbar,
-.layout-atlas-tablet .region-topbar {
+.layout-atlas .trimm-topbar.region-topbar {
+  // Main topbar container styling
   background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
-}
 
-// Override hide-icons behavior to show icons in TRIMM topbar
-.region-topbar .mx-navbar.hide-icons .mx-icon-lined,
-.region-topbar .mx-navbar.hide-icons .mx-icon-filled,
-.region-topbar .mx-navbar.hide-icons .glyphicon {
-  display: inline-block !important;
-  visibility: visible !important;
-}
+  &.mx-scrollcontainer-top {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+  }
 
-// Topbar dropdown menu styling
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
-}
+  // Override hide-icons behavior to show icons in TRIMM topbar
+  .mx-navbar.hide-icons .mx-icon-lined,
+  .mx-navbar.hide-icons .mx-icon-filled,
+  .mx-navbar.hide-icons .glyphicon {
+    display: inline-block !important;
+    visibility: visible !important;
+  }
 
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
-}
+  // Topbar dropdown menu styling
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+  }
 
-// Top-level navigation items
-.region-topbar .mx-navbar ul.nav > li > a {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
-  font-size: $font-size-body-3;
-  font-weight: $font-weight-regular;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+  }
 
-// Dropdown menu container styling
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {
-  background-color: var(--brand-3) !important;
-}
+  // Top-level navigation items
+  .mx-navbar ul.nav > li > a {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+    font-size: $font-size-body-3;
+    font-weight: $font-weight-regular;
+    transition: background 0.2s, color 0.2s;
+  }
 
-// Dropdown menu items styling
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a {
-  background-color: transparent !important;
-  color: var(--base-white) !important;
-  font-size: $font-size-body-4;
-  font-weight: $font-weight-light;
-  border-bottom: $border-1 solid var(--brand-3-active);
-  margin: 0;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
+  // Dropdown menu container styling
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu {
+    background-color: var(--brand-3) !important;
+  }
 
-// Remove border from last dropdown item
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li:last-child > a {
-  border-bottom: none;
-}
+  // Dropdown menu items styling
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a {
+    background-color: transparent !important;
+    color: var(--base-white) !important;
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-light;
+    border-bottom: $border-1 solid var(--brand-3-active);
+    margin: 0;
+    transition: background 0.2s, color 0.2s;
+  }
 
-// Hover states for main menu items
-.region-topbar .mx-navbar ul.nav > li > a:hover,
-.region-topbar .mx-navbar ul.nav > li > a:focus {
-  background-color: var(--brand-3-hover) !important;
-  color: var(--base-white) !important;
-}
+  // Remove border from last dropdown item
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li:last-child > a {
+    border-bottom: none;
+  }
 
-// Hover states for dropdown items
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a:hover,
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a:focus {
-  background-color: var(--brand-3-hover) !important;
-  color: var(--base-white) !important;
-}
+  // Hover states for main menu items
+  .mx-navbar ul.nav > li > a:hover,
+  .mx-navbar ul.nav > li > a:focus {
+    background-color: var(--brand-3-hover) !important;
+    color: var(--base-white) !important;
+  }
 
-// Active/selected states for main menu items
-.region-topbar .mx-navbar ul.nav > li.active > a,
-.region-topbar .mx-navbar ul.nav > li.selected > a {
-  background-color: var(--brand-3-active) !important;
-  color: var(--base-white) !important;
-}
+  // Hover states for dropdown items
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a:hover,
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a:focus {
+    background-color: var(--brand-3-hover) !important;
+    color: var(--base-white) !important;
+  }
 
-// Active/selected states for dropdown items
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li.active > a,
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li.selected > a {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
-}
+  // Active/selected states for main menu items
+  .mx-navbar ul.nav > li.active > a,
+  .mx-navbar ul.nav > li.selected > a {
+    background-color: var(--brand-3-active) !important;
+    color: var(--base-white) !important;
+  }
 
-// Disabled state styling
-.region-topbar .mx-navbar ul.nav > li.disabled > a,
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li.disabled > a {
-  background-color: transparent !important;
-  color: var(--secondary-1-disabled) !important;
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.7;
-}
+  // Active/selected states for dropdown items
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li.active > a,
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li.selected > a {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+  }
 
-// Dropdown caret styling
-.region-topbar .mx-navbar ul.nav > li > a .caret,
-.region-topbar .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a .caret {
-  border-top-color: var(--base-white) !important;
-  border-bottom-color: var(--base-white) !important;
+  // Disabled state styling
+  .mx-navbar ul.nav > li.disabled > a,
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li.disabled > a {
+    background-color: transparent !important;
+    color: var(--secondary-1-disabled) !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  // Dropdown caret styling
+  .mx-navbar ul.nav > li > a .caret,
+  .mx-navbar ul.nav > .mx-navbar-item.open .dropdown-menu > li > a .caret {
+    border-top-color: var(--base-white) !important;
+    border-bottom-color: var(--base-white) !important;
+  }
 }
