@@ -1,9 +1,13 @@
 /**
  * TRIMM Design System - Sidebar Navigation Component Styles
  * 
- * This file contains styling for Mendix Navigation Tree widgets used in sidebar navigation.
+ * This file contains scoped styling for Mendix Navigation Tree widgets used in sidebar navigation.
  * It provides consistent TRIMM design system appearance for sidebar navigation
  * with enhanced styling, hover states, and proper hierarchy indication.
+ * 
+ * Scoping: TRIMM sidebar styles only apply when 'trimm-sidebar' class
+ * is present on the region-sidebar element or an ancestor. This ensures Atlas UI remains
+ * default unless explicitly opted into TRIMM styling.
  * 
  * Features:
  * - Enhanced navigation tree styling with TRIMM branding
@@ -16,93 +20,90 @@
  * All styling uses TRIMM design tokens for consistent theming and easy customization.
  */
 
-// Main sidebar container styling
-.region-sidebar,
-.mx-navigationtree.mx-name-navigationTree3,
-.navbar-inner {
+.layout-atlas .trimm-sidebar.region-sidebar,
+.trimm-sidebar.region-sidebar,
+.trimm-topbar ~ .region-sidebar,
+body:has(.trimm-topbar) .region-sidebar {
+  // Main sidebar container styling
   background-color: var(--brand-3) !important;
   color: var(--base-white) !important;
-}
 
-// Sidebar heading styling
-.region-sidebar .sidebar-heading {
-  color: var(--base-white) !important;
-}
+  // Sidebar heading styling
+  .sidebar-heading {
+    color: var(--base-white) !important;
+  }
 
-// Top-level navigation items
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
-  font-size: $font-size-body-3;
-  font-weight: $font-weight-regular;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
+  // Top-level navigation items
+  .mx-navigationtree .navbar-inner > ul > li > a {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+    font-size: $font-size-body-3;
+    font-weight: $font-weight-regular;
+    transition: background 0.2s, color 0.2s;
+  }
 
-// Nested sub-items styling
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a {
-  background-color: var(--brand-3-hover) !important;
-  color: var(--base-white) !important;
-  font-size: $font-size-body-4;
-  font-weight: $font-weight-light;
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
+  // Nested sub-items styling
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a {
+    background-color: var(--brand-3-hover) !important;
+    color: var(--base-white) !important;
+    font-size: $font-size-body-4;
+    font-weight: $font-weight-light;
+    transition: background 0.2s, color 0.2s;
+  }
 
-// Hover states for top-level items
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:hover,
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a:focus {
-  background-color: var(--brand-3-hover) !important;
-  color: var(--base-white) !important;
-}
+  // Hover states for top-level items
+  .mx-navigationtree .navbar-inner > ul > li > a:hover,
+  .mx-navigationtree .navbar-inner > ul > li > a:focus {
+    background-color: var(--brand-3-hover) !important;
+    color: var(--base-white) !important;
+  }
 
-// Hover states for sub-items
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a:hover,
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a:focus {
-  background-color: var(--brand-3-active) !important;
-  color: var(--base-white) !important;
-}
+  // Hover states for sub-items
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a:hover,
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a:focus {
+    background-color: var(--brand-3-active) !important;
+    color: var(--base-white) !important;
+  }
 
-// Active/selected states for top-level items
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.active > a,
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.selected > a {
-  background-color: var(--brand-3-active) !important;
-  color: var(--base-white) !important;
-}
+  // Active/selected states for top-level items
+  .mx-navigationtree .navbar-inner > ul > li.active > a,
+  .mx-navigationtree .navbar-inner > ul > li.selected > a {
+    background-color: var(--brand-3-active) !important;
+    color: var(--base-white) !important;
+  }
 
-// Active/selected states for sub-items
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li.active > a,
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li.selected > a {
-  background-color: var(--brand-3) !important;
-  color: var(--base-white) !important;
-}
+  // Active/selected states for sub-items
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li.active > a,
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li.selected > a {
+    background-color: var(--brand-3) !important;
+    color: var(--base-white) !important;
+  }
 
-// Disabled state styling
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li.disabled > a,
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li.disabled > a {
-  background-color: transparent !important;
-  color: var(--secondary-1-disabled) !important;
-  cursor: not-allowed;
-  pointer-events: none;
-  opacity: 0.7;
-}
+  // Disabled state styling
+  .mx-navigationtree .navbar-inner > ul > li.disabled > a,
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li.disabled > a {
+    background-color: transparent !important;
+    color: var(--secondary-1-disabled) !important;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.7;
+  }
 
-// Sidebar container background
-.region-sidebar > div,
-.region-sidebar > * {
-  background-color: var(--brand-3) !important;
-}
+  // Sidebar container background
+  > div,
+  > * {
+    background-color: var(--brand-3) !important;
+  }
 
-// Nested menu background
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul {
-  background-color: var(--brand-3) !important;
-}
+  // Nested menu background
+  .mx-navigationtree li.mx-navigationtree-has-items > ul {
+    background-color: var(--brand-3) !important;
+  }
 
-// Dropdown caret styling
-.region-sidebar .mx-navigationtree .navbar-inner > ul > li > a .caret,
-.region-sidebar .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a .caret {
-  border-top-color: var(--base-white) !important;
-  border-bottom-color: var(--base-white) !important;
+  // Dropdown caret styling
+  .mx-navigationtree .navbar-inner > ul > li > a .caret,
+  .mx-navigationtree li.mx-navigationtree-has-items > ul > li > a .caret {
+    border-top-color: var(--base-white) !important;
+    border-bottom-color: var(--base-white) !important;
+  }
 }
